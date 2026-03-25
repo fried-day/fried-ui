@@ -1,0 +1,40 @@
+---
+title: Button
+description: An accessible button component built on React Aria with focus management, keyboard navigation, and screen reader support.
+---
+
+## Import
+
+```tsx
+import { Button } from "@fried-ui/react/button";
+```
+
+### Usage
+
+```tsx
+<Button>Click me</Button>
+```
+
+### Disabled
+
+```tsx
+<Button isDisabled>Disabled</Button>
+```
+
+### Pending
+
+```tsx
+<Button isPending>Saving...</Button>
+```
+
+## API Reference
+
+| Prop         | Type                      | Default     | Description            |
+| ------------ | ------------------------- | ----------- | ---------------------- |
+| `variant`    | `"primary"`               | `"primary"` | Visual style           |
+| `size`       | `"md"`                    | `"md"`      | Button size            |
+| `isDisabled` | `boolean`                 | `false`     | Disables the button    |
+| `isPending`  | `boolean`                 | `false`     | Shows loading spinner  |
+| `onPress`    | `(e: PressEvent) => void` | -           | Press event handler    |
+| `className`  | `string`                  | -           | Additional CSS classes |
+| `children`   | `ReactNode`               | -           | Button content         |

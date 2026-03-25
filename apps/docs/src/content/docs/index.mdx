@@ -1,0 +1,27 @@
+---
+title: Getting Started
+description: Beautiful, accessible React components for building modern web apps at scale.
+---
+
+## Installation
+
+```bash
+pnpm add @fried-ui/react @fried-ui/styles
+```
+
+Import styles in your CSS entry file:
+
+```css
+@import "tailwindcss";
+@import "@fried-ui/styles";
+```
+
+## Usage
+
+```tsx
+import { Button } from "@fried-ui/react/button";
+
+export default function App() {
+  return <Button variant="primary">Click me</Button>;
+}
+```

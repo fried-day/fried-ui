@@ -1,0 +1,71 @@
+.fri-button {
+  @apply relative inline-flex items-center justify-center;
+  @apply leading-none font-medium whitespace-nowrap select-none no-highlight;
+  @apply border border-transparent;
+  @apply cursor-pointer;
+
+  transition:
+    background-color var(--duration-fast) var(--ease-smooth),
+    color var(--duration-fast) var(--ease-smooth);
+
+  --fri-button-bg: transparent;
+  --fri-button-bg-hover: var(--fri-button-bg);
+  --fri-button-bg-pressed: var(--fri-button-bg-hover);
+  --fri-button-fg: currentColor;
+
+  background-color: var(--fri-button-bg);
+  color: var(--fri-button-fg);
+
+  &:focus-visible,
+  &[data-focus-visible] {
+    @apply focus-ring;
+  }
+
+  &:disabled,
+  &[aria-disabled="true"] {
+    @apply status-disabled;
+  }
+
+  &[data-pending="true"] {
+    @apply status-pending;
+  }
+
+  &:active,
+  &[data-pressed] {
+    background-color: var(--fri-button-bg-pressed);
+  }
+
+  @media (hover: hover) {
+    &:hover,
+    &[data-hovered] {
+      background-color: var(--fri-button-bg-hover);
+    }
+  }
+}
+
+.fri-button--primary {
+  --fri-button-bg: var(--color-primary);
+  --fri-button-bg-hover: var(--color-primary-hover);
+  --fri-button-bg-pressed: var(--color-primary-active);
+  --fri-button-fg: var(--color-primary-foreground);
+}
+
+.fri-button--sm {
+  @apply gap-2 rounded-md px-3.5 py-1.5 text-sm;
+}
+
+.fri-button--md {
+  @apply gap-2.5 rounded-lg px-4 py-2 text-base;
+}
+
+.fri-button--lg {
+  @apply gap-3 rounded-xl px-5 py-2.5 text-xl;
+}
+
+.fri-button--xl {
+  @apply gap-4 rounded-2xl px-6 py-3 text-2xl;
+}
+
+.fri-button--pending {
+  color: transparent;
+}

@@ -1,0 +1,25 @@
+{
+  "extends": "@repo/quality/tsconfig/nextjs.json",
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true,
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/.source/*": ["./.source/*"],
+      "@/source": ["./src/lib/source"]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    ".source/**/*.ts",
+    "next-env.d.ts",
+    "next.config.js",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": ["node_modules", "eslint.config.ts"]
+}

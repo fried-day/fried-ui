@@ -1,0 +1,92 @@
+{
+  "name": "@fried-ui/react",
+  "version": "0.1.0",
+  "description": "Beautiful, accessible React components for building modern web apps at scale",
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "tailwindcss",
+    "react-aria",
+    "accessible",
+    "design-system"
+  ],
+  "homepage": "https://github.com/fried-day/fried-ui",
+  "bugs": "https://github.com/fried-day/fried-ui/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fried-day/fried-ui",
+    "directory": "packages/react"
+  },
+  "license": "MIT",
+  "author": "Joe Takara <anuchit.boonsom@gmail.com>",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs"
+    },
+    "./button": {
+      "types": "./dist/components/button/index.d.ts",
+      "import": "./dist/components/button/index.mjs"
+    },
+    "./utils/cn": {
+      "types": "./dist/utils/cn/index.d.ts",
+      "import": "./dist/utils/cn/index.mjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "check-types": "tsc --noEmit",
+    "clean": "rm -rf dist .turbo coverage.json",
+    "dev": "tsup --watch",
+    "generate:component": "turbo gen react-component",
+    "lint": "eslint . --max-warnings 0",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@fried-ui/styles": "workspace:^",
+    "@react-types/color": "^3.1.4",
+    "@react-types/shared": "^3.33.1",
+    "clsx": "^2.1.1",
+    "react-aria-components": "^1.16.0",
+    "tailwind-merge": "^3.5.0"
+  },
+  "devDependencies": {
+    "@fried-ui/vitest": "workspace:*",
+    "@repo/quality": "workspace:*",
+    "@storybook/react": "^10.3.3",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^22.15.3",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^9.39.1",
+    "jsdom": "^29.0.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwindcss": "^4.2.2",
+    "tsup": "^8.5.1",
+    "typescript": "5.9.2",
+    "vitest": "^4.1.1"
+  },
+  "peerDependencies": {
+    "react": ">=19.0.0",
+    "react-dom": ">=19.0.0",
+    "tailwindcss": ">=4.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  }
+}
