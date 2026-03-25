@@ -18,7 +18,7 @@ This Turborepo includes the following packages/apps:
 
 - `docs`: a [Next.js](https://nextjs.org/) app
 - `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/react`: a stub React component library shared by both `web` and `docs` applications
+- `@fried-ui/react`: a stub React component library shared by both `web` and `docs` applications
 - `@repo/quality`: ESLint configs and shared tsconfigs
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).

@@ -6,13 +6,20 @@ description: Get started with fried-ui component library
 ## Installation
 
 ```bash
-pnpm add @repo/react
+pnpm add @fried-ui/styles @fried-ui/react
+```
+
+Import styles in your main CSS file (`globals.css`):
+
+```css
+@import "tailwindcss";
+@import "@fried-ui/styles";
 ```
 
 ## Usage
 
 ```tsx
-import { Box } from "@repo/react/box";
+import { Box } from "@fried-ui/react/box";
 
 export default function App() {
   return <Box className="rounded-lg bg-blue-100 p-4">Hello from fried-ui</Box>;

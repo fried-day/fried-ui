@@ -16,7 +16,7 @@ pnpm -w run format        # Format with Prettier
 # Filter to a single app/package
 pnpm --filter=web build
 pnpm --filter=docs dev
-pnpm --filter=@repo/react test
+pnpm --filter=@fried-ui/react test
 pnpm --filter=storybook dev    # Storybook on port 6006
 
 # Run a single test file
@@ -32,7 +32,7 @@ cd packages/react && npx vitest run src/box/box.test.tsx
 - **`apps/web`** (port 3000) — Next.js 16 App Router, playground/demo site
 - **`apps/docs`** (port 3001) — Next.js 16 + Fumadocs, MDX documentation site
 - **`apps/storybook`** (port 6006) — Storybook 8 with Vite, reads stories from `packages/react`
-- **`packages/react`** (`@repo/react`) — Component library (React Aria + Tailwind v4)
+- **`packages/react`** (`@fried-ui/react`) — Component library (React Aria + Tailwind v4)
 - **`packages/quality`** (`@repo/quality`) — ESLint configs (`eslint/base`, `eslint/next-js`, `eslint/react-internal`) + shared tsconfigs (`tsconfig/base`, `tsconfig/nextjs`, `tsconfig/react-library`)
 
 ### Component Structure
@@ -57,8 +57,8 @@ packages/react/src/
 **Exports** are explicit in `packages/react/package.json`:
 
 ```ts
-import { Box } from "@repo/react/box";
-import { cn } from "@repo/react/utils/cn";
+import { Box } from "@fried-ui/react/box";
+import { cn } from "@fried-ui/react/utils/cn";
 ```
 
 When adding a new component, add its export entry to `packages/react/package.json`.
@@ -68,8 +68,8 @@ When adding a new component, add its export entry to `packages/react/package.jso
 - **Tailwind CSS v4** — CSS-first config, no `tailwind.config.js`
 - Apps use `@tailwindcss/postcss`, Storybook uses `@tailwindcss/vite`
 - Each app's `globals.css` has `@source "../../packages/react/src/**/*.{ts,tsx}"` to scan component classes
-- `@plugin "tailwindcss-react-aria-components"` for React Aria state modifiers
-- Use `cn()` from `@repo/react/utils/cn` to merge Tailwind classes in components
+- `@fried-ui/styles` provides base styles — apps import via `@import "@fried-ui/styles"`
+- Use `cn()` from `@fried-ui/react/utils/cn` to merge Tailwind classes in components
 
 ### Documentation (Fumadocs)
 

@@ -11,7 +11,8 @@
     "check-types": "next typegen && tsc --noEmit"
   },
   "dependencies": {
-    "@repo/react": "workspace:*",
+    "@fried-ui/react": "workspace:*",
+    "@fried-ui/styles": "workspace:*",
     "@types/mdx": "^2.0.13",
     "fumadocs-core": "^16.7.5",
     "fumadocs-mdx": "^14.2.11",
@@ -29,7 +30,6 @@
     "@types/react-dom": "19.2.2",
     "eslint": "^9.39.1",
     "tailwindcss": "^4.2.2",
-    "tailwindcss-react-aria-components": "^2.0.1",
     "typescript": "5.9.2"
   }
 }

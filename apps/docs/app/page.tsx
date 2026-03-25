@@ -1,4 +1,4 @@
-import { Box } from "@repo/react/box";
+import { Box } from "@fried-ui/react/box";
 
 export default function Home() {
   return (

@@ -7,7 +7,8 @@
     "build": "storybook build -o dist"
   },
   "dependencies": {
-    "@repo/react": "workspace:*",
+    "@fried-ui/react": "workspace:*",
+    "@fried-ui/styles": "workspace:*",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
