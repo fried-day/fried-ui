@@ -17,10 +17,10 @@ export function createReactConfig(tsconfigRootDir: string) {
     eslintConfigPrettier,
     ...tseslint.configs.recommended,
     nextfriday.configs["react/recommended"],
-    pluginReact.configs.flat.recommended,
+    pluginReact.configs.flat.recommended!,
     {
       languageOptions: {
-        ...pluginReact.configs.flat.recommended.languageOptions,
+        ...pluginReact.configs.flat.recommended!.languageOptions,
         globals: {
           ...globals.serviceworker,
           ...globals.browser,
