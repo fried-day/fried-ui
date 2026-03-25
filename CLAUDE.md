@@ -23,7 +23,7 @@ pnpm --filter=@fried-ui/react test
 pnpm --filter=storybook dev    # Storybook on port 6006
 
 # Run a single test file
-cd packages/react && npx vitest run src/components/box/BoxTest.tsx
+cd packages/react && npx vitest run src/components/box/box.test.tsx
 ```
 
 ## Architecture
@@ -33,7 +33,7 @@ cd packages/react && npx vitest run src/components/box/BoxTest.tsx
 ### Workspace Layout
 
 - **`apps/docs`** (port 3001) — Next.js 16 + Fumadocs, MDX documentation site
-- **`apps/storybook`** (port 6006) — Storybook 8 with Vite, reads stories from `packages/react`
+- **`apps/storybook`** (port 6006) — Storybook 10 with Vite, reads stories from `packages/react`
 - **`packages/react`** (`@fried-ui/react`) — Component library (React Aria + Tailwind v4), built with tsup
 - **`packages/styles`** (`@fried-ui/styles`) — Base CSS (`@import "@fried-ui/styles"`) + tailwind-variants exports
 - **`packages/quality`** (`@repo/quality`) — ESLint configs (`eslint/base`, `eslint/next-js`, `eslint/react-internal`) + shared tsconfigs (`tsconfig/base`, `tsconfig/nextjs`, `tsconfig/react-library`)
@@ -41,7 +41,7 @@ cd packages/react && npx vitest run src/components/box/BoxTest.tsx
 
 ### Component Structure
 
-Each component lives in its own directory under `packages/react/src/components/`. File names are **PascalCase**:
+Each component lives in its own directory under `packages/react/src/components/`. Component files are **PascalCase**, test/story files are **lowercase**:
 
 ```text
 packages/react/src/
@@ -77,7 +77,7 @@ When adding a new component, add its export entry to `packages/react/package.jso
 - Each app's `globals.css` has `@source "../../packages/react/src/**/*.{ts,tsx}"` to scan component classes
 - `@fried-ui/styles` provides base styles — apps import via `@import "@fried-ui/styles"`
 - `@fried-ui/styles/variants` exports `tv` (tailwind-variants) for component variant definitions
-- `@fried-ui/styles/utils` exports shared utility classes (`focusRingClasses`, `disabledClasses`)
+- `@fried-ui/styles/utils` exports shared utility classes (`FOCUS_RING_CLASSES`, `DISABLED_CLASSES`, `ARIA_DISABLED_CLASSES`)
 - Use `cn()` from `@fried-ui/react/utils/cn` to merge Tailwind classes in components
 
 ### Documentation (Fumadocs)
