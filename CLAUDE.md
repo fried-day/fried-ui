@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Prerequisites
+
+- **Node 22** (see `.nvmrc`) — pnpm only (enforced via `preinstall` script)
+
 ## Build & Dev Commands
 
 ```bash
@@ -39,13 +43,13 @@ cd packages/react && npx vitest run src/components/box/BoxTest.tsx
 
 Each component lives in its own directory under `packages/react/src/components/`. File names are **PascalCase**:
 
-```
+```text
 packages/react/src/
   components/
     box/
       Box.tsx              # Component implementation
-      BoxTest.tsx          # Vitest + React Testing Library tests
-      BoxStories.tsx       # Storybook stories
+      box.test.tsx          # Vitest + React Testing Library tests
+      box.stories.tsx      # Storybook stories
       index.ts             # Re-exports
     aria/                  # React Aria Components re-exports
   utils/
@@ -54,6 +58,8 @@ packages/react/src/
       index.ts             # Re-exports
   index.ts                 # Barrel export
 ```
+
+Test files use `component.test.tsx` naming. Story files use `component.stories.tsx` naming.
 
 **Exports** are explicit in `packages/react/package.json` with types + import subpaths:
 
@@ -106,4 +112,10 @@ When adding a new component, add its export entry to `packages/react/package.jso
 - **Conventional commits** enforced by commitlint: `type(scope): Subject` (sentence-case, max 50 chars)
 - Valid types: `build|chore|ci|docs|feat|fix|perf|refactor|revert|setup|style|test`
 - Scope is required
-- **Husky hooks**: pre-commit runs lint-staged, commit-msg validates format, pre-push runs lint + typecheck
+- **Husky hooks**: pre-commit runs lint-staged (prettier + eslint --fix), commit-msg validates format, pre-push runs lint + typecheck
+
+### Changesets
+
+- Run `pnpm changeset` to create a changeset before submitting PRs that affect published packages
+- `@fried-ui/react` and `@fried-ui/styles` are **fixed versioning** — they release together
+- `docs` and `storybook` apps are ignored by changesets
