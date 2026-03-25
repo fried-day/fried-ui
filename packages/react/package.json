@@ -31,10 +31,6 @@
       "types": "./dist/components/box/index.d.ts",
       "import": "./dist/components/box/index.mjs"
     },
-    "./aria": {
-      "types": "./dist/components/aria/index.d.ts",
-      "import": "./dist/components/aria/index.mjs"
-    },
     "./utils/cn": {
       "types": "./dist/utils/cn/index.d.ts",
       "import": "./dist/utils/cn/index.mjs"

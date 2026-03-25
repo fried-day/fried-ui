@@ -51,7 +51,6 @@ packages/react/src/
       box.test.tsx          # Vitest + React Testing Library tests
       box.stories.tsx      # Storybook stories
       index.ts             # Re-exports
-    aria/                  # React Aria Components re-exports
   utils/
     cn/
       cn.ts                # Tailwind class merge utility (clsx + tailwind-merge)
