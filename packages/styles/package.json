@@ -1,6 +1,24 @@
 {
   "name": "@fried-ui/styles",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "description": "Theme engine, design tokens, and component presets for fried-ui",
+  "keywords": [
+    "tailwindcss",
+    "styles",
+    "variants",
+    "css",
+    "design-system",
+    "tailwind-variants"
+  ],
+  "homepage": "https://github.com/fried-day/fried-ui",
+  "bugs": "https://github.com/fried-day/fried-ui/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fried-day/fried-ui",
+    "directory": "packages/styles"
+  },
+  "license": "MIT",
+  "author": "Joe Takara <anuchit.boonsom@gmail.com>",
   "sideEffects": [
     "*.css"
   ],
@@ -41,5 +59,8 @@
   },
   "peerDependencies": {
     "tailwindcss": ">=4.0.0"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }

@@ -1,6 +1,25 @@
 {
   "name": "@fried-ui/react",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "description": "Beautiful, accessible React UI components ready to use in production",
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "tailwindcss",
+    "react-aria",
+    "accessible",
+    "design-system"
+  ],
+  "homepage": "https://github.com/fried-day/fried-ui",
+  "bugs": "https://github.com/fried-day/fried-ui/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fried-day/fried-ui",
+    "directory": "packages/react"
+  },
+  "license": "MIT",
+  "author": "Joe Takara <anuchit.boonsom@gmail.com>",
   "sideEffects": false,
   "type": "module",
   "exports": {
@@ -64,5 +83,8 @@
     "react": ">=19.0.0",
     "react-dom": ">=19.0.0",
     "tailwindcss": ">=4.0.0"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }

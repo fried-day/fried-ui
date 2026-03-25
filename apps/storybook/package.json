@@ -1,10 +1,10 @@
 {
   "name": "storybook",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "storybook dev -p 6006",
-    "build": "storybook build -o dist"
+    "build": "storybook build -o dist",
+    "dev": "storybook dev -p 6006"
   },
   "dependencies": {
     "@fried-ui/react": "workspace:*",
@@ -13,11 +13,11 @@
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
+    "@repo/quality": "workspace:*",
     "@storybook/addon-essentials": "^8.6.14",
     "@storybook/blocks": "^8.6.14",
     "@storybook/react": "^8.6.14",
     "@storybook/react-vite": "^8.6.14",
-    "@repo/quality": "workspace:*",
     "@tailwindcss/vite": "^4.1.0",
     "storybook": "^8.6.14",
     "tailwindcss": "^4.1.0"
