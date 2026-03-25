@@ -16,9 +16,9 @@ This Turborepo includes the following packages/apps:
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@fried-ui/react`: a stub React component library shared by both `web` and `docs` applications
+- `docs`: a [Next.js](https://nextjs.org/) documentation app
+- `storybook`: a [Storybook](https://storybook.js.org/) component showcase
+- `@fried-ui/react`: React component library
 - `@repo/quality`: ESLint configs and shared tsconfigs
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
@@ -92,15 +92,15 @@ You can develop a specific package by using a [filter](https://turborepo.dev/doc
 With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
 
 ```sh
-turbo dev --filter=web
+turbo dev --filter=docs
 ```
 
 Without global `turbo`:
 
 ```sh
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
+npx turbo dev --filter=docs
+yarn exec turbo dev --filter=docs
+pnpm exec turbo dev --filter=docs
 ```
 
 ### Remote Caching
