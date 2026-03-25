@@ -1,14 +1,21 @@
 # @fried-ui/react
 
-React component library built on [React Aria Components](https://react-spectrum.adobe.com/react-aria/) and [Tailwind CSS v4](https://tailwindcss.com/).
+Beautiful, accessible React components for building modern web apps at scale.
 
 ## Installation
 
 ```bash
-pnpm add @fried-ui/react
+pnpm add @fried-ui/react @fried-ui/styles
 ```
 
 Peer dependencies: `react >=19.0.0`, `react-dom >=19.0.0`, `tailwindcss >=4.0.0`
+
+## Setup
+
+```css
+@import "tailwindcss";
+@import "@fried-ui/styles";
+```
 
 ## Usage
 
@@ -22,20 +29,17 @@ import { Box } from "@fried-ui/react/box";
 
 ## Exports
 
-| Path                       | Description                                              |
-| -------------------------- | -------------------------------------------------------- |
-| `@fried-ui/react`          | Barrel export (all components + utilities)               |
-| `@fried-ui/react/box`      | Box polymorphic layout primitive                         |
-| `@fried-ui/react/aria`     | React Aria Components re-exports                         |
-| `@fried-ui/react/utils/cn` | Tailwind class merge utility (`clsx` + `tailwind-merge`) |
+| Path                       | Description                      |
+| -------------------------- | -------------------------------- |
+| `@fried-ui/react`          | All components + utilities       |
+| `@fried-ui/react/box`      | Box polymorphic layout primitive |
+| `@fried-ui/react/aria`     | React Aria Components re-exports |
+| `@fried-ui/react/utils/cn` | Tailwind class merge utility     |
 
-## Development
+## Documentation
 
-```bash
-pnpm dev           # Watch mode (tsup)
-pnpm build         # Build (tsup, ESM-only)
-pnpm test          # Run tests (vitest)
-pnpm test:watch    # Watch mode tests
-pnpm lint          # Lint (eslint)
-pnpm check-types   # Type check (tsc)
-```
+[fried-ui.vercel.app](https://fried-ui.vercel.app)
+
+## License
+
+[MIT](../../LICENSE)

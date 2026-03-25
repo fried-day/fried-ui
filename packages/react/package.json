@@ -1,7 +1,7 @@
 {
   "name": "@fried-ui/react",
   "version": "0.1.0",
-  "description": "Beautiful, accessible React UI components ready to use in production",
+  "description": "Beautiful, accessible React components for building modern web apps at scale",
   "keywords": [
     "react",
     "components",

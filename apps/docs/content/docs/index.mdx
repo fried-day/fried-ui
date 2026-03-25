@@ -1,15 +1,15 @@
 ---
 title: Getting Started
-description: Get started with fried-ui component library
+description: Beautiful, accessible React components for building modern web apps at scale.
 ---
 
 ## Installation
 
 ```bash
-pnpm add @fried-ui/styles @fried-ui/react
+pnpm add @fried-ui/react @fried-ui/styles
 ```
 
-Import styles in your main CSS file (`globals.css`):
+Import styles in your CSS entry file:
 
 ```css
 @import "tailwindcss";
@@ -22,6 +22,10 @@ Import styles in your main CSS file (`globals.css`):
 import { Box } from "@fried-ui/react/box";
 
 export default function App() {
-  return <Box className="rounded-lg bg-blue-100 p-4">Hello from fried-ui</Box>;
+  return (
+    <Box as="section" className="rounded-lg bg-blue-100 p-4">
+      Hello from fried-ui
+    </Box>
+  );
 }
 ```
