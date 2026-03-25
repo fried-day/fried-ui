@@ -96,6 +96,7 @@ When adding a new component, add its export entry to `packages/react/package.jso
 - **TypeScript config chain**: `@repo/quality/tsconfig/base.json` → `react-library.json` (UI lib) or `nextjs.json` (apps)
 - **ESLint**: Apps use `@repo/quality/eslint/next-js` config, UI package uses `@repo/quality/eslint/react-internal` config. Configs use factory functions (`createConfig`, `createReactConfig`, `createNextJsConfig`)
 - **No `eslint-disable`**: Never use `eslint-disable` comments or turn off rules to suppress warnings. Always fix the source code to satisfy the rule
+- **No `@ts-nocheck`**: Never use `// @ts-nocheck`, `// @ts-ignore`, or `// @ts-expect-error`. Always fix the actual type error
 - **Workspace deps**: `workspace:*` protocol
 - **Turbo tasks**: `build`, `lint`, `check-types`, `test` have `dependsOn: ["^<task>"]`. `dev` is persistent/uncached.
 - **Build**: `@fried-ui/react` uses tsup (ESM-only, .mjs output, external react/react-dom/tailwindcss)
