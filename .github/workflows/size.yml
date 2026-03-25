@@ -1,0 +1,26 @@
+name: Size
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "packages/react/src/**"
+      - "packages/styles/src/**"
+
+permissions:
+  pull-requests: write
+
+jobs:
+  size:
+    name: Bundle Size
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+
+      - uses: preactjs/compressed-size-action@v2
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          build-script: build:react
+          pattern: "packages/react/dist/**/*.mjs"
+          exclude: "**/*.d.ts"

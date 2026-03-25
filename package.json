@@ -8,6 +8,12 @@
     "build:react": "turbo build --filter=@fried-ui/react",
     "build:storybook": "turbo build --filter=storybook",
     "build:styles": "turbo build --filter=@fried-ui/styles",
+    "changeset": "changeset",
+    "changeset:pre:beta": "changeset pre enter beta",
+    "changeset:pre:exit": "changeset pre exit",
+    "changeset:pre:rc": "changeset pre enter rc",
+    "changeset:release": "pnpm build && changeset publish",
+    "changeset:version": "changeset version",
     "clean": "turbo clean && rm -rf node_modules .turbo",
     "clean:cache": "rm -rf .turbo node_modules/.cache",
     "clean:dist": "turbo clean",
@@ -39,6 +45,8 @@
     "typecheck:styles": "turbo check-types --filter=@fried-ui/styles"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.6.0",
+    "@changesets/cli": "^2.30.0",
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",
     "@repo/quality": "workspace:*",

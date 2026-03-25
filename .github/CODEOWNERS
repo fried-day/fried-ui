@@ -1,6 +1,6 @@
 # CODEOWNERS
 
-- @joetakara
+* @joetakara
 
 /packages/react/ @joetakara
 /packages/styles/ @joetakara
