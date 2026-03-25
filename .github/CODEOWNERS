@@ -1,0 +1,11 @@
+# CODEOWNERS
+
+- @joetakara
+
+/packages/react/ @joetakara
+/packages/styles/ @joetakara
+/packages/quality/ @joetakara
+/packages/vitest/ @joetakara
+
+/apps/docs/ @joetakara
+/apps/storybook/ @joetakara
