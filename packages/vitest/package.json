@@ -9,6 +9,7 @@
     "./setup": "./setup.ts"
   },
   "scripts": {
+    "check-types": "tsc --noEmit",
     "collect-json-reports": "node --loader tsx ./scripts/collect-json-outputs.ts",
     "merge-json-reports": "nyc merge coverage/raw coverage/merged/coverage.json"
   },
