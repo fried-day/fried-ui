@@ -1,3 +1,5 @@
 pnpm audit --audit-level moderate
 pnpm lint
 pnpm typecheck
+pnpm test
+pnpm build

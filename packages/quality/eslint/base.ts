@@ -29,7 +29,7 @@ export function createConfig(tsconfigRootDir: string) {
       },
     },
     {
-      ignores: ["dist/**"],
+      ignores: ["dist/**", "sample/**"],
     },
   ];
 }
