@@ -1,0 +1,81 @@
+@theme {
+  --duration-instant: 100ms;
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes slide-in-up {
+    from {
+      transform: translateY(4px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-down {
+    from {
+      transform: translateY(-4px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  --animate-fade-in: fade-in 200ms var(--ease-out);
+  --animate-fade-out: fade-out 200ms var(--ease-in);
+  --animate-slide-in-up: slide-in-up 200ms var(--ease-out);
+  --animate-slide-in-down: slide-in-down 200ms var(--ease-out);
+  --animate-scale-in: scale-in 200ms var(--ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+    --duration-slow: 0ms;
+    --animate-fade-in: none;
+    --animate-fade-out: none;
+    --animate-slide-in-up: none;
+    --animate-slide-in-down: none;
+    --animate-scale-in: none;
+  }
+}

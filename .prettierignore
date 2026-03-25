@@ -1,0 +1,12 @@
+node_modules
+sample
+.next
+dist
+build
+pnpm-lock.yaml
+.turbo
+coverage
+coverage.json
+storybook-static
+.source
+CODEOWNERS

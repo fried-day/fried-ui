@@ -1,0 +1,37 @@
+packages/react:
+  - changed-files:
+      - any-glob-to-any-file: "packages/react/**"
+
+packages/styles:
+  - changed-files:
+      - any-glob-to-any-file: "packages/styles/**"
+
+packages/quality:
+  - changed-files:
+      - any-glob-to-any-file: "packages/quality/**"
+
+packages/vitest:
+  - changed-files:
+      - any-glob-to-any-file: "packages/vitest/**"
+
+apps/docs:
+  - changed-files:
+      - any-glob-to-any-file: "apps/docs/**"
+
+apps/storybook:
+  - changed-files:
+      - any-glob-to-any-file: "apps/storybook/**"
+
+ci:
+  - changed-files:
+      - any-glob-to-any-file: ".github/**"
+
+config:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "turbo.json"
+          - "pnpm-workspace.yaml"
+          - "package.json"
+          - ".prettierrc*"
+          - ".eslint*"
+          - "tsconfig*"

@@ -1,0 +1,22 @@
+@theme {
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-full: 9999px;
+
+  --disabled-opacity: 0.5;
+  --ring-offset-width: 2px;
+  --cursor-interactive: pointer;
+  --cursor-disabled: not-allowed;
+
+  --z-floating: 10;
+  --z-navigation: 20;
+  --z-overlay: 30;
+  --z-dialog: 40;
+  --z-alert: 50;
+
+  --shadow-1: 0 1px 2px oklch(0% 0 0 / 10%);
+  --shadow-2: 0 2px 4px oklch(0% 0 0 / 10%);
+  --shadow-3: 0 3px 6px oklch(0% 0 0 / 10%);
+  --shadow-4: 0 5px 10px oklch(0% 0 0 / 10%);
+}

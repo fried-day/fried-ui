@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  audit:
+    name: Audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - run: pnpm audit --audit-level moderate
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - run: pnpm lint
+
+  typecheck:
+    name: Typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - run: pnpm typecheck
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - run: pnpm test
+
+  format:
+    name: Format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - run: pnpm format
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: [audit, lint, typecheck, test, format]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - run: pnpm build
+
+  preview-release:
+    name: Preview Release
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/setup
+      - run: pnpm build
+      - run: pnpx pkg-pr-new publish --pnpm './packages/react' './packages/styles'

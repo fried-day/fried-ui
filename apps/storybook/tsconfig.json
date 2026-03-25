@@ -1,0 +1,11 @@
+{
+  "extends": "@repo/quality/tsconfig/react-library.json",
+  "compilerOptions": {
+    "rootDir": ".storybook",
+    "outDir": "dist",
+    "strictNullChecks": true,
+    "types": ["vite/client"]
+  },
+  "include": ["**/*.ts", "**/*.tsx", ".storybook/**/*.ts"],
+  "exclude": ["node_modules", "dist", "eslint.config.ts"]
+}

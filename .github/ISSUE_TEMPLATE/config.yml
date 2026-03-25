@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Feature Request
+    url: https://github.com/fried-day/fried-ui/discussions/categories/feature-requests
+    about: Suggest a new component or improvement
+  - name: Questions
+    url: https://github.com/fried-day/fried-ui/discussions
+    about: Ask questions or discuss ideas
