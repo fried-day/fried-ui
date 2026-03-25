@@ -6,6 +6,7 @@ const config: StorybookConfig = {
   framework: "@storybook/react-vite",
   viteFinal(config) {
     config.plugins = [...(config.plugins || []), tailwindcss()];
+
     return config;
   },
 };
