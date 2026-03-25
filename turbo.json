@@ -19,6 +19,13 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "test:watch": {
+      "cache": false,
+      "persistent": true
+    },
+    "clean": {
+      "cache": false
     }
   }
 }

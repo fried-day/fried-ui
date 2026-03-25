@@ -5,4 +5,5 @@ build
 pnpm-lock.yaml
 .turbo
 coverage
+coverage.json
 storybook-static

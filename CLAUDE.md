@@ -90,5 +90,6 @@ When adding a new component, add its export entry to `packages/react/package.jso
 - **Client components**: Add `"use client"` directive for interactive components
 - **TypeScript config chain**: `@repo/quality/tsconfig/base.json` → `react-library.json` (UI lib) or `nextjs.json` (apps)
 - **ESLint**: Apps use `@repo/quality/eslint/next-js` config, UI package uses `@repo/quality/eslint/react-internal` config
+- **No `eslint-disable`**: Never use `eslint-disable` comments or turn off rules to suppress warnings. Always fix the source code to satisfy the rule
 - **Workspace deps**: `workspace:*` protocol
 - **Turbo tasks**: `build`, `lint`, `check-types`, `test` have `dependsOn: ["^<task>"]`. `dev` is persistent/uncached.

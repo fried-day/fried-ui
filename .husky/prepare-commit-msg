@@ -1,0 +1,16 @@
+#!/bin/sh
+
+COMMIT_MSG_FILE=$1
+GIT_NAME=$(git config user.name)
+GIT_EMAIL=$(git config user.email)
+CO_AUTHOR="Co-Authored-By: $GIT_NAME <$GIT_EMAIL>"
+
+# Remove existing Co-Authored-By lines
+sed -i '' '/Co-Authored-By:/d' "$COMMIT_MSG_FILE"
+
+# Remove trailing blank lines
+sed -i '' -e :a -e '/^\n*$/{$d;N;ba' -e '}' "$COMMIT_MSG_FILE"
+
+# Add git user as Co-Authored-By
+echo "" >> "$COMMIT_MSG_FILE"
+echo "$CO_AUTHOR" >> "$COMMIT_MSG_FILE"

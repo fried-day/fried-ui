@@ -1,8 +1,8 @@
 {
   "name": "@fried-ui/react",
   "version": "0.0.0",
-  "type": "module",
   "sideEffects": false,
+  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -26,17 +26,13 @@
   ],
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch",
-    "lint": "eslint . --max-warnings 0",
-    "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit",
+    "clean": "rm -rf dist .turbo coverage.json",
+    "dev": "tsup --watch",
+    "generate:component": "turbo gen react-component",
+    "lint": "eslint . --max-warnings 0",
     "test": "vitest run",
     "test:watch": "vitest"
-  },
-  "peerDependencies": {
-    "react": ">=19.0.0",
-    "react-dom": ">=19.0.0",
-    "tailwindcss": ">=4.0.0"
   },
   "dependencies": {
     "@react-types/color": "^3.1.4",
@@ -46,22 +42,27 @@
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
+    "@fried-ui/vitest": "workspace:*",
     "@repo/quality": "workspace:*",
     "@storybook/react": "^8.6.14",
-    "@fried-ui/vitest": "workspace:*",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
-    "@vitejs/plugin-react": "^6.0.1",
-    "jsdom": "^29.0.1",
     "@types/node": "^22.15.3",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
+    "@vitejs/plugin-react": "^6.0.1",
     "eslint": "^9.39.1",
+    "jsdom": "^29.0.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "tailwindcss": "^4.2.2",
     "tsup": "^8.5.1",
     "typescript": "5.9.2",
     "vitest": "^4.1.1"
+  },
+  "peerDependencies": {
+    "react": ">=19.0.0",
+    "react-dom": ">=19.0.0",
+    "tailwindcss": ">=4.0.0"
   }
 }
