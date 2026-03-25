@@ -1,37 +1,38 @@
-import { source } from "@/lib/source";
+import defaultMdxComponents from "fumadocs-ui/mdx";
 import { DocsBody, DocsDescription, DocsPage, DocsTitle } from "fumadocs-ui/page";
 import { notFound } from "next/navigation";
-import defaultMdxComponents from "fumadocs-ui/mdx";
 
-export default async function Page(props: { params: Promise<{ slug?: string[] }> }) {
+import { source } from "@/lib/source";
+
+import { generateMetadata, generateStaticParams } from "./page.utils";
+
+interface PageProps {
+  params: Promise<SlugParamsProps>;
+}
+
+interface SlugParamsProps {
+  slug?: string[];
+}
+
+async function Page(props: Readonly<PageProps>): Promise<React.JSX.Element> {
   const params = await props.params;
   const page = source.getPage(params.slug);
   if (!page) notFound();
 
-  const MDX = page.data.body;
+  const MdxContent = page.data.body;
 
   return (
     <DocsPage toc={page.data.toc} full={page.data.full}>
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription>{page.data.description}</DocsDescription>
+
       <DocsBody>
-        <MDX components={{ ...defaultMdxComponents }} />
+        <MdxContent components={defaultMdxComponents} />
       </DocsBody>
     </DocsPage>
   );
 }
 
-export function generateStaticParams() {
-  return source.generateParams();
-}
+export default Page;
 
-export async function generateMetadata(props: { params: Promise<{ slug?: string[] }> }) {
-  const params = await props.params;
-  const page = source.getPage(params.slug);
-  if (!page) notFound();
-
-  return {
-    title: page.data.title,
-    description: page.data.description,
-  };
-}
+export { generateMetadata, generateStaticParams };

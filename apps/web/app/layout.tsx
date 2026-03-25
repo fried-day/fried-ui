@@ -24,7 +24,7 @@ interface RootLayoutProps {
   children: ReactNode;
 }
 
-export default function RootLayout(props: Readonly<RootLayoutProps>) {
+function RootLayout(props: Readonly<RootLayoutProps>) {
   const { children } = props;
   const bodyClassName = `${geistSans.variable} ${geistMono.variable} font-sans antialiased`;
 
@@ -34,3 +34,5 @@ export default function RootLayout(props: Readonly<RootLayoutProps>) {
     </html>
   );
 }
+
+export default RootLayout;

@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
-import { Box } from "./box";
+import { Box } from "./Box";
 
 describe("Box", () => {
   it("renders a div by default", () => {

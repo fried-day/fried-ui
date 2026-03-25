@@ -2,33 +2,34 @@ import js from "@eslint/js";
 import eslintConfigPrettier from "eslint-config-prettier";
 import turboPlugin from "eslint-plugin-turbo";
 import tseslint from "typescript-eslint";
-import onlyWarn from "eslint-plugin-only-warn";
 import nextfriday from "eslint-plugin-nextfriday";
 
 /**
  * A shared ESLint configuration for the repository.
- *
- * @type {import("eslint").Linter.Config[]}
- * */
-export const config = [
-  js.configs.recommended,
-  eslintConfigPrettier,
-  ...tseslint.configs.recommended,
-  nextfriday.configs["base/recommended"],
-  {
-    plugins: {
-      turbo: turboPlugin,
+ */
+export function createConfig(tsconfigRootDir: string) {
+  return [
+    js.configs.recommended,
+    eslintConfigPrettier,
+    ...tseslint.configs.recommended,
+    {
+      languageOptions: {
+        parserOptions: {
+          tsconfigRootDir,
+        },
+      },
     },
-    rules: {
-      "turbo/no-undeclared-env-vars": "warn",
+    nextfriday.configs["base/recommended"],
+    {
+      plugins: {
+        turbo: turboPlugin,
+      },
+      rules: {
+        "turbo/no-undeclared-env-vars": "warn",
+      },
     },
-  },
-  {
-    plugins: {
-      onlyWarn,
+    {
+      ignores: ["dist/**"],
     },
-  },
-  {
-    ignores: ["dist/**"],
-  },
-];
+  ];
+}

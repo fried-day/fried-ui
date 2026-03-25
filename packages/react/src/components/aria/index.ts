@@ -19,4 +19,4 @@ export type {
 
 export type { TimeValue, DateValue, DateRange, SortDescriptor } from "react-aria-components";
 export type { Color, ColorFormat, ColorSpace, ColorChannel, ColorChannelRange, ColorAxes } from "@react-types/color";
-export { Collection, ListBoxLoadMoreItem, RouterProvider, I18nProvider } from "./components";
+export { Collection, ListBoxLoadMoreItem, RouterProvider, I18nProvider } from "./Components";

@@ -1,8 +1,7 @@
-import { nextJsConfig } from "@repo/quality/eslint/next-js";
+import { createNextJsConfig } from "@repo/quality/eslint/next-js";
 
-/** @type {import("eslint").Linter.Config[]} */
 export default [
-  ...nextJsConfig,
+  ...createNextJsConfig(import.meta.dirname),
   {
     ignores: [".source/**"],
   },

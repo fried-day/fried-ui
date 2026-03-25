@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Box } from "./box";
+import { Box } from "./Box";
 
 const meta: Meta<typeof Box> = {
   title: "Primitives/Box",
@@ -10,14 +10,14 @@ const meta: Meta<typeof Box> = {
 export default meta;
 type Story = StoryObj<typeof Box>;
 
-export const Default: Story = {
+export const DEFAULT: Story = {
   args: {
     children: "I am a Box",
     className: "p-4 bg-blue-100 rounded-lg",
   },
 };
 
-export const AsSection: Story = {
+export const AS_SECTION: Story = {
   args: {
     as: "section",
     children: "I am a section",

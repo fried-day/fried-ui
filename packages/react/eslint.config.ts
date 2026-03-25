@@ -1,4 +1,3 @@
-import { config } from "@repo/quality/eslint/react-internal";
+import { createReactConfig } from "@repo/quality/eslint/react-internal";
 
-/** @type {import("eslint").Linter.Config[]} */
-export default config;
+export default createReactConfig(import.meta.dirname);

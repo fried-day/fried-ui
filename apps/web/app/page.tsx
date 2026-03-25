@@ -1,6 +1,6 @@
 import { Box } from "@fried-ui/react/box";
 
-export default function Home() {
+function Home() {
   return (
     <Box className="flex min-h-screen items-center justify-center">
       <Box className="text-center">
@@ -10,3 +10,5 @@ export default function Home() {
     </Box>
   );
 }
+
+export default Home;

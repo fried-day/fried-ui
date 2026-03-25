@@ -2,7 +2,7 @@
 
 import type { ElementType, ComponentPropsWithoutRef, ReactNode } from "react";
 
-import { cn } from "../../utils/cn";
+import { cn } from "src/utils/cn";
 
 export type BoxProps<T extends ElementType = "div"> = {
   as?: T;

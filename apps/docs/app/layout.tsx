@@ -1,10 +1,10 @@
+import "./globals.css";
+
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 import { RootProvider } from "fumadocs-ui/provider/next";
 import localFont from "next/font/local";
-
-import "./globals.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -16,19 +16,26 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
 });
 
-export const metadata: Metadata = {
+export const METADATA: Metadata = {
   title: "fried-ui docs",
   description: "Documentation for fried-ui component library",
 };
 
-export default function RootLayout(props: Readonly<{ children: ReactNode }>) {
+interface RootLayoutProps {
+  children: ReactNode;
+}
+
+function RootLayout(props: Readonly<RootLayoutProps>): React.JSX.Element {
   const { children } = props;
+  const bodyClassName = `${geistSans.variable} ${geistMono.variable} font-sans antialiased`;
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
+      <body className={bodyClassName}>
         <RootProvider>{children}</RootProvider>
       </body>
     </html>
   );
 }
+
+export default RootLayout;

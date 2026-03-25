@@ -1,8 +1,8 @@
 {
   "name": "@repo/quality",
   "version": "0.0.0",
-  "type": "module",
   "private": true,
+  "type": "module",
   "exports": {
     "./eslint/base": "./eslint/base.ts",
     "./eslint/next-js": "./eslint/next.ts",
@@ -20,7 +20,6 @@
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-nextfriday": "^1.21.0",
-    "eslint-plugin-only-warn": "^1.1.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-turbo": "^2.7.1",
