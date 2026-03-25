@@ -1,0 +1,4 @@
+@import "tailwindcss";
+@import "fumadocs-ui/style.css";
+@source "../../packages/react/src/**/*.{ts,tsx}";
+@plugin "tailwindcss-react-aria-components";

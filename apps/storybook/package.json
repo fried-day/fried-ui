@@ -1,0 +1,24 @@
+{
+  "name": "storybook",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "storybook dev -p 6006",
+    "build": "storybook build -o dist"
+  },
+  "dependencies": {
+    "@repo/react": "workspace:*",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/blocks": "^8.6.14",
+    "@storybook/react": "^8.6.14",
+    "@storybook/react-vite": "^8.6.14",
+    "@repo/quality": "workspace:*",
+    "@tailwindcss/vite": "^4.1.0",
+    "storybook": "^8.6.14",
+    "tailwindcss": "^4.1.0"
+  }
+}

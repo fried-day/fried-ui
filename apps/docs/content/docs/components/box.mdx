@@ -1,0 +1,54 @@
+---
+title: Box
+description: A polymorphic layout primitive that renders as a div by default
+---
+
+## Import
+
+```tsx
+import { Box } from "@repo/react/box";
+```
+
+### Usage
+
+```tsx
+<Box className="rounded-lg bg-blue-100 p-4">Content</Box>
+```
+
+### Polymorphic
+
+Use the `as` prop to render as any HTML element.
+
+```tsx
+<Box as="section" className="p-8">
+  Section content
+</Box>
+
+<Box as="article" className="prose">
+  Article content
+</Box>
+```
+
+### Composing with Tailwind
+
+```tsx
+<Box className="flex items-center gap-4 rounded-xl bg-white p-6 shadow">
+  <Box className="size-12 rounded-full bg-blue-500" />
+  <Box>
+    <Box as="h3" className="font-semibold">
+      Title
+    </Box>
+    <Box as="p" className="text-sm text-gray-500">
+      Description
+    </Box>
+  </Box>
+</Box>
+```
+
+## API Reference
+
+| Prop        | Type          | Default | Description            |
+| ----------- | ------------- | ------- | ---------------------- |
+| `as`        | `ElementType` | `"div"` | HTML element to render |
+| `className` | `string`      | -       | Tailwind CSS classes   |
+| `children`  | `ReactNode`   | -       | Child content          |
