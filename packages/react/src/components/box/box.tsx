@@ -12,13 +12,13 @@ export type BoxProps<T extends ElementType = "div"> = {
 
 function Box<T extends ElementType = "div">(props: Readonly<BoxProps<T>>) {
   const { as, children, className, ...rest } = props;
-  const Tag = as || "div";
+  const Component = (as || "div") as ElementType;
   const mergedClassName = cn(className);
 
   return (
-    <Tag className={mergedClassName} {...rest}>
+    <Component className={mergedClassName} {...rest}>
       {children}
-    </Tag>
+    </Component>
   );
 }
 

@@ -11,7 +11,8 @@ const config = {
   endOfLine: "lf",
   plugins: ["prettier-plugin-tailwindcss"],
   tailwindStylesheet: "packages/styles/src/index.css",
-  tailwindFunctions: ["tv"],
+  tailwindAttributes: ["className", "classNames"],
+  tailwindFunctions: ["tv", "clsx", "cn"],
 };
 
 export default config;

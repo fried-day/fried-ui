@@ -1,0 +1,28 @@
+{
+  "name": "@fried-ui/vitest",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./configs/base": "./configs/base.ts",
+    "./configs/react": "./configs/react.ts",
+    "./setup": "./setup.ts"
+  },
+  "scripts": {
+    "collect-json-reports": "node --loader tsx ./scripts/collect-json-outputs.ts",
+    "merge-json-reports": "nyc merge coverage/raw coverage/merged/coverage.json"
+  },
+  "devDependencies": {
+    "@repo/quality": "workspace:*",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@vitejs/plugin-react": "^6.0.1",
+    "@vitest/coverage-istanbul": "^4.1.1",
+    "glob": "^11.0.2",
+    "jsdom": "^29.0.1",
+    "nyc": "^17.1.0",
+    "tsx": "^4.19.4",
+    "vitest": "^4.1.1"
+  }
+}

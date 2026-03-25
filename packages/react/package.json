@@ -1,42 +1,67 @@
 {
   "name": "@fried-ui/react",
   "version": "0.0.0",
-  "private": true,
+  "type": "module",
+  "sideEffects": false,
   "exports": {
-    ".": "./src/index.ts",
-    "./box": "./src/components/box/index.ts",
-    "./aria": "./src/components/aria/index.ts",
-    "./utils/cn": "./src/utils/cn/index.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs"
+    },
+    "./box": {
+      "types": "./dist/components/box/index.d.ts",
+      "import": "./dist/components/box/index.mjs"
+    },
+    "./aria": {
+      "types": "./dist/components/aria/index.d.ts",
+      "import": "./dist/components/aria/index.mjs"
+    },
+    "./utils/cn": {
+      "types": "./dist/utils/cn/index.d.ts",
+      "import": "./dist/utils/cn/index.mjs"
+    }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest"
   },
-  "devDependencies": {
-    "@repo/quality": "workspace:*",
-    "@storybook/react": "^8.6.14",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.2",
-    "@types/node": "^22.15.3",
-    "@types/react": "19.2.2",
-    "@types/react-dom": "19.2.2",
-    "@vitejs/plugin-react": "^6.0.1",
-    "eslint": "^9.39.1",
-    "jsdom": "^29.0.1",
-    "typescript": "5.9.2",
-    "vitest": "^4.1.1"
+  "peerDependencies": {
+    "react": ">=19.0.0",
+    "react-dom": ">=19.0.0",
+    "tailwindcss": ">=4.0.0"
   },
   "dependencies": {
     "@react-types/color": "^3.1.4",
     "@react-types/shared": "^3.33.1",
     "clsx": "^2.1.1",
-    "react": "^19.2.0",
     "react-aria-components": "^1.16.0",
+    "tailwind-merge": "^3.5.0"
+  },
+  "devDependencies": {
+    "@repo/quality": "workspace:*",
+    "@storybook/react": "^8.6.14",
+    "@fried-ui/vitest": "workspace:*",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@vitejs/plugin-react": "^6.0.1",
+    "jsdom": "^29.0.1",
+    "@types/node": "^22.15.3",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "eslint": "^9.39.1",
+    "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "tailwind-merge": "^3.5.0",
-    "tailwindcss": "^4.2.2"
+    "tailwindcss": "^4.2.2",
+    "tsup": "^8.5.1",
+    "typescript": "5.9.2",
+    "vitest": "^4.1.1"
   }
 }
