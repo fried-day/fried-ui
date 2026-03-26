@@ -1,4 +1,4 @@
 @import "tailwindcss";
 @import "fumadocs-ui/style.css";
 @import "@fried-ui/styles";
-@source "../../packages/react/src/**/*.{ts,tsx}";
+@source "../../../packages/react/src/**/*.{ts,tsx}";
