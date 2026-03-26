@@ -1,0 +1,15 @@
+@theme {
+  /* heading scale — maps semantic level to Tailwind text sizes */
+  --heading-h1: var(--text-4xl);
+  --heading-h1--line-height: var(--text-4xl--line-height);
+  --heading-h2: var(--text-3xl);
+  --heading-h2--line-height: var(--text-3xl--line-height);
+  --heading-h3: var(--text-2xl);
+  --heading-h3--line-height: var(--text-2xl--line-height);
+  --heading-h4: var(--text-xl);
+  --heading-h4--line-height: var(--text-xl--line-height);
+  --heading-h5: var(--text-lg);
+  --heading-h5--line-height: var(--text-lg--line-height);
+  --heading-h6: var(--text-base);
+  --heading-h6--line-height: var(--text-base--line-height);
+}

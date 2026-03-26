@@ -16,5 +16,9 @@
       "fileMatch": ["turbo.json"],
       "url": "https://turborepo.dev/schema.json"
     }
-  ]
+  ],
+  "sonarlint.connectedMode.project": {
+    "connectionId": "fried-day",
+    "projectKey": "fried_day_fried-ui"
+  }
 }
