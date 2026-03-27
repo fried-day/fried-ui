@@ -11,6 +11,7 @@ import {
   ButtonPending,
   ButtonRadii,
   ButtonSizes,
+  ButtonVariants,
   ButtonWithIcons,
 } from "@/components/MdxComponents";
 import { Preview } from "@/components/Preview";
@@ -33,6 +34,7 @@ const mdxComponents = {
   ButtonPending,
   ButtonRadii,
   ButtonSizes,
+  ButtonVariants,
   ButtonWithIcons,
   Preview,
 };

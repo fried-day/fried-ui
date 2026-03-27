@@ -16,34 +16,34 @@ import { Button } from "@fried-ui/react/button";
 
 ## Props
 
-| Prop               | Type                                               | Default     | Description                             |
-| ------------------ | -------------------------------------------------- | ----------- | --------------------------------------- |
-| `variant`          | `"primary"`                                        | `"primary"` | Visual variant                          |
-| `size`             | `"sm" \| "md" \| "lg" \| "xl"`                     | `"md"`      | Size — controls padding, gap, font-size |
-| `radius`           | `"none" \| "sm" \| "md" \| "lg" \| "xl" \| "full"` | `"md"`      | Border radius (independent from size)   |
-| `isDisabled`       | `boolean`                                          | `false`     | Disabled state                          |
-| `isPending`        | `boolean`                                          | `false`     | Loading spinner, disables interaction   |
-| `onPress`          | `(e: PressEvent) => void`                          | -           | Press handler (preferred over onClick)  |
-| `onPressStart`     | `(e: PressEvent) => void`                          | -           | Press start handler                     |
-| `onPressEnd`       | `(e: PressEvent) => void`                          | -           | Press end handler                       |
-| `onPressChange`    | `(isPressed: boolean) => void`                     | -           | Press state change handler              |
-| `onHoverStart`     | `(e: HoverEvent) => void`                          | -           | Hover start handler                     |
-| `onHoverEnd`       | `(e: HoverEvent) => void`                          | -           | Hover end handler                       |
-| `onHoverChange`    | `(isHovering: boolean) => void`                    | -           | Hover state change handler              |
-| `onFocus`          | `(e: FocusEvent) => void`                          | -           | Focus handler                           |
-| `onBlur`           | `(e: FocusEvent) => void`                          | -           | Blur handler                            |
-| `onFocusChange`    | `(isFocused: boolean) => void`                     | -           | Focus state change handler              |
-| `onKeyDown`        | `(e: KeyboardEvent) => void`                       | -           | Key down handler                        |
-| `onKeyUp`          | `(e: KeyboardEvent) => void`                       | -           | Key up handler                          |
-| `type`             | `"button" \| "submit" \| "reset"`                  | `"button"`  | HTML button type                        |
-| `form`             | `string`                                           | -           | Associated form ID                      |
-| `formAction`       | `string`                                           | -           | Form submission URL                     |
-| `autoFocus`        | `boolean`                                          | `false`     | Auto focus on mount                     |
-| `aria-label`       | `string`                                           | -           | Accessible label                        |
-| `aria-labelledby`  | `string`                                           | -           | ID of labelling element                 |
-| `aria-describedby` | `string`                                           | -           | ID of describing element                |
-| `className`        | `string`                                           | -           | Additional CSS classes                  |
-| `children`         | `ReactNode \| (renderProps) => ReactNode`          | -           | Button content                          |
+| Prop               | Type                                                                                               | Default     | Description                             |
+| ------------------ | -------------------------------------------------------------------------------------------------- | ----------- | --------------------------------------- |
+| `variant`          | `"primary" \| "secondary" \| "ghost" \| "outline" \| "success" \| "warning" \| "danger" \| "info"` | `"primary"` | Visual variant                          |
+| `size`             | `"sm" \| "md" \| "lg" \| "xl"`                                                                     | `"md"`      | Size — controls padding, gap, font-size |
+| `radius`           | `"none" \| "sm" \| "md" \| "lg" \| "xl" \| "full"`                                                 | `"md"`      | Border radius (independent from size)   |
+| `isDisabled`       | `boolean`                                                                                          | `false`     | Disabled state                          |
+| `isPending`        | `boolean`                                                                                          | `false`     | Loading spinner, disables interaction   |
+| `onPress`          | `(e: PressEvent) => void`                                                                          | -           | Press handler (preferred over onClick)  |
+| `onPressStart`     | `(e: PressEvent) => void`                                                                          | -           | Press start handler                     |
+| `onPressEnd`       | `(e: PressEvent) => void`                                                                          | -           | Press end handler                       |
+| `onPressChange`    | `(isPressed: boolean) => void`                                                                     | -           | Press state change handler              |
+| `onHoverStart`     | `(e: HoverEvent) => void`                                                                          | -           | Hover start handler                     |
+| `onHoverEnd`       | `(e: HoverEvent) => void`                                                                          | -           | Hover end handler                       |
+| `onHoverChange`    | `(isHovering: boolean) => void`                                                                    | -           | Hover state change handler              |
+| `onFocus`          | `(e: FocusEvent) => void`                                                                          | -           | Focus handler                           |
+| `onBlur`           | `(e: FocusEvent) => void`                                                                          | -           | Blur handler                            |
+| `onFocusChange`    | `(isFocused: boolean) => void`                                                                     | -           | Focus state change handler              |
+| `onKeyDown`        | `(e: KeyboardEvent) => void`                                                                       | -           | Key down handler                        |
+| `onKeyUp`          | `(e: KeyboardEvent) => void`                                                                       | -           | Key up handler                          |
+| `type`             | `"button" \| "submit" \| "reset"`                                                                  | `"button"`  | HTML button type                        |
+| `form`             | `string`                                                                                           | -           | Associated form ID                      |
+| `formAction`       | `string`                                                                                           | -           | Form submission URL                     |
+| `autoFocus`        | `boolean`                                                                                          | `false`     | Auto focus on mount                     |
+| `aria-label`       | `string`                                                                                           | -           | Accessible label                        |
+| `aria-labelledby`  | `string`                                                                                           | -           | ID of labelling element                 |
+| `aria-describedby` | `string`                                                                                           | -           | ID of describing element                |
+| `className`        | `string`                                                                                           | -           | Additional CSS classes                  |
+| `children`         | `ReactNode \| (renderProps) => ReactNode`                                                          | -           | Button content                          |
 
 ## Data Attributes
 
@@ -62,6 +62,13 @@ import { Button } from "@fried-ui/react/button";
 | ------------------------- | ------------------------- |
 | `fri-button`              | Base styles               |
 | `fri-button--primary`     | Primary variant           |
+| `fri-button--secondary`   | Secondary variant         |
+| `fri-button--ghost`       | Ghost variant             |
+| `fri-button--outline`     | Outline variant           |
+| `fri-button--success`     | Success variant           |
+| `fri-button--warning`     | Warning variant           |
+| `fri-button--danger`      | Danger variant            |
+| `fri-button--info`        | Info variant              |
 | `fri-button--sm`          | Small size                |
 | `fri-button--md`          | Medium size               |
 | `fri-button--lg`          | Large size                |
@@ -85,6 +92,21 @@ import { Button } from "@fried-ui/react/button";
 | `--fri-button-fg`         | `currentColor`               | Text/icon color    |
 
 ## Examples
+
+### Variants
+
+Semantic and structural variants for different intents.
+
+```tsx
+<Button variant="primary">Primary</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="success">Success</Button>
+<Button variant="warning">Warning</Button>
+<Button variant="danger">Danger</Button>
+<Button variant="info">Info</Button>
+```
 
 ### Basic
 
@@ -210,7 +232,7 @@ Formulas: `padding-inline = x`, `padding-block = x × 0.485`, `gap = x / φ`.
 
 ## Constraints
 
-- Only `"primary"` variant currently available
+- 8 variants: primary, secondary, ghost, outline, success, warning, danger, info
 - `radius` is independent from `size` — they do not affect each other
 - `isPending` makes text transparent and shows spinner; content stays in DOM for layout
 - Uses BEM classes (`fri-button`, `fri-button--primary`, etc.) — no inline Tailwind in component

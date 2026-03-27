@@ -34,11 +34,11 @@ const meta = {
     },
     variant: {
       control: "select",
-      options: ["primary"],
+      options: ["primary", "secondary", "ghost", "outline", "success", "warning", "danger", "info"],
       description: "The visual variant of the button",
       table: {
         type: {
-          summary: '"primary"',
+          summary: '"primary" | "secondary" | "ghost" | "outline" | "success" | "warning" | "danger" | "info"',
         },
         defaultValue: {
           summary: "primary",
@@ -151,6 +151,21 @@ const Radii: Story = {
   ),
 };
 
+const Variants: Story = {
+  render: () => (
+    <div className="flex items-end gap-4">
+      <Button variant="primary">Primary</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="ghost">Ghost</Button>
+      <Button variant="outline">Outline</Button>
+      <Button variant="success">Success</Button>
+      <Button variant="warning">Warning</Button>
+      <Button variant="danger">Danger</Button>
+      <Button variant="info">Info</Button>
+    </div>
+  ),
+};
+
 const Disabled: Story = {
   args: {
     children: "Disabled",
@@ -165,6 +180,6 @@ const Pending: Story = {
   },
 };
 
-export { Default, Sizes, Radii, Disabled, Pending };
+export { Default, Variants, Sizes, Radii, Disabled, Pending };
 
 export default meta;
