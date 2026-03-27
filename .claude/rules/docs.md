@@ -23,6 +23,7 @@ Badge links (Storybook, React Aria, Source, Styles source)
 ## Features
 ## Anatomy
 ## {Prop demos}        ← visual props → composition → navigation → states → utility
+## Render Props        ← children function pattern with available render props
 ## Design Anatomy      ← golden ratio math table in rem (if applicable)
 ## Accessibility
 ## API Reference

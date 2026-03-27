@@ -43,7 +43,8 @@ import { Button } from "@fried-ui/react/button";
 | `aria-labelledby`  | `string`                                                                                           | -           | ID of labelling element                 |
 | `aria-describedby` | `string`                                                                                           | -           | ID of describing element                |
 | `className`        | `string`                                                                                           | -           | Additional CSS classes                  |
-| `children`         | `ReactNode \| (renderProps) => ReactNode`                                                          | -           | Button content                          |
+| `ref`              | `Ref<HTMLButtonElement>`                                                                           | -           | Forwarded ref to button element         |
+| `children`         | `ReactNode \| (renderProps: ButtonRenderProps) => ReactNode`                                       | -           | Button content                          |
 
 ## Data Attributes
 
@@ -199,6 +200,32 @@ Use `onPress` instead of `onClick` — handles keyboard, touch, and mouse unifor
 <Button onPress={() => console.log("pressed")}>Press me</Button>
 ```
 
+### Render Props
+
+Access internal state to dynamically change content using the children function.
+
+```tsx
+<Button>
+  {({ isHovered }) => (
+    <>
+      <ArrowRightIcon className="size-match-font" />
+      {isHovered ? "Let's go!" : "Hover me"}
+    </>
+  )}
+</Button>
+```
+
+Available render props: `isHovered`, `isPressed`, `isFocused`, `isFocusVisible`, `isDisabled`, `isPending`.
+
+### Ref Forwarding
+
+Supports ref forwarding for integration with Tooltip, Popover, Floating UI, etc.
+
+```tsx
+const ref = useRef<HTMLButtonElement>(null);
+<Button ref={ref}>Trigger</Button>;
+```
+
 ## Anatomy
 
 ```
@@ -210,6 +237,7 @@ Use `onPress` instead of `onClick` — handles keyboard, touch, and mouse unifor
 - `children`: Icon + label as direct children
 - Spinner: Rendered internally when `isPending={true}`, absolutely positioned over content
 - Icon sizing: Use `className="size-match-font"` on SVG icons
+- Ref forwarding: Supports `ref` prop to the underlying `<button>` element
 
 ## Spacing Math
 

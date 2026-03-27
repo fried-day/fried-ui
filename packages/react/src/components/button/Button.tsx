@@ -1,8 +1,13 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { type ForwardedRef, forwardRef, type ReactNode } from "react";
 
-import { Button as RACButton, type ButtonProps as RACButtonProps, composeRenderProps } from "react-aria-components";
+import {
+  Button as RACButton,
+  type ButtonProps as RACButtonProps,
+  type ButtonRenderProps,
+  composeRenderProps,
+} from "react-aria-components";
 
 import { Spinner } from "../icons";
 import { cn } from "../../utils/cn";
@@ -12,14 +17,14 @@ export type ButtonProps = {
   size?: ButtonSize;
   radius?: ButtonRadius;
   className?: string;
-  children?: ReactNode | ((renderProps: { isPending: boolean }) => ReactNode);
+  children?: ReactNode | ((renderProps: ButtonRenderProps) => ReactNode);
 } & Omit<RACButtonProps, "className" | "children">;
 
 type ButtonVariant = "primary" | "secondary" | "ghost" | "outline" | "success" | "warning" | "danger" | "info";
 type ButtonSize = "sm" | "md" | "lg" | "xl";
 type ButtonRadius = "none" | "sm" | "md" | "lg" | "xl" | "full";
 
-function Button(props: Readonly<ButtonProps>) {
+function ButtonInner(props: Readonly<ButtonProps>, ref: ForwardedRef<HTMLButtonElement>) {
   const { radius = "md", size = "md", variant = "primary", children, className, ...rest } = props;
 
   const pendingClass = rest.isPending ? "fri-button--pending" : undefined;
@@ -34,7 +39,7 @@ function Button(props: Readonly<ButtonProps>) {
   );
 
   return (
-    <RACButton {...rest} className={buttonClassName}>
+    <RACButton {...rest} ref={ref} className={buttonClassName}>
       {composeRenderProps(children, (child, { isPending }) => (
         <>
           {child}
@@ -45,5 +50,7 @@ function Button(props: Readonly<ButtonProps>) {
     </RACButton>
   );
 }
+
+const Button = forwardRef(ButtonInner);
 
 export { Button };

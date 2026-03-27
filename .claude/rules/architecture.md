@@ -39,7 +39,7 @@ tailwindcss v4     ← Styling engine
 ## File Structure
 
 ```text
-{Name}.tsx           # "use client", wrap React Aria
+{Name}.tsx           # "use client", forwardRef, wrap React Aria
 {name}.test.tsx      # Vitest + RTL
 {name}.stories.tsx   # Storybook
 index.ts             # re-exports
@@ -68,8 +68,9 @@ index.ts             # re-exports
 ```text
 props → destructure (defaults first, then alphabetical)
 rest  → forward to React Aria
+ref   → forwardRef to React Aria root element
 className → cn() compose BEM class names from props
-children  → composeRenderProps → wrap with internal UI
+children  → composeRenderProps → wrap with internal UI (expose ButtonRenderProps)
 ```
 
 ## Checklist: New Component

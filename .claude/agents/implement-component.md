@@ -21,8 +21,8 @@ Rules auto-load from `.claude/rules/` when editing matching files.
 2. Read the matching React Aria component docs
 3. Create CSS → `packages/styles/src/components/{name}.css`
 4. Import CSS → `packages/styles/src/components/index.css`
-5. Create component → `packages/react/src/components/{name}/{Name}.tsx`
-6. Create test → `packages/react/src/components/{name}/{name}.test.tsx`
+5. Create component → `packages/react/src/components/{name}/{Name}.tsx` (forwardRef, ButtonRenderProps)
+6. Create test → `packages/react/src/components/{name}/{name}.test.tsx` (include ref + render props tests)
 7. Create story → `packages/react/src/components/{name}/{name}.stories.tsx`
 8. Create barrel → `packages/react/src/components/{name}/index.ts`
 9. Register exports (index.ts, tsup.config.ts, package.json)
