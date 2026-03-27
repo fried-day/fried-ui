@@ -27,9 +27,9 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs"
     },
-    "./box": {
-      "types": "./dist/components/box/index.d.ts",
-      "import": "./dist/components/box/index.mjs"
+    "./button": {
+      "types": "./dist/components/button/index.d.ts",
+      "import": "./dist/components/button/index.mjs"
     },
     "./utils/cn": {
       "types": "./dist/utils/cn/index.d.ts",
@@ -50,6 +50,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@fried-ui/styles": "workspace:^",
     "@react-types/color": "^3.1.4",
     "@react-types/shared": "^3.33.1",
     "clsx": "^2.1.1",
@@ -62,6 +63,7 @@
     "@storybook/react": "^10.3.3",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^22.15.3",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",

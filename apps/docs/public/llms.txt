@@ -1,0 +1,7 @@
+# fried-ui
+
+> Beautiful, accessible React components built on React Aria Components + Tailwind CSS v4.
+
+## Docs
+
+## Optional

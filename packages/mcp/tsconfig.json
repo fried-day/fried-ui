@@ -1,12 +1,10 @@
 {
-  "extends": "@repo/quality/tsconfig/react-library.json",
+  "extends": "@repo/quality/tsconfig/base.json",
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",
     "strictNullChecks": true,
-    "paths": {
-      "src/*": ["./src/*"]
-    }
+    "types": ["node"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

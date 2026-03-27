@@ -21,11 +21,11 @@ pnpm add @fried-ui/react @fried-ui/styles
 ```
 
 ```tsx
-import { Box } from "@fried-ui/react/box";
+import { Button } from "@fried-ui/react/button";
 
-<Box as="section" className="rounded-lg bg-blue-100 p-4">
-  Hello from fried-ui
-</Box>;
+<Button variant="primary" onPress={() => alert("Hello!")}>
+  Click me
+</Button>;
 ```
 
 ## Development

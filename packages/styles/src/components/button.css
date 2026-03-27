@@ -1,0 +1,33 @@
+/* Button — BEM component */
+
+.fri-button {
+  @apply relative inline-flex items-center justify-center gap-2;
+  @apply text-center text-sm font-medium whitespace-nowrap;
+  @apply rounded-(--radius-base) border-(length:--border-width) border-transparent;
+  @apply transition-colors duration-(--duration-fast) ease-(--ease-default);
+  @apply cursor-default select-none;
+  @apply focus-visible:ring-(length:--ring-width) focus-visible:ring-ring focus-visible:ring-offset-(--ring-offset) focus-visible:ring-offset-background focus-visible:outline-none;
+  @apply disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-disabled;
+}
+
+/* Variants */
+
+.fri-button--primary {
+  @apply bg-primary text-primary-foreground hover:bg-primary-hover;
+
+  &[data-pressed] {
+    @apply bg-primary-active;
+  }
+}
+
+/* Sizes */
+
+.fri-button--md {
+  @apply h-9 px-4 text-sm;
+}
+
+/* States */
+
+.fri-button--pending {
+  @apply text-transparent;
+}

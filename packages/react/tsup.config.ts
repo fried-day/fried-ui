@@ -3,7 +3,7 @@ import { defineConfig } from "tsup";
 export default defineConfig({
   entry: {
     index: "src/index.ts",
-    "components/box/index": "src/components/box/index.ts",
+    "components/button/index": "src/components/button/index.ts",
     "utils/cn/index": "src/utils/cn/index.ts",
   },
   format: ["esm"],
@@ -17,5 +17,5 @@ export default defineConfig({
   splitting: true,
   treeshake: true,
   clean: true,
-  external: ["react", "react-dom", "tailwindcss"],
+  external: ["react", "react-dom", "tailwindcss", "@fried-ui/styles", /^@fried-ui\/styles\//],
 });

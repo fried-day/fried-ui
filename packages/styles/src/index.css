@@ -7,3 +7,6 @@
 @import "./tokens/typography.css";
 @import "./tokens/layout.css";
 @import "./tokens/motion.css";
+
+/* Components */
+@import "./components/button.css";
