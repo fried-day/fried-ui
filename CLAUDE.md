@@ -26,10 +26,6 @@ pnpm --filter=storybook dev    # Storybook on port 6006
 cd packages/react && npx vitest run src/components/button/button.test.tsx
 ```
 
-## Design System
-
-See **[DESIGN_SYSTEM.md](./decisions/DESIGN_SYSTEM.md)** for design principles, variant system, component API conventions, and styling guidelines.
-
 ## Architecture
 
 **pnpm + Turborepo monorepo** — Tailwind CSS v4, React Aria Components, React 19, TypeScript 5.9.
@@ -39,7 +35,7 @@ See **[DESIGN_SYSTEM.md](./decisions/DESIGN_SYSTEM.md)** for design principles, 
 - **`apps/docs`** (port 3001) — Next.js 16 + Fumadocs, MDX documentation site
 - **`apps/storybook`** (port 6006) — Storybook 10 with Vite, reads stories from `packages/react`
 - **`packages/react`** (`@fried-ui/react`) — Component library (React Aria + Tailwind v4), built with tsup
-- **`packages/styles`** (`@fried-ui/styles`) — Base CSS (`@import "@fried-ui/styles"`) + tailwind-variants exports
+- **`packages/styles`** (`@fried-ui/styles`) — Pure CSS: design tokens, `@utility`, component BEM styles (`fri-` prefix)
 - **`packages/quality`** (`@repo/quality`) — ESLint configs (`eslint/base`, `eslint/next-js`, `eslint/react-internal`) + shared tsconfigs (`tsconfig/base`, `tsconfig/nextjs`, `tsconfig/react-library`)
 - **`packages/vitest`** (`@fried-ui/vitest`) — Shared Vitest configs and setup (base + react presets)
 
