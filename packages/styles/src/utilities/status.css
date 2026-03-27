@@ -1,0 +1,9 @@
+@utility status-disabled {
+  opacity: var(--disabled-opacity);
+  cursor: var(--cursor-disabled);
+  pointer-events: none;
+}
+
+@utility status-pending {
+  @apply pointer-events-none;
+}

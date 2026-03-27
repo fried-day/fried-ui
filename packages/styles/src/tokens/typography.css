@@ -1,5 +1,4 @@
 @theme {
-  /* heading scale — maps semantic level to Tailwind text sizes */
   --heading-h1: var(--text-4xl);
   --heading-h1--line-height: var(--text-4xl--line-height);
   --heading-h2: var(--text-3xl);

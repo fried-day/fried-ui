@@ -1,12 +1,8 @@
-/* Base layer - Tailwind CSS v4 */
+@layer theme, base, components, utilities;
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
-/* Design tokens */
-@import "./tokens/colors.css";
-@import "./tokens/typography.css";
-@import "./tokens/layout.css";
-@import "./tokens/motion.css";
-
-/* Components */
-@import "./components/button.css";
+@import "./tokens/index.css";
+@import "./utilities/index.css";
+@import "./components/index.css" layer(components);

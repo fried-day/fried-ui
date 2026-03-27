@@ -1,33 +1,61 @@
-/* Button — BEM component */
-
 .fri-button {
   @apply relative inline-flex items-center justify-center gap-2;
-  @apply text-center text-sm font-medium whitespace-nowrap;
-  @apply rounded-(--radius-base) border-(length:--border-width) border-transparent;
-  @apply transition-colors duration-(--duration-fast) ease-(--ease-default);
-  @apply cursor-default select-none;
-  @apply focus-visible:ring-(length:--ring-width) focus-visible:ring-ring focus-visible:ring-offset-(--ring-offset) focus-visible:ring-offset-background focus-visible:outline-none;
-  @apply disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-disabled;
-}
+  @apply text-sm font-medium whitespace-nowrap select-none no-highlight;
 
-/* Variants */
+  border-radius: var(--radius);
+  border: var(--border-width) solid transparent;
+  cursor: var(--cursor-interactive);
 
-.fri-button--primary {
-  @apply bg-primary text-primary-foreground hover:bg-primary-hover;
+  transition:
+    background-color var(--duration-fast) var(--ease-smooth),
+    color var(--duration-fast) var(--ease-smooth);
 
+  --fri-button-bg: transparent;
+  --fri-button-bg-hover: var(--fri-button-bg);
+  --fri-button-bg-pressed: var(--fri-button-bg-hover);
+  --fri-button-fg: currentColor;
+
+  background-color: var(--fri-button-bg);
+  color: var(--fri-button-fg);
+
+  &:focus-visible,
+  &[data-focus-visible] {
+    @apply focus-ring;
+  }
+
+  &:disabled,
+  &[aria-disabled="true"] {
+    @apply status-disabled;
+  }
+
+  &[data-pending="true"] {
+    @apply status-pending;
+  }
+
+  &:active,
   &[data-pressed] {
-    @apply bg-primary-active;
+    background-color: var(--fri-button-bg-pressed);
+  }
+
+  @media (hover: hover) {
+    &:hover,
+    &[data-hovered] {
+      background-color: var(--fri-button-bg-hover);
+    }
   }
 }
 
-/* Sizes */
+.fri-button--primary {
+  --fri-button-bg: var(--color-primary);
+  --fri-button-bg-hover: var(--color-primary-hover);
+  --fri-button-bg-pressed: var(--color-primary-active);
+  --fri-button-fg: var(--color-primary-foreground);
+}
 
 .fri-button--md {
   @apply h-9 px-4 text-sm;
 }
 
-/* States */
-
 .fri-button--pending {
-  @apply text-transparent;
+  color: transparent;
 }

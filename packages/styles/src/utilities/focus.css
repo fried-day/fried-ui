@@ -1,0 +1,4 @@
+@utility focus-ring {
+  @apply ring-2 ring-ring ring-offset-0 ring-offset-background outline-none;
+  --tw-ring-offset-width: var(--ring-offset-width);
+}

@@ -1,20 +1,27 @@
 @theme {
-  /* radius — calc from single base, developer changes one value */
-  --radius-base: 0.5rem;
-  --radius-field: calc(var(--radius-base) * 0.75);
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-full: 9999px;
+}
 
-  /* z-index — semantic layers, Tailwind has no convention for this */
-  --z-dropdown: 1000;
-  --z-sticky: 1100;
-  --z-overlay: 1200;
-  --z-modal: 1300;
-  --z-popover: 1400;
-  --z-toast: 1500;
+@layer base {
+  :root {
+    --radius: var(--radius-md);
+    --radius-field: var(--radius-lg);
 
-  /* component behavior — semantic, not in Tailwind */
-  --border-width: 1px;
-  --border-width-thick: 2px;
-  --opacity-disabled: 0.5;
-  --ring-width: 2px;
-  --ring-offset: 2px;
+    --z-dropdown: 1000;
+    --z-sticky: 1100;
+    --z-overlay: 1200;
+    --z-modal: 1300;
+    --z-popover: 1400;
+    --z-toast: 1500;
+
+    --border-width: 1px;
+    --border-width-thick: 2px;
+    --disabled-opacity: 0.5;
+    --ring-offset-width: 2px;
+    --cursor-interactive: pointer;
+    --cursor-disabled: not-allowed;
+  }
 }

@@ -78,8 +78,9 @@ When adding a new component, add its export entry to `packages/react/package.jso
 - **Tailwind CSS v4** — CSS-first config, no `tailwind.config.js`
 - Apps use `@tailwindcss/postcss`, Storybook uses `@tailwindcss/vite`
 - Each app's `globals.css` has `@source "../../packages/react/src/**/*.{ts,tsx}"` to scan component classes
-- `@fried-ui/styles` provides base styles + component CSS (BEM) — apps import via `@import "@fried-ui/styles"`
-- Component styles use **CSS + BEM + @apply** (NOT tailwind-variants) — for multi-framework support
+- `@fried-ui/styles` is **pure CSS** — no JS build, no tailwind-variants. Apps import via `@import "@fried-ui/styles"`
+- Component styles use **CSS + BEM (`fri-` prefix) + @apply** — for multi-framework support
+- Shared patterns use **`@utility`** (focus-ring, status-disabled, etc.)
 - Use `cn()` from `@fried-ui/react/utils/cn` to merge BEM classes in components
 
 ### Documentation (Fumadocs)
