@@ -200,6 +200,23 @@ Use `className` to add layout or typography utilities. Component visual styles (
 <Button className="tracking-wider uppercase">Uppercase</Button>
 ```
 
+## Render Props
+
+Access internal state to dynamically change content using the children function.
+
+```tsx
+<Button>
+  {({ isHovered }) => (
+    <>
+      <ArrowRightIcon className="size-match-font" />
+      {isHovered ? "Let's go!" : "Hover me"}
+    </>
+  )}
+</Button>
+```
+
+Available render props: `isHovered`, `isPressed`, `isFocused`, `isFocusVisible`, `isDisabled`, `isPending`.
+
 ## Design Anatomy
 
 Every spacing value is derived from the **golden ratio (φ = 1.618)** using font-size as the base unit `x`:
@@ -256,7 +273,8 @@ Built on [React Aria Button](https://react-spectrum.adobe.com/react-aria/Button.
 | `aria-labelledby`  | `string`                                                                                           | -           | ID of the labelling element                |
 | `aria-describedby` | `string`                                                                                           | -           | ID of the describing element               |
 | `className`        | `string`                                                                                           | -           | Additional CSS classes                     |
-| `children`         | `ReactNode \| (renderProps) => ReactNode`                                                          | -           | Button content                             |
+| `ref`              | `Ref<HTMLButtonElement>`                                                                           | -           | Forwarded ref to the button element        |
+| `children`         | `ReactNode \| (renderProps: ButtonRenderProps) => ReactNode`                                       | -           | Button content                             |
 
 ### Render Props
 
