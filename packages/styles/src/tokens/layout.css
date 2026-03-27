@@ -3,25 +3,16 @@
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
   --radius-full: 9999px;
-}
 
-@layer base {
-  :root {
-    --radius: var(--radius-md);
-    --radius-field: var(--radius-lg);
+  --disabled-opacity: 0.5;
+  --ring-offset-width: 2px;
+  --cursor-interactive: pointer;
+  --cursor-disabled: not-allowed;
 
-    --z-dropdown: 1000;
-    --z-sticky: 1100;
-    --z-overlay: 1200;
-    --z-modal: 1300;
-    --z-popover: 1400;
-    --z-toast: 1500;
-
-    --border-width: 1px;
-    --border-width-thick: 2px;
-    --disabled-opacity: 0.5;
-    --ring-offset-width: 2px;
-    --cursor-interactive: pointer;
-    --cursor-disabled: not-allowed;
-  }
+  --z-dropdown: 1000;
+  --z-sticky: 1100;
+  --z-overlay: 1200;
+  --z-modal: 1300;
+  --z-popover: 1400;
+  --z-toast: 1500;
 }

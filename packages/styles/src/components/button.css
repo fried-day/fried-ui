@@ -1,10 +1,8 @@
 .fri-button {
-  @apply relative inline-flex items-center justify-center gap-2;
-  @apply text-sm font-medium whitespace-nowrap select-none no-highlight;
-
-  border-radius: var(--radius);
-  border: var(--border-width) solid transparent;
-  cursor: var(--cursor-interactive);
+  @apply relative inline-flex items-center justify-center;
+  @apply font-medium whitespace-nowrap select-none no-highlight;
+  @apply border border-transparent;
+  @apply cursor-pointer;
 
   transition:
     background-color var(--duration-fast) var(--ease-smooth),
@@ -52,8 +50,16 @@
   --fri-button-fg: var(--color-primary-foreground);
 }
 
+.fri-button--sm {
+  @apply h-8 gap-1.5 rounded-lg px-3 text-xs;
+}
+
 .fri-button--md {
-  @apply h-9 px-4 text-sm;
+  @apply h-9 gap-2.5 rounded-xl px-4 text-sm;
+}
+
+.fri-button--lg {
+  @apply h-10 gap-3 rounded-2xl px-5 text-base;
 }
 
 .fri-button--pending {

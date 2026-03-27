@@ -14,19 +14,16 @@ export type ButtonProps = {
 } & Omit<RACButtonProps, "className" | "children">;
 
 type ButtonVariant = "primary";
-type ButtonSize = "md";
+type ButtonSize = "sm" | "md" | "lg";
 
 function Button(props: Readonly<ButtonProps>) {
   const { size = "md", variant = "primary", children, className, ...rest } = props;
 
   const pendingClass = rest.isPending ? "fri-button--pending" : undefined;
-
-  const composedClassName = composeRenderProps(className, (cls: string | undefined) =>
-    cn("fri-button", `fri-button--${variant}`, `fri-button--${size}`, pendingClass, cls),
-  );
+  const buttonClassName = cn("fri-button", `fri-button--${variant}`, `fri-button--${size}`, pendingClass, className);
 
   return (
-    <RACButton {...rest} className={composedClassName}>
+    <RACButton {...rest} className={buttonClassName}>
       {composeRenderProps(children, (child, { isPending }) => (
         <>
           {child}

@@ -16,12 +16,17 @@
   },
   "devDependencies": {
     "@repo/quality": "workspace:*",
+    "@storybook/addon-vitest": "^10.3.3",
     "@storybook/react": "^10.3.3",
     "@storybook/react-vite": "^10.3.3",
     "@tailwindcss/vite": "^4.1.0",
+    "@vitest/browser-playwright": "^4.1.2",
+    "@vitest/coverage-v8": "^4.1.2",
     "eslint": "^9.39.1",
+    "playwright": "^1.58.2",
     "storybook": "^10.3.3",
     "tailwindcss": "^4.1.0",
-    "vite": "^8.0.2"
+    "vite": "^8.0.2",
+    "vitest": "^4.1.2"
   }
 }

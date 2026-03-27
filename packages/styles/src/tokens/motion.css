@@ -1,4 +1,8 @@
 @theme {
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-in: cubic-bezier(0.4, 0, 1, 1);
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
@@ -60,14 +64,6 @@
   --animate-slide-in-up: slide-in-up 200ms var(--ease-out);
   --animate-slide-in-down: slide-in-down 200ms var(--ease-out);
   --animate-scale-in: scale-in 200ms var(--ease-out);
-}
-
-@layer base {
-  :root {
-    --duration-fast: 150ms;
-    --duration-normal: 200ms;
-    --duration-slow: 300ms;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -5,7 +5,10 @@ description: Implement a new component for @fried-ui/react following the design 
 
 You are a component implementer for fried-ui — a React component library built on React Aria Components + Tailwind CSS v4.
 
-Read `.claude/guides/ARCHITECTURE.md` first for full architecture details.
+Read these guides first:
+
+- `.claude/guides/ARCHITECTURE.md` — code patterns
+- `.claude/guides/GOLDEN_RATIO_SPACING.md` — spacing rules
 
 ## Key Rules
 
@@ -14,52 +17,66 @@ Read `.claude/guides/ARCHITECTURE.md` first for full architecture details.
 fried-ui ใช้ **pure CSS** ไม่ใช่ tv() — เพื่อ multi-framework support
 
 ```css
-/* packages/styles/src/components/{name}.css */
 .fri-button {
-  @apply relative inline-flex items-center justify-center gap-2;
-  @apply rounded-(--radius-base) border-(length:--border-width) border-transparent;
+  @apply relative inline-flex items-center justify-center;
+  @apply cursor-pointer border border-transparent;
 }
 
-.fri-fri-button--primary {
-  @apply bg-primary text-primary-foreground hover:bg-primary-hover;
-
-  &[data-pressed] {
-    @apply bg-primary-active;
-  }
+.fri-button--primary {
+  --fri-button-bg: var(--color-primary);
+  --fri-button-fg: var(--color-primary-foreground);
 }
 
-.fri-fri-button--md {
-  @apply h-9 px-4 text-sm;
+.fri-button--md {
+  @apply h-9 gap-2.5 rounded-xl px-4 text-sm;
 }
 ```
 
-### Component = cn() with BEM classes (NOT tv())
+### Golden Ratio Spacing
+
+ทุก component ใช้ φ (golden ratio) คำนวณ spacing แล้ว **snap ไป Tailwind class ที่ใกล้สุด**:
+
+- Gap = x / φ → `gap-2.5` (md)
+- Padding = x → `px-4` (md)
+- Radius = x × √φ → `rounded-xl` (md)
+- Border = √φ / φ² → `border` (1px)
+
+Size scale (snap จาก φ):
+
+| Size | Height | Gap       | Padding | Radius        | Font        |
+| ---- | ------ | --------- | ------- | ------------- | ----------- |
+| sm   | `h-8`  | `gap-1.5` | `px-3`  | `rounded-lg`  | `text-xs`   |
+| md   | `h-9`  | `gap-2.5` | `px-4`  | `rounded-xl`  | `text-sm`   |
+| lg   | `h-10` | `gap-3`   | `px-5`  | `rounded-2xl` | `text-base` |
+
+ไม่ใช้ calc() กับ φ vars ใน CSS — ใช้ Tailwind class ตรงๆ
+
+### Component = cn() with BEM classes
 
 ```tsx
-const composedClassName = composeRenderProps(className, (cls: string | undefined) =>
-  cn("button", `fri-button--${variant}`, `fri-button--${size}`, pendingClass, cls),
-);
+const buttonClassName = cn("fri-button", `fri-button--${variant}`, `fri-button--${size}`, className);
 ```
 
 ### Design System
 
 - **Single-axis variant** — ใช้ `variant` prop เดียว
 - **Semantic variants**: primary, secondary, success, warning, danger, info, ghost, link
-- **Sizes**: sm, md, lg (+ icon สำหรับ button-like)
+- **Sizes**: sm, md, lg
 - **Defaults**: `variant="primary"`, `size="md"`
 
 ### CSS Rules
 
-- ใช้ design tokens — `rounded-(--radius-base)` ไม่ใช่ `rounded-lg`
-- ใช้ semantic color names — `bg-primary` ไม่ใช่ `bg-neutral-950`
-- React Aria states ใช้ `&[data-pressed]` — ไม่ใช่ `pressed:` (ไม่มีใน Tailwind v4)
-- `disabled:cursor-not-allowed` — ไม่ใช่ `cursor-disabled`
-- Focus ring + disabled ใส่ใน base class ของ CSS ตรงๆ
+- Color variants ใช้ CSS custom properties — `--fri-{component}-bg`, `--fri-{component}-fg`
+- Semantic color names — `var(--color-primary)` ไม่ใช่ hardcode
+- React Aria states ใช้ `&[data-pressed]` — ไม่ใช่ `pressed:`
+- Shared utilities ใช้ `@apply focus-ring`, `@apply status-disabled`
+- Transition ใช้ `var(--duration-fast)`, `var(--ease-smooth)`
 
 ### React Aria
 
 - Wrap React Aria component เสมอ
-- ใช้ `composeRenderProps` สำหรับ className + children
+- ใช้ `composeRenderProps` สำหรับ children (ไม่ใช่ className)
+- className สร้างจาก `cn()` ตรงๆ — ไม่ใช้ `composeRenderProps` กับ className
 - Forward React Aria props ทั้งหมด
 
 ### ESLint Rules
@@ -81,7 +98,7 @@ const composedClassName = composeRenderProps(className, (cls: string | undefined
 2. **Research React Aria** — หา React Aria component ที่ตรงกับ component ที่จะสร้าง
 
 3. **Create CSS** → `packages/styles/src/components/{name}.css`
-   - Import จาก `packages/styles/src/index.css`
+   - Import จาก `packages/styles/src/components/index.css`
 
 4. **Create component** → `packages/react/src/components/{name}/`
 
