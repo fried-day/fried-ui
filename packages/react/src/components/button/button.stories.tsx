@@ -10,8 +10,47 @@ const meta = {
     layout: "centered",
     docs: {
       description: {
-        component:
-          "Accessible button component built on React Aria. Supports semantic variants, golden-ratio spacing, and pending state with spinner.",
+        component: [
+          "Accessible button built on [React Aria Button](https://react-spectrum.adobe.com/react-aria/Button.html).",
+          "",
+          "### React Aria Props",
+          "",
+          "| Prop | Type | Description |",
+          "| --- | --- | --- |",
+          "| `isPending` | `boolean` | Pending state. Disables press/hover, announces to screen readers |",
+          "| `isDisabled` | `boolean` | Whether the button is disabled |",
+          "| `children` | `ReactNode \\| (renderProps) => ReactNode` | Button content, supports render props |",
+          "| `onPress` | `(e: PressEvent) => void` | Press event handler |",
+          "| `onPressStart` | `(e: PressEvent) => void` | Press start handler |",
+          "| `onPressEnd` | `(e: PressEvent) => void` | Press end handler |",
+          "| `onPressChange` | `(isPressed: boolean) => void` | Press state change handler |",
+          "| `onHoverStart` | `(e: HoverEvent) => void` | Hover start handler |",
+          "| `onHoverEnd` | `(e: HoverEvent) => void` | Hover end handler |",
+          "| `onHoverChange` | `(isHovering: boolean) => void` | Hover state change handler |",
+          "| `onFocus` | `(e: FocusEvent) => void` | Focus handler |",
+          "| `onBlur` | `(e: FocusEvent) => void` | Blur handler |",
+          "| `onFocusChange` | `(isFocused: boolean) => void` | Focus state change handler |",
+          "| `onKeyDown` | `(e: KeyboardEvent) => void` | Key down handler |",
+          "| `onKeyUp` | `(e: KeyboardEvent) => void` | Key up handler |",
+          "| `type` | `'button' \\| 'submit' \\| 'reset'` | Button type attribute |",
+          "| `form` | `string` | Form ID to associate |",
+          "| `formAction` | `string` | Form action URL |",
+          "| `autoFocus` | `boolean` | Auto focus on mount |",
+          "| `aria-label` | `string` | Accessible label |",
+          "| `aria-labelledby` | `string` | ID of labelling element |",
+          "| `aria-describedby` | `string` | ID of describing element |",
+          "",
+          "### Render Props (CSS Selectors)",
+          "",
+          "| Render Prop | CSS Selector | Description |",
+          "| --- | --- | --- |",
+          "| `isHovered` | `[data-hovered]` | Mouse hover |",
+          "| `isPressed` | `[data-pressed]` | Pressed/active |",
+          "| `isFocused` | `[data-focused]` | Focused (mouse or keyboard) |",
+          "| `isFocusVisible` | `[data-focus-visible]` | Keyboard focused |",
+          "| `isDisabled` | `[data-disabled]` | Disabled |",
+          "| `isPending` | `[data-pending]` | Pending/loading |",
+        ].join("\n"),
       },
     },
   },
@@ -48,7 +87,7 @@ const meta = {
     size: {
       control: "select",
       options: ["sm", "md", "lg", "xl"],
-      description: "Button size",
+      description: "Button size (golden ratio scale)",
       table: {
         type: {
           summary: '"sm" | "md" | "lg" | "xl"',
@@ -74,7 +113,7 @@ const meta = {
     },
     isPending: {
       control: "boolean",
-      description: "Whether the button shows a loading spinner",
+      description: "Shows loading spinner, disables press/hover",
       table: {
         type: {
           summary: "boolean",
@@ -110,12 +149,7 @@ const meta = {
 
 type Story = StoryObj<typeof meta>;
 
-const Default: Story = {
-  args: {
-    children: "Button",
-  },
-  render: (args) => <Button {...args} />,
-};
+const Default: Story = {};
 
 const Sizes: Story = {
   render: () => (
@@ -128,6 +162,20 @@ const Sizes: Story = {
   ),
 };
 
-export { Default, Sizes };
+const Disabled: Story = {
+  args: {
+    children: "Disabled",
+    isDisabled: true,
+  },
+};
+
+const Pending: Story = {
+  args: {
+    children: "Saving...",
+    isPending: true,
+  },
+};
+
+export { Default, Sizes, Disabled, Pending };
 
 export default meta;
