@@ -13,7 +13,7 @@ IMPORTANT: Do NOT skip any check. Run ALL checks in order. Fix ALL issues found.
 1. **VS Code diagnostics** — `mcp__ide__getDiagnostics` (no args = all files)
 2. **ESLint** — `pnpm -w run lint`
 3. **TypeScript** — `pnpm -w run typecheck`
-4. **Tests** — `pnpm --filter=@fried-ui/react test`
+4. **Tests** — `pnpm -w run test`
 5. **Build** — `pnpm -w run build`
 6. **SonarCloud** — query API for issues + hotspots
 7. **Rules vs code** — read `.claude/rules/*.md`, verify code matches

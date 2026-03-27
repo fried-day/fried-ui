@@ -1,5 +1,5 @@
 ---
-description: Golden ratio spacing formula, size scale, and container anchor base
+description: Golden ratio spacing formula and container anchor base
 paths:
   - packages/styles/src/components/**/*.css
   - packages/react/src/components/**/*.tsx
@@ -21,18 +21,13 @@ Gap            = x / φ (use exact value)
 Height         = auto — requires leading-none
 ```
 
-## Radius is NOT part of size
-
-Radius is a separate prop — it controls style/branding, not structure.
-Size only controls spacing (padding, gap, font) via φ math.
-
 ## Font Scale
 
 Use √φ (1.272) — skip steps that break logarithmic scale
 
 ## Size Scale
 
-See actual values in `packages/styles/src/components/` for each component — calculated from the formula above
+See actual values in `packages/styles/src/components/` — calculated from formula above
 
 ## Container Anchor Base
 

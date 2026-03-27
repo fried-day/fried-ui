@@ -13,7 +13,7 @@ Use √φ (1.272) instead of φ (1.618) — prevents font scale jumping too aggr
 
 ## Line-height
 
-- Single-line components (Button, Badge) → `leading-none`
+- Single-line components → `leading-none`
 - Paragraph/body text → `line-height = x × φ`
 
 ## Borders
@@ -31,7 +31,7 @@ Container padding on mobile divides by φ one step down
 
 ## Icon Scale
 
-Icons paired with text use `size-match-font` utility — locks to font-size (1em)
+Icons paired with text lock to font-size (1em) — see `@utility` definitions
 
 ## Grid Layout
 

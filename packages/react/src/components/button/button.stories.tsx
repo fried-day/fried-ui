@@ -10,47 +10,8 @@ const meta = {
     layout: "centered",
     docs: {
       description: {
-        component: [
-          "Accessible button built on [React Aria Button](https://react-spectrum.adobe.com/react-aria/Button.html).",
-          "",
-          "### React Aria Props",
-          "",
-          "| Prop | Type | Description |",
-          "| --- | --- | --- |",
-          "| `isPending` | `boolean` | Pending state. Disables press/hover, announces to screen readers |",
-          "| `isDisabled` | `boolean` | Whether the button is disabled |",
-          "| `children` | `ReactNode \\| (renderProps) => ReactNode` | Button content, supports render props |",
-          "| `onPress` | `(e: PressEvent) => void` | Press event handler |",
-          "| `onPressStart` | `(e: PressEvent) => void` | Press start handler |",
-          "| `onPressEnd` | `(e: PressEvent) => void` | Press end handler |",
-          "| `onPressChange` | `(isPressed: boolean) => void` | Press state change handler |",
-          "| `onHoverStart` | `(e: HoverEvent) => void` | Hover start handler |",
-          "| `onHoverEnd` | `(e: HoverEvent) => void` | Hover end handler |",
-          "| `onHoverChange` | `(isHovering: boolean) => void` | Hover state change handler |",
-          "| `onFocus` | `(e: FocusEvent) => void` | Focus handler |",
-          "| `onBlur` | `(e: FocusEvent) => void` | Blur handler |",
-          "| `onFocusChange` | `(isFocused: boolean) => void` | Focus state change handler |",
-          "| `onKeyDown` | `(e: KeyboardEvent) => void` | Key down handler |",
-          "| `onKeyUp` | `(e: KeyboardEvent) => void` | Key up handler |",
-          "| `type` | `'button' \\| 'submit' \\| 'reset'` | Button type attribute |",
-          "| `form` | `string` | Form ID to associate |",
-          "| `formAction` | `string` | Form action URL |",
-          "| `autoFocus` | `boolean` | Auto focus on mount |",
-          "| `aria-label` | `string` | Accessible label |",
-          "| `aria-labelledby` | `string` | ID of labelling element |",
-          "| `aria-describedby` | `string` | ID of describing element |",
-          "",
-          "### Render Props (CSS Selectors)",
-          "",
-          "| Render Prop | CSS Selector | Description |",
-          "| --- | --- | --- |",
-          "| `isHovered` | `[data-hovered]` | Mouse hover |",
-          "| `isPressed` | `[data-pressed]` | Pressed/active |",
-          "| `isFocused` | `[data-focused]` | Focused (mouse or keyboard) |",
-          "| `isFocusVisible` | `[data-focus-visible]` | Keyboard focused |",
-          "| `isDisabled` | `[data-disabled]` | Disabled |",
-          "| `isPending` | `[data-pending]` | Pending/loading |",
-        ].join("\n"),
+        component:
+          "Accessible button built on [React Aria Button](https://react-spectrum.adobe.com/react-aria/Button.html). Supports semantic variants, golden-ratio spacing, and pending state with spinner.",
       },
     },
   },
@@ -58,44 +19,59 @@ const meta = {
     children: "Button",
     variant: "primary",
     size: "md",
+    radius: "md",
   },
   argTypes: {
     children: {
       control: "text",
-      description: "Button content",
+      description: "Button label",
       table: {
         type: {
           summary: "ReactNode",
         },
-        category: "Content",
+        category: "Children",
       },
     },
     variant: {
       control: "select",
       options: ["primary"],
-      description: "Visual style variant",
+      description: "The visual variant of the button",
       table: {
         type: {
           summary: '"primary"',
         },
         defaultValue: {
-          summary: '"primary"',
+          summary: "primary",
         },
-        category: "Style",
+        category: "Style Variants",
       },
     },
     size: {
       control: "select",
       options: ["sm", "md", "lg", "xl"],
-      description: "Button size (golden ratio scale)",
+      description: "The size of the button",
       table: {
         type: {
           summary: '"sm" | "md" | "lg" | "xl"',
         },
         defaultValue: {
-          summary: '"md"',
+          summary: "md",
         },
-        category: "Style",
+        category: "Style Variants",
+      },
+    },
+    radius: {
+      control: "select",
+      options: ["none", "sm", "md", "lg", "xl", "full"],
+      description: "The border radius of the button",
+      table: {
+        type: {
+          summary: '"none" | "sm" | "md" | "lg" | "xl" | "full"',
+        },
+        defaultValue: {
+          summary: "md",
+        },
+        category: "Style Variants",
       },
     },
     isDisabled: {
@@ -113,7 +89,7 @@ const meta = {
     },
     isPending: {
       control: "boolean",
-      description: "Shows loading spinner, disables press/hover",
+      description: "Whether the button shows a loading spinner",
       table: {
         type: {
           summary: "boolean",
@@ -162,6 +138,19 @@ const Sizes: Story = {
   ),
 };
 
+const Radii: Story = {
+  render: () => (
+    <div className="flex items-end gap-4">
+      <Button radius="none">None</Button>
+      <Button radius="sm">Small</Button>
+      <Button radius="md">Medium</Button>
+      <Button radius="lg">Large</Button>
+      <Button radius="xl">XL</Button>
+      <Button radius="full">Full</Button>
+    </div>
+  ),
+};
+
 const Disabled: Story = {
   args: {
     children: "Disabled",
@@ -176,6 +165,6 @@ const Pending: Story = {
   },
 };
 
-export { Default, Sizes, Disabled, Pending };
+export { Default, Sizes, Radii, Disabled, Pending };
 
 export default meta;

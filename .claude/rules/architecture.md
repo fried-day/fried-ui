@@ -48,19 +48,17 @@ index.ts             # re-exports
 ## BEM Naming (`fri-` prefix)
 
 ```text
-.fri-{component}              → base
-.fri-{component}--{variant}   → variant modifier
-.fri-{component}--{size}      → size modifier
-.fri-{component}--{state}     → state modifier
-.fri-{component}__{element}   → internal element
+.fri-{component}                 → base
+.fri-{component}--{modifier}     → modifier (variant, size, state, etc.)
+.fri-{component}__{element}      → internal element
 ```
 
 ## Styling Rules
 
 - All visual styles live in CSS (BEM classes), never inline Tailwind in components
 - Components only use `cn()` to compose BEM class names
-- Prefer `@apply` for everything — use plain CSS only when `@apply` cannot handle it (e.g. `calc()` inside `var()`)
-- Use `-(--var)` syntax for CSS custom properties in `@apply` (e.g. `bg-(--fri-button-bg)`)
+- Prefer `@apply` — use plain CSS only when `@apply` cannot handle it
+- Use `-(--var)` syntax for CSS custom properties in `@apply`
 - Group `@apply` by concern: layout → typography → interaction → transition
 - Always include `motion-reduce:transition-none` on transition `@apply`
 - React Aria states in CSS: `&[data-pressed]`, `&[data-hovered]`, `&[data-focused]`
@@ -68,9 +66,9 @@ index.ts             # re-exports
 ## Data Flow
 
 ```text
-props → destructure { variant, size, className, children, ...rest }
+props → destructure (defaults first, then alphabetical)
 rest  → forward to React Aria
-className → cn("fri-{name}", "fri-{name}--{variant}", "fri-{name}--{size}", cls)
+className → cn() compose BEM class names from props
 children  → composeRenderProps → wrap with internal UI
 ```
 
