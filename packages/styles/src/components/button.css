@@ -51,15 +51,15 @@
 }
 
 .fri-button--sm {
-  @apply h-8 gap-1.5 rounded-lg px-3 text-xs;
+  @apply gap-2 rounded-md px-3.5 py-1.5 text-sm;
 }
 
 .fri-button--md {
-  @apply h-9 gap-2.5 rounded-xl px-4 text-sm;
+  @apply gap-2.5 rounded-lg px-4 py-2 text-base;
 }
 
 .fri-button--lg {
-  @apply h-10 gap-3 rounded-2xl px-5 text-base;
+  @apply gap-3 rounded-xl px-5 py-2.5 text-xl;
 }
 
 .fri-button--pending {

@@ -110,36 +110,23 @@ const meta = {
 
 type Story = StoryObj<typeof meta>;
 
-const DEFAULT: Story = {};
-
-const SMALL: Story = {
+const Default: Story = {
   args: {
-    children: "Small",
-    size: "sm",
+    children: "Button",
   },
+  render: (args) => <Button {...args} />,
 };
 
-const LARGE: Story = {
-  args: {
-    children: "Large",
-    size: "lg",
-  },
+const Sizes: Story = {
+  render: () => (
+    <div className="flex items-center gap-x-4">
+      <Button size="sm">Button</Button>
+      <Button size="md">Button</Button>
+      <Button size="lg">Button</Button>
+    </div>
+  ),
 };
 
-const DISABLED: Story = {
-  args: {
-    children: "Disabled",
-    isDisabled: true,
-  },
-};
-
-const PENDING: Story = {
-  args: {
-    children: "Saving...",
-    isPending: true,
-  },
-};
-
-export { DEFAULT, SMALL, LARGE, DISABLED, PENDING };
+export { Default, Sizes };
 
 export default meta;
