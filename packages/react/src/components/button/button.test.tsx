@@ -51,8 +51,12 @@ describe("Button", () => {
     expect(screen.getByRole("button").className).toContain("fri-button--md");
     u2();
 
-    render(<Button size="lg">Large</Button>);
+    const { unmount: u3 } = render(<Button size="lg">Large</Button>);
     expect(screen.getByRole("button").className).toContain("fri-button--lg");
+    u3();
+
+    render(<Button size="xl">Extra Large</Button>);
+    expect(screen.getByRole("button").className).toContain("fri-button--xl");
   });
 
   it("applies default variant and size", () => {

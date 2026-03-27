@@ -14,7 +14,7 @@ export type ButtonProps = {
 } & Omit<RACButtonProps, "className" | "children">;
 
 type ButtonVariant = "primary";
-type ButtonSize = "sm" | "md" | "lg";
+type ButtonSize = "sm" | "md" | "lg" | "xl";
 
 function Button(props: Readonly<ButtonProps>) {
   const { size = "md", variant = "primary", children, className, ...rest } = props;

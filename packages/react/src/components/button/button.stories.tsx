@@ -47,11 +47,11 @@ const meta = {
     },
     size: {
       control: "select",
-      options: ["sm", "md", "lg"],
+      options: ["sm", "md", "lg", "xl"],
       description: "Button size",
       table: {
         type: {
-          summary: '"sm" | "md" | "lg"',
+          summary: '"sm" | "md" | "lg" | "xl"',
         },
         defaultValue: {
           summary: '"md"',
@@ -119,10 +119,11 @@ const Default: Story = {
 
 const Sizes: Story = {
   render: () => (
-    <div className="flex items-center gap-x-4">
-      <Button size="sm">Button</Button>
-      <Button size="md">Button</Button>
-      <Button size="lg">Button</Button>
+    <div className="flex items-end gap-4">
+      <Button size="sm">Small</Button>
+      <Button size="md">Medium</Button>
+      <Button size="lg">Large</Button>
+      <Button size="xl">Extra Large</Button>
     </div>
   ),
 };
