@@ -92,7 +92,7 @@ describe("Button", () => {
   });
 
   it("supports render props children", () => {
-    render(<Button>{({ isPressed }) => (isPressed ? "Pressed" : "Idle")}</Button>);
+    render(<Button>{({ isPressed }): string => (isPressed ? "Pressed" : "Idle")}</Button>);
     expect(screen.getByRole("button", { name: "Idle" })).toBeInTheDocument();
   });
 });
