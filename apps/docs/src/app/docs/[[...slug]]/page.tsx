@@ -2,6 +2,17 @@ import defaultMdxComponents from "fumadocs-ui/mdx";
 import { DocsBody, DocsDescription, DocsPage, DocsTitle } from "fumadocs-ui/page";
 import { notFound } from "next/navigation";
 
+import {
+  ButtonAsLink,
+  ButtonCustomClass,
+  ButtonDemo,
+  ButtonDisabled,
+  ButtonPending,
+  ButtonRadii,
+  ButtonSizes,
+  ButtonWithIcons,
+} from "@/components/MdxComponents";
+import { Preview } from "@/components/Preview";
 import { source } from "@/lib/source";
 
 interface PageProps {
@@ -11,6 +22,19 @@ interface PageProps {
 interface SlugParamsProps {
   slug?: string[];
 }
+
+const mdxComponents = {
+  ...defaultMdxComponents,
+  ButtonAsLink,
+  ButtonCustomClass,
+  ButtonDemo,
+  ButtonDisabled,
+  ButtonPending,
+  ButtonRadii,
+  ButtonSizes,
+  ButtonWithIcons,
+  Preview,
+};
 
 async function Page(props: Readonly<PageProps>): Promise<React.JSX.Element> {
   const params = await props.params;
@@ -25,7 +49,7 @@ async function Page(props: Readonly<PageProps>): Promise<React.JSX.Element> {
       <DocsDescription>{page.data.description}</DocsDescription>
 
       <DocsBody>
-        <MdxContent components={defaultMdxComponents} />
+        <MdxContent components={mdxComponents} />
       </DocsBody>
     </DocsPage>
   );

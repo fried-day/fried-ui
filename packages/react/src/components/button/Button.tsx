@@ -4,8 +4,8 @@ import type { ReactNode } from "react";
 
 import { Button as RACButton, type ButtonProps as RACButtonProps, composeRenderProps } from "react-aria-components";
 
-import { Spinner } from "src/components/icons";
-import { cn } from "src/utils/cn";
+import { Spinner } from "../icons";
+import { cn } from "../../utils/cn";
 
 export type ButtonProps = {
   variant?: ButtonVariant;
