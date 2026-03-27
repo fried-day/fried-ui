@@ -4,4 +4,6 @@
 
 ## Docs
 
+- [Button](/llm/button.md): Accessible button with golden ratio spacing, React Aria keyboard/focus/screen reader support
+
 ## Optional
