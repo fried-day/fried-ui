@@ -29,14 +29,7 @@ function Button(props: Readonly<ButtonProps>) {
         <>
           {child}
 
-          {isPending && (
-            <span
-              className="absolute inset-0 flex items-center justify-center text-[var(--fri-button-fg)]"
-              aria-hidden="true"
-            >
-              <Spinner className="size-[1em] animate-spin" />
-            </span>
-          )}
+          {isPending && <Spinner className="fri-button__spinner" aria-hidden="true" />}
         </>
       ))}
     </RACButton>

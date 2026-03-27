@@ -73,3 +73,8 @@
 .fri-button--pending {
   color: transparent;
 }
+
+.fri-button__spinner {
+  @apply absolute inset-0 m-auto size-match-font animate-spin;
+  color: var(--fri-button-fg);
+}
