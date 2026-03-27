@@ -26,9 +26,9 @@
   --color-danger-active: var(--color-red-800);
   --color-danger-foreground: var(--color-white);
 
-  --color-info: var(--color-sky-500);
-  --color-info-hover: var(--color-sky-600);
-  --color-info-active: var(--color-sky-700);
+  --color-info: var(--color-blue-600);
+  --color-info-hover: var(--color-blue-700);
+  --color-info-active: var(--color-blue-800);
   --color-info-foreground: var(--color-white);
 
   --color-background: var(--color-white);
@@ -101,9 +101,9 @@
     --color-danger-active: var(--color-red-800);
     --color-danger-foreground: var(--color-white);
 
-    --color-info: var(--color-sky-500);
-    --color-info-hover: var(--color-sky-600);
-    --color-info-active: var(--color-sky-700);
+    --color-info: var(--color-blue-600);
+    --color-info-hover: var(--color-blue-700);
+    --color-info-active: var(--color-blue-800);
     --color-info-foreground: var(--color-white);
 
     --color-background: var(--color-white);
@@ -174,9 +174,9 @@
     --color-danger-active: var(--color-red-700);
     --color-danger-foreground: var(--color-white);
 
-    --color-info: var(--color-sky-400);
-    --color-info-hover: var(--color-sky-500);
-    --color-info-active: var(--color-sky-600);
+    --color-info: var(--color-blue-500);
+    --color-info-hover: var(--color-blue-600);
+    --color-info-active: var(--color-blue-700);
     --color-info-foreground: var(--color-white);
 
     --color-background: var(--color-neutral-950);
