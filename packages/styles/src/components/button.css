@@ -1,20 +1,15 @@
 .fri-button {
   @apply relative inline-flex items-center justify-center;
-  @apply leading-none font-medium whitespace-nowrap select-none no-highlight;
-  @apply border border-transparent;
-  @apply cursor-pointer;
-
-  transition:
-    background-color var(--duration-fast) var(--ease-smooth),
-    color var(--duration-fast) var(--ease-smooth);
+  @apply leading-none font-medium whitespace-nowrap;
+  @apply cursor-pointer border border-transparent select-none no-highlight;
+  @apply transition-colors duration-(--duration-fast) ease-smooth motion-reduce:transition-none;
 
   --fri-button-bg: transparent;
   --fri-button-bg-hover: var(--fri-button-bg);
   --fri-button-bg-pressed: var(--fri-button-bg-hover);
   --fri-button-fg: currentColor;
 
-  background-color: var(--fri-button-bg);
-  color: var(--fri-button-fg);
+  @apply bg-(--fri-button-bg) text-(--fri-button-fg);
 
   &:focus-visible,
   &[data-focus-visible] {
@@ -32,13 +27,13 @@
 
   &:active,
   &[data-pressed] {
-    background-color: var(--fri-button-bg-pressed);
+    @apply bg-(--fri-button-bg-pressed);
   }
 
   @media (hover: hover) {
     &:hover,
     &[data-hovered] {
-      background-color: var(--fri-button-bg-hover);
+      @apply bg-(--fri-button-bg-hover);
     }
   }
 }
@@ -52,29 +47,48 @@
 
 .fri-button--sm {
   @apply gap-[8.65px] px-3.5 py-1.5 text-sm;
-  border-radius: calc(var(--radius) * 0.5);
 }
 
 .fri-button--md {
   @apply gap-[9.89px] px-4 py-2 text-base;
-  border-radius: var(--radius);
 }
 
 .fri-button--lg {
   @apply gap-[12.36px] px-5 py-2.5 text-xl;
-  border-radius: calc(var(--radius) * 1.5);
 }
 
 .fri-button--xl {
   @apply gap-[14.83px] px-6 py-3 text-2xl;
-  border-radius: calc(var(--radius) * 2);
+}
+
+.fri-button--radius-none {
+  @apply rounded-none;
+}
+
+.fri-button--radius-sm {
+  @apply rounded-sm;
+}
+
+.fri-button--radius-md {
+  @apply rounded-md;
+}
+
+.fri-button--radius-lg {
+  @apply rounded-lg;
+}
+
+.fri-button--radius-xl {
+  @apply rounded-xl;
+}
+
+.fri-button--radius-full {
+  @apply rounded-full;
 }
 
 .fri-button--pending {
-  color: transparent;
+  @apply text-transparent;
 }
 
 .fri-button__spinner {
-  @apply absolute inset-0 m-auto size-match-font animate-spin;
-  color: var(--fri-button-fg);
+  @apply absolute inset-0 m-auto size-match-font animate-spin text-(--fri-button-fg);
 }
