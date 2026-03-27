@@ -91,6 +91,16 @@ describe("Button", () => {
     expect(ref.current).toBeInstanceOf(HTMLButtonElement);
   });
 
+  it("applies icon-only class", () => {
+    render(
+      <Button isIconOnly aria-label="Close">
+        <svg />
+      </Button>,
+    );
+    const el = screen.getByRole("button");
+    expect(el.className).toContain("fri-button--icon-only");
+  });
+
   it("supports render props children", () => {
     render(<Button>{({ isPressed }): string => (isPressed ? "Pressed" : "Idle")}</Button>);
     expect(screen.getByRole("button", { name: "Idle" })).toBeInTheDocument();

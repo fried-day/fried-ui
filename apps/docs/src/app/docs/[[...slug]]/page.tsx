@@ -13,6 +13,7 @@ import {
   ButtonSizes,
   ButtonVariants,
   ButtonWithIcons,
+  ButtonIconOnly,
 } from "@/components/MdxComponents";
 import { Preview } from "@/components/Preview";
 import { source } from "@/lib/source";
@@ -31,6 +32,7 @@ const mdxComponents = {
   ButtonCustomClass,
   ButtonDemo,
   ButtonDisabled,
+  ButtonIconOnly,
   ButtonPending,
   ButtonRadii,
   ButtonSizes,
