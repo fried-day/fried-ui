@@ -10,18 +10,28 @@ import { cn } from "src/utils/cn";
 export type ButtonProps = {
   variant?: ButtonVariant;
   size?: ButtonSize;
+  radius?: ButtonRadius;
   className?: string;
   children?: ReactNode | ((renderProps: { isPending: boolean }) => ReactNode);
 } & Omit<RACButtonProps, "className" | "children">;
 
 type ButtonVariant = "primary";
 type ButtonSize = "sm" | "md" | "lg" | "xl";
+type ButtonRadius = "none" | "sm" | "md" | "lg" | "xl" | "full";
 
 function Button(props: Readonly<ButtonProps>) {
-  const { size = "md", variant = "primary", children, className, ...rest } = props;
+  const { radius = "md", size = "md", variant = "primary", children, className, ...rest } = props;
 
   const pendingClass = rest.isPending ? "fri-button--pending" : undefined;
-  const buttonClassName = cn("fri-button", `fri-button--${variant}`, `fri-button--${size}`, pendingClass, className);
+
+  const buttonClassName = cn(
+    "fri-button",
+    `fri-button--${variant}`,
+    `fri-button--${size}`,
+    `fri-button--radius-${radius}`,
+    pendingClass,
+    className,
+  );
 
   return (
     <RACButton {...rest} className={buttonClassName}>

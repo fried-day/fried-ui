@@ -3,6 +3,9 @@
 # Sample / scratch
 /sample
 
+# Internal decisions (private notes)
+/decisions
+
 # Dependencies
 node_modules
 .pnp

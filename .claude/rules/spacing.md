@@ -18,9 +18,13 @@ x = font-size (base unit)
 Padding Inline = x
 Padding Block  = x × 0.485
 Gap            = x / φ (use exact value)
-Radius         = --radius × multiplier
 Height         = auto — requires leading-none
 ```
+
+## Radius is NOT part of size
+
+Radius is a separate prop — it controls style/branding, not structure.
+Size only controls spacing (padding, gap, font) via φ math.
 
 ## Font Scale
 

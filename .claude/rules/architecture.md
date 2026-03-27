@@ -59,7 +59,10 @@ index.ts             # re-exports
 
 - All visual styles live in CSS (BEM classes), never inline Tailwind in components
 - Components only use `cn()` to compose BEM class names
-- CSS uses `@apply` for Tailwind utilities + `var()` for dynamic values
+- Prefer `@apply` for everything — use plain CSS only when `@apply` cannot handle it (e.g. `calc()` inside `var()`)
+- Use `-(--var)` syntax for CSS custom properties in `@apply` (e.g. `bg-(--fri-button-bg)`)
+- Group `@apply` by concern: layout → typography → interaction → transition
+- Always include `motion-reduce:transition-none` on transition `@apply`
 - React Aria states in CSS: `&[data-pressed]`, `&[data-hovered]`, `&[data-focused]`
 
 ## Data Flow
