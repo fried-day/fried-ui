@@ -5,15 +5,16 @@ import { notFound } from "next/navigation";
 import { CopyMarkdown } from "@/components/CopyMarkdown";
 import {
   ButtonAsLink,
+  ButtonBadgeLinks,
   ButtonCustomClass,
   ButtonDemo,
   ButtonDisabled,
+  ButtonIconOnly,
   ButtonPending,
   ButtonRadii,
   ButtonSizes,
   ButtonVariants,
   ButtonWithIcons,
-  ButtonIconOnly,
 } from "@/components/MdxComponents";
 import { Preview } from "@/components/Preview";
 import { source } from "@/lib/source";
@@ -29,6 +30,7 @@ interface SlugParamsProps {
 const mdxComponents = {
   ...defaultMdxComponents,
   ButtonAsLink,
+  ButtonBadgeLinks,
   ButtonCustomClass,
   ButtonDemo,
   ButtonDisabled,
