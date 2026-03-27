@@ -4,8 +4,6 @@ import { notFound } from "next/navigation";
 
 import { source } from "@/lib/source";
 
-import { generateMetadata, generateStaticParams } from "./page.utils";
-
 interface PageProps {
   params: Promise<SlugParamsProps>;
 }
@@ -35,4 +33,4 @@ async function Page(props: Readonly<PageProps>): Promise<React.JSX.Element> {
 
 export default Page;
 
-export { generateMetadata, generateStaticParams };
+export { generateMetadata, generateStaticParams } from "./page.utils";
