@@ -1,6 +1,6 @@
 .fri-button {
   @apply relative inline-flex items-center justify-center;
-  @apply font-medium whitespace-nowrap select-none no-highlight;
+  @apply leading-none font-medium whitespace-nowrap select-none no-highlight;
   @apply border border-transparent;
   @apply cursor-pointer;
 

@@ -24,32 +24,38 @@ fried-ui = scale ทั้งก้อน (Proportional Scaling):
 
 ## Formula
 
-```
+```text
 x = font-size (ตัวตั้ง)
 φ = 1.618
 
-Padding  = x
-Gap      = x / φ
-Radius   = Tailwind step ที่ scale ตาม size (rounded-md → rounded-lg → rounded-xl)
-Border   = 1px
-Height   = auto (มาจาก font + line-height + padding-block ไม่ hardcode)
+Padding Inline (px) = x
+Padding Block (py)  = x × (√φ / φ²) ≈ x × 0.485
+Gap                 = x / φ
+Radius              = scale ตาม size (rounded-md → rounded-lg → rounded-xl)
+Height              = auto (font-size + padding-block) — บังคับใช้ leading-none เสมอ
 ```
+
+## Constraint: leading-none
+
+ทุก component ที่ใช้ golden ratio ต้องใช้ `leading-none` (line-height: 1)
+
+เหตุผล: ถ้าใช้ default line-height (1.5) จะมี whitespace แฝงใน font ทำให้ height บวมเกินกว่าที่ φ กำหนด — padding-block ต้องเป็นตัวควบคุม vertical spacing ทั้งหมด
 
 ## Size Scale
 
-| Size | x (font) | Padding (x) | Gap (x/φ) |
-| ---- | -------- | ----------- | --------- |
-| sm   | 14px     | 14px        | 8.7px     |
-| md   | 16px     | 16px        | 9.9px     |
-| lg   | 20px     | 20px        | 12.4px    |
+| Size | x (font) | Padding Inline (x) | Padding Block (x×0.485) | Gap (x/φ) |
+| ---- | -------- | ------------------ | ----------------------- | --------- |
+| sm   | 14px     | 14px               | 6.79px                  | 8.65px    |
+| md   | 16px     | 16px               | 7.76px                  | 9.89px    |
+| lg   | 20px     | 20px               | 9.70px                  | 12.36px   |
 
-Tailwind snap:
+Tailwind snap (error margin < 1px ทุกค่า):
 
-| Size | Font        | Padding  | Gap       | Radius       | Padding Block |
-| ---- | ----------- | -------- | --------- | ------------ | ------------- |
-| sm   | `text-sm`   | `px-3.5` | `gap-2`   | `rounded-md` | `py-1.5`      |
-| md   | `text-base` | `px-4`   | `gap-2.5` | `rounded-lg` | `py-2`        |
-| lg   | `text-xl`   | `px-5`   | `gap-3`   | `rounded-xl` | `py-2.5`      |
+| Size | Font        | Padding Inline | Padding Block | Gap       | Radius       |
+| ---- | ----------- | -------------- | ------------- | --------- | ------------ |
+| sm   | `text-sm`   | `px-3.5`       | `py-1.5`      | `gap-2`   | `rounded-md` |
+| md   | `text-base` | `px-4`         | `py-2`        | `gap-2.5` | `rounded-lg` |
+| lg   | `text-xl`   | `px-5`         | `py-2.5`      | `gap-3`   | `rounded-xl` |
 
 ## ประโยชน์
 
@@ -60,6 +66,7 @@ Tailwind snap:
 ## How to Apply
 
 1. กำหนด x (font-size) ของแต่ละ size
-2. คำนวณ padding, gap, radius จาก φ
-3. Snap ไป Tailwind class ที่ใกล้สุด
-4. ห้าม hardcode height — ใช้ padding-block ให้ height มาจาก content + padding
+2. คำนวณ padding-inline (x), padding-block (x×0.485), gap (x/φ)
+3. Snap ไป Tailwind class ที่ใกล้สุด (error < 1px)
+4. ห้าม hardcode height — ใช้ leading-none + padding-block
+5. Radius ใช้ Tailwind step: sm→rounded-md, md→rounded-lg, lg→rounded-xl
