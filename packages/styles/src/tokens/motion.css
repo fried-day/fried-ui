@@ -1,4 +1,5 @@
 @theme {
+  --duration-instant: 100ms;
   --duration-fast: 150ms;
   --duration-normal: 200ms;
   --duration-slow: 300ms;

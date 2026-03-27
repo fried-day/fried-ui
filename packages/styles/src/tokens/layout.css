@@ -9,10 +9,14 @@
   --cursor-interactive: pointer;
   --cursor-disabled: not-allowed;
 
-  --z-dropdown: 1000;
-  --z-sticky: 1100;
-  --z-overlay: 1200;
-  --z-modal: 1300;
-  --z-popover: 1400;
-  --z-toast: 1500;
+  --z-floating: 10;
+  --z-navigation: 20;
+  --z-overlay: 30;
+  --z-dialog: 40;
+  --z-alert: 50;
+
+  --shadow-1: 0 1px 2px oklch(0% 0 0 / 10%);
+  --shadow-2: 0 2px 4px oklch(0% 0 0 / 10%);
+  --shadow-3: 0 3px 6px oklch(0% 0 0 / 10%);
+  --shadow-4: 0 5px 10px oklch(0% 0 0 / 10%);
 }

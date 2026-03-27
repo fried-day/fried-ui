@@ -46,7 +46,7 @@
   --color-info: oklch(68.5% 0.169 237.323);
   --color-info-hover: oklch(74.6% 0.16 232.661);
   --color-info-active: oklch(58.8% 0.158 241.966);
-  --color-info-foreground: #fff;
+  --color-info-foreground: oklch(14.5% 0 0);
 
   --color-background: #fff;
   --color-foreground: oklch(14.5% 0 0);
