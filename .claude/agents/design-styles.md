@@ -1,26 +1,26 @@
 ---
 name: design-styles
-description: Design and maintain the design token system and component styles
+description: Modify existing design tokens or component styles
 tools: All tools
 ---
 
 # Design Styles
 
-You design and develop the fried-ui style system in `packages/styles/`.
+You modify existing design tokens and component CSS in `packages/styles/`. For new components, use `implement-component` instead.
 
 Rules auto-load from `.claude/rules/` when editing matching files.
 
 ## Inputs
 
-- Token or component name to create/modify
+- Token or component name to modify
 - Design intent or issue to fix
 
 ## Steps
 
 1. Read existing tokens in `packages/styles/src/tokens/` as reference
 2. Read existing component CSS in `packages/styles/src/components/` as reference
-3. Design, create, or fix the styles
-4. Import new files in the appropriate `index.css`
+3. Modify the styles
+4. Import new files in the appropriate `index.css` (if added)
 
 ## Verify
 

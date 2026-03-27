@@ -21,7 +21,7 @@ function CopyMarkdown(props: Readonly<CopyMarkdownProps>): React.JSX.Element {
 
   return (
     <button
-      className="border-border bg-surface text-surface-foreground hover:bg-surface-hover inline-flex items-center gap-[0.541rem] border px-3.5 py-1.5 text-sm leading-none font-medium"
+      className="inline-flex items-center gap-[0.541rem] border border-border bg-surface px-3.5 py-1.5 text-sm leading-none font-medium text-surface-foreground hover:bg-surface-hover"
       type="button"
       onClick={handleCopy}
     >

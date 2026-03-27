@@ -1,12 +1,12 @@
 ---
 name: write-docs
-description: Write component documentation (MDX page + LLM file)
+description: Add or update documentation for an existing component
 tools: All tools
 ---
 
 # Write Docs
 
-You write documentation for fried-ui components.
+You write or update documentation for existing fried-ui components. For new components, use `implement-component` instead.
 
 Rules auto-load from `.claude/rules/` when editing matching files.
 
@@ -20,11 +20,11 @@ Rules auto-load from `.claude/rules/` when editing matching files.
 1. Read `.claude/rules/docs.md` for section order and heading patterns
 2. Read `button.mdx` and `public/llm/button.md` as canonical reference
 3. Read the component source and styles
-4. Create MDX page → `apps/docs/src/content/docs/components/{name}.mdx`
+4. Create or update MDX page → `apps/docs/src/content/docs/components/{name}.mdx`
 5. Create or update preview components → `apps/docs/src/components/MdxComponents.tsx`
 6. Register components in `apps/docs/src/app/docs/[[...slug]]/page.tsx` mdxComponents
-7. Create LLM file → `apps/docs/public/llm/{name}.md`
-8. Add entry to `apps/docs/public/llms.txt`
+7. Create or update LLM file → `apps/docs/public/llm/{name}.md`
+8. Add or update entry in `apps/docs/public/llms.txt`
 
 ## Verify
 

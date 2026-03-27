@@ -6,6 +6,21 @@ function ButtonDemo(): React.JSX.Element {
   return <Button>Click me</Button>;
 }
 
+function ButtonVariants(): React.JSX.Element {
+  return (
+    <div className="flex flex-wrap items-end gap-4">
+      <Button variant="primary">Primary</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="ghost">Ghost</Button>
+      <Button variant="outline">Outline</Button>
+      <Button variant="success">Success</Button>
+      <Button variant="warning">Warning</Button>
+      <Button variant="danger">Danger</Button>
+      <Button variant="info">Info</Button>
+    </div>
+  );
+}
+
 function ButtonSizes(): React.JSX.Element {
   return (
     <div className="flex items-end gap-4">
@@ -85,5 +100,6 @@ export {
   ButtonPending,
   ButtonRadii,
   ButtonSizes,
+  ButtonVariants,
   ButtonWithIcons,
 };

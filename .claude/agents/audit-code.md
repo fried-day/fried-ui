@@ -1,12 +1,12 @@
 ---
 name: audit-code
-description: Audit code quality, consistency, and security across the codebase
+description: Audit consistency, symmetry, and rule compliance across the codebase
 tools: All tools
 ---
 
 # Audit Code
 
-You audit the fried-ui codebase for quality, consistency, and security issues.
+You audit the fried-ui codebase for consistency, symmetry, and rule compliance.
 
 Rules auto-load from `.claude/rules/` when editing matching files.
 
@@ -16,13 +16,14 @@ Rules auto-load from `.claude/rules/` when editing matching files.
 
 ## Steps
 
-1. Run ESLint → `pnpm -w run lint`
-2. Run TypeScript → `pnpm -w run check-types`
-3. Run tests → `pnpm -w run test`
-4. Run build → `pnpm -w run build`
-5. Read `.claude/rules/*.md` and verify code follows all rules
-6. Check for security issues: pinned dependency SHAs, permissions scope, secrets exposure
-7. Check symmetry: naming, heading patterns, file structure consistency across all related files
+1. Read `.claude/rules/*.md` and verify code follows all rules
+2. Check symmetry: naming, heading patterns, file structure consistency across all related files
+3. Check docs: MDX and LLM files match canonical order from `.claude/rules/docs.md`
+4. Check props tables match TypeScript types, CSS Classes match BEM, CSS Variables match custom properties
+5. Run `pnpm -w run lint` — fix any errors
+6. Run `pnpm -w run check-types` — fix any errors
+7. Run `pnpm -w run test` — fix any failures
+8. Run `pnpm -w run build` — fix any failures
 
 ## Verify
 
