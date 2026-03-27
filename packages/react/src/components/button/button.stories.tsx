@@ -180,6 +180,10 @@ const Pending: Story = {
   },
 };
 
-export { Default, Variants, Sizes, Radii, Disabled, Pending };
+const RenderProps: Story = {
+  render: () => <Button>{({ isHovered }) => (isHovered ? "Hovering!" : "Hover me")}</Button>,
+};
+
+export { Default, Variants, Sizes, Radii, Disabled, Pending, RenderProps };
 
 export default meta;

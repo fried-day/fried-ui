@@ -1,3 +1,5 @@
+import { createRef } from "react";
+
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
@@ -81,5 +83,16 @@ describe("Button", () => {
   it("passes through additional props", () => {
     render(<Button data-testid="custom-btn">Props</Button>);
     expect(screen.getByTestId("custom-btn")).toBeInTheDocument();
+  });
+
+  it("forwards ref to the button element", () => {
+    const ref = createRef<HTMLButtonElement>();
+    render(<Button ref={ref}>Ref</Button>);
+    expect(ref.current).toBeInstanceOf(HTMLButtonElement);
+  });
+
+  it("supports render props children", () => {
+    render(<Button>{({ isPressed }) => (isPressed ? "Pressed" : "Idle")}</Button>);
+    expect(screen.getByRole("button", { name: "Idle" })).toBeInTheDocument();
   });
 });
