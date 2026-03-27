@@ -1,9 +1,9 @@
 @custom-variant dark (&:is(.dark, [data-theme="dark"]) *);
 
 @theme {
-  --color-primary: var(--color-branding-500);
-  --color-primary-hover: var(--color-branding-600);
-  --color-primary-active: var(--color-branding-700);
+  --color-primary: var(--color-fried-lime-500);
+  --color-primary-hover: var(--color-fried-lime-600);
+  --color-primary-active: var(--color-fried-lime-700);
   --color-primary-foreground: var(--color-neutral-950);
 
   --color-secondary: var(--color-neutral-100);
@@ -11,24 +11,24 @@
   --color-secondary-active: var(--color-neutral-300);
   --color-secondary-foreground: var(--color-neutral-900);
 
-  --color-success: var(--color-green-600);
-  --color-success-hover: var(--color-green-700);
-  --color-success-active: var(--color-green-800);
+  --color-success: var(--color-fried-green-600);
+  --color-success-hover: var(--color-fried-green-700);
+  --color-success-active: var(--color-fried-green-800);
   --color-success-foreground: var(--color-white);
 
-  --color-warning: var(--color-amber-500);
-  --color-warning-hover: var(--color-amber-600);
-  --color-warning-active: var(--color-amber-700);
+  --color-warning: var(--color-fried-yellow-500);
+  --color-warning-hover: var(--color-fried-yellow-600);
+  --color-warning-active: var(--color-fried-yellow-700);
   --color-warning-foreground: var(--color-neutral-950);
 
-  --color-danger: var(--color-red-600);
-  --color-danger-hover: var(--color-red-700);
-  --color-danger-active: var(--color-red-800);
+  --color-danger: var(--color-fried-red-600);
+  --color-danger-hover: var(--color-fried-red-700);
+  --color-danger-active: var(--color-fried-red-800);
   --color-danger-foreground: var(--color-white);
 
-  --color-info: var(--color-blue-600);
-  --color-info-hover: var(--color-blue-700);
-  --color-info-active: var(--color-blue-800);
+  --color-info: var(--color-fried-blue-600);
+  --color-info-hover: var(--color-fried-blue-700);
+  --color-info-active: var(--color-fried-blue-800);
   --color-info-foreground: var(--color-white);
 
   --color-background: var(--color-white);
@@ -53,7 +53,7 @@
   --color-heading: var(--color-neutral-950);
   --color-code: var(--color-neutral-800);
   --color-code-background: var(--color-neutral-100);
-  --color-mark: var(--color-amber-200);
+  --color-mark: var(--color-fried-yellow-200);
   --color-mark-foreground: var(--color-neutral-950);
 
   --color-border: var(--color-neutral-200);
@@ -76,9 +76,9 @@
   :root,
   .light,
   [data-theme="light"] {
-    --color-primary: var(--color-branding-500);
-    --color-primary-hover: var(--color-branding-600);
-    --color-primary-active: var(--color-branding-700);
+    --color-primary: var(--color-fried-lime-500);
+    --color-primary-hover: var(--color-fried-lime-600);
+    --color-primary-active: var(--color-fried-lime-700);
     --color-primary-foreground: var(--color-neutral-950);
 
     --color-secondary: var(--color-neutral-100);
@@ -86,24 +86,24 @@
     --color-secondary-active: var(--color-neutral-300);
     --color-secondary-foreground: var(--color-neutral-900);
 
-    --color-success: var(--color-green-600);
-    --color-success-hover: var(--color-green-700);
-    --color-success-active: var(--color-green-800);
+    --color-success: var(--color-fried-green-600);
+    --color-success-hover: var(--color-fried-green-700);
+    --color-success-active: var(--color-fried-green-800);
     --color-success-foreground: var(--color-white);
 
-    --color-warning: var(--color-amber-500);
-    --color-warning-hover: var(--color-amber-600);
-    --color-warning-active: var(--color-amber-700);
+    --color-warning: var(--color-fried-yellow-500);
+    --color-warning-hover: var(--color-fried-yellow-600);
+    --color-warning-active: var(--color-fried-yellow-700);
     --color-warning-foreground: var(--color-neutral-950);
 
-    --color-danger: var(--color-red-600);
-    --color-danger-hover: var(--color-red-700);
-    --color-danger-active: var(--color-red-800);
+    --color-danger: var(--color-fried-red-600);
+    --color-danger-hover: var(--color-fried-red-700);
+    --color-danger-active: var(--color-fried-red-800);
     --color-danger-foreground: var(--color-white);
 
-    --color-info: var(--color-blue-600);
-    --color-info-hover: var(--color-blue-700);
-    --color-info-active: var(--color-blue-800);
+    --color-info: var(--color-fried-blue-600);
+    --color-info-hover: var(--color-fried-blue-700);
+    --color-info-active: var(--color-fried-blue-800);
     --color-info-foreground: var(--color-white);
 
     --color-background: var(--color-white);
@@ -128,7 +128,7 @@
     --color-heading: var(--color-neutral-950);
     --color-code: var(--color-neutral-800);
     --color-code-background: var(--color-neutral-100);
-    --color-mark: var(--color-amber-200);
+    --color-mark: var(--color-fried-yellow-200);
     --color-mark-foreground: var(--color-neutral-950);
 
     --color-border: var(--color-neutral-200);
@@ -149,9 +149,9 @@
 
   .dark,
   [data-theme="dark"] {
-    --color-primary: var(--color-branding-500);
-    --color-primary-hover: var(--color-branding-600);
-    --color-primary-active: var(--color-branding-700);
+    --color-primary: var(--color-fried-lime-500);
+    --color-primary-hover: var(--color-fried-lime-600);
+    --color-primary-active: var(--color-fried-lime-700);
     --color-primary-foreground: var(--color-neutral-950);
 
     --color-secondary: var(--color-neutral-800);
@@ -159,24 +159,24 @@
     --color-secondary-active: var(--color-neutral-950);
     --color-secondary-foreground: var(--color-neutral-100);
 
-    --color-success: var(--color-green-500);
-    --color-success-hover: var(--color-green-600);
-    --color-success-active: var(--color-green-700);
+    --color-success: var(--color-fried-green-500);
+    --color-success-hover: var(--color-fried-green-600);
+    --color-success-active: var(--color-fried-green-700);
     --color-success-foreground: var(--color-white);
 
-    --color-warning: var(--color-amber-400);
-    --color-warning-hover: var(--color-amber-500);
-    --color-warning-active: var(--color-amber-600);
+    --color-warning: var(--color-fried-yellow-400);
+    --color-warning-hover: var(--color-fried-yellow-500);
+    --color-warning-active: var(--color-fried-yellow-600);
     --color-warning-foreground: var(--color-neutral-950);
 
-    --color-danger: var(--color-red-500);
-    --color-danger-hover: var(--color-red-600);
-    --color-danger-active: var(--color-red-700);
+    --color-danger: var(--color-fried-red-500);
+    --color-danger-hover: var(--color-fried-red-600);
+    --color-danger-active: var(--color-fried-red-700);
     --color-danger-foreground: var(--color-white);
 
-    --color-info: var(--color-blue-500);
-    --color-info-hover: var(--color-blue-600);
-    --color-info-active: var(--color-blue-700);
+    --color-info: var(--color-fried-blue-500);
+    --color-info-hover: var(--color-fried-blue-600);
+    --color-info-active: var(--color-fried-blue-700);
     --color-info-foreground: var(--color-white);
 
     --color-background: var(--color-neutral-950);
@@ -201,8 +201,8 @@
     --color-heading: var(--color-neutral-50);
     --color-code: var(--color-neutral-200);
     --color-code-background: var(--color-neutral-800);
-    --color-mark: var(--color-amber-800);
-    --color-mark-foreground: var(--color-amber-100);
+    --color-mark: var(--color-fried-yellow-800);
+    --color-mark-foreground: var(--color-fried-yellow-100);
 
     --color-border: var(--color-neutral-700);
     --color-border-hover: var(--color-neutral-600);
