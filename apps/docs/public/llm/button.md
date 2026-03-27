@@ -11,7 +11,7 @@ pnpm add @fried-ui/react
 ## Import
 
 ```tsx
-import { Button } from "@fried-ui/react/button";
+import { Button } from "@fried-ui/react";
 ```
 
 ## Props
