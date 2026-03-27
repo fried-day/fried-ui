@@ -15,7 +15,7 @@ export type ButtonProps = {
   children?: ReactNode | ((renderProps: { isPending: boolean }) => ReactNode);
 } & Omit<RACButtonProps, "className" | "children">;
 
-type ButtonVariant = "primary";
+type ButtonVariant = "primary" | "secondary" | "ghost" | "outline" | "success" | "warning" | "danger" | "info";
 type ButtonSize = "sm" | "md" | "lg" | "xl";
 type ButtonRadius = "none" | "sm" | "md" | "lg" | "xl" | "full";
 
