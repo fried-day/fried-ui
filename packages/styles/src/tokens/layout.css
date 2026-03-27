@@ -1,8 +1,7 @@
 @theme {
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-full: 9999px;
+  --radius-small: 0.25rem;
+  --radius-medium: 0.5rem;
+  --radius-large: 0.75rem;
 
   --disabled-opacity: 0.5;
   --ring-offset-width: 2px;
