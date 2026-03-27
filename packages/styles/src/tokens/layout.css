@@ -1,7 +1,6 @@
 @theme {
-  --radius-small: 0.25rem;
-  --radius-medium: 0.5rem;
-  --radius-large: 0.75rem;
+  --radius: 0.5rem;
+  --field-radius: calc(var(--radius) * 1.5);
 
   --disabled-opacity: 0.5;
   --ring-offset-width: 2px;
