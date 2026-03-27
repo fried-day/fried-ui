@@ -59,21 +59,8 @@ import { Button } from "@fried-ui/react/button";
 </Preview>
 
 ```tsx
-<Button onPress={() => console.log("pressed")}>Click me</Button>
+<Button>Click me</Button>
 ```
-
-## Design Anatomy
-
-Every spacing value is derived from the **golden ratio (φ = 1.618)** using font-size as the base unit `x`:
-
-| Property       | Formula   | sm (14px) | md (16px)   | lg (20px) | xl (24px)  |
-| -------------- | --------- | --------- | ----------- | --------- | ---------- |
-| Font           | x         | `text-sm` | `text-base` | `text-xl` | `text-2xl` |
-| Padding Inline | x         | 14px      | 16px        | 20px      | 24px       |
-| Padding Block  | x × 0.485 | 6px       | 8px         | 10px      | 12px       |
-| Gap            | x / φ     | 8.65px    | 9.89px      | 12.36px   | 14.83px    |
-
-Radius and font-size are **independent** — size controls structure (spacing via φ), radius controls style (branding).
 
 ## Sizes
 
@@ -168,15 +155,30 @@ Use `className` to add layout or typography utilities. Component visual styles (
 <Button className="tracking-wider uppercase">Uppercase</Button>
 ```
 
+## Design Anatomy
+
+Every spacing value is derived from the **golden ratio (φ = 1.618)** using font-size as the base unit `x`:
+
+| Property       | Formula   | sm (14px) | md (16px)   | lg (20px) | xl (24px)  |
+| -------------- | --------- | --------- | ----------- | --------- | ---------- |
+| Font           | x         | `text-sm` | `text-base` | `text-xl` | `text-2xl` |
+| Padding Inline | x         | 14px      | 16px        | 20px      | 24px       |
+| Padding Block  | x × 0.485 | 6px       | 8px         | 10px      | 12px       |
+| Gap            | x / φ     | 8.65px    | 9.89px      | 12.36px   | 14.83px    |
+
+Radius and font-size are **independent** — size controls structure (spacing via φ), radius controls style (branding).
+
 ## Accessibility
 
 Built on [React Aria Button](https://react-spectrum.adobe.com/react-aria/Button.html) — accessible out of the box:
 
-- **Keyboard** — `Enter` and `Space` trigger press events
-- **Focus management** — visible focus ring on keyboard navigation
-- **Screen reader** — announces button role, label, disabled, and pending states
-- **Touch** — optimized press handling with cancel on drag
-- **Reduced motion** — respects `prefers-reduced-motion`
+| Feature          | Description                                                |
+| ---------------- | ---------------------------------------------------------- |
+| Keyboard         | `Enter` and `Space` trigger press events                   |
+| Focus management | Visible focus ring on keyboard navigation                  |
+| Screen reader    | Announces button role, label, disabled, and pending states |
+| Touch            | Optimized press handling with cancel on drag               |
+| Reduced motion   | Respects `prefers-reduced-motion` automatically            |
 
 ## API Reference
 
