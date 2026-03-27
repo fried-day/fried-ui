@@ -21,7 +21,7 @@ pnpm add @fried-ui/react @fried-ui/styles
 ```
 
 ```tsx
-import { Button } from "@fried-ui/react/button";
+import { Button } from "@fried-ui/react";
 
 <Button variant="primary" onPress={() => alert("Hello!")}>
   Click me

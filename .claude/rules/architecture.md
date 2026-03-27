@@ -25,8 +25,8 @@ tailwindcss v4     ← Styling engine
 
 @fried-ui/react (depends on react-aria)
   exports:
-    "."          → barrel export
-    "./{name}"   → individual component
+    "."          → barrel export (recommended import path)
+    "./{name}"   → individual component (internal, not for docs/examples)
     "./utils/cn" → cn utility
 ```
 
