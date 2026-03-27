@@ -9,19 +9,45 @@ description: An accessible button component built on React Aria with focus manag
 import { Button } from "@fried-ui/react/button";
 ```
 
-### Usage
+## Usage
 
 ```tsx
 <Button>Click me</Button>
 ```
 
-### Disabled
+## Sizes
+
+The `size` prop controls padding, gap, and font-size using golden ratio proportional scaling.
+
+```tsx
+<Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
+<Button size="lg">Large</Button>
+<Button size="xl">Extra Large</Button>
+```
+
+## Radius
+
+The `radius` prop controls border-radius independently from size.
+
+```tsx
+<Button radius="none">None</Button>
+<Button radius="sm">Small</Button>
+<Button radius="md">Medium</Button>
+<Button radius="lg">Large</Button>
+<Button radius="xl">XL</Button>
+<Button radius="full">Full</Button>
+```
+
+## Disabled
 
 ```tsx
 <Button isDisabled>Disabled</Button>
 ```
 
-### Pending
+## Pending
+
+Shows a loading spinner and disables press/hover events.
 
 ```tsx
 <Button isPending>Saving...</Button>
@@ -29,12 +55,44 @@ import { Button } from "@fried-ui/react/button";
 
 ## API Reference
 
-| Prop         | Type                      | Default     | Description            |
-| ------------ | ------------------------- | ----------- | ---------------------- |
-| `variant`    | `"primary"`               | `"primary"` | Visual style           |
-| `size`       | `"md"`                    | `"md"`      | Button size            |
-| `isDisabled` | `boolean`                 | `false`     | Disables the button    |
-| `isPending`  | `boolean`                 | `false`     | Shows loading spinner  |
-| `onPress`    | `(e: PressEvent) => void` | -           | Press event handler    |
-| `className`  | `string`                  | -           | Additional CSS classes |
-| `children`   | `ReactNode`               | -           | Button content         |
+### Button Props
+
+| Prop               | Type                                               | Default     | Description                                |
+| ------------------ | -------------------------------------------------- | ----------- | ------------------------------------------ |
+| `variant`          | `"primary"`                                        | `"primary"` | The visual variant of the button           |
+| `size`             | `"sm" \| "md" \| "lg" \| "xl"`                     | `"md"`      | The size of the button                     |
+| `radius`           | `"none" \| "sm" \| "md" \| "lg" \| "xl" \| "full"` | `"md"`      | The border radius of the button            |
+| `isDisabled`       | `boolean`                                          | `false`     | Whether the button is disabled             |
+| `isPending`        | `boolean`                                          | `false`     | Whether the button shows a loading spinner |
+| `onPress`          | `(e: PressEvent) => void`                          | -           | Handler called when the button is pressed  |
+| `onPressStart`     | `(e: PressEvent) => void`                          | -           | Handler called when press starts           |
+| `onPressEnd`       | `(e: PressEvent) => void`                          | -           | Handler called when press ends             |
+| `onPressChange`    | `(isPressed: boolean) => void`                     | -           | Handler called when press state changes    |
+| `onHoverStart`     | `(e: HoverEvent) => void`                          | -           | Handler called when hover starts           |
+| `onHoverEnd`       | `(e: HoverEvent) => void`                          | -           | Handler called when hover ends             |
+| `onHoverChange`    | `(isHovering: boolean) => void`                    | -           | Handler called when hover state changes    |
+| `onFocus`          | `(e: FocusEvent) => void`                          | -           | Handler called when focused                |
+| `onBlur`           | `(e: FocusEvent) => void`                          | -           | Handler called when blurred                |
+| `onFocusChange`    | `(isFocused: boolean) => void`                     | -           | Handler called when focus state changes    |
+| `onKeyDown`        | `(e: KeyboardEvent) => void`                       | -           | Handler called on key down                 |
+| `onKeyUp`          | `(e: KeyboardEvent) => void`                       | -           | Handler called on key up                   |
+| `type`             | `"button" \| "submit" \| "reset"`                  | `"button"`  | The button type attribute                  |
+| `form`             | `string`                                           | -           | The form element to associate with         |
+| `formAction`       | `string`                                           | -           | The URL for form submission                |
+| `autoFocus`        | `boolean`                                          | `false`     | Whether to auto focus on mount             |
+| `aria-label`       | `string`                                           | -           | Accessible label                           |
+| `aria-labelledby`  | `string`                                           | -           | ID of the labelling element                |
+| `aria-describedby` | `string`                                           | -           | ID of the describing element               |
+| `className`        | `string`                                           | -           | Additional CSS classes                     |
+| `children`         | `ReactNode \| (renderProps) => ReactNode`          | -           | Button content                             |
+
+### Render Props (CSS Selectors)
+
+| Render Prop      | CSS Selector           | Description                 |
+| ---------------- | ---------------------- | --------------------------- |
+| `isHovered`      | `[data-hovered]`       | Mouse hover state           |
+| `isPressed`      | `[data-pressed]`       | Pressed/active state        |
+| `isFocused`      | `[data-focused]`       | Focused (mouse or keyboard) |
+| `isFocusVisible` | `[data-focus-visible]` | Keyboard focused only       |
+| `isDisabled`     | `[data-disabled]`      | Disabled state              |
+| `isPending`      | `[data-pending]`       | Pending/loading state       |
