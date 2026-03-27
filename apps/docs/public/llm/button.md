@@ -21,6 +21,7 @@ import { Button } from "@fried-ui/react/button";
 | `variant`          | `"primary" \| "secondary" \| "ghost" \| "outline" \| "success" \| "warning" \| "danger" \| "info"` | `"primary"` | Visual variant                          |
 | `size`             | `"sm" \| "md" \| "lg" \| "xl"`                                                                     | `"md"`      | Size — controls padding, gap, font-size |
 | `radius`           | `"none" \| "sm" \| "md" \| "lg" \| "xl" \| "full"`                                                 | `"md"`      | Border radius (independent from size)   |
+| `isIconOnly`       | `boolean`                                                                                          | `false`     | Icon-only square button                 |
 | `isDisabled`       | `boolean`                                                                                          | `false`     | Disabled state                          |
 | `isPending`        | `boolean`                                                                                          | `false`     | Loading spinner, disables interaction   |
 | `onPress`          | `(e: PressEvent) => void`                                                                          | -           | Press handler (preferred over onClick)  |
@@ -80,6 +81,7 @@ import { Button } from "@fried-ui/react/button";
 | `fri-button--radius-lg`   | Large border radius       |
 | `fri-button--radius-xl`   | Extra large border radius |
 | `fri-button--radius-full` | Full (pill) border radius |
+| `fri-button--icon-only`   | Icon-only square button   |
 | `fri-button--pending`     | Pending/loading state     |
 | `fri-button__spinner`     | Internal spinner element  |
 
@@ -145,6 +147,16 @@ Icons use `size-match-font` to match the font size. Gap scales via golden ratio.
 <Button>
   <ChevronRightIcon className="size-match-font" />
   Next
+</Button>
+```
+
+### Icon Only
+
+Square button for icon-only actions. Always provide `aria-label`.
+
+```tsx
+<Button isIconOnly aria-label="Next">
+  <ArrowRightIcon className="size-match-font" />
 </Button>
 ```
 

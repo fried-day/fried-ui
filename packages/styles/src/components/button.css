@@ -112,6 +112,26 @@
   @apply gap-[0.927rem] px-6 py-3 text-2xl;
 }
 
+.fri-button--icon-only {
+  @apply aspect-square justify-center gap-0 p-0;
+}
+
+.fri-button--icon-only.fri-button--sm {
+  @apply w-[1.625rem];
+}
+
+.fri-button--icon-only.fri-button--md {
+  @apply w-8;
+}
+
+.fri-button--icon-only.fri-button--lg {
+  @apply w-10;
+}
+
+.fri-button--icon-only.fri-button--xl {
+  @apply w-12;
+}
+
 .fri-button--radius-none {
   @apply rounded-none;
 }
