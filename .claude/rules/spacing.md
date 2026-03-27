@@ -17,7 +17,7 @@ x = font-size (base unit)
 
 Padding Inline = x
 Padding Block  = x × 0.485
-Gap            = x / φ (use exact value)
+Gap            = x / φ (use exact rem value)
 Height         = auto — requires leading-none
 ```
 

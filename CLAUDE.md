@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Prerequisites
 
-- **Node 22** (see `.nvmrc`) — pnpm only (enforced via `preinstall` script)
+- **Node 18+** (`.nvmrc` recommends 22) — pnpm only (enforced via `preinstall` script)
 
 ## Build & Dev Commands
 
@@ -15,7 +15,8 @@ pnpm -w run dev           # Run all apps in dev mode (turbo)
 pnpm -w run lint          # Lint all apps and packages (turbo)
 pnpm -w run test          # Run all tests (turbo)
 pnpm -w run check-types   # Type-check all (turbo)
-pnpm -w run format        # Format with Prettier
+pnpm -w run format        # Check formatting with Prettier
+pnpm -w run format:fix    # Fix formatting with Prettier
 
 # Filter to a single app/package
 pnpm --filter=docs dev
@@ -36,6 +37,7 @@ cd packages/react && npx vitest run src/components/{name}/{name}.test.tsx
 - **`apps/storybook`** — Storybook 10 with Vite
 - **`packages/react`** (`@fried-ui/react`) — Component library, built with tsup
 - **`packages/styles`** (`@fried-ui/styles`) — Pure CSS: design tokens + component BEM styles
+- **`packages/mcp`** (`@fried-ui/mcp`) — MCP server for components, design tokens, and API docs
 - **`packages/quality`** (`@repo/quality`) — ESLint configs + shared tsconfigs
 - **`packages/vitest`** (`@fried-ui/vitest`) — Shared Vitest configs
 
@@ -44,6 +46,17 @@ cd packages/react && npx vitest run src/components/{name}/{name}.test.tsx
 - Design rules auto-load from `.claude/rules/` when editing matching files
 - **No `eslint-disable`** — always fix the source code
 - **No `@ts-nocheck`** / `@ts-ignore` / `@ts-expect-error` — always fix the type error
+- **All spacing values use rem** — never px for component dimensions
+
+### Symmetry Principle
+
+Every new file, agent, rule, component, or docs page must be **symmetrical** with existing ones:
+
+- **Naming** — follow the exact same pattern (casing, prefix, suffix) as siblings
+- **Headings** — same structure, same order, no suffixes on some but not others
+- **Content pattern** — if similar sections have desc, all have desc; if none have desc, none do
+- **File structure** — agents use `# {Title}` → `## Inputs` → `## Steps` → `## Verify`; rules use `# {Noun}` → domain-specific sections
+- **Audit after creation** — always verify new files match the established pattern of their siblings
 
 ### Git Conventions
 

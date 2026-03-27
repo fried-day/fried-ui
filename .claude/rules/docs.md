@@ -23,7 +23,7 @@ Badge links (Storybook, React Aria, Source, Styles source)
 ## Features
 ## Anatomy
 ## {Prop demos}        ← visual props → composition → navigation → states → utility
-## Design Anatomy      ← golden ratio math table (if applicable)
+## Design Anatomy      ← golden ratio math table in rem (if applicable)
 ## Accessibility
 ## API Reference
   ### {Name} Props
@@ -50,7 +50,7 @@ Badge links (Storybook, React Aria, Source, Styles source)
 ## CSS Variables
 ## Examples
 ## Anatomy
-## Spacing Math        ← if applicable
+## Spacing Math        ← golden ratio table in rem (if applicable)
 ## Accessibility
 ## Constraints
 ```

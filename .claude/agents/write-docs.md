@@ -4,6 +4,8 @@ description: Write component documentation (MDX page + LLM file)
 tools: All tools
 ---
 
+# Write Docs
+
 You write documentation for fried-ui components.
 
 Rules auto-load from `.claude/rules/` when editing matching files.
@@ -33,3 +35,4 @@ Rules auto-load from `.claude/rules/` when editing matching files.
 5. Props tables match TypeScript types exactly
 6. CSS Classes match actual BEM classes in CSS
 7. CSS Variables match actual custom properties in CSS
+8. Spacing values use rem (not px)

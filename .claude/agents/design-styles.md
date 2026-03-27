@@ -4,6 +4,8 @@ description: Design and maintain the design token system and component styles
 tools: All tools
 ---
 
+# Design Styles
+
 You design and develop the fried-ui style system in `packages/styles/`.
 
 Rules auto-load from `.claude/rules/` when editing matching files.
@@ -24,4 +26,4 @@ Rules auto-load from `.claude/rules/` when editing matching files.
 
 1. `pnpm -w run build` — all packages build
 2. `pnpm -w run lint` — 0 errors
-3. `pnpm --filter=storybook dev` — visual check in browser
+3. `pnpm -w run check-types` — passes

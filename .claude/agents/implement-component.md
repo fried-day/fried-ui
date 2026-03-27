@@ -4,6 +4,8 @@ description: Implement a new component for @fried-ui/react
 tools: All tools
 ---
 
+# Implement Component
+
 You implement components for fried-ui.
 
 Rules auto-load from `.claude/rules/` when editing matching files.
