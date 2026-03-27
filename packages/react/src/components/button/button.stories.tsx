@@ -181,7 +181,7 @@ const Pending: Story = {
 };
 
 const RenderProps: Story = {
-  render: () => <Button>{({ isHovered }) => (isHovered ? "Hovering!" : "Hover me")}</Button>,
+  render: (): React.JSX.Element => <Button>{({ isHovered }): string => (isHovered ? "Hovering!" : "Hover me")}</Button>,
 };
 
 export { Default, Variants, Sizes, Radii, Disabled, Pending, RenderProps };
