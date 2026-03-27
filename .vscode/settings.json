@@ -7,6 +7,8 @@
   "files.associations": { "*.css": "tailwindcss" },
   "editor.quickSuggestions": { "strings": "on" },
   "css.lint.unknownAtRules": "ignore",
+  "tailwindCSS.includeLanguages": { "css": "css" },
+  "tailwindCSS.experimental.configFile": "packages/styles/src/index.css",
   "editor.codeActionsOnSave": { "source.fixAll.eslint": "explicit" },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
