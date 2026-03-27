@@ -11,7 +11,7 @@ paths:
 
 ```text
 @fried-ui/react    ← React components (behavior + accessibility)
-@fried-ui/styles   ← CSS: design tokens + component styles (BEM)
+@fried-ui/styles   ← Pure CSS: design tokens + component styles (BEM)
 react-aria-components ← Accessibility primitives
 tailwindcss v4     ← Styling engine
 ```
@@ -19,7 +19,7 @@ tailwindcss v4     ← Styling engine
 ## Package Boundary
 
 ```text
-@fried-ui/styles (ไม่ depend on React)
+@fried-ui/styles (no React dependency — multi-framework)
   exports:
     "." → CSS (tokens + component BEM classes)
 
@@ -32,66 +32,51 @@ tailwindcss v4     ← Styling engine
 
 ## Component Anatomy
 
-### Layer 1: Design Tokens → `packages/styles/src/tokens/`
+1. **Design Tokens** → `packages/styles/src/tokens/` — `@theme` block
+2. **Component Styles** → `packages/styles/src/components/{name}.css` — BEM + `@apply` + CSS custom properties
+3. **React Component** → `packages/react/src/components/{name}/` — wrap React Aria
 
-ทุก token อยู่ใน `@theme` — Tailwind v4 generate CSS variables ให้
-
-### Layer 2: Component Styles → `packages/styles/src/components/{name}.css`
-
-BEM classes + `@apply` + CSS custom properties สำหรับ variant colors
-
-### Layer 3: React Component → `packages/react/src/components/{name}/`
+## File Structure
 
 ```text
-{Name}.tsx           # "use client", wrap React Aria component
-{name}.test.tsx      # Vitest + React Testing Library
-{name}.stories.tsx   # Storybook 10
+{Name}.tsx           # "use client", wrap React Aria
+{name}.test.tsx      # Vitest + RTL
+{name}.stories.tsx   # Storybook
 index.ts             # re-exports
 ```
+
+## BEM Naming (`fri-` prefix)
+
+```text
+.fri-{component}              → base
+.fri-{component}--{variant}   → variant modifier
+.fri-{component}--{size}      → size modifier
+.fri-{component}--{state}     → state modifier
+.fri-{component}__{element}   → internal element
+```
+
+## Styling Rules
+
+- All visual styles live in CSS (BEM classes), never inline Tailwind in components
+- Components only use `cn()` to compose BEM class names
+- CSS uses `@apply` for Tailwind utilities + `var()` for dynamic values
+- React Aria states in CSS: `&[data-pressed]`, `&[data-hovered]`, `&[data-focused]`
 
 ## Data Flow
 
 ```text
 props → destructure { variant, size, className, children, ...rest }
-rest  → forward ไป React Aria
+rest  → forward to React Aria
 className → cn("fri-{name}", "fri-{name}--{variant}", "fri-{name}--{size}", cls)
-children  → composeRenderProps → wrap กับ internal UI
+children  → composeRenderProps → wrap with internal UI
 ```
 
-## Type Pattern
+## Checklist: New Component
 
-```typescript
-// Public type ก่อน
-export type ButtonProps = { ... } & Omit<RACButtonProps, "className" | "children">;
-// Internal type หลัง
-type ButtonVariant = "primary";
-```
-
-## Import Pattern
-
-```typescript
-import type { ReactNode } from "react";
-import { Button as RACButton, type ButtonProps as RACButtonProps, composeRenderProps } from "react-aria-components";
-import { cn } from "src/utils/cn";
-```
-
-## BEM Naming
-
-```text
-.fri-{component}              → base
-.fri-{component}--{variant}   → variant
-.fri-{component}--{size}      → size
-.fri-{component}--{state}     → state
-```
-
-React Aria states ใน CSS: `&[data-pressed]`, `&[data-hovered]`, `&[data-focused]`
-
-## Checklist: Component ใหม่
-
-1. สร้าง CSS → `packages/styles/src/components/{name}.css`
+1. Create CSS → `packages/styles/src/components/{name}.css`
 2. Import → `packages/styles/src/components/index.css`
-3. สร้าง component → `packages/react/src/components/{name}/`
+3. Create component → `packages/react/src/components/{name}/`
 4. Re-export → `packages/react/src/components/index.ts`
-5. เพิ่ม tsup entry → `packages/react/tsup.config.ts`
-6. เพิ่ม export map → `packages/react/package.json`
-7. Build + lint + test ผ่าน
+5. Add tsup entry → `packages/react/tsup.config.ts`
+6. Add export map → `packages/react/package.json`
+7. Build + lint + test must pass

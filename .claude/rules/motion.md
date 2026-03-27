@@ -9,21 +9,10 @@ paths:
 
 ## Duration
 
-```text
-Instant = 100ms  (hover, toggle)
-Fast    = 150ms  (active, focus)
-Normal  = 200ms  (expand, slide)
-Slow    = 300ms  (modal, page)
-```
-
-ทุกค่าต่ำกว่า Doherty Threshold (400ms)
+All values must be below the Doherty Threshold (400ms)
+See actual values in `packages/styles/src/tokens/motion.css`
 
 ## Easing
 
-```text
-ease-smooth = cubic-bezier(0.4, 0, 0.2, 1)  ← default
-ease-in     = cubic-bezier(0.4, 0, 1, 1)     ← exit
-ease-out    = cubic-bezier(0, 0, 0.2, 1)     ← entrance
-```
-
-ห้ามใช้ linear
+Never use linear — always use easing curves from tokens
+See actual values in `packages/styles/src/tokens/motion.css`

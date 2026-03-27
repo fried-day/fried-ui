@@ -7,35 +7,32 @@ paths:
 
 # Spacing (Golden Ratio)
 
-## x = font-size คือตัวตั้ง
+## x = font-size is the base unit
 
-เมื่อ size เปลี่ยน x ต้องเปลี่ยนด้วย — Proportional Scaling
+When size changes, x must change too — Proportional Scaling
 
 ```text
-x = font-size (ตัวตั้ง)
+x = font-size (base unit)
 φ = 1.618
 
 Padding Inline = x
 Padding Block  = x × 0.485
-Gap            = x / φ (exact value, ใช้ arbitrary เช่น gap-[9.89px])
-Radius         = --radius × multiplier (× 0.5, × 1, × 1.5, × 2)
-Height         = auto — บังคับ leading-none
+Gap            = x / φ (use exact value)
+Radius         = --radius × multiplier
+Height         = auto — requires leading-none
 ```
+
+## Font Scale
+
+Use √φ (1.272) — skip steps that break logarithmic scale
 
 ## Size Scale
 
-Font scale ใช้ √φ (1.272): 14 → 16 → 20 → 24 — ข้าม 18px (text-lg) เพราะไม่ตรง logarithmic scale
-
-| Size | x    | Font        | Padding Inline | Padding Block | Gap             | Radius           |
-| ---- | ---- | ----------- | -------------- | ------------- | --------------- | ---------------- |
-| sm   | 14px | `text-sm`   | `px-3.5`       | `py-1.5`      | `gap-[8.65px]`  | `--radius × 0.5` |
-| md   | 16px | `text-base` | `px-4`         | `py-2`        | `gap-[9.89px]`  | `--radius × 1`   |
-| lg   | 20px | `text-xl`   | `px-5`         | `py-2.5`      | `gap-[12.36px]` | `--radius × 1.5` |
-| xl   | 24px | `text-2xl`  | `px-6`         | `py-3`        | `gap-[14.83px]` | `--radius × 2`   |
+See actual values in `packages/styles/src/components/` for each component — calculated from the formula above
 
 ## Container Anchor Base
 
-Container components (Card, Modal, Alert) ใช้ body text เป็น x:
+Container components use body text font-size as x:
 
 ```text
 Container padding = x × φ

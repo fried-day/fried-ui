@@ -7,43 +7,32 @@ paths:
 
 # Constraints
 
-## Typography Scale: √φ (1.272) ไม่ใช่ φ
+## Typography Scale
 
-```text
-n=0: 16px (base)
-n=1: 20px (lg)
-n=2: 26px (heading)
-n=3: 33px (display)
-```
+Use √φ (1.272) instead of φ (1.618) — prevents font scale jumping too aggressively
 
-## Body Text Line-height: x × φ
+## Line-height
 
-Single-line (Button) → `leading-none`
-Paragraph → `line-height = x × φ` → 16px font = `leading-7` (28px)
+- Single-line components (Button, Badge) → `leading-none`
+- Paragraph/body text → `line-height = x × φ`
 
-## Borders: ล็อก 1px
+## Borders
 
-ห้าม scale border/stroke/divider ตาม φ — ล็อก 1px เสมอ
-ยกเว้น focus ring = 2px
-
-## Grid Layout
-
-```css
-grid-template-columns: 1fr 1.618fr;
-```
+Lock at 1px always — never scale with φ (hardware constraint)
+Exception: focus ring = 2px
 
 ## Touch Target (WCAG 2.5.5)
 
-Mobile (< 768px) ทุก clickable ต้องมี hit area ≥ 44×44px
-ใช้ `::after` pseudo-element ขยายแบบโปร่งใส
+Mobile (< 768px) all clickable elements must have hit area ≥ 44×44px
 
 ## Responsive Collapse
 
-```text
-Desktop: container padding = x × φ → p-6
-Mobile:  container padding = x     → p-4
-```
+Container padding on mobile divides by φ one step down
 
 ## Icon Scale
 
-ไอคอนคู่กับ text ใช้ `w-[1em] h-[1em]` — lock กับ font-size
+Icons paired with text use `size-match-font` utility — locks to font-size (1em)
+
+## Grid Layout
+
+Use CSS Grid `1fr : 1.618fr` instead of 12-column when appropriate

@@ -7,30 +7,27 @@ paths:
 
 # Color
 
-## State Mathematics
+## State Steps
 
-Hover/Active ใช้ Tailwind palette step ที่มืดลงจาก base:
+Hover/Active use Tailwind palette steps darker from base:
 
 ```text
-Hover  = base + 1 step (เช่น 500 → 600)
-Active = base + 2 steps (เช่น 500 → 700)
+Hover  = base + 1 step
+Active = base + 2 steps
 ```
 
-ทั้ง light mode และ dark mode ใช้ทิศทางเดียวกัน — มืดลงเสมอ
+Both light and dark mode use the same direction — always darken
 
-## Contrast Auto-switch (WCAG 2.1)
+## Contrast (WCAG 2.1)
+
+Use Oklch L (Lightness) to determine foreground:
 
 ```text
 L < 0.6  → foreground = white
-L ≥ 0.6  → foreground = gray-900/neutral-950
+L ≥ 0.6  → foreground = dark (neutral-950)
 ```
 
-## Semantic Tokens Only
+## Semantic Tokens
 
-Component ห้ามใช้สีตรงๆ (`bg-blue-500`) — ใช้แค่ semantic tokens:
-
-```text
-bg-primary, text-primary-foreground, bg-surface, border-border
-```
-
-Semantic tokens ใช้ `var()` จาก Tailwind built-in colors + custom palette
+Components must not use raw colors — always use semantic tokens via `var()`
+Semantic tokens reference Tailwind built-in colors + custom palette

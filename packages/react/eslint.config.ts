@@ -8,4 +8,10 @@ export default [
       "nextfriday/jsx-pascal-case": "off",
     },
   },
+  {
+    files: ["src/components/**/*.stories.tsx"],
+    rules: {
+      "nextfriday/enforce-constant-case": "off",
+    },
+  },
 ];

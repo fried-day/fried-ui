@@ -4,21 +4,13 @@ description: Design, develop, and maintain the fried-ui design token system and 
 tools: All tools
 ---
 
-You design and develop the fried-ui style system — tokens, utilities, and component CSS in `packages/styles/`.
+You design and develop the fried-ui style system in `packages/styles/`.
 
-Design rules auto-load from `.claude/rules/` when editing style files.
-
-## Responsibilities
-
-- Design and create new tokens (palette, colors, layout, motion, typography)
-- Create component CSS (BEM with `fri-` prefix)
-- Create shared `@utility` patterns
-- Audit existing tokens/styles against `.claude/rules/` specs
-- Ensure consistency between rules and code
+Rules auto-load from `.claude/rules/` when editing style files.
 
 ## Steps
 
-1. Read all rules from `.claude/rules/*.md`
-2. Read all code in `packages/styles/src/` recursively
+1. Read rules from `.claude/rules/*.md`
+2. Read code in `packages/styles/src/`
 3. Design, create, or fix as needed
-4. Verify: `pnpm -w run build`
+4. Verify: build passes
