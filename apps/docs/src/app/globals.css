@@ -2,3 +2,39 @@
 @import "fumadocs-ui/css/black.css";
 @import "fumadocs-ui/style.css";
 @import "@fried-ui/styles";
+
+:root,
+:host {
+  --color-fd-background: #fff;
+  --color-fd-foreground: #000;
+  --color-fd-card: #fff;
+  --color-fd-card-foreground: #000;
+  --color-fd-primary: #000;
+
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-2xl: 0;
+}
+
+.dark {
+  --color-fd-background: #000;
+  --color-fd-foreground: #fff;
+  --color-fd-card: #000;
+  --color-fd-card-foreground: #fff;
+  --color-fd-border: #6663;
+  --color-fd-primary: #fff;
+
+  /* --color-fd-muted: #212121;
+  --color-fd-muted-foreground: #b3b3b3cc;
+  --color-fd-popover: #1e1e1e;
+  --color-fd-popover-foreground: #dedede;
+  --color-fd-primary-foreground: #171717;
+  --color-fd-secondary: #212121;
+  --color-fd-secondary-foreground: #ebebeb;
+  --color-fd-accent: #6868684d;
+  --color-fd-accent-foreground: #e6e6e6;
+  --color-fd-ring: #8c8c8c;
+  --color-fd-overlay: #0003; */
+}

@@ -16,6 +16,7 @@ export type ButtonProps = {
   variant?: ButtonVariant;
   size?: ButtonSize;
   radius?: ButtonRadius;
+  isIconOnly?: boolean;
   className?: string;
   children?: ReactNode | ((renderProps: ButtonRenderProps) => ReactNode);
 } & Omit<RACButtonProps, "className" | "children">;
@@ -25,16 +26,15 @@ type ButtonSize = "sm" | "md" | "lg" | "xl";
 type ButtonRadius = "none" | "sm" | "md" | "lg" | "xl" | "full";
 
 function ButtonInner(props: Readonly<ButtonProps>, ref: ForwardedRef<HTMLButtonElement>) {
-  const { radius = "md", size = "md", variant = "primary", children, className, ...rest } = props;
-
-  const pendingClass = rest.isPending ? "fri-button--pending" : undefined;
+  const { isIconOnly, radius = "md", size = "md", variant = "primary", children, className, ...rest } = props;
 
   const buttonClassName = cn(
     "fri-button",
     `fri-button--${variant}`,
     `fri-button--${size}`,
     `fri-button--radius-${radius}`,
-    pendingClass,
+    isIconOnly && "fri-button--icon-only",
+    rest.isPending && "fri-button--pending",
     className,
   );
 

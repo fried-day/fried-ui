@@ -148,6 +148,20 @@ Icons inside buttons use the `size-match-font` utility to lock their size to the
 </Button>
 ```
 
+## Icon Only
+
+Square button for icon-only actions. Always provide `aria-label` for accessibility.
+
+<Preview>
+  <ButtonIconOnly />
+</Preview>
+
+```tsx
+<Button isIconOnly aria-label="Next">
+  <ArrowRightIcon className="size-match-font" />
+</Button>
+```
+
 ## As a Link
 
 Wrap a `Button` with an anchor or Next.js `Link` to render a button that navigates.
@@ -251,6 +265,7 @@ Built on [React Aria Button](https://react-spectrum.adobe.com/react-aria/Button.
 | `variant`          | `"primary" \| "secondary" \| "ghost" \| "outline" \| "success" \| "warning" \| "danger" \| "info"` | `"primary"` | The visual variant of the button           |
 | `size`             | `"sm" \| "md" \| "lg" \| "xl"`                                                                     | `"md"`      | The size of the button                     |
 | `radius`           | `"none" \| "sm" \| "md" \| "lg" \| "xl" \| "full"`                                                 | `"md"`      | The border radius of the button            |
+| `isIconOnly`       | `boolean`                                                                                          | `false`     | Whether the button is icon-only (square)   |
 | `isDisabled`       | `boolean`                                                                                          | `false`     | Whether the button is disabled             |
 | `isPending`        | `boolean`                                                                                          | `false`     | Whether the button shows a loading spinner |
 | `onPress`          | `(e: PressEvent) => void`                                                                          | -           | Handler called when the button is pressed  |
@@ -310,6 +325,7 @@ Built on [React Aria Button](https://react-spectrum.adobe.com/react-aria/Button.
 | `fri-button--radius-lg`   | Large border radius       |
 | `fri-button--radius-xl`   | Extra large border radius |
 | `fri-button--radius-full` | Full (pill) border radius |
+| `fri-button--icon-only`   | Icon-only square button   |
 | `fri-button--pending`     | Pending/loading state     |
 | `fri-button__spinner`     | Internal spinner element  |
 
