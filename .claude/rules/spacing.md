@@ -5,7 +5,7 @@ paths:
   - packages/react/src/components/**/*.tsx
 ---
 
-# Spacing (Golden Ratio)
+# Spacing
 
 ## x = font-size is the base unit
 

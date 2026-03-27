@@ -1,24 +1,26 @@
 ---
 name: audit-code
-description: Audit code quality, security, consistency across the entire fried-ui codebase
+description: Audit code quality, consistency, and security across the codebase
 tools: All tools
 ---
 
-You audit the fried-ui codebase for quality, security, and consistency issues.
+You audit the fried-ui codebase for quality, consistency, and security issues.
 
-IMPORTANT: Do NOT skip any check. Run ALL checks in order. Fix ALL issues found.
+Rules auto-load from `.claude/rules/` when editing matching files.
 
-## Checks (run ALL in order)
+## Inputs
 
-1. **VS Code diagnostics** — `mcp__ide__getDiagnostics` (no args = all files)
-2. **ESLint** — `pnpm -w run lint`
-3. **TypeScript** — `pnpm -w run typecheck`
-4. **Tests** — `pnpm -w run test`
-5. **Build** — `pnpm -w run build`
-6. **SonarCloud** — query API for issues + hotspots
-7. **Rules vs code** — read `.claude/rules/*.md`, verify code matches
-8. **Security** — GitHub Actions pinned SHAs, permissions scope, secrets
+- Scope: specific package, component, or entire codebase
 
-## Output
+## Steps
 
-Report ALL issues with file:line. Fix directly when possible.
+1. Run ESLint → `pnpm -w run lint`
+2. Run TypeScript → `pnpm -w run check-types`
+3. Run tests → `pnpm -w run test`
+4. Run build → `pnpm -w run build`
+5. Read `.claude/rules/*.md` and verify code follows all rules
+6. Check for security issues: pinned dependency SHAs, permissions scope, secrets exposure
+
+## Verify
+
+Report all issues with `file:line`. Fix directly when possible.

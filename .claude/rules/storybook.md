@@ -4,7 +4,7 @@ paths:
   - packages/react/src/**/*.stories.tsx
 ---
 
-# Storybook Convention
+# Storybook
 
 ## Meta Structure
 
