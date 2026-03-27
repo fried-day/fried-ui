@@ -191,12 +191,12 @@ Use `onPress` instead of `onClick` — handles keyboard, touch, and mouse unifor
 
 ## Spacing Math
 
-|                | sm (14px) | md (16px) | lg (20px) | xl (24px) |
-| -------------- | --------- | --------- | --------- | --------- |
-| Font           | 14px      | 16px      | 20px      | 24px      |
-| Padding Inline | 14px      | 16px      | 20px      | 24px      |
-| Padding Block  | 6px       | 8px       | 10px      | 12px      |
-| Gap            | 8.65px    | 9.89px    | 12.36px   | 14.83px   |
+|                | sm       | md       | lg       | xl       |
+| -------------- | -------- | -------- | -------- | -------- |
+| Font           | 0.875rem | 1rem     | 1.25rem  | 1.5rem   |
+| Padding Inline | 0.875rem | 1rem     | 1.25rem  | 1.5rem   |
+| Padding Block  | 0.375rem | 0.5rem   | 0.625rem | 0.75rem  |
+| Gap            | 0.541rem | 0.618rem | 0.773rem | 0.927rem |
 
 Formulas: `padding-inline = x`, `padding-block = x × 0.485`, `gap = x / φ`.
 
