@@ -24,18 +24,18 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs"
+      "import": "./src/index.ts"
     },
     "./button": {
-      "types": "./dist/components/button/index.d.ts",
-      "import": "./dist/components/button/index.mjs"
+      "import": "./src/components/button/index.ts"
     },
     "./utils/cn": {
-      "types": "./dist/utils/cn/index.d.ts",
-      "import": "./dist/utils/cn/index.mjs"
+      "import": "./src/utils/cn/index.ts"
     }
   },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],

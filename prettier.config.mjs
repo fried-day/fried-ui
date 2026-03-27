@@ -10,7 +10,7 @@ const config = {
   arrowParens: "always",
   endOfLine: "lf",
   plugins: ["prettier-plugin-tailwindcss"],
-  tailwindStylesheet: "packages/styles/src/index.css",
+  tailwindStylesheet: "apps/docs/src/app/globals.css",
   tailwindAttributes: ["className", "classNames"],
   tailwindFunctions: ["tv", "clsx", "cn"],
 };
