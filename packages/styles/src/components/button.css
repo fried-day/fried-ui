@@ -51,22 +51,22 @@
 }
 
 .fri-button--sm {
-  @apply gap-2 px-3.5 py-1.5 text-sm;
+  @apply gap-[8.65px] px-3.5 py-1.5 text-sm;
   border-radius: calc(var(--radius) * 0.5);
 }
 
 .fri-button--md {
-  @apply gap-2.5 px-4 py-2 text-base;
+  @apply gap-[9.89px] px-4 py-2 text-base;
   border-radius: var(--radius);
 }
 
 .fri-button--lg {
-  @apply gap-3 px-5 py-2.5 text-xl;
+  @apply gap-[12.36px] px-5 py-2.5 text-xl;
   border-radius: calc(var(--radius) * 1.5);
 }
 
 .fri-button--xl {
-  @apply gap-4 px-6 py-3 text-2xl;
+  @apply gap-[14.83px] px-6 py-3 text-2xl;
   border-radius: calc(var(--radius) * 2);
 }
 
