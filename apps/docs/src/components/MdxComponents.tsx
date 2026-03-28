@@ -16,7 +16,7 @@ import { BadgeLinks } from "./BadgeLinks";
 
 const buttonBadgeLinksData = [
   {
-    href: "https://storybook.fried-ui.com/?path=/docs/components-button--docs",
+    href: "https://fried-ui-storybook.vercel.app/?path=/story/components-button--default",
     icon: <StorybookIcon className="size-match-font text-[#ff4785]" />,
     label: "Storybook",
   },
