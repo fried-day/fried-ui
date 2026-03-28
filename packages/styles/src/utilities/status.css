@@ -1,6 +1,26 @@
+/*
+ * status-disabled — Disabled element styling
+ *
+ * Reduces opacity, changes cursor, blocks pointer events.
+ * Uses tokens: --disabled-opacity (0.5), --cursor-disabled (not-allowed)
+ *
+ * Usage: @apply status-disabled;
+ * Used by: .fri-button--disabled, .fri-input--disabled, etc.
+ */
+
 @utility status-disabled {
   @apply pointer-events-none cursor-(--cursor-disabled) opacity-(--disabled-opacity);
 }
+
+/*
+ * status-pending — Loading/pending state
+ *
+ * Blocks pointer events while loading. Does NOT change opacity
+ * (component handles visual feedback like spinner or text-transparent).
+ *
+ * Usage: @apply status-pending;
+ * Used by: button[data-pending="true"]
+ */
 
 @utility status-pending {
   @apply pointer-events-none;

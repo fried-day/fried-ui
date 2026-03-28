@@ -1,3 +1,14 @@
+/*
+ * no-highlight — Remove tap highlight on mobile
+ *
+ * Removes the blue/gray highlight that appears on tap in mobile browsers.
+ * Applied to interactive components (button, link, etc.).
+ *
+ * No Tailwind utility exists for this — plain CSS required.
+ *
+ * Usage: @apply no-highlight;
+ */
+
 @utility no-highlight {
   -webkit-tap-highlight-color: transparent;
 }

@@ -1,3 +1,26 @@
+/*
+ * Motion Tokens
+ *
+ * Duration (all < 400ms Doherty Threshold):
+ *   instant → 100ms (toggle, checkbox)
+ *   fast    → 150ms (button hover, color change)
+ *   normal  → 200ms (dropdown open, fade)
+ *   slow    → 300ms (modal enter, slide)
+ *
+ * Easing:
+ *   ease-smooth → default for most transitions
+ *   ease-in     → element exiting (fade out, slide out)
+ *   ease-out    → element entering (fade in, slide in)
+ *   ease-in-out → element moving position
+ *
+ * Keyframes:
+ *   fade-in, fade-out, slide-in-up, slide-in-down, scale-in
+ *   All use 200ms ease-out.
+ *
+ * Accessibility:
+ *   prefers-reduced-motion: reduce → all durations = 0ms, all animations = none
+ */
+
 @theme {
   --duration-instant: 100ms;
   --duration-fast: 150ms;
@@ -67,6 +90,7 @@
   --animate-scale-in: scale-in 200ms var(--ease-out);
 }
 
+/* Accessibility: disable all motion for users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
   :root {
     --duration-fast: 0ms;

@@ -1,5 +1,5 @@
 ---
-description: Storybook 10 story conventions, meta structure, argTypes, and required stories
+description: Storybook 10 conventions
 paths:
   - packages/react/src/**/*.stories.tsx
 ---
@@ -8,97 +8,88 @@ paths:
 
 ## Source of Truth
 
-**argTypes and stories must match the component's actual TypeScript props — read the source file first.**
+Read `{Name}.tsx` first — argTypes must match actual TypeScript props only.
 
-Do not copy argTypes from another component. Read `{Name}.tsx`, extract every prop, then create argTypes for each.
-
-## Meta Structure
+## Meta
 
 ```tsx
 const meta = {
   title: "Components/{Name}",
   component: {Name},
   tags: ["autodocs"],
-  parameters: {
-    layout: "centered",
-    docs: {
-      description: {
-        component: "One-line description of the component.",
-      },
-    },
-  },
-  args: {
-    children: "{Name}",
-    // set defaults that match TypeScript defaults
-  },
-  argTypes: { /* derived from component props — see below */ },
+  parameters: { layout: "centered" },
+  args: { children: "{Name}", variant: "primary", size: "md" },
+  argTypes: { /* from component props */ },
 } satisfies Meta<typeof {Name}>;
 ```
 
-## argTypes — Derived from Props
+No `docs.description` — removed.
 
-Read the component's TypeScript type and create argTypes for each prop:
+## argTypes
 
-- `control: "select"` for union string props (variant, size, radius)
-- `control: "boolean"` for boolean props (isDisabled, isPending, isIconOnly, etc.)
-- `control: "text"` for string props (className, children as text)
-- `control: false` for event handlers (onPress, etc.)
+- `control: "select"` for union string props
+- `control: "boolean"` for boolean props
+- `control: "text"` for string props
+- `control: false` for event handlers
+- Category order: **Children → Style Variants → State → Events → Styling**
 
-### Category Order
+## Stories
 
-**Children → Style Variants → State → Events → Styling**
-
-### Table Format
+Every story MUST have `parameters.docs.source.code` with full example (import + arrow function):
 
 ```tsx
-{propName}: {
-  control: "select" | "boolean" | "text" | false,
-  description: "What this prop does",
-  table: {
-    type: { summary: "type string" },
-    defaultValue: { summary: "default value" },  // omit if no default
-    category: "Children" | "Style Variants" | "State" | "Events" | "Styling",
+const Default: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { {Name} } from "@fried-ui/react";
+
+const Basic = () => {
+  return <{Name}>Content</{Name}>;
+};`,
+      },
+    },
   },
-},
+};
+```
+
+Render stories use `(args)` parameter + `{...args}` spread:
+
+```tsx
+render: (args): React.JSX.Element => (
+  <div className="flex flex-wrap items-end gap-4">
+    <{Name} {...args} variant="primary">Primary</{Name}>
+  </div>
+),
 ```
 
 ## Required Stories
 
-Minimum for all components:
+Minimum: Default, Variants, Sizes.
+
+Add per component: WithIcon, IconOnly, FullWidth, Disabled, Pending, RenderProps.
+
+## Icon Examples
+
+Show both options in source.code:
 
 ```tsx
-const Default: Story = {};           // empty args, uses meta defaults
-const Variants: Story = { ... };     // all variants side by side
-const Sizes: Story = { ... };        // all sizes side by side
-const Radii: Story = { ... };        // all radii side by side
+// Option 1: slot="icon" (recommended)
+<SettingsIcon slot="icon" />
+
+// Option 2: className
+<SettingsIcon className="size-match-font" />
 ```
 
-Add more stories as needed per component's props:
+## Lint
 
-- `IconOnly` — if component has `isIconOnly` prop
-- `FullWidth` — if component has `isFullWidth` prop
-- `Disabled` — if component has `isDisabled` prop
-- `Pending` — if component has `isPending` prop
-- `RenderProps` — if component exposes render props via children function
-
-## Lint Rules (must follow)
-
-- ALL render functions need explicit return type: `(): React.JSX.Element =>`
-- ALL arrow functions inside JSX need return type: `({ isHovered }): string =>`
-- JSX prop sort order: strings → hyphenated → expressions → **shorthand booleans last**
-  - ✓ `<Button variant="primary" aria-label="Save" isIconOnly>`
-  - ✗ `<Button isIconOnly variant="primary" aria-label="Save">`
-- **Multi-line** sibling JSX elements → empty line between them (lint: `jsx-newline-between-elements`)
-- **Single-line** sibling JSX elements → NO empty line between them (lint: `jsx-no-newline-single-line-elements`)
+- Render: `(args): React.JSX.Element =>`
+- Multi-line siblings: empty line between
+- Single-line siblings: NO empty line
+- Prop order: strings → hyphenated → expressions → shorthand booleans
 - Named exports BEFORE `export default meta`
 
-## Render Pattern
+## Containers
 
 - Side-by-side: `<div className="flex items-end gap-4">`
-- Wrap variant: `<div className="flex flex-wrap items-end gap-4">` (for many items)
-- Icons use imported icon components from `@fried-ui/react` — NO inline SVGs
-- Variant order in render MUST match TypeScript type order
-
-## Storybook URL
-
-Production: `https://fried-ui-storybook.vercel.app/?path=/story/components-{name}--default`
+- Wrap: `<div className="flex flex-wrap items-end gap-4">`
