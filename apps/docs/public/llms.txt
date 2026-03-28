@@ -4,6 +4,7 @@
 
 ## Docs
 
+- [Badge](/llm/badge.md): Display-only label for status indicators, counts, and categories
 - [Button](/llm/button.md): Accessible button with golden ratio spacing, React Aria keyboard/focus/screen reader support
 
 ## Optional

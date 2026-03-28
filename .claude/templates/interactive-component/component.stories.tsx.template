@@ -1,0 +1,174 @@
+import type { Meta, StoryObj } from "@storybook/react";
+
+import { {{Name}} } from "./{{Name}}";
+
+const meta = {
+  title: "Components/{{Name}}",
+  component: {{Name}},
+  tags: ["autodocs"],
+  parameters: {
+    layout: "centered",
+  },
+  args: {
+    children: "{{Name}}",
+    variant: "primary",
+    size: "md",
+  },
+  argTypes: {
+    children: {
+      control: "text",
+      description: "{{Name}} content",
+      table: {
+        type: { summary: "ReactNode" },
+        category: "Children",
+      },
+    },
+    variant: {
+      control: "select",
+      options: ["primary", "secondary", "ghost", "outline", "success", "warning", "danger", "info"],
+      description: "The visual variant of the {{name}}",
+      table: {
+        type: { summary: '"primary" | "secondary" | "ghost" | "outline" | "success" | "warning" | "danger" | "info"' },
+        defaultValue: { summary: "primary" },
+        category: "Style Variants",
+      },
+    },
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+      description: "The size of the {{name}}",
+      table: {
+        type: { summary: '"sm" | "md" | "lg"' },
+        defaultValue: { summary: "md" },
+        category: "Style Variants",
+      },
+    },
+    isDisabled: {
+      control: "boolean",
+      description: "Whether the {{name}} is disabled",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "State",
+      },
+    },
+    onPress: {
+      control: false,
+      description: "Handler called when the {{name}} is pressed",
+      table: {
+        type: { summary: "(e: PressEvent) => void" },
+        category: "Events",
+      },
+    },
+    className: {
+      control: "text",
+      description: "Additional CSS classes",
+      table: {
+        type: { summary: "string" },
+        category: "Styling",
+      },
+    },
+  },
+} satisfies Meta<typeof {{Name}}>;
+
+type Story = StoryObj<typeof meta>;
+
+const Default: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { {{Name}} } from "@fried-ui/react";
+
+const Basic = () => {
+  return <{{Name}} onPress={() => console.log("pressed")}>Click me</{{Name}}>;
+};`,
+      },
+    },
+  },
+};
+
+const Variants: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { {{Name}} } from "@fried-ui/react";
+
+const Variants = () => {
+  return (
+    <div className="flex flex-wrap gap-4">
+      <{{Name}} variant="primary">Primary</{{Name}}>
+      <{{Name}} variant="secondary">Secondary</{{Name}}>
+      <{{Name}} variant="ghost">Ghost</{{Name}}>
+      <{{Name}} variant="outline">Outline</{{Name}}>
+      <{{Name}} variant="success">Success</{{Name}}>
+      <{{Name}} variant="warning">Warning</{{Name}}>
+      <{{Name}} variant="danger">Danger</{{Name}}>
+      <{{Name}} variant="info">Info</{{Name}}>
+    </div>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex flex-wrap items-end gap-4">
+      <{{Name}} {...args} variant="primary">Primary</{{Name}}>
+      <{{Name}} {...args} variant="secondary">Secondary</{{Name}}>
+      <{{Name}} {...args} variant="ghost">Ghost</{{Name}}>
+      <{{Name}} {...args} variant="outline">Outline</{{Name}}>
+      <{{Name}} {...args} variant="success">Success</{{Name}}>
+      <{{Name}} {...args} variant="warning">Warning</{{Name}}>
+      <{{Name}} {...args} variant="danger">Danger</{{Name}}>
+      <{{Name}} {...args} variant="info">Info</{{Name}}>
+    </div>
+  ),
+};
+
+const Sizes: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { {{Name}} } from "@fried-ui/react";
+
+const Sizes = () => {
+  return (
+    <div className="flex items-end gap-4">
+      <{{Name}} size="sm">Small</{{Name}}>
+      <{{Name}} size="md">Medium</{{Name}}>
+      <{{Name}} size="lg">Large</{{Name}}>
+    </div>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex items-end gap-4">
+      <{{Name}} {...args} size="sm">Small</{{Name}}>
+      <{{Name}} {...args} size="md">Medium</{{Name}}>
+      <{{Name}} {...args} size="lg">Large</{{Name}}>
+    </div>
+  ),
+};
+
+const Disabled: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { {{Name}} } from "@fried-ui/react";
+
+const Disabled = () => {
+  return <{{Name}} isDisabled>Disabled</{{Name}}>;
+};`,
+      },
+    },
+  },
+  args: {
+    children: "Disabled",
+    isDisabled: true,
+  },
+};
+
+export { Default, Variants, Sizes, Disabled };
+
+export default meta;

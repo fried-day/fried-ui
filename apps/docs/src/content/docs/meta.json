@@ -9,6 +9,7 @@
     "styles/design-tokens",
     "styles/colors",
     "---Components---",
+    "components/badge",
     "components/button"
   ]
 }

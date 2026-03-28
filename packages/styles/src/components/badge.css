@@ -1,0 +1,75 @@
+.fri-badge {
+  @apply inline-flex items-center justify-center;
+  @apply leading-none font-medium whitespace-nowrap;
+  @apply border border-transparent select-none;
+
+  /* default variant = primary */
+  --fri-badge-bg: var(--color-primary);
+  --fri-badge-fg: var(--color-primary-foreground);
+
+  @apply bg-(--fri-badge-bg) text-(--fri-badge-fg);
+
+  /* default size = sm */
+  @apply gap-1 px-1.5 py-px text-xs;
+
+  /* default radius = full */
+  @apply rounded-full;
+}
+
+.fri-badge--primary {
+  --fri-badge-bg: var(--color-primary);
+  --fri-badge-fg: var(--color-primary-foreground);
+}
+
+.fri-badge--secondary {
+  --fri-badge-bg: var(--color-secondary);
+  --fri-badge-fg: var(--color-secondary-foreground);
+}
+
+.fri-badge--ghost {
+  --fri-badge-bg: transparent;
+  --fri-badge-fg: var(--color-foreground);
+}
+
+.fri-badge--outline {
+  --fri-badge-bg: transparent;
+  --fri-badge-fg: var(--color-foreground);
+
+  @apply border-border;
+}
+
+.fri-badge--success {
+  --fri-badge-bg: var(--color-success);
+  --fri-badge-fg: var(--color-success-foreground);
+}
+
+.fri-badge--warning {
+  --fri-badge-bg: var(--color-warning);
+  --fri-badge-fg: var(--color-warning-foreground);
+}
+
+.fri-badge--danger {
+  --fri-badge-bg: var(--color-danger);
+  --fri-badge-fg: var(--color-danger-foreground);
+}
+
+.fri-badge--info {
+  --fri-badge-bg: var(--color-info);
+  --fri-badge-fg: var(--color-info-foreground);
+}
+
+.fri-badge [slot="icon"] {
+  @apply size-match-font;
+}
+
+.fri-badge--size-sm {
+  @apply gap-1 px-1.5 py-px text-xs;
+}
+
+.fri-badge--size-md {
+  @apply gap-1.5 px-2 py-0.5 text-sm;
+}
+
+.fri-badge--size-lg {
+  @apply gap-2 px-2.5 py-1 text-base;
+}

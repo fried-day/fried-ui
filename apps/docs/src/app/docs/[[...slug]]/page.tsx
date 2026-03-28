@@ -5,6 +5,10 @@ import { notFound } from "next/navigation";
 import { ColorSwatch } from "@/components/ColorSwatch";
 import { CopyMarkdown } from "@/components/CopyMarkdown";
 import {
+  BadgeBadgeLinks,
+  BadgeDemo,
+  BadgeSizes,
+  BadgeVariants,
   ButtonAsLink,
   ButtonBadgeLinks,
   ButtonCustomClass,
@@ -31,6 +35,10 @@ interface SlugParamsProps {
 
 const mdxComponents = {
   ...defaultMdxComponents,
+  BadgeBadgeLinks,
+  BadgeDemo,
+  BadgeSizes,
+  BadgeVariants,
   ButtonAsLink,
   ButtonBadgeLinks,
   ButtonCustomClass,
@@ -47,7 +55,7 @@ const mdxComponents = {
   Preview,
 };
 
-async function Page(props: Readonly<PageProps>): Promise<React.JSX.Element> {
+const Page = async (props: Readonly<PageProps>): Promise<React.JSX.Element> => {
   const params = await props.params;
   const page = source.getPage(params.slug);
   if (!page) notFound();
@@ -67,7 +75,7 @@ async function Page(props: Readonly<PageProps>): Promise<React.JSX.Element> {
       </DocsBody>
     </DocsPage>
   );
-}
+};
 
 export default Page;
 

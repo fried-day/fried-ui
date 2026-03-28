@@ -101,7 +101,8 @@
 
   --color-link: var(--color-neutral-950);
   --color-link-hover: var(--color-neutral-600);
-  --color-ring: var(--color-neutral-950);
+  --color-focus-outer: var(--color-neutral-950);
+  --color-focus-inner: var(--color-white);
   --color-overlay: oklch(0% 0 0 / 50%);
 }
 
@@ -202,7 +203,8 @@
 
     --color-link: var(--color-blue-500);
     --color-link-hover: var(--color-blue-400);
-    --color-ring: var(--color-neutral-50);
+    --color-focus-outer: var(--color-neutral-50);
+    --color-focus-inner: var(--color-neutral-950);
     --color-overlay: oklch(0% 0 0 / 70%);
   }
 }

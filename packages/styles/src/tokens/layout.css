@@ -3,7 +3,7 @@
   --field-radius: calc(var(--radius) * 1.5);
 
   --disabled-opacity: 0.5;
-  --ring-offset-width: 2px;
+  --outline-offset-focus: 2px;
   --cursor-interactive: pointer;
   --cursor-disabled: not-allowed;
 

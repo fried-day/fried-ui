@@ -14,7 +14,7 @@ export interface BadgeLinkProps {
   label: string;
 }
 
-function BadgeLinks(props: Readonly<BadgeLinksProps>): React.JSX.Element {
+const BadgeLinks = (props: Readonly<BadgeLinksProps>): React.JSX.Element => {
   const { links } = props;
 
   return (
@@ -29,6 +29,6 @@ function BadgeLinks(props: Readonly<BadgeLinksProps>): React.JSX.Element {
       ))}
     </div>
   );
-}
+};
 
 export { BadgeLinks };

@@ -1,12 +1,20 @@
 "use client";
 
-import type { SVGProps } from "react";
+import type { ComponentPropsWithRef } from "react";
 
-function ShareIcon(props: Readonly<SVGProps<SVGSVGElement>>): React.JSX.Element {
-  const { className, ...rest } = props;
+const ShareIcon = (props: Readonly<ComponentPropsWithRef<"svg">>) => {
+  const { className, ref, ...rest } = props;
 
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={className} {...rest}>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      className={className}
+      ref={ref}
+      {...rest}
+    >
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -14,6 +22,8 @@ function ShareIcon(props: Readonly<SVGProps<SVGSVGElement>>): React.JSX.Element 
       />
     </svg>
   );
-}
+};
+
+ShareIcon.displayName = "ShareIcon";
 
 export { ShareIcon };

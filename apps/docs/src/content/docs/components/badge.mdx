@@ -1,0 +1,91 @@
+---
+title: Badge
+description: Display-only label for status indicators, counts, and categories.
+---
+
+<BadgeBadgeLinks />
+
+## Import
+
+```tsx
+import { Badge } from "@fried-ui/react";
+```
+
+## Usage
+
+<Preview>
+  <BadgeDemo />
+</Preview>
+
+```tsx
+<Badge>New</Badge>
+```
+
+## Variants
+
+The `variant` prop controls the visual style using semantic color tokens.
+
+<Preview>
+  <BadgeVariants />
+</Preview>
+
+```tsx
+<Badge variant="primary">Primary</Badge>
+<Badge variant="secondary">Secondary</Badge>
+<Badge variant="ghost">Ghost</Badge>
+<Badge variant="outline">Outline</Badge>
+<Badge variant="success">Success</Badge>
+<Badge variant="warning">Warning</Badge>
+<Badge variant="danger">Danger</Badge>
+<Badge variant="info">Info</Badge>
+```
+
+## Sizes
+
+The `size` prop controls padding, gap, and font-size.
+
+<Preview>
+  <BadgeSizes />
+</Preview>
+
+```tsx
+<Badge size="sm">Small</Badge>
+<Badge size="md">Medium</Badge>
+<Badge size="lg">Large</Badge>
+```
+
+## API Reference
+
+### Badge Props
+
+| Prop        | Type                                                                                               | Default     | Description                     |
+| ----------- | -------------------------------------------------------------------------------------------------- | ----------- | ------------------------------- |
+| `variant`   | `"primary" \| "secondary" \| "ghost" \| "outline" \| "success" \| "warning" \| "danger" \| "info"` | `"primary"` | The visual variant of the badge |
+| `size`      | `"sm" \| "md" \| "lg"`                                                                             | `"md"`      | The size of the badge           |
+| `className` | `string`                                                                                           | -           | Additional CSS classes          |
+| `ref`       | `Ref<HTMLSpanElement>`                                                                             | -           | Forwarded ref to the span       |
+| `children`  | `ReactNode`                                                                                        | -           | Badge content                   |
+
+### CSS Classes
+
+| Class                  | Description       |
+| ---------------------- | ----------------- |
+| `fri-badge`            | Base styles       |
+| `fri-badge--primary`   | Primary variant   |
+| `fri-badge--secondary` | Secondary variant |
+| `fri-badge--ghost`     | Ghost variant     |
+| `fri-badge--outline`   | Outline variant   |
+| `fri-badge--success`   | Success variant   |
+| `fri-badge--warning`   | Warning variant   |
+| `fri-badge--danger`    | Danger variant    |
+| `fri-badge--info`      | Info variant      |
+| `fri-badge--sm`        | Small size        |
+| `fri-badge--md`        | Medium size       |
+| `fri-badge--lg`        | Large size        |
+
+### CSS Variables
+
+| CSS Variable     | Description      | Default        |
+| ---------------- | ---------------- | -------------- |
+| `--fri-badge-bg` | Background color | `transparent`  |
+| `--fri-badge-fg` | Text color       | `currentColor` |

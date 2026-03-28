@@ -1,0 +1,39 @@
+"use client";
+
+import type { ComponentPropsWithRef } from "react";
+
+import { clsx } from "clsx";
+
+import { bem } from "../../utils/bem";
+
+import type { {{Name}}VariantsProps } from "./{{name}}.variants";
+
+export type {{Name}}Props = Omit<ComponentPropsWithRef<"div">, "className"> &
+  {{Name}}VariantsProps & {
+    className?: string;
+  };
+
+const {{Name}} = (props: Readonly<{{Name}}Props>) => {
+  const { children, className, ref, size, variant, ...rest } = props;
+
+  const {{name}}ClassName = clsx(
+    bem({
+      block: "fri-{{name}}",
+      modifiers: {
+        variant,
+        size,
+      },
+    }),
+    className,
+  );
+
+  return (
+    <div data-slot="{{name}}" className={ {{name}}ClassName} ref={ref} {...rest}>
+      {children}
+    </div>
+  );
+};
+
+{{Name}}.displayName = "{{Name}}";
+
+export { {{Name}} };

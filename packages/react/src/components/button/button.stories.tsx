@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { MoreIcon, PlusIcon, SettingsIcon, ShareIcon } from "../icons";
+import { ArrowRightIcon, MoreIcon, PlusIcon, SettingsIcon, ShareIcon } from "../icons";
 import { Button } from "./Button";
 
 const meta = {
@@ -9,12 +9,6 @@ const meta = {
   tags: ["autodocs"],
   parameters: {
     layout: "centered",
-    docs: {
-      description: {
-        component:
-          "Accessible button built on [React Aria Button](https://react-spectrum.adobe.com/react-aria/Button.html). Supports semantic variants, golden-ratio spacing, and pending state with spinner.",
-      },
-    },
   },
   args: {
     children: "Button",
@@ -25,7 +19,7 @@ const meta = {
   argTypes: {
     children: {
       control: "text",
-      description: "Button label",
+      description: "Button content",
       table: {
         type: {
           summary: "ReactNode",
@@ -152,35 +146,29 @@ const meta = {
 
 type Story = StoryObj<typeof meta>;
 
-const Default: Story = {};
+const Default: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Button } from "@fried-ui/react";
 
-const Sizes: Story = {
-  render: (): React.JSX.Element => (
-    <div className="flex items-end gap-4">
-      <Button size="sm">Small</Button>
-      <Button size="md">Medium</Button>
-      <Button size="lg">Large</Button>
-      <Button size="xl">Extra Large</Button>
-    </div>
-  ),
-};
-
-const Radii: Story = {
-  render: (): React.JSX.Element => (
-    <div className="flex items-end gap-4">
-      <Button radius="none">None</Button>
-      <Button radius="sm">Small</Button>
-      <Button radius="md">Medium</Button>
-      <Button radius="lg">Large</Button>
-      <Button radius="xl">XL</Button>
-      <Button radius="full">Full</Button>
-    </div>
-  ),
+const Basic = () => {
+  return <Button onPress={() => console.log("pressed")}>Click me</Button>;
+};`,
+      },
+    },
+  },
 };
 
 const Variants: Story = {
-  render: (): React.JSX.Element => (
-    <div className="flex items-end gap-4">
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Button } from "@fried-ui/react";
+
+const Variants = () => {
+  return (
+    <div className="flex flex-wrap gap-4">
       <Button variant="primary">Primary</Button>
       <Button variant="secondary">Secondary</Button>
       <Button variant="ghost">Ghost</Button>
@@ -190,39 +178,227 @@ const Variants: Story = {
       <Button variant="danger">Danger</Button>
       <Button variant="info">Info</Button>
     </div>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex flex-wrap items-end gap-4">
+      <Button {...args} variant="primary">
+        Primary
+      </Button>
+
+      <Button {...args} variant="secondary">
+        Secondary
+      </Button>
+
+      <Button {...args} variant="ghost">
+        Ghost
+      </Button>
+
+      <Button {...args} variant="outline">
+        Outline
+      </Button>
+
+      <Button {...args} variant="success">
+        Success
+      </Button>
+
+      <Button {...args} variant="warning">
+        Warning
+      </Button>
+
+      <Button {...args} variant="danger">
+        Danger
+      </Button>
+
+      <Button {...args} variant="info">
+        Info
+      </Button>
+    </div>
   ),
 };
 
-const Disabled: Story = {
-  args: {
-    children: "Disabled",
-    isDisabled: true,
+const Sizes: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Button } from "@fried-ui/react";
+
+const Sizes = () => {
+  return (
+    <div className="flex items-end gap-4">
+      <Button size="sm">Small</Button>
+      <Button size="md">Medium</Button>
+      <Button size="lg">Large</Button>
+      <Button size="xl">Extra Large</Button>
+    </div>
+  );
+};`,
+      },
+    },
   },
+  render: (args): React.JSX.Element => (
+    <div className="flex items-end gap-4">
+      <Button {...args} size="sm">
+        Small
+      </Button>
+
+      <Button {...args} size="md">
+        Medium
+      </Button>
+
+      <Button {...args} size="lg">
+        Large
+      </Button>
+
+      <Button {...args} size="xl">
+        Extra Large
+      </Button>
+    </div>
+  ),
 };
 
-const Pending: Story = {
-  args: {
-    children: "Saving...",
-    isPending: true,
+const Radii: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Button } from "@fried-ui/react";
+
+const Radii = () => {
+  return (
+    <div className="flex items-end gap-4">
+      <Button radius="none">None</Button>
+      <Button radius="sm">Small</Button>
+      <Button radius="md">Medium</Button>
+      <Button radius="lg">Large</Button>
+      <Button radius="xl">XL</Button>
+      <Button radius="full">Full</Button>
+    </div>
+  );
+};`,
+      },
+    },
   },
+  render: (args): React.JSX.Element => (
+    <div className="flex items-end gap-4">
+      <Button {...args} radius="none">
+        None
+      </Button>
+
+      <Button {...args} radius="sm">
+        Small
+      </Button>
+
+      <Button {...args} radius="md">
+        Medium
+      </Button>
+
+      <Button {...args} radius="lg">
+        Large
+      </Button>
+
+      <Button {...args} radius="xl">
+        XL
+      </Button>
+
+      <Button {...args} radius="full">
+        Full
+      </Button>
+    </div>
+  ),
+};
+
+const WithIcon: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Button, ArrowRightIcon } from "@fried-ui/react";
+
+// Option 1: slot="icon" (recommended)
+const WithIcon = () => {
+  return (
+    <Button>
+      <ArrowRightIcon slot="icon" />
+      Next
+    </Button>
+  );
+};
+
+// Option 2: className
+const WithIconAlt = () => {
+  return (
+    <Button>
+      <ArrowRightIcon className="size-match-font" />
+      Next
+    </Button>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex items-end gap-4">
+      <Button {...args} size="sm">
+        <ArrowRightIcon slot="icon" />
+        Next
+      </Button>
+
+      <Button {...args} size="md">
+        <ArrowRightIcon slot="icon" />
+        Next
+      </Button>
+
+      <Button {...args} size="lg">
+        <ArrowRightIcon slot="icon" />
+        Next
+      </Button>
+    </div>
+  ),
 };
 
 const IconOnly: Story = {
-  render: (): React.JSX.Element => (
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Button, SettingsIcon } from "@fried-ui/react";
+
+// Option 1: slot="icon" (recommended)
+const IconOnly = () => {
+  return (
+    <Button aria-label="Settings" isIconOnly>
+      <SettingsIcon slot="icon" />
+    </Button>
+  );
+};
+
+// Option 2: className
+const IconOnlyAlt = () => {
+  return (
+    <Button aria-label="Settings" isIconOnly>
+      <SettingsIcon className="size-match-font" />
+    </Button>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
     <div className="flex items-end gap-4">
-      <Button aria-label="Settings" isIconOnly>
+      <Button {...args} aria-label="Settings" isIconOnly>
         <SettingsIcon className="size-match-font" />
       </Button>
 
-      <Button variant="secondary" aria-label="More" isIconOnly>
+      <Button {...args} variant="secondary" aria-label="More" isIconOnly>
         <MoreIcon className="size-match-font" />
       </Button>
 
-      <Button variant="outline" aria-label="Add" isIconOnly>
+      <Button {...args} variant="outline" aria-label="Add" isIconOnly>
         <PlusIcon className="size-match-font" />
       </Button>
 
-      <Button variant="ghost" aria-label="Share" isIconOnly>
+      <Button {...args} variant="ghost" aria-label="Share" isIconOnly>
         <ShareIcon className="size-match-font" />
       </Button>
     </div>
@@ -230,25 +406,91 @@ const IconOnly: Story = {
 };
 
 const FullWidth: Story = {
-  render: (): React.JSX.Element => (
-    <div className="flex w-80 flex-col gap-4">
-      <Button isFullWidth>Full Width</Button>
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Button } from "@fried-ui/react";
 
-      <Button variant="secondary" isFullWidth>
+const FullWidth = () => {
+  return <Button isFullWidth>Full Width</Button>;
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex w-80 flex-col gap-4">
+      <Button {...args} isFullWidth>
+        Full Width
+      </Button>
+
+      <Button {...args} variant="secondary" isFullWidth>
         Full Width Secondary
       </Button>
 
-      <Button variant="outline" isFullWidth>
+      <Button {...args} variant="outline" isFullWidth>
         Full Width Outline
       </Button>
     </div>
   ),
 };
 
-const RenderProps: Story = {
-  render: (): React.JSX.Element => <Button>{({ isHovered }): string => (isHovered ? "Hovering!" : "Hover me")}</Button>,
+const Disabled: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Button } from "@fried-ui/react";
+
+const Disabled = () => {
+  return <Button isDisabled>Disabled</Button>;
+};`,
+      },
+    },
+  },
+  args: {
+    children: "Disabled",
+    isDisabled: true,
+  },
 };
 
-export { Default, Variants, Sizes, Radii, IconOnly, FullWidth, Disabled, Pending, RenderProps };
+const Pending: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Button } from "@fried-ui/react";
+
+const Pending = () => {
+  return <Button isPending>Saving...</Button>;
+};`,
+      },
+    },
+  },
+  args: {
+    children: "Saving...",
+    isPending: true,
+  },
+};
+
+const RenderProps: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Button } from "@fried-ui/react";
+
+const RenderProps = () => {
+  return (
+    <Button>
+      {({ isHovered }) => (isHovered ? "Hovering!" : "Hover me")}
+    </Button>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <Button {...args}>{({ isHovered }): string => (isHovered ? "Hovering!" : "Hover me")}</Button>
+  ),
+};
+
+export { Default, Variants, Sizes, Radii, WithIcon, IconOnly, FullWidth, Disabled, Pending, RenderProps };
 
 export default meta;

@@ -2,6 +2,7 @@
 
 import {
   ArrowRightIcon,
+  Badge,
   Button,
   GitHubIcon,
   MoreIcon,
@@ -13,6 +14,57 @@ import {
 } from "@fried-ui/react";
 
 import { BadgeLinks } from "./BadgeLinks";
+
+const badgeBadgeLinksData = [
+  {
+    href: "https://fried-ui-storybook.vercel.app/?path=/story/components-badge--default",
+    icon: <StorybookIcon className="size-match-font text-[#ff4785]" />,
+    label: "Storybook",
+  },
+  {
+    href: "https://github.com/fried-day/fried-ui/blob/main/packages/react/src/components/badge/Badge.tsx",
+    icon: <GitHubIcon className="size-match-font" />,
+    label: "Source",
+  },
+  {
+    href: "https://github.com/fried-day/fried-ui/blob/main/packages/styles/src/components/badge.css",
+    icon: <GitHubIcon className="size-match-font" />,
+    label: "Styles source",
+  },
+];
+
+const BadgeBadgeLinks = (): React.JSX.Element => {
+  return <BadgeLinks links={badgeBadgeLinksData} />;
+};
+
+const BadgeDemo = (): React.JSX.Element => {
+  return <Badge>New</Badge>;
+};
+
+const BadgeVariants = (): React.JSX.Element => {
+  return (
+    <div className="flex flex-wrap items-end gap-4">
+      <Badge variant="primary">Primary</Badge>
+      <Badge variant="secondary">Secondary</Badge>
+      <Badge variant="ghost">Ghost</Badge>
+      <Badge variant="outline">Outline</Badge>
+      <Badge variant="success">Success</Badge>
+      <Badge variant="warning">Warning</Badge>
+      <Badge variant="danger">Danger</Badge>
+      <Badge variant="info">Info</Badge>
+    </div>
+  );
+};
+
+const BadgeSizes = (): React.JSX.Element => {
+  return (
+    <div className="flex items-end gap-4">
+      <Badge size="sm">Small</Badge>
+      <Badge size="md">Medium</Badge>
+      <Badge size="lg">Large</Badge>
+    </div>
+  );
+};
 
 const buttonBadgeLinksData = [
   {
@@ -37,15 +89,15 @@ const buttonBadgeLinksData = [
   },
 ];
 
-function ButtonBadgeLinks(): React.JSX.Element {
+const ButtonBadgeLinks = (): React.JSX.Element => {
   return <BadgeLinks links={buttonBadgeLinksData} />;
-}
+};
 
-function ButtonDemo(): React.JSX.Element {
+const ButtonDemo = (): React.JSX.Element => {
   return <Button>Click me</Button>;
-}
+};
 
-function ButtonVariants(): React.JSX.Element {
+const ButtonVariants = (): React.JSX.Element => {
   return (
     <div className="flex flex-wrap items-end gap-4">
       <Button variant="primary">Primary</Button>
@@ -58,9 +110,9 @@ function ButtonVariants(): React.JSX.Element {
       <Button variant="info">Info</Button>
     </div>
   );
-}
+};
 
-function ButtonSizes(): React.JSX.Element {
+const ButtonSizes = (): React.JSX.Element => {
   return (
     <div className="flex items-end gap-4">
       <Button size="sm">Small</Button>
@@ -69,9 +121,9 @@ function ButtonSizes(): React.JSX.Element {
       <Button size="xl">Extra Large</Button>
     </div>
   );
-}
+};
 
-function ButtonRadii(): React.JSX.Element {
+const ButtonRadii = (): React.JSX.Element => {
   return (
     <div className="flex items-end gap-4">
       <Button radius="none">None</Button>
@@ -82,9 +134,9 @@ function ButtonRadii(): React.JSX.Element {
       <Button radius="full">Full</Button>
     </div>
   );
-}
+};
 
-function ButtonIconOnly(): React.JSX.Element {
+const ButtonIconOnly = (): React.JSX.Element => {
   return (
     <div className="flex items-end gap-4">
       <Button aria-label="Settings" isIconOnly>
@@ -104,9 +156,9 @@ function ButtonIconOnly(): React.JSX.Element {
       </Button>
     </div>
   );
-}
+};
 
-function ButtonFullWidth(): React.JSX.Element {
+const ButtonFullWidth = (): React.JSX.Element => {
   return (
     <div className="flex w-80 flex-col gap-4">
       <Button isFullWidth>Full Width</Button>
@@ -120,21 +172,21 @@ function ButtonFullWidth(): React.JSX.Element {
       </Button>
     </div>
   );
-}
+};
 
-function ButtonDisabled(): React.JSX.Element {
+const ButtonDisabled = (): React.JSX.Element => {
   return <Button isDisabled>Disabled</Button>;
-}
+};
 
-function ButtonPending(): React.JSX.Element {
+const ButtonPending = (): React.JSX.Element => {
   return <Button isPending>Saving...</Button>;
-}
+};
 
-function ButtonCustomClass(): React.JSX.Element {
+const ButtonCustomClass = (): React.JSX.Element => {
   return <Button className="tracking-wider uppercase">Uppercase</Button>;
-}
+};
 
-function ButtonWithIcons(): React.JSX.Element {
+const ButtonWithIcons = (): React.JSX.Element => {
   return (
     <div className="flex items-end gap-4">
       <Button size="sm">
@@ -153,17 +205,21 @@ function ButtonWithIcons(): React.JSX.Element {
       </Button>
     </div>
   );
-}
+};
 
-function ButtonAsLink(): React.JSX.Element {
+const ButtonAsLink = (): React.JSX.Element => {
   return (
     <a href="https://github.com/fried-day/fried-ui" target="_blank" rel="noopener noreferrer">
       <Button>GitHub</Button>
     </a>
   );
-}
+};
 
 export {
+  BadgeBadgeLinks,
+  BadgeDemo,
+  BadgeSizes,
+  BadgeVariants,
   ButtonAsLink,
   ButtonBadgeLinks,
   ButtonCustomClass,

@@ -16,54 +16,64 @@ Every component has two documentation files that must stay in sync:
 
 ---
 
+## Source of Truth
+
+**Props table, CSS Classes table, and CSS Variables table must come from reading source files — never guess.**
+
+1. Read `packages/react/src/components/{name}/{Name}.tsx` → extract every prop from TypeScript type
+2. Read `packages/styles/src/components/{name}.css` → extract every BEM class and CSS custom property
+3. List ALL of them in both MDX and LLM tables — no omissions
+
+---
+
 ## MDX Section Order
 
+REQUIRED = every component must have. CONDITIONAL = only if applicable.
+
 ```text
-frontmatter (title, description)
-<ButtonBadgeLinks />              ← uses BadgeLinks component, NOT raw HTML
-## Import
-## Usage
-## Features
-## Anatomy
-## {Prop demos}                   ← visual props → composition → navigation → states → utility
-## Render Props                   ← children function pattern with available render props
-## Design Anatomy                 ← golden ratio math table in rem (if applicable)
-## Accessibility
-## API Reference
-  ### {Name} Props
-  ### Render Props
-  ### CSS Classes
-  ### CSS Variables
+frontmatter (title, description)                          REQUIRED
+<{Name}BadgeLinks />                                      REQUIRED
+## Import                                                 REQUIRED
+## Usage                                                  REQUIRED
+## Features                                               REQUIRED — bullet list of component highlights
+## Anatomy                                                REQUIRED — code block showing composition
+## {Prop demos}                                           REQUIRED — one section per visual prop
+## Render Props                                           CONDITIONAL — only if component exposes render props
+## Design Anatomy                                         CONDITIONAL — only if component uses golden ratio spacing
+## Accessibility                                          REQUIRED — table or bullet list
+## API Reference                                          REQUIRED
+  ### {Name} Props                                        REQUIRED — table from TypeScript type
+  ### Render Props                                        CONDITIONAL — only if component exposes render props
+  ### CSS Classes                                         REQUIRED — table from CSS file
+  ### CSS Variables                                       REQUIRED — table from CSS file
 ```
 
 ## MDX Heading Pattern
 
 - **Prop demo sections** — heading → 1-line desc → `<Preview>` → code block
-- **Reference sub-sections** (`### Props`, `### Render Props`, `### CSS Classes`, `### CSS Variables`) — heading → table only, NO desc
+- **Reference sub-sections** (`### Props`, `### CSS Classes`, `### CSS Variables`) — heading → table only, NO desc
 - **Headings** — no suffixes, no parenthetical notes
 
-## MDX Props Table — Must Include
+## MDX Prop Demos — Required per Component
 
-Every MDX props table MUST list these for Button (adjust per component):
+Every prop that changes visual output needs a demo section with `<Preview>` + code block.
 
-```text
-variant   → inline union type, default "primary"
-size      → inline union type, default "md"
-radius    → inline union type, default "md"
-isIconOnly → boolean, default false
-isDisabled → boolean
-isPending  → boolean
-onPress, onPressStart, onPressEnd, onPressChange → PressEvent handlers
-onHoverStart, onHoverEnd, onHoverChange → HoverEvent handlers
-onFocus, onBlur, onFocusChange → FocusEvent handlers
-onKeyDown, onKeyUp → KeyboardEvent handlers
-type, form, formAction → HTML button attributes
-autoFocus → boolean
-aria-label, aria-labelledby, aria-describedby → accessibility
-className → string
-ref → Ref<HTMLButtonElement> — forwarded ref
-children → ReactNode | (renderProps: ButtonRenderProps) => ReactNode
-```
+Minimum for all components: **Variants, Sizes, Radius, Custom Class**.
+Add more as needed per component (e.g. Icon Only, Full Width, Disabled, Pending for Button).
+
+Each `<Preview>` component must:
+
+1. Exist as a function in `MdxComponents.tsx`
+2. Be exported from `MdxComponents.tsx`
+3. Be imported and registered in `page.tsx` mdxComponents object
+
+## MDX Props Table
+
+List every prop from the component's TypeScript type. Read the source file — do not copy from another component.
+
+For React Aria components, also include inherited props: event handlers, accessibility props, `ref`, `className`, `children`.
+
+For simple span/div components, list only the explicit props + `className`, `ref`, `children`.
 
 ## MDX CSS Classes Table — Must Include ALL
 
@@ -83,35 +93,37 @@ import { Button } from "@fried-ui/react/button"; // ✗ never in docs
 
 ## LLM Section Order
 
+REQUIRED = every component must have. CONDITIONAL = only if applicable.
+
 ```text
-# {Name}
-## Install
-## Import
-## Props                          ← flat table, ALL props including ref
-## Data Attributes                ← 6 data attributes for CSS styling
-## CSS Classes                    ← ALL BEM classes
-## CSS Variables                  ← component-level CSS custom properties
-## Examples                       ← ### sub-sections, MORE examples than MDX
-  ### Variants
-  ### Basic
-  ### Sizes
-  ### Radius
-  ### Icon Only
-  ### With Icon
-  ### Full Width
-  ### Disabled
-  ### Pending
-  ### As a Link
-  ### Custom Class
-  ### Form Submit
-  ### Press Handler
-  ### Render Props
-  ### Ref Forwarding
-## Anatomy                        ← ASCII diagram
-## Spacing Math                   ← golden ratio table in rem (if applicable)
-## Accessibility                  ← bullet list
-## Constraints                    ← limitations, variant count
+# {Name}                                                  REQUIRED
+## Install                                                REQUIRED
+## Import                                                 REQUIRED
+## Props                                                  REQUIRED — flat table, ALL props from TypeScript type
+## Data Attributes                                        CONDITIONAL — only for React Aria components
+## CSS Classes                                            REQUIRED — ALL BEM classes from CSS file
+## CSS Variables                                          REQUIRED — component-level CSS custom properties
+## Examples                                               REQUIRED — ### sub-sections, MORE examples than MDX
+## Anatomy                                                REQUIRED — ASCII diagram
+## Spacing Math                                           CONDITIONAL — only if component uses golden ratio spacing
+## Accessibility                                          REQUIRED — bullet list
+## Constraints                                            REQUIRED — limitations, variant count
 ```
+
+### LLM Example Sub-sections
+
+Include sub-sections that match the component's actual props. Minimum for all components:
+
+```text
+  ### Variants                                            REQUIRED
+  ### Basic                                               REQUIRED
+  ### Sizes                                               REQUIRED
+  ### Radius                                              REQUIRED
+  ### Custom Class                                        REQUIRED
+  ### Ref Forwarding                                      REQUIRED
+```
+
+Add more as needed per component (e.g. `### Icon Only`, `### Disabled`, `### Pending`, `### Form Submit` for Button).
 
 ## LLM Heading Pattern
 
@@ -131,7 +143,7 @@ import { Button } from "@fried-ui/react/button"; // ✗ never in docs
 
 ## Preview Components — `apps/docs/src/components/MdxComponents.tsx`
 
-- One function per demo: `{Name}{Demo}` — e.g., `ButtonSizes`, `ButtonIconOnly`
+- One function per demo: `{Name}{Demo}` — e.g., `ButtonSizes`, `BadgeVariants`
 - Import components and icons from `@fried-ui/react` barrel — NO inline SVGs
 - Icons use imported icon components: `<SettingsIcon className="size-match-font" />`
 - Register in `apps/docs/src/app/docs/[[...slug]]/page.tsx` mdxComponents object
@@ -142,7 +154,8 @@ import { Button } from "@fried-ui/react/button"; // ✗ never in docs
 - Generic `BadgeLinks` component with `links` prop (array of `{ href, icon, label }`)
 - Uses `<Button variant="secondary" size="sm">` — NOT raw HTML
 - Each component page creates its own data array (e.g., `buttonBadgeLinksData`)
-- Links: Storybook (vercel URL), React Aria, Source (GitHub), Styles source (GitHub)
+- Links: Storybook (vercel URL), Source (GitHub), Styles source (GitHub)
+- Add React Aria link only if the component wraps a React Aria primitive
 - Storybook URL: `https://fried-ui-storybook.vercel.app/?path=/story/components-{name}--default`
 
 ## CopyMarkdown — `apps/docs/src/components/CopyMarkdown.tsx`

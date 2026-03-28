@@ -3,8 +3,8 @@ import { defineConfig } from "tsup";
 export default defineConfig({
   entry: {
     index: "src/index.ts",
+    "components/badge/index": "src/components/badge/index.ts",
     "components/button/index": "src/components/button/index.ts",
-    "utils/cn/index": "src/utils/cn/index.ts",
   },
   format: ["esm"],
   outExtension: () => ({ js: ".mjs" }),

@@ -37,36 +37,35 @@ tailwindcss v4     ← Styling engine (oklch, @theme, @layer base)
     "./{name}" → individual component (internal only, not for docs)
     "./utils/cn" → cn utility
   files:
-    src/components/{name}/{Name}.tsx    → "use client", forwardRef, wrap React Aria
+    src/components/{name}/{Name}.tsx    → "use client", forwardRef, wrap React Aria or plain element
     src/components/{name}/{name}.test.tsx → Vitest + RTL
     src/components/{name}/{name}.stories.tsx → Storybook 10
     src/components/{name}/index.ts      → re-exports
     src/components/icons/{Name}Icon.tsx  → SVG icon components
 ```
 
-## Component Anatomy — Button Example
+## Component Types
+
+### Interactive (wraps React Aria)
+
+Example: Button, Input, Select, Dialog
 
 ```text
-1. packages/styles/src/components/button.css
-   → .fri-button (base)
-   → .fri-button--primary (variant, uses --fri-button-bg/hover/pressed/fg)
-   → .fri-button--sm/md/lg/xl (size, golden ratio spacing)
-   → .fri-button--radius-none/sm/md/lg/xl/full
-   → .fri-button--icon-only (square, aspect-ratio: 1)
-   → .fri-button--pending (text-transparent)
-   → .fri-button__spinner (absolute center, animate-spin)
+1. CSS: .fri-{name} base + variants + hover/active/focus/disabled states
+2. React: forwardRef, Omit<RAC{Name}Props, "className" | "children">, composeRenderProps
+3. Props: component-specific + inherited from React Aria (onPress, isDisabled, etc.)
+4. Data attributes: [data-hovered], [data-pressed], [data-focused], etc.
+```
 
-2. packages/react/src/components/button/Button.tsx
-   → forwardRef(ButtonInner)
-   → props: variant, size, radius, isIconOnly, className, children (ButtonRenderProps)
-   → cn() compose BEM class names from props
-   → composeRenderProps for isPending spinner
-   → Omit<RACButtonProps, "className" | "children">
+### Display-only (plain HTML element)
 
-3. Inline union types for IDE autocomplete:
-   variant?: "primary" | "secondary" | "ghost" | "outline" | "success" | "warning" | "danger" | "info"
-   size?: "sm" | "md" | "lg" | "xl"
-   radius?: "none" | "sm" | "md" | "lg" | "xl" | "full"
+Example: Badge, Divider, Skeleton
+
+```text
+1. CSS: .fri-{name} base + variants (no hover/active/focus states)
+2. React: forwardRef to span/div, explicit props only (no React Aria)
+3. Props: variant, size, radius, className, children, ref
+4. No data attributes, no event handlers
 ```
 
 ## BEM Naming (`fri-` prefix)
@@ -107,14 +106,23 @@ Each component defines its own CSS variables for variant customization:
 - React Aria states in CSS: `&[data-pressed]`, `&[data-hovered]`, `&[data-focused]`, `&[data-focus-visible]`, `&[data-disabled]`, `&[data-pending]`
 - Hover wrapped in `@media (hover: hover)` for touch devices
 
-## Data Flow
+## Data Flow — Interactive Components
 
 ```text
 props     → destructure (defaults first, then alphabetical)
 rest      → forward to React Aria via {...rest}
 ref       → forwardRef to React Aria root element
 className → cn() compose BEM: base + variant + size + radius + state modifiers + custom
-children  → composeRenderProps → expose ButtonRenderProps (isHovered, isPressed, etc.)
+children  → composeRenderProps → expose render props (isHovered, isPressed, etc.)
+```
+
+## Data Flow — Display-only Components
+
+```text
+props     → destructure (defaults first, then alphabetical)
+ref       → forwardRef to plain HTML element (span, div)
+className → cn() compose BEM: base + variant + size + radius + custom
+children  → pass through directly
 ```
 
 ## Conditional Class Pattern
@@ -123,6 +131,23 @@ children  → composeRenderProps → expose ButtonRenderProps (isHovered, isPres
 const iconOnlyModifier = isIconOnly ? "fri-button--icon-only" : undefined;
 const pendingModifier = rest.isPending ? "fri-button--pending" : undefined;
 // ✓ extract to const — lint rule: no-logic-in-params
+```
+
+## TypeScript Rules
+
+- **Type members must be sorted alphabetically** (lint: `sort-type-alphabetically`)
+- **Inline union types** for IDE autocomplete — not type aliases
+- `forwardRef` for all components (interactive and display-only)
+
+```tsx
+// ✓ alphabetical order
+export type BadgeProps = {
+  children?: ReactNode;
+  className?: string;
+  radius?: "none" | "sm" | "md" | "lg" | "xl" | "full";
+  size?: "sm" | "md" | "lg";
+  variant?: "primary" | "secondary" | "ghost" | "outline" | "success" | "warning" | "danger" | "info";
+};
 ```
 
 ## JSX Prop Sort Order (lint enforced)
@@ -145,13 +170,13 @@ Example: `<Button variant="primary" aria-label="Save" isIconOnly>`
 
 1. Create CSS → `packages/styles/src/components/{name}.css`
 2. Import → `packages/styles/src/components/index.css`
-3. Create component → `packages/react/src/components/{name}/{Name}.tsx` (forwardRef, inline union types)
-4. Create test → include ref forwarding + render props tests
-5. Create story → include all prop demos, explicit return types
+3. Create component → `packages/react/src/components/{name}/{Name}.tsx` (forwardRef, alphabetical type members)
+4. Create test → include ref forwarding test; add render props test only if applicable
+5. Create story → read `storybook.md` rules, match component props only
 6. Create barrel → `packages/react/src/components/{name}/index.ts`
 7. Re-export → `packages/react/src/components/index.ts`
 8. Add tsup entry → `packages/react/tsup.config.ts`
 9. Add export map → `packages/react/package.json`
-10. Create docs → MDX + LLM + MdxComponents + BadgeLinks + page.tsx registration
+10. Create docs → read `docs.md` rules, include ALL required sections, register MdxComponents
 11. Build + lint + typecheck + test must pass
 12. Audit symmetry with existing components

@@ -36,7 +36,7 @@ const themeSwitchConfig = {
   mode: "light-dark-system" as const,
 };
 
-function Layout(props: Readonly<LayoutProps>): React.JSX.Element {
+const Layout = (props: Readonly<LayoutProps>): React.JSX.Element => {
   const { children } = props;
 
   return (
@@ -50,6 +50,6 @@ function Layout(props: Readonly<LayoutProps>): React.JSX.Element {
       {children}
     </DocsLayout>
   );
-}
+};
 
 export default Layout;

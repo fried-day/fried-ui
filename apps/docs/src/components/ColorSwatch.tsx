@@ -9,7 +9,7 @@ export interface ColorItemProps {
   token: string;
 }
 
-function SwatchItem(props: Readonly<ColorItemProps>): React.JSX.Element {
+const SwatchItem = (props: Readonly<ColorItemProps>): React.JSX.Element => {
   const { name, token } = props;
   const label = `${name} color swatch`;
   const bgStyle = { backgroundColor: `var(--color-${token})` };
@@ -26,9 +26,9 @@ function SwatchItem(props: Readonly<ColorItemProps>): React.JSX.Element {
       <span className="max-w-20 text-center text-[11px] leading-tight text-foreground-muted">{name}</span>
     </div>
   );
-}
+};
 
-function ColorSwatch(props: Readonly<ColorSwatchProps>): React.JSX.Element {
+const ColorSwatch = (props: Readonly<ColorSwatchProps>): React.JSX.Element => {
   const { colors } = props;
 
   return (
@@ -38,6 +38,6 @@ function ColorSwatch(props: Readonly<ColorSwatchProps>): React.JSX.Element {
       ))}
     </div>
   );
-}
+};
 
 export { ColorSwatch };

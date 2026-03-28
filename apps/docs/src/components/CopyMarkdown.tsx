@@ -8,7 +8,7 @@ interface CopyMarkdownProps {
   url: string;
 }
 
-function CopyMarkdown(props: Readonly<CopyMarkdownProps>): React.JSX.Element {
+const CopyMarkdown = (props: Readonly<CopyMarkdownProps>): React.JSX.Element => {
   const { url } = props;
   const [copied, setCopied] = useState(false);
 
@@ -27,6 +27,6 @@ function CopyMarkdown(props: Readonly<CopyMarkdownProps>): React.JSX.Element {
       {copied ? "Copied!" : "Copy for LLM"}
     </Button>
   );
-}
+};
 
 export { CopyMarkdown };

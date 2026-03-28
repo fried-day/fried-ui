@@ -26,11 +26,11 @@
     ".": {
       "import": "./src/index.ts"
     },
+    "./badge": {
+      "import": "./src/components/badge/index.ts"
+    },
     "./button": {
       "import": "./src/components/button/index.ts"
-    },
-    "./utils/cn": {
-      "import": "./src/utils/cn/index.ts"
     }
   },
   "main": "./dist/index.mjs",
@@ -54,8 +54,7 @@
     "@react-types/color": "^3.1.4",
     "@react-types/shared": "^3.33.1",
     "clsx": "^2.1.1",
-    "react-aria-components": "^1.16.0",
-    "tailwind-merge": "^3.5.0"
+    "react-aria-components": "^1.16.0"
   },
   "devDependencies": {
     "@fried-ui/vitest": "workspace:*",
