@@ -2,6 +2,8 @@ import type { ReactNode } from "react";
 
 import { DocsLayout } from "fumadocs-ui/layouts/notebook";
 
+import { GitHubIcon } from "@fried-ui/react";
+
 import { source } from "@/lib/source";
 
 interface LayoutProps {
@@ -9,17 +11,15 @@ interface LayoutProps {
 }
 
 const navConfig = {
-  title: "fried-ui",
+  title: "Fried UI",
   url: "/docs",
 };
 
+const githubIcon = <GitHubIcon className="size-5" />;
+
 const linksConfig = [
   {
-    text: "Storybook",
-    url: "https://fried-ui-storybook.vercel.app",
-    external: true,
-  },
-  {
+    icon: githubIcon,
     text: "GitHub",
     url: "https://github.com/fried-day/fried-ui",
     external: true,
@@ -31,19 +31,11 @@ const sidebarConfig = {
   defaultOpenLevel: 0,
 };
 
-const containerConfig = { className: "max-w-none" };
-
 function Layout(props: Readonly<LayoutProps>): React.JSX.Element {
   const { children } = props;
 
   return (
-    <DocsLayout
-      tree={source.pageTree}
-      nav={navConfig}
-      links={linksConfig}
-      sidebar={sidebarConfig}
-      containerProps={containerConfig}
-    >
+    <DocsLayout links={linksConfig} nav={navConfig} sidebar={sidebarConfig} tree={source.pageTree}>
       {children}
     </DocsLayout>
   );
