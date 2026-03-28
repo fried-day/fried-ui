@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import { Button, CopyIcon } from "@fried-ui/react";
+
 interface CopyMarkdownProps {
   url: string;
 }
@@ -20,18 +22,10 @@ function CopyMarkdown(props: Readonly<CopyMarkdownProps>): React.JSX.Element {
   }
 
   return (
-    <button
-      className="inline-flex items-center gap-[0.541rem] border border-border bg-surface px-3.5 py-1.5 text-sm leading-none font-medium text-surface-foreground hover:bg-surface-hover"
-      type="button"
-      onClick={handleCopy}
-    >
-      <svg className="size-match-font" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-        <rect height="13" rx="2" ry="2" width="13" x="9" y="9" />
-        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-      </svg>
-
+    <Button variant="secondary" size="sm" onPress={handleCopy}>
+      <CopyIcon className="size-match-font" />
       {copied ? "Copied!" : "Copy for LLM"}
-    </button>
+    </Button>
   );
 }
 

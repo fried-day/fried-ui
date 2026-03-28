@@ -51,7 +51,7 @@ async function Page(props: Readonly<PageProps>): Promise<React.JSX.Element> {
   const MdxContent = page.data.body;
   const slugPath = params.slug?.join("/") ?? "";
   const markdownUrl = `/api/mdx?slug=${slugPath}`;
-  const tocConfig = { header: <CopyMarkdown url={markdownUrl} /> };
+  const tocConfig = { footer: <CopyMarkdown url={markdownUrl} /> };
 
   return (
     <DocsPage toc={page.data.toc} full={page.data.full} tableOfContent={tocConfig}>

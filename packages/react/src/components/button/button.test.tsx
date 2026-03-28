@@ -93,10 +93,11 @@ describe("Button", () => {
 
   it("applies icon-only class", () => {
     render(
-      <Button isIconOnly aria-label="Close">
+      <Button aria-label="Close" isIconOnly>
         <svg />
       </Button>,
     );
+
     const el = screen.getByRole("button");
     expect(el.className).toContain("fri-button--icon-only");
   });
