@@ -1,3 +1,16 @@
+/*
+ * Palette — fried-lime brand color
+ *
+ * Custom oklch palette for the primary brand color.
+ * All other colors (green, amber, rose, blue, neutral) come from Tailwind v4 built-in.
+ *
+ * Scale: 50 (lightest) → 950 (darkest)
+ * Hue: 120° (yellow-green)
+ *
+ * Usage: referenced by semantic tokens in colors.css
+ *   --color-primary: var(--color-fried-lime-500);
+ */
+
 @theme {
   --color-fried-lime-50: oklch(0.99 0.027 120.44);
   --color-fried-lime-100: oklch(0.99 0.027 120.44);
