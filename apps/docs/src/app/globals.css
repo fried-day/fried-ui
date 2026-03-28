@@ -42,6 +42,27 @@
   --color-fd-ring: var(--color-ring);
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image: url("/pacT1BIPB708GOXrZYWPSztS53o.avif");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(3.75rem);
+}
+
 #nd-subnav > [data-header-body] {
   border: 0 !important;
 }
