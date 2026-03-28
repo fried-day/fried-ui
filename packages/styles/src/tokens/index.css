@@ -1,3 +1,13 @@
+/*
+ * Design Tokens
+ *
+ * palette.css    → fried-lime brand colors (oklch)
+ * colors.css     → semantic tokens (light + dark mode)
+ * typography.css → heading sizes (√φ scale)
+ * layout.css     → radius, shadow, z-index, focus, cursor
+ * motion.css     → duration, easing, keyframes, reduced-motion
+ */
+
 @import "./palette.css";
 @import "./colors.css";
 @import "./typography.css";

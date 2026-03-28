@@ -127,7 +127,7 @@
 }
 
 .fri-button--icon-only.fri-button--size-sm {
-  @apply w-[1.625rem];
+  @apply w-6.5;
 }
 
 .fri-button--icon-only.fri-button--size-md {
