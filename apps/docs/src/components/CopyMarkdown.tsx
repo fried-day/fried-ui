@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { Button, CopyIcon } from "@fried-ui/react";
+import { Button, ClipboardIcon } from "@fried-ui/react";
 
 interface CopyMarkdownProps {
   url: string;
@@ -22,8 +22,8 @@ function CopyMarkdown(props: Readonly<CopyMarkdownProps>): React.JSX.Element {
   }
 
   return (
-    <Button variant="secondary" size="sm" onPress={handleCopy}>
-      <CopyIcon className="size-match-font" />
+    <Button variant="secondary" onPress={handleCopy}>
+      <ClipboardIcon className="size-match-font" />
       {copied ? "Copied!" : "Copy for LLM"}
     </Button>
   );
