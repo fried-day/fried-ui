@@ -155,7 +155,7 @@ type Story = StoryObj<typeof meta>;
 const Default: Story = {};
 
 const Sizes: Story = {
-  render: () => (
+  render: (): React.JSX.Element => (
     <div className="flex items-end gap-4">
       <Button size="sm">Small</Button>
       <Button size="md">Medium</Button>
@@ -166,7 +166,7 @@ const Sizes: Story = {
 };
 
 const Radii: Story = {
-  render: () => (
+  render: (): React.JSX.Element => (
     <div className="flex items-end gap-4">
       <Button radius="none">None</Button>
       <Button radius="sm">Small</Button>
@@ -179,7 +179,7 @@ const Radii: Story = {
 };
 
 const Variants: Story = {
-  render: () => (
+  render: (): React.JSX.Element => (
     <div className="flex items-end gap-4">
       <Button variant="primary">Primary</Button>
       <Button variant="secondary">Secondary</Button>
