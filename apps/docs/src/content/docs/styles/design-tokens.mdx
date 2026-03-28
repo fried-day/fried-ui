@@ -1,0 +1,125 @@
+---
+title: Design Tokens
+description: Color, spacing, elevation, and motion tokens that power every fried-ui component.
+---
+
+## Overview
+
+fried-ui uses CSS custom properties as design tokens. All tokens are defined in `@fried-ui/styles` and automatically available as Tailwind CSS v4 utilities.
+
+```css
+@import "tailwindcss";
+@import "@fried-ui/styles";
+```
+
+## Semantic Colors
+
+Every semantic color has 7 tokens:
+
+| Token                    | Purpose                              |
+| ------------------------ | ------------------------------------ |
+| `{name}`                 | Solid background (button, badge)     |
+| `{name}-hover`           | Background on hover                  |
+| `{name}-active`          | Background on pressed                |
+| `{name}-foreground`      | Text on solid background             |
+| `{name}-pale`            | Soft background (alert, soft button) |
+| `{name}-pale-foreground` | Text on pale background              |
+| `{name}-pale-border`     | Border on pale background            |
+
+Available groups: `primary`, `secondary`, `success`, `warning`, `danger`, `info`
+
+```tsx
+<div className="bg-primary text-primary-foreground">Solid</div>
+<div className="bg-primary-pale text-primary-pale-foreground border border-primary-pale-border">Soft</div>
+```
+
+## Layout Elevation
+
+4 layers from lowest to highest:
+
+| Layer | Token                  | Light       | Dark        | Usage                   |
+| ----- | ---------------------- | ----------- | ----------- | ----------------------- |
+| 1     | `background`           | white       | black       | Page background         |
+| 2     | `background-secondary` | neutral-50  | neutral-950 | Sidebar, header, footer |
+| 3     | `surface`              | neutral-100 | neutral-900 | Card, modal             |
+| 4     | `popover`              | white       | neutral-800 | Tooltip, dropdown       |
+
+```tsx
+<div className="bg-background">Page</div>
+<aside className="bg-background-secondary">Sidebar</aside>
+<div className="bg-surface text-surface-foreground">Card</div>
+<div className="bg-popover text-popover-foreground">Dropdown</div>
+```
+
+## Typography Hierarchy
+
+| Token                  | Purpose                  |
+| ---------------------- | ------------------------ |
+| `heading`              | h1-h6 headings           |
+| `foreground`           | Body text                |
+| `foreground-secondary` | Subtitle, description    |
+| `foreground-muted`     | Caption, hint, timestamp |
+
+```tsx
+<h1 className="text-heading">Title</h1>
+<p className="text-foreground">Body text</p>
+<p className="text-foreground-secondary">Description</p>
+<span className="text-foreground-muted">Updated 2 hours ago</span>
+```
+
+## Spacing (Golden Ratio)
+
+All spacing derives from font-size × φ (1.618):
+
+| Property       | Formula   | sm       | md       | lg       | xl       |
+| -------------- | --------- | -------- | -------- | -------- | -------- |
+| Font           | x         | 0.875rem | 1rem     | 1.25rem  | 1.5rem   |
+| Padding Inline | x         | 0.875rem | 1rem     | 1.25rem  | 1.5rem   |
+| Padding Block  | x × 0.485 | 0.375rem | 0.5rem   | 0.625rem | 0.75rem  |
+| Gap            | x / φ     | 0.541rem | 0.618rem | 0.773rem | 0.927rem |
+
+## Shadow (Framer-inspired)
+
+| Token           | Usage                    |
+| --------------- | ------------------------ |
+| `shadow-1`      | Subtle hover lift        |
+| `shadow-2`      | Card, panel              |
+| `shadow-3`      | Dropdown, popover        |
+| `shadow-4`      | Modal, dialog            |
+| `shadow-border` | Dark mode card edge glow |
+
+```tsx
+<div className="shadow-2">Card with shadow</div>
+```
+
+## Border & Field
+
+| Token               | Purpose                                      |
+| ------------------- | -------------------------------------------- |
+| `border`            | Default border (card, input, outline button) |
+| `border-hover`      | Border on hover                              |
+| `field`             | Input background                             |
+| `field-border`      | Input border                                 |
+| `field-placeholder` | Placeholder text                             |
+
+## Dark Mode
+
+Dark mode activates via `.dark` class or `data-theme="dark"`:
+
+```html
+<html class="dark"></html>
+```
+
+All tokens automatically switch. Light values are defined in `@theme`, dark overrides in `@layer base .dark`.
+
+## Chart Colors
+
+5 colors for data visualization:
+
+| Token     | Source             |
+| --------- | ------------------ |
+| `chart-1` | fried-lime (brand) |
+| `chart-2` | blue               |
+| `chart-3` | rose               |
+| `chart-4` | amber              |
+| `chart-5` | green              |

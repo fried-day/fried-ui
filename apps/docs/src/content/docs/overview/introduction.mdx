@@ -1,0 +1,29 @@
+---
+title: Introduction
+description: Beautiful, accessible React components built on React Aria + Tailwind CSS v4.
+---
+
+## What is fried-ui?
+
+fried-ui is a React component library built on top of [React Aria Components](https://react-spectrum.adobe.com/react-aria/) and [Tailwind CSS v4](https://tailwindcss.com/). It provides accessible, composable UI primitives with a design system powered by the golden ratio.
+
+## Key Features
+
+- **Accessible by default** — Built on React Aria, every component has keyboard navigation, focus management, and screen reader support out of the box
+- **Golden ratio spacing** — All sizing uses φ (1.618) for mathematically harmonious proportions
+- **Pure CSS tokens** — Design tokens live in `@fried-ui/styles` as plain CSS, usable with any framework
+- **Dark mode** — Framer-inspired dark theme with 4-layer elevation system
+- **LLM-friendly** — Single `variant` prop, inline union types for IDE autocomplete, structured docs for AI consumption
+
+## Architecture
+
+```text
+@fried-ui/react    → React 19 components (behavior + accessibility)
+@fried-ui/styles   → Pure CSS: design tokens + component BEM styles
+```
+
+`@fried-ui/styles` has no React dependency — it can be used with Vue, Svelte, or plain HTML.
+
+## Components
+
+- [Button](/docs/components/button) — Accessible button with 8 variants, golden ratio spacing, and icon-only mode

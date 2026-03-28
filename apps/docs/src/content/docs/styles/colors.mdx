@@ -1,0 +1,200 @@
+---
+title: Colors
+description: Semantic color tokens for light and dark mode — 7 tokens per group, 4-layer elevation, typography hierarchy.
+---
+
+## Primary Colors
+
+Your main brand color used for primary actions and CTAs.
+
+<ColorSwatch
+  colors={[
+    { name: "--primary", token: "primary" },
+    { name: "--primary-foreground", token: "primary-foreground" },
+    { name: "--primary-hover", token: "primary-hover" },
+    { name: "--primary-active", token: "primary-active" },
+    { name: "--primary-pale", token: "primary-pale" },
+    { name: "--primary-pale-foreground", token: "primary-pale-foreground" },
+    { name: "--primary-pale-border", token: "primary-pale-border" },
+  ]}
+/>
+
+## Secondary Colors
+
+For secondary actions and less emphasis.
+
+<ColorSwatch
+  colors={[
+    { name: "--secondary", token: "secondary" },
+    { name: "--secondary-foreground", token: "secondary-foreground" },
+    { name: "--secondary-hover", token: "secondary-hover" },
+    { name: "--secondary-active", token: "secondary-active" },
+    { name: "--secondary-pale", token: "secondary-pale" },
+    { name: "--secondary-pale-foreground", token: "secondary-pale-foreground" },
+    { name: "--secondary-pale-border", token: "secondary-pale-border" },
+  ]}
+/>
+
+## Status Colors
+
+For alerts, validation, and status messages.
+
+### Success
+
+<ColorSwatch
+  colors={[
+    { name: "--success", token: "success" },
+    { name: "--success-foreground", token: "success-foreground" },
+    { name: "--success-pale", token: "success-pale" },
+    { name: "--success-pale-foreground", token: "success-pale-foreground" },
+    { name: "--success-pale-border", token: "success-pale-border" },
+  ]}
+/>
+
+### Warning
+
+<ColorSwatch
+  colors={[
+    { name: "--warning", token: "warning" },
+    { name: "--warning-foreground", token: "warning-foreground" },
+    { name: "--warning-pale", token: "warning-pale" },
+    { name: "--warning-pale-foreground", token: "warning-pale-foreground" },
+    { name: "--warning-pale-border", token: "warning-pale-border" },
+  ]}
+/>
+
+### Danger
+
+<ColorSwatch
+  colors={[
+    { name: "--danger", token: "danger" },
+    { name: "--danger-foreground", token: "danger-foreground" },
+    { name: "--danger-pale", token: "danger-pale" },
+    { name: "--danger-pale-foreground", token: "danger-pale-foreground" },
+    { name: "--danger-pale-border", token: "danger-pale-border" },
+  ]}
+/>
+
+### Info
+
+<ColorSwatch
+  colors={[
+    { name: "--info", token: "info" },
+    { name: "--info-foreground", token: "info-foreground" },
+    { name: "--info-pale", token: "info-pale" },
+    { name: "--info-pale-foreground", token: "info-pale-foreground" },
+    { name: "--info-pale-border", token: "info-pale-border" },
+  ]}
+/>
+
+## Background & Surface
+
+4 elevation layers from lowest to highest.
+
+<ColorSwatch
+  colors={[
+    { name: "--background", token: "background" },
+    { name: "--background-secondary", token: "background-secondary" },
+    { name: "--foreground", token: "foreground" },
+    { name: "--surface", token: "surface" },
+    { name: "--surface-foreground", token: "surface-foreground" },
+    { name: "--popover", token: "popover" },
+    { name: "--popover-foreground", token: "popover-foreground" },
+  ]}
+/>
+
+## Muted Colors
+
+For ghost buttons, tags, chips, and subtle backgrounds.
+
+<ColorSwatch
+  colors={[
+    { name: "--muted", token: "muted" },
+    { name: "--muted-foreground", token: "muted-foreground" },
+    { name: "--muted-hover", token: "muted-hover" },
+    { name: "--muted-active", token: "muted-active" },
+  ]}
+/>
+
+## Typography
+
+Text color hierarchy from strongest to weakest.
+
+<ColorSwatch
+  colors={[
+    { name: "--heading", token: "heading" },
+    { name: "--foreground", token: "foreground" },
+    { name: "--foreground-secondary", token: "foreground-secondary" },
+    { name: "--foreground-muted", token: "foreground-muted" },
+  ]}
+/>
+
+## Border & Separator
+
+<ColorSwatch
+  colors={[
+    { name: "--border", token: "border" },
+    { name: "--border-hover", token: "border-hover" },
+    { name: "--separator", token: "separator" },
+  ]}
+/>
+
+## Form Field Colors
+
+For consistent form field styling across input components.
+
+<ColorSwatch
+  colors={[
+    { name: "--field", token: "field" },
+    { name: "--field-foreground", token: "field-foreground" },
+    { name: "--field-border", token: "field-border" },
+    { name: "--field-border-hover", token: "field-border-hover" },
+    { name: "--field-placeholder", token: "field-placeholder" },
+  ]}
+/>
+
+## Other Colors
+
+<ColorSwatch
+  colors={[
+    { name: "--disabled", token: "disabled" },
+    { name: "--disabled-foreground", token: "disabled-foreground" },
+    { name: "--skeleton", token: "skeleton" },
+    { name: "--code", token: "code" },
+    { name: "--code-background", token: "code-background" },
+    { name: "--mark", token: "mark" },
+    { name: "--mark-foreground", token: "mark-foreground" },
+    { name: "--link", token: "link" },
+    { name: "--link-hover", token: "link-hover" },
+    { name: "--ring", token: "ring" },
+    { name: "--selection", token: "selection" },
+    { name: "--selection-foreground", token: "selection-foreground" },
+  ]}
+/>
+
+## Chart Colors
+
+5 colors for data visualization.
+
+<ColorSwatch
+  colors={[
+    { name: "--chart-1", token: "chart-1" },
+    { name: "--chart-2", token: "chart-2" },
+    { name: "--chart-3", token: "chart-3" },
+    { name: "--chart-4", token: "chart-4" },
+    { name: "--chart-5", token: "chart-5" },
+  ]}
+/>
+
+## How to Use
+
+```tsx
+<button className="bg-primary text-primary-foreground">Solid</button>
+<div className="bg-danger-pale text-danger-pale-foreground border border-danger-pale-border">
+  Alert
+</div>
+```
+
+## Dark Mode
+
+All colors switch automatically via `.dark` class or `data-theme="dark"`. Toggle the theme on this page to see the difference.

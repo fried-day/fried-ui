@@ -2,6 +2,7 @@ import defaultMdxComponents from "fumadocs-ui/mdx";
 import { DocsBody, DocsDescription, DocsPage, DocsTitle } from "fumadocs-ui/page";
 import { notFound } from "next/navigation";
 
+import { ColorSwatch } from "@/components/ColorSwatch";
 import { CopyMarkdown } from "@/components/CopyMarkdown";
 import {
   ButtonAsLink,
@@ -40,6 +41,7 @@ const mdxComponents = {
   ButtonSizes,
   ButtonVariants,
   ButtonWithIcons,
+  ColorSwatch,
   Preview,
 };
 
