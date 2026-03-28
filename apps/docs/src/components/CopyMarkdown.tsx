@@ -22,7 +22,7 @@ function CopyMarkdown(props: Readonly<CopyMarkdownProps>): React.JSX.Element {
   }
 
   return (
-    <Button variant="secondary" onPress={handleCopy}>
+    <Button variant="secondary" size="sm" onPress={handleCopy}>
       <ClipboardIcon className="size-match-font" />
       {copied ? "Copied!" : "Copy for LLM"}
     </Button>
