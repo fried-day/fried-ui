@@ -22,4 +22,16 @@ export type { Color, ColorFormat, ColorSpace, ColorChannel, ColorChannelRange, C
 export { Collection, ListBoxLoadMoreItem, RouterProvider, I18nProvider } from "react-aria-components";
 
 export * from "./button";
-export { CopyIcon, Spinner } from "./icons";
+
+export {
+  ArrowRightIcon,
+  ClipboardIcon,
+  GitHubIcon,
+  MoreIcon,
+  PlusIcon,
+  ReactAriaIcon,
+  SettingsIcon,
+  ShareIcon,
+  Spinner,
+  StorybookIcon,
+} from "./icons";

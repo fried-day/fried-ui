@@ -1,2 +1,10 @@
-export { CopyIcon } from "./CopyIcon";
+export { ArrowRightIcon } from "./ArrowRightIcon";
+export { ClipboardIcon } from "./ClipboardIcon";
+export { GitHubIcon } from "./GitHubIcon";
+export { MoreIcon } from "./MoreIcon";
+export { PlusIcon } from "./PlusIcon";
+export { ReactAriaIcon } from "./ReactAriaIcon";
+export { SettingsIcon } from "./SettingsIcon";
+export { ShareIcon } from "./ShareIcon";
 export { Spinner } from "./Spinner";
+export { StorybookIcon } from "./StorybookIcon";
