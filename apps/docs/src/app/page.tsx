@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-function Home(): React.JSX.Element {
+const Home = (): React.JSX.Element => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background text-foreground">
       <div className="text-center">
@@ -16,6 +16,6 @@ function Home(): React.JSX.Element {
       </div>
     </div>
   );
-}
+};
 
 export default Home;

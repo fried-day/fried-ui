@@ -4,12 +4,19 @@
   @apply cursor-pointer border border-transparent select-none no-highlight;
   @apply transition-colors duration-(--duration-fast) ease-smooth motion-reduce:transition-none;
 
-  --fri-button-bg: transparent;
-  --fri-button-bg-hover: var(--fri-button-bg);
-  --fri-button-bg-pressed: var(--fri-button-bg-hover);
-  --fri-button-fg: currentColor;
+  /* default variant = primary */
+  --fri-button-bg: var(--color-primary);
+  --fri-button-bg-hover: var(--color-primary-hover);
+  --fri-button-bg-pressed: var(--color-primary-active);
+  --fri-button-fg: var(--color-primary-foreground);
 
   @apply bg-(--fri-button-bg) text-(--fri-button-fg);
+
+  /* default size = md */
+  @apply gap-2.5 px-4 py-2 text-base;
+
+  /* default radius = md */
+  @apply rounded-md;
 
   &:focus-visible,
   &[data-focus-visible] {
@@ -95,20 +102,20 @@
   --fri-button-fg: var(--color-info-foreground);
 }
 
-.fri-button--sm {
-  @apply gap-[0.541rem] px-3.5 py-1.5 text-sm;
+.fri-button--size-sm {
+  @apply gap-2 px-3.5 py-1.5 text-sm;
 }
 
-.fri-button--md {
-  @apply gap-[0.618rem] px-4 py-2 text-base;
+.fri-button--size-md {
+  @apply gap-2.5 px-4 py-2 text-base;
 }
 
-.fri-button--lg {
-  @apply gap-[0.773rem] px-5 py-2.5 text-xl;
+.fri-button--size-lg {
+  @apply gap-3 px-5 py-2.5 text-xl;
 }
 
-.fri-button--xl {
-  @apply gap-[0.927rem] px-6 py-3 text-2xl;
+.fri-button--size-xl {
+  @apply gap-4 px-6 py-3 text-2xl;
 }
 
 .fri-button--full-width {
@@ -119,19 +126,19 @@
   @apply aspect-square justify-center gap-0 p-0;
 }
 
-.fri-button--icon-only.fri-button--sm {
+.fri-button--icon-only.fri-button--size-sm {
   @apply w-[1.625rem];
 }
 
-.fri-button--icon-only.fri-button--md {
+.fri-button--icon-only.fri-button--size-md {
   @apply w-8;
 }
 
-.fri-button--icon-only.fri-button--lg {
+.fri-button--icon-only.fri-button--size-lg {
   @apply w-10;
 }
 
-.fri-button--icon-only.fri-button--xl {
+.fri-button--icon-only.fri-button--size-xl {
   @apply w-12;
 }
 
@@ -161,6 +168,10 @@
 
 .fri-button--pending {
   @apply text-transparent;
+}
+
+.fri-button [slot="icon"] {
+  @apply size-match-font;
 }
 
 .fri-button__spinner {

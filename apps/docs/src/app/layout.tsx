@@ -35,7 +35,7 @@ interface RootLayoutProps {
   children: ReactNode;
 }
 
-function RootLayout(props: Readonly<RootLayoutProps>): React.JSX.Element {
+const RootLayout = (props: Readonly<RootLayoutProps>): React.JSX.Element => {
   const { children } = props;
   const bodyClassName = `${geistSans.variable} ${geistMono.variable} font-sans antialiased`;
 
@@ -46,6 +46,6 @@ function RootLayout(props: Readonly<RootLayoutProps>): React.JSX.Element {
       </body>
     </html>
   );
-}
+};
 
 export default RootLayout;

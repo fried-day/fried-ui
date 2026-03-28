@@ -4,7 +4,7 @@ interface PreviewProps {
   children: ReactNode;
 }
 
-function Preview(props: Readonly<PreviewProps>): React.JSX.Element {
+const Preview = (props: Readonly<PreviewProps>): React.JSX.Element => {
   const { children } = props;
 
   return (
@@ -12,6 +12,6 @@ function Preview(props: Readonly<PreviewProps>): React.JSX.Element {
       {children}
     </div>
   );
-}
+};
 
 export { Preview };
