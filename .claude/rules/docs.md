@@ -98,6 +98,7 @@ import { Button } from "@fried-ui/react/button"; // ✗ never in docs
   ### Radius
   ### Icon Only
   ### With Icon
+  ### Full Width
   ### Disabled
   ### Pending
   ### As a Link
