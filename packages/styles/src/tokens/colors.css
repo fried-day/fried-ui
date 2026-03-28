@@ -1,264 +1,208 @@
 @custom-variant dark (&:is(.dark, [data-theme="dark"]) *);
 
 @theme {
-  /* --- primary: สี brand หลัก (CTA, solid button) --- */
   --color-primary: var(--color-fried-lime-500);
   --color-primary-hover: var(--color-fried-lime-600);
   --color-primary-active: var(--color-fried-lime-700);
   --color-primary-foreground: var(--color-neutral-950);
   --color-primary-pale: var(--color-fried-lime-100);
   --color-primary-pale-foreground: var(--color-fried-lime-800);
+  --color-primary-pale-border: var(--color-fried-lime-200);
 
-  /* --- secondary: ปุ่มรอง, less emphasis --- */
   --color-secondary: var(--color-neutral-100);
   --color-secondary-hover: var(--color-neutral-200);
   --color-secondary-active: var(--color-neutral-300);
   --color-secondary-foreground: var(--color-neutral-900);
   --color-secondary-pale: var(--color-neutral-50);
   --color-secondary-pale-foreground: var(--color-neutral-700);
+  --color-secondary-pale-border: var(--color-neutral-200);
 
-  /* --- success: สำเร็จ, saved, confirmed --- */
   --color-success: var(--color-green-600);
   --color-success-hover: var(--color-green-700);
   --color-success-active: var(--color-green-800);
   --color-success-foreground: var(--color-white);
   --color-success-pale: var(--color-green-50);
   --color-success-pale-foreground: var(--color-green-800);
+  --color-success-pale-border: var(--color-green-200);
 
-  /* --- warning: เตือน, caution --- */
   --color-warning: var(--color-amber-500);
   --color-warning-hover: var(--color-amber-600);
   --color-warning-active: var(--color-amber-700);
   --color-warning-foreground: var(--color-neutral-950);
   --color-warning-pale: var(--color-amber-50);
   --color-warning-pale-foreground: var(--color-amber-800);
+  --color-warning-pale-border: var(--color-amber-200);
 
-  /* --- danger: ลบ, error, destructive --- */
   --color-danger: var(--color-rose-600);
   --color-danger-hover: var(--color-rose-700);
   --color-danger-active: var(--color-rose-800);
   --color-danger-foreground: var(--color-white);
   --color-danger-pale: var(--color-rose-50);
   --color-danger-pale-foreground: var(--color-rose-800);
+  --color-danger-pale-border: var(--color-rose-200);
 
-  /* --- info: ข้อมูล, neutral info --- */
   --color-info: var(--color-blue-600);
   --color-info-hover: var(--color-blue-700);
   --color-info-active: var(--color-blue-800);
   --color-info-foreground: var(--color-white);
   --color-info-pale: var(--color-blue-50);
   --color-info-pale-foreground: var(--color-blue-800);
+  --color-info-pale-border: var(--color-blue-200);
 
-  /* --- background: ชั้น 1 — พื้นหลัง page ทั้งหน้า --- */
   --color-background: var(--color-white);
-  /* --- background-secondary: ชั้น 2 — sidebar, header, footer --- */
   --color-background-secondary: var(--color-neutral-50);
-  /* --- foreground: สีข้อความหลัก body text --- */
   --color-foreground: var(--color-neutral-950);
 
-  /* --- surface: ชั้น 3 — card, modal, dropdown --- */
   --color-surface: var(--color-neutral-100);
   --color-surface-hover: var(--color-neutral-200);
   --color-surface-active: var(--color-neutral-300);
   --color-surface-foreground: var(--color-neutral-900);
 
-  /* --- popover: tooltip, dropdown menu, combobox — ลอยสูงสุด --- */
   --color-popover: var(--color-white);
   --color-popover-foreground: var(--color-neutral-950);
 
-  /* --- muted: bg จางมาก (ghost button, tag, chip) --- */
   --color-muted: var(--color-neutral-100);
   --color-muted-hover: var(--color-neutral-200);
   --color-muted-active: var(--color-neutral-300);
   --color-muted-foreground: var(--color-neutral-500);
 
-  /* --- separator: เส้นแบ่ง <hr>, divider --- */
   --color-separator: var(--color-neutral-200);
-  /* --- skeleton: loading placeholder bg --- */
   --color-skeleton: var(--color-neutral-200);
 
-  /* --- disabled: ปิดการใช้งาน --- */
   --color-disabled: var(--color-neutral-100);
   --color-disabled-foreground: var(--color-neutral-400);
 
-  /* --- typography hierarchy --- */
-  --color-heading: var(--color-neutral-950); /* h1-h6 — เข้มสุด */
-  --color-foreground-secondary: var(--color-neutral-600); /* subtitle, description */
-  --color-foreground-muted: var(--color-neutral-400); /* caption, hint, timestamp */
-  /* --- code: inline `code` text --- */
+  --color-heading: var(--color-neutral-950);
+  --color-foreground-secondary: var(--color-neutral-600);
+  --color-foreground-muted: var(--color-neutral-400);
   --color-code: var(--color-neutral-800);
-  /* --- code-background: inline `code` bg --- */
   --color-code-background: var(--color-neutral-100);
-  /* --- mark: <mark> highlight bg --- */
   --color-mark: var(--color-amber-200);
-  /* --- mark-foreground: <mark> highlight text --- */
   --color-mark-foreground: var(--color-neutral-950);
 
-  /* --- border: ขอบ default (input, card, outline button) --- */
   --color-border: var(--color-neutral-200);
-  /* --- border-hover: ขอบตอน hover --- */
   --color-border-hover: var(--color-neutral-300);
 
-  /* --- field: input/textarea/select bg --- */
   --color-field: var(--color-white);
-  /* --- field-hover: input bg hover --- */
   --color-field-hover: var(--color-neutral-50);
-  /* --- field-foreground: input text ที่พิมพ์ --- */
   --color-field-foreground: var(--color-neutral-950);
-  /* --- field-border: input border --- */
   --color-field-border: var(--color-neutral-300);
-  /* --- field-border-hover: input border hover --- */
   --color-field-border-hover: var(--color-neutral-400);
-  /* --- field-placeholder: placeholder text --- */
   --color-field-placeholder: var(--color-neutral-400);
 
-  /* --- selection: ::selection text highlight --- */
   --color-selection: var(--color-fried-lime-200);
   --color-selection-foreground: var(--color-neutral-950);
 
-  /* --- chart: data visualization --- */
   --color-chart-1: var(--color-fried-lime-500);
   --color-chart-2: var(--color-blue-500);
   --color-chart-3: var(--color-rose-500);
   --color-chart-4: var(--color-amber-500);
   --color-chart-5: var(--color-green-500);
 
-  /* --- link: <a> text --- */
   --color-link: var(--color-neutral-950);
-  /* --- link-hover: <a> hover --- */
   --color-link-hover: var(--color-neutral-600);
-  /* --- ring: focus ring สี (keyboard nav) --- */
   --color-ring: var(--color-neutral-950);
-  /* --- overlay: modal/dialog backdrop สีทับ --- */
   --color-overlay: oklch(0% 0 0 / 50%);
 }
 
 @layer base {
-  /* TODO: ไล่ใส่สี dark mode — ค่าว่าง fallback ไป @theme (light) อัตโนมัติ */
   .dark,
   [data-theme="dark"] {
-    /* --- primary: สี brand หลัก (CTA, solid button) --- */
-    --color-primary: var(--color-fried-lime-500); /* bg ปุ่ม */
-    --color-primary-hover: var(--color-fried-lime-600); /* bg hover */
-    --color-primary-active: var(--color-fried-lime-700); /* bg pressed */
-    --color-primary-foreground: var(--color-neutral-950); /* text บนปุ่ม */
-    --color-primary-pale: var(--color-fried-lime-900); /* bg จาง (soft button, badge, alert) */
-    --color-primary-pale-foreground: var(--color-fried-lime-200); /* text บน pale bg */
+    --color-primary: var(--color-fried-lime-500);
+    --color-primary-hover: var(--color-fried-lime-600);
+    --color-primary-active: var(--color-fried-lime-700);
+    --color-primary-foreground: var(--color-neutral-950);
+    --color-primary-pale: var(--color-fried-lime-900);
+    --color-primary-pale-foreground: var(--color-fried-lime-200);
+    --color-primary-pale-border: var(--color-fried-lime-800);
 
-    /* --- secondary: ปุ่มรอง, less emphasis --- */
     --color-secondary: var(--color-neutral-800);
-    --color-secondary-hover: var(--color-neutral-700); /* dark: สว่างขึ้น */
+    --color-secondary-hover: var(--color-neutral-700);
     --color-secondary-active: var(--color-neutral-600);
     --color-secondary-foreground: var(--color-neutral-50);
     --color-secondary-pale: var(--color-neutral-900);
     --color-secondary-pale-foreground: var(--color-neutral-300);
+    --color-secondary-pale-border: var(--color-neutral-700);
 
-    /* --- success: สำเร็จ, saved, confirmed --- */
     --color-success: var(--color-green-500);
     --color-success-hover: var(--color-green-600);
     --color-success-active: var(--color-green-700);
     --color-success-foreground: var(--color-white);
-    --color-success-pale: var(--color-green-950);
+    --color-success-pale: var(--color-green-900);
     --color-success-pale-foreground: var(--color-green-200);
+    --color-success-pale-border: var(--color-green-700);
 
-    /* --- warning: เตือน, caution --- */
     --color-warning: var(--color-amber-500);
     --color-warning-hover: var(--color-amber-600);
     --color-warning-active: var(--color-amber-700);
     --color-warning-foreground: var(--color-neutral-950);
-    --color-warning-pale: var(--color-amber-950);
+    --color-warning-pale: var(--color-amber-900);
     --color-warning-pale-foreground: var(--color-amber-200);
+    --color-warning-pale-border: var(--color-amber-700);
 
-    /* --- danger: ลบ, error, destructive --- */
     --color-danger: var(--color-rose-500);
     --color-danger-hover: var(--color-rose-600);
     --color-danger-active: var(--color-rose-700);
     --color-danger-foreground: var(--color-white);
-    --color-danger-pale: var(--color-rose-950);
+    --color-danger-pale: var(--color-rose-900);
     --color-danger-pale-foreground: var(--color-rose-200);
+    --color-danger-pale-border: var(--color-rose-700);
 
-    /* --- info: ข้อมูล, neutral info --- */
     --color-info: var(--color-blue-500);
     --color-info-hover: var(--color-blue-600);
     --color-info-active: var(--color-blue-700);
     --color-info-foreground: var(--color-white);
-    --color-info-pale: var(--color-blue-950);
+    --color-info-pale: var(--color-blue-900);
     --color-info-pale-foreground: var(--color-blue-200);
+    --color-info-pale-border: var(--color-blue-700);
 
-    /* --- background: ชั้น 1 — พื้นหลัง page ทั้งหน้า --- */
-    --color-background: var(--color-black); /* #000 */
-    /* --- background-secondary: ชั้น 2 — sidebar, header, footer --- */
-    --color-background-secondary: var(--color-neutral-950); /* #0a0a0a */
-    /* --- foreground: สีข้อความหลัก body text --- */
-    --color-foreground: var(--color-neutral-50); /* #fafafa */
+    --color-background: var(--color-black);
+    --color-background-secondary: var(--color-neutral-950);
+    --color-foreground: var(--color-neutral-50);
 
-    /* --- surface: ชั้น 3 — card, modal, dropdown --- */
-    --color-surface: var(--color-neutral-900); /* #171717 */
-    --color-surface-hover: var(--color-neutral-800); /* #262626 */
-    --color-surface-active: var(--color-neutral-700); /* #404040 */
+    --color-surface: var(--color-neutral-900);
+    --color-surface-hover: var(--color-neutral-800);
+    --color-surface-active: var(--color-neutral-700);
     --color-surface-foreground: var(--color-neutral-50);
 
-    /* --- popover: tooltip, dropdown menu, combobox — ลอยสูงสุด --- */
-    --color-popover: var(--color-neutral-800); /* #262626 สว่างกว่า surface */
+    --color-popover: var(--color-neutral-800);
     --color-popover-foreground: var(--color-neutral-50);
 
-    /* --- muted: bg จางมาก (ghost button, tag, chip) --- */
-    --color-muted: var(--color-neutral-800); /* #262626 */
+    --color-muted: var(--color-neutral-800);
     --color-muted-hover: var(--color-neutral-700);
     --color-muted-active: var(--color-neutral-600);
-    --color-muted-foreground: var(--color-neutral-400); /* text รอง, caption, hint */
+    --color-muted-foreground: var(--color-neutral-400);
 
-    /* --- separator: เส้นแบ่ง <hr>, divider --- */
     --color-separator: var(--color-neutral-700);
-    /* --- skeleton: loading placeholder bg --- */
     --color-skeleton: var(--color-neutral-600);
 
-    /* --- disabled: ปิดการใช้งาน --- */
     --color-disabled: var(--color-neutral-900);
     --color-disabled-foreground: var(--color-neutral-500);
 
-    /* --- typography hierarchy --- */
-    --color-heading: var(--color-neutral-50); /* h1-h6 — สว่างสุด */
-    --color-foreground-secondary: var(--color-neutral-400); /* subtitle, description */
-    --color-foreground-muted: var(--color-neutral-500); /* caption, hint, timestamp */
-    /* --- code: inline `code` text --- */
+    --color-heading: var(--color-neutral-50);
+    --color-foreground-secondary: var(--color-neutral-400);
+    --color-foreground-muted: var(--color-neutral-500);
     --color-code: var(--color-neutral-200);
-    /* --- code-background: inline `code` bg --- */
     --color-code-background: var(--color-neutral-800);
-    /* --- mark: <mark> highlight bg --- */
     --color-mark: var(--color-amber-800);
-    /* --- mark-foreground: <mark> highlight text --- */
     --color-mark-foreground: var(--color-amber-100);
 
-    /* --- border: ขอบ default (input, card, outline button) --- */
     --color-border: var(--color-neutral-800);
-    /* --- border-hover: ขอบตอน hover --- */
     --color-border-hover: var(--color-neutral-700);
 
-    /* --- field: input/textarea/select bg --- */
     --color-field: var(--color-neutral-800);
-    /* --- field-hover: input bg hover --- */
     --color-field-hover: var(--color-neutral-700);
-    /* --- field-foreground: input text ที่พิมพ์ --- */
     --color-field-foreground: var(--color-neutral-50);
-    /* --- field-border: input border --- */
     --color-field-border: var(--color-neutral-600);
-    /* --- field-border-hover: input border hover --- */
     --color-field-border-hover: var(--color-neutral-500);
-    /* --- field-placeholder: placeholder text --- */
     --color-field-placeholder: var(--color-neutral-500);
 
-    /* --- selection: ::selection text highlight --- */
     --color-selection: oklch(from var(--color-blue-500) l c h / 10%);
     --color-selection-foreground: var(--color-blue-500);
 
-    /* --- link: <a> text --- */
     --color-link: var(--color-blue-500);
-    /* --- link-hover: <a> hover --- */
     --color-link-hover: var(--color-blue-400);
-    /* --- ring: focus ring สี (keyboard nav) --- */
     --color-ring: var(--color-neutral-50);
-    /* --- overlay: modal/dialog backdrop สีทับ --- */
     --color-overlay: oklch(0% 0 0 / 70%);
   }
 }

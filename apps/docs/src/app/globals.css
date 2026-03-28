@@ -5,30 +5,39 @@
 
 :root,
 :host {
-  --color-fd-background: #fff;
-  --color-fd-foreground: #000;
-  --color-fd-card: #fff;
-  --color-fd-card-foreground: #000;
-  --color-fd-primary: #000;
+  --color-fd-background: var(--color-background);
+  --color-fd-foreground: var(--color-foreground);
+  --color-fd-muted: var(--color-muted);
+  --color-fd-muted-foreground: var(--color-muted-foreground);
+  --color-fd-card: var(--color-surface);
+  --color-fd-card-foreground: var(--color-surface-foreground);
+  --color-fd-popover: var(--color-popover);
+  --color-fd-popover-foreground: var(--color-popover-foreground);
+  --color-fd-border: var(--color-border);
+  --color-fd-primary: var(--color-black);
+  --color-fd-primary-foreground: var(--color-white);
+  --color-fd-secondary: var(--color-secondary);
+  --color-fd-secondary-foreground: var(--color-secondary-foreground);
+  --color-fd-accent: var(--color-muted);
+  --color-fd-accent-foreground: var(--color-foreground);
+  --color-fd-ring: var(--color-ring);
 }
 
 .dark {
-  --color-fd-background: #000;
-  --color-fd-foreground: #fff;
-  --color-fd-card: #000;
-  --color-fd-card-foreground: #fff;
-  --color-fd-border: #6663;
-  --color-fd-primary: #fff;
-
-  /* --color-fd-muted: #212121;
-  --color-fd-muted-foreground: #b3b3b3cc;
-  --color-fd-popover: #1e1e1e;
-  --color-fd-popover-foreground: #dedede;
-  --color-fd-primary-foreground: #171717;
-  --color-fd-secondary: #212121;
-  --color-fd-secondary-foreground: #ebebeb;
-  --color-fd-accent: #6868684d;
-  --color-fd-accent-foreground: #e6e6e6;
-  --color-fd-ring: #8c8c8c;
-  --color-fd-overlay: #0003; */
+  --color-fd-background: var(--color-background);
+  --color-fd-foreground: var(--color-foreground);
+  --color-fd-muted: var(--color-muted);
+  --color-fd-muted-foreground: var(--color-muted-foreground);
+  --color-fd-card: var(--color-surface);
+  --color-fd-card-foreground: var(--color-surface-foreground);
+  --color-fd-popover: var(--color-popover);
+  --color-fd-popover-foreground: var(--color-popover-foreground);
+  --color-fd-border: var(--color-border);
+  --color-fd-primary: var(--color-white);
+  --color-fd-primary-foreground: var(--color-black);
+  --color-fd-secondary: var(--color-secondary);
+  --color-fd-secondary-foreground: var(--color-secondary-foreground);
+  --color-fd-accent: var(--color-muted);
+  --color-fd-accent-foreground: var(--color-foreground);
+  --color-fd-ring: var(--color-ring);
 }

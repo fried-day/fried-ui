@@ -25,7 +25,7 @@ typography.css → heading sizes
 
 ## Color
 
-### Semantic Color Groups (6 tokens each)
+### Semantic Color Groups (7 tokens each)
 
 ```text
 {name}                 → solid bg (button, badge)
@@ -34,6 +34,7 @@ typography.css → heading sizes
 {name}-foreground      → text on solid bg
 {name}-pale            → soft bg (alert, badge bg, soft button)
 {name}-pale-foreground → text on pale bg
+{name}-pale-border     → border on pale bg (dark mode alert separation)
 ```
 
 Groups: `primary`, `secondary`, `success`, `warning`, `danger`, `info`
@@ -84,16 +85,17 @@ foreground-muted     → neutral-400 / neutral-500    (caption, hint, timestamp)
 
 ### Token Reference — Every Token and Its Purpose
 
-**Semantic colors (6 per group × 6 groups = 36 tokens):**
+**Semantic colors (7 per group × 6 groups = 42 tokens):**
 
-| Token                            | Purpose                                       |
-| -------------------------------- | --------------------------------------------- |
-| `--color-{name}`                 | solid bg — button, badge, alert border        |
-| `--color-{name}-hover`           | bg on hover                                   |
-| `--color-{name}-active`          | bg on pressed/active                          |
-| `--color-{name}-foreground`      | text on solid bg (white or dark per contrast) |
-| `--color-{name}-pale`            | soft bg — soft button, alert bg, badge bg     |
-| `--color-{name}-pale-foreground` | text on pale bg (dark shade of same hue)      |
+| Token                            | Purpose                                        |
+| -------------------------------- | ---------------------------------------------- |
+| `--color-{name}`                 | solid bg — button, badge, alert border         |
+| `--color-{name}-hover`           | bg on hover                                    |
+| `--color-{name}-active`          | bg on pressed/active                           |
+| `--color-{name}-foreground`      | text on solid bg (white or dark per contrast)  |
+| `--color-{name}-pale`            | soft bg — soft button, alert bg, badge bg      |
+| `--color-{name}-pale-foreground` | text on pale bg (dark shade of same hue)       |
+| `--color-{name}-pale-border`     | border on pale bg (dark mode alert separation) |
 
 **Layout (13 tokens):**
 
@@ -188,7 +190,8 @@ foreground-muted     → neutral-400 / neutral-500    (caption, hint, timestamp)
 - Components MUST use semantic tokens via `var()` — never raw Tailwind colors
 - All tokens MUST exist in both `@theme` (light) and `.dark` (dark)
 - Never defer tokens — add all upfront, consumers will break if added later
-- Pale: light uses step 50, dark uses step 950
+- Pale: light uses step 50, dark uses step 900 (NOT 950 — 950 loses hue and becomes muddy)
+- Each semantic group has `{name}-pale-border` for visual separation in dark mode alerts
 - `muted` and `surface` MUST have different values
 
 ---
@@ -216,6 +219,16 @@ z-alert      → 50  (toast, notification)
 ```
 
 Never use arbitrary z-index (z-[99], z-[9999])
+
+### Z-Index + Stacking Context Warning
+
+Z-index tokens only work when the element is in the **root stacking context** (i.e. rendered via Portal to `document.body`).
+
+Rules:
+
+- Floating components (tooltip, popover, modal, drawer) MUST render via React Aria's built-in Portal
+- Never apply `transform`, `opacity < 1`, `filter`, or `will-change` on a parent of floating components — these create new stacking contexts that trap z-index
+- If a component needs elevation AND its parent has a stacking context, use Portal — z-index alone will not work
 
 ---
 
