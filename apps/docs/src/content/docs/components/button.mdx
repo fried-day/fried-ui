@@ -137,6 +137,18 @@ import Link from "next/link";
 </Link>;
 ```
 
+## Full Width
+
+Stretches the button to fill its container width.
+
+<Preview>
+  <ButtonFullWidth />
+</Preview>
+
+```tsx
+<Button isFullWidth>Full Width</Button>
+```
+
 ## Disabled
 
 Prevents interaction and applies disabled styling.
@@ -225,6 +237,7 @@ Built on [React Aria Button](https://react-spectrum.adobe.com/react-aria/Button.
 | `size`             | `"sm" \| "md" \| "lg" \| "xl"`                                                                     | `"md"`      | The size of the button                     |
 | `radius`           | `"none" \| "sm" \| "md" \| "lg" \| "xl" \| "full"`                                                 | `"md"`      | The border radius of the button            |
 | `isIconOnly`       | `boolean`                                                                                          | `false`     | Whether the button is icon-only (square)   |
+| `isFullWidth`      | `boolean`                                                                                          | `false`     | Whether the button takes full width        |
 | `isDisabled`       | `boolean`                                                                                          | `false`     | Whether the button is disabled             |
 | `isPending`        | `boolean`                                                                                          | `false`     | Whether the button shows a loading spinner |
 | `onPress`          | `(e: PressEvent) => void`                                                                          | -           | Handler called when the button is pressed  |
@@ -284,6 +297,8 @@ Built on [React Aria Button](https://react-spectrum.adobe.com/react-aria/Button.
 | `fri-button--radius-lg`   | Large border radius       |
 | `fri-button--radius-xl`   | Extra large border radius |
 | `fri-button--radius-full` | Full (pill) border radius |
+| `fri-button--disabled`    | Disabled state            |
+| `fri-button--full-width`  | Full width button         |
 | `fri-button--icon-only`   | Icon-only square button   |
 | `fri-button--pending`     | Pending/loading state     |
 | `fri-button__spinner`     | Internal spinner element  |

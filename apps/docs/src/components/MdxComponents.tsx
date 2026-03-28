@@ -106,6 +106,22 @@ function ButtonIconOnly(): React.JSX.Element {
   );
 }
 
+function ButtonFullWidth(): React.JSX.Element {
+  return (
+    <div className="flex w-80 flex-col gap-4">
+      <Button isFullWidth>Full Width</Button>
+
+      <Button variant="secondary" isFullWidth>
+        Full Width Secondary
+      </Button>
+
+      <Button variant="outline" isFullWidth>
+        Full Width Outline
+      </Button>
+    </div>
+  );
+}
+
 function ButtonDisabled(): React.JSX.Element {
   return <Button isDisabled>Disabled</Button>;
 }
@@ -153,6 +169,7 @@ export {
   ButtonCustomClass,
   ButtonDemo,
   ButtonDisabled,
+  ButtonFullWidth,
   ButtonIconOnly,
   ButtonPending,
   ButtonRadii,
