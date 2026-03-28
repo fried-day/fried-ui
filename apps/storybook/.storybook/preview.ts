@@ -13,8 +13,14 @@ const preview: Preview = {
         },
         dark: {
           name: "dark",
-          value: "var(--color-background, #0a0a0a)",
+          value: "var(--color-background, #000)",
         },
+      },
+    },
+    docs: {
+      codePanel: true,
+      source: {
+        type: "code",
       },
     },
     controls: {
@@ -27,7 +33,7 @@ const preview: Preview = {
   decorators: [
     (Story, context) => {
       const bg = context.globals?.backgrounds?.value;
-      const isDark = bg?.includes("dark") || bg?.includes("0a0a0a");
+      const isDark = bg?.includes("dark") || bg?.includes("000");
       const theme = isDark ? "dark" : "light";
 
       document.documentElement.setAttribute("data-theme", theme);

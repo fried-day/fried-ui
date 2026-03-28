@@ -1,6 +1,3 @@
 @utility focus-ring {
-  outline: none;
-  box-shadow:
-    0 0 0 var(--ring-offset-width) var(--color-background),
-    0 0 0 calc(var(--ring-offset-width) + 2px) var(--color-ring);
+  @apply ring-2 ring-focus-inner outline-2 outline-offset-focus outline-focus-outer;
 }

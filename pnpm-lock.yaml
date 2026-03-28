@@ -252,9 +252,6 @@ importers:
       react-aria-components:
         specifier: ^1.16.0
         version: 1.16.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      tailwind-merge:
-        specifier: ^3.5.0
-        version: 3.5.0
     devDependencies:
       '@fried-ui/vitest':
         specifier: workspace:*

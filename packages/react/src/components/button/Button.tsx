@@ -1,69 +1,52 @@
 "use client";
 
-import { type ForwardedRef, forwardRef, type ReactNode } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 
-import {
-  Button as RACButton,
-  type ButtonProps as RACButtonProps,
-  type ButtonRenderProps,
-  composeRenderProps,
-} from "react-aria-components";
+import { Button as RacButton, composeRenderProps } from "react-aria-components";
+import type { ButtonRenderProps } from "react-aria-components";
+
+import { clsx } from "clsx";
 
 import { Spinner } from "../icons";
-import { cn } from "../../utils/cn";
+import { bem } from "../../utils/bem";
 
-export type ButtonProps = {
-  variant?: "primary" | "secondary" | "ghost" | "outline" | "success" | "warning" | "danger" | "info";
-  size?: "sm" | "md" | "lg" | "xl";
-  radius?: "none" | "sm" | "md" | "lg" | "xl" | "full";
-  isIconOnly?: boolean;
-  isFullWidth?: boolean;
-  className?: string;
+import type { ButtonVariantsProps } from "./button.variants";
+
+export type ButtonProps = ButtonVariantsProps & {
   children?: ReactNode | ((renderProps: ButtonRenderProps) => ReactNode);
-} & Omit<RACButtonProps, "className" | "children">;
+  className?: string | ((renderProps: ButtonRenderProps) => string);
+} & Omit<ComponentPropsWithRef<typeof RacButton>, "className" | "children">;
 
-function ButtonInner(props: Readonly<ButtonProps>, ref: ForwardedRef<HTMLButtonElement>) {
-  const {
-    radius = "md",
-    size = "md",
-    variant = "primary",
-    children,
-    className,
-    isFullWidth,
-    isIconOnly,
-    ...rest
-  } = props;
+const Button = (props: Readonly<ButtonProps>) => {
+  const { children, className, isFullWidth, isIconOnly, radius, ref, size, variant, ...rest } = props;
 
-  const disabledModifier = rest.isDisabled ? "fri-button--disabled" : undefined;
-  const fullWidthModifier = isFullWidth ? "fri-button--full-width" : undefined;
-  const iconOnlyModifier = isIconOnly ? "fri-button--icon-only" : undefined;
-  const pendingModifier = rest.isPending ? "fri-button--pending" : undefined;
+  const baseClassName = bem({
+    block: "fri-button",
+    modifiers: {
+      variant,
+      size,
+      radius,
+      "full-width": isFullWidth,
+      "icon-only": isIconOnly,
+      disabled: rest.isDisabled,
+      pending: rest.isPending,
+    },
+  });
 
-  const buttonClassName = cn(
-    "fri-button",
-    `fri-button--${variant}`,
-    `fri-button--${size}`,
-    `fri-button--radius-${radius}`,
-    disabledModifier,
-    fullWidthModifier,
-    iconOnlyModifier,
-    pendingModifier,
-    className,
-  );
+  const buttonClassName = composeRenderProps(className, (consumerClassName) => clsx(baseClassName, consumerClassName));
 
   return (
-    <RACButton {...rest} ref={ref} className={buttonClassName}>
+    <RacButton {...rest} data-slot="button" className={buttonClassName} ref={ref}>
       {composeRenderProps(children, (child, { isPending }) => (
         <>
           {child}
-
           {isPending && <Spinner className="fri-button__spinner" aria-hidden="true" />}
         </>
       ))}
-    </RACButton>
+    </RacButton>
   );
-}
+};
 
-const Button = forwardRef(ButtonInner);
+Button.displayName = "Button";
 
 export { Button };

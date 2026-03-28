@@ -20,7 +20,7 @@
   --color-fd-secondary-foreground: var(--color-secondary-foreground);
   --color-fd-accent: var(--color-muted);
   --color-fd-accent-foreground: var(--color-foreground);
-  --color-fd-ring: var(--color-ring);
+  --color-fd-ring: var(--color-focus-outer);
 }
 
 .dark {
@@ -39,7 +39,7 @@
   --color-fd-secondary-foreground: var(--color-secondary-foreground);
   --color-fd-accent: var(--color-muted);
   --color-fd-accent-foreground: var(--color-foreground);
-  --color-fd-ring: var(--color-ring);
+  --color-fd-ring: var(--color-focus-outer);
 }
 
 body::before {
