@@ -15,5 +15,6 @@
  */
 
 @utility size-match-font {
-  @apply size-[1em];
+  width: 1em;
+  height: 1em;
 }

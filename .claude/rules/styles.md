@@ -90,10 +90,31 @@ Every component with icons:
 }
 ```
 
+## Spacing (Golden ratio → Tailwind rounded)
+
+Spacing derived from φ (1.618), rounded to nearest Tailwind step:
+
+```text
+x = font-size
+Padding Inline = x           → px-4 (1rem)
+Padding Block  = x × 0.485   → py-2 (0.5rem, diff +0.24px)
+Gap            = x / φ        → gap-2.5 (0.625rem, diff +0.11px)
+```
+
+All sizes:
+
+```text
+sm → text-sm   px-3.5 py-1.5 gap-2
+md → text-base px-4   py-2   gap-2.5
+lg → text-xl   px-5   py-2.5 gap-3
+xl → text-2xl  px-6   py-3   gap-4
+```
+
 ## Rules
 
 - Use `@apply` + Tailwind v4 utilities — no plain CSS when utility exists
 - **NO arbitrary values** — never use bracket syntax like `w-[...]` or `gap-[...]`. Always use Tailwind built-in classes
+- Spacing values from golden ratio formula, **rounded to Tailwind steps** (sub-pixel diff invisible)
 - Use semantic tokens via `var()` — never raw Tailwind colors
 - All spacing in rem — never px (except border 1px)
 - Interactive: wrap hover in `@media (hover: hover)`
