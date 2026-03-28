@@ -13,17 +13,13 @@ import { Spinner } from "../icons";
 import { cn } from "../../utils/cn";
 
 export type ButtonProps = {
-  variant?: ButtonVariant;
-  size?: ButtonSize;
-  radius?: ButtonRadius;
+  variant?: "primary" | "secondary" | "ghost" | "outline" | "success" | "warning" | "danger" | "info";
+  size?: "sm" | "md" | "lg" | "xl";
+  radius?: "none" | "sm" | "md" | "lg" | "xl" | "full";
   isIconOnly?: boolean;
   className?: string;
   children?: ReactNode | ((renderProps: ButtonRenderProps) => ReactNode);
 } & Omit<RACButtonProps, "className" | "children">;
-
-type ButtonVariant = "primary" | "secondary" | "ghost" | "outline" | "success" | "warning" | "danger" | "info";
-type ButtonSize = "sm" | "md" | "lg" | "xl";
-type ButtonRadius = "none" | "sm" | "md" | "lg" | "xl" | "full";
 
 function ButtonInner(props: Readonly<ButtonProps>, ref: ForwardedRef<HTMLButtonElement>) {
   const { radius = "md", size = "md", variant = "primary", children, className, isIconOnly, ...rest } = props;
