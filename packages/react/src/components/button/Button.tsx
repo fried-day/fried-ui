@@ -26,15 +26,18 @@ type ButtonSize = "sm" | "md" | "lg" | "xl";
 type ButtonRadius = "none" | "sm" | "md" | "lg" | "xl" | "full";
 
 function ButtonInner(props: Readonly<ButtonProps>, ref: ForwardedRef<HTMLButtonElement>) {
-  const { isIconOnly, radius = "md", size = "md", variant = "primary", children, className, ...rest } = props;
+  const { radius = "md", size = "md", variant = "primary", children, className, isIconOnly, ...rest } = props;
+
+  const iconOnlyModifier = isIconOnly ? "fri-button--icon-only" : undefined;
+  const pendingModifier = rest.isPending ? "fri-button--pending" : undefined;
 
   const buttonClassName = cn(
     "fri-button",
     `fri-button--${variant}`,
     `fri-button--${size}`,
     `fri-button--radius-${radius}`,
-    isIconOnly && "fri-button--icon-only",
-    rest.isPending && "fri-button--pending",
+    iconOnlyModifier,
+    pendingModifier,
     className,
   );
 
