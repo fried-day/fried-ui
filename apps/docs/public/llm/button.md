@@ -22,6 +22,7 @@ import { Button } from "@fried-ui/react";
 | `size`             | `"sm" \| "md" \| "lg" \| "xl"`                                                                     | `"md"`      | Size — controls padding, gap, font-size |
 | `radius`           | `"none" \| "sm" \| "md" \| "lg" \| "xl" \| "full"`                                                 | `"md"`      | Border radius (independent from size)   |
 | `isIconOnly`       | `boolean`                                                                                          | `false`     | Icon-only square button                 |
+| `isFullWidth`      | `boolean`                                                                                          | `false`     | Full width button                       |
 | `isDisabled`       | `boolean`                                                                                          | `false`     | Disabled state                          |
 | `isPending`        | `boolean`                                                                                          | `false`     | Loading spinner, disables interaction   |
 | `onPress`          | `(e: PressEvent) => void`                                                                          | -           | Press handler (preferred over onClick)  |
@@ -81,6 +82,8 @@ import { Button } from "@fried-ui/react";
 | `fri-button--radius-lg`   | Large border radius       |
 | `fri-button--radius-xl`   | Extra large border radius |
 | `fri-button--radius-full` | Full (pill) border radius |
+| `fri-button--disabled`    | Disabled state            |
+| `fri-button--full-width`  | Full width button         |
 | `fri-button--icon-only`   | Icon-only square button   |
 | `fri-button--pending`     | Pending/loading state     |
 | `fri-button__spinner`     | Internal spinner element  |
@@ -139,6 +142,16 @@ Border radius independent from size.
 <Button radius="full">Pill</Button>
 ```
 
+### Icon Only
+
+Square button for icon-only actions. Always provide `aria-label`.
+
+```tsx
+<Button isIconOnly aria-label="Next">
+  <ArrowRightIcon className="size-match-font" />
+</Button>
+```
+
 ### With Icon
 
 Icons use `size-match-font` to match the font size. Gap scales via golden ratio.
@@ -150,14 +163,12 @@ Icons use `size-match-font` to match the font size. Gap scales via golden ratio.
 </Button>
 ```
 
-### Icon Only
+### Full Width
 
-Square button for icon-only actions. Always provide `aria-label`.
+Stretches the button to fill its container width.
 
 ```tsx
-<Button isIconOnly aria-label="Next">
-  <ArrowRightIcon className="size-match-font" />
-</Button>
+<Button isFullWidth>Full Width</Button>
 ```
 
 ### Disabled

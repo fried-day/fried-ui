@@ -17,13 +17,25 @@ export type ButtonProps = {
   size?: "sm" | "md" | "lg" | "xl";
   radius?: "none" | "sm" | "md" | "lg" | "xl" | "full";
   isIconOnly?: boolean;
+  isFullWidth?: boolean;
   className?: string;
   children?: ReactNode | ((renderProps: ButtonRenderProps) => ReactNode);
 } & Omit<RACButtonProps, "className" | "children">;
 
 function ButtonInner(props: Readonly<ButtonProps>, ref: ForwardedRef<HTMLButtonElement>) {
-  const { radius = "md", size = "md", variant = "primary", children, className, isIconOnly, ...rest } = props;
+  const {
+    radius = "md",
+    size = "md",
+    variant = "primary",
+    children,
+    className,
+    isFullWidth,
+    isIconOnly,
+    ...rest
+  } = props;
 
+  const disabledModifier = rest.isDisabled ? "fri-button--disabled" : undefined;
+  const fullWidthModifier = isFullWidth ? "fri-button--full-width" : undefined;
   const iconOnlyModifier = isIconOnly ? "fri-button--icon-only" : undefined;
   const pendingModifier = rest.isPending ? "fri-button--pending" : undefined;
 
@@ -32,6 +44,8 @@ function ButtonInner(props: Readonly<ButtonProps>, ref: ForwardedRef<HTMLButtonE
     `fri-button--${variant}`,
     `fri-button--${size}`,
     `fri-button--radius-${radius}`,
+    disabledModifier,
+    fullWidthModifier,
     iconOnlyModifier,
     pendingModifier,
     className,

@@ -16,8 +16,7 @@
     @apply focus-ring;
   }
 
-  &:disabled,
-  &[aria-disabled="true"] {
+  &.fri-button--disabled {
     @apply status-disabled;
   }
 
@@ -110,6 +109,10 @@
 
 .fri-button--xl {
   @apply gap-[0.927rem] px-6 py-3 text-2xl;
+}
+
+.fri-button--full-width {
+  @apply w-full;
 }
 
 .fri-button--icon-only {
