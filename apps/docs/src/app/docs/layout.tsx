@@ -11,7 +11,7 @@ interface LayoutProps {
 }
 
 const navConfig = {
-  title: "Fried UI",
+  title: "Fried-ui",
   url: "/docs",
 };
 
@@ -19,6 +19,7 @@ const githubIcon = <GitHubIcon className="size-5" />;
 
 const linksConfig = [
   {
+    type: "icon" as const,
     icon: githubIcon,
     text: "GitHub",
     url: "https://github.com/fried-day/fried-ui",
@@ -31,11 +32,21 @@ const sidebarConfig = {
   defaultOpenLevel: 0,
 };
 
+const themeSwitchConfig = {
+  mode: "light-dark-system" as const,
+};
+
 function Layout(props: Readonly<LayoutProps>): React.JSX.Element {
   const { children } = props;
 
   return (
-    <DocsLayout links={linksConfig} nav={navConfig} sidebar={sidebarConfig} tree={source.pageTree}>
+    <DocsLayout
+      links={linksConfig}
+      nav={navConfig}
+      sidebar={sidebarConfig}
+      tree={source.pageTree}
+      themeSwitch={themeSwitchConfig}
+    >
       {children}
     </DocsLayout>
   );

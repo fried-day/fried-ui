@@ -102,6 +102,18 @@ describe("Button", () => {
     expect(el.className).toContain("fri-button--icon-only");
   });
 
+  it("applies disabled class", () => {
+    render(<Button isDisabled>Disabled</Button>);
+    const el = screen.getByRole("button");
+    expect(el.className).toContain("fri-button--disabled");
+  });
+
+  it("applies full-width class", () => {
+    render(<Button isFullWidth>Full</Button>);
+    const el = screen.getByRole("button");
+    expect(el.className).toContain("fri-button--full-width");
+  });
+
   it("supports render props children", () => {
     render(<Button>{({ isPressed }): string => (isPressed ? "Pressed" : "Idle")}</Button>);
     expect(screen.getByRole("button", { name: "Idle" })).toBeInTheDocument();
