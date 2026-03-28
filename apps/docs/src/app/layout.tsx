@@ -6,8 +6,6 @@ import type { ReactNode } from "react";
 import { RootProvider } from "fumadocs-ui/provider/next";
 import localFont from "next/font/local";
 
-import { Navbar } from "@/components/Navbar";
-
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -34,10 +32,7 @@ function RootLayout(props: Readonly<RootLayoutProps>): React.JSX.Element {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={bodyClassName}>
-        <RootProvider>
-          <Navbar />
-          {children}
-        </RootProvider>
+        <RootProvider>{children}</RootProvider>
       </body>
     </html>
   );
