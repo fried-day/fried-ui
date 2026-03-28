@@ -17,7 +17,7 @@ function SwatchItem(props: Readonly<ColorItemProps>): React.JSX.Element {
   return (
     <div className="flex flex-col items-center gap-2" role="listitem">
       <div
-        className="size-24 rounded-lg outline outline-1 -outline-offset-1 outline-black/10 dark:outline-white/20 forced-colors:outline-[Highlight]"
+        className="size-23 rounded-lg outline outline-1 -outline-offset-1 outline-black/10 dark:outline-white/20 forced-colors:outline-[Highlight]"
         role="img"
         aria-label={label}
         style={bgStyle}
@@ -32,7 +32,7 @@ function ColorSwatch(props: Readonly<ColorSwatchProps>): React.JSX.Element {
   const { colors } = props;
 
   return (
-    <div className="not-prose flex flex-wrap gap-6 py-4" role="list" aria-label="Color tokens">
+    <div className="not-prose flex flex-wrap gap-8 py-4" role="list" aria-label="Color tokens">
       {colors.map((color) => (
         <SwatchItem name={color.name} token={color.token} key={color.name} />
       ))}
