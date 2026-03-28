@@ -12,50 +12,33 @@ import {
   StorybookIcon,
 } from "@fried-ui/react";
 
+import { BadgeLinks } from "./BadgeLinks";
+
+const buttonBadgeLinksData = [
+  {
+    href: "https://storybook.fried-ui.com/?path=/docs/components-button--docs",
+    icon: <StorybookIcon className="size-match-font text-[#ff4785]" />,
+    label: "Storybook",
+  },
+  {
+    href: "https://react-spectrum.adobe.com/react-aria/Button.html",
+    icon: <ReactAriaIcon className="size-match-font text-[#6733FF]" />,
+    label: "React Aria",
+  },
+  {
+    href: "https://github.com/fried-day/fried-ui/blob/main/packages/react/src/components/button/Button.tsx",
+    icon: <GitHubIcon className="size-match-font" />,
+    label: "Source",
+  },
+  {
+    href: "https://github.com/fried-day/fried-ui/blob/main/packages/styles/src/components/button.css",
+    icon: <GitHubIcon className="size-match-font" />,
+    label: "Styles source",
+  },
+];
+
 function ButtonBadgeLinks(): React.JSX.Element {
-  return (
-    <div className="not-prose mb-6 flex flex-wrap gap-2">
-      <a
-        href="https://storybook.fried-ui.com/?path=/docs/components-button--docs"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Button variant="outline" size="sm">
-          <StorybookIcon className="size-match-font text-[#ff4785]" />
-          Storybook
-        </Button>
-      </a>
-
-      <a href="https://react-spectrum.adobe.com/react-aria/Button.html" target="_blank" rel="noopener noreferrer">
-        <Button variant="outline" size="sm">
-          <ReactAriaIcon className="size-match-font text-[#6733FF]" />
-          React Aria
-        </Button>
-      </a>
-
-      <a
-        href="https://github.com/fried-day/fried-ui/blob/main/packages/react/src/components/button/Button.tsx"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Button variant="outline" size="sm">
-          <GitHubIcon className="size-match-font" />
-          Source
-        </Button>
-      </a>
-
-      <a
-        href="https://github.com/fried-day/fried-ui/blob/main/packages/styles/src/components/button.css"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Button variant="outline" size="sm">
-          <GitHubIcon className="size-match-font" />
-          Styles source
-        </Button>
-      </a>
-    </div>
-  );
+  return <BadgeLinks links={buttonBadgeLinksData} />;
 }
 
 function ButtonDemo(): React.JSX.Element {
