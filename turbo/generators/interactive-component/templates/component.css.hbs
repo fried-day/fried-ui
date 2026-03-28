@@ -1,0 +1,112 @@
+.fri-{{dashCase name}} {
+  @apply inline-flex items-center justify-center;
+  @apply leading-none font-medium whitespace-nowrap;
+  @apply cursor-pointer border border-transparent select-none no-highlight;
+  @apply transition-colors duration-(--duration-fast) ease-smooth motion-reduce:transition-none;
+
+  /* default variant = {{defaultVariant}} */
+  --fri-{{dashCase name}}-bg: var(--color-{{defaultVariant}});
+  --fri-{{dashCase name}}-bg-hover: var(--color-{{defaultVariant}}-hover);
+  --fri-{{dashCase name}}-bg-pressed: var(--color-{{defaultVariant}}-active);
+  --fri-{{dashCase name}}-fg: var(--color-{{defaultVariant}}-foreground);
+
+  @apply bg-(--fri-{{dashCase name}}-bg) text-(--fri-{{dashCase name}}-fg);
+
+  /* default size = {{defaultSize}} */
+  @apply gap-2.5 px-4 py-2 text-base;
+
+  &:focus-visible,
+  &[data-focus-visible] {
+    @apply focus-ring;
+  }
+
+  &.fri-{{dashCase name}}--disabled {
+    @apply status-disabled;
+  }
+
+  &:active,
+  &[data-pressed] {
+    @apply bg-(--fri-{{dashCase name}}-bg-pressed);
+  }
+
+  @media (hover: hover) {
+    &:hover,
+    &[data-hovered] {
+      @apply bg-(--fri-{{dashCase name}}-bg-hover);
+    }
+  }
+}
+
+.fri-{{dashCase name}}--primary {
+  --fri-{{dashCase name}}-bg: var(--color-primary);
+  --fri-{{dashCase name}}-bg-hover: var(--color-primary-hover);
+  --fri-{{dashCase name}}-bg-pressed: var(--color-primary-active);
+  --fri-{{dashCase name}}-fg: var(--color-primary-foreground);
+}
+
+.fri-{{dashCase name}}--secondary {
+  --fri-{{dashCase name}}-bg: var(--color-secondary);
+  --fri-{{dashCase name}}-bg-hover: var(--color-secondary-hover);
+  --fri-{{dashCase name}}-bg-pressed: var(--color-secondary-active);
+  --fri-{{dashCase name}}-fg: var(--color-secondary-foreground);
+}
+
+.fri-{{dashCase name}}--ghost {
+  --fri-{{dashCase name}}-bg: transparent;
+  --fri-{{dashCase name}}-bg-hover: var(--color-muted);
+  --fri-{{dashCase name}}-bg-pressed: var(--color-muted-hover);
+  --fri-{{dashCase name}}-fg: var(--color-foreground);
+}
+
+.fri-{{dashCase name}}--outline {
+  --fri-{{dashCase name}}-bg: transparent;
+  --fri-{{dashCase name}}-bg-hover: var(--color-surface-hover);
+  --fri-{{dashCase name}}-bg-pressed: var(--color-surface-active);
+  --fri-{{dashCase name}}-fg: var(--color-foreground);
+
+  @apply border-border;
+}
+
+.fri-{{dashCase name}}--success {
+  --fri-{{dashCase name}}-bg: var(--color-success);
+  --fri-{{dashCase name}}-bg-hover: var(--color-success-hover);
+  --fri-{{dashCase name}}-bg-pressed: var(--color-success-active);
+  --fri-{{dashCase name}}-fg: var(--color-success-foreground);
+}
+
+.fri-{{dashCase name}}--warning {
+  --fri-{{dashCase name}}-bg: var(--color-warning);
+  --fri-{{dashCase name}}-bg-hover: var(--color-warning-hover);
+  --fri-{{dashCase name}}-bg-pressed: var(--color-warning-active);
+  --fri-{{dashCase name}}-fg: var(--color-warning-foreground);
+}
+
+.fri-{{dashCase name}}--danger {
+  --fri-{{dashCase name}}-bg: var(--color-danger);
+  --fri-{{dashCase name}}-bg-hover: var(--color-danger-hover);
+  --fri-{{dashCase name}}-bg-pressed: var(--color-danger-active);
+  --fri-{{dashCase name}}-fg: var(--color-danger-foreground);
+}
+
+.fri-{{dashCase name}}--info {
+  --fri-{{dashCase name}}-bg: var(--color-info);
+  --fri-{{dashCase name}}-bg-hover: var(--color-info-hover);
+  --fri-{{dashCase name}}-bg-pressed: var(--color-info-active);
+  --fri-{{dashCase name}}-fg: var(--color-info-foreground);
+}
+
+.fri-{{dashCase name}} [slot="icon"] {
+  @apply size-match-font;
+}
+
+.fri-{{dashCase name}}--size-sm {
+  @apply gap-2 px-3.5 py-1.5 text-sm;
+}
+
+.fri-{{dashCase name}}--size-md {
+  @apply gap-2.5 px-4 py-2 text-base;
+}
+
+.fri-{{dashCase name}}--size-lg {
+  @apply gap-3 px-5 py-2.5 text-xl;
+}

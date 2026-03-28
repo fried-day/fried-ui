@@ -1,3 +1,0 @@
-export { {{Name}} } from "./{{Name}}";
-export type { {{Name}}Props } from "./{{Name}}";
-export type { {{Name}}VariantsProps } from "./{{name}}.variants";
