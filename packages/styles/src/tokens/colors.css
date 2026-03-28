@@ -1,6 +1,6 @@
 @custom-variant dark (&:is(.dark, [data-theme="dark"]) *);
 
-@theme {
+@theme static {
   --color-primary: var(--color-fried-lime-500);
   --color-primary-hover: var(--color-fried-lime-600);
   --color-primary-active: var(--color-fried-lime-700);
