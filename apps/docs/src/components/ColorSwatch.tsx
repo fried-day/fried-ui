@@ -17,7 +17,7 @@ function SwatchItem(props: Readonly<ColorItemProps>): React.JSX.Element {
   return (
     <div className="flex flex-col items-center gap-2" role="listitem">
       <div
-        className="size-16 rounded-lg outline outline-1 -outline-offset-1 outline-black/10 dark:outline-white/20 forced-colors:outline-[Highlight]"
+        className="size-24 rounded-lg outline outline-1 -outline-offset-1 outline-black/10 dark:outline-white/20 forced-colors:outline-[Highlight]"
         role="img"
         aria-label={label}
         style={bgStyle}
