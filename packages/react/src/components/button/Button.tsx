@@ -18,7 +18,7 @@ export type ButtonProps = ButtonVariantsProps & {
 } & Omit<ComponentPropsWithRef<typeof RacButton>, "className" | "children">;
 
 const Button = (props: Readonly<ButtonProps>) => {
-  const { children, className, isFullWidth, isIconOnly, radius, ref, size, variant, ...rest } = props;
+  const { children, className, isFullWidth, isIconOnly, isShadow, radius, ref, size, variant, ...rest } = props;
 
   const baseClassName = bem({
     block: "fri-button",
@@ -28,6 +28,7 @@ const Button = (props: Readonly<ButtonProps>) => {
       radius,
       "full-width": isFullWidth,
       "icon-only": isIconOnly,
+      shadow: isShadow,
       disabled: rest.isDisabled,
       pending: rest.isPending,
     },

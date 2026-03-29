@@ -1,6 +1,7 @@
 export { ArrowRightIcon } from "./ArrowRightIcon";
 export { ClipboardIcon } from "./ClipboardIcon";
 export { GitHubIcon } from "./GitHubIcon";
+export { InformationCircleIcon } from "./InformationCircleIcon";
 export { MoreIcon } from "./MoreIcon";
 export { PlusIcon } from "./PlusIcon";
 export { ReactAriaIcon } from "./ReactAriaIcon";
