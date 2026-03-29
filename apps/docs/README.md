@@ -1,6 +1,6 @@
-# fried-ui docs
+# Fried UI Docs
 
-Documentation site for fried-ui, built with [Next.js 16](https://nextjs.org) and [Fumadocs](https://fumadocs.dev).
+Documentation site for Fried UI, built with [Next.js 16](https://nextjs.org) and [Fumadocs](https://fumadocs.dev).
 
 ## Development
 

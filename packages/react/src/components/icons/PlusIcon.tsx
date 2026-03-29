@@ -2,7 +2,7 @@
 
 import type { ComponentPropsWithRef } from "react";
 
-const PlusIcon = (props: Readonly<ComponentPropsWithRef<"svg">>) => {
+const PlusIcon = (props: Readonly<ComponentPropsWithRef<"svg"> & { slot?: string }>) => {
   const { className, ref, ...rest } = props;
 
   return (
