@@ -28,11 +28,33 @@ const meta = {
     },
     variant: {
       control: "select",
-      options: ["primary", "secondary", "ghost", "outline", "success", "warning", "danger", "info"],
+      options: [
+        "primary",
+        "secondary",
+        "ghost",
+        "outline",
+        "success",
+        "warning",
+        "danger",
+        "info",
+        "primary-soft",
+        "secondary-soft",
+        "success-soft",
+        "warning-soft",
+        "danger-soft",
+        "info-soft",
+        "primary-outline",
+        "secondary-outline",
+        "success-outline",
+        "warning-outline",
+        "danger-outline",
+        "info-outline",
+      ],
       description: "The visual variant of the badge",
       table: {
         type: {
-          summary: '"primary" | "secondary" | "ghost" | "outline" | "success" | "warning" | "danger" | "info"',
+          summary:
+            '"primary" | "secondary" | "ghost" | "outline" | "success" | "warning" | "danger" | "info" | "primary-soft" | "secondary-soft" | "success-soft" | "warning-soft" | "danger-soft" | "info-soft" | "primary-outline" | "secondary-outline" | "success-outline" | "warning-outline" | "danger-outline" | "info-outline"',
         },
         defaultValue: {
           summary: "primary",
@@ -42,11 +64,11 @@ const meta = {
     },
     size: {
       control: "select",
-      options: ["sm", "md", "lg", "xl"],
+      options: ["sm", "md", "lg"],
       description: "The size of the badge",
       table: {
         type: {
-          summary: '"sm" | "md" | "lg" | "xl"',
+          summary: '"sm" | "md" | "lg"',
         },
         defaultValue: {
           summary: "md",
@@ -126,6 +148,18 @@ const Variants = () => {
       <Badge variant="warning">Warning</Badge>
       <Badge variant="danger">Danger</Badge>
       <Badge variant="info">Info</Badge>
+      <Badge variant="primary-soft">Primary Soft</Badge>
+      <Badge variant="secondary-soft">Secondary Soft</Badge>
+      <Badge variant="success-soft">Success Soft</Badge>
+      <Badge variant="warning-soft">Warning Soft</Badge>
+      <Badge variant="danger-soft">Danger Soft</Badge>
+      <Badge variant="info-soft">Info Soft</Badge>
+      <Badge variant="primary-outline">Primary Outline</Badge>
+      <Badge variant="secondary-outline">Secondary Outline</Badge>
+      <Badge variant="success-outline">Success Outline</Badge>
+      <Badge variant="warning-outline">Warning Outline</Badge>
+      <Badge variant="danger-outline">Danger Outline</Badge>
+      <Badge variant="info-outline">Info Outline</Badge>
     </div>
   );
 };`,
@@ -165,6 +199,54 @@ const Variants = () => {
       <Badge {...args} variant="info">
         Info
       </Badge>
+
+      <Badge {...args} variant="primary-soft">
+        Primary Soft
+      </Badge>
+
+      <Badge {...args} variant="secondary-soft">
+        Secondary Soft
+      </Badge>
+
+      <Badge {...args} variant="success-soft">
+        Success Soft
+      </Badge>
+
+      <Badge {...args} variant="warning-soft">
+        Warning Soft
+      </Badge>
+
+      <Badge {...args} variant="danger-soft">
+        Danger Soft
+      </Badge>
+
+      <Badge {...args} variant="info-soft">
+        Info Soft
+      </Badge>
+
+      <Badge {...args} variant="primary-outline">
+        Primary Outline
+      </Badge>
+
+      <Badge {...args} variant="secondary-outline">
+        Secondary Outline
+      </Badge>
+
+      <Badge {...args} variant="success-outline">
+        Success Outline
+      </Badge>
+
+      <Badge {...args} variant="warning-outline">
+        Warning Outline
+      </Badge>
+
+      <Badge {...args} variant="danger-outline">
+        Danger Outline
+      </Badge>
+
+      <Badge {...args} variant="info-outline">
+        Info Outline
+      </Badge>
     </div>
   ),
 };
@@ -181,7 +263,6 @@ const Sizes = () => {
       <Badge size="sm">Small</Badge>
       <Badge size="md">Medium</Badge>
       <Badge size="lg">Large</Badge>
-      <Badge size="xl">Extra Large</Badge>
     </div>
   );
 };`,
@@ -200,10 +281,6 @@ const Sizes = () => {
 
       <Badge {...args} size="lg">
         Large
-      </Badge>
-
-      <Badge {...args} size="xl">
-        Extra Large
       </Badge>
     </div>
   ),
@@ -331,14 +408,60 @@ const IconOnly = () => {
       <Badge {...args} size="lg" aria-label="Info" isIconOnly>
         <InformationCircleIcon slot="icon" />
       </Badge>
+    </div>
+  ),
+};
 
-      <Badge {...args} size="xl" aria-label="Info" isIconOnly>
-        <InformationCircleIcon slot="icon" />
+const SoftVariants: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Badge } from "@fried-ui/react";
+
+const SoftVariants = () => {
+  return (
+    <div className="flex flex-wrap gap-4">
+      <Badge variant="primary-soft">Primary</Badge>
+      <Badge variant="secondary-soft">Secondary</Badge>
+      <Badge variant="success-soft">Success</Badge>
+      <Badge variant="warning-soft">Warning</Badge>
+      <Badge variant="danger-soft">Danger</Badge>
+      <Badge variant="info-soft">Info</Badge>
+    </div>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex flex-wrap items-end gap-4">
+      <Badge {...args} variant="primary-soft">
+        Primary
+      </Badge>
+
+      <Badge {...args} variant="secondary-soft">
+        Secondary
+      </Badge>
+
+      <Badge {...args} variant="success-soft">
+        Success
+      </Badge>
+
+      <Badge {...args} variant="warning-soft">
+        Warning
+      </Badge>
+
+      <Badge {...args} variant="danger-soft">
+        Danger
+      </Badge>
+
+      <Badge {...args} variant="info-soft">
+        Info
       </Badge>
     </div>
   ),
 };
 
-export { Default, Variants, Sizes, Shadow, WithIcon, IconOnly };
+export { Default, Variants, SoftVariants, Sizes, Shadow, WithIcon, IconOnly };
 
 export default meta;
