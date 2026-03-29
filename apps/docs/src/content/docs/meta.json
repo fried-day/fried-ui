@@ -10,6 +10,7 @@
     "styles/colors",
     "---Components---",
     "components/badge",
-    "components/button"
+    "components/button",
+    "components/surface"
   ]
 }
