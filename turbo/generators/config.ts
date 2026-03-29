@@ -4,7 +4,11 @@ function generator(plop: PlopTypes.NodePlopAPI): void {
   plop.setGenerator("display-component", {
     description: "Display-only component (native HTML element)",
     prompts: [
-      { type: "input", name: "name", message: "Component name (PascalCase, e.g. Surface):" },
+      {
+        type: "input",
+        name: "name",
+        message: "Component name (PascalCase, e.g. Surface):",
+      },
     ],
     actions: [
       {
@@ -53,7 +57,11 @@ function generator(plop: PlopTypes.NodePlopAPI): void {
   plop.setGenerator("interactive-component", {
     description: "Interactive component (wraps React Aria)",
     prompts: [
-      { type: "input", name: "name", message: "Component name (PascalCase, e.g. Link):" },
+      {
+        type: "input",
+        name: "name",
+        message: "Component name (PascalCase, e.g. Link):",
+      },
     ],
     actions: [
       {
