@@ -1,0 +1,229 @@
+---
+title: Design Tokens
+description: Color, spacing, elevation, motion, and layout tokens that power every Fried UI component.
+---
+
+## Overview
+
+Fried UI uses CSS custom properties as design tokens. All tokens are defined in `@fried-ui/styles` and automatically available as Tailwind CSS v4 utilities.
+
+```css
+@import "tailwindcss";
+@import "@fried-ui/styles";
+```
+
+## Semantic Colors
+
+Every semantic color has 7 tokens:
+
+| Token                    | Purpose                              |
+| ------------------------ | ------------------------------------ |
+| `{name}`                 | Solid background (button, badge)     |
+| `{name}-hover`           | Background on hover                  |
+| `{name}-active`          | Background on pressed                |
+| `{name}-foreground`      | Text on solid background             |
+| `{name}-pale`            | Soft background (alert, soft button) |
+| `{name}-pale-foreground` | Text on pale background              |
+| `{name}-pale-border`     | Border on pale background            |
+
+Available groups: `primary`, `secondary`, `success`, `warning`, `danger`, `info`
+
+```tsx
+<div className="bg-primary text-primary-foreground">Solid</div>
+<div className="bg-primary-pale text-primary-pale-foreground border border-primary-pale-border">Soft</div>
+```
+
+## Shadow
+
+Each color group has a shadow token using `em` units — shadows scale proportionally with the component's font-size.
+
+| Token                   | Usage                           |
+| ----------------------- | ------------------------------- |
+| `--color-{name}-shadow` | Colored drop shadow per variant |
+
+Light mode uses a tight two-layer shadow (Fibonacci: 2, 3, 5 → em). Dark mode uses a softer glow with larger blur.
+
+Applied via the `isShadow` prop on components:
+
+```tsx
+<Button isShadow>Shadow scales with size</Button>
+<Badge size="xl" isShadow>Larger shadow</Badge>
+```
+
+## Layout Elevation
+
+4 layers from lowest to highest:
+
+| Layer | Token                  | Light       | Dark        | Usage                   |
+| ----- | ---------------------- | ----------- | ----------- | ----------------------- |
+| 1     | `background`           | white       | black       | Page background         |
+| 2     | `background-secondary` | neutral-50  | neutral-950 | Sidebar, header, footer |
+| 3     | `surface`              | neutral-100 | neutral-900 | Card, modal             |
+| 4     | `popover`              | white       | neutral-800 | Tooltip, dropdown       |
+
+```tsx
+<div className="bg-background">Page</div>
+<aside className="bg-background-secondary">Sidebar</aside>
+<div className="bg-surface text-surface-foreground">Card</div>
+<div className="bg-popover text-popover-foreground">Dropdown</div>
+```
+
+## Typography
+
+### Hierarchy
+
+| Token                  | Purpose                  |
+| ---------------------- | ------------------------ |
+| `heading`              | h1-h6 headings           |
+| `foreground`           | Body text                |
+| `foreground-secondary` | Subtitle, description    |
+| `foreground-muted`     | Caption, hint, timestamp |
+
+```tsx
+<h1 className="text-heading">Title</h1>
+<p className="text-foreground">Body text</p>
+<p className="text-foreground-secondary">Description</p>
+<span className="text-foreground-muted">Updated 2 hours ago</span>
+```
+
+### Heading Sizes (√φ scale)
+
+Sizes derived from √φ (1.272):
+
+| Level | Token          | Size      |
+| ----- | -------------- | --------- |
+| h1    | `--heading-h1` | 2.0625rem |
+| h2    | `--heading-h2` | 1.625rem  |
+| h3    | `--heading-h3` | 1.25rem   |
+| h4    | `--heading-h4` | 1.125rem  |
+| h5    | `--heading-h5` | 1rem      |
+| h6    | `--heading-h6` | 0.875rem  |
+
+## Spacing (Golden Ratio)
+
+All spacing derives from font-size × φ (1.618), rounded to nearest Tailwind step:
+
+| Property       | Formula   | sm      | md        | lg      | xl       |
+| -------------- | --------- | ------- | --------- | ------- | -------- |
+| Font           | x         | text-sm | text-base | text-xl | text-2xl |
+| Padding Inline | x         | px-3.5  | px-4      | px-5    | px-6     |
+| Padding Block  | x × 0.485 | py-1.5  | py-2      | py-2.5  | py-3     |
+| Gap            | x / φ     | gap-2   | gap-2.5   | gap-3   | gap-4    |
+
+## Layout
+
+### Radius
+
+| Token            | Value                     | Usage                |
+| ---------------- | ------------------------- | -------------------- |
+| `--radius`       | 0.5rem                    | Base border-radius   |
+| `--field-radius` | calc(var(--radius) × 1.5) | Input, select radius |
+
+### Z-Index (Semantic Layers)
+
+| Token            | Value | Usage                  |
+| ---------------- | ----- | ---------------------- |
+| `--z-floating`   | 10    | Dropdown, tooltip      |
+| `--z-navigation` | 20    | Sticky header, sidebar |
+| `--z-overlay`    | 30    | Backdrop               |
+| `--z-dialog`     | 40    | Modal, drawer          |
+| `--z-alert`      | 50    | Toast, notification    |
+
+```tsx
+<div className="z-floating">Dropdown</div>
+<div className="z-dialog">Modal</div>
+```
+
+### Disabled & Focus
+
+| Token                    | Value       | Usage                              |
+| ------------------------ | ----------- | ---------------------------------- |
+| `--disabled-opacity`     | 0.5         | Opacity for disabled elements      |
+| `--outline-offset-focus` | 2px         | Gap between element and focus ring |
+| `--cursor-interactive`   | pointer     | Clickable elements                 |
+| `--cursor-disabled`      | not-allowed | Disabled elements                  |
+
+## Motion
+
+All durations stay under 400ms (Doherty Threshold). Automatically disabled when `prefers-reduced-motion: reduce`.
+
+### Duration
+
+| Token                | Value | Usage                      |
+| -------------------- | ----- | -------------------------- |
+| `--duration-instant` | 100ms | Toggle, checkbox           |
+| `--duration-fast`    | 150ms | Button hover, color change |
+| `--duration-normal`  | 200ms | Dropdown open, fade        |
+| `--duration-slow`    | 300ms | Modal enter, slide         |
+
+### Easing
+
+| Token           | Value                        | Usage                   |
+| --------------- | ---------------------------- | ----------------------- |
+| `--ease-smooth` | cubic-bezier(0.4, 0, 0.2, 1) | Default for most        |
+| `--ease-in`     | cubic-bezier(0.4, 0, 1, 1)   | Element exiting         |
+| `--ease-out`    | cubic-bezier(0, 0, 0.2, 1)   | Element entering        |
+| `--ease-in-out` | cubic-bezier(0.4, 0, 0.2, 1) | Element moving position |
+
+```tsx
+<div className="transition-colors duration-(--duration-fast) ease-smooth">Hover me</div>
+```
+
+### Animations
+
+| Token                     | Keyframes           | Usage         |
+| ------------------------- | ------------------- | ------------- |
+| `--animate-fade-in`       | fade-in 200ms       | Enter         |
+| `--animate-fade-out`      | fade-out 200ms      | Exit          |
+| `--animate-slide-in-up`   | slide-in-up 200ms   | Dropdown open |
+| `--animate-slide-in-down` | slide-in-down 200ms | Tooltip below |
+| `--animate-scale-in`      | scale-in 200ms      | Modal enter   |
+
+```tsx
+<div className="animate-fade-in">Entering</div>
+<div className="animate-slide-in-up">Dropdown</div>
+```
+
+## Utilities
+
+Custom `@utility` directives available as Tailwind classes:
+
+| Utility           | Purpose                                          |
+| ----------------- | ------------------------------------------------ |
+| `focus-ring`      | Two-color focus indicator (WCAG AAA)             |
+| `status-disabled` | opacity + not-allowed cursor + no pointer events |
+| `status-pending`  | No pointer events (component shows spinner)      |
+| `no-highlight`    | Remove mobile tap highlight                      |
+| `size-match-font` | 1em × 1em (icon scales with font-size)           |
+
+## Border & Field
+
+| Token               | Purpose                                      |
+| ------------------- | -------------------------------------------- |
+| `border`            | Default border (card, input, outline button) |
+| `border-hover`      | Border on hover                              |
+| `field`             | Input background                             |
+| `field-border`      | Input border                                 |
+| `field-placeholder` | Placeholder text                             |
+
+## Dark Mode
+
+Dark mode activates via `.dark` class or `data-theme="dark"`:
+
+```html
+<html data-theme="dark"></html>
+```
+
+All tokens automatically switch. Light values are defined in `@theme`, dark overrides in `@layer base`.
+
+## Chart Colors
+
+5 colors for data visualization:
+
+| Token     | Source             |
+| --------- | ------------------ |
+| `chart-1` | fried-lime (brand) |
+| `chart-2` | blue               |
+| `chart-3` | rose               |
+| `chart-4` | amber              |
+| `chart-5` | green              |

@@ -1,4 +1,12 @@
-@import "tailwindcss";
+/*
+ * @fried-ui/styles — Entry point
+ *
+ * Consumer imports this in their CSS:
+ *   @import "tailwindcss";
+ *   @import "@fried-ui/styles";
+ *
+ * Load order: tokens → utilities → components
+ */
 
 @import "./tokens/index.css";
 @import "./utilities/index.css";

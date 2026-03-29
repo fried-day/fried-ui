@@ -1,0 +1,139 @@
+import type { Meta, StoryObj } from "@storybook/react";
+
+import { {{pascalCase name}} } from "./{{pascalCase name}}";
+
+const meta = {
+  title: "Components/{{pascalCase name}}",
+  component: {{pascalCase name}},
+  tags: ["autodocs"],
+  parameters: {
+    layout: "centered",
+  },
+  args: {
+    children: "{{pascalCase name}}",
+    variant: "primary",
+    size: "md",
+  },
+  argTypes: {
+    children: {
+      control: "text",
+      description: "{{pascalCase name}} content",
+      table: {
+        type: { summary: "ReactNode" },
+        category: "Children",
+      },
+    },
+    variant: {
+      control: "select",
+      options: ["primary", "secondary", "ghost", "outline", "success", "warning", "danger", "info"],
+      description: "The visual variant of the {{dashCase name}}",
+      table: {
+        type: { summary: '"primary" | "secondary" | "ghost" | "outline" | "success" | "warning" | "danger" | "info"' },
+        defaultValue: { summary: "primary" },
+        category: "Style Variants",
+      },
+    },
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+      description: "The size of the {{dashCase name}}",
+      table: {
+        type: { summary: '"sm" | "md" | "lg"' },
+        defaultValue: { summary: "md" },
+        category: "Style Variants",
+      },
+    },
+    className: {
+      control: "text",
+      description: "Additional CSS classes",
+      table: {
+        type: { summary: "string" },
+        category: "Styling",
+      },
+    },
+  },
+} satisfies Meta<typeof {{pascalCase name}}>;
+
+type Story = StoryObj<typeof meta>;
+
+const Default: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { {{pascalCase name}} } from "@fried-ui/react";
+
+const Basic = () => {
+  return <{{pascalCase name}}>Content</{{pascalCase name}}>;
+};`,
+      },
+    },
+  },
+};
+
+const Variants: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { {{pascalCase name}} } from "@fried-ui/react";
+
+const Variants = () => {
+  return (
+    <div className="flex flex-wrap gap-4">
+      <{{pascalCase name}} variant="primary">Primary</{{pascalCase name}}>
+      <{{pascalCase name}} variant="secondary">Secondary</{{pascalCase name}}>
+      <{{pascalCase name}} variant="ghost">Ghost</{{pascalCase name}}>
+      <{{pascalCase name}} variant="outline">Outline</{{pascalCase name}}>
+      <{{pascalCase name}} variant="success">Success</{{pascalCase name}}>
+      <{{pascalCase name}} variant="warning">Warning</{{pascalCase name}}>
+      <{{pascalCase name}} variant="danger">Danger</{{pascalCase name}}>
+      <{{pascalCase name}} variant="info">Info</{{pascalCase name}}>
+    </div>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex flex-wrap items-end gap-4">
+      <{{pascalCase name}} {...args} variant="primary">Primary</{{pascalCase name}}>
+      <{{pascalCase name}} {...args} variant="secondary">Secondary</{{pascalCase name}}>
+      <{{pascalCase name}} {...args} variant="ghost">Ghost</{{pascalCase name}}>
+      <{{pascalCase name}} {...args} variant="outline">Outline</{{pascalCase name}}>
+      <{{pascalCase name}} {...args} variant="success">Success</{{pascalCase name}}>
+      <{{pascalCase name}} {...args} variant="warning">Warning</{{pascalCase name}}>
+      <{{pascalCase name}} {...args} variant="danger">Danger</{{pascalCase name}}>
+      <{{pascalCase name}} {...args} variant="info">Info</{{pascalCase name}}>
+    </div>
+  ),
+};
+
+const Sizes: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { {{pascalCase name}} } from "@fried-ui/react";
+
+const Sizes = () => {
+  return (
+    <div className="flex items-end gap-4">
+      <{{pascalCase name}} size="sm">Small</{{pascalCase name}}>
+      <{{pascalCase name}} size="md">Medium</{{pascalCase name}}>
+      <{{pascalCase name}} size="lg">Large</{{pascalCase name}}>
+    </div>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex items-end gap-4">
+      <{{pascalCase name}} {...args} size="sm">Small</{{pascalCase name}}>
+      <{{pascalCase name}} {...args} size="md">Medium</{{pascalCase name}}>
+      <{{pascalCase name}} {...args} size="lg">Large</{{pascalCase name}}>
+    </div>
+  ),
+};
+
+export { Default, Variants, Sizes };
+
+export default meta;

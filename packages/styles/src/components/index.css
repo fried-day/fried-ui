@@ -1,1 +1,16 @@
+/*
+ * Component Styles (BEM)
+ *
+ * Each component has its own CSS file with:
+ *   .fri-{name}           → base (includes defaults — works without modifiers)
+ *   .fri-{name}--{variant} → variant override
+ *   .fri-{name}--size-{x}  → size override
+ *   .fri-{name}--{bool}    → boolean modifier (disabled, pending, etc.)
+ *   .fri-{name}__element   → internal element (spinner, label, etc.)
+ *   .fri-{name} [slot="icon"] → auto-size icons
+ */
+
+@import "./badge.css";
 @import "./button.css";
+
+@import "./surface.css";

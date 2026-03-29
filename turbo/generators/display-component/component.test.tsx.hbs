@@ -1,0 +1,73 @@
+import { createRef } from "react";
+
+import { render, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
+
+import { {{pascalCase name}} } from "./{{pascalCase name}}";
+
+describe("{{pascalCase name}}", () => {
+  it("renders with default props", () => {
+    render(<{{pascalCase name}}>Content</{{pascalCase name}}>);
+    expect(screen.getByText("Content")).toBeInTheDocument();
+  });
+
+  it("renders only base class without explicit props", () => {
+    render(<{{pascalCase name}}>Default</{{pascalCase name}}>);
+    expect(screen.getByText("Default").className).toBe("fri-{{dashCase name}}");
+  });
+
+  it("applies variant class only when explicitly set", () => {
+    render(<{{pascalCase name}} variant="primary">Test</{{pascalCase name}}>);
+    expect(screen.getByText("Test").className).toContain("fri-{{dashCase name}}--primary");
+  });
+
+  it("applies all variant classes", () => {
+    const variants = ["primary", "secondary", "ghost", "outline", "success", "warning", "danger", "info"] as const;
+
+    variants.forEach((variant) => {
+      const { unmount } = render(<{{pascalCase name}} variant={variant}>{variant}</{{pascalCase name}}>);
+      expect(screen.getByText(variant).className).toContain(`fri-{{dashCase name}}--${variant}`);
+      unmount();
+    });
+  });
+
+  it("applies size class with key-value format", () => {
+    const sizes = ["sm", "md", "lg"] as const;
+
+    sizes.forEach((size) => {
+      const { unmount } = render(<{{pascalCase name}} size={size}>{size}</{{pascalCase name}}>);
+      expect(screen.getByText(size).className).toContain(`fri-{{dashCase name}}--size-${size}`);
+      unmount();
+    });
+  });
+
+  it("merges custom className", () => {
+    render(<{{pascalCase name}} className="mt-4">Styled</{{pascalCase name}}>);
+    expect(screen.getByText("Styled").className).toContain("mt-4");
+  });
+
+  it("forwards ref", () => {
+    const ref = createRef<HTMLDivElement>();
+    render(<{{pascalCase name}} ref={ref}>Ref</{{pascalCase name}}>);
+    expect(ref.current).toBeInstanceOf(HTMLDivElement);
+  });
+
+  it("sets data-slot attribute", () => {
+    render(<{{pascalCase name}}>Slot</{{pascalCase name}}>);
+    expect(screen.getByText("Slot")).toHaveAttribute("data-slot", "{{dashCase name}}");
+  });
+
+  it("sets displayName", () => {
+    expect({{pascalCase name}}.displayName).toBe("{{pascalCase name}}");
+  });
+
+  it("passes through native HTML attributes", () => {
+    render(
+      <{{pascalCase name}} id="my-{{dashCase name}}" data-testid="custom">
+        Props
+      </{{pascalCase name}}>,
+    );
+
+    expect(screen.getByTestId("custom")).toHaveAttribute("id", "my-{{dashCase name}}");
+  });
+});

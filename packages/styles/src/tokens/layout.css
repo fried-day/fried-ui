@@ -1,11 +1,27 @@
+/*
+ * Layout Tokens
+ *
+ * --radius              → base border-radius unit (0.5rem)
+ * --field-radius        → input/select radius (1.5x base)
+ * --disabled-opacity    → opacity for disabled elements (used by status-disabled utility)
+ * --outline-offset-focus → gap between element and focus ring (used by focus-ring utility)
+ * --cursor-interactive  → cursor for clickable elements
+ * --cursor-disabled     → cursor for disabled elements (used by status-disabled utility)
+ *
+ * Z-index (semantic layers — use via z-floating, z-dialog, etc.):
+ *   10 floating    → dropdown, tooltip
+ *   20 navigation  → sticky header, sidebar
+ *   30 overlay     → backdrop
+ *   40 dialog      → modal, drawer
+ *   50 alert       → toast, notification
+ */
+
 @theme {
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-full: 9999px;
+  --radius: 0.5rem;
+  --field-radius: calc(var(--radius) * 1.5);
 
   --disabled-opacity: 0.5;
-  --ring-offset-width: 2px;
+  --outline-offset-focus: 2px;
   --cursor-interactive: pointer;
   --cursor-disabled: not-allowed;
 
@@ -14,9 +30,4 @@
   --z-overlay: 30;
   --z-dialog: 40;
   --z-alert: 50;
-
-  --shadow-1: 0 1px 2px oklch(0% 0 0 / 10%);
-  --shadow-2: 0 2px 4px oklch(0% 0 0 / 10%);
-  --shadow-3: 0 3px 6px oklch(0% 0 0 / 10%);
-  --shadow-4: 0 5px 10px oklch(0% 0 0 / 10%);
 }

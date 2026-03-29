@@ -1,7 +1,11 @@
-# fried-ui
+# Fried UI
 
-> Beautiful, accessible React components built on React Aria Components + Tailwind CSS v4.
+> Beautiful, accessible React components with zero runtime styling.
 
 ## Docs
+
+- [Badge](/llm/badge.md): Display-only label with 20 variants (solid, soft, colored outline)
+- [Button](/llm/button.md): Accessible button with golden ratio spacing, React Aria keyboard/focus/screen reader support
+- [Surface](/llm/surface.md): Visual layer for cards and panels with bordered, glass, primary variants
 
 ## Optional

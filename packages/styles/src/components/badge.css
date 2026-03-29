@@ -1,0 +1,187 @@
+.fri-badge {
+  @apply inline-flex items-center justify-center;
+  @apply leading-none font-medium whitespace-nowrap;
+  @apply border border-transparent select-none;
+
+  /* default variant = primary */
+  --fri-badge-bg: var(--color-primary);
+  --fri-badge-fg: var(--color-primary-foreground);
+
+  @apply bg-(--fri-badge-bg) text-(--fri-badge-fg);
+
+  /* default size = md */
+  @apply gap-1.5 px-2 py-0.5 text-sm;
+
+  /* default radius = full */
+  @apply rounded-full;
+}
+
+.fri-badge--shadow {
+  box-shadow: var(--fri-badge-shadow, var(--color-primary-shadow));
+}
+
+.fri-badge--primary {
+  --fri-badge-bg: var(--color-primary);
+  --fri-badge-fg: var(--color-primary-foreground);
+  --fri-badge-shadow: var(--color-primary-shadow);
+}
+
+.fri-badge--secondary {
+  --fri-badge-bg: var(--color-secondary);
+  --fri-badge-fg: var(--color-secondary-foreground);
+  --fri-badge-shadow: var(--color-secondary-shadow);
+}
+
+.fri-badge--ghost {
+  --fri-badge-bg: transparent;
+  --fri-badge-fg: var(--color-foreground);
+  --fri-badge-shadow: none;
+}
+
+.fri-badge--outline {
+  --fri-badge-bg: transparent;
+  --fri-badge-fg: var(--color-foreground);
+  --fri-badge-shadow: none;
+
+  @apply border-border;
+}
+
+.fri-badge--success {
+  --fri-badge-bg: var(--color-success);
+  --fri-badge-fg: var(--color-success-foreground);
+  --fri-badge-shadow: var(--color-success-shadow);
+}
+
+.fri-badge--warning {
+  --fri-badge-bg: var(--color-warning);
+  --fri-badge-fg: var(--color-warning-foreground);
+  --fri-badge-shadow: var(--color-warning-shadow);
+}
+
+.fri-badge--danger {
+  --fri-badge-bg: var(--color-danger);
+  --fri-badge-fg: var(--color-danger-foreground);
+  --fri-badge-shadow: var(--color-danger-shadow);
+}
+
+.fri-badge--info {
+  --fri-badge-bg: var(--color-info);
+  --fri-badge-fg: var(--color-info-foreground);
+  --fri-badge-shadow: var(--color-info-shadow);
+}
+
+.fri-badge--primary-soft {
+  --fri-badge-bg: var(--color-primary-pale);
+  --fri-badge-fg: var(--color-primary-pale-foreground);
+
+  @apply border border-primary-pale-border;
+}
+
+.fri-badge--secondary-soft {
+  --fri-badge-bg: var(--color-secondary-pale);
+  --fri-badge-fg: var(--color-secondary-pale-foreground);
+
+  @apply border border-secondary-pale-border;
+}
+
+.fri-badge--success-soft {
+  --fri-badge-bg: var(--color-success-pale);
+  --fri-badge-fg: var(--color-success-pale-foreground);
+
+  @apply border border-success-pale-border;
+}
+
+.fri-badge--warning-soft {
+  --fri-badge-bg: var(--color-warning-pale);
+  --fri-badge-fg: var(--color-warning-pale-foreground);
+
+  @apply border border-warning-pale-border;
+}
+
+.fri-badge--danger-soft {
+  --fri-badge-bg: var(--color-danger-pale);
+  --fri-badge-fg: var(--color-danger-pale-foreground);
+
+  @apply border border-danger-pale-border;
+}
+
+.fri-badge--info-soft {
+  --fri-badge-bg: var(--color-info-pale);
+  --fri-badge-fg: var(--color-info-pale-foreground);
+
+  @apply border border-info-pale-border;
+}
+
+.fri-badge--primary-outline {
+  --fri-badge-bg: transparent;
+  --fri-badge-fg: var(--color-primary);
+
+  @apply border border-primary;
+}
+
+.fri-badge--secondary-outline {
+  --fri-badge-bg: transparent;
+  --fri-badge-fg: var(--color-secondary-foreground);
+
+  @apply border border-secondary;
+}
+
+.fri-badge--success-outline {
+  --fri-badge-bg: transparent;
+  --fri-badge-fg: var(--color-success);
+
+  @apply border border-success;
+}
+
+.fri-badge--warning-outline {
+  --fri-badge-bg: transparent;
+  --fri-badge-fg: var(--color-warning);
+
+  @apply border border-warning;
+}
+
+.fri-badge--danger-outline {
+  --fri-badge-bg: transparent;
+  --fri-badge-fg: var(--color-danger);
+
+  @apply border border-danger;
+}
+
+.fri-badge--info-outline {
+  --fri-badge-bg: transparent;
+  --fri-badge-fg: var(--color-info);
+
+  @apply border border-info;
+}
+
+.fri-badge--icon-only {
+  @apply justify-center gap-0 rounded-full;
+}
+
+.fri-badge--icon-only.fri-badge--size-sm {
+  @apply p-0.5;
+}
+
+.fri-badge--icon-only.fri-badge--size-md {
+  @apply p-0.5;
+}
+
+.fri-badge--icon-only.fri-badge--size-lg {
+  @apply p-1;
+}
+
+.fri-badge [slot="icon"] {
+  @apply size-match-font;
+}
+
+.fri-badge--size-sm {
+  @apply gap-1 px-1.5 py-px text-xs;
+}
+
+.fri-badge--size-md {
+  @apply gap-1.5 px-2 py-0.5 text-sm;
+}
+
+.fri-badge--size-lg {
+  @apply gap-2 px-2.5 py-1 text-base;
+}

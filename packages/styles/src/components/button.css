@@ -1,28 +1,29 @@
 .fri-button {
   @apply relative inline-flex items-center justify-center;
-  @apply leading-none font-medium whitespace-nowrap select-none no-highlight;
-  @apply border border-transparent;
-  @apply cursor-pointer;
+  @apply leading-none font-medium whitespace-nowrap;
+  @apply cursor-pointer border border-transparent select-none no-highlight;
+  @apply transition-colors duration-(--duration-fast) ease-smooth motion-reduce:transition-none;
 
-  transition:
-    background-color var(--duration-fast) var(--ease-smooth),
-    color var(--duration-fast) var(--ease-smooth);
+  /* default variant = primary */
+  --fri-button-bg: var(--color-primary);
+  --fri-button-bg-hover: var(--color-primary-hover);
+  --fri-button-bg-pressed: var(--color-primary-active);
+  --fri-button-fg: var(--color-primary-foreground);
 
-  --fri-button-bg: transparent;
-  --fri-button-bg-hover: var(--fri-button-bg);
-  --fri-button-bg-pressed: var(--fri-button-bg-hover);
-  --fri-button-fg: currentColor;
+  @apply bg-(--fri-button-bg) text-(--fri-button-fg);
 
-  background-color: var(--fri-button-bg);
-  color: var(--fri-button-fg);
+  /* default size = md */
+  @apply gap-2.5 px-4 py-2 text-base;
+
+  /* default radius = md */
+  @apply rounded-md;
 
   &:focus-visible,
   &[data-focus-visible] {
     @apply focus-ring;
   }
 
-  &:disabled,
-  &[aria-disabled="true"] {
+  &.fri-button--disabled {
     @apply status-disabled;
   }
 
@@ -32,15 +33,19 @@
 
   &:active,
   &[data-pressed] {
-    background-color: var(--fri-button-bg-pressed);
+    @apply bg-(--fri-button-bg-pressed);
   }
 
   @media (hover: hover) {
     &:hover,
     &[data-hovered] {
-      background-color: var(--fri-button-bg-hover);
+      @apply bg-(--fri-button-bg-hover);
     }
   }
+}
+
+.fri-button--shadow {
+  box-shadow: var(--fri-button-shadow, var(--color-primary-shadow));
 }
 
 .fri-button--primary {
@@ -48,24 +53,139 @@
   --fri-button-bg-hover: var(--color-primary-hover);
   --fri-button-bg-pressed: var(--color-primary-active);
   --fri-button-fg: var(--color-primary-foreground);
+  --fri-button-shadow: var(--color-primary-shadow);
 }
 
-.fri-button--sm {
-  @apply gap-2 rounded-md px-3.5 py-1.5 text-sm;
+.fri-button--secondary {
+  --fri-button-bg: var(--color-secondary);
+  --fri-button-bg-hover: var(--color-secondary-hover);
+  --fri-button-bg-pressed: var(--color-secondary-active);
+  --fri-button-fg: var(--color-secondary-foreground);
+  --fri-button-shadow: var(--color-secondary-shadow);
 }
 
-.fri-button--md {
-  @apply gap-2.5 rounded-lg px-4 py-2 text-base;
+.fri-button--ghost {
+  --fri-button-bg: transparent;
+  --fri-button-bg-hover: var(--color-muted);
+  --fri-button-bg-pressed: var(--color-muted-hover);
+  --fri-button-fg: var(--color-foreground);
+  --fri-button-shadow: none;
 }
 
-.fri-button--lg {
-  @apply gap-3 rounded-xl px-5 py-2.5 text-xl;
+.fri-button--outline {
+  --fri-button-bg: transparent;
+  --fri-button-bg-hover: var(--color-surface-hover);
+  --fri-button-bg-pressed: var(--color-surface-active);
+  --fri-button-fg: var(--color-foreground);
+  --fri-button-shadow: none;
+
+  @apply border-border;
 }
 
-.fri-button--xl {
-  @apply gap-4 rounded-2xl px-6 py-3 text-2xl;
+.fri-button--success {
+  --fri-button-bg: var(--color-success);
+  --fri-button-bg-hover: var(--color-success-hover);
+  --fri-button-bg-pressed: var(--color-success-active);
+  --fri-button-fg: var(--color-success-foreground);
+  --fri-button-shadow: var(--color-success-shadow);
+}
+
+.fri-button--warning {
+  --fri-button-bg: var(--color-warning);
+  --fri-button-bg-hover: var(--color-warning-hover);
+  --fri-button-bg-pressed: var(--color-warning-active);
+  --fri-button-fg: var(--color-warning-foreground);
+  --fri-button-shadow: var(--color-warning-shadow);
+}
+
+.fri-button--danger {
+  --fri-button-bg: var(--color-danger);
+  --fri-button-bg-hover: var(--color-danger-hover);
+  --fri-button-bg-pressed: var(--color-danger-active);
+  --fri-button-fg: var(--color-danger-foreground);
+  --fri-button-shadow: var(--color-danger-shadow);
+}
+
+.fri-button--info {
+  --fri-button-bg: var(--color-info);
+  --fri-button-bg-hover: var(--color-info-hover);
+  --fri-button-bg-pressed: var(--color-info-active);
+  --fri-button-fg: var(--color-info-foreground);
+  --fri-button-shadow: var(--color-info-shadow);
+}
+
+.fri-button--size-sm {
+  @apply gap-2 px-3.5 py-1.5 text-sm;
+}
+
+.fri-button--size-md {
+  @apply gap-2.5 px-4 py-2 text-base;
+}
+
+.fri-button--size-lg {
+  @apply gap-3 px-5 py-2.5 text-xl;
+}
+
+.fri-button--size-xl {
+  @apply gap-4 px-6 py-3 text-2xl;
+}
+
+.fri-button--full-width {
+  @apply w-full;
+}
+
+.fri-button--icon-only {
+  @apply aspect-square justify-center gap-0 p-0;
+}
+
+.fri-button--icon-only.fri-button--size-sm {
+  @apply w-6.5;
+}
+
+.fri-button--icon-only.fri-button--size-md {
+  @apply w-8;
+}
+
+.fri-button--icon-only.fri-button--size-lg {
+  @apply w-10;
+}
+
+.fri-button--icon-only.fri-button--size-xl {
+  @apply w-12;
+}
+
+.fri-button--radius-none {
+  @apply rounded-none;
+}
+
+.fri-button--radius-sm {
+  @apply rounded-sm;
+}
+
+.fri-button--radius-md {
+  @apply rounded-md;
+}
+
+.fri-button--radius-lg {
+  @apply rounded-lg;
+}
+
+.fri-button--radius-xl {
+  @apply rounded-xl;
+}
+
+.fri-button--radius-full {
+  @apply rounded-full;
 }
 
 .fri-button--pending {
-  color: transparent;
+  @apply text-transparent;
+}
+
+.fri-button [slot="icon"] {
+  @apply size-match-font;
+}
+
+.fri-button__spinner {
+  @apply absolute inset-0 m-auto size-match-font animate-spin text-(--fri-button-fg);
 }

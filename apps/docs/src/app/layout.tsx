@@ -16,16 +16,26 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
 });
 
-export const METADATA: Metadata = {
-  title: "fried-ui docs",
-  description: "Documentation for fried-ui component library",
+export const metadata: Metadata = {
+  title: {
+    default: "fried-ui",
+    template: "%s — fried-ui",
+  },
+  description: "Beautiful, accessible React components built on React Aria + Tailwind CSS v4.",
+  metadataBase: new URL("https://fried-ui.vercel.app"),
+  openGraph: {
+    title: "fried-ui",
+    description: "Beautiful, accessible React components built on React Aria + Tailwind CSS v4.",
+    siteName: "fried-ui",
+    type: "website",
+  },
 };
 
 interface RootLayoutProps {
   children: ReactNode;
 }
 
-function RootLayout(props: Readonly<RootLayoutProps>): React.JSX.Element {
+const RootLayout = (props: Readonly<RootLayoutProps>): React.JSX.Element => {
   const { children } = props;
   const bodyClassName = `${geistSans.variable} ${geistMono.variable} font-sans antialiased`;
 
@@ -36,6 +46,6 @@ function RootLayout(props: Readonly<RootLayoutProps>): React.JSX.Element {
       </body>
     </html>
   );
-}
+};
 
 export default RootLayout;

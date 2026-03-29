@@ -1,46 +1,53 @@
 "use client";
 
-import type { ReactNode } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 
-import { Button as RACButton, type ButtonProps as RACButtonProps, composeRenderProps } from "react-aria-components";
+import { Button as RacButton, composeRenderProps } from "react-aria-components";
+import type { ButtonRenderProps } from "react-aria-components";
 
-import { Spinner } from "src/components/icons";
-import { cn } from "src/utils/cn";
+import { clsx } from "clsx";
 
-export type ButtonProps = {
-  variant?: ButtonVariant;
-  size?: ButtonSize;
-  className?: string;
-  children?: ReactNode | ((renderProps: { isPending: boolean }) => ReactNode);
-} & Omit<RACButtonProps, "className" | "children">;
+import { Spinner } from "../icons";
+import { bem } from "../../utils/bem";
 
-type ButtonVariant = "primary";
-type ButtonSize = "sm" | "md" | "lg" | "xl";
+import type { ButtonVariantsProps } from "./button.variants";
 
-function Button(props: Readonly<ButtonProps>) {
-  const { size = "md", variant = "primary", children, className, ...rest } = props;
+export type ButtonProps = ButtonVariantsProps & {
+  children?: ReactNode | ((renderProps: ButtonRenderProps) => ReactNode);
+  className?: string | ((renderProps: ButtonRenderProps) => string);
+} & Omit<ComponentPropsWithRef<typeof RacButton>, "className" | "children">;
 
-  const pendingClass = rest.isPending ? "fri-button--pending" : undefined;
-  const buttonClassName = cn("fri-button", `fri-button--${variant}`, `fri-button--${size}`, pendingClass, className);
+const Button = (props: Readonly<ButtonProps>) => {
+  const { children, className, isFullWidth, isIconOnly, isShadow, radius, ref, size, variant, ...rest } = props;
+
+  const baseClassName = bem({
+    block: "fri-button",
+    modifiers: {
+      variant,
+      size,
+      radius,
+      "full-width": isFullWidth,
+      "icon-only": isIconOnly,
+      shadow: isShadow,
+      disabled: rest.isDisabled,
+      pending: rest.isPending,
+    },
+  });
+
+  const buttonClassName = composeRenderProps(className, (consumerClassName) => clsx(baseClassName, consumerClassName));
 
   return (
-    <RACButton {...rest} className={buttonClassName}>
+    <RacButton {...rest} data-slot="button" className={buttonClassName} ref={ref}>
       {composeRenderProps(children, (child, { isPending }) => (
         <>
           {child}
-
-          {isPending && (
-            <span
-              className="absolute inset-0 flex items-center justify-center text-[var(--fri-button-fg)]"
-              aria-hidden="true"
-            >
-              <Spinner className="size-[1em] animate-spin" />
-            </span>
-          )}
+          {isPending && <Spinner className="fri-button__spinner" aria-hidden="true" />}
         </>
       ))}
-    </RACButton>
+    </RacButton>
   );
-}
+};
+
+Button.displayName = "Button";
 
 export { Button };

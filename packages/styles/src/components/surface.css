@@ -1,0 +1,48 @@
+.fri-surface {
+  @apply bg-(--color-surface) text-(--color-surface-foreground);
+  @apply rounded-md;
+}
+
+.fri-surface--shadow {
+  box-shadow: var(--color-surface-shadow);
+}
+
+.fri-surface--default {
+  @apply bg-(--color-surface) text-(--color-surface-foreground);
+}
+
+.fri-surface--bordered {
+  @apply border border-border bg-transparent;
+}
+
+.fri-surface--glass {
+  @apply bg-surface-glass backdrop-blur-md;
+}
+
+.fri-surface--primary {
+  @apply bg-primary text-primary-foreground;
+}
+
+.fri-surface--radius-none {
+  @apply rounded-none;
+}
+
+.fri-surface--radius-sm {
+  @apply rounded-sm;
+}
+
+.fri-surface--radius-md {
+  @apply rounded-md;
+}
+
+.fri-surface--radius-lg {
+  @apply rounded-lg;
+}
+
+.fri-surface--radius-xl {
+  @apply rounded-xl;
+}
+
+.fri-surface--radius-full {
+  @apply rounded-full;
+}

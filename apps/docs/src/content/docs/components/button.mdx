@@ -3,38 +3,311 @@ title: Button
 description: An accessible button component built on React Aria with focus management, keyboard navigation, and screen reader support.
 ---
 
+<ButtonBadgeLinks />
+
 ## Import
 
 ```tsx
-import { Button } from "@fried-ui/react/button";
+import { Button } from "@fried-ui/react";
 ```
 
-### Usage
+## Usage
+
+<Preview>
+  <ButtonDemo />
+</Preview>
 
 ```tsx
 <Button>Click me</Button>
 ```
 
-### Disabled
+## Features
+
+- Golden ratio (φ) proportional spacing across all sizes
+- Accessible via React Aria — keyboard, focus, screen reader built-in
+- Supports loading (pending) and disabled states
+- Zero JS runtime styling — pure CSS with BEM
+- Independent `radius` prop — style separated from structure
+- `prefers-reduced-motion` respected automatically
+
+## Anatomy
+
+Button accepts `children` directly. Icons use `size-match-font` to lock size to the font. Gap between icon and label is controlled by golden ratio.
+
+```tsx
+<Button>
+  <Icon className="size-match-font" />
+  Label
+</Button>
+```
+
+## Variants
+
+The `variant` prop controls the visual style using semantic color tokens.
+
+<Preview>
+  <ButtonVariants />
+</Preview>
+
+```tsx
+<Button variant="primary">Primary</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="success">Success</Button>
+<Button variant="warning">Warning</Button>
+<Button variant="danger">Danger</Button>
+<Button variant="info">Info</Button>
+```
+
+## Sizes
+
+The `size` prop controls padding, gap, and font-size using golden ratio proportional scaling.
+
+<Preview>
+  <ButtonSizes />
+</Preview>
+
+```tsx
+<Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
+<Button size="lg">Large</Button>
+<Button size="xl">Extra Large</Button>
+```
+
+## Radius
+
+The `radius` prop controls border-radius independently from size.
+
+<Preview>
+  <ButtonRadii />
+</Preview>
+
+```tsx
+<Button radius="none">None</Button>
+<Button radius="sm">Small</Button>
+<Button radius="md">Medium</Button>
+<Button radius="lg">Large</Button>
+<Button radius="xl">XL</Button>
+<Button radius="full">Full</Button>
+```
+
+## With Icons
+
+Icons inside buttons use the `size-match-font` utility to lock their size to the font. Gap between icon and text is calculated via φ — so icons scale proportionally across all sizes.
+
+<Preview>
+  <ButtonWithIcons />
+</Preview>
+
+```tsx
+<Button>
+  <ArrowRightIcon className="size-match-font" />
+  Next
+</Button>
+```
+
+## Icon Only
+
+Square button for icon-only actions. Always provide `aria-label` for accessibility.
+
+<Preview>
+  <ButtonIconOnly />
+</Preview>
+
+```tsx
+<Button isIconOnly aria-label="Next">
+  <ArrowRightIcon className="size-match-font" />
+</Button>
+```
+
+## As a Link
+
+Wrap a `Button` with an anchor or Next.js `Link` to render a button that navigates.
+
+<Preview>
+  <ButtonAsLink />
+</Preview>
+
+```tsx
+import Link from "next/link";
+
+<Link href="/pricing">
+  <Button>Go to Pricing</Button>
+</Link>;
+```
+
+## Full Width
+
+Stretches the button to fill its container width.
+
+<Preview>
+  <ButtonFullWidth />
+</Preview>
+
+```tsx
+<Button isFullWidth>Full Width</Button>
+```
+
+## Disabled
+
+Prevents interaction and applies disabled styling.
+
+<Preview>
+  <ButtonDisabled />
+</Preview>
 
 ```tsx
 <Button isDisabled>Disabled</Button>
 ```
 
-### Pending
+## Pending
+
+Shows a loading spinner and disables press/hover events.
+
+<Preview>
+  <ButtonPending />
+</Preview>
 
 ```tsx
 <Button isPending>Saving...</Button>
 ```
 
+## Custom Class
+
+Use `className` to add layout or typography utilities. Component visual styles (background, color) are controlled by props.
+
+<Preview>
+  <ButtonCustomClass />
+</Preview>
+
+```tsx
+<Button className="tracking-wider uppercase">Uppercase</Button>
+```
+
+## Render Props
+
+Access internal state to dynamically change content using the children function.
+
+```tsx
+<Button>
+  {({ isHovered }) => (
+    <>
+      <ArrowRightIcon className="size-match-font" />
+      {isHovered ? "Let's go!" : "Hover me"}
+    </>
+  )}
+</Button>
+```
+
+Available render props: `isHovered`, `isPressed`, `isFocused`, `isFocusVisible`, `isDisabled`, `isPending`.
+
+## Design Anatomy
+
+Every spacing value is derived from the **golden ratio (φ = 1.618)** using font-size as the base unit `x`:
+
+| Property       | Formula   | sm       | md       | lg       | xl       |
+| -------------- | --------- | -------- | -------- | -------- | -------- |
+| Font           | x         | 0.875rem | 1rem     | 1.25rem  | 1.5rem   |
+| Padding Inline | x         | 0.875rem | 1rem     | 1.25rem  | 1.5rem   |
+| Padding Block  | x × 0.485 | 0.375rem | 0.5rem   | 0.625rem | 0.75rem  |
+| Gap            | x / φ     | 0.541rem | 0.618rem | 0.773rem | 0.927rem |
+
+Radius and font-size are **independent** — size controls structure (spacing via φ), radius controls style (branding).
+
+## Accessibility
+
+Built on [React Aria Button](https://react-spectrum.adobe.com/react-aria/Button.html) — accessible out of the box:
+
+| Feature          | Description                                                |
+| ---------------- | ---------------------------------------------------------- |
+| Keyboard         | `Enter` and `Space` trigger press events                   |
+| Focus management | Visible focus ring on keyboard navigation                  |
+| Screen reader    | Announces button role, label, disabled, and pending states |
+| Touch            | Optimized press handling with cancel on drag               |
+| Reduced motion   | Respects `prefers-reduced-motion` automatically            |
+
 ## API Reference
 
-| Prop         | Type                      | Default     | Description            |
-| ------------ | ------------------------- | ----------- | ---------------------- |
-| `variant`    | `"primary"`               | `"primary"` | Visual style           |
-| `size`       | `"md"`                    | `"md"`      | Button size            |
-| `isDisabled` | `boolean`                 | `false`     | Disables the button    |
-| `isPending`  | `boolean`                 | `false`     | Shows loading spinner  |
-| `onPress`    | `(e: PressEvent) => void` | -           | Press event handler    |
-| `className`  | `string`                  | -           | Additional CSS classes |
-| `children`   | `ReactNode`               | -           | Button content         |
+### Button Props
+
+| Prop               | Type                                                                                               | Default     | Description                                |
+| ------------------ | -------------------------------------------------------------------------------------------------- | ----------- | ------------------------------------------ |
+| `variant`          | `"primary" \| "secondary" \| "ghost" \| "outline" \| "success" \| "warning" \| "danger" \| "info"` | `"primary"` | The visual variant of the button           |
+| `size`             | `"sm" \| "md" \| "lg" \| "xl"`                                                                     | `"md"`      | The size of the button                     |
+| `radius`           | `"none" \| "sm" \| "md" \| "lg" \| "xl" \| "full"`                                                 | `"md"`      | The border radius of the button            |
+| `isIconOnly`       | `boolean`                                                                                          | `false`     | Whether the button is icon-only (square)   |
+| `isFullWidth`      | `boolean`                                                                                          | `false`     | Whether the button takes full width        |
+| `isDisabled`       | `boolean`                                                                                          | `false`     | Whether the button is disabled             |
+| `isPending`        | `boolean`                                                                                          | `false`     | Whether the button shows a loading spinner |
+| `onPress`          | `(e: PressEvent) => void`                                                                          | -           | Handler called when the button is pressed  |
+| `onPressStart`     | `(e: PressEvent) => void`                                                                          | -           | Handler called when press starts           |
+| `onPressEnd`       | `(e: PressEvent) => void`                                                                          | -           | Handler called when press ends             |
+| `onPressChange`    | `(isPressed: boolean) => void`                                                                     | -           | Handler called when press state changes    |
+| `onHoverStart`     | `(e: HoverEvent) => void`                                                                          | -           | Handler called when hover starts           |
+| `onHoverEnd`       | `(e: HoverEvent) => void`                                                                          | -           | Handler called when hover ends             |
+| `onHoverChange`    | `(isHovering: boolean) => void`                                                                    | -           | Handler called when hover state changes    |
+| `onFocus`          | `(e: FocusEvent) => void`                                                                          | -           | Handler called when focused                |
+| `onBlur`           | `(e: FocusEvent) => void`                                                                          | -           | Handler called when blurred                |
+| `onFocusChange`    | `(isFocused: boolean) => void`                                                                     | -           | Handler called when focus state changes    |
+| `onKeyDown`        | `(e: KeyboardEvent) => void`                                                                       | -           | Handler called on key down                 |
+| `onKeyUp`          | `(e: KeyboardEvent) => void`                                                                       | -           | Handler called on key up                   |
+| `type`             | `"button" \| "submit" \| "reset"`                                                                  | `"button"`  | The button type attribute                  |
+| `form`             | `string`                                                                                           | -           | The form element to associate with         |
+| `formAction`       | `string`                                                                                           | -           | The URL for form submission                |
+| `autoFocus`        | `boolean`                                                                                          | `false`     | Whether to auto focus on mount             |
+| `aria-label`       | `string`                                                                                           | -           | Accessible label                           |
+| `aria-labelledby`  | `string`                                                                                           | -           | ID of the labelling element                |
+| `aria-describedby` | `string`                                                                                           | -           | ID of the describing element               |
+| `className`        | `string`                                                                                           | -           | Additional CSS classes                     |
+| `ref`              | `Ref<HTMLButtonElement>`                                                                           | -           | Forwarded ref to the button element        |
+| `children`         | `ReactNode \| (renderProps: ButtonRenderProps) => ReactNode`                                       | -           | Button content                             |
+
+### Render Props
+
+| Render Prop      | CSS Selector           | Description                 |
+| ---------------- | ---------------------- | --------------------------- |
+| `isHovered`      | `[data-hovered]`       | Mouse hover state           |
+| `isPressed`      | `[data-pressed]`       | Pressed/active state        |
+| `isFocused`      | `[data-focused]`       | Focused (mouse or keyboard) |
+| `isFocusVisible` | `[data-focus-visible]` | Keyboard focused only       |
+| `isDisabled`     | `[data-disabled]`      | Disabled state              |
+| `isPending`      | `[data-pending]`       | Pending/loading state       |
+
+### CSS Classes
+
+| Class                     | Description               |
+| ------------------------- | ------------------------- |
+| `fri-button`              | Base styles               |
+| `fri-button--primary`     | Primary variant           |
+| `fri-button--secondary`   | Secondary variant         |
+| `fri-button--ghost`       | Ghost variant             |
+| `fri-button--outline`     | Outline variant           |
+| `fri-button--success`     | Success variant           |
+| `fri-button--warning`     | Warning variant           |
+| `fri-button--danger`      | Danger variant            |
+| `fri-button--info`        | Info variant              |
+| `fri-button--sm`          | Small size                |
+| `fri-button--md`          | Medium size               |
+| `fri-button--lg`          | Large size                |
+| `fri-button--xl`          | Extra large size          |
+| `fri-button--radius-none` | No border radius          |
+| `fri-button--radius-sm`   | Small border radius       |
+| `fri-button--radius-md`   | Medium border radius      |
+| `fri-button--radius-lg`   | Large border radius       |
+| `fri-button--radius-xl`   | Extra large border radius |
+| `fri-button--radius-full` | Full (pill) border radius |
+| `fri-button--disabled`    | Disabled state            |
+| `fri-button--full-width`  | Full width button         |
+| `fri-button--icon-only`   | Icon-only square button   |
+| `fri-button--pending`     | Pending/loading state     |
+| `fri-button__spinner`     | Internal spinner element  |
+
+### CSS Variables
+
+| CSS Variable              | Description               | Default                      |
+| ------------------------- | ------------------------- | ---------------------------- |
+| `--fri-button-bg`         | Background color          | `transparent`                |
+| `--fri-button-bg-hover`   | Hover background          | `var(--fri-button-bg)`       |
+| `--fri-button-bg-pressed` | Active/pressed background | `var(--fri-button-bg-hover)` |
+| `--fri-button-fg`         | Text and icon color       | `currentColor`               |

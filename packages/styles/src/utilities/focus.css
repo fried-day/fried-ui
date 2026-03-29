@@ -1,6 +1,26 @@
+/*
+ * focus-ring — Two-color focus indicator (WCAG AAA)
+ *
+ * Shows on keyboard navigation only (:focus-visible / [data-focus-visible]).
+ * Does NOT show on mouse click.
+ *
+ * Two-color technique (W3C Technique C40):
+ *   outer ring (outline) = --color-focus-outer (dark in light, light in dark)
+ *   inner ring (shadow)  = --color-focus-inner (contrast with outer)
+ *   Guarantees 3:1 contrast against ANY background color.
+ *
+ * Customizable via tokens:
+ *   --color-focus-outer    → outline color
+ *   --color-focus-inner    → ring color
+ *   --outline-offset-focus → gap between element and outline (default 2px)
+ *
+ * Usage in component CSS:
+ *   &:focus-visible,
+ *   &[data-focus-visible] {
+ *     @apply focus-ring;
+ *   }
+ */
+
 @utility focus-ring {
-  outline: none;
-  box-shadow:
-    0 0 0 var(--ring-offset-width) var(--color-background),
-    0 0 0 calc(var(--ring-offset-width) + 2px) var(--color-ring);
+  @apply ring-2 ring-focus-inner outline-2 outline-offset-focus outline-focus-outer;
 }

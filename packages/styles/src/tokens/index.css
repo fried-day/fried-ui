@@ -1,4 +1,12 @@
-@import "./palette.css";
+/*
+ * Design Tokens
+ *
+ * colors.css     → semantic tokens, shadow, overlay (light + dark mode)
+ * typography.css → heading sizes (√φ scale)
+ * layout.css     → radius, z-index, focus, cursor, opacity
+ * motion.css     → duration, easing, keyframes, reduced-motion
+ */
+
 @import "./colors.css";
 @import "./typography.css";
 @import "./layout.css";

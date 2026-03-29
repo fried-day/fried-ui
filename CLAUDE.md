@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Prerequisites
 
-- **Node 22** (see `.nvmrc`) — pnpm only (enforced via `preinstall` script)
+- **Node 18+** (`.nvmrc` recommends 22) — pnpm only (enforced via `preinstall` script)
 
 ## Build & Dev Commands
 
@@ -15,15 +15,16 @@ pnpm -w run dev           # Run all apps in dev mode (turbo)
 pnpm -w run lint          # Lint all apps and packages (turbo)
 pnpm -w run test          # Run all tests (turbo)
 pnpm -w run check-types   # Type-check all (turbo)
-pnpm -w run format        # Format with Prettier
+pnpm -w run format        # Check formatting with Prettier
+pnpm -w run format:fix    # Fix formatting with Prettier
 
 # Filter to a single app/package
 pnpm --filter=docs dev
 pnpm --filter=@fried-ui/react test
-pnpm --filter=storybook dev    # Storybook on port 6006
+pnpm --filter=storybook dev
 
 # Run a single test file
-cd packages/react && npx vitest run src/components/button/button.test.tsx
+cd packages/react && npx vitest run src/components/{name}/{name}.test.tsx
 ```
 
 ## Architecture
@@ -32,88 +33,81 @@ cd packages/react && npx vitest run src/components/button/button.test.tsx
 
 ### Workspace Layout
 
-- **`apps/docs`** (port 3001) — Next.js 16 + Fumadocs, MDX documentation site
-- **`apps/storybook`** (port 6006) — Storybook 10 with Vite, reads stories from `packages/react`
-- **`packages/react`** (`@fried-ui/react`) — Component library (React Aria + Tailwind v4), built with tsup
-- **`packages/styles`** (`@fried-ui/styles`) — Pure CSS: design tokens, `@utility`, component BEM styles (`fri-` prefix)
-- **`packages/quality`** (`@repo/quality`) — ESLint configs (`eslint/base`, `eslint/next-js`, `eslint/react-internal`) + shared tsconfigs (`tsconfig/base`, `tsconfig/nextjs`, `tsconfig/react-library`)
-- **`packages/vitest`** (`@fried-ui/vitest`) — Shared Vitest configs and setup (base + react presets)
+- **`apps/docs`** — Next.js 16 + Fumadocs documentation site
+- **`apps/storybook`** — Storybook 10 with Vite
+- **`packages/react`** (`@fried-ui/react`) — Component library, built with tsup (ESM only)
+- **`packages/styles`** (`@fried-ui/styles`) — Pure CSS: design tokens + component BEM styles
+- **`packages/mcp`** (`@fried-ui/mcp`) — MCP server for components, design tokens, and API docs
+- **`packages/quality`** (`@repo/quality`) — ESLint configs + shared tsconfigs
+- **`packages/vitest`** (`@fried-ui/vitest`) — Shared Vitest configs
 
-### Component Structure
+### Component Creation: Two-Step Workflow
 
-Each component lives in its own directory under `packages/react/src/components/`. Component files are **PascalCase**, test/story files are **lowercase**:
+Components are created via scaffold-then-customize (never from scratch):
 
-```text
-packages/react/src/
-  components/
-    button/
-      Button.tsx            # Component implementation
-      button.test.tsx       # Vitest + React Testing Library tests
-      button.stories.tsx    # Storybook stories
-      index.ts              # Re-exports
-  utils/
-    cn/
-      cn.ts                # Tailwind class merge utility (clsx + tailwind-merge)
-      index.ts             # Re-exports
-  index.ts                 # Barrel export
-```
+1. **Scaffold** — `pnpm turbo gen display-component` (Badge-like) or `pnpm turbo gen interactive-component` (Button-like, wraps React Aria)
+2. **Customize** — `@implement-component` agent modifies the 6 scaffolded files
 
-Test files use `component.test.tsx` naming. Story files use `component.stories.tsx` naming.
+Templates live in `turbo/generators/`. Each scaffold creates:
 
-**Exports** are explicit in `packages/react/package.json` with types + import subpaths:
+- `packages/styles/src/components/{name}.css` — BEM-structured styles
+- `packages/react/src/components/{name}/{Name}.tsx` — Component
+- `packages/react/src/components/{name}/{name}.variants.ts` — Props interface
+- `packages/react/src/components/{name}/{name}.test.tsx` — Tests
+- `packages/react/src/components/{name}/{name}.stories.tsx` — Storybook stories
+- `packages/react/src/components/{name}/index.ts` — Barrel export
 
-```ts
-import { Button } from "@fried-ui/react/button";
-import { cn } from "@fried-ui/react/utils/cn";
-```
+**After scaffold**, manually register in:
 
-When adding a new component, add its export entry to `packages/react/package.json` AND its tsup entry in `tsup.config.ts`.
+- `packages/react/tsup.config.ts` — add entry (alphabetical)
+- `packages/react/package.json` exports — add entry (alphabetical)
 
-### Styling
+### Component Patterns
 
-- **Tailwind CSS v4** — CSS-first config, no `tailwind.config.js`
-- Apps use `@tailwindcss/postcss`, Storybook uses `@tailwindcss/vite`
-- Each app's `globals.css` has `@source "../../packages/react/src/**/*.{ts,tsx}"` to scan component classes
-- `@fried-ui/styles` is **pure CSS** — no JS build, no tailwind-variants. Apps import via `@import "@fried-ui/styles"`
-- Component styles use **CSS + BEM (`fri-` prefix) + @apply** — for multi-framework support
-- Shared patterns use **`@utility`** (focus-ring, status-disabled, etc.)
-- Use `cn()` from `@fried-ui/react/utils/cn` to merge BEM classes in components
+- **Display components** use native HTML elements (`span`, `div`); **Interactive** wrap `react-aria-components`
+- Single `variant` prop encodes visual style + semantic meaning — no separate `color`/`appearance` props
+- `clsx()` for class merging (NOT tailwind-merge, NOT tv())
+- `data-slot="{name}"` on root element, `displayName` for DevTools
+- React 19 `ref` prop — no `forwardRef`
+- No compound components, no polymorphic `as` prop, no layout components
 
-### Documentation (Fumadocs)
+### CSS Architecture (packages/styles)
 
-- Content lives in `apps/docs/src/content/docs/` as MDX files
-- Navigation defined in `apps/docs/src/content/docs/meta.json`
-- Source config: `apps/docs/source.config.ts`
-- Loader: `apps/docs/src/lib/source.ts` uses `docs.toFumadocsSource()`
-- `.source/` is auto-generated by fumadocs-mdx — excluded from lint
+- **Zero runtime** — pure CSS with BEM, `@apply` + Tailwind v4 utilities
+- Base class includes defaults: `.fri-{name}` alone = primary variant + md size + default radius
+- BEM naming: `.fri-{name}--{variant}` (value), `.fri-{name}--size-{value}` (key-value), `.fri-{name}--{boolean}` (key)
+- **No arbitrary values** — never `w-[...]` bracket syntax
+- All spacing in rem (never px except 1px borders), derived from golden ratio (φ = 1.618) rounded to Tailwind steps
+- Semantic color tokens: 7 tokens × 6 groups (primary, secondary, success, warning, danger, info)
+- Focus ring: WCAG AAA two-color technique (`focus-ring` utility)
+- Icon sizing: `[slot="icon"]` with `size-match-font` utility (1em × 1em)
+- Interactive states: hover wrapped in `@media (hover: hover)`, include `motion-reduce:transition-none`
 
-### Testing
+### Key Rules
 
-- **Vitest** + **jsdom** + **React Testing Library** in `packages/react`
-- Shared config: `@fried-ui/vitest` package provides base and react presets
-- `@testing-library/jest-dom` matchers available via setup
-- Coverage: Istanbul reporter outputs to `coverage.json`
+- Design rules auto-load from `.claude/rules/` when editing matching files (styles, tests, stories)
+- **No `eslint-disable`** — always fix the source code
+- **No `@ts-nocheck`** / `@ts-ignore` / `@ts-expect-error` — always fix the type error
+- **All spacing values use rem** — never px for component dimensions
 
-### Key Patterns
+### Symmetry Principle
 
-- **Client components**: Add `"use client"` directive for interactive components
-- **TypeScript config chain**: `@repo/quality/tsconfig/base.json` → `react-library.json` (UI lib) or `nextjs.json` (apps)
-- **ESLint**: Apps use `@repo/quality/eslint/next-js` config, UI package uses `@repo/quality/eslint/react-internal` config. Configs use factory functions (`createConfig`, `createReactConfig`, `createNextJsConfig`)
-- **No `eslint-disable`**: Never use `eslint-disable` comments or turn off rules to suppress warnings. Always fix the source code to satisfy the rule
-- **No `@ts-nocheck`**: Never use `// @ts-nocheck`, `// @ts-ignore`, or `// @ts-expect-error`. Always fix the actual type error
-- **Workspace deps**: `workspace:*` protocol
-- **Turbo tasks**: `build`, `lint`, `check-types`, `test` have `dependsOn: ["^<task>"]`. `dev` is persistent/uncached.
-- **Build**: `@fried-ui/react` uses tsup (ESM-only, .mjs output, external react/react-dom/tailwindcss)
+Every new file, agent, rule, component, or docs page must be **symmetrical** with existing ones:
+
+- **Naming** — follow the exact same pattern (casing, prefix, suffix) as siblings
+- **Headings** — same structure, same order, no suffixes on some but not others
+- **Content pattern** — if similar sections have desc, all have desc; if none have desc, none do
+- **File structure** — agents use `# {Title}` → `## Inputs` → `## Steps` → `## Verify`; rules use `# {Noun}` → domain-specific sections
+- **Audit after creation** — always verify new files match the established pattern of their siblings
 
 ### Git Conventions
 
 - **Conventional commits** enforced by commitlint: `type(scope): Subject` (sentence-case, max 50 chars)
 - Valid types: `build|chore|ci|docs|feat|fix|perf|refactor|revert|setup|style|test`
 - Scope is required
-- **Husky hooks**: pre-commit runs lint-staged (prettier + eslint --fix), commit-msg validates format, pre-push runs lint + typecheck
+- **Husky hooks**: pre-commit runs lint-staged, commit-msg validates format, pre-push runs lint + typecheck
 
 ### Changesets
 
-- Run `pnpm changeset` to create a changeset before submitting PRs that affect published packages
 - `@fried-ui/react` and `@fried-ui/styles` are **fixed versioning** — they release together
 - `docs` and `storybook` apps are ignored by changesets

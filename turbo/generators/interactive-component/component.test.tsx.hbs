@@ -1,0 +1,117 @@
+import { createRef } from "react";
+
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { describe, expect, it, vi } from "vitest";
+
+import { {{pascalCase name}} } from "./{{pascalCase name}}";
+
+describe("{{pascalCase name}}", () => {
+  it("renders with default props", () => {
+    render(<{{pascalCase name}}>Content</{{pascalCase name}}>);
+    expect(screen.getByText("Content")).toBeInTheDocument();
+  });
+
+  it("renders only base class without explicit props", () => {
+    render(<{{pascalCase name}}>Default</{{pascalCase name}}>);
+    const el = screen.getByText("Default");
+    expect(el.className).toContain("fri-{{dashCase name}}");
+    expect(el.className).not.toContain("fri-{{dashCase name}}--primary");
+    expect(el.className).not.toContain("fri-{{dashCase name}}--size-md");
+  });
+
+  it("applies variant class only when explicitly set", () => {
+    render(<{{pascalCase name}} variant="primary">Test</{{pascalCase name}}>);
+    expect(screen.getByText("Test").className).toContain("fri-{{dashCase name}}--primary");
+  });
+
+  it("applies all variant classes", () => {
+    const variants = ["primary", "secondary", "ghost", "outline", "success", "warning", "danger", "info"] as const;
+
+    variants.forEach((variant) => {
+      const { unmount } = render(<{{pascalCase name}} variant={variant}>{variant}</{{pascalCase name}}>);
+      expect(screen.getByText(variant).className).toContain(`fri-{{dashCase name}}--${variant}`);
+      unmount();
+    });
+  });
+
+  it("applies size class with key-value format", () => {
+    const sizes = ["sm", "md", "lg"] as const;
+
+    sizes.forEach((size) => {
+      const { unmount } = render(<{{pascalCase name}} size={size}>{size}</{{pascalCase name}}>);
+      expect(screen.getByText(size).className).toContain(`fri-{{dashCase name}}--size-${size}`);
+      unmount();
+    });
+  });
+
+  it("merges custom className", () => {
+    render(<{{pascalCase name}} className="mt-4">Styled</{{pascalCase name}}>);
+    expect(screen.getByText("Styled").className).toContain("mt-4");
+  });
+
+  it("forwards ref", () => {
+    const ref = createRef<HTMLElement>();
+    render(<{{pascalCase name}} ref={ref}>Ref</{{pascalCase name}}>);
+    expect(ref.current).toBeInstanceOf(HTMLElement);
+  });
+
+  it("sets data-slot attribute", () => {
+    render(<{{pascalCase name}}>Slot</{{pascalCase name}}>);
+    expect(screen.getByText("Slot")).toHaveAttribute("data-slot", "{{dashCase name}}");
+  });
+
+  it("sets displayName", () => {
+    expect({{pascalCase name}}.displayName).toBe("{{pascalCase name}}");
+  });
+
+  it("applies disabled class", () => {
+    render(<{{pascalCase name}} isDisabled>Disabled</{{pascalCase name}}>);
+    expect(screen.getByText("Disabled").className).toContain("fri-{{dashCase name}}--disabled");
+  });
+
+  it("fires onPress when clicked", async () => {
+    const onPress = vi.fn();
+    const user = userEvent.setup();
+    render(<{{pascalCase name}} onPress={onPress}>Press</{{pascalCase name}}>);
+
+    await user.click(screen.getByText("Press"));
+
+    expect(onPress).toHaveBeenCalledOnce();
+  });
+
+  it("does not fire onPress when disabled", async () => {
+    const onPress = vi.fn();
+    const user = userEvent.setup();
+
+    render(
+      <{{pascalCase name}} onPress={onPress} isDisabled>
+        Disabled
+      </{{pascalCase name}}>,
+    );
+
+    await user.click(screen.getByText("Disabled"));
+
+    expect(onPress).not.toHaveBeenCalled();
+  });
+
+  it("supports className as render prop function", () => {
+    render(
+      <{{pascalCase name}} className={({ isHovered }): string => (isHovered ? "hovered" : "idle")}>Dynamic</{{pascalCase name}}>,
+    );
+
+    const el = screen.getByText("Dynamic");
+    expect(el.className).toContain("fri-{{dashCase name}}");
+    expect(el.className).toContain("idle");
+  });
+
+  it("passes through native HTML attributes", () => {
+    render(
+      <{{pascalCase name}} data-testid="custom">
+        Props
+      </{{pascalCase name}}>,
+    );
+
+    expect(screen.getByTestId("custom")).toBeInTheDocument();
+  });
+});

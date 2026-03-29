@@ -1,3 +1,13 @@
+/*
+ * Custom Utilities (@utility)
+ *
+ * focus.css       → focus-ring (WCAG AAA two-color keyboard focus)
+ * status.css      → status-disabled, status-pending
+ * interaction.css → no-highlight (mobile tap)
+ * sizing.css      → size-match-font (icon = 1em)
+ */
+
 @import "./focus.css";
 @import "./status.css";
 @import "./interaction.css";
+@import "./sizing.css";

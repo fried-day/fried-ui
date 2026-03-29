@@ -1,0 +1,20 @@
+/*
+ * size-match-font — Lock element size to current font-size
+ *
+ * Sets width and height to 1em, making the element scale
+ * proportionally with the parent's font-size.
+ *
+ * Primary use: SVG icons inside components.
+ * When a Button is size="lg" (text-xl), icons automatically scale up.
+ *
+ * Two ways to apply:
+ *   1. className="size-match-font"  (explicit)
+ *   2. slot="icon"                  (auto — CSS: .fri-button [slot="icon"] { @apply size-match-font; })
+ *
+ * Usage: @apply size-match-font;
+ */
+
+@utility size-match-font {
+  width: 1em;
+  height: 1em;
+}

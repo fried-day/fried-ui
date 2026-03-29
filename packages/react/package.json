@@ -24,18 +24,21 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs"
+      "import": "./src/index.ts"
+    },
+    "./badge": {
+      "import": "./src/components/badge/index.ts"
     },
     "./button": {
-      "types": "./dist/components/button/index.d.ts",
-      "import": "./dist/components/button/index.mjs"
+      "import": "./src/components/button/index.ts"
     },
-    "./utils/cn": {
-      "types": "./dist/utils/cn/index.d.ts",
-      "import": "./dist/utils/cn/index.mjs"
+    "./surface": {
+      "import": "./src/components/surface/index.ts"
     }
   },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -54,8 +57,7 @@
     "@react-types/color": "^3.1.4",
     "@react-types/shared": "^3.33.1",
     "clsx": "^2.1.1",
-    "react-aria-components": "^1.16.0",
-    "tailwind-merge": "^3.5.0"
+    "react-aria-components": "^1.16.0"
   },
   "devDependencies": {
     "@fried-ui/vitest": "workspace:*",
