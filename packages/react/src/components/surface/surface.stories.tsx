@@ -25,11 +25,11 @@ const meta = {
     },
     variant: {
       control: "select",
-      options: ["default", "bordered", "primary"],
+      options: ["default", "bordered", "glass", "primary"],
       description: "The visual style of the surface",
       table: {
         type: {
-          summary: '"default" | "bordered" | "primary"',
+          summary: '"default" | "bordered" | "glass" | "primary"',
         },
         defaultValue: {
           summary: "default",
@@ -115,6 +115,7 @@ const Variants = () => {
     <div className="flex flex-wrap gap-4">
       <Surface variant="default" className="p-4">Default</Surface>
       <Surface variant="bordered" className="p-4">Bordered</Surface>
+      <Surface variant="glass" className="p-4">Glass</Surface>
       <Surface variant="primary" className="p-4">Primary</Surface>
     </div>
   );
@@ -130,6 +131,10 @@ const Variants = () => {
 
       <Surface {...args} variant="bordered" className="p-4">
         Bordered
+      </Surface>
+
+      <Surface {...args} variant="glass" className="p-4">
+        Glass
       </Surface>
 
       <Surface {...args} variant="primary" className="p-4">
@@ -219,6 +224,35 @@ const Radius = () => {
   ),
 };
 
-export { Default, Radius, Shadow, Variants };
+const Glass: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Surface } from "@fried-ui/react";
+
+const Glass = () => {
+  return (
+    <div className="relative">
+      <img src="..." alt="background" />
+      <Surface variant="glass" radius="lg" className="absolute inset-4 p-6">
+        Content over image
+      </Surface>
+    </div>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="relative rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 p-16">
+      <Surface {...args} variant="glass" radius="lg" className="p-6">
+        <p className="font-bold">Glass Surface</p>
+        <p className="mt-2 text-sm">Content over a gradient background.</p>
+      </Surface>
+    </div>
+  ),
+};
+
+export { Default, Glass, Radius, Shadow, Variants };
 
 export default meta;
