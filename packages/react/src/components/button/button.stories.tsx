@@ -82,6 +82,19 @@ const meta = {
         category: "Style Variants",
       },
     },
+    isShadow: {
+      control: "boolean",
+      description: "Whether to show a colored drop shadow",
+      table: {
+        type: {
+          summary: "boolean",
+        },
+        defaultValue: {
+          summary: "false",
+        },
+        category: "Style Variants",
+      },
+    },
     isFullWidth: {
       control: "boolean",
       description: "Whether the button takes full width of its container",
@@ -491,6 +504,51 @@ const RenderProps = () => {
   ),
 };
 
-export { Default, Variants, Sizes, Radii, WithIcon, IconOnly, FullWidth, Disabled, Pending, RenderProps };
+const Shadow: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Button } from "@fried-ui/react";
+
+const Shadow = () => {
+  return (
+    <div className="flex flex-wrap gap-4">
+      <Button isShadow>Primary</Button>
+      <Button variant="success" isShadow>Success</Button>
+      <Button variant="warning" isShadow>Warning</Button>
+      <Button variant="danger" isShadow>Danger</Button>
+      <Button variant="info" isShadow>Info</Button>
+    </div>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex flex-wrap items-end gap-4">
+      <Button {...args} isShadow>
+        Primary
+      </Button>
+
+      <Button {...args} variant="success" isShadow>
+        Success
+      </Button>
+
+      <Button {...args} variant="warning" isShadow>
+        Warning
+      </Button>
+
+      <Button {...args} variant="danger" isShadow>
+        Danger
+      </Button>
+
+      <Button {...args} variant="info" isShadow>
+        Info
+      </Button>
+    </div>
+  ),
+};
+
+export { Default, Variants, Sizes, Radii, Shadow, WithIcon, IconOnly, FullWidth, Disabled, Pending, RenderProps };
 
 export default meta;

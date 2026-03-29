@@ -5,6 +5,7 @@ export default defineConfig({
     index: "src/index.ts",
     "components/badge/index": "src/components/badge/index.ts",
     "components/button/index": "src/components/button/index.ts",
+    "components/surface/index": "src/components/surface/index.ts",
   },
   format: ["esm"],
   outExtension: () => ({ js: ".mjs" }),

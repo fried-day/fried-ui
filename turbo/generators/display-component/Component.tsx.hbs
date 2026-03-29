@@ -8,7 +8,7 @@ import { bem } from "../../utils/bem";
 
 import type { {{pascalCase name}}VariantsProps } from "./{{dashCase name}}.variants";
 
-export type {{pascalCase name}}Props = Omit<ComponentPropsWithRef<"{{element}}">, "className"> &
+export type {{pascalCase name}}Props = Omit<ComponentPropsWithRef<"div">, "className"> &
   {{pascalCase name}}VariantsProps & {
     className?: string;
   };
@@ -16,7 +16,7 @@ export type {{pascalCase name}}Props = Omit<ComponentPropsWithRef<"{{element}}">
 const {{pascalCase name}} = (props: Readonly<{{pascalCase name}}Props>) => {
   const { children, className, ref, size, variant, ...rest } = props;
 
-  const {{camelCase name}}ClassName = clsx(
+  const componentClassName = clsx(
     bem({
       block: "fri-{{dashCase name}}",
       modifiers: {
@@ -28,9 +28,9 @@ const {{pascalCase name}} = (props: Readonly<{{pascalCase name}}Props>) => {
   );
 
   return (
-    <{{element}} data-slot="{{dashCase name}}" className={ {{camelCase name}}ClassName} ref={ref} {...rest}>
+    <div data-slot="{{dashCase name}}" className={componentClassName} ref={ref} {...rest}>
       {children}
-    </{{element}}>
+    </div>
   );
 };
 

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { SettingsIcon } from "../icons";
+import { InformationCircleIcon, SettingsIcon } from "../icons";
 import { Badge } from "./Badge";
 
 const meta = {
@@ -42,14 +42,40 @@ const meta = {
     },
     size: {
       control: "select",
-      options: ["sm", "md", "lg"],
+      options: ["sm", "md", "lg", "xl"],
       description: "The size of the badge",
       table: {
         type: {
-          summary: '"sm" | "md" | "lg"',
+          summary: '"sm" | "md" | "lg" | "xl"',
         },
         defaultValue: {
           summary: "md",
+        },
+        category: "Style Variants",
+      },
+    },
+    isIconOnly: {
+      control: "boolean",
+      description: "Whether the badge is icon-only (square)",
+      table: {
+        type: {
+          summary: "boolean",
+        },
+        defaultValue: {
+          summary: "false",
+        },
+        category: "Style Variants",
+      },
+    },
+    isShadow: {
+      control: "boolean",
+      description: "Whether to show a colored drop shadow",
+      table: {
+        type: {
+          summary: "boolean",
+        },
+        defaultValue: {
+          summary: "false",
         },
         category: "Style Variants",
       },
@@ -155,6 +181,7 @@ const Sizes = () => {
       <Badge size="sm">Small</Badge>
       <Badge size="md">Medium</Badge>
       <Badge size="lg">Large</Badge>
+      <Badge size="xl">Extra Large</Badge>
     </div>
   );
 };`,
@@ -173,6 +200,10 @@ const Sizes = () => {
 
       <Badge {...args} size="lg">
         Large
+      </Badge>
+
+      <Badge {...args} size="xl">
+        Extra Large
       </Badge>
     </div>
   ),
@@ -226,6 +257,88 @@ const WithIconAlt = () => {
   ),
 };
 
-export { Default, Variants, Sizes, WithIcon };
+const Shadow: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Badge } from "@fried-ui/react";
+
+const Shadow = () => {
+  return (
+    <div className="flex flex-wrap gap-4">
+      <Badge isShadow>Primary</Badge>
+      <Badge variant="success" isShadow>Success</Badge>
+      <Badge variant="warning" isShadow>Warning</Badge>
+      <Badge variant="danger" isShadow>Danger</Badge>
+      <Badge variant="info" isShadow>Info</Badge>
+    </div>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex flex-wrap items-end gap-4">
+      <Badge {...args} isShadow>
+        Primary
+      </Badge>
+
+      <Badge {...args} variant="success" isShadow>
+        Success
+      </Badge>
+
+      <Badge {...args} variant="warning" isShadow>
+        Warning
+      </Badge>
+
+      <Badge {...args} variant="danger" isShadow>
+        Danger
+      </Badge>
+
+      <Badge {...args} variant="info" isShadow>
+        Info
+      </Badge>
+    </div>
+  ),
+};
+
+const IconOnly: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Badge, InformationCircleIcon } from "@fried-ui/react";
+
+const IconOnly = () => {
+  return (
+    <Badge aria-label="Info" isIconOnly>
+      <InformationCircleIcon slot="icon" />
+    </Badge>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex items-end gap-4">
+      <Badge {...args} size="sm" aria-label="Info" isIconOnly>
+        <InformationCircleIcon slot="icon" />
+      </Badge>
+
+      <Badge {...args} size="md" aria-label="Info" isIconOnly>
+        <InformationCircleIcon slot="icon" />
+      </Badge>
+
+      <Badge {...args} size="lg" aria-label="Info" isIconOnly>
+        <InformationCircleIcon slot="icon" />
+      </Badge>
+
+      <Badge {...args} size="xl" aria-label="Info" isIconOnly>
+        <InformationCircleIcon slot="icon" />
+      </Badge>
+    </div>
+  ),
+};
+
+export { Default, Variants, Sizes, Shadow, WithIcon, IconOnly };
 
 export default meta;

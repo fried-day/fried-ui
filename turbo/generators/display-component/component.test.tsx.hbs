@@ -47,9 +47,9 @@ describe("{{pascalCase name}}", () => {
   });
 
   it("forwards ref", () => {
-    const ref = createRef<HTMLElementTagNameMap["{{element}}"]>();
+    const ref = createRef<HTMLDivElement>();
     render(<{{pascalCase name}} ref={ref}>Ref</{{pascalCase name}}>);
-    expect(ref.current).toBeInstanceOf(HTMLElementTagNameMap["{{element}}"]);
+    expect(ref.current).toBeInstanceOf(HTMLDivElement);
   });
 
   it("sets data-slot attribute", () => {

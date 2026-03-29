@@ -31,6 +31,9 @@
     },
     "./button": {
       "import": "./src/components/button/index.ts"
+    },
+    "./surface": {
+      "import": "./src/components/surface/index.ts"
     }
   },
   "main": "./dist/index.mjs",

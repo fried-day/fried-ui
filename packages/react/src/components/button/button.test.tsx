@@ -103,6 +103,16 @@ describe("Button", () => {
     expect(ref.current).toBeInstanceOf(HTMLButtonElement);
   });
 
+  it("applies shadow class when isShadow is true", () => {
+    render(<Button isShadow>Shadow</Button>);
+    expect(screen.getByRole("button").className).toContain("fri-button--shadow");
+  });
+
+  it("does not apply shadow class when isShadow is false", () => {
+    render(<Button>No shadow</Button>);
+    expect(screen.getByRole("button").className).not.toContain("fri-button--shadow");
+  });
+
   it("applies icon-only class", () => {
     render(
       <Button aria-label="Close" isIconOnly>

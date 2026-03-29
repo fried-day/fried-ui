@@ -10,8 +10,8 @@ paths:
 
 ```text
 palette.css    → fried-lime brand palette (@theme)
-colors.css     → semantic tokens (@theme light + @layer base .dark)
-layout.css     → radius, shadow, z-index, focus offset
+colors.css     → semantic tokens, shadow, overlay (@theme light + @layer base .dark)
+layout.css     → radius, z-index, focus offset, cursor, opacity
 motion.css     → duration, easing, keyframes
 typography.css → heading sizes
 ```

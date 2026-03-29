@@ -16,24 +16,32 @@
   @apply rounded-full;
 }
 
+.fri-badge--shadow {
+  box-shadow: var(--fri-badge-shadow, var(--color-primary-pale-shadow));
+}
+
 .fri-badge--primary {
   --fri-badge-bg: var(--color-primary);
   --fri-badge-fg: var(--color-primary-foreground);
+  --fri-badge-shadow: var(--color-primary-pale-shadow);
 }
 
 .fri-badge--secondary {
   --fri-badge-bg: var(--color-secondary);
   --fri-badge-fg: var(--color-secondary-foreground);
+  --fri-badge-shadow: var(--color-secondary-pale-shadow);
 }
 
 .fri-badge--ghost {
   --fri-badge-bg: transparent;
   --fri-badge-fg: var(--color-foreground);
+  --fri-badge-shadow: none;
 }
 
 .fri-badge--outline {
   --fri-badge-bg: transparent;
   --fri-badge-fg: var(--color-foreground);
+  --fri-badge-shadow: none;
 
   @apply border-border;
 }
@@ -41,21 +49,45 @@
 .fri-badge--success {
   --fri-badge-bg: var(--color-success);
   --fri-badge-fg: var(--color-success-foreground);
+  --fri-badge-shadow: var(--color-success-pale-shadow);
 }
 
 .fri-badge--warning {
   --fri-badge-bg: var(--color-warning);
   --fri-badge-fg: var(--color-warning-foreground);
+  --fri-badge-shadow: var(--color-warning-pale-shadow);
 }
 
 .fri-badge--danger {
   --fri-badge-bg: var(--color-danger);
   --fri-badge-fg: var(--color-danger-foreground);
+  --fri-badge-shadow: var(--color-danger-pale-shadow);
 }
 
 .fri-badge--info {
   --fri-badge-bg: var(--color-info);
   --fri-badge-fg: var(--color-info-foreground);
+  --fri-badge-shadow: var(--color-info-pale-shadow);
+}
+
+.fri-badge--icon-only {
+  @apply justify-center gap-0 rounded-full;
+}
+
+.fri-badge--icon-only.fri-badge--size-sm {
+  @apply p-0.5;
+}
+
+.fri-badge--icon-only.fri-badge--size-md {
+  @apply p-0.5;
+}
+
+.fri-badge--icon-only.fri-badge--size-lg {
+  @apply p-1;
+}
+
+.fri-badge--icon-only.fri-badge--size-xl {
+  @apply p-1.5;
 }
 
 .fri-badge [slot="icon"] {
@@ -72,4 +104,8 @@
 
 .fri-badge--size-lg {
   @apply gap-2 px-2.5 py-1 text-base;
+}
+
+.fri-badge--size-xl {
+  @apply gap-2.5 px-3 py-1.5 text-lg;
 }

@@ -37,13 +37,28 @@ describe("Badge", () => {
   });
 
   it("applies size class with key-value format", () => {
-    const sizes = ["sm", "md", "lg"] as const;
+    const sizes = ["sm", "md", "lg", "xl"] as const;
 
     sizes.forEach((size) => {
       const { unmount } = render(<Badge size={size}>{size}</Badge>);
       expect(screen.getByText(size).className).toContain(`fri-badge--size-${size}`);
       unmount();
     });
+  });
+
+  it("applies icon-only class", () => {
+    render(<Badge isIconOnly>X</Badge>);
+    expect(screen.getByText("X").className).toContain("fri-badge--icon-only");
+  });
+
+  it("applies shadow class when isShadow is true", () => {
+    render(<Badge isShadow>Shadow</Badge>);
+    expect(screen.getByText("Shadow").className).toContain("fri-badge--shadow");
+  });
+
+  it("does not apply shadow class when isShadow is false", () => {
+    render(<Badge>No shadow</Badge>);
+    expect(screen.getByText("No shadow").className).not.toContain("fri-badge--shadow");
   });
 
   it("merges custom className", () => {

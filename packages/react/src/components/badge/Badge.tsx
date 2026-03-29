@@ -14,7 +14,7 @@ export type BadgeProps = Omit<ComponentPropsWithRef<"span">, "className"> &
   };
 
 const Badge = (props: Readonly<BadgeProps>) => {
-  const { children, className, ref, size, variant, ...rest } = props;
+  const { children, className, isIconOnly, isShadow, ref, size, variant, ...rest } = props;
 
   const badgeClassName = clsx(
     bem({
@@ -22,6 +22,8 @@ const Badge = (props: Readonly<BadgeProps>) => {
       modifiers: {
         variant,
         size,
+        "icon-only": isIconOnly,
+        shadow: isShadow,
       },
     }),
     className,
