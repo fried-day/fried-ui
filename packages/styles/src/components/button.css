@@ -45,7 +45,7 @@
 }
 
 .fri-button--shadow {
-  box-shadow: var(--fri-button-shadow, var(--color-primary-pale-shadow));
+  box-shadow: var(--fri-button-shadow, var(--color-primary-shadow));
 }
 
 .fri-button--primary {
@@ -53,7 +53,7 @@
   --fri-button-bg-hover: var(--color-primary-hover);
   --fri-button-bg-pressed: var(--color-primary-active);
   --fri-button-fg: var(--color-primary-foreground);
-  --fri-button-shadow: var(--color-primary-pale-shadow);
+  --fri-button-shadow: var(--color-primary-shadow);
 }
 
 .fri-button--secondary {
@@ -61,7 +61,7 @@
   --fri-button-bg-hover: var(--color-secondary-hover);
   --fri-button-bg-pressed: var(--color-secondary-active);
   --fri-button-fg: var(--color-secondary-foreground);
-  --fri-button-shadow: var(--color-secondary-pale-shadow);
+  --fri-button-shadow: var(--color-secondary-shadow);
 }
 
 .fri-button--ghost {
@@ -87,7 +87,7 @@
   --fri-button-bg-hover: var(--color-success-hover);
   --fri-button-bg-pressed: var(--color-success-active);
   --fri-button-fg: var(--color-success-foreground);
-  --fri-button-shadow: var(--color-success-pale-shadow);
+  --fri-button-shadow: var(--color-success-shadow);
 }
 
 .fri-button--warning {
@@ -95,7 +95,7 @@
   --fri-button-bg-hover: var(--color-warning-hover);
   --fri-button-bg-pressed: var(--color-warning-active);
   --fri-button-fg: var(--color-warning-foreground);
-  --fri-button-shadow: var(--color-warning-pale-shadow);
+  --fri-button-shadow: var(--color-warning-shadow);
 }
 
 .fri-button--danger {
@@ -103,7 +103,7 @@
   --fri-button-bg-hover: var(--color-danger-hover);
   --fri-button-bg-pressed: var(--color-danger-active);
   --fri-button-fg: var(--color-danger-foreground);
-  --fri-button-shadow: var(--color-danger-pale-shadow);
+  --fri-button-shadow: var(--color-danger-shadow);
 }
 
 .fri-button--info {
@@ -111,7 +111,7 @@
   --fri-button-bg-hover: var(--color-info-hover);
   --fri-button-bg-pressed: var(--color-info-active);
   --fri-button-fg: var(--color-info-foreground);
-  --fri-button-shadow: var(--color-info-pale-shadow);
+  --fri-button-shadow: var(--color-info-shadow);
 }
 
 .fri-button--size-sm {
