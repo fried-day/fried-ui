@@ -10,9 +10,9 @@ Your main brand color used for primary actions and CTAs.
 <ColorSwatch
   colors={[
     { name: "--primary", token: "primary" },
-    { name: "--primary-foreground", token: "primary-foreground" },
     { name: "--primary-hover", token: "primary-hover" },
     { name: "--primary-active", token: "primary-active" },
+    { name: "--primary-foreground", token: "primary-foreground" },
     { name: "--primary-pale", token: "primary-pale" },
     { name: "--primary-pale-foreground", token: "primary-pale-foreground" },
     { name: "--primary-pale-border", token: "primary-pale-border" },
@@ -26,9 +26,9 @@ For secondary actions and less emphasis.
 <ColorSwatch
   colors={[
     { name: "--secondary", token: "secondary" },
-    { name: "--secondary-foreground", token: "secondary-foreground" },
     { name: "--secondary-hover", token: "secondary-hover" },
     { name: "--secondary-active", token: "secondary-active" },
+    { name: "--secondary-foreground", token: "secondary-foreground" },
     { name: "--secondary-pale", token: "secondary-pale" },
     { name: "--secondary-pale-foreground", token: "secondary-pale-foreground" },
     { name: "--secondary-pale-border", token: "secondary-pale-border" },
@@ -44,6 +44,8 @@ For alerts, validation, and status messages.
 <ColorSwatch
   colors={[
     { name: "--success", token: "success" },
+    { name: "--success-hover", token: "success-hover" },
+    { name: "--success-active", token: "success-active" },
     { name: "--success-foreground", token: "success-foreground" },
     { name: "--success-pale", token: "success-pale" },
     { name: "--success-pale-foreground", token: "success-pale-foreground" },
@@ -56,6 +58,8 @@ For alerts, validation, and status messages.
 <ColorSwatch
   colors={[
     { name: "--warning", token: "warning" },
+    { name: "--warning-hover", token: "warning-hover" },
+    { name: "--warning-active", token: "warning-active" },
     { name: "--warning-foreground", token: "warning-foreground" },
     { name: "--warning-pale", token: "warning-pale" },
     { name: "--warning-pale-foreground", token: "warning-pale-foreground" },
@@ -68,6 +72,8 @@ For alerts, validation, and status messages.
 <ColorSwatch
   colors={[
     { name: "--danger", token: "danger" },
+    { name: "--danger-hover", token: "danger-hover" },
+    { name: "--danger-active", token: "danger-active" },
     { name: "--danger-foreground", token: "danger-foreground" },
     { name: "--danger-pale", token: "danger-pale" },
     { name: "--danger-pale-foreground", token: "danger-pale-foreground" },
@@ -80,6 +86,8 @@ For alerts, validation, and status messages.
 <ColorSwatch
   colors={[
     { name: "--info", token: "info" },
+    { name: "--info-hover", token: "info-hover" },
+    { name: "--info-active", token: "info-active" },
     { name: "--info-foreground", token: "info-foreground" },
     { name: "--info-pale", token: "info-pale" },
     { name: "--info-pale-foreground", token: "info-pale-foreground" },
@@ -183,6 +191,17 @@ For consistent form field styling across input components.
     { name: "--chart-3", token: "chart-3" },
     { name: "--chart-4", token: "chart-4" },
     { name: "--chart-5", token: "chart-5" },
+  ]}
+/>
+
+## Focus Ring
+
+Two-color focus indicator for keyboard navigation (WCAG AAA).
+
+<ColorSwatch
+  colors={[
+    { name: "--focus-outer", token: "focus-outer" },
+    { name: "--focus-inner", token: "focus-inner" },
   ]}
 />
 

@@ -89,7 +89,6 @@ Templates live in `turbo/generators/`. Each scaffold creates:
 - **No `eslint-disable`** — always fix the source code
 - **No `@ts-nocheck`** / `@ts-ignore` / `@ts-expect-error` — always fix the type error
 - **All spacing values use rem** — never px for component dimensions
-- Every component must have `@research` JSDoc tag with citations backing design decisions
 
 ### Symmetry Principle
 

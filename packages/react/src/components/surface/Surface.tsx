@@ -8,15 +8,6 @@ import { bem } from "../../utils/bem";
 
 import type { SurfaceVariantsProps } from "./surface.variants";
 
-/**
- * Surface — visual layer for elevated content.
- *
- * @research Nielsen Norman Group (2019) — Visual layering through elevation
- *   reduces cognitive load by grouping related content.
- * @research Material Design 3 — Elevation system maps shadow + surface tint
- *   to create depth hierarchy. Dark mode uses lighter surfaces for higher elevation.
- */
-
 export type SurfaceProps = Omit<ComponentPropsWithRef<"div">, "className"> &
   SurfaceVariantsProps & {
     className?: string;
