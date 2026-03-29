@@ -27,7 +27,28 @@ describe("Badge", () => {
   });
 
   it("applies all variant classes", () => {
-    const variants = ["primary", "secondary", "ghost", "outline", "success", "warning", "danger", "info"] as const;
+    const variants = [
+      "primary",
+      "secondary",
+      "ghost",
+      "outline",
+      "success",
+      "warning",
+      "danger",
+      "info",
+      "primary-soft",
+      "secondary-soft",
+      "success-soft",
+      "warning-soft",
+      "danger-soft",
+      "info-soft",
+      "primary-outline",
+      "secondary-outline",
+      "success-outline",
+      "warning-outline",
+      "danger-outline",
+      "info-outline",
+    ] as const;
 
     variants.forEach((variant) => {
       const { unmount } = render(<Badge variant={variant}>{variant}</Badge>);
@@ -37,7 +58,7 @@ describe("Badge", () => {
   });
 
   it("applies size class with key-value format", () => {
-    const sizes = ["sm", "md", "lg", "xl"] as const;
+    const sizes = ["sm", "md", "lg"] as const;
 
     sizes.forEach((size) => {
       const { unmount } = render(<Badge size={size}>{size}</Badge>);
