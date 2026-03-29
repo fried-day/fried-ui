@@ -22,7 +22,7 @@ Examples of unacceptable behavior:
 
 ## Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by opening an issue or contacting the maintainers. All complaints will be reviewed and investigated.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the maintainer at <anuchit.boonsom@gmail.com>. All complaints will be reviewed and investigated.
 
 ## Attribution
 

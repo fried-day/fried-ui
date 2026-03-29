@@ -1,4 +1,4 @@
-# fried-ui
+# Fried UI
 
 Beautiful, accessible React components with zero runtime styling.
 
@@ -14,7 +14,8 @@ Beautiful, accessible React components with zero runtime styling.
 
 ## Documentation
 
-Visit [fried-ui.com](https://fried-ui.com) for full documentation, component demos, and getting started guide.
+- [Documentation](https://fried-ui.vercel.app)
+- [Storybook](https://fried-ui-storybook.vercel.app)
 
 ## Contributing
 

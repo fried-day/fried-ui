@@ -25,6 +25,8 @@ import { Badge } from "@fried-ui/react";
 
 The `variant` prop controls the visual style using semantic color tokens.
 
+### Solid
+
 <Preview>
   <BadgeVariants />
 </Preview>
@@ -38,6 +40,68 @@ The `variant` prop controls the visual style using semantic color tokens.
 <Badge variant="warning">Warning</Badge>
 <Badge variant="danger">Danger</Badge>
 <Badge variant="info">Info</Badge>
+```
+
+### Soft
+
+Pale background with colored text and border. Uses the `{color}-soft` naming.
+
+<Preview>
+  <BadgeSoftVariants />
+</Preview>
+
+```tsx
+<Badge variant="primary-soft">Primary</Badge>
+<Badge variant="secondary-soft">Secondary</Badge>
+<Badge variant="success-soft">Success</Badge>
+<Badge variant="warning-soft">Warning</Badge>
+<Badge variant="danger-soft">Danger</Badge>
+<Badge variant="info-soft">Info</Badge>
+```
+
+### Colored Outline
+
+Transparent background with colored border and text. Uses the `{color}-outline` naming.
+
+<Preview>
+  <BadgeOutlineVariants />
+</Preview>
+
+```tsx
+<Badge variant="primary-outline">Primary</Badge>
+<Badge variant="secondary-outline">Secondary</Badge>
+<Badge variant="success-outline">Success</Badge>
+<Badge variant="warning-outline">Warning</Badge>
+<Badge variant="danger-outline">Danger</Badge>
+<Badge variant="info-outline">Info</Badge>
+```
+
+## Shadow
+
+The `isShadow` prop adds a colored drop shadow that scales with font-size (em-based).
+
+<Preview>
+  <BadgeShadow />
+</Preview>
+
+```tsx
+<Badge isShadow>Primary</Badge>
+<Badge variant="success" isShadow>Success</Badge>
+<Badge variant="danger" isShadow>Danger</Badge>
+```
+
+## Icon Only
+
+Square badge for icon-only indicators. Always provide `aria-label`.
+
+<Preview>
+  <BadgeIconOnly />
+</Preview>
+
+```tsx
+<Badge isIconOnly aria-label="Info">
+  <InformationCircleIcon slot="icon" />
+</Badge>
 ```
 
 ## Sizes
@@ -58,30 +122,46 @@ The `size` prop controls padding, gap, and font-size.
 
 ### Badge Props
 
-| Prop        | Type                                                                                               | Default     | Description                     |
-| ----------- | -------------------------------------------------------------------------------------------------- | ----------- | ------------------------------- |
-| `variant`   | `"primary" \| "secondary" \| "ghost" \| "outline" \| "success" \| "warning" \| "danger" \| "info"` | `"primary"` | The visual variant of the badge |
-| `size`      | `"sm" \| "md" \| "lg"`                                                                             | `"md"`      | The size of the badge           |
-| `className` | `string`                                                                                           | -           | Additional CSS classes          |
-| `ref`       | `Ref<HTMLSpanElement>`                                                                             | -           | Forwarded ref to the span       |
-| `children`  | `ReactNode`                                                                                        | -           | Badge content                   |
+| Prop         | Type                                                                                                                                                                                                                                                                                                                                                                           | Default     | Description                           |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- | ------------------------------------- |
+| `variant`    | `"primary"` \| `"secondary"` \| `"ghost"` \| `"outline"` \| `"success"` \| `"warning"` \| `"danger"` \| `"info"` \| `"primary-soft"` \| `"secondary-soft"` \| `"success-soft"` \| `"warning-soft"` \| `"danger-soft"` \| `"info-soft"` \| `"primary-outline"` \| `"secondary-outline"` \| `"success-outline"` \| `"warning-outline"` \| `"danger-outline"` \| `"info-outline"` | `"primary"` | The visual variant of the badge       |
+| `size`       | `"sm"` \| `"md"` \| `"lg"`                                                                                                                                                                                                                                                                                                                                                     | `"md"`      | The size of the badge                 |
+| `isIconOnly` | `boolean`                                                                                                                                                                                                                                                                                                                                                                      | `false`     | Square badge for icon-only indicators |
+| `isShadow`   | `boolean`                                                                                                                                                                                                                                                                                                                                                                      | `false`     | Show colored drop shadow (em-based)   |
+| `className`  | `string`                                                                                                                                                                                                                                                                                                                                                                       | -           | Additional CSS classes                |
+| `ref`        | `Ref<HTMLSpanElement>`                                                                                                                                                                                                                                                                                                                                                         | -           | Forwarded ref to the span             |
+| `children`   | `ReactNode`                                                                                                                                                                                                                                                                                                                                                                    | -           | Badge content                         |
 
 ### CSS Classes
 
-| Class                  | Description       |
-| ---------------------- | ----------------- |
-| `fri-badge`            | Base styles       |
-| `fri-badge--primary`   | Primary variant   |
-| `fri-badge--secondary` | Secondary variant |
-| `fri-badge--ghost`     | Ghost variant     |
-| `fri-badge--outline`   | Outline variant   |
-| `fri-badge--success`   | Success variant   |
-| `fri-badge--warning`   | Warning variant   |
-| `fri-badge--danger`    | Danger variant    |
-| `fri-badge--info`      | Info variant      |
-| `fri-badge--sm`        | Small size        |
-| `fri-badge--md`        | Medium size       |
-| `fri-badge--lg`        | Large size        |
+| Class                          | Description               |
+| ------------------------------ | ------------------------- |
+| `fri-badge`                    | Base styles               |
+| `fri-badge--primary`           | Primary variant           |
+| `fri-badge--secondary`         | Secondary variant         |
+| `fri-badge--ghost`             | Ghost variant             |
+| `fri-badge--outline`           | Outline variant           |
+| `fri-badge--success`           | Success variant           |
+| `fri-badge--warning`           | Warning variant           |
+| `fri-badge--danger`            | Danger variant            |
+| `fri-badge--info`              | Info variant              |
+| `fri-badge--primary-soft`      | Primary soft variant      |
+| `fri-badge--secondary-soft`    | Secondary soft variant    |
+| `fri-badge--success-soft`      | Success soft variant      |
+| `fri-badge--warning-soft`      | Warning soft variant      |
+| `fri-badge--danger-soft`       | Danger soft variant       |
+| `fri-badge--info-soft`         | Info soft variant         |
+| `fri-badge--primary-outline`   | Primary outline variant   |
+| `fri-badge--secondary-outline` | Secondary outline variant |
+| `fri-badge--success-outline`   | Success outline variant   |
+| `fri-badge--warning-outline`   | Warning outline variant   |
+| `fri-badge--danger-outline`    | Danger outline variant    |
+| `fri-badge--info-outline`      | Info outline variant      |
+| `fri-badge--size-sm`           | Small size                |
+| `fri-badge--size-md`           | Medium size               |
+| `fri-badge--size-lg`           | Large size                |
+| `fri-badge--icon-only`         | Icon-only square          |
+| `fri-badge--shadow`            | Colored drop shadow       |
 
 ### CSS Variables
 
