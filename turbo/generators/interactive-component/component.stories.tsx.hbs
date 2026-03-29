@@ -11,8 +11,8 @@ const meta = {
   },
   args: {
     children: "{{pascalCase name}}",
-    variant: "{{defaultVariant}}",
-    size: "{{defaultSize}}",
+    variant: "primary",
+    size: "md",
   },
   argTypes: {
     children: {
@@ -29,7 +29,7 @@ const meta = {
       description: "The visual variant of the {{dashCase name}}",
       table: {
         type: { summary: '"primary" | "secondary" | "ghost" | "outline" | "success" | "warning" | "danger" | "info"' },
-        defaultValue: { summary: "{{defaultVariant}}" },
+        defaultValue: { summary: "primary" },
         category: "Style Variants",
       },
     },
@@ -39,8 +39,25 @@ const meta = {
       description: "The size of the {{dashCase name}}",
       table: {
         type: { summary: '"sm" | "md" | "lg"' },
-        defaultValue: { summary: "{{defaultSize}}" },
+        defaultValue: { summary: "md" },
         category: "Style Variants",
+      },
+    },
+    isDisabled: {
+      control: "boolean",
+      description: "Whether the {{dashCase name}} is disabled",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "State",
+      },
+    },
+    onPress: {
+      control: false,
+      description: "Handler called when pressed",
+      table: {
+        type: { summary: "(e: PressEvent) => void" },
+        category: "Events",
       },
     },
     className: {
@@ -63,7 +80,7 @@ const Default: Story = {
         code: `import { {{pascalCase name}} } from "@fried-ui/react";
 
 const Basic = () => {
-  return <{{pascalCase name}}>Content</{{pascalCase name}}>;
+  return <{{pascalCase name}} onPress={() => console.log("pressed")}>Click me</{{pascalCase name}}>;
 };`,
       },
     },
@@ -134,6 +151,24 @@ const Sizes = () => {
   ),
 };
 
-export { Default, Variants, Sizes };
+const Disabled: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { {{pascalCase name}} } from "@fried-ui/react";
+
+const Disabled = () => {
+  return <{{pascalCase name}} isDisabled>Disabled</{{pascalCase name}}>;
+};`,
+      },
+    },
+  },
+  args: {
+    children: "Disabled",
+    isDisabled: true,
+  },
+};
+
+export { Default, Variants, Sizes, Disabled };
 
 export default meta;
