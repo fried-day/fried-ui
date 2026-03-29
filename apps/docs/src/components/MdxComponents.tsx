@@ -88,9 +88,11 @@ const BadgeShadow = (): React.JSX.Element => {
   return (
     <div className="flex flex-wrap items-end gap-4">
       <Badge isShadow>Primary</Badge>
+
       <Badge variant="success" isShadow>
         Success
       </Badge>
+
       <Badge variant="danger" isShadow>
         Danger
       </Badge>
@@ -104,9 +106,11 @@ const BadgeIconOnly = (): React.JSX.Element => {
       <Badge size="sm" aria-label="Info" isIconOnly>
         <InformationCircleIcon slot="icon" />
       </Badge>
+
       <Badge size="md" aria-label="Info" isIconOnly>
         <InformationCircleIcon slot="icon" />
       </Badge>
+
       <Badge size="lg" aria-label="Info" isIconOnly>
         <InformationCircleIcon slot="icon" />
       </Badge>
@@ -310,12 +314,15 @@ const SurfaceVariants = (): React.JSX.Element => {
       <Surface variant="default" className="p-4">
         Default
       </Surface>
+
       <Surface variant="bordered" className="p-4">
         Bordered
       </Surface>
+
       <Surface variant="glass" className="p-4">
         Glass
       </Surface>
+
       <Surface variant="primary" className="p-4">
         Primary
       </Surface>
@@ -329,18 +336,23 @@ const SurfaceRadii = (): React.JSX.Element => {
       <Surface radius="none" className="p-4">
         none
       </Surface>
+
       <Surface radius="sm" className="p-4">
         sm
       </Surface>
+
       <Surface radius="md" className="p-4">
         md
       </Surface>
+
       <Surface radius="lg" className="p-4">
         lg
       </Surface>
+
       <Surface radius="xl" className="p-4">
         xl
       </Surface>
+
       <Surface radius="full" className="px-6 py-4">
         full
       </Surface>
@@ -352,6 +364,7 @@ const SurfaceShadow = (): React.JSX.Element => {
   return (
     <div className="flex flex-wrap items-start gap-4">
       <Surface className="p-4">No shadow</Surface>
+
       <Surface className="p-4" isShadow>
         With shadow
       </Surface>
