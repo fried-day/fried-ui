@@ -42,7 +42,7 @@
   --color-primary-pale: var(--color-neutral-100);
   --color-primary-pale-foreground: var(--color-neutral-800);
   --color-primary-pale-border: var(--color-neutral-200);
-  --color-primary-pale-shadow: 0 2px 3px 0 rgba(10, 10, 10, 0.25), 0 3px 5px 0 rgba(10, 10, 10, 0.3);
+  --color-primary-shadow: 0 2px 3px 0 rgba(10, 10, 10, 0.25), 0 3px 5px 0 rgba(10, 10, 10, 0.3);
 
   /* secondary — neutral */
   --color-secondary: var(--color-neutral-100);
@@ -52,7 +52,7 @@
   --color-secondary-pale: var(--color-neutral-50);
   --color-secondary-pale-foreground: var(--color-neutral-700);
   --color-secondary-pale-border: var(--color-neutral-200);
-  --color-secondary-pale-shadow: 0 2px 3px 0 rgba(115, 115, 115, 0.25), 0 3px 5px 0 rgba(115, 115, 115, 0.3);
+  --color-secondary-shadow: 0 2px 3px 0 rgba(115, 115, 115, 0.25), 0 3px 5px 0 rgba(115, 115, 115, 0.3);
 
   /* success — green */
   --color-success: var(--color-green-600);
@@ -62,7 +62,7 @@
   --color-success-pale: var(--color-green-50);
   --color-success-pale-foreground: var(--color-green-800);
   --color-success-pale-border: var(--color-green-200);
-  --color-success-pale-shadow: 0 2px 3px 0 rgba(22, 163, 74, 0.25), 0 3px 5px 0 rgba(22, 163, 74, 0.3);
+  --color-success-shadow: 0 2px 3px 0 rgba(22, 163, 74, 0.25), 0 3px 5px 0 rgba(22, 163, 74, 0.3);
 
   /* warning — amber */
   --color-warning: var(--color-amber-500);
@@ -72,7 +72,7 @@
   --color-warning-pale: var(--color-amber-50);
   --color-warning-pale-foreground: var(--color-amber-800);
   --color-warning-pale-border: var(--color-amber-200);
-  --color-warning-pale-shadow: 0 2px 3px 0 rgba(245, 158, 11, 0.25), 0 3px 5px 0 rgba(245, 158, 11, 0.3);
+  --color-warning-shadow: 0 2px 3px 0 rgba(245, 158, 11, 0.25), 0 3px 5px 0 rgba(245, 158, 11, 0.3);
 
   /* danger — rose */
   --color-danger: var(--color-rose-600);
@@ -82,7 +82,7 @@
   --color-danger-pale: var(--color-rose-50);
   --color-danger-pale-foreground: var(--color-rose-800);
   --color-danger-pale-border: var(--color-rose-200);
-  --color-danger-pale-shadow: 0 2px 3px 0 rgba(225, 29, 72, 0.25), 0 3px 5px 0 rgba(225, 29, 72, 0.3);
+  --color-danger-shadow: 0 2px 3px 0 rgba(225, 29, 72, 0.25), 0 3px 5px 0 rgba(225, 29, 72, 0.3);
 
   /* info — blue */
   --color-info: var(--color-blue-600);
@@ -92,7 +92,7 @@
   --color-info-pale: var(--color-blue-50);
   --color-info-pale-foreground: var(--color-blue-800);
   --color-info-pale-border: var(--color-blue-200);
-  --color-info-pale-shadow: 0 2px 3px 0 rgba(37, 99, 235, 0.25), 0 3px 5px 0 rgba(37, 99, 235, 0.3);
+  --color-info-shadow: 0 2px 3px 0 rgba(37, 99, 235, 0.25), 0 3px 5px 0 rgba(37, 99, 235, 0.3);
 
   /* layout — page background (layer 1) */
   --color-background: var(--color-white);
@@ -183,7 +183,7 @@
     --color-primary-pale: var(--color-neutral-900);
     --color-primary-pale-foreground: var(--color-neutral-200);
     --color-primary-pale-border: var(--color-neutral-800);
-    --color-primary-pale-shadow: 0 2px 3px 0 rgba(245, 245, 245, 0.25), 0 3px 14px 4px rgba(245, 245, 245, 0.15);
+    --color-primary-shadow: 0 2px 3px 0 rgba(245, 245, 245, 0.25), 0 3px 14px 4px rgba(245, 245, 245, 0.15);
 
     --color-secondary: var(--color-neutral-800);
     --color-secondary-hover: var(--color-neutral-700);
@@ -192,7 +192,7 @@
     --color-secondary-pale: var(--color-neutral-900);
     --color-secondary-pale-foreground: var(--color-neutral-300);
     --color-secondary-pale-border: var(--color-neutral-700);
-    --color-secondary-pale-shadow: 0 2px 3px 0 rgba(115, 115, 115, 0.5), 0 3px 14px 4px rgba(115, 115, 115, 0.3);
+    --color-secondary-shadow: 0 2px 3px 0 rgba(115, 115, 115, 0.5), 0 3px 14px 4px rgba(115, 115, 115, 0.3);
 
     --color-success: var(--color-green-500);
     --color-success-hover: var(--color-green-600);
@@ -201,7 +201,7 @@
     --color-success-pale: var(--color-green-900);
     --color-success-pale-foreground: var(--color-green-200);
     --color-success-pale-border: var(--color-green-700);
-    --color-success-pale-shadow: 0 2px 3px 0 rgba(22, 163, 74, 0.5), 0 3px 14px 4px rgba(22, 163, 74, 0.3);
+    --color-success-shadow: 0 2px 3px 0 rgba(22, 163, 74, 0.5), 0 3px 14px 4px rgba(22, 163, 74, 0.3);
 
     --color-warning: var(--color-amber-500);
     --color-warning-hover: var(--color-amber-600);
@@ -210,7 +210,7 @@
     --color-warning-pale: var(--color-amber-900);
     --color-warning-pale-foreground: var(--color-amber-200);
     --color-warning-pale-border: var(--color-amber-700);
-    --color-warning-pale-shadow: 0 2px 3px 0 rgba(245, 158, 11, 0.5), 0 3px 14px 4px rgba(245, 158, 11, 0.3);
+    --color-warning-shadow: 0 2px 3px 0 rgba(245, 158, 11, 0.5), 0 3px 14px 4px rgba(245, 158, 11, 0.3);
 
     --color-danger: var(--color-rose-500);
     --color-danger-hover: var(--color-rose-600);
@@ -219,7 +219,7 @@
     --color-danger-pale: var(--color-rose-900);
     --color-danger-pale-foreground: var(--color-rose-200);
     --color-danger-pale-border: var(--color-rose-700);
-    --color-danger-pale-shadow: 0 2px 3px 0 rgba(225, 29, 72, 0.5), 0 3px 14px 4px rgba(225, 29, 72, 0.3);
+    --color-danger-shadow: 0 2px 3px 0 rgba(225, 29, 72, 0.5), 0 3px 14px 4px rgba(225, 29, 72, 0.3);
 
     --color-info: var(--color-blue-500);
     --color-info-hover: var(--color-blue-600);
@@ -228,7 +228,7 @@
     --color-info-pale: var(--color-blue-900);
     --color-info-pale-foreground: var(--color-blue-200);
     --color-info-pale-border: var(--color-blue-700);
-    --color-info-pale-shadow: 0 2px 3px 0 rgba(37, 99, 235, 0.5), 0 3px 14px 4px rgba(37, 99, 235, 0.3);
+    --color-info-shadow: 0 2px 3px 0 rgba(37, 99, 235, 0.5), 0 3px 14px 4px rgba(37, 99, 235, 0.3);
 
     --color-background: var(--color-black);
     --color-background-secondary: var(--color-neutral-950);
