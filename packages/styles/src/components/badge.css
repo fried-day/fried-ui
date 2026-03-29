@@ -9,8 +9,8 @@
 
   @apply bg-(--fri-badge-bg) text-(--fri-badge-fg);
 
-  /* default size = sm */
-  @apply gap-1 px-1.5 py-px text-xs;
+  /* default size = md */
+  @apply gap-1.5 px-2 py-0.5 text-sm;
 
   /* default radius = full */
   @apply rounded-full;
@@ -70,6 +70,90 @@
   --fri-badge-shadow: var(--color-info-shadow);
 }
 
+.fri-badge--primary-soft {
+  --fri-badge-bg: var(--color-primary-pale);
+  --fri-badge-fg: var(--color-primary-pale-foreground);
+
+  @apply border border-primary-pale-border;
+}
+
+.fri-badge--secondary-soft {
+  --fri-badge-bg: var(--color-secondary-pale);
+  --fri-badge-fg: var(--color-secondary-pale-foreground);
+
+  @apply border border-secondary-pale-border;
+}
+
+.fri-badge--success-soft {
+  --fri-badge-bg: var(--color-success-pale);
+  --fri-badge-fg: var(--color-success-pale-foreground);
+
+  @apply border border-success-pale-border;
+}
+
+.fri-badge--warning-soft {
+  --fri-badge-bg: var(--color-warning-pale);
+  --fri-badge-fg: var(--color-warning-pale-foreground);
+
+  @apply border border-warning-pale-border;
+}
+
+.fri-badge--danger-soft {
+  --fri-badge-bg: var(--color-danger-pale);
+  --fri-badge-fg: var(--color-danger-pale-foreground);
+
+  @apply border border-danger-pale-border;
+}
+
+.fri-badge--info-soft {
+  --fri-badge-bg: var(--color-info-pale);
+  --fri-badge-fg: var(--color-info-pale-foreground);
+
+  @apply border border-info-pale-border;
+}
+
+.fri-badge--primary-outline {
+  --fri-badge-bg: transparent;
+  --fri-badge-fg: var(--color-primary);
+
+  @apply border border-primary;
+}
+
+.fri-badge--secondary-outline {
+  --fri-badge-bg: transparent;
+  --fri-badge-fg: var(--color-secondary-foreground);
+
+  @apply border border-secondary;
+}
+
+.fri-badge--success-outline {
+  --fri-badge-bg: transparent;
+  --fri-badge-fg: var(--color-success);
+
+  @apply border border-success;
+}
+
+.fri-badge--warning-outline {
+  --fri-badge-bg: transparent;
+  --fri-badge-fg: var(--color-warning);
+
+  @apply border border-warning;
+}
+
+.fri-badge--danger-outline {
+  --fri-badge-bg: transparent;
+  --fri-badge-fg: var(--color-danger);
+
+  @apply border border-danger;
+}
+
+.fri-badge--info-outline {
+  --fri-badge-bg: transparent;
+  --fri-badge-fg: var(--color-info);
+
+  @apply border border-info;
+}
+
 .fri-badge--icon-only {
   @apply justify-center gap-0 rounded-full;
 }
@@ -86,10 +170,6 @@
   @apply p-1;
 }
 
-.fri-badge--icon-only.fri-badge--size-xl {
-  @apply p-1.5;
-}
-
 .fri-badge [slot="icon"] {
   @apply size-match-font;
 }
@@ -104,8 +184,4 @@
 
 .fri-badge--size-lg {
   @apply gap-2 px-2.5 py-1 text-base;
-}
-
-.fri-badge--size-xl {
-  @apply gap-2.5 px-3 py-1.5 text-lg;
 }
