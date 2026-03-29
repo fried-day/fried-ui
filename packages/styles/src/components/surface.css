@@ -15,6 +15,10 @@
   @apply border border-border bg-transparent;
 }
 
+.fri-surface--glass {
+  @apply bg-surface-glass backdrop-blur-md;
+}
+
 .fri-surface--primary {
   @apply bg-primary text-primary-foreground;
 }

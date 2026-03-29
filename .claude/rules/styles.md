@@ -9,7 +9,6 @@ paths:
 ## Token Files
 
 ```text
-palette.css    → fried-lime brand palette (@theme)
 colors.css     → semantic tokens, shadow, overlay (@theme light + @layer base .dark)
 layout.css     → radius, z-index, focus offset, cursor, opacity
 motion.css     → duration, easing, keyframes

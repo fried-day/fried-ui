@@ -107,6 +107,7 @@
   --color-surface-active: var(--color-neutral-300);
   --color-surface-foreground: var(--color-neutral-900);
   --color-surface-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  --color-surface-glass: rgba(255, 255, 255, 0.8);
 
   /* popover — tooltip, dropdown (layer 4, highest) */
   --color-popover: var(--color-white);
@@ -238,6 +239,7 @@
     --color-surface-active: var(--color-neutral-700);
     --color-surface-foreground: var(--color-neutral-50);
     --color-surface-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.07);
+    --color-surface-glass: rgba(23, 23, 23, 0.8);
 
     --color-popover: var(--color-neutral-800);
     --color-popover-foreground: var(--color-neutral-50);
