@@ -194,8 +194,8 @@ importers:
         specifier: ^10.1.8
         version: 10.1.8(eslint@9.39.1(jiti@2.6.1))
       eslint-plugin-nextfriday:
-        specifier: ^1.21.0
-        version: 1.21.0(eslint@9.39.1(jiti@2.6.1))(jiti@2.6.1)(postcss@8.5.8)(tsx@4.21.0)(typescript@5.9.2)(yaml@2.8.3)
+        specifier: ^1.23.0
+        version: 1.23.0(eslint@9.39.1(jiti@2.6.1))(jiti@2.6.1)(postcss@8.5.8)(tsx@4.21.0)(typescript@5.9.2)(yaml@2.8.3)
       eslint-plugin-react:
         specifier: ^7.37.5
         version: 7.37.5(eslint@9.39.1(jiti@2.6.1))
@@ -3544,8 +3544,8 @@ packages:
     peerDependencies:
       eslint: '>=7.0.0'
 
-  eslint-plugin-nextfriday@1.21.0:
-    resolution: {integrity: sha512-uPd6gNAYEnPqZ2Pbu2O2R+e4lit/ZwhTkaqSHvi4Ws7qD6B/ccxdN+hgpZda0SGdXQ+s8E9aQXWeZdgdWSTjfQ==}
+  eslint-plugin-nextfriday@1.23.0:
+    resolution: {integrity: sha512-EBbnt/djervNv55zq/8I+du1cbNfK3NKLAH4dNTdhmrCYdepBp0W/WdLXbkZDykeqqGUWpV1+9RbIXrADN1Cfg==}
     engines: {node: '>=22.0.0', pnpm: '>=9.0.0'}
     peerDependencies:
       eslint: ^9.0.0
@@ -9911,7 +9911,7 @@ snapshots:
     dependencies:
       eslint: 9.39.1(jiti@2.6.1)
 
-  eslint-plugin-nextfriday@1.21.0(eslint@9.39.1(jiti@2.6.1))(jiti@2.6.1)(postcss@8.5.8)(tsx@4.21.0)(typescript@5.9.2)(yaml@2.8.3):
+  eslint-plugin-nextfriday@1.23.0(eslint@9.39.1(jiti@2.6.1))(jiti@2.6.1)(postcss@8.5.8)(tsx@4.21.0)(typescript@5.9.2)(yaml@2.8.3):
     dependencies:
       '@typescript-eslint/utils': 8.57.2(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.2)
       emoji-regex: 10.6.0
