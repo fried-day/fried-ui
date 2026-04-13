@@ -2,8 +2,10 @@ import path from "node:path";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vitest/config";
 
+const plugins = [react()];
+
 export default defineConfig({
-  plugins: [react()],
+  plugins,
   resolve: {
     alias: {
       src: path.resolve(import.meta.dirname, "src"),
