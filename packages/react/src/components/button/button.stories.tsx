@@ -57,11 +57,11 @@ const meta = {
     },
     radius: {
       control: "select",
-      options: ["none", "sm", "md", "lg", "xl", "full"],
+      options: ["none", "sm", "md", "lg", "full"],
       description: "The border radius of the button",
       table: {
         type: {
-          summary: '"none" | "sm" | "md" | "lg" | "xl" | "full"',
+          summary: '"none" | "sm" | "md" | "lg" | "full"',
         },
         defaultValue: {
           summary: "md",
@@ -168,7 +168,7 @@ const Variants: Story = {
 
 const Variants = () => {
   return (
-    <div className="flex flex-wrap gap-4">
+    <div className="flex flex-wrap items-end gap-4">
       <Button variant="primary">Primary</Button>
       <Button variant="secondary">Secondary</Button>
       <Button variant="ghost">Ghost</Button>
@@ -260,20 +260,19 @@ const Sizes = () => {
   ),
 };
 
-const Radii: Story = {
+const Radius: Story = {
   parameters: {
     docs: {
       source: {
         code: `import { Button } from "@fried-ui/react";
 
-const Radii = () => {
+const Radius = () => {
   return (
     <div className="flex items-end gap-4">
       <Button radius="none">None</Button>
       <Button radius="sm">Small</Button>
       <Button radius="md">Medium</Button>
       <Button radius="lg">Large</Button>
-      <Button radius="xl">XL</Button>
       <Button radius="full">Full</Button>
     </div>
   );
@@ -299,10 +298,6 @@ const Radii = () => {
         Large
       </Button>
 
-      <Button {...args} radius="xl">
-        XL
-      </Button>
-
       <Button {...args} radius="full">
         Full
       </Button>
@@ -318,19 +313,22 @@ const WithIcon: Story = {
 
 const WithIcon = () => {
   return (
-    <Button>
-      <ArrowRightIcon slot="icon" />
-      Next
-    </Button>
-  );
-};
+    <div className="flex items-end gap-4">
+      <Button size="sm">
+        <ArrowRightIcon slot="icon-start" />
+        Next
+      </Button>
 
-const WithIconAlt = () => {
-  return (
-    <Button>
-      <ArrowRightIcon className="size-match-font" />
-      Next
-    </Button>
+      <Button size="md">
+        <ArrowRightIcon slot="icon-start" />
+        Next
+      </Button>
+
+      <Button size="lg">
+        <ArrowRightIcon slot="icon-start" />
+        Next
+      </Button>
+    </div>
   );
 };`,
       },
@@ -360,21 +358,27 @@ const IconOnly: Story = {
   parameters: {
     docs: {
       source: {
-        code: `import { Button, SettingsIcon } from "@fried-ui/react";
+        code: `import { Button, MoreIcon, PlusIcon, SettingsIcon, ShareIcon } from "@fried-ui/react";
 
 const IconOnly = () => {
   return (
-    <Button aria-label="Settings" isIconOnly>
-      <SettingsIcon slot="icon" />
-    </Button>
-  );
-};
+    <div className="flex items-end gap-4">
+      <Button aria-label="Settings" isIconOnly>
+        <SettingsIcon className="size-match-font" />
+      </Button>
 
-const IconOnlyAlt = () => {
-  return (
-    <Button aria-label="Settings" isIconOnly>
-      <SettingsIcon className="size-match-font" />
-    </Button>
+      <Button variant="secondary" aria-label="More" isIconOnly>
+        <MoreIcon className="size-match-font" />
+      </Button>
+
+      <Button variant="outline" aria-label="Add" isIconOnly>
+        <PlusIcon className="size-match-font" />
+      </Button>
+
+      <Button variant="ghost" aria-label="Share" isIconOnly>
+        <ShareIcon className="size-match-font" />
+      </Button>
+    </div>
   );
 };`,
       },
@@ -408,7 +412,19 @@ const FullWidth: Story = {
         code: `import { Button } from "@fried-ui/react";
 
 const FullWidth = () => {
-  return <Button isFullWidth>Full Width</Button>;
+  return (
+    <div className="flex w-80 flex-col gap-4">
+      <Button isFullWidth>Full Width</Button>
+
+      <Button variant="secondary" isFullWidth>
+        Full Width Secondary
+      </Button>
+
+      <Button variant="outline" isFullWidth>
+        Full Width Outline
+      </Button>
+    </div>
+  );
 };`,
       },
     },
@@ -487,6 +503,6 @@ const RenderProps = () => {
   ),
 };
 
-export { Default, Variants, Sizes, Radii, WithIcon, IconOnly, FullWidth, Disabled, Pending, RenderProps };
+export { Default, Variants, Sizes, Radius, WithIcon, IconOnly, FullWidth, Disabled, Pending, RenderProps };
 
 export default meta;

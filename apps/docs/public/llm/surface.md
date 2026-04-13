@@ -16,13 +16,13 @@ import { Surface } from "@fried-ui/react";
 
 ## Props
 
-| Prop        | Type                                                         | Default     | Description              |
-| ----------- | ------------------------------------------------------------ | ----------- | ------------------------ |
-| `variant`   | `"default"` \| `"bordered"` \| `"glass"` \| `"primary"`      | `"default"` | The visual variant       |
-| `radius`    | `"none"` \| `"sm"` \| `"md"` \| `"lg"` \| `"xl"` \| `"full"` | `"md"`      | Border radius            |
-| `className` | `string`                                                     | -           | Additional CSS classes   |
-| `ref`       | `Ref<HTMLDivElement>`                                        | -           | Forwarded ref to the div |
-| `children`  | `ReactNode`                                                  | -           | Surface content          |
+| Prop        | Type                                                    | Default     | Description              |
+| ----------- | ------------------------------------------------------- | ----------- | ------------------------ |
+| `variant`   | `"default"` \| `"bordered"` \| `"glass"` \| `"primary"` | `"default"` | The visual variant       |
+| `radius`    | `"none"` \| `"sm"` \| `"md"` \| `"lg"` \| `"xl"`        | `"md"`      | Border radius            |
+| `className` | `string`                                                | -           | Additional CSS classes   |
+| `ref`       | `Ref<HTMLDivElement>`                                   | -           | Forwarded ref to the div |
+| `children`  | `ReactNode`                                             | -           | Surface content          |
 
 ## CSS Classes
 
@@ -38,7 +38,6 @@ import { Surface } from "@fried-ui/react";
 | `fri-surface--radius-md`   | Medium border radius |
 | `fri-surface--radius-lg`   | Large border radius  |
 | `fri-surface--radius-xl`   | Extra large radius   |
-| `fri-surface--radius-full` | Full (pill) radius   |
 
 ## Examples
 
@@ -73,7 +72,7 @@ import { Surface } from "@fried-ui/react";
 ```tsx
 <Surface radius="none">Sharp</Surface>
 <Surface radius="lg">Rounded</Surface>
-<Surface radius="full">Pill</Surface>
+<Surface radius="xl">Max</Surface>
 ```
 
 ### Glass Over Image
@@ -104,7 +103,7 @@ import { Surface } from "@fried-ui/react";
 ## Constraints
 
 - 4 variants: default, bordered, glass, primary
-- 6 radius values: none, sm, md, lg, xl, full
+- 5 radius values: none, sm, md, lg, xl
 - Non-interactive — no hover, focus, or click states
 - Surface provides no padding — use `className="p-6"` etc.
 - BEM classes (`fri-surface`, `fri-surface--bordered`, etc.)

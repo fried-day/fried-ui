@@ -20,13 +20,13 @@ import {
   ButtonFullWidth,
   ButtonIconOnly,
   ButtonPending,
-  ButtonRadii,
+  ButtonRadius,
   ButtonSizes,
   ButtonVariants,
   ButtonWithIcons,
   SurfaceBadgeLinks,
   SurfaceDemo,
-  SurfaceRadii,
+  SurfaceRadius,
   SurfaceVariants,
 } from "@/components/MdxComponents";
 import { Preview } from "@/components/Preview";
@@ -57,7 +57,7 @@ const mdxComponents = {
   ButtonFullWidth,
   ButtonIconOnly,
   ButtonPending,
-  ButtonRadii,
+  ButtonRadius,
   ButtonSizes,
   ButtonVariants,
   ButtonWithIcons,
@@ -65,7 +65,7 @@ const mdxComponents = {
   Preview,
   SurfaceBadgeLinks,
   SurfaceDemo,
-  SurfaceRadii,
+  SurfaceRadius,
   SurfaceVariants,
 };
 

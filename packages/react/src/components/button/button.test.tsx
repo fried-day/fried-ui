@@ -73,9 +73,9 @@ describe("Button", () => {
   });
 
   it("applies radius class with key-value format", () => {
-    const radii = ["none", "sm", "md", "lg", "xl", "full"] as const;
+    const radiusValues = ["none", "sm", "md", "lg", "full"] as const;
 
-    radii.forEach((radius) => {
+    radiusValues.forEach((radius) => {
       const { unmount } = render(<Button radius={radius}>{radius}</Button>);
       expect(screen.getByRole("button").className).toContain(`fri-button--radius-${radius}`);
       unmount();

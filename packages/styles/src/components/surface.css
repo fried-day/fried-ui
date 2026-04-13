@@ -24,21 +24,17 @@
 }
 
 .fri-surface--radius-sm {
-  @apply rounded-sm;
+  @apply rounded-[calc(1em*1.272/4)];
 }
 
 .fri-surface--radius-md {
-  @apply rounded-md;
+  @apply rounded-[calc(1em*1.272*2/4)];
 }
 
 .fri-surface--radius-lg {
-  @apply rounded-lg;
+  @apply rounded-[calc(1em*1.272*3/4)];
 }
 
 .fri-surface--radius-xl {
-  @apply rounded-xl;
-}
-
-.fri-surface--radius-full {
-  @apply rounded-full;
+  @apply rounded-[calc(1em*1.272)];
 }

@@ -20,7 +20,7 @@ import { Button } from "@fried-ui/react";
 | ------------------ | -------------------------------------------------------------------------------------------------- | ----------- | --------------------------------------- |
 | `variant`          | `"primary" \| "secondary" \| "ghost" \| "outline" \| "success" \| "warning" \| "danger" \| "info"` | `"primary"` | Visual variant                          |
 | `size`             | `"sm" \| "md" \| "lg" \| "xl"`                                                                     | `"md"`      | Size — controls padding, gap, font-size |
-| `radius`           | `"none" \| "sm" \| "md" \| "lg" \| "xl" \| "full"`                                                 | `"md"`      | Border radius (independent from size)   |
+| `radius`           | `"none" \| "sm" \| "md" \| "lg" \| "full"`                                                         | `"md"`      | Border radius (independent from size)   |
 | `isIconOnly`       | `boolean`                                                                                          | `false`     | Icon-only square button                 |
 | `isFullWidth`      | `boolean`                                                                                          | `false`     | Full width button                       |
 | `isDisabled`       | `boolean`                                                                                          | `false`     | Disabled state                          |
@@ -80,7 +80,6 @@ import { Button } from "@fried-ui/react";
 | `fri-button--radius-sm`   | Small border radius       |
 | `fri-button--radius-md`   | Medium border radius      |
 | `fri-button--radius-lg`   | Large border radius       |
-| `fri-button--radius-xl`   | Extra large border radius |
 | `fri-button--radius-full` | Full (pill) border radius |
 | `fri-button--disabled`    | Disabled state            |
 | `fri-button--full-width`  | Full width button         |

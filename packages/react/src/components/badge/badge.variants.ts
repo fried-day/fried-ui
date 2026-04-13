@@ -1,10 +1,10 @@
 export interface BadgeVariantsProps {
   isIconOnly?: boolean;
+  radius?: "none" | "sm" | "md" | "lg" | "full";
   size?: "sm" | "md" | "lg";
   variant?:
     | "primary"
     | "secondary"
-    | "ghost"
     | "outline"
     | "success"
     | "warning"
