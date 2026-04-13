@@ -44,7 +44,7 @@ The `variant` prop controls the visual style of the surface.
 The `radius` prop controls border-radius.
 
 <Preview>
-  <SurfaceRadii />
+  <SurfaceRadius />
 </Preview>
 
 ```tsx
@@ -53,20 +53,19 @@ The `radius` prop controls border-radius.
 <Surface radius="md">md</Surface>
 <Surface radius="lg">lg</Surface>
 <Surface radius="xl">xl</Surface>
-<Surface radius="full">full</Surface>
 ```
 
 ## API Reference
 
 ### Surface Props
 
-| Prop        | Type                                                         | Default     | Description              |
-| ----------- | ------------------------------------------------------------ | ----------- | ------------------------ |
-| `variant`   | `"default"` \| `"bordered"` \| `"glass"` \| `"primary"`      | `"default"` | The visual variant       |
-| `radius`    | `"none"` \| `"sm"` \| `"md"` \| `"lg"` \| `"xl"` \| `"full"` | `"md"`      | Border radius            |
-| `className` | `string`                                                     | -           | Additional CSS classes   |
-| `ref`       | `Ref<HTMLDivElement>`                                        | -           | Forwarded ref to the div |
-| `children`  | `ReactNode`                                                  | -           | Surface content          |
+| Prop        | Type                                                    | Default     | Description              |
+| ----------- | ------------------------------------------------------- | ----------- | ------------------------ |
+| `variant`   | `"default"` \| `"bordered"` \| `"glass"` \| `"primary"` | `"default"` | The visual variant       |
+| `radius`    | `"none"` \| `"sm"` \| `"md"` \| `"lg"` \| `"xl"`        | `"md"`      | Border radius            |
+| `className` | `string`                                                | -           | Additional CSS classes   |
+| `ref`       | `Ref<HTMLDivElement>`                                   | -           | Forwarded ref to the div |
+| `children`  | `ReactNode`                                             | -           | Surface content          |
 
 ### CSS Classes
 
@@ -82,4 +81,3 @@ The `radius` prop controls border-radius.
 | `fri-surface--radius-md`   | Medium border radius |
 | `fri-surface--radius-lg`   | Large border radius  |
 | `fri-surface--radius-xl`   | Extra large radius   |
-| `fri-surface--radius-full` | Full (pill) radius   |

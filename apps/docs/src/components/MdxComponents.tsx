@@ -48,7 +48,6 @@ const BadgeVariants = (): React.JSX.Element => {
     <div className="flex flex-wrap items-end gap-4">
       <Badge variant="primary">Primary</Badge>
       <Badge variant="secondary">Secondary</Badge>
-      <Badge variant="ghost">Ghost</Badge>
       <Badge variant="outline">Outline</Badge>
       <Badge variant="success">Success</Badge>
       <Badge variant="warning">Warning</Badge>
@@ -169,14 +168,13 @@ const ButtonSizes = (): React.JSX.Element => {
   );
 };
 
-const ButtonRadii = (): React.JSX.Element => {
+const ButtonRadius = (): React.JSX.Element => {
   return (
     <div className="flex items-end gap-4">
       <Button radius="none">None</Button>
       <Button radius="sm">Small</Button>
       <Button radius="md">Medium</Button>
       <Button radius="lg">Large</Button>
-      <Button radius="xl">XL</Button>
       <Button radius="full">Full</Button>
     </div>
   );
@@ -314,7 +312,7 @@ const SurfaceVariants = (): React.JSX.Element => {
   );
 };
 
-const SurfaceRadii = (): React.JSX.Element => {
+const SurfaceRadius = (): React.JSX.Element => {
   return (
     <div className="flex flex-wrap items-start gap-4">
       <Surface radius="none" className="p-4">
@@ -336,10 +334,6 @@ const SurfaceRadii = (): React.JSX.Element => {
       <Surface radius="xl" className="p-4">
         xl
       </Surface>
-
-      <Surface radius="full" className="px-6 py-4">
-        full
-      </Surface>
     </div>
   );
 };
@@ -360,12 +354,12 @@ export {
   ButtonFullWidth,
   ButtonIconOnly,
   ButtonPending,
-  ButtonRadii,
+  ButtonRadius,
   ButtonSizes,
   ButtonVariants,
   ButtonWithIcons,
   SurfaceBadgeLinks,
   SurfaceDemo,
-  SurfaceRadii,
+  SurfaceRadius,
   SurfaceVariants,
 };

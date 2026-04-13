@@ -39,11 +39,11 @@ const meta = {
     },
     radius: {
       control: "select",
-      options: ["none", "sm", "md", "lg", "xl", "full"],
+      options: ["none", "sm", "md", "lg", "xl"],
       description: "Border radius",
       table: {
         type: {
-          summary: '"none" | "sm" | "md" | "lg" | "xl" | "full"',
+          summary: '"none" | "sm" | "md" | "lg" | "xl"',
         },
         defaultValue: {
           summary: "md",
@@ -74,9 +74,9 @@ const Default: Story = {
 
 const Card = () => {
   return (
-    <Surface radius="lg" className="p-6">
-      <h2>Card Title</h2>
-      <p>Content goes here.</p>
+    <Surface className="p-6">
+      <p className="font-bold">Card Title</p>
+      <p className="mt-2 text-sm">Content goes here.</p>
     </Surface>
   );
 };`,
@@ -145,7 +145,6 @@ const Radius = () => {
       <Surface radius="md" className="p-4">md</Surface>
       <Surface radius="lg" className="p-4">lg</Surface>
       <Surface radius="xl" className="p-4">xl</Surface>
-      <Surface radius="full" className="px-6 py-4">full</Surface>
     </div>
   );
 };`,
@@ -173,10 +172,6 @@ const Radius = () => {
       <Surface {...args} radius="xl" className="p-4">
         xl
       </Surface>
-
-      <Surface {...args} radius="full" className="px-6 py-4">
-        full
-      </Surface>
     </div>
   ),
 };
@@ -189,10 +184,10 @@ const Glass: Story = {
 
 const Glass = () => {
   return (
-    <div className="relative">
-      <img src="..." alt="background" />
-      <Surface variant="glass" radius="lg" className="absolute inset-4 p-6">
-        Content over image
+    <div className="relative rounded-lg bg-linear-to-br from-indigo-500 to-purple-600 p-16">
+      <Surface variant="glass" radius="lg" className="p-6">
+        <p className="font-bold">Glass Surface</p>
+        <p className="mt-2 text-sm">Content over a gradient background.</p>
       </Surface>
     </div>
   );
@@ -201,7 +196,7 @@ const Glass = () => {
     },
   },
   render: (args): React.JSX.Element => (
-    <div className="relative rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 p-16">
+    <div className="relative rounded-lg bg-linear-to-br from-indigo-500 to-purple-600 p-16">
       <Surface {...args} variant="glass" radius="lg" className="p-6">
         <p className="font-bold">Glass Surface</p>
         <p className="mt-2 text-sm">Content over a gradient background.</p>

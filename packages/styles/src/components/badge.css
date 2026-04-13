@@ -7,7 +7,7 @@
   --fri-badge-fg: var(--color-primary-foreground);
 
   @apply bg-(--fri-badge-bg) text-(--fri-badge-fg);
-  @apply gap-[calc(0.875rem/1.618)] px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
+  @apply gap-[calc(0.875rem/2.058)] px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
   @apply rounded-full;
 }
 
@@ -19,11 +19,6 @@
 .fri-badge--secondary {
   --fri-badge-bg: var(--color-secondary);
   --fri-badge-fg: var(--color-secondary-foreground);
-}
-
-.fri-badge--ghost {
-  --fri-badge-bg: transparent;
-  --fri-badge-fg: var(--color-foreground);
 }
 
 .fri-badge--outline {
@@ -137,6 +132,26 @@
   @apply border border-info;
 }
 
+.fri-badge--radius-none {
+  @apply rounded-none;
+}
+
+.fri-badge--radius-sm {
+  @apply rounded-[calc(1em*1.272/4)];
+}
+
+.fri-badge--radius-md {
+  @apply rounded-[calc(1em*1.272*2/4)];
+}
+
+.fri-badge--radius-lg {
+  @apply rounded-[calc(1em*1.272*3/4)];
+}
+
+.fri-badge--radius-full {
+  @apply rounded-full;
+}
+
 .fri-badge [slot="icon"],
 .fri-badge [slot="icon-start"],
 .fri-badge [slot="icon-end"] {
@@ -152,7 +167,7 @@
 }
 
 .fri-badge--size-sm {
-  @apply gap-[calc(0.75rem/1.618)] px-[calc(0.75rem)] py-[calc(0.75rem/2.058)] text-xs;
+  @apply gap-[calc(0.75rem/2.058)] px-[calc(0.75rem)] py-[calc(0.75rem/2.058)] text-xs;
 }
 
 .fri-badge--size-sm:has([slot="icon-start"]) {
@@ -164,7 +179,7 @@
 }
 
 .fri-badge--size-md {
-  @apply gap-[calc(0.875rem/1.618)] px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
+  @apply gap-[calc(0.875rem/2.058)] px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
 }
 
 .fri-badge--size-md:has([slot="icon-start"]) {
@@ -176,7 +191,7 @@
 }
 
 .fri-badge--size-lg {
-  @apply gap-[calc(1rem/1.618)] px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
+  @apply gap-[calc(1rem/2.058)] px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
 }
 
 .fri-badge--size-lg:has([slot="icon-start"]) {

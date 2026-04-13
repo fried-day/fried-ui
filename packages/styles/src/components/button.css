@@ -10,7 +10,7 @@
   --fri-button-fg: var(--color-primary-foreground);
 
   @apply bg-(--fri-button-bg) text-(--fri-button-fg);
-  @apply gap-[calc(1rem/1.618)] px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
+  @apply gap-[calc(1rem/2.058)] px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
   @apply rounded-md;
 
   &:focus-visible,
@@ -98,19 +98,19 @@
 }
 
 .fri-button--size-sm {
-  @apply gap-[calc(0.875rem/1.618)] px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
+  @apply gap-[calc(0.875rem/2.058)] px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
 }
 
 .fri-button--size-md {
-  @apply gap-[calc(1rem/1.618)] px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
+  @apply gap-[calc(1rem/2.058)] px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
 }
 
 .fri-button--size-lg {
-  @apply gap-[calc(1.25rem/1.618)] px-[calc(1.25rem)] py-[calc(1.25rem/2.058)] text-xl;
+  @apply gap-[calc(1.25rem/2.058)] px-[calc(1.25rem)] py-[calc(1.25rem/2.058)] text-xl;
 }
 
 .fri-button--size-xl {
-  @apply gap-[calc(1.5rem/1.618)] px-[calc(1.5rem)] py-[calc(1.5rem/2.058)] text-2xl;
+  @apply gap-[calc(1.5rem/2.058)] px-[calc(1.5rem)] py-[calc(1.5rem/2.058)] text-2xl;
 }
 
 .fri-button--full-width {
@@ -138,19 +138,15 @@
 }
 
 .fri-button--radius-sm {
-  @apply rounded-sm;
+  @apply rounded-[calc(1em*1.272/4)];
 }
 
 .fri-button--radius-md {
-  @apply rounded-md;
+  @apply rounded-[calc(1em*1.272*2/4)];
 }
 
 .fri-button--radius-lg {
-  @apply rounded-lg;
-}
-
-.fri-button--radius-xl {
-  @apply rounded-xl;
+  @apply rounded-[calc(1em*1.272*3/4)];
 }
 
 .fri-button--radius-full {

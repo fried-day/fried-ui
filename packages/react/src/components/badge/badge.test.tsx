@@ -30,7 +30,6 @@ describe("Badge", () => {
     const variants = [
       "primary",
       "secondary",
-      "ghost",
       "outline",
       "success",
       "warning",
@@ -63,6 +62,16 @@ describe("Badge", () => {
     sizes.forEach((size) => {
       const { unmount } = render(<Badge size={size}>{size}</Badge>);
       expect(screen.getByText(size).className).toContain(`fri-badge--size-${size}`);
+      unmount();
+    });
+  });
+
+  it("applies radius class with key-value format", () => {
+    const radiusValues = ["none", "sm", "md", "lg", "full"] as const;
+
+    radiusValues.forEach((radius) => {
+      const { unmount } = render(<Badge radius={radius}>{radius}</Badge>);
+      expect(screen.getByText(radius).className).toContain(`fri-badge--radius-${radius}`);
       unmount();
     });
   });

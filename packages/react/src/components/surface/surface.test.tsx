@@ -27,9 +27,9 @@ describe("Surface", () => {
   });
 
   it("applies radius class with key-value format", () => {
-    const radii = ["none", "sm", "md", "lg", "xl", "full"] as const;
+    const radiusValues = ["none", "sm", "md", "lg", "xl"] as const;
 
-    radii.forEach((radius) => {
+    radiusValues.forEach((radius) => {
       const { unmount } = render(<Surface radius={radius}>{radius}</Surface>);
       expect(screen.getByText(radius).className).toContain(`fri-surface--radius-${radius}`);
       unmount();
