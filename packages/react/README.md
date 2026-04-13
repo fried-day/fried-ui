@@ -20,21 +20,22 @@ Peer dependencies: `react >=19.0.0`, `react-dom >=19.0.0`, `tailwindcss >=4.0.0`
 ## Usage
 
 ```tsx
-import { Box } from "@fried-ui/react/box";
+import { Button } from "@fried-ui/react";
 
-<Box as="section" className="rounded-lg bg-blue-100 p-4">
-  Hello
-</Box>;
+<Button variant="primary" size="md">
+  Click me
+</Button>;
 ```
 
 ## Exports
 
-| Path                       | Description                      |
-| -------------------------- | -------------------------------- |
-| `@fried-ui/react`          | All components + utilities       |
-| `@fried-ui/react/box`      | Box polymorphic layout primitive |
-| `@fried-ui/react/aria`     | React Aria Components re-exports |
-| `@fried-ui/react/utils/cn` | Tailwind class merge utility     |
+| Path                      | Description                 |
+| ------------------------- | --------------------------- |
+| `@fried-ui/react`         | All components + icons      |
+| `@fried-ui/react/badge`   | Badge component             |
+| `@fried-ui/react/button`  | Button component            |
+| `@fried-ui/react/icons`   | SVG icon components         |
+| `@fried-ui/react/surface` | Surface container component |
 
 ## Documentation
 

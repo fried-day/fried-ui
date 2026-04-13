@@ -72,16 +72,6 @@ describe("Badge", () => {
     expect(screen.getByText("X").className).toContain("fri-badge--icon-only");
   });
 
-  it("applies shadow class when isShadow is true", () => {
-    render(<Badge isShadow>Shadow</Badge>);
-    expect(screen.getByText("Shadow").className).toContain("fri-badge--shadow");
-  });
-
-  it("does not apply shadow class when isShadow is false", () => {
-    render(<Badge>No shadow</Badge>);
-    expect(screen.getByText("No shadow").className).not.toContain("fri-badge--shadow");
-  });
-
   it("merges custom className", () => {
     render(<Badge className="mt-4">Styled</Badge>);
     expect(screen.getByText("Styled").className).toContain("mt-4");

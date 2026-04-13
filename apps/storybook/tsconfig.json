@@ -3,7 +3,6 @@
   "compilerOptions": {
     "rootDir": ".storybook",
     "outDir": "dist",
-    "strictNullChecks": true,
     "types": ["vite/client"]
   },
   "include": ["**/*.ts", "**/*.tsx", ".storybook/**/*.ts"],

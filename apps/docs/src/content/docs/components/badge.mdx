@@ -76,20 +76,6 @@ Transparent background with colored border and text. Uses the `{color}-outline` 
 <Badge variant="info-outline">Info</Badge>
 ```
 
-## Shadow
-
-The `isShadow` prop adds a colored drop shadow that scales with font-size (em-based).
-
-<Preview>
-  <BadgeShadow />
-</Preview>
-
-```tsx
-<Badge isShadow>Primary</Badge>
-<Badge variant="success" isShadow>Success</Badge>
-<Badge variant="danger" isShadow>Danger</Badge>
-```
-
 ## Icon Only
 
 Square badge for icon-only indicators. Always provide `aria-label`.
@@ -127,7 +113,6 @@ The `size` prop controls padding, gap, and font-size.
 | `variant`    | `"primary"` \| `"secondary"` \| `"ghost"` \| `"outline"` \| `"success"` \| `"warning"` \| `"danger"` \| `"info"` \| `"primary-soft"` \| `"secondary-soft"` \| `"success-soft"` \| `"warning-soft"` \| `"danger-soft"` \| `"info-soft"` \| `"primary-outline"` \| `"secondary-outline"` \| `"success-outline"` \| `"warning-outline"` \| `"danger-outline"` \| `"info-outline"` | `"primary"` | The visual variant of the badge       |
 | `size`       | `"sm"` \| `"md"` \| `"lg"`                                                                                                                                                                                                                                                                                                                                                     | `"md"`      | The size of the badge                 |
 | `isIconOnly` | `boolean`                                                                                                                                                                                                                                                                                                                                                                      | `false`     | Square badge for icon-only indicators |
-| `isShadow`   | `boolean`                                                                                                                                                                                                                                                                                                                                                                      | `false`     | Show colored drop shadow (em-based)   |
 | `className`  | `string`                                                                                                                                                                                                                                                                                                                                                                       | -           | Additional CSS classes                |
 | `ref`        | `Ref<HTMLSpanElement>`                                                                                                                                                                                                                                                                                                                                                         | -           | Forwarded ref to the span             |
 | `children`   | `ReactNode`                                                                                                                                                                                                                                                                                                                                                                    | -           | Badge content                         |
@@ -161,7 +146,6 @@ The `size` prop controls padding, gap, and font-size.
 | `fri-badge--size-md`           | Medium size               |
 | `fri-badge--size-lg`           | Large size                |
 | `fri-badge--icon-only`         | Icon-only square          |
-| `fri-badge--shadow`            | Colored drop shadow       |
 
 ### CSS Variables
 

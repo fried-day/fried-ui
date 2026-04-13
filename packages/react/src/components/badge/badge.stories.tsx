@@ -89,19 +89,6 @@ const meta = {
         category: "Style Variants",
       },
     },
-    isShadow: {
-      control: "boolean",
-      description: "Whether to show a colored drop shadow",
-      table: {
-        type: {
-          summary: "boolean",
-        },
-        defaultValue: {
-          summary: "false",
-        },
-        category: "Style Variants",
-      },
-    },
     className: {
       control: "text",
       description: "Additional CSS classes",
@@ -292,7 +279,6 @@ const WithIcon: Story = {
       source: {
         code: `import { Badge, SettingsIcon } from "@fried-ui/react";
 
-// Option 1: slot="icon" (recommended)
 const WithIcon = () => {
   return (
     <Badge>
@@ -302,7 +288,6 @@ const WithIcon = () => {
   );
 };
 
-// Option 2: className
 const WithIconAlt = () => {
   return (
     <Badge>
@@ -317,63 +302,18 @@ const WithIconAlt = () => {
   render: (args): React.JSX.Element => (
     <div className="flex items-end gap-4">
       <Badge {...args}>
-        <SettingsIcon slot="icon" />
+        <SettingsIcon slot="icon-start" />
         Settings
       </Badge>
 
       <Badge {...args} variant="success">
-        <SettingsIcon slot="icon" />
+        <SettingsIcon slot="icon-start" />
         Active
       </Badge>
 
       <Badge {...args} variant="danger">
-        <SettingsIcon slot="icon" />
+        <SettingsIcon slot="icon-start" />
         Error
-      </Badge>
-    </div>
-  ),
-};
-
-const Shadow: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Badge } from "@fried-ui/react";
-
-const Shadow = () => {
-  return (
-    <div className="flex flex-wrap gap-4">
-      <Badge isShadow>Primary</Badge>
-      <Badge variant="success" isShadow>Success</Badge>
-      <Badge variant="warning" isShadow>Warning</Badge>
-      <Badge variant="danger" isShadow>Danger</Badge>
-      <Badge variant="info" isShadow>Info</Badge>
-    </div>
-  );
-};`,
-      },
-    },
-  },
-  render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-end gap-4">
-      <Badge {...args} isShadow>
-        Primary
-      </Badge>
-
-      <Badge {...args} variant="success" isShadow>
-        Success
-      </Badge>
-
-      <Badge {...args} variant="warning" isShadow>
-        Warning
-      </Badge>
-
-      <Badge {...args} variant="danger" isShadow>
-        Danger
-      </Badge>
-
-      <Badge {...args} variant="info" isShadow>
-        Info
       </Badge>
     </div>
   ),
@@ -462,6 +402,6 @@ const SoftVariants = () => {
   ),
 };
 
-export { Default, Variants, SoftVariants, Sizes, Shadow, WithIcon, IconOnly };
+export { Default, Variants, SoftVariants, Sizes, WithIcon, IconOnly };
 
 export default meta;

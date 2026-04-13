@@ -2,17 +2,8 @@ import path from "node:path";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vitest/config";
 
-const plugins = [react()];
-
-const JSON_REPORTER = [
-  "json",
-  {
-    file: "../coverage.json",
-  },
-] as const;
-
 export default defineConfig({
-  plugins,
+  plugins: [react()],
   resolve: {
     alias: {
       src: path.resolve(import.meta.dirname, "src"),
@@ -21,12 +12,20 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     globals: true,
-    setupFiles: ["@fried-ui/vitest/setup"],
+    setupFiles: ["./src/test-setup.ts"],
     include: ["src/**/*.test.{ts,tsx}", "src/**/*Test.{ts,tsx}"],
     coverage: {
       enabled: true,
       provider: "istanbul",
-      reporter: [JSON_REPORTER, "lcov"],
+      reporter: [
+        [
+          "json",
+          {
+            file: "../coverage.json",
+          },
+        ],
+        "lcov",
+      ],
     },
   },
 });

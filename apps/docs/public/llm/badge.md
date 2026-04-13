@@ -21,7 +21,6 @@ import { Badge } from "@fried-ui/react";
 | `variant`    | `"primary"` \| `"secondary"` \| `"ghost"` \| `"outline"` \| `"success"` \| `"warning"` \| `"danger"` \| `"info"` \| `"primary-soft"` \| `"secondary-soft"` \| `"success-soft"` \| `"warning-soft"` \| `"danger-soft"` \| `"info-soft"` \| `"primary-outline"` \| `"secondary-outline"` \| `"success-outline"` \| `"warning-outline"` \| `"danger-outline"` \| `"info-outline"` | `"primary"` | Visual variant                        |
 | `size`       | `"sm"` \| `"md"` \| `"lg"`                                                                                                                                                                                                                                                                                                                                                     | `"md"`      | Size — controls padding, font         |
 | `isIconOnly` | `boolean`                                                                                                                                                                                                                                                                                                                                                                      | `false`     | Square badge for icon-only indicators |
-| `isShadow`   | `boolean`                                                                                                                                                                                                                                                                                                                                                                      | `false`     | Show colored drop shadow (em-based)   |
 | `className`  | `string`                                                                                                                                                                                                                                                                                                                                                                       | -           | Additional CSS classes                |
 | `ref`        | `Ref<HTMLSpanElement>`                                                                                                                                                                                                                                                                                                                                                         | -           | Forwarded ref to span element         |
 | `children`   | `ReactNode`                                                                                                                                                                                                                                                                                                                                                                    | -           | Badge content                         |
@@ -55,7 +54,6 @@ import { Badge } from "@fried-ui/react";
 | `fri-badge--size-md`           | Medium size               |
 | `fri-badge--size-lg`           | Large size                |
 | `fri-badge--icon-only`         | Icon-only square          |
-| `fri-badge--shadow`            | Colored drop shadow       |
 
 ## CSS Variables
 
@@ -95,15 +93,6 @@ Transparent background with colored border and text.
 <Badge variant="primary-outline">Primary</Badge>
 <Badge variant="success-outline">Success</Badge>
 <Badge variant="danger-outline">Danger</Badge>
-```
-
-### Shadow
-
-Colored drop shadow that scales with font-size (em-based).
-
-```tsx
-<Badge isShadow>Primary</Badge>
-<Badge variant="success" isShadow>Success</Badge>
 ```
 
 ### Icon Only

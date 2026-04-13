@@ -37,18 +37,8 @@ Available groups: `primary`, `secondary`, `success`, `warning`, `danger`, `info`
 
 Each color group has a shadow token using `em` units — shadows scale proportionally with the component's font-size.
 
-| Token                   | Usage                           |
-| ----------------------- | ------------------------------- |
-| `--color-{name}-shadow` | Colored drop shadow per variant |
-
-Light mode uses a tight two-layer shadow (Fibonacci: 2, 3, 5 → em). Dark mode uses a softer glow with larger blur.
-
-Applied via the `isShadow` prop on components:
-
-```tsx
-<Button isShadow>Shadow scales with size</Button>
-<Badge size="xl" isShadow>Larger shadow</Badge>
-```
+| Token | Usage |
+| ----- | ----- |
 
 ## Layout Elevation
 
@@ -158,12 +148,11 @@ All durations stay under 400ms (Doherty Threshold). Automatically disabled when 
 
 ### Easing
 
-| Token           | Value                        | Usage                   |
-| --------------- | ---------------------------- | ----------------------- |
-| `--ease-smooth` | cubic-bezier(0.4, 0, 0.2, 1) | Default for most        |
-| `--ease-in`     | cubic-bezier(0.4, 0, 1, 1)   | Element exiting         |
-| `--ease-out`    | cubic-bezier(0, 0, 0.2, 1)   | Element entering        |
-| `--ease-in-out` | cubic-bezier(0.4, 0, 0.2, 1) | Element moving position |
+| Token           | Value                        | Usage            |
+| --------------- | ---------------------------- | ---------------- |
+| `--ease-smooth` | cubic-bezier(0.4, 0, 0.2, 1) | Default for most |
+| `--ease-in`     | cubic-bezier(0.4, 0, 1, 1)   | Element exiting  |
+| `--ease-out`    | cubic-bezier(0, 0, 0.2, 1)   | Element entering |
 
 ```tsx
 <div className="transition-colors duration-(--duration-fast) ease-smooth">Hover me</div>

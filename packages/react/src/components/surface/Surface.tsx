@@ -14,7 +14,7 @@ export type SurfaceProps = Omit<ComponentPropsWithRef<"div">, "className"> &
   };
 
 const Surface = (props: Readonly<SurfaceProps>) => {
-  const { children, className, isShadow, radius, ref, variant, ...rest } = props;
+  const { children, className, radius, ref, variant, ...rest } = props;
 
   const surfaceClassName = clsx(
     bem({
@@ -22,7 +22,6 @@ const Surface = (props: Readonly<SurfaceProps>) => {
       modifiers: {
         variant,
         radius,
-        shadow: isShadow,
       },
     }),
     className,

@@ -3,45 +3,32 @@
   @apply leading-none font-medium whitespace-nowrap;
   @apply border border-transparent select-none;
 
-  /* default variant = primary */
   --fri-badge-bg: var(--color-primary);
   --fri-badge-fg: var(--color-primary-foreground);
 
   @apply bg-(--fri-badge-bg) text-(--fri-badge-fg);
-
-  /* default size = md */
-  @apply gap-1.5 px-2 py-0.5 text-sm;
-
-  /* default radius = full */
+  @apply gap-[calc(0.875rem/1.618)] px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
   @apply rounded-full;
-}
-
-.fri-badge--shadow {
-  box-shadow: var(--fri-badge-shadow, var(--color-primary-shadow));
 }
 
 .fri-badge--primary {
   --fri-badge-bg: var(--color-primary);
   --fri-badge-fg: var(--color-primary-foreground);
-  --fri-badge-shadow: var(--color-primary-shadow);
 }
 
 .fri-badge--secondary {
   --fri-badge-bg: var(--color-secondary);
   --fri-badge-fg: var(--color-secondary-foreground);
-  --fri-badge-shadow: var(--color-secondary-shadow);
 }
 
 .fri-badge--ghost {
   --fri-badge-bg: transparent;
   --fri-badge-fg: var(--color-foreground);
-  --fri-badge-shadow: none;
 }
 
 .fri-badge--outline {
   --fri-badge-bg: transparent;
   --fri-badge-fg: var(--color-foreground);
-  --fri-badge-shadow: none;
 
   @apply border-border;
 }
@@ -49,25 +36,21 @@
 .fri-badge--success {
   --fri-badge-bg: var(--color-success);
   --fri-badge-fg: var(--color-success-foreground);
-  --fri-badge-shadow: var(--color-success-shadow);
 }
 
 .fri-badge--warning {
   --fri-badge-bg: var(--color-warning);
   --fri-badge-fg: var(--color-warning-foreground);
-  --fri-badge-shadow: var(--color-warning-shadow);
 }
 
 .fri-badge--danger {
   --fri-badge-bg: var(--color-danger);
   --fri-badge-fg: var(--color-danger-foreground);
-  --fri-badge-shadow: var(--color-danger-shadow);
 }
 
 .fri-badge--info {
   --fri-badge-bg: var(--color-info);
   --fri-badge-fg: var(--color-info-foreground);
-  --fri-badge-shadow: var(--color-info-shadow);
 }
 
 .fri-badge--primary-soft {
@@ -154,34 +137,64 @@
   @apply border border-info;
 }
 
-.fri-badge--icon-only {
-  @apply justify-center gap-0 rounded-full;
-}
-
-.fri-badge--icon-only.fri-badge--size-sm {
-  @apply p-0.5;
-}
-
-.fri-badge--icon-only.fri-badge--size-md {
-  @apply p-0.5;
-}
-
-.fri-badge--icon-only.fri-badge--size-lg {
-  @apply p-1;
-}
-
-.fri-badge [slot="icon"] {
+.fri-badge [slot="icon"],
+.fri-badge [slot="icon-start"],
+.fri-badge [slot="icon-end"] {
   @apply size-match-font;
 }
 
+.fri-badge:has([slot="icon-start"]) {
+  @apply pl-[calc(0.875rem/2.058)];
+}
+
+.fri-badge:has([slot="icon-end"]) {
+  @apply pr-[calc(0.875rem/2.058)];
+}
+
 .fri-badge--size-sm {
-  @apply gap-1 px-1.5 py-px text-xs;
+  @apply gap-[calc(0.75rem/1.618)] px-[calc(0.75rem)] py-[calc(0.75rem/2.058)] text-xs;
+}
+
+.fri-badge--size-sm:has([slot="icon-start"]) {
+  @apply pl-[calc(0.75rem/2.058)];
+}
+
+.fri-badge--size-sm:has([slot="icon-end"]) {
+  @apply pr-[calc(0.75rem/2.058)];
 }
 
 .fri-badge--size-md {
-  @apply gap-1.5 px-2 py-0.5 text-sm;
+  @apply gap-[calc(0.875rem/1.618)] px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
+}
+
+.fri-badge--size-md:has([slot="icon-start"]) {
+  @apply pl-[calc(0.875rem/2.058)];
+}
+
+.fri-badge--size-md:has([slot="icon-end"]) {
+  @apply pr-[calc(0.875rem/2.058)];
 }
 
 .fri-badge--size-lg {
-  @apply gap-2 px-2.5 py-1 text-base;
+  @apply gap-[calc(1rem/1.618)] px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
+}
+
+.fri-badge--size-lg:has([slot="icon-start"]) {
+  @apply pl-[calc(1rem/2.058)];
+}
+
+.fri-badge--size-lg:has([slot="icon-end"]) {
+  @apply pr-[calc(1rem/2.058)];
+}
+
+.fri-badge--icon-only {
+  @apply aspect-square w-[calc(0.875rem+2*(0.875rem/2.058)+0.125rem)] justify-center gap-0 rounded-full p-0;
+}
+
+.fri-badge--icon-only.fri-badge--size-sm {
+  @apply w-[calc(0.75rem+2*(0.75rem/2.058)+0.125rem)];
+}
+
+.fri-badge--icon-only.fri-badge--size-lg {
+  @apply w-[calc(1rem+2*(1rem/2.058)+0.125rem)];
 }

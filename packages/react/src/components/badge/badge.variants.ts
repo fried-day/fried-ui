@@ -1,6 +1,5 @@
 export interface BadgeVariantsProps {
   isIconOnly?: boolean;
-  isShadow?: boolean;
   size?: "sm" | "md" | "lg";
   variant?:
     | "primary"
