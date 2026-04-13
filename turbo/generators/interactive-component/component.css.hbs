@@ -4,7 +4,6 @@
   @apply cursor-pointer border border-transparent select-none no-highlight;
   @apply transition-colors duration-(--duration-fast) ease-smooth motion-reduce:transition-none;
 
-  /* default variant = primary */
   --fri-{{dashCase name}}-bg: var(--color-primary);
   --fri-{{dashCase name}}-bg-hover: var(--color-primary-hover);
   --fri-{{dashCase name}}-bg-pressed: var(--color-primary-active);
@@ -12,7 +11,6 @@
 
   @apply bg-(--fri-{{dashCase name}}-bg) text-(--fri-{{dashCase name}}-fg);
 
-  /* default size = md */
   @apply gap-2.5 px-4 py-2 text-base;
 
   &:focus-visible,

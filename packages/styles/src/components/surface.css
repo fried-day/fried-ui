@@ -3,10 +3,6 @@
   @apply rounded-md;
 }
 
-.fri-surface--shadow {
-  box-shadow: var(--color-surface-shadow);
-}
-
 .fri-surface--default {
   @apply bg-(--color-surface) text-(--color-surface-foreground);
 }

@@ -9,7 +9,6 @@ import {
   BadgeDemo,
   BadgeIconOnly,
   BadgeOutlineVariants,
-  BadgeShadow,
   BadgeSizes,
   BadgeSoftVariants,
   BadgeVariants,
@@ -28,7 +27,6 @@ import {
   SurfaceBadgeLinks,
   SurfaceDemo,
   SurfaceRadii,
-  SurfaceShadow,
   SurfaceVariants,
 } from "@/components/MdxComponents";
 import { Preview } from "@/components/Preview";
@@ -48,7 +46,6 @@ const mdxComponents = {
   BadgeDemo,
   BadgeIconOnly,
   BadgeOutlineVariants,
-  BadgeShadow,
   BadgeSizes,
   BadgeSoftVariants,
   BadgeVariants,
@@ -69,7 +66,6 @@ const mdxComponents = {
   SurfaceBadgeLinks,
   SurfaceDemo,
   SurfaceRadii,
-  SurfaceShadow,
   SurfaceVariants,
 };
 

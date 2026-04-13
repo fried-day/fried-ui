@@ -5,5 +5,3 @@ export * from "./button";
 export * from "./icons";
 
 export * from "./surface";
-export * from "./surface";
-export * from "./surface";

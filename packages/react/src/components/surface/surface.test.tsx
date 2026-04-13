@@ -36,16 +36,6 @@ describe("Surface", () => {
     });
   });
 
-  it("applies shadow class when isShadow is true", () => {
-    render(<Surface isShadow>Shadow</Surface>);
-    expect(screen.getByText("Shadow").className).toContain("fri-surface--shadow");
-  });
-
-  it("does not apply shadow class when isShadow is false", () => {
-    render(<Surface>No shadow</Surface>);
-    expect(screen.getByText("No shadow").className).not.toContain("fri-surface--shadow");
-  });
-
   it("combines variant + radius", () => {
     render(
       <Surface variant="bordered" radius="lg">

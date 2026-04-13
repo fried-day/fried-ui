@@ -20,7 +20,6 @@ import { Surface } from "@fried-ui/react";
 | ----------- | ------------------------------------------------------------ | ----------- | ------------------------ |
 | `variant`   | `"default"` \| `"bordered"` \| `"glass"` \| `"primary"`      | `"default"` | The visual variant       |
 | `radius`    | `"none"` \| `"sm"` \| `"md"` \| `"lg"` \| `"xl"` \| `"full"` | `"md"`      | Border radius            |
-| `isShadow`  | `boolean`                                                    | `false`     | Show drop shadow         |
 | `className` | `string`                                                     | -           | Additional CSS classes   |
 | `ref`       | `Ref<HTMLDivElement>`                                        | -           | Forwarded ref to the div |
 | `children`  | `ReactNode`                                                  | -           | Surface content          |
@@ -34,7 +33,6 @@ import { Surface } from "@fried-ui/react";
 | `fri-surface--bordered`    | Bordered variant     |
 | `fri-surface--glass`       | Glass variant        |
 | `fri-surface--primary`     | Primary variant      |
-| `fri-surface--shadow`      | Drop shadow          |
 | `fri-surface--radius-none` | No border radius     |
 | `fri-surface--radius-sm`   | Small border radius  |
 | `fri-surface--radius-md`   | Medium border radius |

@@ -51,19 +51,6 @@ const meta = {
         category: "Style Variants",
       },
     },
-    isShadow: {
-      control: "boolean",
-      description: "Whether to show a drop shadow",
-      table: {
-        type: {
-          summary: "boolean",
-        },
-        defaultValue: {
-          summary: "false",
-        },
-        category: "Style Variants",
-      },
-    },
     className: {
       control: "text",
       description: "Additional CSS classes",
@@ -139,36 +126,6 @@ const Variants = () => {
 
       <Surface {...args} variant="primary" className="p-4">
         Primary
-      </Surface>
-    </div>
-  ),
-};
-
-const Shadow: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Surface } from "@fried-ui/react";
-
-const Shadow = () => {
-  return (
-    <div className="flex flex-wrap gap-4">
-      <Surface className="p-4">No shadow</Surface>
-      <Surface isShadow className="p-4">With shadow</Surface>
-    </div>
-  );
-};`,
-      },
-    },
-  },
-  render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-start gap-4">
-      <Surface {...args} className="p-4">
-        No shadow
-      </Surface>
-
-      <Surface {...args} className="p-4" isShadow>
-        With shadow
       </Surface>
     </div>
   ),
@@ -253,6 +210,6 @@ const Glass = () => {
   ),
 };
 
-export { Default, Glass, Radius, Shadow, Variants };
+export { Default, Glass, Radius, Variants };
 
 export default meta;

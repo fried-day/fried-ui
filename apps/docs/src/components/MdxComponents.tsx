@@ -84,22 +84,6 @@ const BadgeOutlineVariants = (): React.JSX.Element => {
   );
 };
 
-const BadgeShadow = (): React.JSX.Element => {
-  return (
-    <div className="flex flex-wrap items-end gap-4">
-      <Badge isShadow>Primary</Badge>
-
-      <Badge variant="success" isShadow>
-        Success
-      </Badge>
-
-      <Badge variant="danger" isShadow>
-        Danger
-      </Badge>
-    </div>
-  );
-};
-
 const BadgeIconOnly = (): React.JSX.Element => {
   return (
     <div className="flex items-end gap-4">
@@ -360,24 +344,11 @@ const SurfaceRadii = (): React.JSX.Element => {
   );
 };
 
-const SurfaceShadow = (): React.JSX.Element => {
-  return (
-    <div className="flex flex-wrap items-start gap-4">
-      <Surface className="p-4">No shadow</Surface>
-
-      <Surface className="p-4" isShadow>
-        With shadow
-      </Surface>
-    </div>
-  );
-};
-
 export {
   BadgeBadgeLinks,
   BadgeDemo,
   BadgeIconOnly,
   BadgeOutlineVariants,
-  BadgeShadow,
   BadgeSizes,
   BadgeSoftVariants,
   BadgeVariants,
@@ -396,6 +367,5 @@ export {
   SurfaceBadgeLinks,
   SurfaceDemo,
   SurfaceRadii,
-  SurfaceShadow,
   SurfaceVariants,
 };
