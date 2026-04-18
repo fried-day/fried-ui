@@ -26,7 +26,9 @@ const meta = {
     variant: {
       control: "select",
       options: ["primary", "secondary", "ghost", "outline", "success", "warning", "danger", "info"],
-      description: "The visual variant of the {{dashCase name}}",
+      // TODO: rewrite this description following the 4-part pattern in .claude/rules/storybook.md (intent + groups + modifiers + usage).
+      // Length: 50-120 words. Bold headings. End with "Use X for Y" guidance. See Badge/Surface for reference.
+      description: "Visual style. **Base:** TODO. **Status:** TODO. Use primary for TODO, success/danger for TODO.",
       table: {
         type: { summary: '"primary" | "secondary" | "ghost" | "outline" | "success" | "warning" | "danger" | "info"' },
         defaultValue: { summary: "primary" },

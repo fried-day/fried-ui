@@ -707,6 +707,29 @@ const IconOnly = () => {
   ),
 };
 
+const CustomStyle: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Badge } from "@fried-ui/react";
+
+const CustomStyle = () => {
+  return (
+    <Badge className="bg-linear-to-r from-pink-500 via-purple-500 to-blue-500 text-white">
+      Gradient
+    </Badge>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <Badge {...args} className="bg-linear-to-r from-pink-500 via-purple-500 to-blue-500 text-white">
+      Gradient
+    </Badge>
+  ),
+};
+
 export {
   Default,
   Variants,
@@ -720,6 +743,7 @@ export {
   Radius,
   WithIcon,
   IconOnly,
+  CustomStyle,
 };
 
 export default meta;

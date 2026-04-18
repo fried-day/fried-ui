@@ -43,6 +43,22 @@ describe("Avatar", () => {
     });
   });
 
+  it("applies all ring classes", () => {
+    const rings = ["primary", "secondary", "accent", "success", "warning", "danger", "info"] as const;
+
+    rings.forEach((ring) => {
+      const { container, unmount } = render(
+        <Avatar ring={ring}>
+          <Avatar.Fallback>A</Avatar.Fallback>
+        </Avatar>,
+      );
+
+      const root = container.querySelector("[data-slot='avatar']");
+      expect(root?.className).toContain(`fri-avatar--ring-${ring}`);
+      unmount();
+    });
+  });
+
   it("applies all radius classes", () => {
     const radii = ["none", "sm", "md", "lg", "full"] as const;
 

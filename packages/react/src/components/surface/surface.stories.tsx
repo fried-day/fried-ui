@@ -28,12 +28,29 @@ const meta = {
     },
     variant: {
       control: "select",
-      options: ["default", "default-bordered", "plain", "plain-bordered", "glass", "frost", "overlay"],
+      options: [
+        "default",
+        "default-bordered",
+        "plain",
+        "plain-bordered",
+        "success",
+        "success-bordered",
+        "warning",
+        "warning-bordered",
+        "danger",
+        "danger-bordered",
+        "info",
+        "info-bordered",
+        "glass",
+        "frost",
+        "overlay",
+      ],
       description:
-        "Visual style. **Base:** default (subtle gray card), default-bordered (gray + border), plain (pure white — for gray pages), plain-bordered (white + border). **Special:** glass (frosted + border), frost (frosted no border), overlay (dark scrim — on media). Use default on white pages, plain on gray pages, *-bordered for emphasis, glass/frost/overlay for media overlays.",
+        "Visual style. **Base:** default/plain (neutral cards). **Status:** success/warning/danger/info (pale bg — alert/callout boxes). **Special:** glass/frost/overlay (media overlays). Add `-bordered` suffix for emphasis border. Use default on white pages, plain on gray pages, status for alerts.",
       table: {
         type: {
-          summary: '"default" | "default-bordered" | "plain" | "plain-bordered" | "glass" | "frost" | "overlay"',
+          summary:
+            '"default" | "default-bordered" | "plain" | "plain-bordered" | "success" | "success-bordered" | "warning" | "warning-bordered" | "danger" | "danger-bordered" | "info" | "info-bordered" | "glass" | "frost" | "overlay"',
         },
         defaultValue: {
           summary: "default",
@@ -143,6 +160,62 @@ const Variants = () => {
       <Surface {...args} variant="default-bordered" className="p-6">
         <p className="font-bold">Default Bordered</p>
         <p className="mt-2 text-sm">Gray card with emphasis border.</p>
+      </Surface>
+    </div>
+  ),
+};
+
+const StatusVariants: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Surface } from "@fried-ui/react";
+
+const StatusVariants = () => {
+  return (
+    <div className="flex flex-col gap-4">
+      <Surface variant="success" className="p-4">
+        <p className="font-bold">Success</p>
+        <p className="mt-1 text-sm">Your changes have been saved.</p>
+      </Surface>
+      <Surface variant="warning-bordered" className="p-4">
+        <p className="font-bold">Warning</p>
+        <p className="mt-1 text-sm">Your session expires in 5 minutes.</p>
+      </Surface>
+      <Surface variant="danger" className="p-4">
+        <p className="font-bold">Error</p>
+        <p className="mt-1 text-sm">Unable to connect to the server.</p>
+      </Surface>
+      <Surface variant="info-bordered" className="p-4">
+        <p className="font-bold">Info</p>
+        <p className="mt-1 text-sm">New feature available — check it out!</p>
+      </Surface>
+    </div>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex flex-col gap-4">
+      <Surface {...args} variant="success" className="p-4">
+        <p className="font-bold">Success</p>
+        <p className="mt-1 text-sm">Your changes have been saved.</p>
+      </Surface>
+
+      <Surface {...args} variant="warning-bordered" className="p-4">
+        <p className="font-bold">Warning</p>
+        <p className="mt-1 text-sm">Your session expires in 5 minutes.</p>
+      </Surface>
+
+      <Surface {...args} variant="danger" className="p-4">
+        <p className="font-bold">Error</p>
+        <p className="mt-1 text-sm">Unable to connect to the server.</p>
+      </Surface>
+
+      <Surface {...args} variant="info-bordered" className="p-4">
+        <p className="font-bold">Info</p>
+        <p className="mt-1 text-sm">New feature available — check it out!</p>
       </Surface>
     </div>
   ),
@@ -412,6 +485,42 @@ const Shadow = () => {
   ),
 };
 
-export { Default, Variants, PlainVariants, GlassVariants, FrostVariants, OverlayVariants, Radius, Shadow };
+const CustomStyle: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Surface } from "@fried-ui/react";
+
+const CustomStyle = () => {
+  return (
+    <Surface className="w-64 p-6 bg-linear-to-br from-pink-200 via-purple-200 to-blue-200">
+      <p className="font-bold">Gradient Card</p>
+      <p className="mt-2 text-sm">Pastel gradient via className.</p>
+    </Surface>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <Surface {...args} className="w-64 bg-linear-to-br from-pink-200 via-purple-200 to-blue-200 p-6">
+      <p className="font-bold">Gradient Card</p>
+      <p className="mt-2 text-sm">Pastel gradient via className.</p>
+    </Surface>
+  ),
+};
+
+export {
+  Default,
+  Variants,
+  StatusVariants,
+  PlainVariants,
+  GlassVariants,
+  FrostVariants,
+  OverlayVariants,
+  Radius,
+  Shadow,
+  CustomStyle,
+};
 
 export default meta;

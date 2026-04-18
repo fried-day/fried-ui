@@ -17,7 +17,23 @@ describe("Surface", () => {
   });
 
   it("applies all variant classes", () => {
-    const variants = ["default", "default-bordered", "plain", "plain-bordered", "glass", "frost", "overlay"] as const;
+    const variants = [
+      "default",
+      "default-bordered",
+      "plain",
+      "plain-bordered",
+      "success",
+      "success-bordered",
+      "warning",
+      "warning-bordered",
+      "danger",
+      "danger-bordered",
+      "info",
+      "info-bordered",
+      "glass",
+      "frost",
+      "overlay",
+    ] as const;
 
     variants.forEach((variant) => {
       const { unmount } = render(<Surface variant={variant}>{variant}</Surface>);
