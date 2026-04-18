@@ -1,6 +1,6 @@
 import type { ComponentPropsWithRef } from "react";
 
-const BellIcon = (props: Readonly<ComponentPropsWithRef<"svg"> & { slot?: string }>) => {
+const UserIcon = (props: Readonly<ComponentPropsWithRef<"svg"> & { slot?: string }>) => {
   const { className, ref, ...rest } = props;
 
   return (
@@ -15,12 +15,12 @@ const BellIcon = (props: Readonly<ComponentPropsWithRef<"svg"> & { slot?: string
       ref={ref}
       {...rest}
     >
-      <path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
-      <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
+      <path d="M20 21v-2a4 4 0 0 0 -4 -4h-8a4 4 0 0 0 -4 4v2" />
+      <circle cx="12" cy="7" r="4" />
     </svg>
   );
 };
 
-BellIcon.displayName = "BellIcon";
+UserIcon.displayName = "UserIcon";
 
-export { BellIcon };
+export { UserIcon };

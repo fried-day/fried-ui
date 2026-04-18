@@ -1,73 +1,75 @@
-.fri-surface {
-  @apply border border-transparent;
-  @apply bg-(--color-surface) text-(--color-surface-foreground);
-  @apply rounded-md;
-}
+@layer components {
+  .fri-surface {
+    @apply border border-transparent;
+    @apply bg-(--color-surface) text-(--color-surface-foreground);
+    @apply rounded-md;
+  }
 
-.fri-surface--default {
-  @apply bg-(--color-surface) text-(--color-surface-foreground);
-}
+  .fri-surface--default {
+    @apply bg-(--color-surface) text-(--color-surface-foreground);
+  }
 
-.fri-surface--default-bordered {
-  @apply border-(--color-surface-border) bg-(--color-surface) text-(--color-surface-foreground);
-}
+  .fri-surface--default-bordered {
+    @apply border-(--color-surface-border) bg-(--color-surface) text-(--color-surface-foreground);
+  }
 
-.fri-surface--plain {
-  @apply bg-(--color-surface-plain) text-(--color-surface-plain-foreground);
-}
+  .fri-surface--plain {
+    @apply bg-(--color-surface-plain) text-(--color-surface-plain-foreground);
+  }
 
-.fri-surface--plain-bordered {
-  @apply border-(--color-surface-plain-border) bg-(--color-surface-plain) text-(--color-surface-plain-foreground);
-}
+  .fri-surface--plain-bordered {
+    @apply border-(--color-surface-plain-border) bg-(--color-surface-plain) text-(--color-surface-plain-foreground);
+  }
 
-.fri-surface--glass {
-  @apply border-glass-border bg-glass text-glass-foreground backdrop-blur-xl backdrop-saturate-200;
-}
+  .fri-surface--glass {
+    @apply border-glass-border bg-glass text-glass-foreground backdrop-blur-xl backdrop-saturate-200;
+  }
 
-.fri-surface--frost {
-  @apply bg-glass text-glass-foreground backdrop-blur-2xl backdrop-saturate-200;
-}
+  .fri-surface--frost {
+    @apply bg-glass text-glass-foreground backdrop-blur-2xl backdrop-saturate-200;
+  }
 
-.fri-surface--overlay {
-  @apply border-scrim-border bg-scrim text-scrim-foreground backdrop-blur-xl backdrop-saturate-150;
-}
+  .fri-surface--overlay {
+    @apply border-scrim-border bg-scrim text-scrim-foreground backdrop-blur-xl backdrop-saturate-150;
+  }
 
-.fri-surface--shadow-none {
-  @apply shadow-none;
-}
+  .fri-surface--shadow-none {
+    @apply shadow-none;
+  }
 
-.fri-surface--shadow-sm {
-  @apply shadow-sm;
-}
+  .fri-surface--shadow-sm {
+    @apply shadow-sm;
+  }
 
-.fri-surface--shadow-md {
-  @apply shadow-md;
-}
+  .fri-surface--shadow-md {
+    @apply shadow-md;
+  }
 
-.fri-surface--shadow-lg {
-  @apply shadow-lg;
-}
+  .fri-surface--shadow-lg {
+    @apply shadow-lg;
+  }
 
-.fri-surface--shadow-xl {
-  @apply shadow-xl;
-}
+  .fri-surface--shadow-xl {
+    @apply shadow-xl;
+  }
 
-.fri-surface--radius-none {
-  @apply rounded-none;
-}
+  .fri-surface--radius-none {
+    @apply rounded-none;
+  }
 
-.fri-surface--radius-sm {
-  @apply rounded-[calc(1em*1.272/4)];
-}
+  .fri-surface--radius-sm {
+    @apply rounded-[calc(1em*1.272/4)];
+  }
 
-.fri-surface--radius-md {
-  @apply rounded-[calc(1em*1.272*2/4)];
-}
+  .fri-surface--radius-md {
+    @apply rounded-[calc(1em*1.272*2/4)];
+  }
 
-.fri-surface--radius-lg {
-  @apply rounded-[calc(1em*1.272*3/4)];
-}
+  .fri-surface--radius-lg {
+    @apply rounded-[calc(1em*1.272*3/4)];
+  }
 
-.fri-surface--radius-xl {
-  @apply rounded-[calc(1em*1.272)];
+  .fri-surface--radius-xl {
+    @apply rounded-[calc(1em*1.272)];
+  }
 }

@@ -27,6 +27,10 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs"
     },
+    "./avatar": {
+      "types": "./dist/components/avatar/index.d.ts",
+      "import": "./dist/components/avatar/index.mjs"
+    },
     "./badge": {
       "types": "./dist/components/badge/index.d.ts",
       "import": "./dist/components/badge/index.mjs"
@@ -62,6 +66,7 @@
   },
   "dependencies": {
     "@fried-ui/styles": "workspace:^",
+    "@radix-ui/react-avatar": "^1.1.11",
     "@react-types/color": "^3.1.4",
     "@react-types/shared": "^3.33.1",
     "clsx": "^2.1.1",

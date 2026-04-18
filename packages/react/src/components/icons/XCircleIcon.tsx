@@ -1,6 +1,6 @@
 import type { ComponentPropsWithRef } from "react";
 
-const XCircleIcon = (props: Readonly<ComponentPropsWithRef<"svg">>) => {
+const XCircleIcon = (props: Readonly<ComponentPropsWithRef<"svg"> & { slot?: string }>) => {
   const { className, ref, ...rest } = props;
 
   return (

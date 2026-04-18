@@ -384,7 +384,7 @@ const GlassVariants: Story = {
 
 const GlassVariants = () => {
   return (
-    <div className="flex w-[640px] h-56 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
+    <div className="flex w-160 h-56 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
         <Badge variant="glass">Featured</Badge>
         <Badge variant="glass">New</Badge>
@@ -397,7 +397,7 @@ const GlassVariants = () => {
     },
   },
   render: (args): React.JSX.Element => (
-    <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
+    <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
         <Badge {...args} variant="glass">
           Featured
@@ -423,7 +423,7 @@ const FrostVariants: Story = {
 
 const FrostVariants = () => {
   return (
-    <div className="flex w-[640px] h-56 items-center justify-center bg-linear-to-br from-emerald-400 via-teal-500 via-cyan-500 via-sky-500 to-purple-600 p-16">
+    <div className="flex w-160 h-56 items-center justify-center bg-linear-to-br from-emerald-400 via-teal-500 via-cyan-500 via-sky-500 to-purple-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
         <Badge variant="frost">Featured</Badge>
         <Badge variant="frost">New</Badge>
@@ -436,7 +436,7 @@ const FrostVariants = () => {
     },
   },
   render: (args): React.JSX.Element => (
-    <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-emerald-400 via-cyan-500 via-sky-500 via-teal-500 to-purple-600 p-16">
+    <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-emerald-400 via-cyan-500 via-sky-500 via-teal-500 to-purple-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
         <Badge {...args} variant="frost">
           Featured
@@ -462,7 +462,7 @@ const OverlayVariants: Story = {
 
 const OverlayVariants = () => {
   return (
-    <div className="flex w-[640px] h-56 items-center justify-center bg-linear-to-br from-orange-400 via-rose-500 via-fuchsia-500 via-purple-500 to-purple-600 p-16">
+    <div className="flex w-160 h-56 items-center justify-center bg-linear-to-br from-orange-400 via-rose-500 via-fuchsia-500 via-purple-500 to-purple-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
         <Badge variant="overlay">Live</Badge>
         <Badge variant="overlay">HD</Badge>
@@ -475,7 +475,7 @@ const OverlayVariants = () => {
     },
   },
   render: (args): React.JSX.Element => (
-    <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-orange-400 via-fuchsia-500 via-purple-500 via-rose-500 to-purple-600 p-16">
+    <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-orange-400 via-fuchsia-500 via-purple-500 via-rose-500 to-purple-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
         <Badge {...args} variant="overlay">
           Live
