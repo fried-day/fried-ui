@@ -297,16 +297,28 @@ const SurfaceVariants = (): React.JSX.Element => {
         Default
       </Surface>
 
-      <Surface variant="bordered" className="p-4">
-        Bordered
+      <Surface variant="default-bordered" className="p-4">
+        Default Bordered
+      </Surface>
+
+      <Surface variant="plain" className="p-4">
+        Plain
+      </Surface>
+
+      <Surface variant="plain-bordered" className="p-4">
+        Plain Bordered
       </Surface>
 
       <Surface variant="glass" className="p-4">
         Glass
       </Surface>
 
-      <Surface variant="primary" className="p-4">
-        Primary
+      <Surface variant="frost" className="p-4">
+        Frost
+      </Surface>
+
+      <Surface variant="overlay" className="p-4">
+        Overlay
       </Surface>
     </div>
   );
