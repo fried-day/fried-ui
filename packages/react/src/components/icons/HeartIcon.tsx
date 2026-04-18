@@ -1,6 +1,6 @@
 import type { ComponentPropsWithRef } from "react";
 
-const HeartIcon = (props: Readonly<ComponentPropsWithRef<"svg">>) => {
+const HeartIcon = (props: Readonly<ComponentPropsWithRef<"svg"> & { slot?: string }>) => {
   const { className, ref, ...rest } = props;
 
   return (

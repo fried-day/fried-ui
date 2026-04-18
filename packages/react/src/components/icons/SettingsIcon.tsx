@@ -1,6 +1,6 @@
 import type { ComponentPropsWithRef } from "react";
 
-const SettingsIcon = (props: Readonly<ComponentPropsWithRef<"svg">>) => {
+const SettingsIcon = (props: Readonly<ComponentPropsWithRef<"svg"> & { slot?: string }>) => {
   const { className, ref, ...rest } = props;
 
   return (

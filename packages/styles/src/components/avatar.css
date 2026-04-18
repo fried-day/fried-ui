@@ -1,0 +1,60 @@
+@layer components {
+  .fri-avatar {
+    @apply relative inline-flex shrink-0 items-center justify-center overflow-hidden select-none;
+    @apply leading-none font-medium;
+    @apply size-10 rounded-full text-sm;
+    @apply bg-(--color-avatar) text-(--color-avatar-foreground);
+  }
+
+  .fri-avatar__image {
+    @apply size-full object-cover;
+  }
+
+  .fri-avatar__fallback {
+    @apply flex size-full items-center justify-center;
+  }
+
+  .fri-avatar--size-sm {
+    @apply size-8 text-xs;
+  }
+
+  .fri-avatar--size-md {
+    @apply size-10 text-sm;
+  }
+
+  .fri-avatar--size-lg {
+    @apply size-12 text-base;
+  }
+
+  .fri-avatar--size-xl {
+    @apply size-14 text-lg;
+  }
+
+  .fri-avatar--size-2xl {
+    @apply size-16 text-xl;
+  }
+
+  .fri-avatar--radius-none {
+    @apply rounded-none;
+  }
+
+  .fri-avatar--radius-sm {
+    @apply rounded-sm;
+  }
+
+  .fri-avatar--radius-md {
+    @apply rounded-md;
+  }
+
+  .fri-avatar--radius-lg {
+    @apply rounded-lg;
+  }
+
+  .fri-avatar--radius-full {
+    @apply rounded-full;
+  }
+
+  .fri-avatar--disabled {
+    @apply pointer-events-none opacity-50;
+  }
+}

@@ -122,6 +122,7 @@ const Variants = () => {
         <p className="font-bold">Default</p>
         <p className="mt-2 text-sm">Subtle gray card on white.</p>
       </Surface>
+
       <Surface variant="default-bordered" className="p-6">
         <p className="font-bold">Default Bordered</p>
         <p className="mt-2 text-sm">Gray card with emphasis border.</p>
@@ -155,11 +156,12 @@ const PlainVariants: Story = {
 
 const PlainVariants = () => {
   return (
-    <div className="flex h-80 w-[640px] items-center justify-center gap-4 bg-background-secondary p-16">
+    <div className="flex h-80 w-160 items-center justify-center gap-4 bg-background-secondary p-16">
       <Surface variant="plain" radius="lg" className="p-6">
         <p className="font-bold">Plain</p>
         <p className="mt-2 text-sm">Pure white card on gray page.</p>
       </Surface>
+
       <Surface variant="plain-bordered" radius="lg" className="p-6">
         <p className="font-bold">Plain Bordered</p>
         <p className="mt-2 text-sm">White card with emphasis border.</p>
@@ -171,7 +173,7 @@ const PlainVariants = () => {
     },
   },
   render: (args): React.JSX.Element => (
-    <div className="flex h-80 w-[640px] items-center justify-center gap-4 bg-background-secondary p-16">
+    <div className="flex h-80 w-160 items-center justify-center gap-4 bg-background-secondary p-16">
       <Surface {...args} variant="plain" radius="lg" className="p-6">
         <p className="font-bold">Plain</p>
         <p className="mt-2 text-sm">Pure white card on gray page.</p>
@@ -193,7 +195,7 @@ const GlassVariants: Story = {
 
 const GlassVariants = () => {
   return (
-    <div className="flex h-80 w-[640px] items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
+    <div className="flex h-80 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
       <Surface variant="glass" radius="lg" className="p-6">
         <p className="font-bold">Glass Surface</p>
         <p className="mt-2 text-sm">Content over a gradient background.</p>
@@ -205,7 +207,7 @@ const GlassVariants = () => {
     },
   },
   render: (args): React.JSX.Element => (
-    <div className="flex h-80 w-[640px] items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
+    <div className="flex h-80 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
       <Surface {...args} variant="glass" radius="lg" className="p-6">
         <p className="font-bold">Glass Surface</p>
         <p className="mt-2 text-sm">Content over a gradient background.</p>
@@ -222,7 +224,7 @@ const FrostVariants: Story = {
 
 const FrostVariants = () => {
   return (
-    <div className="flex h-80 w-[640px] items-center justify-center bg-linear-to-br from-emerald-400 via-teal-500 via-cyan-500 via-sky-500 to-purple-600 p-16">
+    <div className="flex h-80 w-160 items-center justify-center bg-linear-to-br from-emerald-400 via-teal-500 via-cyan-500 via-sky-500 to-purple-600 p-16">
       <Surface variant="frost" radius="lg" className="p-6">
         <p className="font-bold">Frost Surface</p>
         <p className="mt-2 text-sm">Frosted content without a border.</p>
@@ -234,7 +236,7 @@ const FrostVariants = () => {
     },
   },
   render: (args): React.JSX.Element => (
-    <div className="flex h-80 w-[640px] items-center justify-center bg-linear-to-br from-emerald-400 via-cyan-500 via-sky-500 via-teal-500 to-purple-600 p-16">
+    <div className="flex h-80 w-160 items-center justify-center bg-linear-to-br from-emerald-400 via-cyan-500 via-sky-500 via-teal-500 to-purple-600 p-16">
       <Surface {...args} variant="frost" radius="lg" className="p-6">
         <p className="font-bold">Frost Surface</p>
         <p className="mt-2 text-sm">Frosted content without a border.</p>
@@ -251,7 +253,7 @@ const OverlayVariants: Story = {
 
 const OverlayVariants = () => {
   return (
-    <div className="flex h-80 w-[640px] items-center justify-center bg-linear-to-br from-orange-400 via-rose-500 via-fuchsia-500 via-purple-500 to-purple-600 p-16">
+    <div className="flex h-80 w-160 items-center justify-center bg-linear-to-br from-orange-400 via-rose-500 via-fuchsia-500 via-purple-500 to-purple-600 p-16">
       <Surface variant="overlay" radius="lg" className="p-6">
         <p className="font-bold">Overlay Surface</p>
         <p className="mt-2 text-sm">Dark scrim over media content.</p>
@@ -263,7 +265,7 @@ const OverlayVariants = () => {
     },
   },
   render: (args): React.JSX.Element => (
-    <div className="flex h-80 w-[640px] items-center justify-center bg-linear-to-br from-orange-400 via-fuchsia-500 via-purple-500 via-rose-500 to-purple-600 p-16">
+    <div className="flex h-80 w-160 items-center justify-center bg-linear-to-br from-orange-400 via-fuchsia-500 via-purple-500 via-rose-500 to-purple-600 p-16">
       <Surface {...args} variant="overlay" radius="lg" className="p-6">
         <p className="font-bold">Overlay Surface</p>
         <p className="mt-2 text-sm">Dark scrim over media content.</p>
@@ -285,18 +287,22 @@ const Radius = () => {
         <p className="font-bold">None</p>
         <p className="mt-2 text-sm">No rounded corners.</p>
       </Surface>
+
       <Surface radius="sm" className="p-6">
         <p className="font-bold">Small</p>
         <p className="mt-2 text-sm">Subtle rounding.</p>
       </Surface>
+
       <Surface radius="md" className="p-6">
         <p className="font-bold">Medium</p>
         <p className="mt-2 text-sm">Balanced rounding.</p>
       </Surface>
+
       <Surface radius="lg" className="p-6">
         <p className="font-bold">Large</p>
         <p className="mt-2 text-sm">Soft rounding.</p>
       </Surface>
+
       <Surface radius="xl" className="p-6">
         <p className="font-bold">Extra Large</p>
         <p className="mt-2 text-sm">Very rounded corners.</p>
@@ -350,18 +356,22 @@ const Shadow = () => {
         <p className="font-bold">None</p>
         <p className="mt-2 text-sm">No shadow.</p>
       </Surface>
+
       <Surface shadow="sm" className="p-6">
         <p className="font-bold">Small</p>
         <p className="mt-2 text-sm">Subtle lift.</p>
       </Surface>
+
       <Surface shadow="md" className="p-6">
         <p className="font-bold">Medium</p>
         <p className="mt-2 text-sm">Noticeable elevation.</p>
       </Surface>
+
       <Surface shadow="lg" className="p-6">
         <p className="font-bold">Large</p>
         <p className="mt-2 text-sm">Floating card.</p>
       </Surface>
+
       <Surface shadow="xl" className="p-6">
         <p className="font-bold">Extra Large</p>
         <p className="mt-2 text-sm">Strong elevation.</p>
