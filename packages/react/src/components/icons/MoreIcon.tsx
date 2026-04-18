@@ -1,8 +1,6 @@
-"use client";
-
 import type { ComponentPropsWithRef } from "react";
 
-const MoreIcon = (props: Readonly<ComponentPropsWithRef<"svg"> & { slot?: string }>) => {
+const MoreIcon = (props: Readonly<ComponentPropsWithRef<"svg">>) => {
   const { className, ref, ...rest } = props;
 
   return (
@@ -10,16 +8,16 @@ const MoreIcon = (props: Readonly<ComponentPropsWithRef<"svg"> & { slot?: string
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       className={className}
       ref={ref}
       {...rest}
     >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
-      />
+      <path d="M4 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+      <path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+      <path d="M18 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
     </svg>
   );
 };

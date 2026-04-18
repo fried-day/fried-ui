@@ -29,8 +29,10 @@ const Badge = (props: Readonly<BadgeProps>) => {
     className,
   );
 
+  const role = isIconOnly ? "img" : undefined;
+
   return (
-    <span data-slot="badge" className={badgeClassName} ref={ref} {...rest}>
+    <span data-slot="badge" role={role} className={badgeClassName} ref={ref} {...rest}>
       {children}
     </span>
   );

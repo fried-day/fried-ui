@@ -1,6 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { InformationCircleIcon, SettingsIcon } from "../icons";
+import {
+  BellIcon,
+  CheckCircleIcon,
+  ExclamationTriangleIcon,
+  HeartIcon,
+  InformationCircleIcon,
+  LockIcon,
+  StarIcon,
+  XCircleIcon,
+} from "../icons";
 import { Badge } from "./Badge";
 
 const meta = {
@@ -14,11 +23,13 @@ const meta = {
     children: "Badge",
     variant: "primary",
     size: "md",
+    radius: "full",
+    isIconOnly: false,
   },
   argTypes: {
     children: {
       control: "text",
-      description: "Badge content",
+      description: "Badge content (text or icon)",
       table: {
         type: {
           summary: "ReactNode",
@@ -31,29 +42,43 @@ const meta = {
       options: [
         "primary",
         "secondary",
+        "accent",
         "outline",
+        "glass",
+        "frost",
+        "overlay",
         "success",
         "warning",
         "danger",
         "info",
         "primary-soft",
         "secondary-soft",
+        "accent-soft",
         "success-soft",
         "warning-soft",
         "danger-soft",
         "info-soft",
+        "primary-flat",
+        "secondary-flat",
+        "accent-flat",
+        "success-flat",
+        "warning-flat",
+        "danger-flat",
+        "info-flat",
         "primary-outline",
         "secondary-outline",
+        "accent-outline",
         "success-outline",
         "warning-outline",
         "danger-outline",
         "info-outline",
       ],
-      description: "The visual variant of the badge",
+      description:
+        "Visual style. **Base colors:** primary (default), secondary (neutral), accent (brand), success/warning/danger/info (status). **Style modifiers:** -soft (pale bg + border), -flat (pale bg no border), -outline (transparent + colored border). **Special:** glass (frosted + border), frost (frosted no border), overlay (dark scrim). Use primary for main labels, success/danger for status, -soft for subtle tags.",
       table: {
         type: {
           summary:
-            '"primary" | "secondary" | "outline" | "success" | "warning" | "danger" | "info" | "primary-soft" | "secondary-soft" | "success-soft" | "warning-soft" | "danger-soft" | "info-soft" | "primary-outline" | "secondary-outline" | "success-outline" | "warning-outline" | "danger-outline" | "info-outline"',
+            '"primary" | "secondary" | "accent" | "outline" | "glass" | "frost" | "overlay" | "success" | "warning" | "danger" | "info" | "primary-soft" | "secondary-soft" | "accent-soft" | "success-soft" | "warning-soft" | "danger-soft" | "info-soft" | "primary-flat" | "secondary-flat" | "accent-flat" | "success-flat" | "warning-flat" | "danger-flat" | "info-flat" | "primary-outline" | "secondary-outline" | "accent-outline" | "success-outline" | "warning-outline" | "danger-outline" | "info-outline"',
         },
         defaultValue: {
           summary: "primary",
@@ -142,7 +167,7 @@ const Variants = () => {
     <div className="flex flex-wrap items-end gap-4">
       <Badge variant="primary">Primary</Badge>
       <Badge variant="secondary">Secondary</Badge>
-      <Badge variant="outline">Outline</Badge>
+      <Badge variant="accent">Accent</Badge>
       <Badge variant="success">Success</Badge>
       <Badge variant="warning">Warning</Badge>
       <Badge variant="danger">Danger</Badge>
@@ -163,8 +188,8 @@ const Variants = () => {
         Secondary
       </Badge>
 
-      <Badge {...args} variant="outline">
-        Outline
+      <Badge {...args} variant="accent">
+        Accent
       </Badge>
 
       <Badge {...args} variant="success">
@@ -197,6 +222,7 @@ const SoftVariants = () => {
     <div className="flex flex-wrap items-end gap-4">
       <Badge variant="primary-soft">Primary</Badge>
       <Badge variant="secondary-soft">Secondary</Badge>
+      <Badge variant="accent-soft">Accent</Badge>
       <Badge variant="success-soft">Success</Badge>
       <Badge variant="warning-soft">Warning</Badge>
       <Badge variant="danger-soft">Danger</Badge>
@@ -215,6 +241,10 @@ const SoftVariants = () => {
 
       <Badge {...args} variant="secondary-soft">
         Secondary
+      </Badge>
+
+      <Badge {...args} variant="accent-soft">
+        Accent
       </Badge>
 
       <Badge {...args} variant="success-soft">
@@ -236,6 +266,61 @@ const SoftVariants = () => {
   ),
 };
 
+const FlatVariants: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Badge } from "@fried-ui/react";
+
+const FlatVariants = () => {
+  return (
+    <div className="flex flex-wrap items-end gap-4">
+      <Badge variant="primary-flat">Primary</Badge>
+      <Badge variant="secondary-flat">Secondary</Badge>
+      <Badge variant="accent-flat">Accent</Badge>
+      <Badge variant="success-flat">Success</Badge>
+      <Badge variant="warning-flat">Warning</Badge>
+      <Badge variant="danger-flat">Danger</Badge>
+      <Badge variant="info-flat">Info</Badge>
+    </div>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex flex-wrap items-end gap-4">
+      <Badge {...args} variant="primary-flat">
+        Primary
+      </Badge>
+
+      <Badge {...args} variant="secondary-flat">
+        Secondary
+      </Badge>
+
+      <Badge {...args} variant="accent-flat">
+        Accent
+      </Badge>
+
+      <Badge {...args} variant="success-flat">
+        Success
+      </Badge>
+
+      <Badge {...args} variant="warning-flat">
+        Warning
+      </Badge>
+
+      <Badge {...args} variant="danger-flat">
+        Danger
+      </Badge>
+
+      <Badge {...args} variant="info-flat">
+        Info
+      </Badge>
+    </div>
+  ),
+};
+
 const OutlineVariants: Story = {
   parameters: {
     docs: {
@@ -247,6 +332,7 @@ const OutlineVariants = () => {
     <div className="flex flex-wrap items-end gap-4">
       <Badge variant="primary-outline">Primary</Badge>
       <Badge variant="secondary-outline">Secondary</Badge>
+      <Badge variant="accent-outline">Accent</Badge>
       <Badge variant="success-outline">Success</Badge>
       <Badge variant="warning-outline">Warning</Badge>
       <Badge variant="danger-outline">Danger</Badge>
@@ -267,6 +353,10 @@ const OutlineVariants = () => {
         Secondary
       </Badge>
 
+      <Badge {...args} variant="accent-outline">
+        Accent
+      </Badge>
+
       <Badge {...args} variant="success-outline">
         Success
       </Badge>
@@ -281,6 +371,158 @@ const OutlineVariants = () => {
 
       <Badge {...args} variant="info-outline">
         Info
+      </Badge>
+    </div>
+  ),
+};
+
+const GlassVariants: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Badge } from "@fried-ui/react";
+
+const GlassVariants = () => {
+  return (
+    <div className="flex w-[640px] h-56 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
+      <div className="flex flex-wrap items-end gap-4">
+        <Badge variant="glass">Featured</Badge>
+        <Badge variant="glass">New</Badge>
+        <Badge variant="glass">Premium</Badge>
+      </div>
+    </div>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
+      <div className="flex flex-wrap items-end gap-4">
+        <Badge {...args} variant="glass">
+          Featured
+        </Badge>
+
+        <Badge {...args} variant="glass">
+          New
+        </Badge>
+
+        <Badge {...args} variant="glass">
+          Premium
+        </Badge>
+      </div>
+    </div>
+  ),
+};
+
+const FrostVariants: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Badge } from "@fried-ui/react";
+
+const FrostVariants = () => {
+  return (
+    <div className="flex w-[640px] h-56 items-center justify-center bg-linear-to-br from-emerald-400 via-teal-500 via-cyan-500 via-sky-500 to-purple-600 p-16">
+      <div className="flex flex-wrap items-end gap-4">
+        <Badge variant="frost">Featured</Badge>
+        <Badge variant="frost">New</Badge>
+        <Badge variant="frost">Premium</Badge>
+      </div>
+    </div>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-emerald-400 via-cyan-500 via-sky-500 via-teal-500 to-purple-600 p-16">
+      <div className="flex flex-wrap items-end gap-4">
+        <Badge {...args} variant="frost">
+          Featured
+        </Badge>
+
+        <Badge {...args} variant="frost">
+          New
+        </Badge>
+
+        <Badge {...args} variant="frost">
+          Premium
+        </Badge>
+      </div>
+    </div>
+  ),
+};
+
+const OverlayVariants: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Badge } from "@fried-ui/react";
+
+const OverlayVariants = () => {
+  return (
+    <div className="flex w-[640px] h-56 items-center justify-center bg-linear-to-br from-orange-400 via-rose-500 via-fuchsia-500 via-purple-500 to-purple-600 p-16">
+      <div className="flex flex-wrap items-end gap-4">
+        <Badge variant="overlay">Live</Badge>
+        <Badge variant="overlay">HD</Badge>
+        <Badge variant="overlay">4K</Badge>
+      </div>
+    </div>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-orange-400 via-fuchsia-500 via-purple-500 via-rose-500 to-purple-600 p-16">
+      <div className="flex flex-wrap items-end gap-4">
+        <Badge {...args} variant="overlay">
+          Live
+        </Badge>
+
+        <Badge {...args} variant="overlay">
+          HD
+        </Badge>
+
+        <Badge {...args} variant="overlay">
+          4K
+        </Badge>
+      </div>
+    </div>
+  ),
+};
+
+const Sizes: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Badge } from "@fried-ui/react";
+
+const Sizes = () => {
+  return (
+    <div className="flex items-end gap-4">
+      <Badge size="sm">Small</Badge>
+      <Badge size="md">Medium</Badge>
+      <Badge size="lg">Large</Badge>
+    </div>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex items-end gap-4">
+      <Badge {...args} size="sm">
+        Small
+      </Badge>
+
+      <Badge {...args} size="md">
+        Medium
+      </Badge>
+
+      <Badge {...args} size="lg">
+        Large
       </Badge>
     </div>
   ),
@@ -331,62 +573,32 @@ const Radius = () => {
   ),
 };
 
-const Sizes: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Badge } from "@fried-ui/react";
-
-const Sizes = () => {
-  return (
-    <div className="flex items-end gap-4">
-      <Badge size="sm">Small</Badge>
-      <Badge size="md">Medium</Badge>
-      <Badge size="lg">Large</Badge>
-    </div>
-  );
-};`,
-      },
-    },
-  },
-  render: (args): React.JSX.Element => (
-    <div className="flex items-end gap-4">
-      <Badge {...args} size="sm">
-        Small
-      </Badge>
-
-      <Badge {...args} size="md">
-        Medium
-      </Badge>
-
-      <Badge {...args} size="lg">
-        Large
-      </Badge>
-    </div>
-  ),
-};
-
 const WithIcon: Story = {
   parameters: {
     docs: {
       source: {
-        code: `import { Badge, SettingsIcon } from "@fried-ui/react";
+        code: `import { Badge, CheckCircleIcon, ExclamationTriangleIcon, InformationCircleIcon, XCircleIcon } from "@fried-ui/react";
 
 const WithIcon = () => {
   return (
     <div className="flex items-end gap-4">
-      <Badge>
-        <SettingsIcon slot="icon-start" />
-        Settings
+      <Badge variant="info">
+        <InformationCircleIcon slot="icon-start" />
+        Info
       </Badge>
 
       <Badge variant="success">
-        <SettingsIcon slot="icon-start" />
-        Active
+        <CheckCircleIcon slot="icon-start" />
+        Success
+      </Badge>
+
+      <Badge variant="warning">
+        <ExclamationTriangleIcon slot="icon-start" />
+        Warning
       </Badge>
 
       <Badge variant="danger">
-        <SettingsIcon slot="icon-start" />
+        <XCircleIcon slot="icon-start" />
         Error
       </Badge>
     </div>
@@ -397,18 +609,23 @@ const WithIcon = () => {
   },
   render: (args): React.JSX.Element => (
     <div className="flex items-end gap-4">
-      <Badge {...args}>
-        <SettingsIcon slot="icon-start" />
-        Settings
+      <Badge {...args} variant="info">
+        <InformationCircleIcon slot="icon-start" />
+        Info
       </Badge>
 
       <Badge {...args} variant="success">
-        <SettingsIcon slot="icon-start" />
-        Active
+        <CheckCircleIcon slot="icon-start" />
+        Success
+      </Badge>
+
+      <Badge {...args} variant="warning">
+        <ExclamationTriangleIcon slot="icon-start" />
+        Warning
       </Badge>
 
       <Badge {...args} variant="danger">
-        <SettingsIcon slot="icon-start" />
+        <XCircleIcon slot="icon-start" />
         Error
       </Badge>
     </div>
@@ -419,21 +636,37 @@ const IconOnly: Story = {
   parameters: {
     docs: {
       source: {
-        code: `import { Badge, InformationCircleIcon } from "@fried-ui/react";
+        code: `import { Badge, BellIcon, CheckCircleIcon, HeartIcon, InformationCircleIcon, LockIcon, StarIcon, XCircleIcon } from "@fried-ui/react";
 
 const IconOnly = () => {
   return (
-    <div className="flex items-end gap-4">
-      <Badge size="sm" aria-label="Info" isIconOnly>
+    <div className="flex flex-wrap items-end gap-4">
+      <Badge aria-label="Info" isIconOnly>
         <InformationCircleIcon slot="icon" />
       </Badge>
 
-      <Badge size="md" aria-label="Info" isIconOnly>
-        <InformationCircleIcon slot="icon" />
+      <Badge variant="success" aria-label="Success" isIconOnly>
+        <CheckCircleIcon slot="icon" />
       </Badge>
 
-      <Badge size="lg" aria-label="Info" isIconOnly>
-        <InformationCircleIcon slot="icon" />
+      <Badge variant="warning" radius="none" aria-label="Warning" isIconOnly>
+        <StarIcon slot="icon" />
+      </Badge>
+
+      <Badge variant="danger" radius="sm" aria-label="Error" isIconOnly>
+        <XCircleIcon slot="icon" />
+      </Badge>
+
+      <Badge variant="info" radius="md" aria-label="Notification" isIconOnly>
+        <BellIcon slot="icon" />
+      </Badge>
+
+      <Badge variant="secondary" radius="lg" aria-label="Favorite" isIconOnly>
+        <HeartIcon slot="icon" />
+      </Badge>
+
+      <Badge variant="outline" radius="full" aria-label="Private" isIconOnly>
+        <LockIcon slot="icon" />
       </Badge>
     </div>
   );
@@ -442,22 +675,51 @@ const IconOnly = () => {
     },
   },
   render: (args): React.JSX.Element => (
-    <div className="flex items-end gap-4">
-      <Badge {...args} size="sm" aria-label="Info" isIconOnly>
+    <div className="flex flex-wrap items-end gap-4">
+      <Badge {...args} aria-label="Info" isIconOnly>
         <InformationCircleIcon slot="icon" />
       </Badge>
 
-      <Badge {...args} size="md" aria-label="Info" isIconOnly>
-        <InformationCircleIcon slot="icon" />
+      <Badge {...args} variant="success" aria-label="Success" isIconOnly>
+        <CheckCircleIcon slot="icon" />
       </Badge>
 
-      <Badge {...args} size="lg" aria-label="Info" isIconOnly>
-        <InformationCircleIcon slot="icon" />
+      <Badge {...args} variant="warning" radius="none" aria-label="Warning" isIconOnly>
+        <StarIcon slot="icon" />
+      </Badge>
+
+      <Badge {...args} variant="danger" radius="sm" aria-label="Error" isIconOnly>
+        <XCircleIcon slot="icon" />
+      </Badge>
+
+      <Badge {...args} variant="info" radius="md" aria-label="Notification" isIconOnly>
+        <BellIcon slot="icon" />
+      </Badge>
+
+      <Badge {...args} variant="secondary" radius="lg" aria-label="Favorite" isIconOnly>
+        <HeartIcon slot="icon" />
+      </Badge>
+
+      <Badge {...args} variant="outline" radius="full" aria-label="Private" isIconOnly>
+        <LockIcon slot="icon" />
       </Badge>
     </div>
   ),
 };
 
-export { Default, Variants, SoftVariants, OutlineVariants, Radius, Sizes, WithIcon, IconOnly };
+export {
+  Default,
+  Variants,
+  SoftVariants,
+  FlatVariants,
+  OutlineVariants,
+  GlassVariants,
+  FrostVariants,
+  OverlayVariants,
+  Sizes,
+  Radius,
+  WithIcon,
+  IconOnly,
+};
 
 export default meta;

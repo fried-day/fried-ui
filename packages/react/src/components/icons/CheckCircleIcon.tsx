@@ -1,6 +1,6 @@
 import type { ComponentPropsWithRef } from "react";
 
-const ArrowRightIcon = (props: Readonly<ComponentPropsWithRef<"svg">>) => {
+const CheckCircleIcon = (props: Readonly<ComponentPropsWithRef<"svg">>) => {
   const { className, ref, ...rest } = props;
 
   return (
@@ -15,13 +15,12 @@ const ArrowRightIcon = (props: Readonly<ComponentPropsWithRef<"svg">>) => {
       ref={ref}
       {...rest}
     >
-      <path d="M5 12l14 0" />
-      <path d="M13 18l6 -6" />
-      <path d="M13 6l6 6" />
+      <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+      <path d="M9 12l2 2l4 -4" />
     </svg>
   );
 };
 
-ArrowRightIcon.displayName = "ArrowRightIcon";
+CheckCircleIcon.displayName = "CheckCircleIcon";
 
-export { ArrowRightIcon };
+export { CheckCircleIcon };

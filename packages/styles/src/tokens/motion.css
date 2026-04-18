@@ -1,9 +1,9 @@
 @theme {
-  --duration-instant: 100ms;
-  --duration-fast: 150ms;
-  --duration-normal: 200ms;
-  --duration-slow: 300ms;
-
+  --duration-press: 80ms;
+  --duration-toggle: 100ms;
+  --duration-hover: 150ms;
+  --duration-reveal: 200ms;
+  --duration-enter: 300ms;
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-in: cubic-bezier(0.4, 0, 1, 1);
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
@@ -68,9 +68,11 @@
 
 @media (prefers-reduced-motion: reduce) {
   :root {
-    --duration-fast: 0ms;
-    --duration-normal: 0ms;
-    --duration-slow: 0ms;
+    --duration-press: 0ms;
+    --duration-toggle: 0ms;
+    --duration-hover: 0ms;
+    --duration-reveal: 0ms;
+    --duration-enter: 0ms;
     --animate-fade-in: none;
     --animate-fade-out: none;
     --animate-slide-in-up: none;

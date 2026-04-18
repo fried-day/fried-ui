@@ -22,15 +22,15 @@ Every semantic color has 7 tokens:
 | `{name}-hover`           | Background on hover                  |
 | `{name}-active`          | Background on pressed                |
 | `{name}-foreground`      | Text on solid background             |
-| `{name}-pale`            | Soft background (alert, soft button) |
-| `{name}-pale-foreground` | Text on pale background              |
-| `{name}-pale-border`     | Border on pale background            |
+| `{name}-soft`            | Soft background (alert, soft button) |
+| `{name}-soft-foreground` | Text on pale background              |
+| `{name}-soft-border`     | Border on pale background            |
 
 Available groups: `primary`, `secondary`, `success`, `warning`, `danger`, `info`
 
 ```tsx
 <div className="bg-primary text-primary-foreground">Solid</div>
-<div className="bg-primary-pale text-primary-pale-foreground border border-primary-pale-border">Soft</div>
+<div className="bg-primary-soft text-primary-soft-foreground border border-primary-soft-border">Soft</div>
 ```
 
 ## Shadow
@@ -76,18 +76,9 @@ Each color group has a shadow token using `em` units — shadows scale proportio
 <span className="text-foreground-muted">Updated 2 hours ago</span>
 ```
 
-### Heading Sizes (√φ scale)
+### Heading Sizes
 
-Sizes derived from √φ (1.272):
-
-| Level | Token          | Size      |
-| ----- | -------------- | --------- |
-| h1    | `--heading-h1` | 2.0625rem |
-| h2    | `--heading-h2` | 1.625rem  |
-| h3    | `--heading-h3` | 1.25rem   |
-| h4    | `--heading-h4` | 1.125rem  |
-| h5    | `--heading-h5` | 1rem      |
-| h6    | `--heading-h6` | 0.875rem  |
+Use Tailwind text size utilities directly for headings (`text-4xl`, `text-3xl`, etc.).
 
 ## Spacing (Golden Ratio)
 
@@ -113,14 +104,14 @@ All spacing derives from font-size × φ (1.618), rounded to nearest Tailwind st
 
 | Token            | Value | Usage                  |
 | ---------------- | ----- | ---------------------- |
-| `--z-floating`   | 10    | Dropdown, tooltip      |
+| `--z-popover`    | 10    | Dropdown, tooltip      |
 | `--z-navigation` | 20    | Sticky header, sidebar |
 | `--z-overlay`    | 30    | Backdrop               |
 | `--z-dialog`     | 40    | Modal, drawer          |
 | `--z-alert`      | 50    | Toast, notification    |
 
 ```tsx
-<div className="z-floating">Dropdown</div>
+<div className="z-popover">Dropdown</div>
 <div className="z-dialog">Modal</div>
 ```
 
@@ -139,12 +130,13 @@ All durations stay under 400ms (Doherty Threshold). Automatically disabled when 
 
 ### Duration
 
-| Token                | Value | Usage                      |
-| -------------------- | ----- | -------------------------- |
-| `--duration-instant` | 100ms | Toggle, checkbox           |
-| `--duration-fast`    | 150ms | Button hover, color change |
-| `--duration-normal`  | 200ms | Dropdown open, fade        |
-| `--duration-slow`    | 300ms | Modal enter, slide         |
+| Token               | Value | Usage                          |
+| ------------------- | ----- | ------------------------------ |
+| `--duration-press`  | 80ms  | Button press, tactile feedback |
+| `--duration-toggle` | 100ms | Switch, checkbox flip          |
+| `--duration-hover`  | 150ms | Button hover, color change     |
+| `--duration-reveal` | 200ms | Dropdown, tooltip, fade        |
+| `--duration-enter`  | 300ms | Modal, drawer, slide           |
 
 ### Easing
 
@@ -155,7 +147,7 @@ All durations stay under 400ms (Doherty Threshold). Automatically disabled when 
 | `--ease-out`    | cubic-bezier(0, 0, 0.2, 1)   | Element entering |
 
 ```tsx
-<div className="transition-colors duration-(--duration-fast) ease-smooth">Hover me</div>
+<div className="transition-colors duration-(--duration-hover) ease-out">Hover me</div>
 ```
 
 ### Animations

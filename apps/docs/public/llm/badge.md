@@ -16,43 +16,26 @@ import { Badge } from "@fried-ui/react";
 
 ## Props
 
-| Prop         | Type                                                                                                                                                                                                                                                                                                                                                              | Default     | Description                           |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ------------------------------------- |
-| `variant`    | `"primary"` \| `"secondary"` \| `"outline"` \| `"success"` \| `"warning"` \| `"danger"` \| `"info"` \| `"primary-soft"` \| `"secondary-soft"` \| `"success-soft"` \| `"warning-soft"` \| `"danger-soft"` \| `"info-soft"` \| `"primary-outline"` \| `"secondary-outline"` \| `"success-outline"` \| `"warning-outline"` \| `"danger-outline"` \| `"info-outline"` | `"primary"` | Visual variant                        |
-| `size`       | `"sm"` \| `"md"` \| `"lg"`                                                                                                                                                                                                                                                                                                                                        | `"md"`      | Size — controls padding, font         |
-| `isIconOnly` | `boolean`                                                                                                                                                                                                                                                                                                                                                         | `false`     | Square badge for icon-only indicators |
-| `className`  | `string`                                                                                                                                                                                                                                                                                                                                                          | -           | Additional CSS classes                |
-| `ref`        | `Ref<HTMLSpanElement>`                                                                                                                                                                                                                                                                                                                                            | -           | Forwarded ref to span element         |
-| `children`   | `ReactNode`                                                                                                                                                                                                                                                                                                                                                       | -           | Badge content                         |
+| Prop         | Type                                               | Default     | Description                           |
+| ------------ | -------------------------------------------------- | ----------- | ------------------------------------- |
+| `variant`    | `BadgeVariant` (see Variants)                      | `"primary"` | Visual variant (32 options)           |
+| `size`       | `"sm"` \| `"md"` \| `"lg"`                         | `"md"`      | Size — controls padding, font         |
+| `radius`     | `"none"` \| `"sm"` \| `"md"` \| `"lg"` \| `"full"` | `"full"`    | Border radius (pill by default)       |
+| `isIconOnly` | `boolean`                                          | `false`     | Square badge for icon-only indicators |
+| `aria-label` | `string`                                           | -           | Required for icon-only badges         |
+| `className`  | `string`                                           | -           | Additional CSS classes                |
+| `ref`        | `Ref<HTMLSpanElement>`                             | -           | Forwarded ref to span element         |
+| `children`   | `ReactNode`                                        | -           | Badge content                         |
 
 ## CSS Classes
 
-| Class                          | Description               |
-| ------------------------------ | ------------------------- |
-| `fri-badge`                    | Base styles               |
-| `fri-badge--primary`           | Primary variant           |
-| `fri-badge--secondary`         | Secondary variant         |
-| `fri-badge--outline`           | Outline variant           |
-| `fri-badge--success`           | Success variant           |
-| `fri-badge--warning`           | Warning variant           |
-| `fri-badge--danger`            | Danger variant            |
-| `fri-badge--info`              | Info variant              |
-| `fri-badge--primary-soft`      | Primary soft variant      |
-| `fri-badge--secondary-soft`    | Secondary soft variant    |
-| `fri-badge--success-soft`      | Success soft variant      |
-| `fri-badge--warning-soft`      | Warning soft variant      |
-| `fri-badge--danger-soft`       | Danger soft variant       |
-| `fri-badge--info-soft`         | Info soft variant         |
-| `fri-badge--primary-outline`   | Primary outline variant   |
-| `fri-badge--secondary-outline` | Secondary outline variant |
-| `fri-badge--success-outline`   | Success outline variant   |
-| `fri-badge--warning-outline`   | Warning outline variant   |
-| `fri-badge--danger-outline`    | Danger outline variant    |
-| `fri-badge--info-outline`      | Info outline variant      |
-| `fri-badge--size-sm`           | Small size                |
-| `fri-badge--size-md`           | Medium size               |
-| `fri-badge--size-lg`           | Large size                |
-| `fri-badge--icon-only`         | Icon-only square          |
+| Class                       | Description                               |
+| --------------------------- | ----------------------------------------- |
+| `fri-badge`                 | Base styles                               |
+| `fri-badge--{variant}`      | Variant class (see 32 variants)           |
+| `fri-badge--size-{size}`    | Size (`sm` \| `md` \| `lg`)               |
+| `fri-badge--radius-{value}` | Radius (`none \| sm \| md \| lg \| full`) |
+| `fri-badge--icon-only`      | Icon-only square                          |
 
 ## CSS Variables
 
@@ -63,36 +46,54 @@ import { Badge } from "@fried-ui/react";
 
 ## Examples
 
-### Solid Variants
+### Variants
+
+**32 variants** — 11 base + 21 color-prefixed (3 modifiers × 7 colors).
+
+**Base variants:**
 
 ```tsx
-<Badge variant="primary">Primary</Badge>
-<Badge variant="secondary">Secondary</Badge>
-<Badge variant="success">Success</Badge>
-<Badge variant="warning">Warning</Badge>
-<Badge variant="danger">Danger</Badge>
-<Badge variant="info">Info</Badge>
+<Badge variant="primary">Primary</Badge>         {/* dark neutral, main label */}
+<Badge variant="secondary">Secondary</Badge>     {/* light neutral, less emphasis */}
+<Badge variant="accent">Accent</Badge>           {/* purple, brand highlight */}
+<Badge variant="outline">Outlined</Badge>        {/* neutral bordered */}
+<Badge variant="glass">Glass</Badge>             {/* frosted + border (on image) */}
+<Badge variant="frost">Frost</Badge>             {/* frosted no border (on image) */}
+<Badge variant="overlay">Overlay</Badge>         {/* dark scrim (on media) */}
+<Badge variant="success">Success</Badge>         {/* green status */}
+<Badge variant="warning">Warning</Badge>         {/* yellow status */}
+<Badge variant="danger">Danger</Badge>           {/* red status */}
+<Badge variant="info">Info</Badge>               {/* blue status */}
 ```
 
-### Soft Variants
-
-Pale background with colored text and border.
+**Color-prefixed variants** — combine `{color}` with `-soft`, `-flat`, or `-outline`:
 
 ```tsx
-<Badge variant="primary-soft">Primary</Badge>
-<Badge variant="success-soft">Success</Badge>
-<Badge variant="danger-soft">Danger</Badge>
+{/* -soft: pale bg + visible border (status tags) */}
+<Badge variant="success-soft">Draft</Badge>
+<Badge variant="danger-soft">Rejected</Badge>
+
+{/* -flat: pale bg no border (minimal subtle) */}
+<Badge variant="accent-flat">Featured</Badge>
+
+{/* -outline: transparent + colored border (emphasized label) */}
+<Badge variant="accent-outline">Pro</Badge>
+<Badge variant="danger-outline">Expired</Badge>
 ```
 
-### Colored Outline Variants
+**Colors:** `primary` `secondary` `accent` `success` `warning` `danger` `info`
+**Modifiers:** `-soft` `-flat` `-outline`
 
-Transparent background with colored border and text.
+**When to use:**
 
-```tsx
-<Badge variant="primary-outline">Primary</Badge>
-<Badge variant="success-outline">Success</Badge>
-<Badge variant="danger-outline">Danger</Badge>
-```
+- `primary` — main label (counts, category)
+- `accent` — brand feature (new, pro, featured)
+- `outline` — subtle label next to primary content
+- `success/warning/danger/info` — status indicators
+- `{color}-soft` — status tags with border emphasis
+- `{color}-flat` — minimal status tags
+- `{color}-outline` — emphasized status labels
+- `glass/frost/overlay` — badges on images or media
 
 ### Icon Only
 
@@ -128,9 +129,9 @@ Square badge for icon-only indicators. Always provide `aria-label`.
 
 ## Constraints
 
-- 20 variants: 8 solid + 6 soft + 6 colored outline
+- 32 variants: 11 base (primary, secondary, accent, outline, glass, frost, overlay, success, warning, danger, info) + 21 color-prefixed (7 colors × 3 modifiers: -soft, -flat, -outline; no -ghost — display-only)
 - 3 sizes: sm, md, lg
-- Fixed `rounded-full` border radius (pill shape)
+- 5 radius options: `none`, `sm`, `md`, `lg`, `full` (default `full` — pill shape)
 - Non-interactive — no hover, focus, or click states
 - BEM classes (`fri-badge`, `fri-badge--primary-soft`, etc.)
 - Shadow uses em units — scales with component font-size

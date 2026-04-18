@@ -1,4 +1,5 @@
 .fri-surface {
+  @apply border border-transparent;
   @apply bg-(--color-surface) text-(--color-surface-foreground);
   @apply rounded-md;
 }
@@ -7,16 +8,48 @@
   @apply bg-(--color-surface) text-(--color-surface-foreground);
 }
 
-.fri-surface--bordered {
-  @apply border border-border bg-transparent;
+.fri-surface--default-bordered {
+  @apply border-(--color-surface-border) bg-(--color-surface) text-(--color-surface-foreground);
+}
+
+.fri-surface--plain {
+  @apply bg-(--color-surface-plain) text-(--color-surface-plain-foreground);
+}
+
+.fri-surface--plain-bordered {
+  @apply border-(--color-surface-plain-border) bg-(--color-surface-plain) text-(--color-surface-plain-foreground);
 }
 
 .fri-surface--glass {
-  @apply bg-surface-glass backdrop-blur-md;
+  @apply border-glass-border bg-glass text-glass-foreground backdrop-blur-xl backdrop-saturate-200;
 }
 
-.fri-surface--primary {
-  @apply bg-primary text-primary-foreground;
+.fri-surface--frost {
+  @apply bg-glass text-glass-foreground backdrop-blur-2xl backdrop-saturate-200;
+}
+
+.fri-surface--overlay {
+  @apply border-scrim-border bg-scrim text-scrim-foreground backdrop-blur-xl backdrop-saturate-150;
+}
+
+.fri-surface--shadow-none {
+  @apply shadow-none;
+}
+
+.fri-surface--shadow-sm {
+  @apply shadow-sm;
+}
+
+.fri-surface--shadow-md {
+  @apply shadow-md;
+}
+
+.fri-surface--shadow-lg {
+  @apply shadow-lg;
+}
+
+.fri-surface--shadow-xl {
+  @apply shadow-xl;
 }
 
 .fri-surface--radius-none {
