@@ -15,11 +15,15 @@ const meta = {
     variant: "primary",
     size: "md",
     radius: "md",
+    isIconOnly: false,
+    isFullWidth: false,
+    isDisabled: false,
+    isPending: false,
   },
   argTypes: {
     children: {
       control: "text",
-      description: "Button content",
+      description: "Button content (text, icons, or both)",
       table: {
         type: {
           summary: "ReactNode",
@@ -29,11 +33,54 @@ const meta = {
     },
     variant: {
       control: "select",
-      options: ["primary", "secondary", "ghost", "outline", "success", "warning", "danger", "info"],
-      description: "The visual variant of the button",
+      options: [
+        "primary",
+        "secondary",
+        "accent",
+        "ghost",
+        "outline",
+        "glass",
+        "frost",
+        "overlay",
+        "success",
+        "warning",
+        "danger",
+        "info",
+        "primary-soft",
+        "secondary-soft",
+        "accent-soft",
+        "success-soft",
+        "warning-soft",
+        "danger-soft",
+        "info-soft",
+        "primary-flat",
+        "secondary-flat",
+        "accent-flat",
+        "success-flat",
+        "warning-flat",
+        "danger-flat",
+        "info-flat",
+        "primary-outline",
+        "secondary-outline",
+        "accent-outline",
+        "success-outline",
+        "warning-outline",
+        "danger-outline",
+        "info-outline",
+        "primary-ghost",
+        "secondary-ghost",
+        "accent-ghost",
+        "success-ghost",
+        "warning-ghost",
+        "danger-ghost",
+        "info-ghost",
+      ],
+      description:
+        "Visual style. **Base colors:** primary (main CTA), secondary (neutral action), accent (brand highlight), ghost (dismissive), outline (neutral outlined), success/warning/danger/info (status). **Modifiers:** -soft (pale + border), -flat (pale no border), -outline (transparent + colored border), -ghost (transparent, hover reveal). **Special:** glass (frosted + border), frost (frosted no border), overlay (dark scrim). Use primary for primary CTA, accent for brand CTA, danger for destructive, ghost for cancel/dismiss.",
       table: {
         type: {
-          summary: '"primary" | "secondary" | "ghost" | "outline" | "success" | "warning" | "danger" | "info"',
+          summary:
+            '"primary" | "secondary" | "accent" | "ghost" | "outline" | "glass" | "frost" | "overlay" | "success" | "warning" | "danger" | "info" | "primary-soft" | "secondary-soft" | "accent-soft" | "success-soft" | "warning-soft" | "danger-soft" | "info-soft" | "primary-flat" | "secondary-flat" | "accent-flat" | "success-flat" | "warning-flat" | "danger-flat" | "info-flat" | "primary-outline" | "secondary-outline" | "accent-outline" | "success-outline" | "warning-outline" | "danger-outline" | "info-outline" | "primary-ghost" | "secondary-ghost" | "accent-ghost" | "success-ghost" | "warning-ghost" | "danger-ghost" | "info-ghost"',
         },
         defaultValue: {
           summary: "primary",
@@ -171,8 +218,7 @@ const Variants = () => {
     <div className="flex flex-wrap items-end gap-4">
       <Button variant="primary">Primary</Button>
       <Button variant="secondary">Secondary</Button>
-      <Button variant="ghost">Ghost</Button>
-      <Button variant="outline">Outline</Button>
+      <Button variant="accent">Accent</Button>
       <Button variant="success">Success</Button>
       <Button variant="warning">Warning</Button>
       <Button variant="danger">Danger</Button>
@@ -193,12 +239,8 @@ const Variants = () => {
         Secondary
       </Button>
 
-      <Button {...args} variant="ghost">
-        Ghost
-      </Button>
-
-      <Button {...args} variant="outline">
-        Outline
+      <Button {...args} variant="accent">
+        Accent
       </Button>
 
       <Button {...args} variant="success">
@@ -214,6 +256,226 @@ const Variants = () => {
       </Button>
 
       <Button {...args} variant="info">
+        Info
+      </Button>
+    </div>
+  ),
+};
+
+const SoftVariants: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Button } from "@fried-ui/react";
+
+const SoftVariants = () => {
+  return (
+    <div className="flex flex-wrap items-end gap-4">
+      <Button variant="primary-soft">Primary</Button>
+      <Button variant="secondary-soft">Secondary</Button>
+      <Button variant="accent-soft">Accent</Button>
+      <Button variant="success-soft">Success</Button>
+      <Button variant="warning-soft">Warning</Button>
+      <Button variant="danger-soft">Danger</Button>
+      <Button variant="info-soft">Info</Button>
+    </div>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex flex-wrap items-end gap-4">
+      <Button {...args} variant="primary-soft">
+        Primary
+      </Button>
+
+      <Button {...args} variant="secondary-soft">
+        Secondary
+      </Button>
+
+      <Button {...args} variant="accent-soft">
+        Accent
+      </Button>
+
+      <Button {...args} variant="success-soft">
+        Success
+      </Button>
+
+      <Button {...args} variant="warning-soft">
+        Warning
+      </Button>
+
+      <Button {...args} variant="danger-soft">
+        Danger
+      </Button>
+
+      <Button {...args} variant="info-soft">
+        Info
+      </Button>
+    </div>
+  ),
+};
+
+const FlatVariants: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Button } from "@fried-ui/react";
+
+const FlatVariants = () => {
+  return (
+    <div className="flex flex-wrap items-end gap-4">
+      <Button variant="primary-flat">Primary</Button>
+      <Button variant="secondary-flat">Secondary</Button>
+      <Button variant="accent-flat">Accent</Button>
+      <Button variant="success-flat">Success</Button>
+      <Button variant="warning-flat">Warning</Button>
+      <Button variant="danger-flat">Danger</Button>
+      <Button variant="info-flat">Info</Button>
+    </div>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex flex-wrap items-end gap-4">
+      <Button {...args} variant="primary-flat">
+        Primary
+      </Button>
+
+      <Button {...args} variant="secondary-flat">
+        Secondary
+      </Button>
+
+      <Button {...args} variant="accent-flat">
+        Accent
+      </Button>
+
+      <Button {...args} variant="success-flat">
+        Success
+      </Button>
+
+      <Button {...args} variant="warning-flat">
+        Warning
+      </Button>
+
+      <Button {...args} variant="danger-flat">
+        Danger
+      </Button>
+
+      <Button {...args} variant="info-flat">
+        Info
+      </Button>
+    </div>
+  ),
+};
+
+const OutlineVariants: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Button } from "@fried-ui/react";
+
+const OutlineVariants = () => {
+  return (
+    <div className="flex flex-wrap items-end gap-4">
+      <Button variant="primary-outline">Primary</Button>
+      <Button variant="secondary-outline">Secondary</Button>
+      <Button variant="accent-outline">Accent</Button>
+      <Button variant="success-outline">Success</Button>
+      <Button variant="warning-outline">Warning</Button>
+      <Button variant="danger-outline">Danger</Button>
+      <Button variant="info-outline">Info</Button>
+    </div>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex flex-wrap items-end gap-4">
+      <Button {...args} variant="primary-outline">
+        Primary
+      </Button>
+
+      <Button {...args} variant="secondary-outline">
+        Secondary
+      </Button>
+
+      <Button {...args} variant="accent-outline">
+        Accent
+      </Button>
+
+      <Button {...args} variant="success-outline">
+        Success
+      </Button>
+
+      <Button {...args} variant="warning-outline">
+        Warning
+      </Button>
+
+      <Button {...args} variant="danger-outline">
+        Danger
+      </Button>
+
+      <Button {...args} variant="info-outline">
+        Info
+      </Button>
+    </div>
+  ),
+};
+
+const GhostVariants: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Button } from "@fried-ui/react";
+
+const GhostVariants = () => {
+  return (
+    <div className="flex flex-wrap items-end gap-4">
+      <Button variant="primary-ghost">Primary</Button>
+      <Button variant="secondary-ghost">Secondary</Button>
+      <Button variant="accent-ghost">Accent</Button>
+      <Button variant="success-ghost">Success</Button>
+      <Button variant="warning-ghost">Warning</Button>
+      <Button variant="danger-ghost">Danger</Button>
+      <Button variant="info-ghost">Info</Button>
+    </div>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex flex-wrap items-end gap-4">
+      <Button {...args} variant="primary-ghost">
+        Primary
+      </Button>
+
+      <Button {...args} variant="secondary-ghost">
+        Secondary
+      </Button>
+
+      <Button {...args} variant="accent-ghost">
+        Accent
+      </Button>
+
+      <Button {...args} variant="success-ghost">
+        Success
+      </Button>
+
+      <Button {...args} variant="warning-ghost">
+        Warning
+      </Button>
+
+      <Button {...args} variant="danger-ghost">
+        Danger
+      </Button>
+
+      <Button {...args} variant="info-ghost">
         Info
       </Button>
     </div>
@@ -503,6 +765,141 @@ const RenderProps = () => {
   ),
 };
 
-export { Default, Variants, Sizes, Radius, WithIcon, IconOnly, FullWidth, Disabled, Pending, RenderProps };
+const GlassVariants: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Button } from "@fried-ui/react";
+
+const GlassVariants = () => {
+  return (
+    <div className="flex w-[640px] h-56 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-600 via-purple-500 to-blue-600 p-16">
+      <div className="flex flex-wrap items-end gap-4">
+        <Button variant="glass">Get Started</Button>
+        <Button variant="glass">Sign In</Button>
+        <Button variant="glass">Learn More</Button>
+      </div>
+    </div>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
+      <div className="flex flex-wrap items-end gap-4">
+        <Button {...args} variant="glass">
+          Get Started
+        </Button>
+
+        <Button {...args} variant="glass">
+          Sign In
+        </Button>
+
+        <Button {...args} variant="glass">
+          Learn More
+        </Button>
+      </div>
+    </div>
+  ),
+};
+
+const FrostVariants: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Button } from "@fried-ui/react";
+
+const FrostVariants = () => {
+  return (
+    <div className="flex w-[640px] h-56 items-center justify-center bg-linear-to-br from-emerald-400 via-teal-500 via-cyan-500 via-sky-500 to-purple-600 p-16">
+      <div className="flex flex-wrap items-end gap-4">
+        <Button variant="frost">Get Started</Button>
+        <Button variant="frost">Sign In</Button>
+        <Button variant="frost">Learn More</Button>
+      </div>
+    </div>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-emerald-400 via-cyan-500 via-sky-500 via-teal-500 to-purple-600 p-16">
+      <div className="flex flex-wrap items-end gap-4">
+        <Button {...args} variant="frost">
+          Get Started
+        </Button>
+
+        <Button {...args} variant="frost">
+          Sign In
+        </Button>
+
+        <Button {...args} variant="frost">
+          Learn More
+        </Button>
+      </div>
+    </div>
+  ),
+};
+
+const OverlayVariants: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Button } from "@fried-ui/react";
+
+const OverlayVariants = () => {
+  return (
+    <div className="flex w-[640px] h-56 items-center justify-center bg-linear-to-br from-orange-400 via-rose-500 via-fuchsia-500 via-purple-500 to-purple-600 p-16">
+      <div className="flex flex-wrap items-end gap-4">
+        <Button variant="overlay">Play</Button>
+        <Button variant="overlay">Pause</Button>
+        <Button variant="overlay">Mute</Button>
+      </div>
+    </div>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-orange-400 via-fuchsia-500 via-purple-500 via-rose-500 to-purple-600 p-16">
+      <div className="flex flex-wrap items-end gap-4">
+        <Button {...args} variant="overlay">
+          Play
+        </Button>
+
+        <Button {...args} variant="overlay">
+          Pause
+        </Button>
+
+        <Button {...args} variant="overlay">
+          Mute
+        </Button>
+      </div>
+    </div>
+  ),
+};
+
+export {
+  Default,
+  Variants,
+  SoftVariants,
+  FlatVariants,
+  OutlineVariants,
+  GhostVariants,
+  GlassVariants,
+  FrostVariants,
+  OverlayVariants,
+  Sizes,
+  Radius,
+  WithIcon,
+  IconOnly,
+  FullWidth,
+  Disabled,
+  Pending,
+  RenderProps,
+};
 
 export default meta;

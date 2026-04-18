@@ -7,7 +7,7 @@
   --cursor-interactive: pointer;
   --cursor-disabled: not-allowed;
 
-  --z-floating: 10;
+  --z-popover: 10;
   --z-navigation: 20;
   --z-overlay: 30;
   --z-dialog: 40;

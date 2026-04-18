@@ -17,7 +17,7 @@ describe("Surface", () => {
   });
 
   it("applies all variant classes", () => {
-    const variants = ["default", "bordered", "glass", "primary"] as const;
+    const variants = ["default", "default-bordered", "plain", "plain-bordered", "glass", "frost", "overlay"] as const;
 
     variants.forEach((variant) => {
       const { unmount } = render(<Surface variant={variant}>{variant}</Surface>);
@@ -36,16 +36,27 @@ describe("Surface", () => {
     });
   });
 
-  it("combines variant + radius", () => {
+  it("applies shadow class with key-value format", () => {
+    const shadowValues = ["none", "sm", "md", "lg", "xl"] as const;
+
+    shadowValues.forEach((shadow) => {
+      const { unmount } = render(<Surface shadow={shadow}>{shadow}</Surface>);
+      expect(screen.getByText(shadow).className).toContain(`fri-surface--shadow-${shadow}`);
+      unmount();
+    });
+  });
+
+  it("combines variant + radius + shadow", () => {
     render(
-      <Surface variant="bordered" radius="lg">
+      <Surface variant="plain-bordered" radius="lg" shadow="md">
         Combined
       </Surface>,
     );
 
     const el = screen.getByText("Combined");
-    expect(el.className).toContain("fri-surface--bordered");
+    expect(el.className).toContain("fri-surface--plain-bordered");
     expect(el.className).toContain("fri-surface--radius-lg");
+    expect(el.className).toContain("fri-surface--shadow-md");
   });
 
   it("merges custom className", () => {

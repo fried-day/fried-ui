@@ -1,8 +1,6 @@
-"use client";
-
 import type { ComponentPropsWithRef } from "react";
 
-const InformationCircleIcon = (props: Readonly<ComponentPropsWithRef<"svg"> & { slot?: string }>) => {
+const InformationCircleIcon = (props: Readonly<ComponentPropsWithRef<"svg">>) => {
   const { className, ref, ...rest } = props;
 
   return (
@@ -10,16 +8,16 @@ const InformationCircleIcon = (props: Readonly<ComponentPropsWithRef<"svg"> & { 
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       className={className}
       ref={ref}
       {...rest}
     >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"
-      />
+      <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+      <path d="M12 9h.01" />
+      <path d="M11 12h1v4h1" />
     </svg>
   );
 };

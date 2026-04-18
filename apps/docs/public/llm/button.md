@@ -16,37 +16,65 @@ import { Button } from "@fried-ui/react";
 
 ## Props
 
-| Prop               | Type                                                                                               | Default     | Description                             |
-| ------------------ | -------------------------------------------------------------------------------------------------- | ----------- | --------------------------------------- |
-| `variant`          | `"primary" \| "secondary" \| "ghost" \| "outline" \| "success" \| "warning" \| "danger" \| "info"` | `"primary"` | Visual variant                          |
-| `size`             | `"sm" \| "md" \| "lg" \| "xl"`                                                                     | `"md"`      | Size — controls padding, gap, font-size |
-| `radius`           | `"none" \| "sm" \| "md" \| "lg" \| "full"`                                                         | `"md"`      | Border radius (independent from size)   |
-| `isIconOnly`       | `boolean`                                                                                          | `false`     | Icon-only square button                 |
-| `isFullWidth`      | `boolean`                                                                                          | `false`     | Full width button                       |
-| `isDisabled`       | `boolean`                                                                                          | `false`     | Disabled state                          |
-| `isPending`        | `boolean`                                                                                          | `false`     | Loading spinner, disables interaction   |
-| `onPress`          | `(e: PressEvent) => void`                                                                          | -           | Press handler (preferred over onClick)  |
-| `onPressStart`     | `(e: PressEvent) => void`                                                                          | -           | Press start handler                     |
-| `onPressEnd`       | `(e: PressEvent) => void`                                                                          | -           | Press end handler                       |
-| `onPressChange`    | `(isPressed: boolean) => void`                                                                     | -           | Press state change handler              |
-| `onHoverStart`     | `(e: HoverEvent) => void`                                                                          | -           | Hover start handler                     |
-| `onHoverEnd`       | `(e: HoverEvent) => void`                                                                          | -           | Hover end handler                       |
-| `onHoverChange`    | `(isHovering: boolean) => void`                                                                    | -           | Hover state change handler              |
-| `onFocus`          | `(e: FocusEvent) => void`                                                                          | -           | Focus handler                           |
-| `onBlur`           | `(e: FocusEvent) => void`                                                                          | -           | Blur handler                            |
-| `onFocusChange`    | `(isFocused: boolean) => void`                                                                     | -           | Focus state change handler              |
-| `onKeyDown`        | `(e: KeyboardEvent) => void`                                                                       | -           | Key down handler                        |
-| `onKeyUp`          | `(e: KeyboardEvent) => void`                                                                       | -           | Key up handler                          |
-| `type`             | `"button" \| "submit" \| "reset"`                                                                  | `"button"`  | HTML button type                        |
-| `form`             | `string`                                                                                           | -           | Associated form ID                      |
-| `formAction`       | `string`                                                                                           | -           | Form submission URL                     |
-| `autoFocus`        | `boolean`                                                                                          | `false`     | Auto focus on mount                     |
-| `aria-label`       | `string`                                                                                           | -           | Accessible label                        |
-| `aria-labelledby`  | `string`                                                                                           | -           | ID of labelling element                 |
-| `aria-describedby` | `string`                                                                                           | -           | ID of describing element                |
-| `className`        | `string`                                                                                           | -           | Additional CSS classes                  |
-| `ref`              | `Ref<HTMLButtonElement>`                                                                           | -           | Forwarded ref to button element         |
-| `children`         | `ReactNode \| (renderProps: ButtonRenderProps) => ReactNode`                                       | -           | Button content                          |
+| Prop               | Type                                                         | Default     | Description                             |
+| ------------------ | ------------------------------------------------------------ | ----------- | --------------------------------------- |
+| `variant`          | `ButtonVariant` (see Variants)                               | `"primary"` | Visual variant (40 options)             |
+| `size`             | `"sm" \| "md" \| "lg" \| "xl"`                               | `"md"`      | Size — controls padding, gap, font-size |
+| `radius`           | `"none" \| "sm" \| "md" \| "lg" \| "full"`                   | `"md"`      | Border radius (independent from size)   |
+| `isIconOnly`       | `boolean`                                                    | `false`     | Icon-only square button                 |
+| `isFullWidth`      | `boolean`                                                    | `false`     | Full width button                       |
+| `isDisabled`       | `boolean`                                                    | `false`     | Disabled state                          |
+| `isPending`        | `boolean`                                                    | `false`     | Loading spinner, disables interaction   |
+| `onPress`          | `(e: PressEvent) => void`                                    | -           | Press handler (preferred over onClick)  |
+| `onPressStart`     | `(e: PressEvent) => void`                                    | -           | Press start handler                     |
+| `onPressEnd`       | `(e: PressEvent) => void`                                    | -           | Press end handler                       |
+| `onPressChange`    | `(isPressed: boolean) => void`                               | -           | Press state change handler              |
+| `onHoverStart`     | `(e: HoverEvent) => void`                                    | -           | Hover start handler                     |
+| `onHoverEnd`       | `(e: HoverEvent) => void`                                    | -           | Hover end handler                       |
+| `onHoverChange`    | `(isHovering: boolean) => void`                              | -           | Hover state change handler              |
+| `onFocus`          | `(e: FocusEvent) => void`                                    | -           | Focus handler                           |
+| `onBlur`           | `(e: FocusEvent) => void`                                    | -           | Blur handler                            |
+| `onFocusChange`    | `(isFocused: boolean) => void`                               | -           | Focus state change handler              |
+| `onKeyDown`        | `(e: KeyboardEvent) => void`                                 | -           | Key down handler                        |
+| `onKeyUp`          | `(e: KeyboardEvent) => void`                                 | -           | Key up handler                          |
+| `type`             | `"button" \| "submit" \| "reset"`                            | `"button"`  | HTML button type                        |
+| `form`             | `string`                                                     | -           | Associated form ID                      |
+| `formAction`       | `string`                                                     | -           | Form submission URL                     |
+| `autoFocus`        | `boolean`                                                    | `false`     | Auto focus on mount                     |
+| `aria-label`       | `string`                                                     | -           | Accessible label                        |
+| `aria-labelledby`  | `string`                                                     | -           | ID of labelling element                 |
+| `aria-describedby` | `string`                                                     | -           | ID of describing element                |
+| `className`        | `string`                                                     | -           | Additional CSS classes                  |
+| `ref`              | `Ref<HTMLButtonElement>`                                     | -           | Forwarded ref to button element         |
+| `children`         | `ReactNode \| (renderProps: ButtonRenderProps) => ReactNode` | -           | Button content                          |
+
+## Inherited from React Aria Button
+
+Additional props forwarded to the underlying React Aria `Button`. Use these when building composite patterns (menu triggers, toggles, form buttons). React DOM events (`onClick`, `onMouseMove`, etc.) are also inherited but omitted here — prefer React Aria handlers like `onPress`.
+
+| Prop                  | Type                                                             | Default | Description                                                                     |
+| --------------------- | ---------------------------------------------------------------- | ------- | ------------------------------------------------------------------------------- |
+| `id`                  | `string`                                                         | -       | Unique identifier                                                               |
+| `name`                | `string`                                                         | -       | Form submission key (paired with `value`)                                       |
+| `value`               | `string`                                                         | -       | Form submission value for this button                                           |
+| `slot`                | `string \| null`                                                 | -       | React Aria slot name (receive props from parent component)                      |
+| `excludeFromTabOrder` | `boolean`                                                        | `false` | Remove from sequential tab order (use only with alternative keyboard access)    |
+| `preventFocusOnPress` | `boolean`                                                        | `false` | Don't move focus on press (ComboBox triggers, NumberField steppers)             |
+| `onPressUp`           | `(e: PressEvent) => void`                                        | -       | Called on press release regardless of start target (unlike `onPress`)           |
+| `formEncType`         | `string`                                                         | -       | Encoding for form data                                                          |
+| `formMethod`          | `string`                                                         | -       | HTTP method for form submission                                                 |
+| `formNoValidate`      | `boolean`                                                        | -       | Skip form validation on submit                                                  |
+| `formTarget`          | `string`                                                         | -       | Override form target attribute                                                  |
+| `aria-expanded`       | `boolean \| "true" \| "false"`                                   | -       | Expanded state (menu triggers, accordions)                                      |
+| `aria-haspopup`       | `boolean \| "menu" \| "listbox" \| "tree" \| "grid" \| "dialog"` | -       | Type of popup the button controls                                               |
+| `aria-controls`       | `string`                                                         | -       | ID of the element this button controls                                          |
+| `aria-pressed`        | `boolean \| "true" \| "false" \| "mixed"`                        | -       | Pressed state for toggle buttons                                                |
+| `aria-current`        | `boolean \| "page" \| "step" \| "location" \| "date" \| "time"`  | -       | Represents the current item in a set                                            |
+| `aria-details`        | `string`                                                         | -       | ID of element providing detailed description                                    |
+| `render`              | `DOMRenderFunction<"button", ButtonRenderProps>`                 | -       | Override default DOM element (must render `<button>`, pass through props + ref) |
+| `style`               | `CSSProperties \| ((renderProps) => CSSProperties)`              | -       | Inline style (function form receives render props)                              |
+
+See [React Aria Button API](https://react-spectrum.adobe.com/react-aria/Button.html) for the complete list.
 
 ## Data Attributes
 
@@ -100,18 +128,57 @@ import { Button } from "@fried-ui/react";
 
 ### Variants
 
-Semantic and structural variants for different intents.
+**40 variants** — 12 base + 28 color-prefixed (4 modifiers × 7 colors).
+
+**Base variants (solid + style):**
 
 ```tsx
-<Button variant="primary">Primary</Button>
-<Button variant="secondary">Secondary</Button>
-<Button variant="ghost">Ghost</Button>
-<Button variant="outline">Outline</Button>
-<Button variant="success">Success</Button>
-<Button variant="warning">Warning</Button>
-<Button variant="danger">Danger</Button>
-<Button variant="info">Info</Button>
+<Button variant="primary">Primary CTA</Button>       {/* dark neutral, main action */}
+<Button variant="secondary">Secondary</Button>       {/* light neutral, less emphasis */}
+<Button variant="accent">Brand</Button>              {/* purple, brand highlight */}
+<Button variant="ghost">Cancel</Button>              {/* transparent, dismissive */}
+<Button variant="outline">Outlined</Button>          {/* neutral bordered */}
+<Button variant="glass">Glass</Button>               {/* frosted + border (on image) */}
+<Button variant="frost">Frost</Button>               {/* frosted no border */}
+<Button variant="overlay">Overlay</Button>           {/* dark scrim (on media) */}
+<Button variant="success">Confirmed</Button>         {/* green status */}
+<Button variant="warning">Caution</Button>           {/* yellow status */}
+<Button variant="danger">Delete</Button>             {/* red destructive */}
+<Button variant="info">Info</Button>                 {/* blue info */}
 ```
+
+**Color-prefixed variants** — combine `{color}` with `-soft`, `-flat`, `-outline`, or `-ghost`:
+
+```tsx
+{/* -soft: pale bg + visible border (status tags) */}
+<Button variant="success-soft">Draft</Button>
+<Button variant="danger-soft">Rejected</Button>
+
+{/* -flat: pale bg no border (minimal subtle) */}
+<Button variant="accent-flat">Featured</Button>
+
+{/* -outline: transparent + colored border (secondary CTA) */}
+<Button variant="accent-outline">Learn more</Button>
+<Button variant="danger-outline">Cancel subscription</Button>
+
+{/* -ghost: transparent, reveal on hover (toolbar) */}
+<Button variant="primary-ghost">Copy</Button>
+<Button variant="accent-ghost">Reply</Button>
+```
+
+**Colors:** `primary` `secondary` `accent` `success` `warning` `danger` `info`
+**Modifiers:** `-soft` `-flat` `-outline` `-ghost`
+
+**When to use:**
+
+- `primary` — main CTA (save, submit, confirm)
+- `accent` — brand feature (upgrade, get started, marketing)
+- `ghost` — dismissive (cancel, close, skip)
+- `outline` — secondary action next to primary
+- `danger` — destructive (delete, remove)
+- `{color}-soft/flat` — status labels in content
+- `{color}-outline` — secondary variants of colored actions
+- `{color}-ghost` — toolbar/icon actions
 
 ### Basic
 
@@ -282,7 +349,7 @@ Formulas: `padding-inline = x`, `padding-block = x × 0.485`, `gap = x / φ`.
 
 ## Constraints
 
-- 8 variants: primary, secondary, ghost, outline, success, warning, danger, info
+- 40 variants: 12 base (primary, secondary, accent, ghost, outline, glass, frost, overlay, success, warning, danger, info) + 28 color-prefixed (7 colors × 4 modifiers: -soft, -flat, -outline, -ghost)
 - `radius` is independent from `size` — they do not affect each other
 - `isPending` makes text transparent and shows spinner; content stays in DOM for layout
 - Uses BEM classes (`fri-button`, `fri-button--primary`, etc.) — no inline Tailwind in component
