@@ -192,7 +192,7 @@
   --color-surface-border: var(--color-fri-neutral-100);
   --color-surface-foreground: oklch(0% 0 0);
   --color-surface-plain: oklch(100% 0 0);
-  --color-surface-plain-border: var(--color-fri-neutral-950);
+  --color-surface-plain-border: var(--color-fri-neutral-100);
   --color-surface-plain-foreground: oklch(0% 0 0);
 
   --color-avatar: var(--color-fri-neutral-50);

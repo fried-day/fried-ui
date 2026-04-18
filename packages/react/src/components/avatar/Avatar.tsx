@@ -46,7 +46,7 @@ const AvatarFallback = (props: Readonly<AvatarFallbackProps>) => {
 AvatarFallback.displayName = "Avatar.Fallback";
 
 const Avatar = (props: Readonly<AvatarProps>) => {
-  const { children, className, isDisabled, radius, ref, size, ...rest } = props;
+  const { children, className, isDisabled, radius, ref, ring, size, ...rest } = props;
 
   const avatarClassName = clsx(
     bem({
@@ -54,6 +54,7 @@ const Avatar = (props: Readonly<AvatarProps>) => {
       modifiers: {
         size,
         radius,
+        ring,
         disabled: isDisabled,
       },
     }),

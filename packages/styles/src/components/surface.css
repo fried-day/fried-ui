@@ -21,6 +21,38 @@
     @apply border-(--color-surface-plain-border) bg-(--color-surface-plain) text-(--color-surface-plain-foreground);
   }
 
+  .fri-surface--success {
+    @apply bg-(--color-success-soft) text-(--color-success-soft-foreground);
+  }
+
+  .fri-surface--success-bordered {
+    @apply border-(--color-success-soft-border) bg-(--color-success-soft) text-(--color-success-soft-foreground);
+  }
+
+  .fri-surface--warning {
+    @apply bg-(--color-warning-soft) text-(--color-warning-soft-foreground);
+  }
+
+  .fri-surface--warning-bordered {
+    @apply border-(--color-warning-soft-border) bg-(--color-warning-soft) text-(--color-warning-soft-foreground);
+  }
+
+  .fri-surface--danger {
+    @apply bg-(--color-danger-soft) text-(--color-danger-soft-foreground);
+  }
+
+  .fri-surface--danger-bordered {
+    @apply border-(--color-danger-soft-border) bg-(--color-danger-soft) text-(--color-danger-soft-foreground);
+  }
+
+  .fri-surface--info {
+    @apply bg-(--color-info-soft) text-(--color-info-soft-foreground);
+  }
+
+  .fri-surface--info-bordered {
+    @apply border-(--color-info-soft-border) bg-(--color-info-soft) text-(--color-info-soft-foreground);
+  }
+
   .fri-surface--glass {
     @apply border-glass-border bg-glass text-glass-foreground backdrop-blur-xl backdrop-saturate-200;
   }

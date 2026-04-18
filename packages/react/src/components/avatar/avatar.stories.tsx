@@ -13,10 +13,19 @@ const SAMPLE_SRC_3 =
   "https://images.unsplash.com/photo-1576348076752-6085814e5a51?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fGF2YXRhciUyMGN1dGUlMjBnaXJsfGVufDB8fDB8fHww";
 
 const RADIUS_SRC =
-  "https://images.unsplash.com/photo-1565972476522-4338522b1929?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGNpcmNsZXxlbnwwfHwwfHx8MA%3D%3D";
+  "https://images.unsplash.com/photo-1656919380078-f0ff7bcd1d92?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjE5fHxwYXN0ZWx8ZW58MHx8MHx8fDA%3D";
 
 const SAMPLE_SRC_4 =
   "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZhY2V8ZW58MHx8MHx8fDA%3D";
+
+const SAMPLE_SRC_5 =
+  "https://images.unsplash.com/photo-1724690336308-02af024b76ab?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHdvbWVuJTIwY3V0ZXxlbnwwfHwwfHx8MA%3D%3D";
+
+const SAMPLE_SRC_6 =
+  "https://images.unsplash.com/photo-1596554002543-83af3d801c6f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODd8fHdvbWVuJTIwY3V0ZXxlbnwwfHwwfHx8MA%3D%3D";
+
+const SAMPLE_SRC_7 =
+  "https://images.unsplash.com/flagged/photo-1557610650-841aa71a5c3d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTA5fHx3b21lbiUyMGN1dGV8ZW58MHx8MHx8fDA%3D";
 
 const meta = {
   title: "Components/Avatar",
@@ -31,6 +40,14 @@ const meta = {
     isDisabled: false,
   },
   argTypes: {
+    children: {
+      control: false,
+      description: "Compound children — `<Avatar.Image />` and `<Avatar.Fallback />`",
+      table: {
+        type: { summary: "ReactNode" },
+        category: "Children",
+      },
+    },
     size: {
       control: "select",
       options: ["sm", "md", "lg", "xl", "2xl"],
@@ -48,6 +65,18 @@ const meta = {
       table: {
         type: { summary: '"none" | "sm" | "md" | "lg" | "full"' },
         defaultValue: { summary: "full" },
+        category: "Style Variants",
+      },
+    },
+    ring: {
+      control: "select",
+      options: [undefined, "primary", "secondary", "accent", "success", "warning", "danger", "info"],
+      description:
+        "Colored ring around the avatar (status indicator). **Brand:** primary (main focus), secondary (neutral gray), accent (brand highlight). **Status:** success (online), warning (away), danger (busy / do-not-disturb), info (notification). Use success for online, danger for busy, warning for away, primary for selected, accent for featured/pro user.",
+      table: {
+        type: {
+          summary: '"primary" | "secondary" | "accent" | "success" | "warning" | "danger" | "info"',
+        },
         category: "Style Variants",
       },
     },
@@ -168,12 +197,12 @@ const Sizes = () => {
       </Avatar>
 
       <Avatar size="xl">
-        <Avatar.Image alt="Avatar 4" src="${SAMPLE_SRC_1}" />
+        <Avatar.Image alt="Avatar 4" src="${SAMPLE_SRC_4}" />
         <Avatar.Fallback>A4</Avatar.Fallback>
       </Avatar>
 
       <Avatar size="2xl">
-        <Avatar.Image alt="Avatar 5" src="${SAMPLE_SRC_4}" />
+        <Avatar.Image alt="Avatar 5" src="${SAMPLE_SRC_5}" />
         <Avatar.Fallback>A5</Avatar.Fallback>
       </Avatar>
     </div>
@@ -200,12 +229,12 @@ const Sizes = () => {
       </Avatar>
 
       <Avatar {...args} size="xl">
-        <Avatar.Image alt="Avatar 4" src={SAMPLE_SRC_1} />
+        <Avatar.Image alt="Avatar 4" src={SAMPLE_SRC_4} />
         <Avatar.Fallback>A4</Avatar.Fallback>
       </Avatar>
 
       <Avatar {...args} size="2xl">
-        <Avatar.Image alt="Avatar 5" src={SAMPLE_SRC_4} />
+        <Avatar.Image alt="Avatar 5" src={SAMPLE_SRC_5} />
         <Avatar.Fallback>A5</Avatar.Fallback>
       </Avatar>
     </div>
@@ -281,6 +310,95 @@ const Radius = () => {
   ),
 };
 
+const Ring: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Avatar } from "@fried-ui/react";
+
+const Ring = () => {
+  return (
+    <div className="flex items-end gap-6">
+      <Avatar ring="primary">
+        <Avatar.Image alt="Colm Tuite" src="${SAMPLE_SRC_1}" />
+        <Avatar.Fallback>CT</Avatar.Fallback>
+      </Avatar>
+
+      <Avatar ring="secondary">
+        <Avatar.Image alt="Rio Tanaka" src="${SAMPLE_SRC_2}" />
+        <Avatar.Fallback>RT</Avatar.Fallback>
+      </Avatar>
+
+      <Avatar ring="accent">
+        <Avatar.Image alt="Yuna Kim" src="${SAMPLE_SRC_3}" />
+        <Avatar.Fallback>YK</Avatar.Fallback>
+      </Avatar>
+
+      <Avatar ring="success">
+        <Avatar.Image alt="Nova Vega" src="${SAMPLE_SRC_4}" />
+        <Avatar.Fallback>NV</Avatar.Fallback>
+      </Avatar>
+
+      <Avatar ring="warning">
+        <Avatar.Image alt="Iris Ono" src="${SAMPLE_SRC_5}" />
+        <Avatar.Fallback>IO</Avatar.Fallback>
+      </Avatar>
+
+      <Avatar ring="danger">
+        <Avatar.Image alt="Zoe Xu" src="${SAMPLE_SRC_6}" />
+        <Avatar.Fallback>ZX</Avatar.Fallback>
+      </Avatar>
+
+      <Avatar ring="info">
+        <Avatar.Image alt="Aria Park" src="${SAMPLE_SRC_7}" />
+        <Avatar.Fallback>AP</Avatar.Fallback>
+      </Avatar>
+    </div>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex items-end gap-6">
+      <Avatar {...args} ring="primary">
+        <Avatar.Image alt="Colm Tuite" src={SAMPLE_SRC_1} />
+        <Avatar.Fallback>CT</Avatar.Fallback>
+      </Avatar>
+
+      <Avatar {...args} ring="secondary">
+        <Avatar.Image alt="Rio Tanaka" src={SAMPLE_SRC_2} />
+        <Avatar.Fallback>RT</Avatar.Fallback>
+      </Avatar>
+
+      <Avatar {...args} ring="accent">
+        <Avatar.Image alt="Yuna Kim" src={SAMPLE_SRC_3} />
+        <Avatar.Fallback>YK</Avatar.Fallback>
+      </Avatar>
+
+      <Avatar {...args} ring="success">
+        <Avatar.Image alt="Nova Vega" src={SAMPLE_SRC_4} />
+        <Avatar.Fallback>NV</Avatar.Fallback>
+      </Avatar>
+
+      <Avatar {...args} ring="warning">
+        <Avatar.Image alt="Iris Ono" src={SAMPLE_SRC_5} />
+        <Avatar.Fallback>IO</Avatar.Fallback>
+      </Avatar>
+
+      <Avatar {...args} ring="danger">
+        <Avatar.Image alt="Zoe Xu" src={SAMPLE_SRC_6} />
+        <Avatar.Fallback>ZX</Avatar.Fallback>
+      </Avatar>
+
+      <Avatar {...args} ring="info">
+        <Avatar.Image alt="Aria Park" src={SAMPLE_SRC_7} />
+        <Avatar.Fallback>AP</Avatar.Fallback>
+      </Avatar>
+    </div>
+  ),
+};
+
 const Disabled: Story = {
   parameters: {
     docs: {
@@ -345,7 +463,7 @@ const CustomStyle: Story = {
 
 const CustomStyle = () => {
   return (
-    <div className="flex items-end gap-4">
+    <div className="flex items-center gap-4">
       <Avatar {...args} className="size-20">
         <Avatar.Image alt="Nova Cyber" src={CUSTOM_SRC} />
         <Avatar.Fallback>4XL</Avatar.Fallback>
@@ -366,8 +484,14 @@ const CustomStyle = () => {
           <Avatar.Fallback>ON</Avatar.Fallback>
         </Avatar>
 
-        <span className="absolute right-0 bottom-1 size-2.5 rounded-full bg-danger ring-2 ring-background" />
+        <span className="absolute right-0 bottom-0 size-2.5 rounded-full bg-danger ring-2 ring-background" />
       </div>
+
+      <Avatar>
+        <Avatar.Fallback className="bg-linear-to-br from-pink-200 via-purple-200 to-blue-200 text-white">
+          CG
+        </Avatar.Fallback>
+      </Avatar>
     </div>
   );
 };`,
@@ -375,7 +499,7 @@ const CustomStyle = () => {
     },
   },
   render: (args): React.JSX.Element => (
-    <div className="flex items-end gap-4">
+    <div className="flex items-center gap-4">
       <Avatar {...args} className="size-20">
         <Avatar.Image alt="Nova Cyber" src={CUSTOM_SRC} />
         <Avatar.Fallback>4XL</Avatar.Fallback>
@@ -396,12 +520,18 @@ const CustomStyle = () => {
           <Avatar.Fallback>ON</Avatar.Fallback>
         </Avatar>
 
-        <span className="absolute right-0 bottom-1 size-2.5 rounded-full bg-danger ring-2 ring-background" />
+        <span className="absolute right-0 bottom-0 size-2.5 rounded-full bg-danger ring-2 ring-background" />
       </div>
+
+      <Avatar {...args}>
+        <Avatar.Fallback className="bg-linear-to-br from-pink-200 via-purple-200 to-blue-200 text-white">
+          CG
+        </Avatar.Fallback>
+      </Avatar>
     </div>
   ),
 };
 
-export { Default, WithFallback, Sizes, Radius, Disabled, BrokenImage, CustomStyle };
+export { Default, WithFallback, Sizes, Radius, Ring, Disabled, BrokenImage, CustomStyle };
 
 export default meta;
