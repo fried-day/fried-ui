@@ -1,7 +1,7 @@
 @layer components {
   .fri-label {
     @apply inline-flex items-center gap-1 select-none;
-    @apply text-sm leading-none font-medium;
+    @apply text-sm font-medium;
     @apply text-(--color-foreground);
   }
 

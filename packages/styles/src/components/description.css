@@ -1,0 +1,27 @@
+@layer components {
+  .fri-description {
+    @apply block;
+    @apply text-sm text-(--color-muted-foreground);
+  }
+
+  .fri-description--size-sm {
+    @apply text-xs;
+  }
+
+  .fri-description--size-md {
+    @apply text-sm;
+  }
+
+  .fri-description--size-lg {
+    @apply text-base;
+  }
+
+  .fri-description--invalid {
+    @apply text-(--color-danger);
+  }
+
+  .fri-description--disabled,
+  .fri-description[data-disabled] {
+    @apply pointer-events-none opacity-50;
+  }
+}

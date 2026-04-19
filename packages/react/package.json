@@ -39,6 +39,10 @@
       "types": "./dist/components/button/index.d.ts",
       "import": "./dist/components/button/index.mjs"
     },
+    "./description": {
+      "types": "./dist/components/description/index.d.ts",
+      "import": "./dist/components/description/index.mjs"
+    },
     "./icons": {
       "types": "./dist/components/icons/index.d.ts",
       "import": "./dist/components/icons/index.mjs"
