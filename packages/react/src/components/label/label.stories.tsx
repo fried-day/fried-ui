@@ -163,7 +163,7 @@ const Sizes: Story = {
 
 const Sizes = () => {
   return (
-    <div className="flex gap-4">
+    <div className="flex items-center gap-8">
       <Label size="sm">Small label</Label>
       <Label size="md">Medium label</Label>
       <Label size="lg">Large label</Label>
@@ -174,7 +174,7 @@ const Sizes = () => {
     },
   },
   render: (args): React.JSX.Element => (
-    <div className="flex gap-4">
+    <div className="flex items-center gap-8">
       <Label {...args} size="sm">
         Small label
       </Label>
@@ -198,7 +198,7 @@ const Weights: Story = {
 
 const Weights = () => {
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-8">
       <Label weight="normal">Normal (400)</Label>
       <Label weight="medium">Medium (500)</Label>
       <Label weight="semibold">Semibold (600)</Label>
@@ -209,7 +209,7 @@ const Weights = () => {
     },
   },
   render: (args): React.JSX.Element => (
-    <div className="flex gap-4">
+    <div className="flex gap-8">
       <Label {...args} weight="normal">
         Normal (400)
       </Label>
