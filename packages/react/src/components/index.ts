@@ -7,3 +7,5 @@ export * from "./icons";
 export * from "./surface";
 
 export * from "./avatar";
+
+export * from "./label";
