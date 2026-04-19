@@ -882,29 +882,6 @@ const OverlayVariants = () => {
   ),
 };
 
-const CustomStyle: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Button } from "@fried-ui/react";
-
-const CustomStyle = () => {
-  return (
-    <Button className="bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 text-white">
-      Gradient
-    </Button>
-  );
-};`,
-      },
-    },
-  },
-  render: (args): React.JSX.Element => (
-    <Button {...args} className="bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 text-white">
-      Gradient
-    </Button>
-  ),
-};
-
 export {
   Default,
   Variants,
@@ -923,7 +900,6 @@ export {
   Disabled,
   Pending,
   RenderProps,
-  CustomStyle,
 };
 
 export default meta;

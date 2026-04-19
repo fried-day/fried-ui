@@ -485,31 +485,6 @@ const Shadow = () => {
   ),
 };
 
-const CustomStyle: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Surface } from "@fried-ui/react";
-
-const CustomStyle = () => {
-  return (
-    <Surface className="w-64 p-6 bg-linear-to-br from-pink-200 via-purple-200 to-blue-200">
-      <p className="font-bold">Gradient Card</p>
-      <p className="mt-2 text-sm">Pastel gradient via className.</p>
-    </Surface>
-  );
-};`,
-      },
-    },
-  },
-  render: (args): React.JSX.Element => (
-    <Surface {...args} className="w-64 bg-linear-to-br from-pink-200 via-purple-200 to-blue-200 p-6">
-      <p className="font-bold">Gradient Card</p>
-      <p className="mt-2 text-sm">Pastel gradient via className.</p>
-    </Surface>
-  ),
-};
-
 export {
   Default,
   Variants,
@@ -520,7 +495,6 @@ export {
   OverlayVariants,
   Radius,
   Shadow,
-  CustomStyle,
 };
 
 export default meta;
