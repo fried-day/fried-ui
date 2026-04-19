@@ -7,6 +7,7 @@ export default defineConfig({
     "components/badge/index": "src/components/badge/index.ts",
     "components/button/index": "src/components/button/index.ts",
     "components/icons/index": "src/components/icons/index.ts",
+    "components/label/index": "src/components/label/index.ts",
     "components/surface/index": "src/components/surface/index.ts",
   },
   format: ["esm"],

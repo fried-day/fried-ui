@@ -1,0 +1,48 @@
+@layer components {
+  .fri-label {
+    @apply inline-flex items-center gap-1 select-none;
+    @apply text-sm leading-none font-medium;
+    @apply text-(--color-foreground);
+  }
+
+  .fri-label__required {
+    @apply text-(--color-danger);
+  }
+
+  .fri-label__optional {
+    @apply font-normal text-(--color-muted-foreground);
+  }
+
+  .fri-label--size-sm {
+    @apply text-xs;
+  }
+
+  .fri-label--size-md {
+    @apply text-sm;
+  }
+
+  .fri-label--size-lg {
+    @apply text-base;
+  }
+
+  .fri-label--weight-normal {
+    @apply font-normal;
+  }
+
+  .fri-label--weight-medium {
+    @apply font-medium;
+  }
+
+  .fri-label--weight-semibold {
+    @apply font-semibold;
+  }
+
+  .fri-label--invalid {
+    @apply text-(--color-danger);
+  }
+
+  .fri-label--disabled,
+  .fri-label[data-disabled] {
+    @apply pointer-events-none opacity-50;
+  }
+}

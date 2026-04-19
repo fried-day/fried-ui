@@ -43,6 +43,10 @@
       "types": "./dist/components/icons/index.d.ts",
       "import": "./dist/components/icons/index.mjs"
     },
+    "./label": {
+      "types": "./dist/components/label/index.d.ts",
+      "import": "./dist/components/label/index.mjs"
+    },
     "./surface": {
       "types": "./dist/components/surface/index.d.ts",
       "import": "./dist/components/surface/index.mjs"
