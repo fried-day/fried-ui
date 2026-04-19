@@ -30,7 +30,7 @@ const Description = (props: Readonly<DescriptionProps>) => {
   );
 
   return (
-    <AriaText data-slot="description" slot="description" className={descriptionClassName} ref={ref} {...rest}>
+    <AriaText slot="description" data-slot="description" className={descriptionClassName} ref={ref} {...rest}>
       {children}
     </AriaText>
   );
