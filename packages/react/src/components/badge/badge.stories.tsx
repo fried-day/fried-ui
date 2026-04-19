@@ -715,7 +715,7 @@ const CustomStyle: Story = {
 
 const CustomStyle = () => {
   return (
-    <Badge className="bg-linear-to-r from-pink-500 via-purple-500 to-blue-500 text-white">
+    <Badge className="bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 text-white">
       Gradient
     </Badge>
   );
@@ -724,7 +724,7 @@ const CustomStyle = () => {
     },
   },
   render: (args): React.JSX.Element => (
-    <Badge {...args} className="bg-linear-to-r from-pink-500 via-purple-500 to-blue-500 text-white">
+    <Badge {...args} className="bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 text-white">
       Gradient
     </Badge>
   ),

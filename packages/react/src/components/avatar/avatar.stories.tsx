@@ -488,7 +488,7 @@ const CustomStyle = () => {
       </div>
 
       <Avatar>
-        <Avatar.Fallback className="bg-linear-to-br from-pink-200 via-purple-200 to-blue-200 text-white">
+        <Avatar.Fallback className="bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 text-white">
           CG
         </Avatar.Fallback>
       </Avatar>
@@ -524,7 +524,7 @@ const CustomStyle = () => {
       </div>
 
       <Avatar {...args}>
-        <Avatar.Fallback className="bg-linear-to-br from-pink-200 via-purple-200 to-blue-200 text-white">
+        <Avatar.Fallback className="bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 text-white">
           CG
         </Avatar.Fallback>
       </Avatar>

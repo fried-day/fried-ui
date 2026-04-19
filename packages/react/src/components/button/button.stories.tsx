@@ -890,7 +890,7 @@ const CustomStyle: Story = {
 
 const CustomStyle = () => {
   return (
-    <Button className="bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500 text-white">
+    <Button className="bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 text-white">
       Gradient
     </Button>
   );
@@ -899,7 +899,7 @@ const CustomStyle = () => {
     },
   },
   render: (args): React.JSX.Element => (
-    <Button {...args} className="bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500 text-white">
+    <Button {...args} className="bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 text-white">
       Gradient
     </Button>
   ),
