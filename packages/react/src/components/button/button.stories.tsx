@@ -733,13 +733,13 @@ const Pending: Story = {
         code: `import { Button } from "@fried-ui/react";
 
 const Pending = () => {
-  return <Button isPending>Saving...</Button>;
+  return <Button isPending>Pending</Button>;
 };`,
       },
     },
   },
   args: {
-    children: "Saving...",
+    children: "Pending",
     isPending: true,
   },
 };
@@ -753,7 +753,7 @@ const RenderProps: Story = {
 const RenderProps = () => {
   return (
     <Button>
-      {({ isHovered }) => (isHovered ? "Hovering!" : "Hover me")}
+      {({ isHovered }) => (isHovered ? "Hovering" : "Idle")}
     </Button>
   );
 };`,
@@ -761,7 +761,7 @@ const RenderProps = () => {
     },
   },
   render: (args): React.JSX.Element => (
-    <Button {...args}>{({ isHovered }): string => (isHovered ? "Hovering!" : "Hover me")}</Button>
+    <Button {...args}>{({ isHovered }): string => (isHovered ? "Hovering" : "Idle")}</Button>
   ),
 };
 
@@ -775,9 +775,9 @@ const GlassVariants = () => {
   return (
     <div className="flex w-[640px] h-56 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-600 via-purple-500 to-blue-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
-        <Button variant="glass">Get Started</Button>
-        <Button variant="glass">Sign In</Button>
-        <Button variant="glass">Learn More</Button>
+        <Button variant="glass">Primary</Button>
+        <Button variant="glass">Secondary</Button>
+        <Button variant="glass">Tertiary</Button>
       </div>
     </div>
   );
@@ -789,15 +789,15 @@ const GlassVariants = () => {
     <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
         <Button {...args} variant="glass">
-          Get Started
+          Primary
         </Button>
 
         <Button {...args} variant="glass">
-          Sign In
+          Secondary
         </Button>
 
         <Button {...args} variant="glass">
-          Learn More
+          Tertiary
         </Button>
       </div>
     </div>
@@ -814,9 +814,9 @@ const FrostVariants = () => {
   return (
     <div className="flex w-[640px] h-56 items-center justify-center bg-linear-to-br from-emerald-400 via-teal-500 via-cyan-500 via-sky-500 to-purple-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
-        <Button variant="frost">Get Started</Button>
-        <Button variant="frost">Sign In</Button>
-        <Button variant="frost">Learn More</Button>
+        <Button variant="frost">Primary</Button>
+        <Button variant="frost">Secondary</Button>
+        <Button variant="frost">Tertiary</Button>
       </div>
     </div>
   );
@@ -828,15 +828,15 @@ const FrostVariants = () => {
     <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-emerald-400 via-cyan-500 via-sky-500 via-teal-500 to-purple-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
         <Button {...args} variant="frost">
-          Get Started
+          Primary
         </Button>
 
         <Button {...args} variant="frost">
-          Sign In
+          Secondary
         </Button>
 
         <Button {...args} variant="frost">
-          Learn More
+          Tertiary
         </Button>
       </div>
     </div>

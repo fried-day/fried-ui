@@ -10,7 +10,7 @@ const meta = {
     layout: "centered",
   },
   args: {
-    children: "We'll never share your email with anyone else.",
+    children: "Description",
     size: "md",
     isInvalid: false,
     isDisabled: false,
@@ -73,7 +73,7 @@ const Default: Story = {
         code: `import { Description } from "@fried-ui/react";
 
 const Basic = () => {
-  return <Description>We'll never share your email with anyone else.</Description>;
+  return <Description>Description</Description>;
 };`,
       },
     },
@@ -89,9 +89,9 @@ const Sizes: Story = {
 const Sizes = () => {
   return (
     <div className="flex items-center gap-8">
-      <Description size="sm">Small helper text</Description>
-      <Description size="md">Medium helper text</Description>
-      <Description size="lg">Large helper text</Description>
+      <Description size="sm">Small Description</Description>
+      <Description size="md">Medium Description</Description>
+      <Description size="lg">Large Description</Description>
     </div>
   );
 };`,
@@ -101,15 +101,15 @@ const Sizes = () => {
   render: (args): React.JSX.Element => (
     <div className="flex items-center gap-8">
       <Description {...args} size="sm">
-        Small helper text
+        Small Description
       </Description>
 
       <Description {...args} size="md">
-        Medium helper text
+        Medium Description
       </Description>
 
       <Description {...args} size="lg">
-        Large helper text
+        Large Description
       </Description>
     </div>
   ),
@@ -122,13 +122,13 @@ const Invalid: Story = {
         code: `import { Description } from "@fried-ui/react";
 
 const Invalid = () => {
-  return <Description isInvalid>Email format is invalid</Description>;
+  return <Description isInvalid>Invalid Description</Description>;
 };`,
       },
     },
   },
   args: {
-    children: "Email format is invalid",
+    children: "Invalid Description",
     isInvalid: true,
   },
 };
@@ -140,13 +140,13 @@ const Disabled: Story = {
         code: `import { Description } from "@fried-ui/react";
 
 const Disabled = () => {
-  return <Description isDisabled>This field is currently unavailable</Description>;
+  return <Description isDisabled>Disabled Description</Description>;
 };`,
       },
     },
   },
   args: {
-    children: "This field is currently unavailable",
+    children: "Disabled Description",
     isDisabled: true,
   },
 };

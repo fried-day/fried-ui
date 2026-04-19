@@ -10,7 +10,7 @@ const meta = {
     layout: "centered",
   },
   args: {
-    children: "Email",
+    children: "Label",
     size: "md",
     weight: "medium",
     isRequired: false,
@@ -112,7 +112,7 @@ const Default: Story = {
         code: `import { Label } from "@fried-ui/react";
 
 const Basic = () => {
-  return <Label>Email</Label>;
+  return <Label>Label</Label>;
 };`,
       },
     },
@@ -126,13 +126,13 @@ const Required: Story = {
         code: `import { Label } from "@fried-ui/react";
 
 const Required = () => {
-  return <Label isRequired>Password</Label>;
+  return <Label isRequired>Required Label</Label>;
 };`,
       },
     },
   },
   args: {
-    children: "Password",
+    children: "Required Label",
     isRequired: true,
   },
 };
@@ -144,13 +144,13 @@ const Optional: Story = {
         code: `import { Label } from "@fried-ui/react";
 
 const Optional = () => {
-  return <Label optionalMessage="(Optional)">Phone number</Label>;
+  return <Label optionalMessage="(Optional)">Optional Label</Label>;
 };`,
       },
     },
   },
   args: {
-    children: "Phone number",
+    children: "Optional Label",
     optionalMessage: "(Optional)",
   },
 };
@@ -164,9 +164,9 @@ const Sizes: Story = {
 const Sizes = () => {
   return (
     <div className="flex items-center gap-8">
-      <Label size="sm">Small label</Label>
-      <Label size="md">Medium label</Label>
-      <Label size="lg">Large label</Label>
+      <Label size="sm">Small Label</Label>
+      <Label size="md">Medium Label</Label>
+      <Label size="lg">Large Label</Label>
     </div>
   );
 };`,
@@ -176,15 +176,15 @@ const Sizes = () => {
   render: (args): React.JSX.Element => (
     <div className="flex items-center gap-8">
       <Label {...args} size="sm">
-        Small label
+        Small Label
       </Label>
 
       <Label {...args} size="md">
-        Medium label
+        Medium Label
       </Label>
 
       <Label {...args} size="lg">
-        Large label
+        Large Label
       </Label>
     </div>
   ),
@@ -232,13 +232,13 @@ const Invalid: Story = {
         code: `import { Label } from "@fried-ui/react";
 
 const Invalid = () => {
-  return <Label isInvalid>Email (Invalid Format)</Label>;
+  return <Label isInvalid>Invalid Label</Label>;
 };`,
       },
     },
   },
   args: {
-    children: "Email (Invalid Format)",
+    children: "Invalid Label",
     isInvalid: true,
   },
 };
@@ -250,13 +250,13 @@ const Disabled: Story = {
         code: `import { Label } from "@fried-ui/react";
 
 const Disabled = () => {
-  return <Label isDisabled>Username</Label>;
+  return <Label isDisabled>Disabled Label</Label>;
 };`,
       },
     },
   },
   args: {
-    children: "Username",
+    children: "Disabled Label",
     isDisabled: true,
   },
 };
