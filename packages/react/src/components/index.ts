@@ -9,3 +9,5 @@ export * from "./surface";
 export * from "./avatar";
 
 export * from "./label";
+
+export * from "./description";
