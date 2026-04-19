@@ -45,8 +45,6 @@
     --fri-button-bg-hover: var(--color-primary-hover);
     --fri-button-bg-pressed: var(--color-primary-active);
     --fri-button-fg: var(--color-primary-foreground);
-
-    @apply border border-primary-border;
   }
 
   .fri-button--secondary {
@@ -54,8 +52,6 @@
     --fri-button-bg-hover: var(--color-secondary-hover);
     --fri-button-bg-pressed: var(--color-secondary-active);
     --fri-button-fg: var(--color-secondary-foreground);
-
-    @apply border border-secondary-border;
   }
 
   .fri-button--accent {
@@ -63,8 +59,6 @@
     --fri-button-bg-hover: var(--color-accent-hover);
     --fri-button-bg-pressed: var(--color-accent-active);
     --fri-button-fg: var(--color-accent-foreground);
-
-    @apply border border-accent-border;
   }
 
   .fri-button--ghost {
@@ -115,8 +109,6 @@
     --fri-button-bg-hover: var(--color-success-hover);
     --fri-button-bg-pressed: var(--color-success-active);
     --fri-button-fg: var(--color-success-foreground);
-
-    @apply border border-success-border;
   }
 
   .fri-button--warning {
@@ -124,8 +116,6 @@
     --fri-button-bg-hover: var(--color-warning-hover);
     --fri-button-bg-pressed: var(--color-warning-active);
     --fri-button-fg: var(--color-warning-foreground);
-
-    @apply border border-warning-border;
   }
 
   .fri-button--danger {
@@ -133,8 +123,6 @@
     --fri-button-bg-hover: var(--color-danger-hover);
     --fri-button-bg-pressed: var(--color-danger-active);
     --fri-button-fg: var(--color-danger-foreground);
-
-    @apply border border-danger-border;
   }
 
   .fri-button--info {
@@ -142,8 +130,6 @@
     --fri-button-bg-hover: var(--color-info-hover);
     --fri-button-bg-pressed: var(--color-info-active);
     --fri-button-fg: var(--color-info-foreground);
-
-    @apply border border-info-border;
   }
   .fri-button--primary-soft {
     --fri-button-bg: var(--color-primary-soft);

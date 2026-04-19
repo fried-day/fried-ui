@@ -15,29 +15,23 @@
   .fri-badge--primary {
     --fri-badge-bg: var(--color-primary);
     --fri-badge-fg: var(--color-primary-foreground);
-
-    @apply border border-primary-border;
   }
 
   .fri-badge--secondary {
     --fri-badge-bg: var(--color-secondary);
     --fri-badge-fg: var(--color-secondary-foreground);
-
-    @apply border border-secondary-border;
   }
 
   .fri-badge--accent {
     --fri-badge-bg: var(--color-accent);
     --fri-badge-fg: var(--color-accent-foreground);
-
-    @apply border border-accent-border;
   }
 
   .fri-badge--outline {
     --fri-badge-bg: transparent;
     --fri-badge-fg: var(--color-primary);
 
-    @apply border border-primary-border;
+    @apply border border-primary-outline-border;
   }
 
   .fri-badge--glass {
@@ -64,29 +58,21 @@
   .fri-badge--success {
     --fri-badge-bg: var(--color-success);
     --fri-badge-fg: var(--color-success-foreground);
-
-    @apply border border-success-border;
   }
 
   .fri-badge--warning {
     --fri-badge-bg: var(--color-warning);
     --fri-badge-fg: var(--color-warning-foreground);
-
-    @apply border border-warning-border;
   }
 
   .fri-badge--danger {
     --fri-badge-bg: var(--color-danger);
     --fri-badge-fg: var(--color-danger-foreground);
-
-    @apply border border-danger-border;
   }
 
   .fri-badge--info {
     --fri-badge-bg: var(--color-info);
     --fri-badge-fg: var(--color-info-foreground);
-
-    @apply border border-info-border;
   }
 
   .fri-badge--primary-soft {
