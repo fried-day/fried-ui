@@ -3,7 +3,7 @@
     @apply relative flex shrink-0 items-center justify-center overflow-hidden select-none;
     @apply leading-none font-medium;
     @apply size-10 rounded-full text-sm;
-    @apply bg-(--color-avatar) text-(--color-avatar-foreground);
+    @apply bg-avatar text-avatar-foreground;
   }
 
   .fri-avatar__image {
@@ -59,30 +59,30 @@
   }
 
   .fri-avatar--ring-primary {
-    @apply ring-2 ring-(--color-primary-outline-border) ring-offset-2 ring-offset-(--color-background);
+    @apply ring-2 ring-primary-outline-border ring-offset-2 ring-offset-background;
   }
 
   .fri-avatar--ring-secondary {
-    @apply ring-2 ring-(--color-secondary-outline-border) ring-offset-2 ring-offset-(--color-background);
+    @apply ring-2 ring-secondary-outline-border ring-offset-2 ring-offset-background;
   }
 
   .fri-avatar--ring-accent {
-    @apply ring-2 ring-(--color-accent-outline-border) ring-offset-2 ring-offset-(--color-background);
+    @apply ring-2 ring-accent-outline-border ring-offset-2 ring-offset-background;
   }
 
   .fri-avatar--ring-success {
-    @apply ring-2 ring-(--color-success-outline-border) ring-offset-2 ring-offset-(--color-background);
+    @apply ring-2 ring-success-outline-border ring-offset-2 ring-offset-background;
   }
 
   .fri-avatar--ring-warning {
-    @apply ring-2 ring-(--color-warning-outline-border) ring-offset-2 ring-offset-(--color-background);
+    @apply ring-2 ring-warning-outline-border ring-offset-2 ring-offset-background;
   }
 
   .fri-avatar--ring-danger {
-    @apply ring-2 ring-(--color-danger-outline-border) ring-offset-2 ring-offset-(--color-background);
+    @apply ring-2 ring-danger-outline-border ring-offset-2 ring-offset-background;
   }
 
   .fri-avatar--ring-info {
-    @apply ring-2 ring-(--color-info-outline-border) ring-offset-2 ring-offset-(--color-background);
+    @apply ring-2 ring-info-outline-border ring-offset-2 ring-offset-background;
   }
 }

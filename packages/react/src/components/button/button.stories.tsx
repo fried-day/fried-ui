@@ -1,6 +1,21 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ArrowRightIcon, MoreIcon, PlusIcon, SettingsIcon, ShareIcon } from "../icons";
+import {
+  ArrowRightIcon,
+  BellIcon,
+  CheckCircleIcon,
+  ExclamationTriangleIcon,
+  HeartIcon,
+  InformationCircleIcon,
+  MoreIcon,
+  PauseIcon,
+  PlayIcon,
+  PlusIcon,
+  SettingsIcon,
+  ShareIcon,
+  SpeakerIcon,
+  XCircleIcon,
+} from "../icons";
 import { Button } from "./Button";
 
 const meta = {
@@ -576,19 +591,29 @@ const WithIcon: Story = {
 const WithIcon = () => {
   return (
     <div className="flex items-end gap-4">
-      <Button size="sm">
-        <ArrowRightIcon slot="icon-start" />
-        Next
+      <Button variant="primary">
+        <PlusIcon slot="icon-start" />
+        Create
       </Button>
 
-      <Button size="md">
-        <ArrowRightIcon slot="icon-start" />
-        Next
+      <Button variant="info">
+        <InformationCircleIcon slot="icon-start" />
+        Info
       </Button>
 
-      <Button size="lg">
-        <ArrowRightIcon slot="icon-start" />
-        Next
+      <Button variant="success">
+        Complete
+        <CheckCircleIcon slot="icon-end" />
+      </Button>
+
+      <Button variant="warning">
+        <ExclamationTriangleIcon slot="icon-start" />
+        Warning
+      </Button>
+
+      <Button variant="danger">
+        Delete
+        <XCircleIcon slot="icon-end" />
       </Button>
     </div>
   );
@@ -598,19 +623,29 @@ const WithIcon = () => {
   },
   render: (args): React.JSX.Element => (
     <div className="flex items-end gap-4">
-      <Button {...args} size="sm">
-        <ArrowRightIcon slot="icon-start" />
-        Next
+      <Button {...args} variant="primary">
+        <PlusIcon slot="icon-start" />
+        Create
       </Button>
 
-      <Button {...args} size="md">
-        <ArrowRightIcon slot="icon-start" />
-        Next
+      <Button {...args} variant="info">
+        <InformationCircleIcon slot="icon-start" />
+        Info
       </Button>
 
-      <Button {...args} size="lg">
-        <ArrowRightIcon slot="icon-start" />
-        Next
+      <Button {...args} variant="success">
+        Complete
+        <CheckCircleIcon slot="icon-end" />
+      </Button>
+
+      <Button {...args} variant="warning">
+        <ExclamationTriangleIcon slot="icon-start" />
+        Warning
+      </Button>
+
+      <Button {...args} variant="danger">
+        Delete
+        <XCircleIcon slot="icon-end" />
       </Button>
     </div>
   ),
@@ -677,14 +712,6 @@ const FullWidth = () => {
   return (
     <div className="flex w-80 flex-col gap-4">
       <Button isFullWidth>Full Width</Button>
-
-      <Button variant="secondary" isFullWidth>
-        Full Width Secondary
-      </Button>
-
-      <Button variant="outline" isFullWidth>
-        Full Width Outline
-      </Button>
     </div>
   );
 };`,
@@ -695,14 +722,6 @@ const FullWidth = () => {
     <div className="flex w-80 flex-col gap-4">
       <Button {...args} isFullWidth>
         Full Width
-      </Button>
-
-      <Button {...args} variant="secondary" isFullWidth>
-        Full Width Secondary
-      </Button>
-
-      <Button {...args} variant="outline" isFullWidth>
-        Full Width Outline
       </Button>
     </div>
   ),
@@ -753,7 +772,7 @@ const RenderProps: Story = {
 const RenderProps = () => {
   return (
     <Button>
-      {({ isHovered }) => (isHovered ? "Hovering" : "Idle")}
+      {({ isHovered }) => (isHovered ? "Hovering" : "Hover")}
     </Button>
   );
 };`,
@@ -761,7 +780,7 @@ const RenderProps = () => {
     },
   },
   render: (args): React.JSX.Element => (
-    <Button {...args}>{({ isHovered }): string => (isHovered ? "Hovering" : "Idle")}</Button>
+    <Button {...args}>{({ isHovered }): string => (isHovered ? "Hovering" : "Hover")}</Button>
   ),
 };
 
@@ -775,9 +794,20 @@ const GlassVariants = () => {
   return (
     <div className="flex w-[640px] h-56 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-600 via-purple-500 to-blue-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
-        <Button variant="glass">Primary</Button>
-        <Button variant="glass">Secondary</Button>
-        <Button variant="glass">Tertiary</Button>
+        <Button variant="glass">
+          <PlusIcon slot="icon-start" />
+          Create
+        </Button>
+
+        <Button variant="glass">
+          Continue
+          <ArrowRightIcon slot="icon-end" />
+        </Button>
+
+        <Button variant="glass">
+          <SettingsIcon slot="icon-start" />
+          Settings
+        </Button>
       </div>
     </div>
   );
@@ -789,15 +819,18 @@ const GlassVariants = () => {
     <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
         <Button {...args} variant="glass">
-          Primary
+          <PlusIcon slot="icon-start" />
+          Create
         </Button>
 
         <Button {...args} variant="glass">
-          Secondary
+          Continue
+          <ArrowRightIcon slot="icon-end" />
         </Button>
 
         <Button {...args} variant="glass">
-          Tertiary
+          <SettingsIcon slot="icon-start" />
+          Settings
         </Button>
       </div>
     </div>
@@ -814,9 +847,20 @@ const FrostVariants = () => {
   return (
     <div className="flex w-[640px] h-56 items-center justify-center bg-linear-to-br from-emerald-400 via-teal-500 via-cyan-500 via-sky-500 to-purple-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
-        <Button variant="frost">Primary</Button>
-        <Button variant="frost">Secondary</Button>
-        <Button variant="frost">Tertiary</Button>
+        <Button variant="frost">
+          <HeartIcon slot="icon-start" />
+          Like
+        </Button>
+
+        <Button variant="frost">
+          Share
+          <ShareIcon slot="icon-end" />
+        </Button>
+
+        <Button variant="frost">
+          <BellIcon slot="icon-start" />
+          Subscribe
+        </Button>
       </div>
     </div>
   );
@@ -828,15 +872,18 @@ const FrostVariants = () => {
     <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-emerald-400 via-cyan-500 via-sky-500 via-teal-500 to-purple-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
         <Button {...args} variant="frost">
-          Primary
+          <HeartIcon slot="icon-start" />
+          Like
         </Button>
 
         <Button {...args} variant="frost">
-          Secondary
+          Share
+          <ShareIcon slot="icon-end" />
         </Button>
 
         <Button {...args} variant="frost">
-          Tertiary
+          <BellIcon slot="icon-start" />
+          Subscribe
         </Button>
       </div>
     </div>
@@ -853,9 +900,20 @@ const OverlayVariants = () => {
   return (
     <div className="flex w-[640px] h-56 items-center justify-center bg-linear-to-br from-orange-400 via-rose-500 via-fuchsia-500 via-purple-500 to-purple-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
-        <Button variant="overlay">Play</Button>
-        <Button variant="overlay">Pause</Button>
-        <Button variant="overlay">Mute</Button>
+        <Button variant="overlay">
+          <PlayIcon slot="icon-start" />
+          Play
+        </Button>
+
+        <Button variant="overlay">
+          Pause
+          <PauseIcon slot="icon-end" />
+        </Button>
+
+        <Button variant="overlay">
+          <SpeakerIcon slot="icon-start" />
+          Mute
+        </Button>
       </div>
     </div>
   );
@@ -867,14 +925,17 @@ const OverlayVariants = () => {
     <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-orange-400 via-fuchsia-500 via-purple-500 via-rose-500 to-purple-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
         <Button {...args} variant="overlay">
+          <PlayIcon slot="icon-start" />
           Play
         </Button>
 
         <Button {...args} variant="overlay">
           Pause
+          <PauseIcon slot="icon-end" />
         </Button>
 
         <Button {...args} variant="overlay">
+          <SpeakerIcon slot="icon-start" />
           Mute
         </Button>
       </div>

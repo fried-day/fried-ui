@@ -97,12 +97,12 @@ describe("{{pascalCase name}}", () => {
 
   it("supports className as render prop function", () => {
     render(
-      <{{pascalCase name}} className={({ isHovered }): string => (isHovered ? "hovered" : "idle")}>Dynamic</{{pascalCase name}}>,
+      <{{pascalCase name}} className={({ isHovered }): string => (isHovered ? "hovered" : "Hover")}>Dynamic</{{pascalCase name}}>,
     );
 
     const el = screen.getByText("Dynamic");
     expect(el.className).toContain("fri-{{dashCase name}}");
-    expect(el.className).toContain("idle");
+    expect(el.className).toContain("Hover");
   });
 
   it("passes through native HTML attributes", () => {

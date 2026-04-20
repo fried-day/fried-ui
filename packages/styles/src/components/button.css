@@ -27,16 +27,16 @@
       @apply status-pending;
     }
 
-    &:active,
-    &[data-pressed] {
-      @apply bg-(--fri-button-bg-pressed) duration-(--duration-press);
-    }
-
     @media (hover: hover) {
       &:hover,
       &[data-hovered] {
         @apply bg-(--fri-button-bg-hover);
       }
+    }
+
+    &:active,
+    &[data-pressed] {
+      @apply bg-(--fri-button-bg-pressed) duration-(--duration-press);
     }
   }
 

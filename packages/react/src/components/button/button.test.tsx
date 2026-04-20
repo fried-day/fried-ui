@@ -180,16 +180,16 @@ describe("Button", () => {
 
   it("supports className as render prop function", () => {
     render(
-      <Button className={({ isHovered }): string => (isHovered ? "hovered-class" : "idle-class")}>Dynamic</Button>,
+      <Button className={({ isHovered }): string => (isHovered ? "hovered-class" : "Hover-class")}>Dynamic</Button>,
     );
 
     const el = screen.getByRole("button");
     expect(el.className).toContain("fri-button");
-    expect(el.className).toContain("idle-class");
+    expect(el.className).toContain("Hover-class");
   });
 
   it("supports render props children", () => {
-    render(<Button>{({ isPressed }): string => (isPressed ? "Pressed" : "Idle")}</Button>);
-    expect(screen.getByRole("button", { name: "Idle" })).toBeInTheDocument();
+    render(<Button>{({ isPressed }): string => (isPressed ? "Pressed" : "Hover")}</Button>);
+    expect(screen.getByRole("button", { name: "Hover" })).toBeInTheDocument();
   });
 });

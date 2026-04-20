@@ -1,7 +1,7 @@
 @layer components {
   .fri-description {
     @apply block;
-    @apply text-sm text-(--color-muted-foreground);
+    @apply text-sm text-muted-foreground;
   }
 
   .fri-description--size-sm {
@@ -17,7 +17,7 @@
   }
 
   .fri-description--invalid {
-    @apply text-(--color-danger);
+    @apply text-danger;
   }
 
   .fri-description--disabled,

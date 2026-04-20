@@ -2,15 +2,15 @@
   .fri-label {
     @apply inline-flex items-center gap-1 select-none;
     @apply text-sm font-medium;
-    @apply text-(--color-foreground);
+    @apply text-foreground;
   }
 
   .fri-label__required {
-    @apply text-(--color-danger);
+    @apply text-danger;
   }
 
   .fri-label__optional {
-    @apply font-normal text-(--color-muted-foreground);
+    @apply font-normal text-muted-foreground;
   }
 
   .fri-label--size-sm {
@@ -38,7 +38,7 @@
   }
 
   .fri-label--invalid {
-    @apply text-(--color-danger);
+    @apply text-danger;
   }
 
   .fri-label--disabled,

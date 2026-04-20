@@ -386,9 +386,20 @@ const GlassVariants = () => {
   return (
     <div className="flex w-160 h-56 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
-        <Badge variant="glass">Featured</Badge>
-        <Badge variant="glass">New</Badge>
-        <Badge variant="glass">Premium</Badge>
+        <Badge variant="glass">
+          <StarIcon slot="icon-start" />
+          Featured
+        </Badge>
+
+        <Badge variant="glass">
+          New
+          <BellIcon slot="icon-end" />
+        </Badge>
+
+        <Badge variant="glass">
+          <LockIcon slot="icon-start" />
+          Premium
+        </Badge>
       </div>
     </div>
   );
@@ -400,14 +411,17 @@ const GlassVariants = () => {
     <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
         <Badge {...args} variant="glass">
+          <StarIcon slot="icon-start" />
           Featured
         </Badge>
 
         <Badge {...args} variant="glass">
           New
+          <BellIcon slot="icon-end" />
         </Badge>
 
         <Badge {...args} variant="glass">
+          <LockIcon slot="icon-start" />
           Premium
         </Badge>
       </div>
@@ -425,9 +439,20 @@ const FrostVariants = () => {
   return (
     <div className="flex w-160 h-56 items-center justify-center bg-linear-to-br from-emerald-400 via-teal-500 via-cyan-500 via-sky-500 to-purple-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
-        <Badge variant="frost">Featured</Badge>
-        <Badge variant="frost">New</Badge>
-        <Badge variant="frost">Premium</Badge>
+        <Badge variant="frost">
+          <CheckCircleIcon slot="icon-start" />
+          Verified
+        </Badge>
+
+        <Badge variant="frost">
+          Favorite
+          <HeartIcon slot="icon-end" />
+        </Badge>
+
+        <Badge variant="frost">
+          <StarIcon slot="icon-start" />
+          Top Rated
+        </Badge>
       </div>
     </div>
   );
@@ -439,15 +464,18 @@ const FrostVariants = () => {
     <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-emerald-400 via-cyan-500 via-sky-500 via-teal-500 to-purple-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
         <Badge {...args} variant="frost">
-          Featured
+          <CheckCircleIcon slot="icon-start" />
+          Verified
         </Badge>
 
         <Badge {...args} variant="frost">
-          New
+          Favorite
+          <HeartIcon slot="icon-end" />
         </Badge>
 
         <Badge {...args} variant="frost">
-          Premium
+          <StarIcon slot="icon-start" />
+          Top Rated
         </Badge>
       </div>
     </div>
@@ -464,9 +492,20 @@ const OverlayVariants = () => {
   return (
     <div className="flex w-160 h-56 items-center justify-center bg-linear-to-br from-orange-400 via-rose-500 via-fuchsia-500 via-purple-500 to-purple-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
-        <Badge variant="overlay">Live</Badge>
-        <Badge variant="overlay">HD</Badge>
-        <Badge variant="overlay">4K</Badge>
+        <Badge variant="overlay">
+          <BellIcon slot="icon-start" />
+          Live
+        </Badge>
+
+        <Badge variant="overlay">
+          HD
+          <StarIcon slot="icon-end" />
+        </Badge>
+
+        <Badge variant="overlay">
+          <CheckCircleIcon slot="icon-start" />
+          4K
+        </Badge>
       </div>
     </div>
   );
@@ -478,14 +517,17 @@ const OverlayVariants = () => {
     <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-orange-400 via-fuchsia-500 via-purple-500 via-rose-500 to-purple-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
         <Badge {...args} variant="overlay">
+          <BellIcon slot="icon-start" />
           Live
         </Badge>
 
         <Badge {...args} variant="overlay">
           HD
+          <StarIcon slot="icon-end" />
         </Badge>
 
         <Badge {...args} variant="overlay">
+          <CheckCircleIcon slot="icon-start" />
           4K
         </Badge>
       </div>
@@ -577,19 +619,24 @@ const WithIcon: Story = {
   parameters: {
     docs: {
       source: {
-        code: `import { Badge, CheckCircleIcon, ExclamationTriangleIcon, InformationCircleIcon, XCircleIcon } from "@fried-ui/react";
+        code: `import { Badge, CheckCircleIcon, ExclamationTriangleIcon, InformationCircleIcon, StarIcon, XCircleIcon } from "@fried-ui/react";
 
 const WithIcon = () => {
   return (
     <div className="flex items-end gap-4">
+      <Badge variant="primary">
+        <StarIcon slot="icon-start" />
+        Featured
+      </Badge>
+
       <Badge variant="info">
         <InformationCircleIcon slot="icon-start" />
         Info
       </Badge>
 
       <Badge variant="success">
-        <CheckCircleIcon slot="icon-start" />
         Success
+        <CheckCircleIcon slot="icon-end" />
       </Badge>
 
       <Badge variant="warning">
@@ -598,8 +645,8 @@ const WithIcon = () => {
       </Badge>
 
       <Badge variant="danger">
-        <XCircleIcon slot="icon-start" />
-        Error
+        Danger
+        <XCircleIcon slot="icon-end" />
       </Badge>
     </div>
   );
@@ -609,14 +656,19 @@ const WithIcon = () => {
   },
   render: (args): React.JSX.Element => (
     <div className="flex items-end gap-4">
+      <Badge {...args} variant="primary">
+        <StarIcon slot="icon-start" />
+        Featured
+      </Badge>
+
       <Badge {...args} variant="info">
         <InformationCircleIcon slot="icon-start" />
         Info
       </Badge>
 
       <Badge {...args} variant="success">
-        <CheckCircleIcon slot="icon-start" />
         Success
+        <CheckCircleIcon slot="icon-end" />
       </Badge>
 
       <Badge {...args} variant="warning">
@@ -625,8 +677,8 @@ const WithIcon = () => {
       </Badge>
 
       <Badge {...args} variant="danger">
-        <XCircleIcon slot="icon-start" />
-        Error
+        Danger
+        <XCircleIcon slot="icon-end" />
       </Badge>
     </div>
   ),
@@ -636,36 +688,24 @@ const IconOnly: Story = {
   parameters: {
     docs: {
       source: {
-        code: `import { Badge, BellIcon, CheckCircleIcon, HeartIcon, InformationCircleIcon, LockIcon, StarIcon, XCircleIcon } from "@fried-ui/react";
+        code: `import { Badge, BellIcon, HeartIcon, LockIcon, StarIcon } from "@fried-ui/react";
 
 const IconOnly = () => {
   return (
-    <div className="flex flex-wrap items-end gap-4">
-      <Badge aria-label="Info" isIconOnly>
-        <InformationCircleIcon slot="icon" />
-      </Badge>
-
-      <Badge variant="success" aria-label="Success" isIconOnly>
-        <CheckCircleIcon slot="icon" />
-      </Badge>
-
-      <Badge variant="warning" radius="none" aria-label="Warning" isIconOnly>
+    <div className="flex items-end gap-4">
+      <Badge aria-label="Featured" isIconOnly>
         <StarIcon slot="icon" />
       </Badge>
 
-      <Badge variant="danger" radius="sm" aria-label="Error" isIconOnly>
-        <XCircleIcon slot="icon" />
-      </Badge>
-
-      <Badge variant="info" radius="md" aria-label="Notification" isIconOnly>
+      <Badge variant="secondary" aria-label="Notification" isIconOnly>
         <BellIcon slot="icon" />
       </Badge>
 
-      <Badge variant="secondary" radius="lg" aria-label="Favorite" isIconOnly>
+      <Badge variant="outline" aria-label="Favorite" isIconOnly>
         <HeartIcon slot="icon" />
       </Badge>
 
-      <Badge variant="outline" radius="full" aria-label="Private" isIconOnly>
+      <Badge variant="ghost" aria-label="Private" isIconOnly>
         <LockIcon slot="icon" />
       </Badge>
     </div>
@@ -675,32 +715,20 @@ const IconOnly = () => {
     },
   },
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-end gap-4">
-      <Badge {...args} aria-label="Info" isIconOnly>
-        <InformationCircleIcon slot="icon" />
-      </Badge>
-
-      <Badge {...args} variant="success" aria-label="Success" isIconOnly>
-        <CheckCircleIcon slot="icon" />
-      </Badge>
-
-      <Badge {...args} variant="warning" radius="none" aria-label="Warning" isIconOnly>
+    <div className="flex items-end gap-4">
+      <Badge {...args} aria-label="Featured" isIconOnly>
         <StarIcon slot="icon" />
       </Badge>
 
-      <Badge {...args} variant="danger" radius="sm" aria-label="Error" isIconOnly>
-        <XCircleIcon slot="icon" />
-      </Badge>
-
-      <Badge {...args} variant="info" radius="md" aria-label="Notification" isIconOnly>
+      <Badge {...args} variant="secondary" aria-label="Notification" isIconOnly>
         <BellIcon slot="icon" />
       </Badge>
 
-      <Badge {...args} variant="secondary" radius="lg" aria-label="Favorite" isIconOnly>
+      <Badge {...args} variant="outline" aria-label="Favorite" isIconOnly>
         <HeartIcon slot="icon" />
       </Badge>
 
-      <Badge {...args} variant="outline" radius="full" aria-label="Private" isIconOnly>
+      <Badge {...args} variant="ghost" aria-label="Private" isIconOnly>
         <LockIcon slot="icon" />
       </Badge>
     </div>
