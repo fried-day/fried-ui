@@ -17,29 +17,18 @@ describe("Surface", () => {
   });
 
   it("applies all variant classes", () => {
-    const variants = [
-      "default",
-      "default-bordered",
-      "plain",
-      "plain-bordered",
-      "success",
-      "success-bordered",
-      "warning",
-      "warning-bordered",
-      "danger",
-      "danger-bordered",
-      "info",
-      "info-bordered",
-      "glass",
-      "frost",
-      "overlay",
-    ] as const;
+    const variants = ["default", "plain", "success", "warning", "danger", "info", "glass", "frost", "overlay"] as const;
 
     variants.forEach((variant) => {
       const { unmount } = render(<Surface variant={variant}>{variant}</Surface>);
       expect(screen.getByText(variant).className).toContain(`fri-surface--${variant}`);
       unmount();
     });
+  });
+
+  it("applies bordered modifier class", () => {
+    render(<Surface isBordered>Bordered</Surface>);
+    expect(screen.getByText("Bordered").className).toContain("fri-surface--bordered");
   });
 
   it("applies radius class with key-value format", () => {
@@ -62,15 +51,16 @@ describe("Surface", () => {
     });
   });
 
-  it("combines variant + radius + shadow", () => {
+  it("combines variant + isBordered + radius + shadow", () => {
     render(
-      <Surface variant="plain-bordered" radius="lg" shadow="md">
+      <Surface variant="plain" radius="lg" shadow="md" isBordered>
         Combined
       </Surface>,
     );
 
     const el = screen.getByText("Combined");
-    expect(el.className).toContain("fri-surface--plain-bordered");
+    expect(el.className).toContain("fri-surface--plain");
+    expect(el.className).toContain("fri-surface--bordered");
     expect(el.className).toContain("fri-surface--radius-lg");
     expect(el.className).toContain("fri-surface--shadow-md");
   });

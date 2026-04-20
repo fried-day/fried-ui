@@ -184,9 +184,8 @@
   --color-info-ghost-foreground: var(--color-fri-blue-500);
 
   --color-background: oklch(100% 0 0);
-  --color-background-secondary: oklch(98.875% 0 0);
+  --color-background-secondary: var(--color-fri-neutral-50);
   --color-foreground: oklch(0% 0 0);
-  --color-foreground-inverted: oklch(100% 0 0);
 
   --color-surface: oklch(97.75% 0 0);
   --color-surface-border: var(--color-fri-neutral-100);
@@ -252,12 +251,13 @@
   --color-scrim: oklch(0% 0 0 / 0.6);
   --color-scrim-hover: oklch(0% 0 0 / 0.75);
   --color-scrim-active: oklch(0% 0 0 / 0.85);
-  --color-scrim-border: oklch(100% 0 0 / 0.1);
+  --color-scrim-border: oklch(100% 0 0 / 0.2);
   --color-scrim-foreground: oklch(100% 0 0);
 }
 
 @layer base {
   .dark,
   [data-theme="dark"] {
+    --color-background-secondary: var(--color-fri-neutral-900);
   }
 }

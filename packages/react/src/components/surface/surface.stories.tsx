@@ -14,6 +14,7 @@ const meta = {
     variant: "default",
     radius: "md",
     shadow: "none",
+    isBordered: false,
   },
   argTypes: {
     children: {
@@ -28,32 +29,28 @@ const meta = {
     },
     variant: {
       control: "select",
-      options: [
-        "default",
-        "default-bordered",
-        "plain",
-        "plain-bordered",
-        "success",
-        "success-bordered",
-        "warning",
-        "warning-bordered",
-        "danger",
-        "danger-bordered",
-        "info",
-        "info-bordered",
-        "glass",
-        "frost",
-        "overlay",
-      ],
+      options: ["default", "plain", "success", "warning", "danger", "info", "glass", "frost", "overlay"],
       description:
-        "Visual style. **Base:** default/plain (neutral cards). **Status:** success/warning/danger/info (pale bg — alert/callout boxes). **Special:** glass/frost/overlay (media overlays). Add `-bordered` suffix for emphasis border. Use default on white pages, plain on gray pages, status for alerts.",
+        "Visual style. **Base:** default/plain (neutral cards). **Status:** success/warning/danger/info (pale bg — alert/callout boxes). **Special:** glass/frost/overlay (media overlays). Pair with `isBordered` for emphasis border. Use default on white pages, plain on gray pages, status for alerts.",
       table: {
         type: {
-          summary:
-            '"default" | "default-bordered" | "plain" | "plain-bordered" | "success" | "success-bordered" | "warning" | "warning-bordered" | "danger" | "danger-bordered" | "info" | "info-bordered" | "glass" | "frost" | "overlay"',
+          summary: '"default" | "plain" | "success" | "warning" | "danger" | "info" | "glass" | "frost" | "overlay"',
         },
         defaultValue: {
           summary: "default",
+        },
+        category: "Style Variants",
+      },
+    },
+    isBordered: {
+      control: "boolean",
+      description: "Adds emphasis border using variant-specific border token",
+      table: {
+        type: {
+          summary: "boolean",
+        },
+        defaultValue: {
+          summary: "false",
         },
         category: "Style Variants",
       },
@@ -140,7 +137,7 @@ const Variants = () => {
         <p className="mt-2 text-sm">Surface content</p>
       </Surface>
 
-      <Surface variant="default-bordered" className="p-6">
+      <Surface variant="default" isBordered className="p-6">
         <p className="font-bold">Default Bordered</p>
         <p className="mt-2 text-sm">Surface content</p>
       </Surface>
@@ -157,7 +154,7 @@ const Variants = () => {
         <p className="mt-2 text-sm">Surface content</p>
       </Surface>
 
-      <Surface {...args} variant="default-bordered" className="p-6">
+      <Surface {...args} variant="default" className="p-6" isBordered>
         <p className="font-bold">Default Bordered</p>
         <p className="mt-2 text-sm">Surface content</p>
       </Surface>
@@ -178,7 +175,7 @@ const StatusVariants = () => {
         <p className="font-bold">Success</p>
         <p className="mt-1 text-sm">Surface content</p>
       </Surface>
-      <Surface variant="warning-bordered" className="p-4">
+      <Surface variant="warning" isBordered className="p-4">
         <p className="font-bold">Warning</p>
         <p className="mt-1 text-sm">Surface content</p>
       </Surface>
@@ -186,7 +183,7 @@ const StatusVariants = () => {
         <p className="font-bold">Danger</p>
         <p className="mt-1 text-sm">Surface content</p>
       </Surface>
-      <Surface variant="info-bordered" className="p-4">
+      <Surface variant="info" isBordered className="p-4">
         <p className="font-bold">Info</p>
         <p className="mt-1 text-sm">Surface content</p>
       </Surface>
@@ -203,7 +200,7 @@ const StatusVariants = () => {
         <p className="mt-1 text-sm">Surface content</p>
       </Surface>
 
-      <Surface {...args} variant="warning-bordered" className="p-4">
+      <Surface {...args} variant="warning" className="p-4" isBordered>
         <p className="font-bold">Warning</p>
         <p className="mt-1 text-sm">Surface content</p>
       </Surface>
@@ -213,7 +210,7 @@ const StatusVariants = () => {
         <p className="mt-1 text-sm">Surface content</p>
       </Surface>
 
-      <Surface {...args} variant="info-bordered" className="p-4">
+      <Surface {...args} variant="info" className="p-4" isBordered>
         <p className="font-bold">Info</p>
         <p className="mt-1 text-sm">Surface content</p>
       </Surface>
@@ -229,14 +226,9 @@ const PlainVariants: Story = {
 
 const PlainVariants = () => {
   return (
-    <div className="flex h-80 w-160 items-center justify-center gap-4 bg-background-secondary p-16">
+    <div className="flex h-80 w-160 items-center justify-center bg-background-secondary p-16">
       <Surface variant="plain" radius="lg" className="p-6">
         <p className="font-bold">Plain</p>
-        <p className="mt-2 text-sm">Surface content</p>
-      </Surface>
-
-      <Surface variant="plain-bordered" radius="lg" className="p-6">
-        <p className="font-bold">Plain Bordered</p>
         <p className="mt-2 text-sm">Surface content</p>
       </Surface>
     </div>
@@ -246,14 +238,9 @@ const PlainVariants = () => {
     },
   },
   render: (args): React.JSX.Element => (
-    <div className="flex h-80 w-160 items-center justify-center gap-4 bg-background-secondary p-16">
+    <div className="flex h-80 w-160 items-center justify-center bg-background-secondary p-16">
       <Surface {...args} variant="plain" radius="lg" className="p-6">
         <p className="font-bold">Plain</p>
-        <p className="mt-2 text-sm">Surface content</p>
-      </Surface>
-
-      <Surface {...args} variant="plain-bordered" radius="lg" className="p-6">
-        <p className="font-bold">Plain Bordered</p>
         <p className="mt-2 text-sm">Surface content</p>
       </Surface>
     </div>
@@ -269,7 +256,7 @@ const GlassVariants: Story = {
 const GlassVariants = () => {
   return (
     <div className="flex h-80 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
-      <Surface variant="glass" radius="lg" className="p-6">
+      <Surface variant="glass" isBordered radius="lg" className="p-6">
         <p className="font-bold">Glass Surface</p>
         <p className="mt-2 text-sm">Surface content</p>
       </Surface>
@@ -281,7 +268,7 @@ const GlassVariants = () => {
   },
   render: (args): React.JSX.Element => (
     <div className="flex h-80 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
-      <Surface {...args} variant="glass" radius="lg" className="p-6">
+      <Surface {...args} variant="glass" radius="lg" className="p-6" isBordered>
         <p className="font-bold">Glass Surface</p>
         <p className="mt-2 text-sm">Surface content</p>
       </Surface>
@@ -327,7 +314,7 @@ const OverlayVariants: Story = {
 const OverlayVariants = () => {
   return (
     <div className="flex h-80 w-160 items-center justify-center bg-linear-to-br from-orange-400 via-rose-500 via-fuchsia-500 via-purple-500 to-purple-600 p-16">
-      <Surface variant="overlay" radius="lg" className="p-6">
+      <Surface variant="overlay" isBordered radius="lg" className="p-6">
         <p className="font-bold">Overlay Surface</p>
         <p className="mt-2 text-sm">Surface content</p>
       </Surface>
@@ -339,7 +326,7 @@ const OverlayVariants = () => {
   },
   render: (args): React.JSX.Element => (
     <div className="flex h-80 w-160 items-center justify-center bg-linear-to-br from-orange-400 via-fuchsia-500 via-purple-500 via-rose-500 to-purple-600 p-16">
-      <Surface {...args} variant="overlay" radius="lg" className="p-6">
+      <Surface {...args} variant="overlay" radius="lg" className="p-6" isBordered>
         <p className="font-bold">Overlay Surface</p>
         <p className="mt-2 text-sm">Surface content</p>
       </Surface>
@@ -485,6 +472,78 @@ const Shadow = () => {
   ),
 };
 
+const Bordered: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Surface } from "@fried-ui/react";
+
+const Bordered = () => {
+  return (
+    <div className="flex flex-wrap gap-4">
+      <Surface variant="default" isBordered className="p-6">
+        <p className="font-bold">Default</p>
+        <p className="mt-2 text-sm">Surface content</p>
+      </Surface>
+
+      <Surface variant="success" isBordered className="p-6">
+        <p className="font-bold">Success</p>
+        <p className="mt-2 text-sm">Surface content</p>
+      </Surface>
+
+      <Surface variant="warning" isBordered className="p-6">
+        <p className="font-bold">Warning</p>
+        <p className="mt-2 text-sm">Surface content</p>
+      </Surface>
+
+      <Surface variant="danger" isBordered className="p-6">
+        <p className="font-bold">Danger</p>
+        <p className="mt-2 text-sm">Surface content</p>
+      </Surface>
+
+      <Surface variant="info" isBordered className="p-6">
+        <p className="font-bold">Info</p>
+        <p className="mt-2 text-sm">Surface content</p>
+      </Surface>
+    </div>
+  );
+};`,
+      },
+    },
+  },
+  args: {
+    isBordered: true,
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex flex-wrap items-start gap-4">
+      <Surface {...args} variant="default" className="p-6">
+        <p className="font-bold">Default</p>
+        <p className="mt-2 text-sm">Surface content</p>
+      </Surface>
+
+      <Surface {...args} variant="success" className="p-6">
+        <p className="font-bold">Success</p>
+        <p className="mt-2 text-sm">Surface content</p>
+      </Surface>
+
+      <Surface {...args} variant="warning" className="p-6">
+        <p className="font-bold">Warning</p>
+        <p className="mt-2 text-sm">Surface content</p>
+      </Surface>
+
+      <Surface {...args} variant="danger" className="p-6">
+        <p className="font-bold">Danger</p>
+        <p className="mt-2 text-sm">Surface content</p>
+      </Surface>
+
+      <Surface {...args} variant="info" className="p-6">
+        <p className="font-bold">Info</p>
+        <p className="mt-2 text-sm">Surface content</p>
+      </Surface>
+    </div>
+  ),
+};
+
 export {
   Default,
   Variants,
@@ -493,6 +552,7 @@ export {
   GlassVariants,
   FrostVariants,
   OverlayVariants,
+  Bordered,
   Radius,
   Shadow,
 };

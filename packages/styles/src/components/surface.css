@@ -1,60 +1,36 @@
 @layer components {
   .fri-surface {
     @apply border border-transparent;
-    @apply bg-(--color-surface) text-(--color-surface-foreground);
+    @apply bg-surface text-surface-foreground;
     @apply rounded-md;
   }
 
   .fri-surface--default {
-    @apply bg-(--color-surface) text-(--color-surface-foreground);
-  }
-
-  .fri-surface--default-bordered {
-    @apply border-(--color-surface-border) bg-(--color-surface) text-(--color-surface-foreground);
+    @apply bg-surface text-surface-foreground;
   }
 
   .fri-surface--plain {
-    @apply bg-(--color-surface-plain) text-(--color-surface-plain-foreground);
-  }
-
-  .fri-surface--plain-bordered {
-    @apply border-(--color-surface-plain-border) bg-(--color-surface-plain) text-(--color-surface-plain-foreground);
+    @apply bg-surface-plain text-surface-plain-foreground;
   }
 
   .fri-surface--success {
-    @apply bg-(--color-success-soft) text-(--color-success-soft-foreground);
-  }
-
-  .fri-surface--success-bordered {
-    @apply border-(--color-success-soft-border) bg-(--color-success-soft) text-(--color-success-soft-foreground);
+    @apply bg-success-soft text-success-soft-foreground;
   }
 
   .fri-surface--warning {
-    @apply bg-(--color-warning-soft) text-(--color-warning-soft-foreground);
-  }
-
-  .fri-surface--warning-bordered {
-    @apply border-(--color-warning-soft-border) bg-(--color-warning-soft) text-(--color-warning-soft-foreground);
+    @apply bg-warning-soft text-warning-soft-foreground;
   }
 
   .fri-surface--danger {
-    @apply bg-(--color-danger-soft) text-(--color-danger-soft-foreground);
-  }
-
-  .fri-surface--danger-bordered {
-    @apply border-(--color-danger-soft-border) bg-(--color-danger-soft) text-(--color-danger-soft-foreground);
+    @apply bg-danger-soft text-danger-soft-foreground;
   }
 
   .fri-surface--info {
-    @apply bg-(--color-info-soft) text-(--color-info-soft-foreground);
-  }
-
-  .fri-surface--info-bordered {
-    @apply border-(--color-info-soft-border) bg-(--color-info-soft) text-(--color-info-soft-foreground);
+    @apply bg-info-soft text-info-soft-foreground;
   }
 
   .fri-surface--glass {
-    @apply border-glass-border bg-glass text-glass-foreground backdrop-blur-xl backdrop-saturate-200;
+    @apply bg-glass text-glass-foreground backdrop-blur-xl backdrop-saturate-200;
   }
 
   .fri-surface--frost {
@@ -62,7 +38,43 @@
   }
 
   .fri-surface--overlay {
-    @apply border-scrim-border bg-scrim text-scrim-foreground backdrop-blur-xl backdrop-saturate-150;
+    @apply bg-scrim text-scrim-foreground backdrop-blur-xl backdrop-saturate-150;
+  }
+
+  .fri-surface--bordered.fri-surface--default {
+    @apply border-surface-border;
+  }
+
+  .fri-surface--bordered.fri-surface--plain {
+    @apply border-surface-plain-border;
+  }
+
+  .fri-surface--bordered.fri-surface--success {
+    @apply border-success-soft-border;
+  }
+
+  .fri-surface--bordered.fri-surface--warning {
+    @apply border-warning-soft-border;
+  }
+
+  .fri-surface--bordered.fri-surface--danger {
+    @apply border-danger-soft-border;
+  }
+
+  .fri-surface--bordered.fri-surface--info {
+    @apply border-info-soft-border;
+  }
+
+  .fri-surface--bordered.fri-surface--glass {
+    @apply border-glass-border;
+  }
+
+  .fri-surface--bordered.fri-surface--frost {
+    @apply border-glass-border;
+  }
+
+  .fri-surface--bordered.fri-surface--overlay {
+    @apply border-scrim-border;
   }
 
   .fri-surface--shadow-none {
