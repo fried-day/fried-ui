@@ -31,7 +31,7 @@ const meta = {
       control: "select",
       options: ["default", "plain", "success", "warning", "danger", "info", "glass", "frost", "overlay"],
       description:
-        "Visual style. **Base:** default/plain (neutral cards). **Status:** success/warning/danger/info (pale bg — alert/callout boxes). **Special:** glass/frost/overlay (media overlays). Pair with `isBordered` for emphasis border. Use default on white pages, plain on gray pages, status for alerts.",
+        "Visual style. **Base:** default (neutral gray on white pages), plain (pure white on gray pages). **Status:** success (positive — completed actions), warning (caution — needs attention), danger (negative — destructive/error), info (neutral notice). **Special:** glass (frosted blur with border — premium overlay on media), frost (heavier blur no border — text-heavy overlay), overlay (dark scrim — subtitle/caption over images). Pair with `isBordered` for emphasis border on any variant. Use default for cards on white background, plain for cards on gray background, status variants for alert/callout boxes, glass/frost/overlay for media-heavy designs.",
       table: {
         type: {
           summary: '"default" | "plain" | "success" | "warning" | "danger" | "info" | "glass" | "frost" | "overlay"',
@@ -58,7 +58,8 @@ const meta = {
     radius: {
       control: "select",
       options: ["none", "sm", "md", "lg", "xl"],
-      description: "The border radius of the surface",
+      description:
+        "Border radius scale. **none** — sharp corners (data tables, embedded). **sm** — subtle rounding. **md** (default) — standard cards. **lg** — emphasized cards/dialogs. **xl** — hero cards/banners.",
       table: {
         type: {
           summary: '"none" | "sm" | "md" | "lg" | "xl"',
@@ -72,7 +73,8 @@ const meta = {
     shadow: {
       control: "select",
       options: ["none", "sm", "md", "lg", "xl"],
-      description: "Elevation shadow — orthogonal to variant",
+      description:
+        "Elevation depth (orthogonal to variant — combine freely). **none** (default) — flat. **sm** — subtle lift (hover hint). **md** — noticeable elevation (cards). **lg** — floating (popovers). **xl** — strong elevation (modals/dialogs).",
       table: {
         type: {
           summary: '"none" | "sm" | "md" | "lg" | "xl"',

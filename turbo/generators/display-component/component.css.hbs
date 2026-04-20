@@ -1,70 +1,94 @@
-.fri-{{dashCase name}} {
-  @apply inline-flex items-center justify-center;
-  @apply leading-none font-medium whitespace-nowrap;
-  @apply border border-transparent select-none;
+@layer components {
+  .fri-{{dashCase name}} {
+    @apply inline-flex items-center justify-center;
+    @apply leading-none font-medium whitespace-nowrap;
+    @apply border border-transparent select-none;
 
-  --fri-{{dashCase name}}-bg: var(--color-primary);
-  --fri-{{dashCase name}}-fg: var(--color-primary-foreground);
+    --fri-{{dashCase name}}-bg: var(--color-primary);
+    --fri-{{dashCase name}}-fg: var(--color-primary-foreground);
 
-  @apply bg-(--fri-{{dashCase name}}-bg) text-(--fri-{{dashCase name}}-fg);
+    @apply bg-(--fri-{{dashCase name}}-bg) text-(--fri-{{dashCase name}}-fg);
+    @apply gap-[calc(1rem/2.058)] px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
+    @apply rounded-[calc(1em*1.272*2/4)];
+  }
 
-  @apply gap-2.5 px-4 py-2 text-base;
-}
+  .fri-{{dashCase name}}--primary {
+    --fri-{{dashCase name}}-bg: var(--color-primary);
+    --fri-{{dashCase name}}-fg: var(--color-primary-foreground);
+  }
 
-.fri-{{dashCase name}}--primary {
-  --fri-{{dashCase name}}-bg: var(--color-primary);
-  --fri-{{dashCase name}}-fg: var(--color-primary-foreground);
-}
+  .fri-{{dashCase name}}--secondary {
+    --fri-{{dashCase name}}-bg: var(--color-secondary);
+    --fri-{{dashCase name}}-fg: var(--color-secondary-foreground);
+  }
 
-.fri-{{dashCase name}}--secondary {
-  --fri-{{dashCase name}}-bg: var(--color-secondary);
-  --fri-{{dashCase name}}-fg: var(--color-secondary-foreground);
-}
+  .fri-{{dashCase name}}--ghost {
+    --fri-{{dashCase name}}-bg: transparent;
+    --fri-{{dashCase name}}-fg: var(--color-foreground);
+  }
 
-.fri-{{dashCase name}}--ghost {
-  --fri-{{dashCase name}}-bg: transparent;
-  --fri-{{dashCase name}}-fg: var(--color-foreground);
-}
+  .fri-{{dashCase name}}--outline {
+    --fri-{{dashCase name}}-bg: transparent;
+    --fri-{{dashCase name}}-fg: var(--color-foreground);
 
-.fri-{{dashCase name}}--outline {
-  --fri-{{dashCase name}}-bg: transparent;
-  --fri-{{dashCase name}}-fg: var(--color-foreground);
+    @apply border-border;
+  }
 
-  @apply border-border;
-}
+  .fri-{{dashCase name}}--success {
+    --fri-{{dashCase name}}-bg: var(--color-success);
+    --fri-{{dashCase name}}-fg: var(--color-success-foreground);
+  }
 
-.fri-{{dashCase name}}--success {
-  --fri-{{dashCase name}}-bg: var(--color-success);
-  --fri-{{dashCase name}}-fg: var(--color-success-foreground);
-}
+  .fri-{{dashCase name}}--warning {
+    --fri-{{dashCase name}}-bg: var(--color-warning);
+    --fri-{{dashCase name}}-fg: var(--color-warning-foreground);
+  }
 
-.fri-{{dashCase name}}--warning {
-  --fri-{{dashCase name}}-bg: var(--color-warning);
-  --fri-{{dashCase name}}-fg: var(--color-warning-foreground);
-}
+  .fri-{{dashCase name}}--danger {
+    --fri-{{dashCase name}}-bg: var(--color-danger);
+    --fri-{{dashCase name}}-fg: var(--color-danger-foreground);
+  }
 
-.fri-{{dashCase name}}--danger {
-  --fri-{{dashCase name}}-bg: var(--color-danger);
-  --fri-{{dashCase name}}-fg: var(--color-danger-foreground);
-}
+  .fri-{{dashCase name}}--info {
+    --fri-{{dashCase name}}-bg: var(--color-info);
+    --fri-{{dashCase name}}-fg: var(--color-info-foreground);
+  }
 
-.fri-{{dashCase name}}--info {
-  --fri-{{dashCase name}}-bg: var(--color-info);
-  --fri-{{dashCase name}}-fg: var(--color-info-foreground);
-}
+  .fri-{{dashCase name}} [slot="icon"],
+  .fri-{{dashCase name}} [slot="icon-start"],
+  .fri-{{dashCase name}} [slot="icon-end"] {
+    @apply size-match-font;
+  }
 
-.fri-{{dashCase name}} [slot="icon"] {
-  @apply size-match-font;
-}
+  .fri-{{dashCase name}}--size-sm {
+    @apply gap-[calc(0.875rem/2.058)] px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
+  }
 
-.fri-{{dashCase name}}--size-sm {
-  @apply gap-2 px-3.5 py-1.5 text-sm;
-}
+  .fri-{{dashCase name}}--size-md {
+    @apply gap-[calc(1rem/2.058)] px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
+  }
 
-.fri-{{dashCase name}}--size-md {
-  @apply gap-2.5 px-4 py-2 text-base;
-}
+  .fri-{{dashCase name}}--size-lg {
+    @apply gap-[calc(1.25rem/2.058)] px-[calc(1.25rem)] py-[calc(1.25rem/2.058)] text-xl;
+  }
 
-.fri-{{dashCase name}}--size-lg {
-  @apply gap-3 px-5 py-2.5 text-xl;
+  .fri-{{dashCase name}}--radius-none {
+    @apply rounded-none;
+  }
+
+  .fri-{{dashCase name}}--radius-sm {
+    @apply rounded-[calc(1em*1.272/4)];
+  }
+
+  .fri-{{dashCase name}}--radius-md {
+    @apply rounded-[calc(1em*1.272*2/4)];
+  }
+
+  .fri-{{dashCase name}}--radius-lg {
+    @apply rounded-[calc(1em*1.272*3/4)];
+  }
+
+  .fri-{{dashCase name}}--radius-full {
+    @apply rounded-full;
+  }
 }

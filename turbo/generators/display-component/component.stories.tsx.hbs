@@ -118,9 +118,9 @@ const Sizes: Story = {
 const Sizes = () => {
   return (
     <div className="flex items-end gap-4">
-      <{{pascalCase name}} size="sm">Small</{{pascalCase name}}>
-      <{{pascalCase name}} size="md">Medium</{{pascalCase name}}>
-      <{{pascalCase name}} size="lg">Large</{{pascalCase name}}>
+      <{{pascalCase name}} size="sm">Small {{pascalCase name}}</{{pascalCase name}}>
+      <{{pascalCase name}} size="md">Medium {{pascalCase name}}</{{pascalCase name}}>
+      <{{pascalCase name}} size="lg">Large {{pascalCase name}}</{{pascalCase name}}>
     </div>
   );
 };`,
@@ -129,9 +129,9 @@ const Sizes = () => {
   },
   render: (args): React.JSX.Element => (
     <div className="flex items-end gap-4">
-      <{{pascalCase name}} {...args} size="sm">Small</{{pascalCase name}}>
-      <{{pascalCase name}} {...args} size="md">Medium</{{pascalCase name}}>
-      <{{pascalCase name}} {...args} size="lg">Large</{{pascalCase name}}>
+      <{{pascalCase name}} {...args} size="sm">Small {{pascalCase name}}</{{pascalCase name}}>
+      <{{pascalCase name}} {...args} size="md">Medium {{pascalCase name}}</{{pascalCase name}}>
+      <{{pascalCase name}} {...args} size="lg">Large {{pascalCase name}}</{{pascalCase name}}>
     </div>
   ),
 };
