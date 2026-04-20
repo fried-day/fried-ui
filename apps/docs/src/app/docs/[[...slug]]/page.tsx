@@ -2,34 +2,7 @@ import defaultMdxComponents from "fumadocs-ui/mdx";
 import { DocsBody, DocsDescription, DocsPage, DocsTitle } from "fumadocs-ui/page";
 import { notFound } from "next/navigation";
 
-import { ColorSwatch } from "@/components/ColorSwatch";
 import { CopyMarkdown } from "@/components/CopyMarkdown";
-import {
-  BadgeBadgeLinks,
-  BadgeDemo,
-  BadgeIconOnly,
-  BadgeOutlineVariants,
-  BadgeSizes,
-  BadgeSoftVariants,
-  BadgeVariants,
-  ButtonAsLink,
-  ButtonBadgeLinks,
-  ButtonCustomClass,
-  ButtonDemo,
-  ButtonDisabled,
-  ButtonFullWidth,
-  ButtonIconOnly,
-  ButtonPending,
-  ButtonRadius,
-  ButtonSizes,
-  ButtonVariants,
-  ButtonWithIcons,
-  SurfaceBadgeLinks,
-  SurfaceDemo,
-  SurfaceRadius,
-  SurfaceVariants,
-} from "@/components/MdxComponents";
-import { Preview } from "@/components/Preview";
 import { source } from "@/lib/source";
 
 interface PageProps {
@@ -42,31 +15,6 @@ interface SlugParamsProps {
 
 const mdxComponents = {
   ...defaultMdxComponents,
-  BadgeBadgeLinks,
-  BadgeDemo,
-  BadgeIconOnly,
-  BadgeOutlineVariants,
-  BadgeSizes,
-  BadgeSoftVariants,
-  BadgeVariants,
-  ButtonAsLink,
-  ButtonBadgeLinks,
-  ButtonCustomClass,
-  ButtonDemo,
-  ButtonDisabled,
-  ButtonFullWidth,
-  ButtonIconOnly,
-  ButtonPending,
-  ButtonRadius,
-  ButtonSizes,
-  ButtonVariants,
-  ButtonWithIcons,
-  ColorSwatch,
-  Preview,
-  SurfaceBadgeLinks,
-  SurfaceDemo,
-  SurfaceRadius,
-  SurfaceVariants,
 };
 
 const Page = async (props: Readonly<PageProps>): Promise<React.JSX.Element> => {

@@ -1,16 +1,4 @@
 {
   "title": "Documentation",
-  "pages": [
-    "---Overview---",
-    "index",
-    "overview/introduction",
-    "overview/quick-start",
-    "---Styles---",
-    "styles/design-tokens",
-    "styles/colors",
-    "---Components---",
-    "components/badge",
-    "components/button",
-    "components/surface"
-  ]
+  "pages": ["---Overview---", "index", "overview/introduction", "overview/quick-start"]
 }
