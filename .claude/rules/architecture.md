@@ -209,4 +209,27 @@ React Aria states ใน CSS: `&[data-pressed]`, `&[data-hovered]`, `&[data-focu
 4. Re-export → `packages/react/src/components/index.ts`
 5. เพิ่ม tsup entry → `packages/react/tsup.config.ts`
 6. เพิ่ม export map → `packages/react/package.json`
-7. Build + lint + test ผ่าน
+7. **Verify 1:1 parity** — base class default value == explicit default modifier value (variant/size/radius). JSDoc `@default` สะท้อน base class จริง. See `.claude/rules/styles.md` "Base = Default Modifier". **P0 — production risk**
+8. Build + lint + test ผ่าน
+
+## 1:1 Parity Check (React ≡ Plain HTML)
+
+ทุก component ต้อง pass parity test นี้ — `<Component>` (no props) และ `<tag class="fri-{name}">` (minimal) ต้อง render ตรงกัน:
+
+```text
+Base class defines:
+  ✓ default variant tokens (e.g., primary)
+  ✓ default size spacing + font-size
+  ✓ default radius (formula matches --radius-{default})
+
+Default modifier rule produces same CSS as base:
+  .fri-X--{default-variant} { ... } === base class variant tokens
+  .fri-X--size-{default}    { ... } === base class size
+  .fri-X--radius-{default}  { ... } === base class radius
+
+JSDoc @default reflects base reality:
+  If base has rounded-full → @default 'full' (not 'md')
+  If base has primary tokens → @default 'primary'
+```
+
+**Why critical:** `@fried-ui/styles` ships as pure CSS for WP/PHP/HTML consumers. Any drift breaks their rendering. React consumers ก็โดนเพราะ `<Component>` no-props → bem() skips modifier → base class wins (might diverge from JSDoc promise).

@@ -1,7 +1,7 @@
 export interface BadgeVariantsProps {
   /** Whether the badge renders as a square icon-only badge. @default false */
   isIconOnly?: boolean;
-  /** Border radius scale. @default 'md' */
+  /** Border radius scale. @default 'full' */
   radius?: "none" | "sm" | "md" | "lg" | "full";
   /** Size scale. @default 'md' */
   size?: "sm" | "md" | "lg";

@@ -11,7 +11,7 @@ import { bem } from "../../utils/bem";
 
 import type { InputVariantsProps } from "./input.variants";
 
-type AriaInputProps = Omit<ComponentPropsWithRef<typeof AriaInput>, "className" | "children">;
+type AriaInputProps = Omit<ComponentPropsWithRef<typeof AriaInput>, "className" | "children" | "size">;
 
 export type InputProps = InputVariantsProps & {
   className?: string;

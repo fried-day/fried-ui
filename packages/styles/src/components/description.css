@@ -21,6 +21,7 @@
   }
 
   .fri-description--disabled,
+  .fri-description[aria-disabled="true"],
   .fri-description[data-disabled] {
     @apply pointer-events-none opacity-50;
   }

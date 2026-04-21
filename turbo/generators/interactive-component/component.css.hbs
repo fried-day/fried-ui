@@ -19,18 +19,19 @@
       @apply focus-ring;
     }
 
-    &.fri-{{dashCase name}}--disabled {
+    &:disabled,
+    &[data-disabled] {
       @apply status-disabled;
     }
 
     @media (hover: hover) {
-      &:hover,
+      &:hover:not(:disabled):not(:active),
       &[data-hovered] {
         @apply bg-(--fri-{{dashCase name}}-bg-hover);
       }
     }
 
-    &:active,
+    &:active:not(:disabled),
     &[data-pressed] {
       @apply bg-(--fri-{{dashCase name}}-bg-pressed) duration-(--duration-press);
     }

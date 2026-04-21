@@ -42,6 +42,7 @@
   }
 
   .fri-label--disabled,
+  .fri-label[aria-disabled="true"],
   .fri-label[data-disabled] {
     @apply pointer-events-none opacity-50;
   }

@@ -2,7 +2,7 @@
   .fri-surface {
     @apply border border-transparent;
     @apply bg-surface text-surface-foreground;
-    @apply rounded-md;
+    @apply rounded-[calc(1em*1.272*2/4)];
   }
 
   .fri-surface--default {

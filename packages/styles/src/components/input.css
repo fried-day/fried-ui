@@ -1,8 +1,8 @@
 @layer components {
   .fri-input {
     @apply inline-flex items-baseline;
-    @apply leading-none font-normal;
-    @apply border border-transparent select-none;
+    @apply leading-none font-normal outline-none;
+    @apply border border-transparent;
     @apply transition duration-(--duration-hover) ease-out motion-reduce:transition-none;
 
     --fri-input-bg: var(--color-field);
@@ -17,31 +17,48 @@
     @apply border-(--fri-input-border);
     @apply gap-[calc(0.875rem/2.058)] px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
     @apply rounded-[calc(1em*1.272*2/4)];
+    @apply placeholder:text-(--fri-input-placeholder);
 
+    &:hover:not(:focus-within):not(:read-only):not(:disabled):not(:has(:read-only)):not(:has(:disabled)),
     &:has([data-hovered]):not(:has([data-focused])):not(:has([data-readonly])):not(:has([data-disabled])) {
       @apply border-(--fri-input-border-hover) bg-(--fri-input-bg-hover);
     }
 
-    &:has([data-focused]):not(:has([data-focus-visible])) {
+    &:focus-within:not(:focus-visible):not(:has(:focus-visible)),
+    &:has([data-focused]:not([data-focus-visible])) {
       @apply border-(--fri-input-border-focus) bg-(--fri-input-bg) ring-1 ring-(--fri-input-border-focus);
     }
 
+    &:focus-visible,
+    &:has(:focus-visible),
     &:has([data-focus-visible]) {
       @apply focus-ring;
     }
 
+    &:required,
+    &:has(:required),
     &:has([data-required]) {
       --fri-input-border: var(--color-field-border-focus);
     }
 
+    &:invalid,
+    &[aria-invalid="true"],
+    &:has(:invalid),
+    &:has([aria-invalid="true"]),
     &:has([data-invalid]) {
       --fri-input-border: var(--color-danger);
       --fri-input-border-hover: var(--color-danger);
       --fri-input-border-focus: var(--color-danger);
     }
 
+    &:disabled,
+    &:has(:disabled),
     &:has([data-disabled]) {
       @apply status-disabled;
+    }
+
+    &:read-only {
+      @apply cursor-default;
     }
 
     &[data-pending] {
@@ -58,6 +75,7 @@
     @apply cursor-not-allowed;
   }
 
+  .fri-input__field:read-only,
   .fri-input__field[data-readonly] {
     @apply cursor-default;
   }
@@ -107,6 +125,14 @@
     @apply leading-none text-foreground select-none;
   }
 
+  .fri-input:invalid .fri-input__icon-start,
+  .fri-input:invalid .fri-input__icon-end,
+  .fri-input[aria-invalid="true"] .fri-input__icon-start,
+  .fri-input[aria-invalid="true"] .fri-input__icon-end,
+  .fri-input:has(:invalid) .fri-input__icon-start,
+  .fri-input:has(:invalid) .fri-input__icon-end,
+  .fri-input:has([aria-invalid="true"]) .fri-input__icon-start,
+  .fri-input:has([aria-invalid="true"]) .fri-input__icon-end,
   .fri-input:has([data-invalid]) .fri-input__icon-start,
   .fri-input:has([data-invalid]) .fri-input__icon-end {
     @apply text-danger;

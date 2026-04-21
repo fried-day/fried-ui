@@ -66,6 +66,65 @@ Groups: primary, secondary, success, warning, danger, info
 Base class includes defaults — `fri-{name}` alone = primary + md + default radius.
 Spacing and radius use golden ratio formula — see `formula.md`.
 
+## Base = Default Modifier (1:1 parity)
+
+`<Component>` (React, no props) **must render identically to** `<tag class="fri-{name}">` (plain HTML, minimal class). ทั้งคู่ต้อง pick up default variant/size/radius จาก base class
+
+**Rule:** Base class's default value **ต้องตรงกับ** explicit default modifier rule (same CSS output)
+
+```css
+/* ❌ Drift — base ≠ modifier */
+.fri-button {
+  @apply rounded-md;                          /* Tailwind 0.375rem */
+}
+.fri-button--radius-md {
+  @apply rounded-[calc(1em*1.272*2/4)];       /* formula 0.636em */
+}
+/* <Button> renders 0.375rem, <Button radius="md"> renders 0.636em → different */
+
+/* ✅ Aligned */
+.fri-button {
+  @apply rounded-[calc(1em*1.272*2/4)];       /* same formula */
+}
+.fri-button--radius-md {
+  @apply rounded-[calc(1em*1.272*2/4)];       /* same formula */
+}
+/* <Button> and <Button radius="md"> render identically */
+```
+
+### Required parity for every component
+
+| Axis | Base class must set | Default modifier must match |
+|------|---------------------|-----------------------------|
+| Variant | default variant tokens | `.fri-X--{default-variant}` same tokens |
+| Size | default size spacing + font | `.fri-X--size-{default-size}` same |
+| Radius | default radius formula | `.fri-X--radius-{default-radius}` same |
+
+### JSDoc `@default` must reflect reality
+
+`@default 'md'` in `.variants.ts` คือ **promise** to user ว่า `<Component>` (no props) ใช้ radius=md. ถ้า base class render `rounded-full` → JSDoc ต้องเป็น `@default 'full'`
+
+```tsx
+/* ❌ JSDoc ลอก promise */
+/** @default 'md' */ radius?: ...;
+// but base class uses rounded-full → actual default is 'full'
+
+/* ✅ JSDoc สะท้อนความจริง */
+/** @default 'full' */ radius?: ...;  // matches base
+```
+
+### Why this matters
+
+- **Plain HTML consumer** (WP/PHP): user writes `<button class="fri-button">` — base class is only source of defaults
+- **React consumer**: `<Button>` with no props → bem() skips modifier (no class added) → base class wins
+- ถ้า drift → React default behavior ≠ plain HTML default behavior → **violates 1:1 parity promise**
+
+### Grep audit
+```bash
+# หา base class ที่ใช้ Tailwind rounded-{size} (ไม่ใช่ formula) — ต้อง align กับ formula ใน modifier
+grep -nE '^\s*\.fri-\w+\s*\{|@apply.*rounded-(sm\|md\|lg)\b' packages/styles/src/components/*.css
+```
+
 ## BEM Class Naming
 
 ```text
@@ -215,10 +274,11 @@ slot="icon"        → icon-only (center, no text)
 2. **`:active` / `[data-pressed]` must come AFTER `:hover` / `[data-hovered]`** ใน CSS (cascade order) เพื่อ pressed override hover
 3. **`disabled` / `readonly` excludes hover entirely** — non-interactive
 
-### Pattern ✅
+### Pattern ✅ (dual selector)
 
 ```css
 /* Exclude focused/pressed from hover */
+&:has(:hover):not(:has(:focus)):not(:has(:active)):not(:has(:disabled)):not(:has(:read-only)),
 &:has([data-hovered])
   :not(:has([data-focused]))
   :not(:has([data-pressed]))
@@ -228,16 +288,19 @@ slot="icon"        → icon-only (center, no text)
 }
 
 /* Focus (mouse) */
-&:has([data-focused]):not(:has([data-focus-visible])) {
+&:has(:focus:not(:focus-visible)),
+&:has([data-focused]:not([data-focus-visible])) {
   @apply border-(--fri-X-border-focus);
 }
 
 /* Focus (keyboard) */
+&:has(:focus-visible),
 &:has([data-focus-visible]) {
   @apply focus-ring;
 }
 
 /* Pressed — last to win cascade */
+&:active:not(:disabled),
 &[data-pressed] {
   @apply bg-(--fri-X-bg-pressed);
 }
@@ -257,33 +320,155 @@ slot="icon"        → icon-only (center, no text)
 
 **แก้:** add exclusions to hover rule → same or higher specificity needed on winning rule.
 
-## React Aria First — Prefer `data-*` attrs over BEM modifiers for state
+## Dual Selector — Native pseudo-class + React Aria data-attr
 
-สำหรับ state ที่ React Aria จัดการ (hovered, focused, focus-visible, pressed, disabled, readonly, invalid, required, selected, ฯลฯ) — **ใช้ `[data-X]` attribute selector ไม่ใช่ BEM modifier class**
+**`@fried-ui/styles` เป็น pure CSS** — ต้องใช้ได้กับ **2 consumer**:
+1. `@fried-ui/react` (React Aria สร้าง `data-hovered`, `data-focused`, `data-disabled`, ...)
+2. **Plain HTML / WordPress / PHP / static site** (ใช้ native `<button disabled>`, `<input required>`, native `:hover`/`:focus`/`:active`)
+
+ถ้า CSS ใช้แต่ `[data-X]` — plain HTML consumer จะไม่มี state เลย
+
+**Rule:** ทุก state rule **ต้องเขียน 2 selector** — native pseudo-class + React Aria `data-*` attr (comma selector list)
+
+### Mapping table
+
+| React Aria | Native | Applies to |
+|------------|--------|------------|
+| `[data-hovered]` | `:hover` | ทุก element |
+| `[data-focused]` | `:focus` | form controls, links, buttons |
+| `[data-focus-visible]` | `:focus-visible` | form controls, links, buttons |
+| `[data-pressed]` | `:active` | interactive elements |
+| `[data-disabled]` | `:disabled` (form controls) / `[aria-disabled="true"]` (non-form) | depends |
+| `[data-readonly]` | `:read-only` | form controls |
+| `[data-required]` | `:required` | form controls |
+| `[data-invalid]` | `:invalid` / `[aria-invalid="true"]` | form controls |
+
+### Pattern — Form control (Button)
 
 ```css
-/* ✅ Preferred — React Aria data attrs */
-.fri-input:has([data-hovered]) { @apply bg-(--fri-input-bg-hover); }
-.fri-input:has([data-disabled]) { @apply status-disabled; }
-.fri-input:has([data-invalid]) { --fri-input-border: var(--color-danger); }
-.fri-input:has([data-focused]):not(:has([data-focus-visible])) { ... }
-.fri-input:has([data-focus-visible]) { @apply focus-ring; }
+&:disabled,
+&[data-disabled] {
+  @apply status-disabled;
+}
 
-/* ❌ Avoid — manual BEM modifier for React Aria state */
-.fri-input--disabled { @apply status-disabled; }  /* redundant */
+&:focus-visible,
+&[data-focus-visible] {
+  @apply focus-ring;
+}
+
+&:hover:not(:disabled):not(:active),
+&[data-hovered] {
+  @apply bg-(--fri-button-bg-hover);
+}
+
+&:active:not(:disabled),
+&[data-pressed] {
+  @apply bg-(--fri-button-bg-pressed);
+}
 ```
 
-**เหตุผล:**
-- ✅ Single source of truth — React Aria ตั้ง data attr อัตโนมัติ ไม่ต้อง sync 2 ทาง
-- ✅ Works across all input methods (mouse/keyboard/touch/programmatic) — React Aria handles edge cases
-- ✅ Component.tsx ไม่ต้อง pass state ลง BEM → bem() call สั้นลง (แค่ variant/size/radius)
-- ✅ Test ตรงประเด็น — เช็ค native attr (`toBeDisabled()`, `toHaveAttribute`) ไม่ใช่ class
+### Pattern — Form input (Wrapper + Self dual-mode)
 
-**BEM modifier classes ยังใช้ได้สำหรับ:**
-- Component's own variants (`--size-md`, `--variant-outline`, `--radius-lg`) — ไม่ใช่ state
-- Custom flags ที่ React Aria ไม่มี (เช่น `--full-width`, `--icon-only`)
+**Goal:** `@fried-ui/styles` ต้องใช้ได้ทั้ง 2 mode:
 
-**Rule for Component.tsx:**
+```html
+<!-- Mode 1: Self (daisyUI-style single class) -->
+<input class="fri-input" placeholder="..." />
+
+<!-- Mode 2: Wrapper (for icons/prefix/suffix) -->
+<div class="fri-input">
+  <svg class="fri-input__icon-start">...</svg>
+  <input class="fri-input__field" />
+</div>
+```
+
+**CSS uses 3-way selector** — self + wrapper + React Aria data-attr:
+
+```css
+.fri-input {
+  /* Base: outline-none + placeholder color baked in base (for self-mode) */
+  @apply outline-none placeholder:text-(--fri-input-placeholder);
+
+  /* Hover — :hover propagates to ancestors, so same rule covers both modes */
+  &:hover:not(:focus-within):not(:read-only):not(:disabled):not(:has(:read-only)):not(:has(:disabled)),
+  &:has([data-hovered]):not(:has([data-focused])):not(:has([data-readonly])):not(:has([data-disabled])) {
+    @apply bg-hover;
+  }
+
+  /* Focus (mouse) — :focus-within covers both self AND wrapper */
+  &:focus-within:not(:focus-visible):not(:has(:focus-visible)),
+  &:has([data-focused]:not([data-focus-visible])) { ... }
+
+  /* Focus (keyboard) */
+  &:focus-visible,
+  &:has(:focus-visible),
+  &:has([data-focus-visible]) { @apply focus-ring; }
+
+  /* Required/Invalid/Disabled — self + wrapper */
+  &:required,
+  &:has(:required),
+  &:has([data-required]) { ... }
+
+  &:invalid,
+  &[aria-invalid="true"],
+  &:has(:invalid),
+  &:has([aria-invalid="true"]),
+  &:has([data-invalid]) { ... }
+
+  &:disabled,
+  &:has(:disabled),
+  &:has([data-disabled]) { @apply status-disabled; }
+}
+```
+
+**Key insight — which pseudo-classes propagate:**
+
+| Pseudo | Self-only | Propagates to ancestors |
+|--------|-----------|-------------------------|
+| `:hover` | - | ✅ ใช้คลุมทั้ง wrapper + self ได้ |
+| `:focus-within` | - | ✅ matches both self + wrapper-with-focused-descendant |
+| `:focus`, `:focus-visible` | ✅ | - ต้อง `:has()` สำหรับ wrapper |
+| `:disabled`, `:read-only`, `:required`, `:invalid` | ✅ | - ต้อง `:has()` สำหรับ wrapper |
+| `[aria-invalid="true"]` | ✅ (attr) | - ต้อง `:has()` สำหรับ wrapper |
+
+**ใช้ `:focus-within` แทน `:has(:focus)` + `:focus`** — consolidate 1 selector ครอบ 2 mode
+
+### Pattern — Non-form-control (Label/Description)
+
+`<label>` / `<span>` / `<div>` ไม่มี native `:disabled` pseudo — ใช้ `[aria-disabled="true"]` (HTML standard):
+
+```css
+&--disabled,
+&[aria-disabled="true"],
+&[data-disabled] {
+  @apply opacity-50 pointer-events-none;
+}
+```
+
+### Native vs React Aria ชนกันไหม?
+
+ไม่ชน — style เหมือนกันใน 2 selector. React Aria ตั้ง `data-hovered` เพิ่ม cross-device logic (touch/keyboard) ขณะที่ native `:hover` ก็ fire จาก browser พร้อมกัน. ใน React app ทั้ง 2 match พร้อมกัน → apply same style. ใน plain HTML มีแค่ native pseudo-class fire
+
+### Rules
+
+1. ทุก state rule = 2+ selectors (comma list) — native + data-attr
+2. Form controls: `:disabled` + `[data-disabled]`
+3. Non-form (Label, Description, Surface wrapper): `[aria-disabled="true"]` + `[data-disabled]`
+4. Invalid form: ใส่ 3 — `:invalid` + `[aria-invalid="true"]` + `[data-invalid]`
+5. **ห้าม** ใช้ `[data-X]` เดี่ยวๆ ใน component CSS (breaks plain HTML)
+
+### Grep audit
+
+```bash
+# หา data-attr ทุกตัวใน component CSS — ทุก match ต้องมี native pseudo-class คู่ในบล็อก
+grep -nE '\[data-(hovered|focused|focus-visible|pressed|disabled|readonly|required|invalid)\]' packages/styles/src/components/
+```
+
+### BEM modifier classes ยังใช้ได้สำหรับ:
+- Component's own variants (`--size-md`, `--variant-outline`, `--radius-lg`)
+- Custom flags ที่ไม่มีใน native หรือ React Aria (`--full-width`, `--icon-only`)
+
+### Rule for Component.tsx
 ```tsx
 bem({
   block: "fri-input",
@@ -291,7 +476,7 @@ bem({
     variant,    // ✅ own variant
     size,       // ✅ own size
     radius,     // ✅ own radius
-    // ❌ ไม่ใส่: disabled, readonly, invalid, required, focused, hovered (React Aria handles)
+    // ❌ ไม่ใส่ state (React Aria handles via data-attr, CSS already handles native pseudo-class)
   },
 })
 ```

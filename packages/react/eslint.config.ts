@@ -9,9 +9,15 @@ export default [
     },
   },
   {
-    files: ["src/components/**/*.{ts,tsx}"],
+    files: ["src/components/**/*.{ts,tsx}", "src/tests/**/*.{ts,tsx}"],
     rules: {
       "nextfriday/jsx-pascal-case": "off",
+    },
+  },
+  {
+    files: ["src/tests/globals.d.ts"],
+    rules: {
+      "@typescript-eslint/no-empty-object-type": "off",
     },
   },
   {
