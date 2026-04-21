@@ -15,3 +15,5 @@ export * from "./description";
 export * from "./avatar-group";
 
 export * from "./input";
+
+export * from "./field-error";

@@ -1,0 +1,24 @@
+@layer components {
+  .field-error {
+    @apply block;
+    @apply text-sm text-danger;
+  }
+
+  .field-error-size-sm {
+    @apply text-xs;
+  }
+
+  .field-error-size-md {
+    @apply text-sm;
+  }
+
+  .field-error-size-lg {
+    @apply text-base;
+  }
+
+  .field-error-disabled,
+  .field-error[aria-disabled="true"],
+  .field-error[data-disabled] {
+    @apply pointer-events-none opacity-50;
+  }
+}

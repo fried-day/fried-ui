@@ -195,7 +195,7 @@
   --color-surface-plain-foreground: oklch(0% 0 0);
 
   --color-field: oklch(100% 0 0);
-  --color-field-hover: var(--color-field);
+  --color-field-hover: oklch(100% 0 0);
   --color-field-border: var(--color-fri-neutral-200);
   --color-field-border-hover: var(--color-fri-neutral-300);
   --color-field-border-focus: oklch(0% 0 0);
@@ -203,14 +203,14 @@
   --color-field-placeholder: var(--color-fri-neutral-500);
   --color-field-secondary: var(--color-fri-neutral-50);
   --color-field-secondary-hover: var(--color-fri-neutral-100);
-  --color-field-secondary-border: var(--color-field-secondary);
+  --color-field-secondary-border: var(--color-fri-neutral-50);
   --color-field-secondary-border-hover: transparent;
   --color-field-secondary-border-focus: oklch(0% 0 0);
   --color-field-secondary-foreground: oklch(0% 0 0);
   --color-field-secondary-placeholder: var(--color-fri-neutral-500);
   --color-field-plain: transparent;
   --color-field-plain-hover: var(--color-fri-neutral-50);
-  --color-field-plain-border: var(--color-field-plain);
+  --color-field-plain-border: transparent;
   --color-field-plain-border-hover: transparent;
   --color-field-plain-border-focus: oklch(0% 0 0);
   --color-field-plain-foreground: oklch(0% 0 0);

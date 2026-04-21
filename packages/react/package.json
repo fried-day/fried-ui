@@ -47,6 +47,10 @@
       "types": "./dist/components/description/index.d.ts",
       "import": "./dist/components/description/index.mjs"
     },
+    "./field-error": {
+      "types": "./dist/components/field-error/index.d.ts",
+      "import": "./dist/components/field-error/index.mjs"
+    },
     "./icons": {
       "types": "./dist/components/icons/index.d.ts",
       "import": "./dist/components/icons/index.mjs"

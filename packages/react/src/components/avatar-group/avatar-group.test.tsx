@@ -19,7 +19,7 @@ describe("AvatarGroup", () => {
     expect(container.querySelector("[data-slot='avatar-group']")).toBeInTheDocument();
   });
 
-  it("renders only base class and default spacing modifier", () => {
+  it("renders only base class without explicit spacing prop (default lives in CSS)", () => {
     const { container } = render(
       <AvatarGroup>
         <Avatar>
@@ -29,7 +29,7 @@ describe("AvatarGroup", () => {
     );
 
     const root = container.querySelector("[data-slot='avatar-group']");
-    expect(root?.className).toBe("avatar-group avatar-group-spacing-md");
+    expect(root?.className).toBe("avatar-group");
   });
 
   it("applies all size classes", () => {

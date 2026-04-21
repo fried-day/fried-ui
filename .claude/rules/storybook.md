@@ -146,20 +146,23 @@ Use slot attributes for icon positioning:
 
 ## Containers
 
-**Default = horizontal row.** Storybook stories ควรแสดง variants ใน 1 แถวเพื่อเปรียบเทียบได้ชัด (side-by-side comparison)
+**Default = horizontal row with flex-wrap.** Variant comparison stories ต้องแสดง side-by-side (horizontal eye scan) แต่ต้องรองรับ responsive — ตกบรรทัดเมื่อย่อจอ
 
 ```tsx
-/* ✅ Horizontal row (default) */
-<div className="flex items-center gap-4">
+/* ✅ Horizontal + responsive wrap (preferred) */
+<div className="flex flex-wrap items-center gap-4">
   <X variant="primary" />
   <X variant="secondary" />
 </div>
 
-/* ✅ Wrap if content overflows */
-<div className="flex flex-wrap items-start gap-4">
+/* ✅ Horizontal (items อยู่แถวเดียวพอดี — ไม่ต้อง wrap) */
+<div className="flex items-center gap-4">
 
-/* ❌ Vertical column — ห้ามใช้ */
+/* ❌ Vertical column — ห้ามใช้ใน variant comparison */
 <div className="flex flex-col gap-4">
+
+/* ❌ Horizontal without wrap when variants ≥ 5 — overflow viewport on mobile */
+<div className="flex items-center gap-4"> {/* 10 variants */}
 ```
 
 **เหตุผลห้าม `flex-col`**:
@@ -167,9 +170,17 @@ Use slot attributes for icon positioning:
 - Stack vertical ทำให้ต้อง scroll + สูญเสียบริบท
 - Bad UX เมื่อมี 5+ ตัว (หน้ายาวเกิน)
 
-**ยกเว้น** — flex-col OK เฉพาะกรณี:
-- **Storybook layout="padded"** บน component ที่มี `fullWidth` prop (เช่น Button FullWidth) — demo จงใจโชว์ stack-vertical เพื่อแสดง full-width behavior
-- **Container nested content** (เช่น Card.Header + Body + Footer) — นี่ไม่ใช่ variant comparison
+**เหตุผลต้อง `flex-wrap`**:
+- Desktop → 1 แถว horizontal (optimal eye scan)
+- Mobile/narrow → ตกบรรทัดอัตโนมัติ (no horizontal scroll, no overflow)
+- แก้ปัญหา viewport ไม่พอเก็บ variants ครบ
+
+**ยกเว้น** — `flex-col` OK เฉพาะกรณี:
+- **FullWidth story** — demo จงใจ stack vertical เพื่อแสดง full-width behavior
+- **Responsive conditional** `md:flex-col` (breakpoint-prefixed) — allowed
+- **Container nested content** (เช่น Card.Header + Body + Footer) — ไม่ใช่ variant comparison
+
+**Enforced by test:** `packages/react/src/tests/llm-audit.test.ts` — grep fails build ถ้าเจอ `flex-col` นอก FullWidth story
 
 **alignment:**
 - `items-center` — avatars, badges (center-aligned icon+text)

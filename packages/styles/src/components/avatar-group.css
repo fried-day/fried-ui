@@ -7,6 +7,10 @@
     @apply relative ring-2 ring-background transition-transform duration-150 ease-out;
   }
 
+  .avatar-group [data-slot="avatar"]:not(:first-child) {
+    @apply -ms-4;
+  }
+
   .avatar-group-hoverable [data-slot="avatar"]:hover {
     @apply z-10 scale-110;
   }

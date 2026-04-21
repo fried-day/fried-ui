@@ -20,7 +20,7 @@ export type AvatarGroupProps = Omit<ComponentPropsWithRef<"div">, "className"> &
  * When the number of children exceeds `max`, remaining avatars collapse into a `+N` counter.
  */
 const AvatarGroup = (props: Readonly<AvatarGroupProps>) => {
-  const { spacing = "md", children, className, isHoverable, max, ref, size, total, ...rest } = props;
+  const { children, className, isHoverable, max, ref, size, spacing, total, ...rest } = props;
 
   const avatars = Children.toArray(children).filter(isValidElement) as ReactElement<AvatarProps>[];
   const visible = typeof max === "number" ? avatars.slice(0, max) : avatars;

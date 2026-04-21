@@ -32,7 +32,7 @@
     &:focus-visible,
     &:has(:focus-visible),
     &:has([data-focus-visible]) {
-      @apply focus-ring;
+      @apply border-(--input-border-focus) focus-ring;
     }
 
     &:required,
@@ -57,7 +57,9 @@
       @apply status-disabled;
     }
 
-    &:read-only {
+    &:read-only,
+    &:has(:read-only),
+    &:has([data-readonly]) {
       @apply cursor-default;
     }
 
@@ -71,7 +73,8 @@
     @apply placeholder:text-(--input-placeholder);
   }
 
-  .input-field:disabled {
+  .input-field:disabled,
+  .input-field[data-disabled] {
     @apply cursor-not-allowed;
   }
 

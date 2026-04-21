@@ -1,0 +1,162 @@
+import type { Meta, StoryObj } from "@storybook/react";
+
+import { TextField } from "react-aria-components";
+
+import { FieldError } from "./FieldError";
+
+const meta = {
+  title: "Components/FieldError",
+  component: FieldError,
+  tags: ["autodocs"],
+  parameters: {
+    layout: "centered",
+  },
+  args: {
+    children: "Error message",
+    size: "md",
+    isDisabled: false,
+  },
+  argTypes: {
+    children: {
+      control: "text",
+      description: "Error message content shown when the parent field is invalid.",
+      table: {
+        type: { summary: "ReactNode" },
+        category: "Children",
+      },
+    },
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+      description:
+        "Text size of the field error message. **Scale:** sm (text-xs) for dense forms and secondary helpers, md (text-sm, default) for standard form fields, lg (text-base) for emphasized or large form sections. Size should match the paired Label and Description so the entire field reads at a consistent visual weight. Use md for the majority of forms, sm for compact inline validation, lg only when the form field itself uses a larger size.",
+      table: {
+        type: { summary: '"sm" | "md" | "lg"' },
+        defaultValue: { summary: "md" },
+        category: "Style Variants",
+      },
+    },
+    isDisabled: {
+      control: "boolean",
+      description:
+        "Whether the field error is disabled (dims and removes pointer events). Match the parent field's disabled state so the error visually aligns with the rest of the form control.",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "Style Variants",
+      },
+    },
+    className: {
+      control: "text",
+      description: "Additional CSS classes",
+      table: {
+        type: { summary: "string" },
+        category: "Styling",
+      },
+    },
+  },
+  decorators: [
+    (Story): React.JSX.Element => (
+      <TextField isInvalid>
+        <Story />
+      </TextField>
+    ),
+  ],
+} satisfies Meta<typeof FieldError>;
+
+type Story = StoryObj<typeof meta>;
+
+const Default: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { TextField } from "react-aria-components";
+import { FieldError } from "@fried-ui/react";
+
+const Basic = () => {
+  return (
+    <TextField isInvalid>
+      <FieldError>Error message</FieldError>
+    </TextField>
+  );
+};`,
+      },
+    },
+  },
+};
+
+const Sizes: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { TextField } from "react-aria-components";
+import { FieldError } from "@fried-ui/react";
+
+const Sizes = () => {
+  return (
+    <div className="flex items-center gap-8">
+      <TextField isInvalid>
+        <FieldError size="sm">Small FieldError</FieldError>
+      </TextField>
+      <TextField isInvalid>
+        <FieldError size="md">Medium FieldError</FieldError>
+      </TextField>
+      <TextField isInvalid>
+        <FieldError size="lg">Large FieldError</FieldError>
+      </TextField>
+    </div>
+  );
+};`,
+      },
+    },
+  },
+  render: (args): React.JSX.Element => (
+    <div className="flex items-center gap-8">
+      <TextField isInvalid>
+        <FieldError {...args} size="sm">
+          Small FieldError
+        </FieldError>
+      </TextField>
+
+      <TextField isInvalid>
+        <FieldError {...args} size="md">
+          Medium FieldError
+        </FieldError>
+      </TextField>
+
+      <TextField isInvalid>
+        <FieldError {...args} size="lg">
+          Large FieldError
+        </FieldError>
+      </TextField>
+    </div>
+  ),
+  decorators: [(Story): React.JSX.Element => <Story />],
+};
+
+const Disabled: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { TextField } from "react-aria-components";
+import { FieldError } from "@fried-ui/react";
+
+const Disabled = () => {
+  return (
+    <TextField isInvalid>
+      <FieldError isDisabled>Disabled FieldError</FieldError>
+    </TextField>
+  );
+};`,
+      },
+    },
+  },
+  args: {
+    children: "Disabled FieldError",
+    isDisabled: true,
+  },
+};
+
+export { Default, Sizes, Disabled };
+
+export default meta;

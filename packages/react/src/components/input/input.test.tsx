@@ -144,4 +144,27 @@ describe("Input", () => {
     expect(wrapper).toContainElement(screen.getByTestId("start-icon"));
     expect(wrapper).toContainElement(screen.getByTestId("end-icon"));
   });
+
+  it("renders prefix and suffix slots", () => {
+    render(<Input placeholder="Affix" prefix="https://" suffix=".com" />);
+    const wrapper = screen.getByPlaceholderText("Affix").parentElement;
+    const prefix = wrapper?.querySelector('[data-slot="input-prefix"]');
+    const suffix = wrapper?.querySelector('[data-slot="input-suffix"]');
+    expect(prefix).toHaveTextContent("https://");
+    expect(suffix).toHaveTextContent(".com");
+  });
+
+  it("renders spinner and hides endIcon when isPending is true", () => {
+    render(<Input placeholder="Pending" endIcon={<svg data-testid="end-icon" />} isPending />);
+    const wrapper = screen.getByPlaceholderText("Pending").parentElement;
+    const spinner = wrapper?.querySelector('[data-slot="input-spinner"]');
+    expect(spinner).toBeInTheDocument();
+    expect(screen.queryByTestId("end-icon")).not.toBeInTheDocument();
+  });
+
+  it("sets data-pending on wrapper when isPending is true", () => {
+    render(<Input placeholder="PendingAttr" isPending />);
+    const wrapper = screen.getByPlaceholderText("PendingAttr").parentElement;
+    expect(wrapper).toHaveAttribute("data-pending", "true");
+  });
 });
