@@ -2,8 +2,6 @@
 
 import type { ComponentPropsWithRef } from "react";
 
-import { clsx } from "clsx";
-
 import { classes } from "../../utils/classes";
 
 import type { SurfaceVariantsProps } from "./surface.variants";
@@ -20,18 +18,16 @@ export type SurfaceProps = Omit<ComponentPropsWithRef<"div">, "className"> &
 const Surface = (props: Readonly<SurfaceProps>) => {
   const { children, className, isBordered, radius, ref, shadow, variant, ...rest } = props;
 
-  const surfaceClassName = clsx(
-    classes({
-      block: "surface",
-      modifiers: {
-        variant,
-        radius,
-        shadow,
-        bordered: isBordered,
-      },
-    }),
+  const surfaceClassName = classes({
+    block: "surface",
+    modifiers: {
+      variant,
+      radius,
+      shadow,
+      bordered: isBordered,
+    },
     className,
-  );
+  });
 
   return (
     <div data-slot="surface" className={surfaceClassName} ref={ref} {...rest}>

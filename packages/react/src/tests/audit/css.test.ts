@@ -65,3 +65,82 @@ describe("CSS audit — variant border token usage", () => {
     expect(errors).toEqual([]);
   });
 });
+
+describe("CSS audit — drift guardrails", () => {
+  it("no component may style :required / [data-required] (required is semantic-only, signal via Label asterisk)", () => {
+    const errors: string[] = [];
+
+    const requiredSelector =
+      /(?:&\s*:required|&\s*\[data-required\]|:has\(\s*:required\s*\)|:has\(\s*\[data-required\]\s*\))/;
+
+    for (const file of listCssFiles()) {
+      if (file === "label.css") continue;
+
+      const content = readCss({ file });
+      const lines = content.split("\n");
+
+      for (let index = 0; index < lines.length; index += 1) {
+        const line = lines[index] ?? "";
+
+        if (requiredSelector.test(line)) {
+          errors.push(
+            `${file}:${index + 1}: ${line.trim()} — :required / [data-required] visual rule forbidden outside Label`,
+          );
+        }
+      }
+    }
+
+    expect(
+      errors,
+      `Required state is semantic-only — signal via Label asterisk (.label-required span). Do NOT change input border/ring/color based on :required or [data-required]. See memory feedback_required_semantic_only.md.\n${errors.join("\n")}`,
+    ).toEqual([]);
+  });
+
+  it("disabled styling must use @apply status-disabled (not raw pointer-events-none opacity-50)", () => {
+    const errors: string[] = [];
+
+    const rawDisabledPattern =
+      /@apply[^;]*\bpointer-events-none\b[^;]*\bopacity-(?:50|\(--disabled-opacity\))\b|@apply[^;]*\bopacity-(?:50|\(--disabled-opacity\))\b[^;]*\bpointer-events-none\b/;
+
+    for (const file of listCssFiles()) {
+      const content = readCss({ file });
+      const lines = content.split("\n");
+
+      for (let index = 0; index < lines.length; index += 1) {
+        const line = lines[index] ?? "";
+
+        if (rawDisabledPattern.test(line) && !line.includes("status-disabled")) {
+          errors.push(`${file}:${index + 1}: ${line.trim()}`);
+        }
+      }
+    }
+
+    expect(
+      errors,
+      `Use @apply status-disabled for disabled styling. Raw pointer-events-none opacity-50 misses cursor-not-allowed:\n${errors.join("\n")}`,
+    ).toEqual([]);
+  });
+
+  it("no native :invalid pseudo (matches required-empty on page load = user confusion)", () => {
+    const errors: string[] = [];
+    const invalidPseudoPattern = /(?<![-\w])(:invalid\b|:has\(\s*:invalid\s*\))/;
+
+    for (const file of listCssFiles()) {
+      const content = readCss({ file });
+      const lines = content.split("\n");
+
+      for (let index = 0; index < lines.length; index += 1) {
+        const line = lines[index] ?? "";
+
+        if (invalidPseudoPattern.test(line)) {
+          errors.push(`${file}:${index + 1}: ${line.trim()}`);
+        }
+      }
+    }
+
+    expect(
+      errors,
+      `Native :invalid matches required-empty inputs before user interaction (confusing UX). Use [aria-invalid="true"] or [data-invalid] attrs instead — React Aria only sets those after real validation.\n${errors.join("\n")}`,
+    ).toEqual([]);
+  });
+});

@@ -19,6 +19,6 @@
   .field-error-disabled,
   .field-error[aria-disabled="true"],
   .field-error[data-disabled] {
-    @apply pointer-events-none opacity-50;
+    @apply status-disabled;
   }
 }

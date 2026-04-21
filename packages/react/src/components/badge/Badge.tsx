@@ -2,8 +2,6 @@
 
 import type { ComponentPropsWithRef } from "react";
 
-import { clsx } from "clsx";
-
 import { classes } from "../../utils/classes";
 
 import type { BadgeVariantsProps } from "./badge.variants";
@@ -20,18 +18,16 @@ export type BadgeProps = Omit<ComponentPropsWithRef<"span">, "className"> &
 const Badge = (props: Readonly<BadgeProps>) => {
   const { children, className, isIconOnly, radius, ref, size, variant, ...rest } = props;
 
-  const badgeClassName = clsx(
-    classes({
-      block: "badge",
-      modifiers: {
-        variant,
-        size,
-        radius,
-        "icon-only": isIconOnly,
-      },
-    }),
+  const badgeClassName = classes({
+    block: "badge",
+    modifiers: {
+      variant,
+      size,
+      radius,
+      "icon-only": isIconOnly,
+    },
     className,
-  );
+  });
 
   const role = isIconOnly ? "img" : undefined;
 

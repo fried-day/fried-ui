@@ -23,6 +23,6 @@
   .description-disabled,
   .description[aria-disabled="true"],
   .description[data-disabled] {
-    @apply pointer-events-none opacity-50;
+    @apply status-disabled;
   }
 }

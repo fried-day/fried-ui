@@ -54,9 +54,32 @@ index.ts             # re-exports
 ```text
 props → destructure { variant, size, className, children, ...rest }
 rest  → forward ไป React Aria
-className → cn("{name}", "{name}--{variant}", "{name}--{size}", cls)
+className → classes({ block: "{name}", modifiers: { variant, size }, className })
 children  → composeRenderProps → wrap กับ internal UI
 ```
+
+### `classes()` signature
+
+`classes()` ตอนนี้รับ `className` เป็น param ลำดับ 3 (optional) — **ห้าม** wrap ด้วย `clsx()` ภายนอกแล้ว:
+
+```tsx
+// ❌ Old pattern (removed) — ห้ามใช้แล้ว
+const buttonClassName = clsx(
+  classes({ block: "button", modifiers: { variant, size } }),
+  className,
+);
+
+// ✅ New pattern — fold className เข้า classes() เลย
+const buttonClassName = classes({
+  block: "button",
+  modifiers: { variant, size },
+  className,
+});
+```
+
+- Display components + non-render-prop interactive components: ไม่ต้อง `import { clsx }` แล้ว
+- Interactive components ที่ใช้ `composeRenderProps` (render-prop `className`) → ยังต้อง `clsx` ภายใน function wrapper เพื่อ merge base + consumer string ที่ function return (ดู Button.tsx)
+- `clsx` ถูกใช้ภายใน `classes.ts` เสมอ — ไม่ต้อง import ซ้ำ
 
 ## Type Pattern
 
@@ -129,8 +152,33 @@ export interface ButtonVariantsProps {
 ```typescript
 import type { ReactNode } from "react";
 import { Button as RACButton, type ButtonProps as RACButtonProps, composeRenderProps } from "react-aria-components";
-import { cn } from "src/utils/cn";
+import { classes } from "../../utils/classes";
+// `clsx` only needed when component uses composeRenderProps (interactive render-prop className)
 ```
+
+## Field Subcomponents — `useFieldState(props)`
+
+`Label`, `Description`, `FieldError` ต้อง consume `TextFieldContext` + รองรับ prop-override — ใช้ hook `useFieldState(props)` เป็น canonical:
+
+```tsx
+// ❌ Old pattern — manual context read ใน component (drift risk — FieldError เคยลืมทำ)
+const ctx = useContext(TextFieldContext);
+const isDisabled = isDisabledProp ?? ctx?.isDisabled;
+const isInvalid = isInvalidProp ?? ctx?.isInvalid;
+
+// ✅ New pattern — one call, consistent across all field subcomponents
+import { useFieldState } from "../text-field/use-field-state";
+
+const Label = (props) => {
+  const { ... } = props;
+  const { isDisabled, isInvalid, isRequired } = useFieldState(props);
+  // ...
+};
+```
+
+**Rule:** ทุก subcomponent ที่อยู่ใน `TextField` scope (Label, Description, FieldError, future: HelperText) **ต้อง** ใช้ `useFieldState(props)` — ห้าม manual `useContext(TextFieldContext)` ใน component ตัวเอง
+
+**Why:** consolidate context-read + prop-override fallback ที่จุดเดียว — ถ้า context shape เปลี่ยน แก้ที่ hook ครั้งเดียว ไม่ drift
 
 ## class-naming Naming
 

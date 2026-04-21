@@ -55,7 +55,7 @@
   }
 
   .avatar-disabled {
-    @apply pointer-events-none opacity-50;
+    @apply status-disabled;
   }
 
   .avatar-ring-primary {

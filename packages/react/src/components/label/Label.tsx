@@ -1,14 +1,11 @@
 "use client";
 
 import type { ComponentPropsWithRef } from "react";
-import { useContext } from "react";
 
 import { Label as AriaLabel } from "react-aria-components";
 
-import { clsx } from "clsx";
-
 import { classes } from "../../utils/classes";
-import { TextFieldContext } from "../text-field/text-field-context";
+import { useFieldState } from "../text-field/use-field-state";
 
 import type { LabelVariantsProps } from "./label.variants";
 
@@ -21,36 +18,19 @@ export type LabelProps = LabelVariantsProps & {
  * Use `isRequired` to show the asterisk or `optionalMessage` to mark optional fields.
  */
 const Label = (props: Readonly<LabelProps>) => {
-  const {
-    children,
-    className,
-    isDisabled: isDisabledProp,
-    isInvalid: isInvalidProp,
-    isRequired: isRequiredProp,
-    optionalMessage,
-    ref,
-    size,
-    weight,
-    ...rest
-  } = props;
+  const { children, className, optionalMessage, ref, size, weight, ...rest } = props;
+  const { isDisabled, isInvalid, isRequired } = useFieldState(props);
 
-  const ctx = useContext(TextFieldContext);
-  const isDisabled = isDisabledProp ?? ctx?.isDisabled;
-  const isInvalid = isInvalidProp ?? ctx?.isInvalid;
-  const isRequired = isRequiredProp ?? ctx?.isRequired;
-
-  const labelClassName = clsx(
-    classes({
-      block: "label",
-      modifiers: {
-        size,
-        weight,
-        invalid: isInvalid,
-        disabled: isDisabled,
-      },
-    }),
+  const labelClassName = classes({
+    block: "label",
+    modifiers: {
+      size,
+      weight,
+      invalid: isInvalid,
+      disabled: isDisabled,
+    },
     className,
-  );
+  });
 
   return (
     <AriaLabel slot="label" data-slot="label" className={labelClassName} ref={ref} {...rest}>

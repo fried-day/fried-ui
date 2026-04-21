@@ -60,18 +60,16 @@ AvatarFallback.displayName = "Avatar.Fallback";
 const Avatar = (props: Readonly<AvatarProps>) => {
   const { children, className, isDisabled, radius, ref, ring, size, ...rest } = props;
 
-  const avatarClassName = clsx(
-    classes({
-      block: "avatar",
-      modifiers: {
-        size,
-        radius,
-        ring,
-        disabled: isDisabled,
-      },
-    }),
+  const avatarClassName = classes({
+    block: "avatar",
+    modifiers: {
+      size,
+      radius,
+      ring,
+      disabled: isDisabled,
+    },
     className,
-  );
+  });
 
   return (
     <RadixAvatar.Root data-slot="avatar" className={avatarClassName} ref={ref} {...rest}>

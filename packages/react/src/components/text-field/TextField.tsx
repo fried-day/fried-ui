@@ -5,8 +5,6 @@ import { useMemo } from "react";
 
 import { TextField as AriaTextField } from "react-aria-components";
 
-import { clsx } from "clsx";
-
 import { classes } from "../../utils/classes";
 import { TextFieldContext } from "./text-field-context";
 
@@ -26,16 +24,14 @@ export type TextFieldProps = TextFieldVariantsProps & {
 const TextField = (props: Readonly<TextFieldProps>) => {
   const { children, className, isDisabled, isFullWidth, isInvalid, isReadOnly, isRequired, ref, size, ...rest } = props;
 
-  const wrapperClassName = clsx(
-    classes({
-      block: "text-field",
-      modifiers: {
-        size,
-        "full-width": isFullWidth,
-      },
-    }),
+  const wrapperClassName = classes({
+    block: "text-field",
+    modifiers: {
+      size,
+      "full-width": isFullWidth,
+    },
     className,
-  );
+  });
 
   const contextValue = useMemo(() => {
     return { isDisabled, isInvalid, isReadOnly, isRequired };

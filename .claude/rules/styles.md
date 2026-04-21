@@ -435,13 +435,13 @@ slot="icon"        → icon-only (center, no text)
 
 ### Pattern — Non-form-control (Label/Description)
 
-`<label>` / `<span>` / `<div>` ไม่มี native `:disabled` pseudo — ใช้ `[aria-disabled="true"]` (HTML standard):
+`<label>` / `<span>` / `<div>` ไม่มี native `:disabled` pseudo — ใช้ `[aria-disabled="true"]` (HTML standard). ต้องใช้ `status-disabled` utility — ไม่เขียน raw:
 
 ```css
 &--disabled,
 &[aria-disabled="true"],
 &[data-disabled] {
-  @apply opacity-50 pointer-events-none;
+  @apply status-disabled;
 }
 ```
 
@@ -565,8 +565,32 @@ grep -nE '(bg|text|border|ring|ring-offset)-\(--color-' packages/styles/src/comp
 
 ```text
 focus-ring      → two-color focus (WCAG AAA)
-status-disabled → opacity + cursor + pointer-events
+status-disabled → opacity + cursor + pointer-events (canonical disabled visual)
 status-pending  → pointer-events-none
 no-highlight    → -webkit-tap-highlight-color
 size-match-font → 1em × 1em (icon sizing)
+```
+
+### `status-disabled` is canonical — ห้ามเขียน raw
+
+ทุก disabled rule (native `:disabled`, `[aria-disabled="true"]`, `[data-disabled]`, `--disabled` modifier) **ต้อง** ใช้ `@apply status-disabled` — ห้ามเขียน `@apply pointer-events-none opacity-50` ตรงๆ:
+
+```css
+/* ❌ Raw disabled — ขาด cursor-not-allowed, drift กับ component อื่น */
+&[data-disabled] {
+  @apply pointer-events-none opacity-50;
+}
+
+/* ✅ Canonical — ใช้ utility เดียวทั่วทั้ง library */
+&[data-disabled] {
+  @apply status-disabled;
+}
+```
+
+`status-disabled` (defined in `packages/styles/src/utilities/status.css`) expands to `pointer-events-none cursor-(--cursor-disabled) opacity-(--disabled-opacity)` — รวม 3 properties ที่ disabled state ต้องมีครบ (cursor feedback ด้วย) เพื่อ consistent visual ทุก component
+
+**Rule:** grep audit — ถ้าเจอ `pointer-events-none opacity-50` ใน component CSS = violation
+
+```bash
+grep -rn 'pointer-events-none.*opacity-50\|opacity-50.*pointer-events-none' packages/styles/src/components/
 ```

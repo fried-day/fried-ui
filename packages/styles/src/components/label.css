@@ -44,6 +44,6 @@
   .label-disabled,
   .label[aria-disabled="true"],
   .label[data-disabled] {
-    @apply pointer-events-none opacity-50;
+    @apply status-disabled;
   }
 }

@@ -4,8 +4,6 @@ import type { ComponentPropsWithRef, ReactNode } from "react";
 
 import { Input as AriaInput } from "react-aria-components";
 
-import { clsx } from "clsx";
-
 import { Spinner } from "../icons";
 import { classes } from "../../utils/classes";
 
@@ -45,18 +43,16 @@ const Input = (props: Readonly<InputProps>) => {
     ...rest
   } = props;
 
-  const wrapperClassName = clsx(
-    classes({
-      block: "input",
-      modifiers: {
-        variant,
-        size,
-        radius,
-        "full-width": isFullWidth,
-      },
-    }),
+  const wrapperClassName = classes({
+    block: "input",
+    modifiers: {
+      variant,
+      size,
+      radius,
+      "full-width": isFullWidth,
+    },
     className,
-  );
+  });
 
   const isAriaInvalid = isInvalid || undefined;
   const isPendingState = isPending || undefined;

@@ -3,8 +3,6 @@
 import type { ComponentPropsWithRef, ReactElement } from "react";
 import { Children, cloneElement, isValidElement } from "react";
 
-import { clsx } from "clsx";
-
 import { Avatar, type AvatarProps } from "../avatar";
 import { classes } from "../../utils/classes";
 
@@ -29,17 +27,15 @@ const AvatarGroup = (props: Readonly<AvatarGroupProps>) => {
   const counterLabel = `${hiddenCount} more`;
   const counterText = `+${hiddenCount}`;
 
-  const groupClassName = clsx(
-    classes({
-      block: "avatar-group",
-      modifiers: {
-        size,
-        spacing,
-        hoverable: isHoverable,
-      },
-    }),
+  const groupClassName = classes({
+    block: "avatar-group",
+    modifiers: {
+      size,
+      spacing,
+      hoverable: isHoverable,
+    },
     className,
-  );
+  });
 
   return (
     <div role="group" data-slot="avatar-group" className={groupClassName} ref={ref} {...rest}>

@@ -3,6 +3,7 @@ import { clsx } from "clsx";
 interface ClassesParams {
   block: string;
   modifiers: Modifiers;
+  className?: string;
 }
 
 interface Modifiers {
@@ -10,7 +11,7 @@ interface Modifiers {
 }
 
 function classes(params: Readonly<ClassesParams>): string {
-  const { block, modifiers } = params;
+  const { block, className, modifiers } = params;
 
   const list = Object.entries(modifiers).map(([key, value]) => {
     if (!value) return undefined;
@@ -20,7 +21,7 @@ function classes(params: Readonly<ClassesParams>): string {
     return `${block}-${key}-${value}`;
   });
 
-  return clsx(block, ...list);
+  return clsx(block, ...list, className);
 }
 
 export { classes };

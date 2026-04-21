@@ -136,8 +136,21 @@ pnpm lint && pnpm typecheck && pnpm test && pnpm format
 - **No `@ts-nocheck` / `@ts-ignore` / `@ts-expect-error`** — fix the type error
 - **No arbitrary Tailwind values** — use built-in classes only
 - **All spacing in rem** — never px (except 1px borders)
-- **clsx only** — no tailwind-merge, no tv()
+- **clsx only** — no tailwind-merge, no tv(). Used internally by `classes()` and inside `composeRenderProps` for render-prop components (e.g. Button). Don't import `clsx` in display components — fold `className` into `classes()` instead.
 - **class naming** — `.{component}--{modifier}`
+- **`classes()` signature** — `classes({ block, modifiers, className })`. Pass `className` as a field of the config object; **never** wrap with an outer `clsx(classes(...), className)`.
+
+  ```tsx
+  // Display / non-render-prop
+  const cn = classes({ block: "avatar", modifiers: { size, radius }, className });
+
+  // Interactive with render-prop className (Button)
+  const base = classes({ block: "button", modifiers: { variant, size } });
+  const cn = composeRenderProps(className, (c) => clsx(base, c));
+  ```
+
+- **Field subcomponents use `useFieldState(props)`** — `Label`, `Description`, `FieldError` (and any future TextField child) consume `TextFieldContext` + prop-override through the shared hook. Don't call `useContext(TextFieldContext)` directly in the subcomponent.
+- **Disabled styling uses `@apply status-disabled`** — never raw `@apply pointer-events-none opacity-50`. The utility bundles `pointer-events-none cursor-(--cursor-disabled) opacity-(--disabled-opacity)` for consistent cursor feedback across the library.
 - Run `pnpm format:fix` before committing
 
 ## Testing

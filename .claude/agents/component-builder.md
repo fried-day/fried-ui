@@ -66,6 +66,24 @@ Edit the generated files to match the component's real needs:
 - Set `{Name}.displayName = "{Name}"`
 - Add **component-level JSDoc** — 1-2 lines: intent + slot contract (if applicable)
 - Use `Omit<ComponentPropsWithRef<X>, "className">` type pattern
+- **`classes()` call fold `className` inside** — never wrap with outer `clsx()`:
+  ```tsx
+  // ❌ Old pattern — removed
+  const cn = clsx(classes({ block, modifiers }), className);
+
+  // ✅ Display / non-render-prop components
+  const cn = classes({ block: "{name}", modifiers: { variant, size }, className });
+
+  // ✅ Interactive with render-prop className (Button-style)
+  const base = classes({ block: "{name}", modifiers: { variant, size } });
+  const cn = composeRenderProps(className, (c) => clsx(base, c));
+  ```
+- **Field subcomponents** (Label / Description / FieldError / helpers that live under TextField): use `useFieldState(props)` — never `useContext(TextFieldContext)` directly:
+  ```tsx
+  import { useFieldState } from "../text-field/use-field-state";
+
+  const { isDisabled, isInvalid, isRequired } = useFieldState(props);
+  ```
 
 **`{name}.variants.ts`:**
 - Define real props (not default `variant`/`size` from scaffold if not needed)
@@ -185,6 +203,9 @@ pnpm run build          # tsup + Next.js + Storybook builds
 25. **Base class ≠ default modifier (1:1 parity violation) 🔴 P0** — ❌ ห้ามมี drift ระหว่าง base class's default value กับ explicit default modifier. เช่น base `rounded-md` (Tailwind 0.375rem) vs `.X--radius-md { rounded-[calc(1em*1.272*2/4)] }` (formula 0.636em) — `<Component>` (no props) จะ render คนละค่ากับ `<Component radius="md">`. **Production risk** — plain HTML consumer (`<tag class="X">`) ก็พังไปด้วย. **ทุก axis ต้อง check:** variant default, size default, radius default. **JSDoc `@default` ต้องสะท้อน base class จริง** — ถ้า base ใช้ `rounded-full` → JSDoc ต้อง `@default 'full'` (ไม่ใช่ copy-paste `'md'`). See `.claude/rules/styles.md` "Base = Default Modifier" section. **Parity test `src/parity.test.tsx` ต้อง pass** — ทุก component: `<Component>` (no props) → DOM class must be exactly `{name}` (no modifier classes leak).
 26. **React defaults in destructure** — ❌ ห้ามใส่ defaults ใน destructure (`const { size = "md" } = props`). ถ้าใส่ → `<Component>` จะ emit `X--size-md` class → break daisyUI 1:1 parity. **Defaults ต้องอยู่ใน base class CSS เท่านั้น.** `<Component>` no props → classes() sees undefined → emit only base class → parity test passes.
 27. **Form inputs ต้องรองรับ self + wrapper dual-mode 🔴 P0** — ❌ ห้ามเขียน state rules ด้วย `:has()` เดี่ยวๆ สำหรับ Input-like components. ต้องรองรับทั้ง 2 mode: `<input class="input" />` (self) + `<div class="input"><input class="input-field" /></div>` (wrapper). Pattern: ใช้ `:hover` (propagates), `:focus-within` (both modes), + self-selector (`:disabled`, `:required`, `:invalid`, `:read-only`) คู่กับ `:has()` version. Base class ต้องมี `outline-none` + `placeholder:text-(--X-placeholder)` สำหรับ self-mode. See `.claude/rules/styles.md` "Form input (Wrapper + Self dual-mode)" section.
+28. **Outer `clsx(classes(...), className)` wrapper** — ❌ ห้ามแล้ว. `classes()` รับ `className` เป็น param ลำดับ 3 (`{ block, modifiers, className }`) — fold เข้าไปเลย. Display + non-render-prop components: drop `import { clsx }`. Interactive render-prop components: keep `clsx` **ภายใน** `composeRenderProps(className, (c) => clsx(base, c))` เท่านั้น — ไม่ใช่ตัวห่อรอบ `classes()`. See `.claude/rules/architecture.md` "Data Flow" section.
+29. **Raw `pointer-events-none opacity-50` ใน disabled CSS** — ❌ canonical คือ `@apply status-disabled` (utility ใน `packages/styles/src/utilities/status.css`) — รวม `pointer-events-none cursor-(--cursor-disabled) opacity-(--disabled-opacity)`. Raw pattern ขาด `cursor-not-allowed` → visual drift. See `.claude/rules/styles.md` "`status-disabled` is canonical".
+30. **Field subcomponents ไม่ใช้ `useFieldState(props)` 🔴 P0** — ❌ ห้าม `useContext(TextFieldContext)` + manual `isDisabled ?? ctx?.isDisabled` ใน Label / Description / FieldError / future field subcomponent. ใช้ hook เดียว: `const { isDisabled, isInvalid, isRequired } = useFieldState(props)`. **Why:** consolidate prop-override fallback — FieldError เคย drift (ลืม read context เลย) ก่อนที่ hook จะมี. See `.claude/rules/architecture.md` "Field Subcomponents".
 
 ---
 
