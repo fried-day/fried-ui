@@ -1,0 +1,89 @@
+@layer components {
+  .fri-avatar-group {
+    @apply inline-flex flex-row items-center;
+  }
+
+  .fri-avatar-group [data-slot="avatar"] {
+    @apply relative ring-2 ring-background transition-transform duration-150 ease-out;
+  }
+
+  .fri-avatar-group--hoverable [data-slot="avatar"]:hover {
+    @apply z-10 scale-110;
+  }
+
+  .fri-avatar-group__counter {
+    @apply bg-foreground text-background;
+  }
+
+  .fri-avatar-group--spacing-sm [data-slot="avatar"]:not(:first-child) {
+    @apply -ms-3;
+  }
+
+  .fri-avatar-group--spacing-md [data-slot="avatar"]:not(:first-child) {
+    @apply -ms-4;
+  }
+
+  .fri-avatar-group--spacing-lg [data-slot="avatar"]:not(:first-child) {
+    @apply -ms-5;
+  }
+
+  .fri-avatar-group--size-sm.fri-avatar-group--spacing-sm [data-slot="avatar"]:not(:first-child) {
+    @apply -ms-2;
+  }
+
+  .fri-avatar-group--size-sm.fri-avatar-group--spacing-md [data-slot="avatar"]:not(:first-child) {
+    @apply -ms-3;
+  }
+
+  .fri-avatar-group--size-sm.fri-avatar-group--spacing-lg [data-slot="avatar"]:not(:first-child) {
+    @apply -ms-3.5;
+  }
+
+  .fri-avatar-group--size-md.fri-avatar-group--spacing-sm [data-slot="avatar"]:not(:first-child) {
+    @apply -ms-3;
+  }
+
+  .fri-avatar-group--size-md.fri-avatar-group--spacing-md [data-slot="avatar"]:not(:first-child) {
+    @apply -ms-4;
+  }
+
+  .fri-avatar-group--size-md.fri-avatar-group--spacing-lg [data-slot="avatar"]:not(:first-child) {
+    @apply -ms-5;
+  }
+
+  .fri-avatar-group--size-lg.fri-avatar-group--spacing-sm [data-slot="avatar"]:not(:first-child) {
+    @apply -ms-3.5;
+  }
+
+  .fri-avatar-group--size-lg.fri-avatar-group--spacing-md [data-slot="avatar"]:not(:first-child) {
+    @apply -ms-5;
+  }
+
+  .fri-avatar-group--size-lg.fri-avatar-group--spacing-lg [data-slot="avatar"]:not(:first-child) {
+    @apply -ms-6;
+  }
+
+  .fri-avatar-group--size-xl.fri-avatar-group--spacing-sm [data-slot="avatar"]:not(:first-child) {
+    @apply -ms-4;
+  }
+
+  .fri-avatar-group--size-xl.fri-avatar-group--spacing-md [data-slot="avatar"]:not(:first-child) {
+    @apply -ms-5;
+  }
+
+  .fri-avatar-group--size-xl.fri-avatar-group--spacing-lg [data-slot="avatar"]:not(:first-child) {
+    @apply -ms-7;
+  }
+
+  .fri-avatar-group--size-2xl.fri-avatar-group--spacing-sm [data-slot="avatar"]:not(:first-child) {
+    @apply -ms-5;
+  }
+
+  .fri-avatar-group--size-2xl.fri-avatar-group--spacing-md [data-slot="avatar"]:not(:first-child) {
+    @apply -ms-6;
+  }
+
+  .fri-avatar-group--size-2xl.fri-avatar-group--spacing-lg [data-slot="avatar"]:not(:first-child) {
+    @apply -ms-8;
+  }
+}

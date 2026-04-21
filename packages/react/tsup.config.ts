@@ -4,6 +4,7 @@ export default defineConfig({
   entry: {
     index: "src/index.ts",
     "components/avatar/index": "src/components/avatar/index.ts",
+    "components/avatar-group/index": "src/components/avatar-group/index.ts",
     "components/badge/index": "src/components/badge/index.ts",
     "components/button/index": "src/components/button/index.ts",
     "components/description/index": "src/components/description/index.ts",
