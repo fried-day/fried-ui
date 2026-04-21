@@ -3,15 +3,15 @@ import { TextField } from "react-aria-components";
 import { render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { Avatar } from "../components/avatar";
-import { AvatarGroup } from "../components/avatar-group";
-import { Badge } from "../components/badge";
-import { Button } from "../components/button";
-import { Description } from "../components/description";
-import { FieldError } from "../components/field-error";
-import { Input } from "../components/input";
-import { Label } from "../components/label";
-import { Surface } from "../components/surface";
+import { Avatar } from "../../components/avatar";
+import { AvatarGroup } from "../../components/avatar-group";
+import { Badge } from "../../components/badge";
+import { Button } from "../../components/button";
+import { Description } from "../../components/description";
+import { FieldError } from "../../components/field-error";
+import { Input } from "../../components/input";
+import { Label } from "../../components/label";
+import { Surface } from "../../components/surface";
 
 describe("1:1 plain HTML parity — default props emit only base class", () => {
   it("Button: <Button>X</Button> → class='button'", () => {
