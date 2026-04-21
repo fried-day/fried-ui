@@ -12,6 +12,7 @@ import { FieldError } from "../../components/field-error";
 import { Input } from "../../components/input";
 import { Label } from "../../components/label";
 import { Surface } from "../../components/surface";
+import { TextField as FriedTextField } from "../../components/text-field";
 
 describe("1:1 plain HTML parity — default props emit only base class", () => {
   it("Button: <Button>X</Button> → class='button'", () => {
@@ -71,5 +72,16 @@ describe("1:1 plain HTML parity — default props emit only base class", () => {
 
     const el = container.querySelector('[data-slot="field-error"]');
     expect(el?.className).toBe("field-error");
+  });
+
+  it("TextField: <TextField><Input/></TextField> → class='text-field'", () => {
+    const { container } = render(
+      <FriedTextField>
+        <Input />
+      </FriedTextField>,
+    );
+
+    const el = container.querySelector('[data-slot="text-field"]');
+    expect(el?.className).toBe("text-field");
   });
 });

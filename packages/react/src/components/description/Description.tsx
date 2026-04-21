@@ -1,12 +1,14 @@
 "use client";
 
 import type { ComponentPropsWithRef } from "react";
+import { useContext } from "react";
 
 import { Text as AriaText } from "react-aria-components";
 
 import { clsx } from "clsx";
 
 import { classes } from "../../utils/classes";
+import { TextFieldContext } from "../text-field/text-field-context";
 
 import type { DescriptionVariantsProps } from "./description.variants";
 
@@ -19,7 +21,10 @@ export type DescriptionProps = DescriptionVariantsProps & {
  * Use `isInvalid` for inline error messages.
  */
 const Description = (props: Readonly<DescriptionProps>) => {
-  const { children, className, isDisabled, isInvalid, ref, size, ...rest } = props;
+  const { children, className, isDisabled: isDisabledProp, isInvalid: isInvalidProp, ref, size, ...rest } = props;
+  const ctx = useContext(TextFieldContext);
+  const isDisabled = isDisabledProp ?? ctx?.isDisabled;
+  const isInvalid = isInvalidProp ?? ctx?.isInvalid;
 
   const descriptionClassName = clsx(
     classes({

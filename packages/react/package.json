@@ -62,6 +62,10 @@
     "./surface": {
       "types": "./dist/components/surface/index.d.ts",
       "import": "./dist/components/surface/index.mjs"
+    },
+    "./text-field": {
+      "types": "./dist/components/text-field/index.d.ts",
+      "import": "./dist/components/text-field/index.mjs"
     }
   },
   "main": "./dist/index.mjs",

@@ -35,15 +35,7 @@
       @apply border-(--input-border-focus) focus-ring;
     }
 
-    &:required,
-    &:has(:required),
-    &:has([data-required]) {
-      --input-border: var(--color-field-border-focus);
-    }
-
-    &:invalid,
     &[aria-invalid="true"],
-    &:has(:invalid),
     &:has([aria-invalid="true"]),
     &:has([data-invalid]) {
       --input-border: var(--color-danger);
@@ -128,12 +120,8 @@
     @apply leading-none text-foreground select-none;
   }
 
-  .input:invalid .input-icon-start,
-  .input:invalid .input-icon-end,
   .input[aria-invalid="true"] .input-icon-start,
   .input[aria-invalid="true"] .input-icon-end,
-  .input:has(:invalid) .input-icon-start,
-  .input:has(:invalid) .input-icon-end,
   .input:has([aria-invalid="true"]) .input-icon-start,
   .input:has([aria-invalid="true"]) .input-icon-end,
   .input:has([data-invalid]) .input-icon-start,

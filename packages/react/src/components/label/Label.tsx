@@ -1,12 +1,14 @@
 "use client";
 
 import type { ComponentPropsWithRef } from "react";
+import { useContext } from "react";
 
 import { Label as AriaLabel } from "react-aria-components";
 
 import { clsx } from "clsx";
 
 import { classes } from "../../utils/classes";
+import { TextFieldContext } from "../text-field/text-field-context";
 
 import type { LabelVariantsProps } from "./label.variants";
 
@@ -19,7 +21,23 @@ export type LabelProps = LabelVariantsProps & {
  * Use `isRequired` to show the asterisk or `optionalMessage` to mark optional fields.
  */
 const Label = (props: Readonly<LabelProps>) => {
-  const { children, className, isDisabled, isInvalid, isRequired, optionalMessage, ref, size, weight, ...rest } = props;
+  const {
+    children,
+    className,
+    isDisabled: isDisabledProp,
+    isInvalid: isInvalidProp,
+    isRequired: isRequiredProp,
+    optionalMessage,
+    ref,
+    size,
+    weight,
+    ...rest
+  } = props;
+
+  const ctx = useContext(TextFieldContext);
+  const isDisabled = isDisabledProp ?? ctx?.isDisabled;
+  const isInvalid = isInvalidProp ?? ctx?.isInvalid;
+  const isRequired = isRequiredProp ?? ctx?.isRequired;
 
   const labelClassName = clsx(
     classes({
@@ -27,7 +45,6 @@ const Label = (props: Readonly<LabelProps>) => {
       modifiers: {
         size,
         weight,
-        required: isRequired,
         invalid: isInvalid,
         disabled: isDisabled,
       },
@@ -36,15 +53,15 @@ const Label = (props: Readonly<LabelProps>) => {
   );
 
   return (
-    <AriaLabel data-slot="label" className={labelClassName} ref={ref} {...rest}>
+    <AriaLabel slot="label" data-slot="label" className={labelClassName} ref={ref} {...rest}>
       {children}
 
-      {optionalMessage && <span className="label-optional">{optionalMessage}</span>}
-
-      {isRequired && (
+      {isRequired ? (
         <span className="label-required" aria-hidden="true">
           *
         </span>
+      ) : (
+        optionalMessage && <span className="label-optional">{optionalMessage}</span>
       )}
     </AriaLabel>
   );

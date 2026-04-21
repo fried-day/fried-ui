@@ -12,6 +12,7 @@ export default defineConfig({
     "components/icons/index": "src/components/icons/index.ts",
     "components/label/index": "src/components/label/index.ts",
     "components/surface/index": "src/components/surface/index.ts",
+    "components/text-field/index": "src/components/text-field/index.ts",
   },
   format: ["esm"],
   outExtension: () => ({ js: ".mjs" }),

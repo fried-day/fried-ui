@@ -38,25 +38,25 @@ describe("Label", () => {
   });
 
   it("renders required asterisk when isRequired is true", () => {
-    render(<Label isRequired>Password</Label>);
+    render(<Label isRequired>Field label</Label>);
     const asterisk = screen.getByText("*");
     expect(asterisk).toBeInTheDocument();
     expect(asterisk.className).toContain("label-required");
   });
 
   it("does not render asterisk when isRequired is false", () => {
-    render(<Label>Email</Label>);
+    render(<Label>Field label</Label>);
     expect(screen.queryByText("*")).not.toBeInTheDocument();
   });
 
-  it("applies required modifier class", () => {
-    const { container } = render(<Label isRequired>Password</Label>);
+  it("does not add required modifier class to wrapper (only asterisk span)", () => {
+    const { container } = render(<Label isRequired>Field label</Label>);
     const label = container.querySelector("[data-slot='label']");
-    expect(label?.className).toContain("label-required");
+    expect(label?.className).not.toContain("label-required");
   });
 
   it("renders optional text when provided", () => {
-    render(<Label optionalMessage="(Optional)">Phone</Label>);
+    render(<Label optionalMessage="(Optional)">Field label</Label>);
     const optional = screen.getByText("(Optional)");
     expect(optional).toBeInTheDocument();
     expect(optional.className).toContain("label-optional");

@@ -26,4 +26,16 @@ export default [
       "nextfriday/enforce-constant-case": "off",
     },
   },
+  {
+    files: ["src/components/**/*-context.ts"],
+    rules: {
+      "nextfriday/enforce-camel-case": "off",
+    },
+  },
+  {
+    files: ["src/components/text-field/TextField.tsx"],
+    rules: {
+      "nextfriday/prefer-import-type": "off",
+    },
+  },
 ];
