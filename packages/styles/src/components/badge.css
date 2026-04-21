@@ -1,292 +1,292 @@
 @layer components {
-  .fri-badge {
+  .badge {
     @apply inline-flex items-center justify-center;
     @apply leading-none font-medium whitespace-nowrap;
     @apply border border-transparent select-none;
 
-    --fri-badge-bg: var(--color-primary);
-    --fri-badge-fg: var(--color-primary-foreground);
+    --badge-bg: var(--color-primary);
+    --badge-fg: var(--color-primary-foreground);
 
-    @apply bg-(--fri-badge-bg) text-(--fri-badge-fg);
+    @apply bg-(--badge-bg) text-(--badge-fg);
     @apply gap-[calc(0.875rem/2.058)] px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
     @apply rounded-full;
   }
 
-  .fri-badge--primary {
-    --fri-badge-bg: var(--color-primary);
-    --fri-badge-fg: var(--color-primary-foreground);
+  .badge-primary {
+    --badge-bg: var(--color-primary);
+    --badge-fg: var(--color-primary-foreground);
   }
 
-  .fri-badge--secondary {
-    --fri-badge-bg: var(--color-secondary);
-    --fri-badge-fg: var(--color-secondary-foreground);
+  .badge-secondary {
+    --badge-bg: var(--color-secondary);
+    --badge-fg: var(--color-secondary-foreground);
   }
 
-  .fri-badge--accent {
-    --fri-badge-bg: var(--color-accent);
-    --fri-badge-fg: var(--color-accent-foreground);
+  .badge-accent {
+    --badge-bg: var(--color-accent);
+    --badge-fg: var(--color-accent-foreground);
   }
 
-  .fri-badge--outline {
-    --fri-badge-bg: transparent;
-    --fri-badge-fg: var(--color-primary);
+  .badge-outline {
+    --badge-bg: transparent;
+    --badge-fg: var(--color-primary);
 
     @apply border border-primary-outline-border;
   }
 
-  .fri-badge--glass {
-    --fri-badge-bg: var(--color-glass);
-    --fri-badge-fg: var(--color-glass-foreground);
+  .badge-glass {
+    --badge-bg: var(--color-glass);
+    --badge-fg: var(--color-glass-foreground);
 
     @apply border border-glass-border backdrop-blur-xl backdrop-saturate-200;
   }
 
-  .fri-badge--frost {
-    --fri-badge-bg: var(--color-glass);
-    --fri-badge-fg: var(--color-glass-foreground);
+  .badge-frost {
+    --badge-bg: var(--color-glass);
+    --badge-fg: var(--color-glass-foreground);
 
     @apply backdrop-blur-2xl backdrop-saturate-200;
   }
 
-  .fri-badge--overlay {
-    --fri-badge-bg: var(--color-scrim);
-    --fri-badge-fg: var(--color-scrim-foreground);
+  .badge-overlay {
+    --badge-bg: var(--color-scrim);
+    --badge-fg: var(--color-scrim-foreground);
 
     @apply border border-scrim-border backdrop-blur-xl backdrop-saturate-150;
   }
 
-  .fri-badge--success {
-    --fri-badge-bg: var(--color-success);
-    --fri-badge-fg: var(--color-success-foreground);
+  .badge-success {
+    --badge-bg: var(--color-success);
+    --badge-fg: var(--color-success-foreground);
   }
 
-  .fri-badge--warning {
-    --fri-badge-bg: var(--color-warning);
-    --fri-badge-fg: var(--color-warning-foreground);
+  .badge-warning {
+    --badge-bg: var(--color-warning);
+    --badge-fg: var(--color-warning-foreground);
   }
 
-  .fri-badge--danger {
-    --fri-badge-bg: var(--color-danger);
-    --fri-badge-fg: var(--color-danger-foreground);
+  .badge-danger {
+    --badge-bg: var(--color-danger);
+    --badge-fg: var(--color-danger-foreground);
   }
 
-  .fri-badge--info {
-    --fri-badge-bg: var(--color-info);
-    --fri-badge-fg: var(--color-info-foreground);
+  .badge-info {
+    --badge-bg: var(--color-info);
+    --badge-fg: var(--color-info-foreground);
   }
 
-  .fri-badge--primary-soft {
-    --fri-badge-bg: var(--color-primary-soft);
-    --fri-badge-fg: var(--color-primary-soft-foreground);
+  .badge-primary-soft {
+    --badge-bg: var(--color-primary-soft);
+    --badge-fg: var(--color-primary-soft-foreground);
 
     @apply border border-primary-soft-border;
   }
 
-  .fri-badge--secondary-soft {
-    --fri-badge-bg: var(--color-secondary-soft);
-    --fri-badge-fg: var(--color-secondary-soft-foreground);
+  .badge-secondary-soft {
+    --badge-bg: var(--color-secondary-soft);
+    --badge-fg: var(--color-secondary-soft-foreground);
 
     @apply border border-secondary-soft-border;
   }
 
-  .fri-badge--accent-soft {
-    --fri-badge-bg: var(--color-accent-soft);
-    --fri-badge-fg: var(--color-accent-soft-foreground);
+  .badge-accent-soft {
+    --badge-bg: var(--color-accent-soft);
+    --badge-fg: var(--color-accent-soft-foreground);
 
     @apply border border-accent-soft-border;
   }
 
-  .fri-badge--success-soft {
-    --fri-badge-bg: var(--color-success-soft);
-    --fri-badge-fg: var(--color-success-soft-foreground);
+  .badge-success-soft {
+    --badge-bg: var(--color-success-soft);
+    --badge-fg: var(--color-success-soft-foreground);
 
     @apply border border-success-soft-border;
   }
 
-  .fri-badge--warning-soft {
-    --fri-badge-bg: var(--color-warning-soft);
-    --fri-badge-fg: var(--color-warning-soft-foreground);
+  .badge-warning-soft {
+    --badge-bg: var(--color-warning-soft);
+    --badge-fg: var(--color-warning-soft-foreground);
 
     @apply border border-warning-soft-border;
   }
 
-  .fri-badge--danger-soft {
-    --fri-badge-bg: var(--color-danger-soft);
-    --fri-badge-fg: var(--color-danger-soft-foreground);
+  .badge-danger-soft {
+    --badge-bg: var(--color-danger-soft);
+    --badge-fg: var(--color-danger-soft-foreground);
 
     @apply border border-danger-soft-border;
   }
 
-  .fri-badge--info-soft {
-    --fri-badge-bg: var(--color-info-soft);
-    --fri-badge-fg: var(--color-info-soft-foreground);
+  .badge-info-soft {
+    --badge-bg: var(--color-info-soft);
+    --badge-fg: var(--color-info-soft-foreground);
 
     @apply border border-info-soft-border;
   }
 
-  .fri-badge--primary-flat {
-    --fri-badge-bg: var(--color-primary-flat);
-    --fri-badge-fg: var(--color-primary-flat-foreground);
+  .badge-primary-flat {
+    --badge-bg: var(--color-primary-flat);
+    --badge-fg: var(--color-primary-flat-foreground);
   }
 
-  .fri-badge--secondary-flat {
-    --fri-badge-bg: var(--color-secondary-flat);
-    --fri-badge-fg: var(--color-secondary-flat-foreground);
+  .badge-secondary-flat {
+    --badge-bg: var(--color-secondary-flat);
+    --badge-fg: var(--color-secondary-flat-foreground);
   }
 
-  .fri-badge--accent-flat {
-    --fri-badge-bg: var(--color-accent-flat);
-    --fri-badge-fg: var(--color-accent-flat-foreground);
+  .badge-accent-flat {
+    --badge-bg: var(--color-accent-flat);
+    --badge-fg: var(--color-accent-flat-foreground);
   }
 
-  .fri-badge--success-flat {
-    --fri-badge-bg: var(--color-success-flat);
-    --fri-badge-fg: var(--color-success-flat-foreground);
+  .badge-success-flat {
+    --badge-bg: var(--color-success-flat);
+    --badge-fg: var(--color-success-flat-foreground);
   }
 
-  .fri-badge--warning-flat {
-    --fri-badge-bg: var(--color-warning-flat);
-    --fri-badge-fg: var(--color-warning-flat-foreground);
+  .badge-warning-flat {
+    --badge-bg: var(--color-warning-flat);
+    --badge-fg: var(--color-warning-flat-foreground);
   }
 
-  .fri-badge--danger-flat {
-    --fri-badge-bg: var(--color-danger-flat);
-    --fri-badge-fg: var(--color-danger-flat-foreground);
+  .badge-danger-flat {
+    --badge-bg: var(--color-danger-flat);
+    --badge-fg: var(--color-danger-flat-foreground);
   }
 
-  .fri-badge--info-flat {
-    --fri-badge-bg: var(--color-info-flat);
-    --fri-badge-fg: var(--color-info-flat-foreground);
+  .badge-info-flat {
+    --badge-bg: var(--color-info-flat);
+    --badge-fg: var(--color-info-flat-foreground);
   }
 
-  .fri-badge--primary-outline {
-    --fri-badge-bg: var(--color-primary-outline);
-    --fri-badge-fg: var(--color-primary-outline-foreground);
+  .badge-primary-outline {
+    --badge-bg: var(--color-primary-outline);
+    --badge-fg: var(--color-primary-outline-foreground);
 
     @apply border border-primary-outline-border;
   }
 
-  .fri-badge--secondary-outline {
-    --fri-badge-bg: var(--color-secondary-outline);
-    --fri-badge-fg: var(--color-secondary-outline-foreground);
+  .badge-secondary-outline {
+    --badge-bg: var(--color-secondary-outline);
+    --badge-fg: var(--color-secondary-outline-foreground);
 
     @apply border border-secondary-outline-border;
   }
 
-  .fri-badge--accent-outline {
-    --fri-badge-bg: var(--color-accent-outline);
-    --fri-badge-fg: var(--color-accent-outline-foreground);
+  .badge-accent-outline {
+    --badge-bg: var(--color-accent-outline);
+    --badge-fg: var(--color-accent-outline-foreground);
 
     @apply border border-accent-outline-border;
   }
 
-  .fri-badge--success-outline {
-    --fri-badge-bg: var(--color-success-outline);
-    --fri-badge-fg: var(--color-success-outline-foreground);
+  .badge-success-outline {
+    --badge-bg: var(--color-success-outline);
+    --badge-fg: var(--color-success-outline-foreground);
 
     @apply border border-success-outline-border;
   }
 
-  .fri-badge--warning-outline {
-    --fri-badge-bg: var(--color-warning-outline);
-    --fri-badge-fg: var(--color-warning-outline-foreground);
+  .badge-warning-outline {
+    --badge-bg: var(--color-warning-outline);
+    --badge-fg: var(--color-warning-outline-foreground);
 
     @apply border border-warning-outline-border;
   }
 
-  .fri-badge--danger-outline {
-    --fri-badge-bg: var(--color-danger-outline);
-    --fri-badge-fg: var(--color-danger-outline-foreground);
+  .badge-danger-outline {
+    --badge-bg: var(--color-danger-outline);
+    --badge-fg: var(--color-danger-outline-foreground);
 
     @apply border border-danger-outline-border;
   }
 
-  .fri-badge--info-outline {
-    --fri-badge-bg: var(--color-info-outline);
-    --fri-badge-fg: var(--color-info-outline-foreground);
+  .badge-info-outline {
+    --badge-bg: var(--color-info-outline);
+    --badge-fg: var(--color-info-outline-foreground);
 
     @apply border border-info-outline-border;
   }
 
-  .fri-badge--radius-none {
+  .badge-radius-none {
     @apply rounded-none;
   }
 
-  .fri-badge--radius-sm {
+  .badge-radius-sm {
     @apply rounded-[calc(1em*1.272/4)];
   }
 
-  .fri-badge--radius-md {
+  .badge-radius-md {
     @apply rounded-[calc(1em*1.272*2/4)];
   }
 
-  .fri-badge--radius-lg {
+  .badge-radius-lg {
     @apply rounded-[calc(1em*1.272*3/4)];
   }
 
-  .fri-badge--radius-full {
+  .badge-radius-full {
     @apply rounded-full;
   }
 
-  .fri-badge [slot="icon"],
-  .fri-badge [slot="icon-start"],
-  .fri-badge [slot="icon-end"] {
+  .badge [slot="icon"],
+  .badge [slot="icon-start"],
+  .badge [slot="icon-end"] {
     @apply size-match-font;
   }
 
-  .fri-badge:has([slot="icon-start"]) {
+  .badge:has([slot="icon-start"]) {
     @apply pl-[calc(0.875rem/2.058)];
   }
 
-  .fri-badge:has([slot="icon-end"]) {
+  .badge:has([slot="icon-end"]) {
     @apply pr-[calc(0.875rem/2.058)];
   }
 
-  .fri-badge--size-sm {
+  .badge-size-sm {
     @apply gap-[calc(0.75rem/2.058)] px-[calc(0.75rem)] py-[calc(0.75rem/2.058)] text-xs;
   }
 
-  .fri-badge--size-sm:has([slot="icon-start"]) {
+  .badge-size-sm:has([slot="icon-start"]) {
     @apply pl-[calc(0.75rem/2.058)];
   }
 
-  .fri-badge--size-sm:has([slot="icon-end"]) {
+  .badge-size-sm:has([slot="icon-end"]) {
     @apply pr-[calc(0.75rem/2.058)];
   }
 
-  .fri-badge--size-md {
+  .badge-size-md {
     @apply gap-[calc(0.875rem/2.058)] px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
   }
 
-  .fri-badge--size-md:has([slot="icon-start"]) {
+  .badge-size-md:has([slot="icon-start"]) {
     @apply pl-[calc(0.875rem/2.058)];
   }
 
-  .fri-badge--size-md:has([slot="icon-end"]) {
+  .badge-size-md:has([slot="icon-end"]) {
     @apply pr-[calc(0.875rem/2.058)];
   }
 
-  .fri-badge--size-lg {
+  .badge-size-lg {
     @apply gap-[calc(1rem/2.058)] px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
   }
 
-  .fri-badge--size-lg:has([slot="icon-start"]) {
+  .badge-size-lg:has([slot="icon-start"]) {
     @apply pl-[calc(1rem/2.058)];
   }
 
-  .fri-badge--size-lg:has([slot="icon-end"]) {
+  .badge-size-lg:has([slot="icon-end"]) {
     @apply pr-[calc(1rem/2.058)];
   }
 
-  .fri-badge--icon-only {
+  .badge-icon-only {
     @apply aspect-square w-[calc(0.875rem+2*(0.875rem/2.058)+0.125rem)] justify-center gap-0 p-0;
   }
 
-  .fri-badge--icon-only.fri-badge--size-sm {
+  .badge-icon-only.badge-size-sm {
     @apply w-[calc(0.75rem+2*(0.75rem/2.058)+0.125rem)];
   }
 
-  .fri-badge--icon-only.fri-badge--size-lg {
+  .badge-icon-only.badge-size-lg {
     @apply w-[calc(1rem+2*(1rem/2.058)+0.125rem)];
   }
 }

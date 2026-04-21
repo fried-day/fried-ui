@@ -13,7 +13,7 @@ describe("Surface", () => {
 
   it("renders only base class without explicit props", () => {
     render(<Surface>Default</Surface>);
-    expect(screen.getByText("Default").className).toBe("fri-surface");
+    expect(screen.getByText("Default").className).toBe("surface");
   });
 
   it("applies all variant classes", () => {
@@ -21,14 +21,14 @@ describe("Surface", () => {
 
     variants.forEach((variant) => {
       const { unmount } = render(<Surface variant={variant}>{variant}</Surface>);
-      expect(screen.getByText(variant).className).toContain(`fri-surface--${variant}`);
+      expect(screen.getByText(variant).className).toContain(`surface-${variant}`);
       unmount();
     });
   });
 
   it("applies bordered modifier class", () => {
     render(<Surface isBordered>Bordered</Surface>);
-    expect(screen.getByText("Bordered").className).toContain("fri-surface--bordered");
+    expect(screen.getByText("Bordered").className).toContain("surface-bordered");
   });
 
   it("applies radius class with key-value format", () => {
@@ -36,7 +36,7 @@ describe("Surface", () => {
 
     radiusValues.forEach((radius) => {
       const { unmount } = render(<Surface radius={radius}>{radius}</Surface>);
-      expect(screen.getByText(radius).className).toContain(`fri-surface--radius-${radius}`);
+      expect(screen.getByText(radius).className).toContain(`surface-radius-${radius}`);
       unmount();
     });
   });
@@ -46,7 +46,7 @@ describe("Surface", () => {
 
     shadowValues.forEach((shadow) => {
       const { unmount } = render(<Surface shadow={shadow}>{shadow}</Surface>);
-      expect(screen.getByText(shadow).className).toContain(`fri-surface--shadow-${shadow}`);
+      expect(screen.getByText(shadow).className).toContain(`surface-shadow-${shadow}`);
       unmount();
     });
   });
@@ -59,10 +59,10 @@ describe("Surface", () => {
     );
 
     const el = screen.getByText("Combined");
-    expect(el.className).toContain("fri-surface--plain");
-    expect(el.className).toContain("fri-surface--bordered");
-    expect(el.className).toContain("fri-surface--radius-lg");
-    expect(el.className).toContain("fri-surface--shadow-md");
+    expect(el.className).toContain("surface-plain");
+    expect(el.className).toContain("surface-bordered");
+    expect(el.className).toContain("surface-radius-lg");
+    expect(el.className).toContain("surface-shadow-md");
   });
 
   it("merges custom className", () => {

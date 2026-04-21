@@ -11,7 +11,7 @@ paths:
 
 ```text
 @fried-ui/react    ← React components (behavior + accessibility)
-@fried-ui/styles   ← CSS: design tokens + component styles (BEM)
+@fried-ui/styles   ← CSS: design tokens + component styles (class)
 react-aria-components ← Accessibility primitives
 tailwindcss v4     ← Styling engine
 ```
@@ -21,7 +21,7 @@ tailwindcss v4     ← Styling engine
 ```text
 @fried-ui/styles (ไม่ depend on React)
   exports:
-    "." → CSS (tokens + component BEM classes)
+    "." → CSS (tokens + component classes)
 
 @fried-ui/react (depends on react-aria)
   exports:
@@ -38,7 +38,7 @@ tailwindcss v4     ← Styling engine
 
 ### Layer 2: Component Styles → `packages/styles/src/components/{name}.css`
 
-BEM classes + `@apply` + CSS custom properties สำหรับ variant colors
+classes + `@apply` + CSS custom properties สำหรับ variant colors
 
 ### Layer 3: React Component → `packages/react/src/components/{name}/`
 
@@ -54,7 +54,7 @@ index.ts             # re-exports
 ```text
 props → destructure { variant, size, className, children, ...rest }
 rest  → forward ไป React Aria
-className → cn("fri-{name}", "fri-{name}--{variant}", "fri-{name}--{size}", cls)
+className → cn("{name}", "{name}--{variant}", "{name}--{size}", cls)
 children  → composeRenderProps → wrap กับ internal UI
 ```
 
@@ -132,48 +132,48 @@ import { Button as RACButton, type ButtonProps as RACButtonProps, composeRenderP
 import { cn } from "src/utils/cn";
 ```
 
-## BEM Naming
+## class-naming Naming
 
 ```text
-.fri-{component}              → base
-.fri-{component}--{variant}   → variant
-.fri-{component}--{size}      → size
-.fri-{component}--{state}     → state
+.{component}              → base
+.{component}--{variant}   → variant
+.{component}--{size}      → size
+.{component}--{state}     → state
 ```
 
 React Aria states ใน CSS: `&[data-pressed]`, `&[data-hovered]`, `&[data-focused]`
 
-## BEM Class on EVERY Internal Element
+## class-naming Class on EVERY Internal Element
 
-ทุก `<span>`, `<div>`, `<svg>` ภายใน component **ต้องมี BEM class** `.fri-{component}__{part}` — ไม่ใช่แค่ `data-slot` attribute
+ทุก `<span>`, `<div>`, `<svg>` ภายใน component **ต้องมี class-naming class** `.{component}__{part}` — ไม่ใช่แค่ `data-slot` attribute
 
 **เหตุผล:**
 - User override ผ่าน `@apply` (2026 pattern — แทน slotProps):
   ```css
   /* User's app CSS */
-  .fri-input__icon-start { @apply size-5 text-primary; }
-  .fri-input__prefix { @apply font-mono text-accent; }
+  .input-icon-start { @apply size-5 text-primary; }
+  .input-prefix { @apply font-mono text-accent; }
   ```
-- Class selector สั้นกว่า attr selector (`.fri-input__icon-start` vs `[data-slot="input-icon-start"]`)
+- Class selector สั้นกว่า attr selector (`.input-icon-start` vs `[data-slot="input-icon-start"]`)
 - Performance ดีกว่า (class match faster than attr match)
-- Idiomatic BEM — docs อ่านง่าย
+- Idiomatic class-naming — docs อ่านง่าย
 
 **Pattern:**
 ```tsx
 <span
-  className="fri-input__icon-start"   // ← styling hook
+  className="input-icon-start"   // ← styling hook
   data-slot="input-icon-start"         // ← semantic marker (for React Aria context + tests)
 >
   {startIcon}
 </span>
 ```
 
-**Both present** — BEM class for styling, data-slot for semantic.
+**Both present** — class-naming class for styling, data-slot for semantic.
 
 **Example components that follow:**
-- `Avatar` — `fri-avatar__image`, `fri-avatar__fallback`
-- `Button` — `fri-button__spinner`
-- `Input` — `fri-input__field`, `fri-input__icon-start`, `fri-input__prefix`, `fri-input__suffix`, `fri-input__icon-end`, `fri-input__spinner`
+- `Avatar` — `avatar-image`, `avatar-fallback`
+- `Button` — `button-spinner`
+- `Input` — `input-field`, `input-icon-start`, `input-prefix`, `input-suffix`, `input-icon-end`, `input-spinner`
 
 ## ❌ No Magic Values in CSS
 
@@ -181,10 +181,10 @@ React Aria states ใน CSS: `&[data-pressed]`, `&[data-hovered]`, `&[data-focu
 
 ```css
 /* ❌ Raw rem */
---fri-X-base: 0.8rem;
+--X-base: 0.8rem;
 
 /* ❌ Magic decimal scalar */
---fri-X-ratio: 0.625;
+--X-ratio: 0.625;
 
 /* ✅ Tailwind @apply */
 @apply -ms-3;
@@ -193,10 +193,10 @@ React Aria states ใน CSS: `&[data-pressed]`, `&[data-hovered]`, `&[data-focu
 @apply py-[calc(1rem/2.058)];
 
 /* ✅ Token-based calc */
---fri-X-base: calc(var(--spacing) * 10);
+--X-base: calc(var(--spacing) * 10);
 
 /* ✅ Explicit fraction */
---fri-X-ratio: calc(5 / 8);  /* 62.5% */
+--X-ratio: calc(5 / 8);  /* 62.5% */
 ```
 
 **Decision tree**: Tailwind utility → formula → `var(--spacing) * N` → explicit fraction → flag if none fit
@@ -214,7 +214,7 @@ React Aria states ใน CSS: `&[data-pressed]`, `&[data-hovered]`, `&[data-focu
 
 ## 1:1 Parity Check (React ≡ Plain HTML)
 
-ทุก component ต้อง pass parity test นี้ — `<Component>` (no props) และ `<tag class="fri-{name}">` (minimal) ต้อง render ตรงกัน:
+ทุก component ต้อง pass parity test นี้ — `<Component>` (no props) และ `<tag class="{name}">` (minimal) ต้อง render ตรงกัน:
 
 ```text
 Base class defines:
@@ -223,13 +223,13 @@ Base class defines:
   ✓ default radius (formula matches --radius-{default})
 
 Default modifier rule produces same CSS as base:
-  .fri-X--{default-variant} { ... } === base class variant tokens
-  .fri-X--size-{default}    { ... } === base class size
-  .fri-X--radius-{default}  { ... } === base class radius
+  .X--{default-variant} { ... } === base class variant tokens
+  .X--size-{default}    { ... } === base class size
+  .X--radius-{default}  { ... } === base class radius
 
 JSDoc @default reflects base reality:
   If base has rounded-full → @default 'full' (not 'md')
   If base has primary tokens → @default 'primary'
 ```
 
-**Why critical:** `@fried-ui/styles` ships as pure CSS for WP/PHP/HTML consumers. Any drift breaks their rendering. React consumers ก็โดนเพราะ `<Component>` no-props → bem() skips modifier → base class wins (might diverge from JSDoc promise).
+**Why critical:** `@fried-ui/styles` ships as pure CSS for WP/PHP/HTML consumers. Any drift breaks their rendering. React consumers ก็โดนเพราะ `<Component>` no-props → classes() skips modifier → base class wins (might diverge from JSDoc promise).

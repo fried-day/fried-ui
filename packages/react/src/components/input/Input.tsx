@@ -7,7 +7,7 @@ import { Input as AriaInput } from "react-aria-components";
 import { clsx } from "clsx";
 
 import { Spinner } from "../icons";
-import { bem } from "../../utils/bem";
+import { classes } from "../../utils/classes";
 
 import type { InputVariantsProps } from "./input.variants";
 
@@ -46,8 +46,8 @@ const Input = (props: Readonly<InputProps>) => {
   } = props;
 
   const wrapperClassName = clsx(
-    bem({
-      block: "fri-input",
+    classes({
+      block: "input",
       modifiers: {
         variant,
         size,
@@ -65,19 +65,19 @@ const Input = (props: Readonly<InputProps>) => {
   return (
     <div data-slot="input-wrapper" data-pending={isPendingState} className={wrapperClassName}>
       {startIcon && (
-        <span className="fri-input__icon-start" data-slot="input-icon-start" aria-hidden="true">
+        <span className="input-icon-start" data-slot="input-icon-start" aria-hidden="true">
           {startIcon}
         </span>
       )}
 
       {prefix && (
-        <span className="fri-input__prefix" data-slot="input-prefix">
+        <span className="input-prefix" data-slot="input-prefix">
           {prefix}
         </span>
       )}
 
       <AriaInput
-        className="fri-input__field"
+        className="input-field"
         data-slot="input"
         aria-invalid={isAriaInvalid}
         disabled={isDisabled}
@@ -88,16 +88,16 @@ const Input = (props: Readonly<InputProps>) => {
       />
 
       {suffix && (
-        <span className="fri-input__suffix" data-slot="input-suffix">
+        <span className="input-suffix" data-slot="input-suffix">
           {suffix}
         </span>
       )}
 
       {isPending ? (
-        <Spinner className="fri-input__spinner" data-slot="input-spinner" aria-hidden="true" />
+        <Spinner className="input-spinner" data-slot="input-spinner" aria-hidden="true" />
       ) : (
         endIcon && (
-          <span className="fri-input__icon-end" data-slot="input-icon-end" aria-hidden="true">
+          <span className="input-icon-end" data-slot="input-icon-end" aria-hidden="true">
             {endIcon}
           </span>
         )

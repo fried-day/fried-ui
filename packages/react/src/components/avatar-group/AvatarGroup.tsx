@@ -6,7 +6,7 @@ import { Children, cloneElement, isValidElement } from "react";
 import { clsx } from "clsx";
 
 import { Avatar, type AvatarProps } from "../avatar";
-import { bem } from "../../utils/bem";
+import { classes } from "../../utils/classes";
 
 import type { AvatarGroupVariantsProps } from "./avatar-group.variants";
 
@@ -30,8 +30,8 @@ const AvatarGroup = (props: Readonly<AvatarGroupProps>) => {
   const counterText = `+${hiddenCount}`;
 
   const groupClassName = clsx(
-    bem({
-      block: "fri-avatar-group",
+    classes({
+      block: "avatar-group",
       modifiers: {
         size,
         spacing,
@@ -51,7 +51,7 @@ const AvatarGroup = (props: Readonly<AvatarGroupProps>) => {
       )}
 
       {hiddenCount > 0 && (
-        <Avatar className="fri-avatar-group__counter" aria-label={counterLabel} size={size}>
+        <Avatar className="avatar-group-counter" aria-label={counterLabel} size={size}>
           <Avatar.Fallback>{counterText}</Avatar.Fallback>
         </Avatar>
       )}

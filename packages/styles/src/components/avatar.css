@@ -1,88 +1,88 @@
 @layer components {
-  .fri-avatar {
+  .avatar {
     @apply relative flex shrink-0 items-center justify-center overflow-hidden select-none;
     @apply leading-none font-medium;
     @apply size-10 rounded-full text-sm;
     @apply bg-avatar text-avatar-foreground;
   }
 
-  .fri-avatar__image {
+  .avatar-image {
     @apply block size-full object-cover;
   }
 
-  .fri-avatar__fallback {
+  .avatar-fallback {
     @apply flex size-full items-center justify-center;
   }
 
-  .fri-avatar--size-sm {
+  .avatar-size-sm {
     @apply size-8 text-xs;
   }
 
-  .fri-avatar--size-md {
+  .avatar-size-md {
     @apply size-10 text-sm;
   }
 
-  .fri-avatar--size-lg {
+  .avatar-size-lg {
     @apply size-12 text-base;
   }
 
-  .fri-avatar--size-xl {
+  .avatar-size-xl {
     @apply size-14 text-lg;
   }
 
-  .fri-avatar--size-2xl {
+  .avatar-size-2xl {
     @apply size-16 text-xl;
   }
 
-  .fri-avatar--radius-none {
+  .avatar-radius-none {
     @apply rounded-none;
   }
 
-  .fri-avatar--radius-sm {
+  .avatar-radius-sm {
     @apply rounded-sm;
   }
 
-  .fri-avatar--radius-md {
+  .avatar-radius-md {
     @apply rounded-md;
   }
 
-  .fri-avatar--radius-lg {
+  .avatar-radius-lg {
     @apply rounded-lg;
   }
 
-  .fri-avatar--radius-full {
+  .avatar-radius-full {
     @apply rounded-full;
   }
 
-  .fri-avatar--disabled {
+  .avatar-disabled {
     @apply pointer-events-none opacity-50;
   }
 
-  .fri-avatar--ring-primary {
+  .avatar-ring-primary {
     @apply ring-2 ring-primary-outline-border ring-offset-2 ring-offset-background;
   }
 
-  .fri-avatar--ring-secondary {
+  .avatar-ring-secondary {
     @apply ring-2 ring-secondary-outline-border ring-offset-2 ring-offset-background;
   }
 
-  .fri-avatar--ring-accent {
+  .avatar-ring-accent {
     @apply ring-2 ring-accent-outline-border ring-offset-2 ring-offset-background;
   }
 
-  .fri-avatar--ring-success {
+  .avatar-ring-success {
     @apply ring-2 ring-success-outline-border ring-offset-2 ring-offset-background;
   }
 
-  .fri-avatar--ring-warning {
+  .avatar-ring-warning {
     @apply ring-2 ring-warning-outline-border ring-offset-2 ring-offset-background;
   }
 
-  .fri-avatar--ring-danger {
+  .avatar-ring-danger {
     @apply ring-2 ring-danger-outline-border ring-offset-2 ring-offset-background;
   }
 
-  .fri-avatar--ring-info {
+  .avatar-ring-info {
     @apply ring-2 ring-info-outline-border ring-offset-2 ring-offset-background;
   }
 }

@@ -4,7 +4,7 @@ import type { ComponentPropsWithRef } from "react";
 
 import { clsx } from "clsx";
 
-import { bem } from "../../utils/bem";
+import { classes } from "../../utils/classes";
 
 import type { SurfaceVariantsProps } from "./surface.variants";
 
@@ -21,8 +21,8 @@ const Surface = (props: Readonly<SurfaceProps>) => {
   const { children, className, isBordered, radius, ref, shadow, variant, ...rest } = props;
 
   const surfaceClassName = clsx(
-    bem({
-      block: "fri-surface",
+    classes({
+      block: "surface",
       modifiers: {
         variant,
         radius,

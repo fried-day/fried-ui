@@ -1,16 +1,16 @@
 @layer components {
-  .fri-button {
+  .button {
     @apply relative inline-flex items-center justify-center;
     @apply leading-none font-medium whitespace-nowrap;
     @apply cursor-pointer border border-transparent select-none no-highlight;
     @apply transition-colors duration-(--duration-hover) ease-out motion-reduce:transition-none;
 
-    --fri-button-bg: var(--color-primary);
-    --fri-button-bg-hover: var(--color-primary-hover);
-    --fri-button-bg-pressed: var(--color-primary-active);
-    --fri-button-fg: var(--color-primary-foreground);
+    --button-bg: var(--color-primary);
+    --button-bg-hover: var(--color-primary-hover);
+    --button-bg-pressed: var(--color-primary-active);
+    --button-fg: var(--color-primary-foreground);
 
-    @apply bg-(--fri-button-bg) text-(--fri-button-fg);
+    @apply bg-(--button-bg) text-(--button-fg);
     @apply gap-[calc(1rem/2.058)] px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
     @apply rounded-[calc(1em*1.272*2/4)];
 
@@ -31,430 +31,430 @@
     @media (hover: hover) {
       &:hover:not(:disabled):not(:active),
       &[data-hovered] {
-        @apply bg-(--fri-button-bg-hover);
+        @apply bg-(--button-bg-hover);
       }
     }
 
     &:active:not(:disabled),
     &[data-pressed] {
-      @apply bg-(--fri-button-bg-pressed) duration-(--duration-press);
+      @apply bg-(--button-bg-pressed) duration-(--duration-press);
     }
   }
 
-  .fri-button--primary {
-    --fri-button-bg: var(--color-primary);
-    --fri-button-bg-hover: var(--color-primary-hover);
-    --fri-button-bg-pressed: var(--color-primary-active);
-    --fri-button-fg: var(--color-primary-foreground);
+  .button-primary {
+    --button-bg: var(--color-primary);
+    --button-bg-hover: var(--color-primary-hover);
+    --button-bg-pressed: var(--color-primary-active);
+    --button-fg: var(--color-primary-foreground);
   }
 
-  .fri-button--secondary {
-    --fri-button-bg: var(--color-secondary);
-    --fri-button-bg-hover: var(--color-secondary-hover);
-    --fri-button-bg-pressed: var(--color-secondary-active);
-    --fri-button-fg: var(--color-secondary-foreground);
+  .button-secondary {
+    --button-bg: var(--color-secondary);
+    --button-bg-hover: var(--color-secondary-hover);
+    --button-bg-pressed: var(--color-secondary-active);
+    --button-fg: var(--color-secondary-foreground);
   }
 
-  .fri-button--accent {
-    --fri-button-bg: var(--color-accent);
-    --fri-button-bg-hover: var(--color-accent-hover);
-    --fri-button-bg-pressed: var(--color-accent-active);
-    --fri-button-fg: var(--color-accent-foreground);
+  .button-accent {
+    --button-bg: var(--color-accent);
+    --button-bg-hover: var(--color-accent-hover);
+    --button-bg-pressed: var(--color-accent-active);
+    --button-fg: var(--color-accent-foreground);
   }
 
-  .fri-button--ghost {
-    --fri-button-bg: transparent;
-    --fri-button-bg-hover: var(--color-muted);
-    --fri-button-bg-pressed: var(--color-muted-hover);
-    --fri-button-fg: var(--color-foreground);
+  .button-ghost {
+    --button-bg: transparent;
+    --button-bg-hover: var(--color-muted);
+    --button-bg-pressed: var(--color-muted-hover);
+    --button-fg: var(--color-foreground);
   }
 
-  .fri-button--outline {
-    --fri-button-bg: transparent;
-    --fri-button-bg-hover: var(--color-muted);
-    --fri-button-bg-pressed: var(--color-muted-hover);
-    --fri-button-fg: var(--color-foreground);
+  .button-outline {
+    --button-bg: transparent;
+    --button-bg-hover: var(--color-muted);
+    --button-bg-pressed: var(--color-muted-hover);
+    --button-fg: var(--color-foreground);
 
     @apply border-border;
   }
 
-  .fri-button--glass {
-    --fri-button-bg: var(--color-glass);
-    --fri-button-bg-hover: var(--color-glass-hover);
-    --fri-button-bg-pressed: var(--color-glass-active);
-    --fri-button-fg: var(--color-glass-foreground);
+  .button-glass {
+    --button-bg: var(--color-glass);
+    --button-bg-hover: var(--color-glass-hover);
+    --button-bg-pressed: var(--color-glass-active);
+    --button-fg: var(--color-glass-foreground);
 
     @apply border-glass-border backdrop-blur-xl backdrop-saturate-200;
   }
 
-  .fri-button--frost {
-    --fri-button-bg: var(--color-glass);
-    --fri-button-bg-hover: var(--color-glass-hover);
-    --fri-button-bg-pressed: var(--color-glass-active);
-    --fri-button-fg: var(--color-glass-foreground);
+  .button-frost {
+    --button-bg: var(--color-glass);
+    --button-bg-hover: var(--color-glass-hover);
+    --button-bg-pressed: var(--color-glass-active);
+    --button-fg: var(--color-glass-foreground);
 
     @apply backdrop-blur-2xl backdrop-saturate-200;
   }
 
-  .fri-button--overlay {
-    --fri-button-bg: var(--color-scrim);
-    --fri-button-bg-hover: var(--color-scrim-hover);
-    --fri-button-bg-pressed: var(--color-scrim-active);
-    --fri-button-fg: var(--color-scrim-foreground);
+  .button-overlay {
+    --button-bg: var(--color-scrim);
+    --button-bg-hover: var(--color-scrim-hover);
+    --button-bg-pressed: var(--color-scrim-active);
+    --button-fg: var(--color-scrim-foreground);
 
     @apply border-scrim-border backdrop-blur-xl backdrop-saturate-150;
   }
 
-  .fri-button--success {
-    --fri-button-bg: var(--color-success);
-    --fri-button-bg-hover: var(--color-success-hover);
-    --fri-button-bg-pressed: var(--color-success-active);
-    --fri-button-fg: var(--color-success-foreground);
+  .button-success {
+    --button-bg: var(--color-success);
+    --button-bg-hover: var(--color-success-hover);
+    --button-bg-pressed: var(--color-success-active);
+    --button-fg: var(--color-success-foreground);
   }
 
-  .fri-button--warning {
-    --fri-button-bg: var(--color-warning);
-    --fri-button-bg-hover: var(--color-warning-hover);
-    --fri-button-bg-pressed: var(--color-warning-active);
-    --fri-button-fg: var(--color-warning-foreground);
+  .button-warning {
+    --button-bg: var(--color-warning);
+    --button-bg-hover: var(--color-warning-hover);
+    --button-bg-pressed: var(--color-warning-active);
+    --button-fg: var(--color-warning-foreground);
   }
 
-  .fri-button--danger {
-    --fri-button-bg: var(--color-danger);
-    --fri-button-bg-hover: var(--color-danger-hover);
-    --fri-button-bg-pressed: var(--color-danger-active);
-    --fri-button-fg: var(--color-danger-foreground);
+  .button-danger {
+    --button-bg: var(--color-danger);
+    --button-bg-hover: var(--color-danger-hover);
+    --button-bg-pressed: var(--color-danger-active);
+    --button-fg: var(--color-danger-foreground);
   }
 
-  .fri-button--info {
-    --fri-button-bg: var(--color-info);
-    --fri-button-bg-hover: var(--color-info-hover);
-    --fri-button-bg-pressed: var(--color-info-active);
-    --fri-button-fg: var(--color-info-foreground);
+  .button-info {
+    --button-bg: var(--color-info);
+    --button-bg-hover: var(--color-info-hover);
+    --button-bg-pressed: var(--color-info-active);
+    --button-fg: var(--color-info-foreground);
   }
-  .fri-button--primary-soft {
-    --fri-button-bg: var(--color-primary-soft);
-    --fri-button-bg-hover: var(--color-primary-soft-hover);
-    --fri-button-bg-pressed: var(--color-primary-soft-active);
-    --fri-button-fg: var(--color-primary-soft-foreground);
+  .button-primary-soft {
+    --button-bg: var(--color-primary-soft);
+    --button-bg-hover: var(--color-primary-soft-hover);
+    --button-bg-pressed: var(--color-primary-soft-active);
+    --button-fg: var(--color-primary-soft-foreground);
 
     @apply border border-primary-soft-border;
   }
 
-  .fri-button--secondary-soft {
-    --fri-button-bg: var(--color-secondary-soft);
-    --fri-button-bg-hover: var(--color-secondary-soft-hover);
-    --fri-button-bg-pressed: var(--color-secondary-soft-active);
-    --fri-button-fg: var(--color-secondary-soft-foreground);
+  .button-secondary-soft {
+    --button-bg: var(--color-secondary-soft);
+    --button-bg-hover: var(--color-secondary-soft-hover);
+    --button-bg-pressed: var(--color-secondary-soft-active);
+    --button-fg: var(--color-secondary-soft-foreground);
 
     @apply border border-secondary-soft-border;
   }
 
-  .fri-button--accent-soft {
-    --fri-button-bg: var(--color-accent-soft);
-    --fri-button-bg-hover: var(--color-accent-soft-hover);
-    --fri-button-bg-pressed: var(--color-accent-soft-active);
-    --fri-button-fg: var(--color-accent-soft-foreground);
+  .button-accent-soft {
+    --button-bg: var(--color-accent-soft);
+    --button-bg-hover: var(--color-accent-soft-hover);
+    --button-bg-pressed: var(--color-accent-soft-active);
+    --button-fg: var(--color-accent-soft-foreground);
 
     @apply border border-accent-soft-border;
   }
 
-  .fri-button--success-soft {
-    --fri-button-bg: var(--color-success-soft);
-    --fri-button-bg-hover: var(--color-success-soft-hover);
-    --fri-button-bg-pressed: var(--color-success-soft-active);
-    --fri-button-fg: var(--color-success-soft-foreground);
+  .button-success-soft {
+    --button-bg: var(--color-success-soft);
+    --button-bg-hover: var(--color-success-soft-hover);
+    --button-bg-pressed: var(--color-success-soft-active);
+    --button-fg: var(--color-success-soft-foreground);
 
     @apply border border-success-soft-border;
   }
 
-  .fri-button--warning-soft {
-    --fri-button-bg: var(--color-warning-soft);
-    --fri-button-bg-hover: var(--color-warning-soft-hover);
-    --fri-button-bg-pressed: var(--color-warning-soft-active);
-    --fri-button-fg: var(--color-warning-soft-foreground);
+  .button-warning-soft {
+    --button-bg: var(--color-warning-soft);
+    --button-bg-hover: var(--color-warning-soft-hover);
+    --button-bg-pressed: var(--color-warning-soft-active);
+    --button-fg: var(--color-warning-soft-foreground);
 
     @apply border border-warning-soft-border;
   }
 
-  .fri-button--danger-soft {
-    --fri-button-bg: var(--color-danger-soft);
-    --fri-button-bg-hover: var(--color-danger-soft-hover);
-    --fri-button-bg-pressed: var(--color-danger-soft-active);
-    --fri-button-fg: var(--color-danger-soft-foreground);
+  .button-danger-soft {
+    --button-bg: var(--color-danger-soft);
+    --button-bg-hover: var(--color-danger-soft-hover);
+    --button-bg-pressed: var(--color-danger-soft-active);
+    --button-fg: var(--color-danger-soft-foreground);
 
     @apply border border-danger-soft-border;
   }
 
-  .fri-button--info-soft {
-    --fri-button-bg: var(--color-info-soft);
-    --fri-button-bg-hover: var(--color-info-soft-hover);
-    --fri-button-bg-pressed: var(--color-info-soft-active);
-    --fri-button-fg: var(--color-info-soft-foreground);
+  .button-info-soft {
+    --button-bg: var(--color-info-soft);
+    --button-bg-hover: var(--color-info-soft-hover);
+    --button-bg-pressed: var(--color-info-soft-active);
+    --button-fg: var(--color-info-soft-foreground);
 
     @apply border border-info-soft-border;
   }
 
-  .fri-button--primary-flat {
-    --fri-button-bg: var(--color-primary-flat);
-    --fri-button-bg-hover: var(--color-primary-flat-hover);
-    --fri-button-bg-pressed: var(--color-primary-flat-active);
-    --fri-button-fg: var(--color-primary-flat-foreground);
+  .button-primary-flat {
+    --button-bg: var(--color-primary-flat);
+    --button-bg-hover: var(--color-primary-flat-hover);
+    --button-bg-pressed: var(--color-primary-flat-active);
+    --button-fg: var(--color-primary-flat-foreground);
   }
 
-  .fri-button--secondary-flat {
-    --fri-button-bg: var(--color-secondary-flat);
-    --fri-button-bg-hover: var(--color-secondary-flat-hover);
-    --fri-button-bg-pressed: var(--color-secondary-flat-active);
-    --fri-button-fg: var(--color-secondary-flat-foreground);
+  .button-secondary-flat {
+    --button-bg: var(--color-secondary-flat);
+    --button-bg-hover: var(--color-secondary-flat-hover);
+    --button-bg-pressed: var(--color-secondary-flat-active);
+    --button-fg: var(--color-secondary-flat-foreground);
   }
 
-  .fri-button--accent-flat {
-    --fri-button-bg: var(--color-accent-flat);
-    --fri-button-bg-hover: var(--color-accent-flat-hover);
-    --fri-button-bg-pressed: var(--color-accent-flat-active);
-    --fri-button-fg: var(--color-accent-flat-foreground);
+  .button-accent-flat {
+    --button-bg: var(--color-accent-flat);
+    --button-bg-hover: var(--color-accent-flat-hover);
+    --button-bg-pressed: var(--color-accent-flat-active);
+    --button-fg: var(--color-accent-flat-foreground);
   }
 
-  .fri-button--success-flat {
-    --fri-button-bg: var(--color-success-flat);
-    --fri-button-bg-hover: var(--color-success-flat-hover);
-    --fri-button-bg-pressed: var(--color-success-flat-active);
-    --fri-button-fg: var(--color-success-flat-foreground);
+  .button-success-flat {
+    --button-bg: var(--color-success-flat);
+    --button-bg-hover: var(--color-success-flat-hover);
+    --button-bg-pressed: var(--color-success-flat-active);
+    --button-fg: var(--color-success-flat-foreground);
   }
 
-  .fri-button--warning-flat {
-    --fri-button-bg: var(--color-warning-flat);
-    --fri-button-bg-hover: var(--color-warning-flat-hover);
-    --fri-button-bg-pressed: var(--color-warning-flat-active);
-    --fri-button-fg: var(--color-warning-flat-foreground);
+  .button-warning-flat {
+    --button-bg: var(--color-warning-flat);
+    --button-bg-hover: var(--color-warning-flat-hover);
+    --button-bg-pressed: var(--color-warning-flat-active);
+    --button-fg: var(--color-warning-flat-foreground);
   }
 
-  .fri-button--danger-flat {
-    --fri-button-bg: var(--color-danger-flat);
-    --fri-button-bg-hover: var(--color-danger-flat-hover);
-    --fri-button-bg-pressed: var(--color-danger-flat-active);
-    --fri-button-fg: var(--color-danger-flat-foreground);
+  .button-danger-flat {
+    --button-bg: var(--color-danger-flat);
+    --button-bg-hover: var(--color-danger-flat-hover);
+    --button-bg-pressed: var(--color-danger-flat-active);
+    --button-fg: var(--color-danger-flat-foreground);
   }
 
-  .fri-button--info-flat {
-    --fri-button-bg: var(--color-info-flat);
-    --fri-button-bg-hover: var(--color-info-flat-hover);
-    --fri-button-bg-pressed: var(--color-info-flat-active);
-    --fri-button-fg: var(--color-info-flat-foreground);
+  .button-info-flat {
+    --button-bg: var(--color-info-flat);
+    --button-bg-hover: var(--color-info-flat-hover);
+    --button-bg-pressed: var(--color-info-flat-active);
+    --button-fg: var(--color-info-flat-foreground);
   }
 
-  .fri-button--primary-outline {
-    --fri-button-bg: var(--color-primary-outline);
-    --fri-button-bg-hover: var(--color-primary-outline-hover);
-    --fri-button-bg-pressed: var(--color-primary-outline-active);
-    --fri-button-fg: var(--color-primary-outline-foreground);
+  .button-primary-outline {
+    --button-bg: var(--color-primary-outline);
+    --button-bg-hover: var(--color-primary-outline-hover);
+    --button-bg-pressed: var(--color-primary-outline-active);
+    --button-fg: var(--color-primary-outline-foreground);
 
     @apply border border-primary-outline-border;
   }
 
-  .fri-button--secondary-outline {
-    --fri-button-bg: var(--color-secondary-outline);
-    --fri-button-bg-hover: var(--color-secondary-outline-hover);
-    --fri-button-bg-pressed: var(--color-secondary-outline-active);
-    --fri-button-fg: var(--color-secondary-outline-foreground);
+  .button-secondary-outline {
+    --button-bg: var(--color-secondary-outline);
+    --button-bg-hover: var(--color-secondary-outline-hover);
+    --button-bg-pressed: var(--color-secondary-outline-active);
+    --button-fg: var(--color-secondary-outline-foreground);
 
     @apply border border-secondary-outline-border;
   }
 
-  .fri-button--accent-outline {
-    --fri-button-bg: var(--color-accent-outline);
-    --fri-button-bg-hover: var(--color-accent-outline-hover);
-    --fri-button-bg-pressed: var(--color-accent-outline-active);
-    --fri-button-fg: var(--color-accent-outline-foreground);
+  .button-accent-outline {
+    --button-bg: var(--color-accent-outline);
+    --button-bg-hover: var(--color-accent-outline-hover);
+    --button-bg-pressed: var(--color-accent-outline-active);
+    --button-fg: var(--color-accent-outline-foreground);
 
     @apply border border-accent-outline-border;
   }
 
-  .fri-button--success-outline {
-    --fri-button-bg: var(--color-success-outline);
-    --fri-button-bg-hover: var(--color-success-outline-hover);
-    --fri-button-bg-pressed: var(--color-success-outline-active);
-    --fri-button-fg: var(--color-success-outline-foreground);
+  .button-success-outline {
+    --button-bg: var(--color-success-outline);
+    --button-bg-hover: var(--color-success-outline-hover);
+    --button-bg-pressed: var(--color-success-outline-active);
+    --button-fg: var(--color-success-outline-foreground);
 
     @apply border border-success-outline-border;
   }
 
-  .fri-button--warning-outline {
-    --fri-button-bg: var(--color-warning-outline);
-    --fri-button-bg-hover: var(--color-warning-outline-hover);
-    --fri-button-bg-pressed: var(--color-warning-outline-active);
-    --fri-button-fg: var(--color-warning-outline-foreground);
+  .button-warning-outline {
+    --button-bg: var(--color-warning-outline);
+    --button-bg-hover: var(--color-warning-outline-hover);
+    --button-bg-pressed: var(--color-warning-outline-active);
+    --button-fg: var(--color-warning-outline-foreground);
 
     @apply border border-warning-outline-border;
   }
 
-  .fri-button--danger-outline {
-    --fri-button-bg: var(--color-danger-outline);
-    --fri-button-bg-hover: var(--color-danger-outline-hover);
-    --fri-button-bg-pressed: var(--color-danger-outline-active);
-    --fri-button-fg: var(--color-danger-outline-foreground);
+  .button-danger-outline {
+    --button-bg: var(--color-danger-outline);
+    --button-bg-hover: var(--color-danger-outline-hover);
+    --button-bg-pressed: var(--color-danger-outline-active);
+    --button-fg: var(--color-danger-outline-foreground);
 
     @apply border border-danger-outline-border;
   }
 
-  .fri-button--info-outline {
-    --fri-button-bg: var(--color-info-outline);
-    --fri-button-bg-hover: var(--color-info-outline-hover);
-    --fri-button-bg-pressed: var(--color-info-outline-active);
-    --fri-button-fg: var(--color-info-outline-foreground);
+  .button-info-outline {
+    --button-bg: var(--color-info-outline);
+    --button-bg-hover: var(--color-info-outline-hover);
+    --button-bg-pressed: var(--color-info-outline-active);
+    --button-fg: var(--color-info-outline-foreground);
 
     @apply border border-info-outline-border;
   }
 
-  .fri-button--primary-ghost {
-    --fri-button-bg: var(--color-primary-ghost);
-    --fri-button-bg-hover: var(--color-primary-ghost-hover);
-    --fri-button-bg-pressed: var(--color-primary-ghost-active);
-    --fri-button-fg: var(--color-primary-ghost-foreground);
+  .button-primary-ghost {
+    --button-bg: var(--color-primary-ghost);
+    --button-bg-hover: var(--color-primary-ghost-hover);
+    --button-bg-pressed: var(--color-primary-ghost-active);
+    --button-fg: var(--color-primary-ghost-foreground);
   }
 
-  .fri-button--secondary-ghost {
-    --fri-button-bg: var(--color-secondary-ghost);
-    --fri-button-bg-hover: var(--color-secondary-ghost-hover);
-    --fri-button-bg-pressed: var(--color-secondary-ghost-active);
-    --fri-button-fg: var(--color-secondary-ghost-foreground);
+  .button-secondary-ghost {
+    --button-bg: var(--color-secondary-ghost);
+    --button-bg-hover: var(--color-secondary-ghost-hover);
+    --button-bg-pressed: var(--color-secondary-ghost-active);
+    --button-fg: var(--color-secondary-ghost-foreground);
   }
 
-  .fri-button--accent-ghost {
-    --fri-button-bg: var(--color-accent-ghost);
-    --fri-button-bg-hover: var(--color-accent-ghost-hover);
-    --fri-button-bg-pressed: var(--color-accent-ghost-active);
-    --fri-button-fg: var(--color-accent-ghost-foreground);
+  .button-accent-ghost {
+    --button-bg: var(--color-accent-ghost);
+    --button-bg-hover: var(--color-accent-ghost-hover);
+    --button-bg-pressed: var(--color-accent-ghost-active);
+    --button-fg: var(--color-accent-ghost-foreground);
   }
 
-  .fri-button--success-ghost {
-    --fri-button-bg: var(--color-success-ghost);
-    --fri-button-bg-hover: var(--color-success-ghost-hover);
-    --fri-button-bg-pressed: var(--color-success-ghost-active);
-    --fri-button-fg: var(--color-success-ghost-foreground);
+  .button-success-ghost {
+    --button-bg: var(--color-success-ghost);
+    --button-bg-hover: var(--color-success-ghost-hover);
+    --button-bg-pressed: var(--color-success-ghost-active);
+    --button-fg: var(--color-success-ghost-foreground);
   }
 
-  .fri-button--warning-ghost {
-    --fri-button-bg: var(--color-warning-ghost);
-    --fri-button-bg-hover: var(--color-warning-ghost-hover);
-    --fri-button-bg-pressed: var(--color-warning-ghost-active);
-    --fri-button-fg: var(--color-warning-ghost-foreground);
+  .button-warning-ghost {
+    --button-bg: var(--color-warning-ghost);
+    --button-bg-hover: var(--color-warning-ghost-hover);
+    --button-bg-pressed: var(--color-warning-ghost-active);
+    --button-fg: var(--color-warning-ghost-foreground);
   }
 
-  .fri-button--danger-ghost {
-    --fri-button-bg: var(--color-danger-ghost);
-    --fri-button-bg-hover: var(--color-danger-ghost-hover);
-    --fri-button-bg-pressed: var(--color-danger-ghost-active);
-    --fri-button-fg: var(--color-danger-ghost-foreground);
+  .button-danger-ghost {
+    --button-bg: var(--color-danger-ghost);
+    --button-bg-hover: var(--color-danger-ghost-hover);
+    --button-bg-pressed: var(--color-danger-ghost-active);
+    --button-fg: var(--color-danger-ghost-foreground);
   }
 
-  .fri-button--info-ghost {
-    --fri-button-bg: var(--color-info-ghost);
-    --fri-button-bg-hover: var(--color-info-ghost-hover);
-    --fri-button-bg-pressed: var(--color-info-ghost-active);
-    --fri-button-fg: var(--color-info-ghost-foreground);
+  .button-info-ghost {
+    --button-bg: var(--color-info-ghost);
+    --button-bg-hover: var(--color-info-ghost-hover);
+    --button-bg-pressed: var(--color-info-ghost-active);
+    --button-fg: var(--color-info-ghost-foreground);
   }
 
-  .fri-button--size-sm {
+  .button-size-sm {
     @apply gap-[calc(0.875rem/2.058)] px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
   }
 
-  .fri-button--size-md {
+  .button-size-md {
     @apply gap-[calc(1rem/2.058)] px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
   }
 
-  .fri-button--size-lg {
+  .button-size-lg {
     @apply gap-[calc(1.25rem/2.058)] px-[calc(1.25rem)] py-[calc(1.25rem/2.058)] text-xl;
   }
 
-  .fri-button--size-xl {
+  .button-size-xl {
     @apply gap-[calc(1.5rem/2.058)] px-[calc(1.5rem)] py-[calc(1.5rem/2.058)] text-2xl;
   }
 
-  .fri-button--full-width {
+  .button-full-width {
     @apply w-full;
   }
 
-  .fri-button--icon-only {
+  .button-icon-only {
     @apply aspect-square w-[calc(1rem+2*(1rem/2.058)+0.125rem)] justify-center gap-0 p-0;
   }
 
-  .fri-button--icon-only.fri-button--size-sm {
+  .button-icon-only.button-size-sm {
     @apply w-[calc(0.875rem+2*(0.875rem/2.058)+0.125rem)];
   }
 
-  .fri-button--icon-only.fri-button--size-lg {
+  .button-icon-only.button-size-lg {
     @apply w-[calc(1.25rem+2*(1.25rem/2.058)+0.125rem)];
   }
 
-  .fri-button--icon-only.fri-button--size-xl {
+  .button-icon-only.button-size-xl {
     @apply w-[calc(1.5rem+2*(1.5rem/2.058)+0.125rem)];
   }
 
-  .fri-button--radius-none {
+  .button-radius-none {
     @apply rounded-none;
   }
 
-  .fri-button--radius-sm {
+  .button-radius-sm {
     @apply rounded-[calc(1em*1.272/4)];
   }
 
-  .fri-button--radius-md {
+  .button-radius-md {
     @apply rounded-[calc(1em*1.272*2/4)];
   }
 
-  .fri-button--radius-lg {
+  .button-radius-lg {
     @apply rounded-[calc(1em*1.272*3/4)];
   }
 
-  .fri-button--radius-full {
+  .button-radius-full {
     @apply rounded-full;
   }
 
-  .fri-button--pending {
+  .button-pending {
     @apply text-transparent;
   }
 
-  .fri-button [slot="icon"],
-  .fri-button [slot="icon-start"],
-  .fri-button [slot="icon-end"] {
+  .button [slot="icon"],
+  .button [slot="icon-start"],
+  .button [slot="icon-end"] {
     @apply size-match-font;
   }
 
-  .fri-button:has([slot="icon-start"]) {
+  .button:has([slot="icon-start"]) {
     @apply pl-[calc(1rem/2.058)];
   }
 
-  .fri-button:has([slot="icon-end"]) {
+  .button:has([slot="icon-end"]) {
     @apply pr-[calc(1rem/2.058)];
   }
 
-  .fri-button--size-sm:has([slot="icon-start"]) {
+  .button-size-sm:has([slot="icon-start"]) {
     @apply pl-[calc(0.875rem/2.058)];
   }
 
-  .fri-button--size-sm:has([slot="icon-end"]) {
+  .button-size-sm:has([slot="icon-end"]) {
     @apply pr-[calc(0.875rem/2.058)];
   }
 
-  .fri-button--size-lg:has([slot="icon-start"]) {
+  .button-size-lg:has([slot="icon-start"]) {
     @apply pl-[calc(1.25rem/2.058)];
   }
 
-  .fri-button--size-lg:has([slot="icon-end"]) {
+  .button-size-lg:has([slot="icon-end"]) {
     @apply pr-[calc(1.25rem/2.058)];
   }
 
-  .fri-button--size-xl:has([slot="icon-start"]) {
+  .button-size-xl:has([slot="icon-start"]) {
     @apply pl-[calc(1.5rem/2.058)];
   }
 
-  .fri-button--size-xl:has([slot="icon-end"]) {
+  .button-size-xl:has([slot="icon-end"]) {
     @apply pr-[calc(1.5rem/2.058)];
   }
 
-  .fri-button__spinner {
-    @apply absolute inset-0 m-auto size-match-font animate-spin text-(--fri-button-fg);
+  .button-spinner {
+    @apply absolute inset-0 m-auto size-match-font animate-spin text-(--button-fg);
   }
 }

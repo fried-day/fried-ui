@@ -1,32 +1,32 @@
 @layer components {
-  .fri-input {
+  .input {
     @apply inline-flex items-baseline;
     @apply leading-none font-normal outline-none;
     @apply border border-transparent;
     @apply transition duration-(--duration-hover) ease-out motion-reduce:transition-none;
 
-    --fri-input-bg: var(--color-field);
-    --fri-input-bg-hover: var(--color-field-hover);
-    --fri-input-border: var(--color-field-border);
-    --fri-input-border-hover: var(--color-field-border-hover);
-    --fri-input-border-focus: var(--color-field-border-focus);
-    --fri-input-fg: var(--color-field-foreground);
-    --fri-input-placeholder: var(--color-field-placeholder);
+    --input-bg: var(--color-field);
+    --input-bg-hover: var(--color-field-hover);
+    --input-border: var(--color-field-border);
+    --input-border-hover: var(--color-field-border-hover);
+    --input-border-focus: var(--color-field-border-focus);
+    --input-fg: var(--color-field-foreground);
+    --input-placeholder: var(--color-field-placeholder);
 
-    @apply bg-(--fri-input-bg) text-(--fri-input-fg);
-    @apply border-(--fri-input-border);
+    @apply bg-(--input-bg) text-(--input-fg);
+    @apply border-(--input-border);
     @apply gap-[calc(0.875rem/2.058)] px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
     @apply rounded-[calc(1em*1.272*2/4)];
-    @apply placeholder:text-(--fri-input-placeholder);
+    @apply placeholder:text-(--input-placeholder);
 
     &:hover:not(:focus-within):not(:read-only):not(:disabled):not(:has(:read-only)):not(:has(:disabled)),
     &:has([data-hovered]):not(:has([data-focused])):not(:has([data-readonly])):not(:has([data-disabled])) {
-      @apply border-(--fri-input-border-hover) bg-(--fri-input-bg-hover);
+      @apply border-(--input-border-hover) bg-(--input-bg-hover);
     }
 
     &:focus-within:not(:focus-visible):not(:has(:focus-visible)),
     &:has([data-focused]:not([data-focus-visible])) {
-      @apply border-(--fri-input-border-focus) bg-(--fri-input-bg) ring-1 ring-(--fri-input-border-focus);
+      @apply border-(--input-border-focus) bg-(--input-bg) ring-1 ring-(--input-border-focus);
     }
 
     &:focus-visible,
@@ -38,7 +38,7 @@
     &:required,
     &:has(:required),
     &:has([data-required]) {
-      --fri-input-border: var(--color-field-border-focus);
+      --input-border: var(--color-field-border-focus);
     }
 
     &:invalid,
@@ -46,9 +46,9 @@
     &:has(:invalid),
     &:has([aria-invalid="true"]),
     &:has([data-invalid]) {
-      --fri-input-border: var(--color-danger);
-      --fri-input-border-hover: var(--color-danger);
-      --fri-input-border-focus: var(--color-danger);
+      --input-border: var(--color-danger);
+      --input-border-hover: var(--color-danger);
+      --input-border-focus: var(--color-danger);
     }
 
     &:disabled,
@@ -66,144 +66,144 @@
     }
   }
 
-  .fri-input__field {
+  .input-field {
     @apply min-w-0 flex-1 bg-transparent leading-none text-inherit outline-none;
-    @apply placeholder:text-(--fri-input-placeholder);
+    @apply placeholder:text-(--input-placeholder);
   }
 
-  .fri-input__field:disabled {
+  .input-field:disabled {
     @apply cursor-not-allowed;
   }
 
-  .fri-input__field:read-only,
-  .fri-input__field[data-readonly] {
+  .input-field:read-only,
+  .input-field[data-readonly] {
     @apply cursor-default;
   }
 
-  .fri-input--primary {
-    --fri-input-bg: var(--color-field);
-    --fri-input-bg-hover: var(--color-field-hover);
-    --fri-input-border: var(--color-field-border);
-    --fri-input-border-hover: var(--color-field-border-hover);
-    --fri-input-border-focus: var(--color-field-border-focus);
-    --fri-input-fg: var(--color-field-foreground);
-    --fri-input-placeholder: var(--color-field-placeholder);
+  .input-primary {
+    --input-bg: var(--color-field);
+    --input-bg-hover: var(--color-field-hover);
+    --input-border: var(--color-field-border);
+    --input-border-hover: var(--color-field-border-hover);
+    --input-border-focus: var(--color-field-border-focus);
+    --input-fg: var(--color-field-foreground);
+    --input-placeholder: var(--color-field-placeholder);
   }
 
-  .fri-input--secondary {
-    --fri-input-bg: var(--color-field-secondary);
-    --fri-input-bg-hover: var(--color-field-secondary-hover);
-    --fri-input-border: var(--color-field-secondary-border);
-    --fri-input-border-hover: var(--color-field-secondary-border-hover);
-    --fri-input-border-focus: var(--color-field-secondary-border-focus);
-    --fri-input-fg: var(--color-field-secondary-foreground);
-    --fri-input-placeholder: var(--color-field-secondary-placeholder);
+  .input-secondary {
+    --input-bg: var(--color-field-secondary);
+    --input-bg-hover: var(--color-field-secondary-hover);
+    --input-border: var(--color-field-secondary-border);
+    --input-border-hover: var(--color-field-secondary-border-hover);
+    --input-border-focus: var(--color-field-secondary-border-focus);
+    --input-fg: var(--color-field-secondary-foreground);
+    --input-placeholder: var(--color-field-secondary-placeholder);
   }
 
-  .fri-input--plain {
-    --fri-input-bg: var(--color-field-plain);
-    --fri-input-bg-hover: var(--color-field-plain-hover);
-    --fri-input-border: var(--color-field-plain-border);
-    --fri-input-border-hover: var(--color-field-plain-border-hover);
-    --fri-input-border-focus: var(--color-field-plain-border-focus);
-    --fri-input-fg: var(--color-field-plain-foreground);
-    --fri-input-placeholder: var(--color-field-plain-placeholder);
+  .input-plain {
+    --input-bg: var(--color-field-plain);
+    --input-bg-hover: var(--color-field-plain-hover);
+    --input-border: var(--color-field-plain-border);
+    --input-border-hover: var(--color-field-plain-border-hover);
+    --input-border-focus: var(--color-field-plain-border-focus);
+    --input-fg: var(--color-field-plain-foreground);
+    --input-placeholder: var(--color-field-plain-placeholder);
   }
 
-  .fri-input__icon-start,
-  .fri-input__icon-end,
-  .fri-input__spinner {
+  .input-icon-start,
+  .input-icon-end,
+  .input-spinner {
     @apply flex size-match-font self-center text-foreground;
   }
 
-  .fri-input__spinner {
+  .input-spinner {
     @apply animate-spin;
   }
 
-  .fri-input__prefix,
-  .fri-input__suffix {
+  .input-prefix,
+  .input-suffix {
     @apply leading-none text-foreground select-none;
   }
 
-  .fri-input:invalid .fri-input__icon-start,
-  .fri-input:invalid .fri-input__icon-end,
-  .fri-input[aria-invalid="true"] .fri-input__icon-start,
-  .fri-input[aria-invalid="true"] .fri-input__icon-end,
-  .fri-input:has(:invalid) .fri-input__icon-start,
-  .fri-input:has(:invalid) .fri-input__icon-end,
-  .fri-input:has([aria-invalid="true"]) .fri-input__icon-start,
-  .fri-input:has([aria-invalid="true"]) .fri-input__icon-end,
-  .fri-input:has([data-invalid]) .fri-input__icon-start,
-  .fri-input:has([data-invalid]) .fri-input__icon-end {
+  .input:invalid .input-icon-start,
+  .input:invalid .input-icon-end,
+  .input[aria-invalid="true"] .input-icon-start,
+  .input[aria-invalid="true"] .input-icon-end,
+  .input:has(:invalid) .input-icon-start,
+  .input:has(:invalid) .input-icon-end,
+  .input:has([aria-invalid="true"]) .input-icon-start,
+  .input:has([aria-invalid="true"]) .input-icon-end,
+  .input:has([data-invalid]) .input-icon-start,
+  .input:has([data-invalid]) .input-icon-end {
     @apply text-danger;
   }
 
-  .fri-input:has(.fri-input__icon-start),
-  .fri-input:has(.fri-input__prefix) {
+  .input:has(.input-icon-start),
+  .input:has(.input-prefix) {
     @apply pl-[calc(0.875rem/2.058)];
   }
 
-  .fri-input:has(.fri-input__icon-end),
-  .fri-input:has(.fri-input__suffix),
-  .fri-input:has(.fri-input__spinner) {
+  .input:has(.input-icon-end),
+  .input:has(.input-suffix),
+  .input:has(.input-spinner) {
     @apply pr-[calc(0.875rem/2.058)];
   }
 
-  .fri-input--size-sm {
+  .input-size-sm {
     @apply gap-[calc(0.75rem/2.058)] px-[calc(0.75rem)] py-[calc(0.75rem/2.058)] text-xs;
   }
 
-  .fri-input--size-md {
+  .input-size-md {
     @apply gap-[calc(0.875rem/2.058)] px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
   }
 
-  .fri-input--size-lg {
+  .input-size-lg {
     @apply gap-[calc(1rem/2.058)] px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
   }
 
-  .fri-input--size-sm:has(.fri-input__icon-start),
-  .fri-input--size-sm:has(.fri-input__prefix) {
+  .input-size-sm:has(.input-icon-start),
+  .input-size-sm:has(.input-prefix) {
     @apply pl-[calc(0.75rem/2.058)];
   }
 
-  .fri-input--size-sm:has(.fri-input__icon-end),
-  .fri-input--size-sm:has(.fri-input__suffix),
-  .fri-input--size-sm:has(.fri-input__spinner) {
+  .input-size-sm:has(.input-icon-end),
+  .input-size-sm:has(.input-suffix),
+  .input-size-sm:has(.input-spinner) {
     @apply pr-[calc(0.75rem/2.058)];
   }
 
-  .fri-input--size-lg:has(.fri-input__icon-start),
-  .fri-input--size-lg:has(.fri-input__prefix) {
+  .input-size-lg:has(.input-icon-start),
+  .input-size-lg:has(.input-prefix) {
     @apply pl-[calc(1rem/2.058)];
   }
 
-  .fri-input--size-lg:has(.fri-input__icon-end),
-  .fri-input--size-lg:has(.fri-input__suffix),
-  .fri-input--size-lg:has(.fri-input__spinner) {
+  .input-size-lg:has(.input-icon-end),
+  .input-size-lg:has(.input-suffix),
+  .input-size-lg:has(.input-spinner) {
     @apply pr-[calc(1rem/2.058)];
   }
 
-  .fri-input--full-width {
+  .input-full-width {
     @apply w-full;
   }
 
-  .fri-input--radius-none {
+  .input-radius-none {
     @apply rounded-none;
   }
 
-  .fri-input--radius-sm {
+  .input-radius-sm {
     @apply rounded-[calc(1em*1.272/4)];
   }
 
-  .fri-input--radius-md {
+  .input-radius-md {
     @apply rounded-[calc(1em*1.272*2/4)];
   }
 
-  .fri-input--radius-lg {
+  .input-radius-lg {
     @apply rounded-[calc(1em*1.272*3/4)];
   }
 
-  .fri-input--radius-full {
+  .input-radius-full {
     @apply rounded-full;
   }
 }

@@ -6,7 +6,7 @@ import { Label as AriaLabel } from "react-aria-components";
 
 import { clsx } from "clsx";
 
-import { bem } from "../../utils/bem";
+import { classes } from "../../utils/classes";
 
 import type { LabelVariantsProps } from "./label.variants";
 
@@ -22,8 +22,8 @@ const Label = (props: Readonly<LabelProps>) => {
   const { children, className, isDisabled, isInvalid, isRequired, optionalMessage, ref, size, weight, ...rest } = props;
 
   const labelClassName = clsx(
-    bem({
-      block: "fri-label",
+    classes({
+      block: "label",
       modifiers: {
         size,
         weight,
@@ -39,10 +39,10 @@ const Label = (props: Readonly<LabelProps>) => {
     <AriaLabel data-slot="label" className={labelClassName} ref={ref} {...rest}>
       {children}
 
-      {optionalMessage && <span className="fri-label__optional">{optionalMessage}</span>}
+      {optionalMessage && <span className="label-optional">{optionalMessage}</span>}
 
       {isRequired && (
-        <span className="fri-label__required" aria-hidden="true">
+        <span className="label-required" aria-hidden="true">
           *
         </span>
       )}

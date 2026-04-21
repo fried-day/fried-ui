@@ -4,7 +4,7 @@ Beautiful, accessible React components with zero runtime styling.
 
 ## Features
 
-- **Zero runtime** — Pure CSS with BEM, 0.3KB total (clsx only)
+- **Zero runtime** — Pure CSS with class-naming, 0.3KB total (clsx only)
 - **Accessible** — React Aria components, WCAG AAA two-color focus ring
 - **Single prop API** — `variant="success-soft"` — one decision, not two
 - **Golden ratio spacing** — All spacing derived from φ (1.618)

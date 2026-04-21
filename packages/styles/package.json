@@ -6,8 +6,7 @@
     "tailwindcss",
     "styles",
     "css",
-    "design-system",
-    "bem"
+    "design-system"
   ],
   "homepage": "https://github.com/fried-day/fried-ui",
   "bugs": "https://github.com/fried-day/fried-ui/issues",

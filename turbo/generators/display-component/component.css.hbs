@@ -1,94 +1,94 @@
 @layer components {
-  .fri-{{dashCase name}} {
+  .{{dashCase name}} {
     @apply inline-flex items-center justify-center;
     @apply leading-none font-medium whitespace-nowrap;
     @apply border border-transparent select-none;
 
-    --fri-{{dashCase name}}-bg: var(--color-primary);
-    --fri-{{dashCase name}}-fg: var(--color-primary-foreground);
+    --{{dashCase name}}-bg: var(--color-primary);
+    --{{dashCase name}}-fg: var(--color-primary-foreground);
 
-    @apply bg-(--fri-{{dashCase name}}-bg) text-(--fri-{{dashCase name}}-fg);
+    @apply bg-(--{{dashCase name}}-bg) text-(--{{dashCase name}}-fg);
     @apply gap-[calc(1rem/2.058)] px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
     @apply rounded-[calc(1em*1.272*2/4)];
   }
 
-  .fri-{{dashCase name}}--primary {
-    --fri-{{dashCase name}}-bg: var(--color-primary);
-    --fri-{{dashCase name}}-fg: var(--color-primary-foreground);
+  .{{dashCase name}}--primary {
+    --{{dashCase name}}-bg: var(--color-primary);
+    --{{dashCase name}}-fg: var(--color-primary-foreground);
   }
 
-  .fri-{{dashCase name}}--secondary {
-    --fri-{{dashCase name}}-bg: var(--color-secondary);
-    --fri-{{dashCase name}}-fg: var(--color-secondary-foreground);
+  .{{dashCase name}}--secondary {
+    --{{dashCase name}}-bg: var(--color-secondary);
+    --{{dashCase name}}-fg: var(--color-secondary-foreground);
   }
 
-  .fri-{{dashCase name}}--ghost {
-    --fri-{{dashCase name}}-bg: transparent;
-    --fri-{{dashCase name}}-fg: var(--color-foreground);
+  .{{dashCase name}}--ghost {
+    --{{dashCase name}}-bg: transparent;
+    --{{dashCase name}}-fg: var(--color-foreground);
   }
 
-  .fri-{{dashCase name}}--outline {
-    --fri-{{dashCase name}}-bg: transparent;
-    --fri-{{dashCase name}}-fg: var(--color-foreground);
+  .{{dashCase name}}--outline {
+    --{{dashCase name}}-bg: transparent;
+    --{{dashCase name}}-fg: var(--color-foreground);
 
     @apply border-border;
   }
 
-  .fri-{{dashCase name}}--success {
-    --fri-{{dashCase name}}-bg: var(--color-success);
-    --fri-{{dashCase name}}-fg: var(--color-success-foreground);
+  .{{dashCase name}}--success {
+    --{{dashCase name}}-bg: var(--color-success);
+    --{{dashCase name}}-fg: var(--color-success-foreground);
   }
 
-  .fri-{{dashCase name}}--warning {
-    --fri-{{dashCase name}}-bg: var(--color-warning);
-    --fri-{{dashCase name}}-fg: var(--color-warning-foreground);
+  .{{dashCase name}}--warning {
+    --{{dashCase name}}-bg: var(--color-warning);
+    --{{dashCase name}}-fg: var(--color-warning-foreground);
   }
 
-  .fri-{{dashCase name}}--danger {
-    --fri-{{dashCase name}}-bg: var(--color-danger);
-    --fri-{{dashCase name}}-fg: var(--color-danger-foreground);
+  .{{dashCase name}}--danger {
+    --{{dashCase name}}-bg: var(--color-danger);
+    --{{dashCase name}}-fg: var(--color-danger-foreground);
   }
 
-  .fri-{{dashCase name}}--info {
-    --fri-{{dashCase name}}-bg: var(--color-info);
-    --fri-{{dashCase name}}-fg: var(--color-info-foreground);
+  .{{dashCase name}}--info {
+    --{{dashCase name}}-bg: var(--color-info);
+    --{{dashCase name}}-fg: var(--color-info-foreground);
   }
 
-  .fri-{{dashCase name}} [slot="icon"],
-  .fri-{{dashCase name}} [slot="icon-start"],
-  .fri-{{dashCase name}} [slot="icon-end"] {
+  .{{dashCase name}} [slot="icon"],
+  .{{dashCase name}} [slot="icon-start"],
+  .{{dashCase name}} [slot="icon-end"] {
     @apply size-match-font;
   }
 
-  .fri-{{dashCase name}}--size-sm {
+  .{{dashCase name}}--size-sm {
     @apply gap-[calc(0.875rem/2.058)] px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
   }
 
-  .fri-{{dashCase name}}--size-md {
+  .{{dashCase name}}--size-md {
     @apply gap-[calc(1rem/2.058)] px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
   }
 
-  .fri-{{dashCase name}}--size-lg {
+  .{{dashCase name}}--size-lg {
     @apply gap-[calc(1.25rem/2.058)] px-[calc(1.25rem)] py-[calc(1.25rem/2.058)] text-xl;
   }
 
-  .fri-{{dashCase name}}--radius-none {
+  .{{dashCase name}}--radius-none {
     @apply rounded-none;
   }
 
-  .fri-{{dashCase name}}--radius-sm {
+  .{{dashCase name}}--radius-sm {
     @apply rounded-[calc(1em*1.272/4)];
   }
 
-  .fri-{{dashCase name}}--radius-md {
+  .{{dashCase name}}--radius-md {
     @apply rounded-[calc(1em*1.272*2/4)];
   }
 
-  .fri-{{dashCase name}}--radius-lg {
+  .{{dashCase name}}--radius-lg {
     @apply rounded-[calc(1em*1.272*3/4)];
   }
 
-  .fri-{{dashCase name}}--radius-full {
+  .{{dashCase name}}--radius-full {
     @apply rounded-full;
   }
 }

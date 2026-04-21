@@ -24,7 +24,7 @@ describe("Avatar", () => {
     );
 
     const root = container.querySelector("[data-slot='avatar']");
-    expect(root?.className).toBe("fri-avatar");
+    expect(root?.className).toBe("avatar");
   });
 
   it("applies all size classes", () => {
@@ -38,7 +38,7 @@ describe("Avatar", () => {
       );
 
       const root = container.querySelector("[data-slot='avatar']");
-      expect(root?.className).toContain(`fri-avatar--size-${size}`);
+      expect(root?.className).toContain(`avatar-size-${size}`);
       unmount();
     });
   });
@@ -54,7 +54,7 @@ describe("Avatar", () => {
       );
 
       const root = container.querySelector("[data-slot='avatar']");
-      expect(root?.className).toContain(`fri-avatar--ring-${ring}`);
+      expect(root?.className).toContain(`avatar-ring-${ring}`);
       unmount();
     });
   });
@@ -70,7 +70,7 @@ describe("Avatar", () => {
       );
 
       const root = container.querySelector("[data-slot='avatar']");
-      expect(root?.className).toContain(`fri-avatar--radius-${radius}`);
+      expect(root?.className).toContain(`avatar-radius-${radius}`);
       unmount();
     });
   });
@@ -83,7 +83,7 @@ describe("Avatar", () => {
     );
 
     const root = container.querySelector("[data-slot='avatar']");
-    expect(root?.className).toContain("fri-avatar--disabled");
+    expect(root?.className).toContain("avatar-disabled");
   });
 
   it("renders fallback content", () => {
@@ -105,7 +105,7 @@ describe("Avatar", () => {
 
     const fallback = container.querySelector("[data-slot='avatar-fallback']");
     expect(fallback).toBeInTheDocument();
-    expect(fallback?.className).toContain("fri-avatar__fallback");
+    expect(fallback?.className).toContain("avatar-fallback");
   });
 
   it("merges custom className on Root", () => {

@@ -29,7 +29,7 @@ describe("AvatarGroup", () => {
     );
 
     const root = container.querySelector("[data-slot='avatar-group']");
-    expect(root?.className).toBe("fri-avatar-group fri-avatar-group--spacing-md");
+    expect(root?.className).toBe("avatar-group avatar-group-spacing-md");
   });
 
   it("applies all size classes", () => {
@@ -45,7 +45,7 @@ describe("AvatarGroup", () => {
       );
 
       const root = container.querySelector("[data-slot='avatar-group']");
-      expect(root?.className).toContain(`fri-avatar-group--size-${size}`);
+      expect(root?.className).toContain(`avatar-group-size-${size}`);
       unmount();
     });
   });
@@ -63,7 +63,7 @@ describe("AvatarGroup", () => {
       );
 
       const root = container.querySelector("[data-slot='avatar-group']");
-      expect(root?.className).toContain(`fri-avatar-group--spacing-${spacing}`);
+      expect(root?.className).toContain(`avatar-group-spacing-${spacing}`);
       unmount();
     });
   });
@@ -84,7 +84,7 @@ describe("AvatarGroup", () => {
     const avatars = container.querySelectorAll("[data-slot='avatar']");
 
     avatars.forEach((avatar) => {
-      expect(avatar.className).toContain("fri-avatar--size-lg");
+      expect(avatar.className).toContain("avatar-size-lg");
     });
   });
 
@@ -98,7 +98,7 @@ describe("AvatarGroup", () => {
     );
 
     const avatar = container.querySelector("[data-slot='avatar']");
-    expect(avatar?.className).toContain("fri-avatar--size-sm");
+    expect(avatar?.className).toContain("avatar-size-sm");
   });
 
   it("limits visible avatars when max is set and renders +N counter", () => {
@@ -146,7 +146,7 @@ describe("AvatarGroup", () => {
 
     const avatars = container.querySelectorAll("[data-slot='avatar']");
     expect(avatars).toHaveLength(3);
-    expect(container.querySelector(".fri-avatar-group__counter")).toBeNull();
+    expect(container.querySelector(".avatar-group-counter")).toBeNull();
   });
 
   it("uses total prop to compute counter value when provided", () => {
@@ -182,7 +182,7 @@ describe("AvatarGroup", () => {
       </AvatarGroup>,
     );
 
-    expect(container.querySelector(".fri-avatar-group__counter")).toBeNull();
+    expect(container.querySelector(".avatar-group-counter")).toBeNull();
   });
 
   it("applies counter class and size to the +N avatar", () => {
@@ -202,9 +202,9 @@ describe("AvatarGroup", () => {
       </AvatarGroup>,
     );
 
-    const counter = container.querySelector(".fri-avatar-group__counter");
+    const counter = container.querySelector(".avatar-group-counter");
     expect(counter).toBeInTheDocument();
-    expect(counter?.className).toContain("fri-avatar--size-xl");
+    expect(counter?.className).toContain("avatar-size-xl");
   });
 
   it("applies hoverable modifier class when isHoverable is true", () => {
@@ -217,7 +217,7 @@ describe("AvatarGroup", () => {
     );
 
     const root = container.querySelector("[data-slot='avatar-group']");
-    expect(root?.className).toContain("fri-avatar-group--hoverable");
+    expect(root?.className).toContain("avatar-group-hoverable");
   });
 
   it("does not apply hoverable modifier when isHoverable is false or omitted", () => {
@@ -230,7 +230,7 @@ describe("AvatarGroup", () => {
     );
 
     const root = container.querySelector("[data-slot='avatar-group']");
-    expect(root?.className).not.toContain("fri-avatar-group--hoverable");
+    expect(root?.className).not.toContain("avatar-group-hoverable");
   });
 
   it("merges custom className", () => {

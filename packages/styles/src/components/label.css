@@ -1,49 +1,49 @@
 @layer components {
-  .fri-label {
+  .label {
     @apply inline-flex items-center gap-1 select-none;
     @apply text-sm font-medium;
     @apply text-foreground;
   }
 
-  .fri-label__required {
+  .label-required {
     @apply text-danger;
   }
 
-  .fri-label__optional {
+  .label-optional {
     @apply font-normal text-muted-foreground;
   }
 
-  .fri-label--size-sm {
+  .label-size-sm {
     @apply text-xs;
   }
 
-  .fri-label--size-md {
+  .label-size-md {
     @apply text-sm;
   }
 
-  .fri-label--size-lg {
+  .label-size-lg {
     @apply text-base;
   }
 
-  .fri-label--weight-normal {
+  .label-weight-normal {
     @apply font-normal;
   }
 
-  .fri-label--weight-medium {
+  .label-weight-medium {
     @apply font-medium;
   }
 
-  .fri-label--weight-semibold {
+  .label-weight-semibold {
     @apply font-semibold;
   }
 
-  .fri-label--invalid {
+  .label-invalid {
     @apply text-danger;
   }
 
-  .fri-label--disabled,
-  .fri-label[aria-disabled="true"],
-  .fri-label[data-disabled] {
+  .label-disabled,
+  .label[aria-disabled="true"],
+  .label[data-disabled] {
     @apply pointer-events-none opacity-50;
   }
 }

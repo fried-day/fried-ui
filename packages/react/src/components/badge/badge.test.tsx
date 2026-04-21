@@ -13,7 +13,7 @@ describe("Badge", () => {
 
   it("renders only base class without explicit props", () => {
     render(<Badge>Default</Badge>);
-    expect(screen.getByText("Default").className).toBe("fri-badge");
+    expect(screen.getByText("Default").className).toBe("badge");
   });
 
   it("renders as a span element", () => {
@@ -23,7 +23,7 @@ describe("Badge", () => {
 
   it("applies variant class only when explicitly set", () => {
     render(<Badge variant="success">Done</Badge>);
-    expect(screen.getByText("Done").className).toContain("fri-badge--success");
+    expect(screen.getByText("Done").className).toContain("badge-success");
   });
 
   it("applies all variant classes", () => {
@@ -63,7 +63,7 @@ describe("Badge", () => {
 
     variants.forEach((variant) => {
       const { unmount } = render(<Badge variant={variant}>{variant}</Badge>);
-      expect(screen.getByText(variant).className).toContain(`fri-badge--${variant}`);
+      expect(screen.getByText(variant).className).toContain(`badge-${variant}`);
       unmount();
     });
   });
@@ -73,7 +73,7 @@ describe("Badge", () => {
 
     sizes.forEach((size) => {
       const { unmount } = render(<Badge size={size}>{size}</Badge>);
-      expect(screen.getByText(size).className).toContain(`fri-badge--size-${size}`);
+      expect(screen.getByText(size).className).toContain(`badge-size-${size}`);
       unmount();
     });
   });
@@ -83,14 +83,14 @@ describe("Badge", () => {
 
     radiusValues.forEach((radius) => {
       const { unmount } = render(<Badge radius={radius}>{radius}</Badge>);
-      expect(screen.getByText(radius).className).toContain(`fri-badge--radius-${radius}`);
+      expect(screen.getByText(radius).className).toContain(`badge-radius-${radius}`);
       unmount();
     });
   });
 
   it("applies icon-only class", () => {
     render(<Badge isIconOnly>X</Badge>);
-    expect(screen.getByText("X").className).toContain("fri-badge--icon-only");
+    expect(screen.getByText("X").className).toContain("badge-icon-only");
   });
 
   it("merges custom className", () => {

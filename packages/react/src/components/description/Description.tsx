@@ -6,7 +6,7 @@ import { Text as AriaText } from "react-aria-components";
 
 import { clsx } from "clsx";
 
-import { bem } from "../../utils/bem";
+import { classes } from "../../utils/classes";
 
 import type { DescriptionVariantsProps } from "./description.variants";
 
@@ -22,8 +22,8 @@ const Description = (props: Readonly<DescriptionProps>) => {
   const { children, className, isDisabled, isInvalid, ref, size, ...rest } = props;
 
   const descriptionClassName = clsx(
-    bem({
-      block: "fri-description",
+    classes({
+      block: "description",
       modifiers: {
         size,
         invalid: isInvalid,

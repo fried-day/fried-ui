@@ -16,10 +16,10 @@ describe("Button", () => {
   it("renders only base class without explicit props", () => {
     render(<Button>Default</Button>);
     const el = screen.getByRole("button");
-    expect(el.className).toContain("fri-button");
-    expect(el.className).not.toContain("fri-button--primary");
-    expect(el.className).not.toContain("fri-button--size-md");
-    expect(el.className).not.toContain("fri-button--radius-md");
+    expect(el.className).toContain("button");
+    expect(el.className).not.toContain("button-primary");
+    expect(el.className).not.toContain("button-size-md");
+    expect(el.className).not.toContain("button-radius-md");
   });
 
   it("fires onPress when clicked", async () => {
@@ -49,7 +49,7 @@ describe("Button", () => {
 
   it("applies variant class only when explicitly set", () => {
     render(<Button variant="primary">Primary</Button>);
-    expect(screen.getByRole("button").className).toContain("fri-button--primary");
+    expect(screen.getByRole("button").className).toContain("button-primary");
   });
 
   it("applies all variant classes", () => {
@@ -98,7 +98,7 @@ describe("Button", () => {
 
     variants.forEach((variant) => {
       const { unmount } = render(<Button variant={variant}>{variant}</Button>);
-      expect(screen.getByRole("button").className).toContain(`fri-button--${variant}`);
+      expect(screen.getByRole("button").className).toContain(`button-${variant}`);
       unmount();
     });
   });
@@ -108,7 +108,7 @@ describe("Button", () => {
 
     sizes.forEach((size) => {
       const { unmount } = render(<Button size={size}>{size}</Button>);
-      expect(screen.getByRole("button").className).toContain(`fri-button--size-${size}`);
+      expect(screen.getByRole("button").className).toContain(`button-size-${size}`);
       unmount();
     });
   });
@@ -118,7 +118,7 @@ describe("Button", () => {
 
     radiusValues.forEach((radius) => {
       const { unmount } = render(<Button radius={radius}>{radius}</Button>);
-      expect(screen.getByRole("button").className).toContain(`fri-button--radius-${radius}`);
+      expect(screen.getByRole("button").className).toContain(`button-radius-${radius}`);
       unmount();
     });
   });
@@ -151,22 +151,22 @@ describe("Button", () => {
       </Button>,
     );
 
-    expect(screen.getByRole("button").className).toContain("fri-button--icon-only");
+    expect(screen.getByRole("button").className).toContain("button-icon-only");
   });
 
   it("applies disabled class", () => {
     render(<Button isDisabled>Disabled</Button>);
-    expect(screen.getByRole("button").className).toContain("fri-button--disabled");
+    expect(screen.getByRole("button").className).toContain("button-disabled");
   });
 
   it("applies full-width class", () => {
     render(<Button isFullWidth>Full</Button>);
-    expect(screen.getByRole("button").className).toContain("fri-button--full-width");
+    expect(screen.getByRole("button").className).toContain("button-full-width");
   });
 
   it("applies pending class", () => {
     render(<Button isPending>Saving</Button>);
-    expect(screen.getByRole("button").className).toContain("fri-button--pending");
+    expect(screen.getByRole("button").className).toContain("button-pending");
   });
 
   it("sets data-slot attribute", () => {
@@ -184,7 +184,7 @@ describe("Button", () => {
     );
 
     const el = screen.getByRole("button");
-    expect(el.className).toContain("fri-button");
+    expect(el.className).toContain("button");
     expect(el.className).toContain("Hover-class");
   });
 

@@ -7,7 +7,7 @@ import type { ButtonRenderProps } from "react-aria-components";
 
 import { clsx } from "clsx";
 
-import { bem } from "../../utils/bem";
+import { classes } from "../../utils/classes";
 
 import type { {{pascalCase name}}VariantsProps } from "./{{dashCase name}}.variants";
 
@@ -23,8 +23,8 @@ export type {{pascalCase name}}Props = {{pascalCase name}}VariantsProps & {
 const {{pascalCase name}} = (props: Readonly<{{pascalCase name}}Props>) => {
   const { children, className, ref, size, variant, ...rest } = props;
 
-  const baseClassName = bem({
-    block: "fri-{{dashCase name}}",
+  const baseClassName = classes({
+    block: "{{dashCase name}}",
     modifiers: {
       variant,
       size,

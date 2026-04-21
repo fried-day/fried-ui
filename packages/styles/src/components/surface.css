@@ -1,119 +1,119 @@
 @layer components {
-  .fri-surface {
+  .surface {
     @apply border border-transparent;
     @apply bg-surface text-surface-foreground;
     @apply rounded-[calc(1em*1.272*2/4)];
   }
 
-  .fri-surface--default {
+  .surface-default {
     @apply bg-surface text-surface-foreground;
   }
 
-  .fri-surface--plain {
+  .surface-plain {
     @apply bg-surface-plain text-surface-plain-foreground;
   }
 
-  .fri-surface--success {
+  .surface-success {
     @apply bg-success-soft text-success-soft-foreground;
   }
 
-  .fri-surface--warning {
+  .surface-warning {
     @apply bg-warning-soft text-warning-soft-foreground;
   }
 
-  .fri-surface--danger {
+  .surface-danger {
     @apply bg-danger-soft text-danger-soft-foreground;
   }
 
-  .fri-surface--info {
+  .surface-info {
     @apply bg-info-soft text-info-soft-foreground;
   }
 
-  .fri-surface--glass {
+  .surface-glass {
     @apply bg-glass text-glass-foreground backdrop-blur-xl backdrop-saturate-200;
   }
 
-  .fri-surface--frost {
+  .surface-frost {
     @apply bg-glass text-glass-foreground backdrop-blur-2xl backdrop-saturate-200;
   }
 
-  .fri-surface--overlay {
+  .surface-overlay {
     @apply bg-scrim text-scrim-foreground backdrop-blur-xl backdrop-saturate-150;
   }
 
-  .fri-surface--bordered.fri-surface--default {
+  .surface-bordered.surface-default {
     @apply border-surface-border;
   }
 
-  .fri-surface--bordered.fri-surface--plain {
+  .surface-bordered.surface-plain {
     @apply border-surface-plain-border;
   }
 
-  .fri-surface--bordered.fri-surface--success {
+  .surface-bordered.surface-success {
     @apply border-success-soft-border;
   }
 
-  .fri-surface--bordered.fri-surface--warning {
+  .surface-bordered.surface-warning {
     @apply border-warning-soft-border;
   }
 
-  .fri-surface--bordered.fri-surface--danger {
+  .surface-bordered.surface-danger {
     @apply border-danger-soft-border;
   }
 
-  .fri-surface--bordered.fri-surface--info {
+  .surface-bordered.surface-info {
     @apply border-info-soft-border;
   }
 
-  .fri-surface--bordered.fri-surface--glass {
+  .surface-bordered.surface-glass {
     @apply border-glass-border;
   }
 
-  .fri-surface--bordered.fri-surface--frost {
+  .surface-bordered.surface-frost {
     @apply border-glass-border;
   }
 
-  .fri-surface--bordered.fri-surface--overlay {
+  .surface-bordered.surface-overlay {
     @apply border-scrim-border;
   }
 
-  .fri-surface--shadow-none {
+  .surface-shadow-none {
     @apply shadow-none;
   }
 
-  .fri-surface--shadow-sm {
+  .surface-shadow-sm {
     @apply shadow-sm;
   }
 
-  .fri-surface--shadow-md {
+  .surface-shadow-md {
     @apply shadow-md;
   }
 
-  .fri-surface--shadow-lg {
+  .surface-shadow-lg {
     @apply shadow-lg;
   }
 
-  .fri-surface--shadow-xl {
+  .surface-shadow-xl {
     @apply shadow-xl;
   }
 
-  .fri-surface--radius-none {
+  .surface-radius-none {
     @apply rounded-none;
   }
 
-  .fri-surface--radius-sm {
+  .surface-radius-sm {
     @apply rounded-[calc(1em*1.272/4)];
   }
 
-  .fri-surface--radius-md {
+  .surface-radius-md {
     @apply rounded-[calc(1em*1.272*2/4)];
   }
 
-  .fri-surface--radius-lg {
+  .surface-radius-lg {
     @apply rounded-[calc(1em*1.272*3/4)];
   }
 
-  .fri-surface--radius-xl {
+  .surface-radius-xl {
     @apply rounded-[calc(1em*1.272)];
   }
 }

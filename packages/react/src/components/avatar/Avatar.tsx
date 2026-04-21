@@ -6,7 +6,7 @@ import * as RadixAvatar from "@radix-ui/react-avatar";
 
 import { clsx } from "clsx";
 
-import { bem } from "../../utils/bem";
+import { classes } from "../../utils/classes";
 
 import type { AvatarVariantsProps } from "./avatar.variants";
 
@@ -29,7 +29,7 @@ export type AvatarFallbackProps = Omit<ComponentPropsWithRef<typeof RadixAvatar.
  */
 const AvatarImage = (props: Readonly<AvatarImageProps>) => {
   const { className, ref, ...rest } = props;
-  const imageClassName = clsx("fri-avatar__image", className);
+  const imageClassName = clsx("avatar-image", className);
 
   return <RadixAvatar.Image data-slot="avatar-image" className={imageClassName} ref={ref} {...rest} />;
 };
@@ -42,7 +42,7 @@ AvatarImage.displayName = "Avatar.Image";
  */
 const AvatarFallback = (props: Readonly<AvatarFallbackProps>) => {
   const { children, className, ref, ...rest } = props;
-  const fallbackClassName = clsx("fri-avatar__fallback", className);
+  const fallbackClassName = clsx("avatar-fallback", className);
 
   return (
     <RadixAvatar.Fallback data-slot="avatar-fallback" className={fallbackClassName} ref={ref} {...rest}>
@@ -61,8 +61,8 @@ const Avatar = (props: Readonly<AvatarProps>) => {
   const { children, className, isDisabled, radius, ref, ring, size, ...rest } = props;
 
   const avatarClassName = clsx(
-    bem({
-      block: "fri-avatar",
+    classes({
+      block: "avatar",
       modifiers: {
         size,
         radius,

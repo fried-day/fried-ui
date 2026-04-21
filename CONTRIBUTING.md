@@ -137,7 +137,7 @@ pnpm lint && pnpm typecheck && pnpm test && pnpm format
 - **No arbitrary Tailwind values** — use built-in classes only
 - **All spacing in rem** — never px (except 1px borders)
 - **clsx only** — no tailwind-merge, no tv()
-- **BEM naming** — `.fri-{component}--{modifier}`
+- **class naming** — `.{component}--{modifier}`
 - Run `pnpm format:fix` before committing
 
 ## Testing

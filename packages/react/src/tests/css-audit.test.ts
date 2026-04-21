@@ -56,10 +56,10 @@ describe("CSS dead class audit", () => {
 
     for (const file of files) {
       const content = readCss({ file });
-      const outlineRules = extractRules({ content, classPattern: /\.fri-[a-z]+--[a-z-]*outline\s*\{/ });
+      const outlineRules = extractRules({ content, classPattern: /\.[a-z]+--[a-z-]*outline\s*\{/ });
 
       for (const rule of outlineRules) {
-        const classMatch = rule.match(/\.fri-[a-z-]+/);
+        const classMatch = rule.match(/\.[a-z-]+/);
         const className = classMatch ? classMatch[0] : "unknown";
         const badBorderPattern = /border-[a-z]+-border\b(?!-outline)/;
 
@@ -78,10 +78,10 @@ describe("CSS dead class audit", () => {
 
     for (const file of files) {
       const content = readCss({ file });
-      const softRules = extractRules({ content, classPattern: /\.fri-[a-z]+--[a-z-]+-soft\s*\{/ });
+      const softRules = extractRules({ content, classPattern: /\.[a-z]+--[a-z-]+-soft\s*\{/ });
 
       for (const rule of softRules) {
-        const classMatch = rule.match(/\.fri-[a-z-]+/);
+        const classMatch = rule.match(/\.[a-z-]+/);
         const className = classMatch ? classMatch[0] : "unknown";
         const hasBorder = /@apply[^;]*\bborder-/.test(rule);
 
@@ -100,10 +100,10 @@ describe("CSS dead class audit", () => {
 
     for (const file of files) {
       const content = readCss({ file });
-      const ghostRules = extractRules({ content, classPattern: /\.fri-[a-z]+--[a-z-]+-ghost\s*\{/ });
+      const ghostRules = extractRules({ content, classPattern: /\.[a-z]+--[a-z-]+-ghost\s*\{/ });
 
       for (const rule of ghostRules) {
-        const classMatch = rule.match(/\.fri-[a-z-]+/);
+        const classMatch = rule.match(/\.[a-z-]+/);
         const className = classMatch ? classMatch[0] : "unknown";
 
         if (/@apply[^;]*\bborder-[a-z]+-outline-border/.test(rule)) {

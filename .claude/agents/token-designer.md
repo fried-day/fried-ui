@@ -10,7 +10,7 @@ You design and maintain the **fried-ui design token system** — the foundationa
 
 ## 📂 Authoritative Sources (Load First)
 
-1. **`.claude/rules/styles.md`** — **binding** — token architecture (2 layers), semantic group pattern (7 tokens), BEM conventions, utility-style syntax
+1. **`.claude/rules/styles.md`** — **binding** — token architecture (2 layers), semantic group pattern (7 tokens), class-naming conventions, utility-style syntax
 2. **`.claude/rules/color.md`** — state math (hover = +1 step, active = +2), contrast auto-switch (L < 0.6)
 3. **`.claude/rules/formula.md`** — golden ratio constants (φ, √φ, φ^1.5)
 4. **`.claude/rules/elevation.md`** — shadow + z-index tokens
@@ -49,13 +49,13 @@ User: "add `accent-warm` color for marketing CTAs"
 1. **Pick palette base** — identify primitive tokens (warm oranges/reds in `palette.css`)
 2. **Design 7-token group** in `colors.css` under `@theme static`:
    ```css
-   --color-accent-warm: var(--color-fri-orange-500);
-   --color-accent-warm-hover: var(--color-fri-orange-600);      /* +1 step */
-   --color-accent-warm-active: var(--color-fri-orange-700);     /* +2 steps */
+   --color-accent-warm: var(--color-orange-500);
+   --color-accent-warm-hover: var(--color-orange-600);      /* +1 step */
+   --color-accent-warm-active: var(--color-orange-700);     /* +2 steps */
    --color-accent-warm-foreground: oklch(100% 0 0);             /* L < 0.6 → white */
-   --color-accent-warm-soft: var(--color-fri-orange-100);
-   --color-accent-warm-soft-foreground: var(--color-fri-orange-900);
-   --color-accent-warm-soft-border: var(--color-fri-orange-200);
+   --color-accent-warm-soft: var(--color-orange-100);
+   --color-accent-warm-soft-foreground: var(--color-orange-900);
+   --color-accent-warm-soft-border: var(--color-orange-200);
    ```
 3. **Add soft/flat/outline/ghost variants** if the new color will be used in Button/Badge matrices (7 more tokens each)
 4. **Dark mode override** in `@layer base { .dark, [data-theme="dark"] { ... } }` block
@@ -80,9 +80,9 @@ User: "create `ring-brand` utility for focus rings"
 
 User: "audit tokens for compliance"
 
-1. Check **Layer separation** — component CSS must NOT reference `--color-fri-*` palette directly
+1. Check **Layer separation** — component CSS must NOT reference `--color-*` palette directly
    ```bash
-   grep -rn "var(--color-fri-" packages/styles/src/components/   # should be empty
+   grep -rn "var(--color-" packages/styles/src/components/   # should be empty
    ```
 2. Check **no semantic→semantic chains**
    ```bash
@@ -110,7 +110,7 @@ User: "rename `--color-accent` to `--color-brand` everywhere"
 | Rule | Why |
 |------|-----|
 | Layer 2 semantic MUST reference palette directly — NEVER semantic→semantic chain | Avoid fragile indirection (`.claude/rules/styles.md` rule) |
-| Component CSS uses **Layer 2 only** — never `--color-fri-*` palette | Isolate primitives from consumption (rule enforcement) |
+| Component CSS uses **Layer 2 only** — never `--color-*` palette | Isolate primitives from consumption (rule enforcement) |
 | `@theme static` stays — don't change to `@theme` | Library ships tokens to end users; static keeps `:root` tokens always present |
 | State math: hover = +1 Tailwind step, active = +2 steps | Consistent state depth across all colors |
 | Border locked to 1px (except focus ring 2px) | Visual rhythm — don't scale borders with golden ratio |

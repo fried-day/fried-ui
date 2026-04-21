@@ -15,10 +15,10 @@ describe("Input", () => {
   it("renders only base class without explicit variant/size/radius props", () => {
     render(<Input placeholder="Default" />);
     const wrapper = screen.getByPlaceholderText("Default").parentElement;
-    expect(wrapper?.className).toContain("fri-input");
-    expect(wrapper?.className).not.toContain("fri-input--primary");
-    expect(wrapper?.className).not.toContain("fri-input--size-md");
-    expect(wrapper?.className).not.toContain("fri-input--radius-md");
+    expect(wrapper?.className).toContain("input");
+    expect(wrapper?.className).not.toContain("input-primary");
+    expect(wrapper?.className).not.toContain("input-size-md");
+    expect(wrapper?.className).not.toContain("input-radius-md");
   });
 
   it("applies all variant classes", () => {
@@ -27,7 +27,7 @@ describe("Input", () => {
     variants.forEach((variant) => {
       const { unmount } = render(<Input variant={variant} placeholder={variant} />);
       const wrapper = screen.getByPlaceholderText(variant).parentElement;
-      expect(wrapper?.className).toContain(`fri-input--${variant}`);
+      expect(wrapper?.className).toContain(`input-${variant}`);
       unmount();
     });
   });
@@ -38,7 +38,7 @@ describe("Input", () => {
     sizes.forEach((size) => {
       const { unmount } = render(<Input size={size} placeholder={size} />);
       const wrapper = screen.getByPlaceholderText(size).parentElement;
-      expect(wrapper?.className).toContain(`fri-input--size-${size}`);
+      expect(wrapper?.className).toContain(`input-size-${size}`);
       unmount();
     });
   });
@@ -49,7 +49,7 @@ describe("Input", () => {
     radiusValues.forEach((radius) => {
       const { unmount } = render(<Input radius={radius} placeholder={radius} />);
       const wrapper = screen.getByPlaceholderText(radius).parentElement;
-      expect(wrapper?.className).toContain(`fri-input--radius-${radius}`);
+      expect(wrapper?.className).toContain(`input-radius-${radius}`);
       unmount();
     });
   });
@@ -77,7 +77,7 @@ describe("Input", () => {
   it("applies full-width modifier class when isFullWidth is true", () => {
     render(<Input placeholder="FullWidth" isFullWidth />);
     const wrapper = screen.getByPlaceholderText("FullWidth").parentElement;
-    expect(wrapper?.className).toContain("fri-input--full-width");
+    expect(wrapper?.className).toContain("input-full-width");
   });
 
   it("focuses the input via keyboard navigation", async () => {
@@ -100,7 +100,7 @@ describe("Input", () => {
   it("merges custom className onto the wrapper", () => {
     render(<Input className="mt-4" placeholder="Styled" />);
     const wrapper = screen.getByPlaceholderText("Styled").parentElement;
-    expect(wrapper?.className).toContain("fri-input");
+    expect(wrapper?.className).toContain("input");
     expect(wrapper?.className).toContain("mt-4");
   });
 

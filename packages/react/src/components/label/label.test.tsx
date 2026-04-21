@@ -14,7 +14,7 @@ describe("Label", () => {
   it("renders base class without explicit modifiers", () => {
     render(<Label>Default</Label>);
     const el = screen.getByText("Default");
-    expect(el.className).toBe("fri-label");
+    expect(el.className).toBe("label");
   });
 
   it("applies all size classes", () => {
@@ -22,7 +22,7 @@ describe("Label", () => {
 
     sizes.forEach((size) => {
       const { unmount } = render(<Label size={size}>{size}</Label>);
-      expect(screen.getByText(size).className).toContain(`fri-label--size-${size}`);
+      expect(screen.getByText(size).className).toContain(`label-size-${size}`);
       unmount();
     });
   });
@@ -32,7 +32,7 @@ describe("Label", () => {
 
     weights.forEach((weight) => {
       const { unmount } = render(<Label weight={weight}>{weight}</Label>);
-      expect(screen.getByText(weight).className).toContain(`fri-label--weight-${weight}`);
+      expect(screen.getByText(weight).className).toContain(`label-weight-${weight}`);
       unmount();
     });
   });
@@ -41,7 +41,7 @@ describe("Label", () => {
     render(<Label isRequired>Password</Label>);
     const asterisk = screen.getByText("*");
     expect(asterisk).toBeInTheDocument();
-    expect(asterisk.className).toContain("fri-label__required");
+    expect(asterisk.className).toContain("label-required");
   });
 
   it("does not render asterisk when isRequired is false", () => {
@@ -52,26 +52,26 @@ describe("Label", () => {
   it("applies required modifier class", () => {
     const { container } = render(<Label isRequired>Password</Label>);
     const label = container.querySelector("[data-slot='label']");
-    expect(label?.className).toContain("fri-label--required");
+    expect(label?.className).toContain("label-required");
   });
 
   it("renders optional text when provided", () => {
     render(<Label optionalMessage="(Optional)">Phone</Label>);
     const optional = screen.getByText("(Optional)");
     expect(optional).toBeInTheDocument();
-    expect(optional.className).toContain("fri-label__optional");
+    expect(optional.className).toContain("label-optional");
   });
 
   it("applies invalid modifier class", () => {
     const { container } = render(<Label isInvalid>Email</Label>);
     const label = container.querySelector("[data-slot='label']");
-    expect(label?.className).toContain("fri-label--invalid");
+    expect(label?.className).toContain("label-invalid");
   });
 
   it("applies disabled modifier class", () => {
     const { container } = render(<Label isDisabled>Username</Label>);
     const label = container.querySelector("[data-slot='label']");
-    expect(label?.className).toContain("fri-label--disabled");
+    expect(label?.className).toContain("label-disabled");
   });
 
   it("passes htmlFor attribute", () => {

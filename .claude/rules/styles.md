@@ -1,5 +1,5 @@
 ---
-description: CSS conventions, BEM naming, tokens, and utilities
+description: CSS conventions, class naming, tokens, and utilities
 paths:
   - packages/styles/src/**/*.css
 ---
@@ -27,12 +27,12 @@ Layer 2 — Semantic (meaningful)  tokens/colors.css      var(--color-avatar)
 
 ```css
 /* ❌ Component referencing palette */
-.fri-avatar {
+.avatar {
   @apply bg-(--color-fri-neutral-200);
 }
 
 /* ✅ Component referencing semantic */
-.fri-avatar {
+.avatar {
   @apply bg-(--color-avatar);
 }
 ```
@@ -63,30 +63,30 @@ Groups: primary, secondary, success, warning, danger, info
 
 ## Component CSS Pattern
 
-Base class includes defaults — `fri-{name}` alone = primary + md + default radius.
+Base class includes defaults — `{name}` alone = primary + md + default radius.
 Spacing and radius use golden ratio formula — see `formula.md`.
 
 ## Base = Default Modifier (1:1 parity)
 
-`<Component>` (React, no props) **must render identically to** `<tag class="fri-{name}">` (plain HTML, minimal class). ทั้งคู่ต้อง pick up default variant/size/radius จาก base class
+`<Component>` (React, no props) **must render identically to** `<tag class="{name}">` (plain HTML, minimal class). ทั้งคู่ต้อง pick up default variant/size/radius จาก base class
 
 **Rule:** Base class's default value **ต้องตรงกับ** explicit default modifier rule (same CSS output)
 
 ```css
 /* ❌ Drift — base ≠ modifier */
-.fri-button {
+.button {
   @apply rounded-md;                          /* Tailwind 0.375rem */
 }
-.fri-button--radius-md {
+.button-radius-md {
   @apply rounded-[calc(1em*1.272*2/4)];       /* formula 0.636em */
 }
 /* <Button> renders 0.375rem, <Button radius="md"> renders 0.636em → different */
 
 /* ✅ Aligned */
-.fri-button {
+.button {
   @apply rounded-[calc(1em*1.272*2/4)];       /* same formula */
 }
-.fri-button--radius-md {
+.button-radius-md {
   @apply rounded-[calc(1em*1.272*2/4)];       /* same formula */
 }
 /* <Button> and <Button radius="md"> render identically */
@@ -96,9 +96,9 @@ Spacing and radius use golden ratio formula — see `formula.md`.
 
 | Axis | Base class must set | Default modifier must match |
 |------|---------------------|-----------------------------|
-| Variant | default variant tokens | `.fri-X--{default-variant}` same tokens |
-| Size | default size spacing + font | `.fri-X--size-{default-size}` same |
-| Radius | default radius formula | `.fri-X--radius-{default-radius}` same |
+| Variant | default variant tokens | `.X--{default-variant}` same tokens |
+| Size | default size spacing + font | `.X--size-{default-size}` same |
+| Radius | default radius formula | `.X--radius-{default-radius}` same |
 
 ### JSDoc `@default` must reflect reality
 
@@ -115,24 +115,24 @@ Spacing and radius use golden ratio formula — see `formula.md`.
 
 ### Why this matters
 
-- **Plain HTML consumer** (WP/PHP): user writes `<button class="fri-button">` — base class is only source of defaults
-- **React consumer**: `<Button>` with no props → bem() skips modifier (no class added) → base class wins
+- **Plain HTML consumer** (WP/PHP): user writes `<button class="button">` — base class is only source of defaults
+- **React consumer**: `<Button>` with no props → classes() skips modifier (no class added) → base class wins
 - ถ้า drift → React default behavior ≠ plain HTML default behavior → **violates 1:1 parity promise**
 
 ### Grep audit
 ```bash
 # หา base class ที่ใช้ Tailwind rounded-{size} (ไม่ใช่ formula) — ต้อง align กับ formula ใน modifier
-grep -nE '^\s*\.fri-\w+\s*\{|@apply.*rounded-(sm\|md\|lg)\b' packages/styles/src/components/*.css
+grep -nE '^\s*\.\w+\s*\{|@apply.*rounded-(sm\|md\|lg)\b' packages/styles/src/components/*.css
 ```
 
-## BEM Class Naming
+## class-naming Class Naming
 
 ```text
-variant  → value only:   .fri-{name}--primary
-size     → key-value:    .fri-{name}--size-md
-radius   → key-value:    .fri-{name}--radius-lg
-boolean  → key only:     .fri-{name}--disabled
-element  → double under: .fri-{name}__spinner
+variant  → value only:   .{name}--primary
+size     → key-value:    .{name}--size-md
+radius   → key-value:    .{name}--radius-lg
+boolean  → key only:     .{name}--disabled
+element  → double under: .{name}__spinner
 ```
 
 ## Focus Ring (WCAG AAA two-color)
@@ -162,11 +162,11 @@ Use `:not()` to **exclude** keyboard from mouse rule:
 
 ```css
 /* ✅ Input pattern — 2 exclusive states */
-.fri-input {
+.input {
   /* Mouse click only — NOT keyboard */
   &:has(:focus:not(:focus-visible)),
   &:has([data-focused]:not([data-focus-visible])) {
-    @apply border-(--fri-input-border-focus);
+    @apply border-(--input-border-focus);
   }
 
   /* Keyboard only */
@@ -189,7 +189,7 @@ Use `:not()` to **exclude** keyboard from mouse rule:
 
 ```css
 /* ✅ Button pattern */
-.fri-button {
+.button {
   &:focus-visible,
   &[data-focus-visible] {
     @apply focus-ring;
@@ -215,9 +215,9 @@ slot="icon"        → icon-only (center, no text)
 ```
 
 ```css
-.fri-{name} [slot="icon"],
-.fri-{name} [slot="icon-start"],
-.fri-{name} [slot="icon-end"] {
+.{name} [slot="icon"],
+.{name} [slot="icon-start"],
+.{name} [slot="icon-end"] {
   @apply size-match-font;
 }
 ```
@@ -227,7 +227,7 @@ slot="icon"        → icon-only (center, no text)
 - Use `@apply` + Tailwind v4 utilities — no plain CSS when utility exists
 - Use `[calc(...)]` bracket syntax with formula — see `formula.md`
 - Use semantic tokens via `var()` — never raw Tailwind colors
-- Component CSS references semantic tokens only (Layer 2) — never `--color-fri-*` palette (Layer 1)
+- Component CSS references semantic tokens only (Layer 2) — never `--color-*` palette (Layer 1)
 - Semantic tokens reference palette directly — never chain semantic → semantic
 - All spacing in rem — never px (except border 1px)
 - Interactive: wrap hover in `@media (hover: hover)`
@@ -247,7 +247,7 @@ slot="icon"        → icon-only (center, no text)
 
 ```css
 /* ❌ Ring/shadow ไม่ fade smooth */
-.fri-input {
+.input {
   @apply transition-colors duration-(--duration-hover);
   &:has([data-focused]) {
     @apply ring-1 ring-focus;  /* pops in ทันที */
@@ -255,7 +255,7 @@ slot="icon"        → icon-only (center, no text)
 }
 
 /* ✅ ทุกอย่าง smooth */
-.fri-input {
+.input {
   @apply transition duration-(--duration-hover);
 }
 ```
@@ -284,13 +284,13 @@ slot="icon"        → icon-only (center, no text)
   :not(:has([data-pressed]))
   :not(:has([data-disabled]))
   :not(:has([data-readonly])) {
-  @apply bg-(--fri-X-bg-hover);
+  @apply bg-(--X-bg-hover);
 }
 
 /* Focus (mouse) */
 &:has(:focus:not(:focus-visible)),
 &:has([data-focused]:not([data-focus-visible])) {
-  @apply border-(--fri-X-border-focus);
+  @apply border-(--X-border-focus);
 }
 
 /* Focus (keyboard) */
@@ -302,7 +302,7 @@ slot="icon"        → icon-only (center, no text)
 /* Pressed — last to win cascade */
 &:active:not(:disabled),
 &[data-pressed] {
-  @apply bg-(--fri-X-bg-pressed);
+  @apply bg-(--X-bg-pressed);
 }
 ```
 
@@ -358,12 +358,12 @@ slot="icon"        → icon-only (center, no text)
 
 &:hover:not(:disabled):not(:active),
 &[data-hovered] {
-  @apply bg-(--fri-button-bg-hover);
+  @apply bg-(--button-bg-hover);
 }
 
 &:active:not(:disabled),
 &[data-pressed] {
-  @apply bg-(--fri-button-bg-pressed);
+  @apply bg-(--button-bg-pressed);
 }
 ```
 
@@ -373,21 +373,21 @@ slot="icon"        → icon-only (center, no text)
 
 ```html
 <!-- Mode 1: Self (daisyUI-style single class) -->
-<input class="fri-input" placeholder="..." />
+<input class="input" placeholder="..." />
 
 <!-- Mode 2: Wrapper (for icons/prefix/suffix) -->
-<div class="fri-input">
-  <svg class="fri-input__icon-start">...</svg>
-  <input class="fri-input__field" />
+<div class="input">
+  <svg class="input-icon-start">...</svg>
+  <input class="input-field" />
 </div>
 ```
 
 **CSS uses 3-way selector** — self + wrapper + React Aria data-attr:
 
 ```css
-.fri-input {
+.input {
   /* Base: outline-none + placeholder color baked in base (for self-mode) */
-  @apply outline-none placeholder:text-(--fri-input-placeholder);
+  @apply outline-none placeholder:text-(--input-placeholder);
 
   /* Hover — :hover propagates to ancestors, so same rule covers both modes */
   &:hover:not(:focus-within):not(:read-only):not(:disabled):not(:has(:read-only)):not(:has(:disabled)),
@@ -464,14 +464,14 @@ slot="icon"        → icon-only (center, no text)
 grep -nE '\[data-(hovered|focused|focus-visible|pressed|disabled|readonly|required|invalid)\]' packages/styles/src/components/
 ```
 
-### BEM modifier classes ยังใช้ได้สำหรับ:
+### modifier classes ยังใช้ได้สำหรับ:
 - Component's own variants (`--size-md`, `--variant-outline`, `--radius-lg`)
 - Custom flags ที่ไม่มีใน native หรือ React Aria (`--full-width`, `--icon-only`)
 
 ### Rule for Component.tsx
 ```tsx
-bem({
-  block: "fri-input",
+classes({
+  block: "input",
   modifiers: {
     variant,    // ✅ own variant
     size,       // ✅ own size
@@ -488,7 +488,7 @@ Tailwind v4 `@theme static` generate utility class ให้ทุก semantic t
 | Pattern | Use | Example |
 |---------|-----|---------|
 | **Utility-style** (preferred) | theme tokens (Layer 2 semantic) | `text-foreground`, `bg-primary`, `border-danger`, `ring-focus-inner` |
-| **Var-syntax `bg-(--X)`** | Component-local CSS vars (Layer 3) | `bg-(--fri-input-bg)`, `border-(--fri-button-bg-hover)` |
+| **Var-syntax `bg-(--X)`** | Component-local CSS vars (Layer 3) | `bg-(--input-bg)`, `border-(--button-bg-hover)` |
 
 **❌ ห้าม — ซ้ำซ้อนกับ utility ที่มีอยู่แล้ว:**
 ```css
@@ -506,9 +506,9 @@ Tailwind v4 `@theme static` generate utility class ให้ทุก semantic t
 
 **✅ Var-syntax ใช้ได้กับ component-local var เท่านั้น:**
 ```css
-.fri-input {
-  --fri-input-bg: var(--color-field);
-  @apply bg-(--fri-input-bg);            /* ✅ local var indirection */
+.input {
+  --input-bg: var(--color-field);
+  @apply bg-(--input-bg);            /* ✅ local var indirection */
 }
 ```
 
@@ -530,23 +530,23 @@ grep -nE '(bg|text|border|ring|ring-offset)-\(--color-' packages/styles/src/comp
 
 ```css
 /* ❌ Raw rem — no source of truth */
-.fri-X {
-  --fri-X-base: 0.8rem;      /* magic */
-  --fri-X-spacing: 0.625;    /* magic scalar */
+.X {
+  --X-base: 0.8rem;      /* magic */
+  --X-spacing: 0.625;    /* magic scalar */
   margin-left: -14px;        /* magic px */
 }
 
 /* ✅ Tailwind @apply utility */
-.fri-X { @apply -ms-3.5; }
+.X { @apply -ms-3.5; }
 
 /* ✅ Formula with known constants */
-.fri-X { @apply py-[calc(1rem/2.058)]; }  /* golden ratio from formula.md */
+.X { @apply py-[calc(1rem/2.058)]; }  /* golden ratio from formula.md */
 
 /* ✅ Tailwind spacing token in calc */
-.fri-X { --fri-X-base: calc(var(--spacing) * 8); }  /* = size-8 */
+.X { --X-base: calc(var(--spacing) * 8); }  /* = size-8 */
 
 /* ✅ Explicit fraction (intent clear) */
-.fri-X { --fri-X-ratio: calc(3 / 8); }  /* 37.5% — documented intent */
+.X { --X-ratio: calc(3 / 8); }  /* 37.5% — documented intent */
 ```
 
 **Decision tree:**

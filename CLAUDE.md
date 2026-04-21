@@ -35,7 +35,7 @@ cd packages/react && npx vitest run src/components/button/button.test.tsx
 - **`apps/docs`** (port 3001) — Next.js 16 + Fumadocs, MDX documentation site
 - **`apps/storybook`** (port 6006) — Storybook 10 with Vite, reads stories from `packages/react`
 - **`packages/react`** (`@fried-ui/react`) — Component library (React Aria + Tailwind v4), built with tsup
-- **`packages/styles`** (`@fried-ui/styles`) — Pure CSS: design tokens, `@utility`, component BEM styles (`fri-` prefix)
+- **`packages/styles`** (`@fried-ui/styles`) — Pure CSS: design tokens, `@utility`, component class-naming styles (`` prefix)
 - **`packages/quality`** (`@repo/quality`) — ESLint configs (`eslint/base`, `eslint/next-js`, `eslint/react-internal`) + shared tsconfigs (`tsconfig/base`, `tsconfig/nextjs`, `tsconfig/react-library`)
 - **`packages/vitest`** (`@fried-ui/vitest`) — Shared Vitest configs and setup (base + react presets)
 
@@ -75,9 +75,9 @@ When adding a new component, add its export entry to `packages/react/package.jso
 - Apps use `@tailwindcss/postcss`, Storybook uses `@tailwindcss/vite`
 - Each app's `globals.css` has `@source "../../packages/react/src/**/*.{ts,tsx}"` to scan component classes
 - `@fried-ui/styles` is **pure CSS** — no JS build, no tailwind-variants. Apps import via `@import "@fried-ui/styles"`
-- Component styles use **CSS + BEM (`fri-` prefix) + @apply** — for multi-framework support
+- Component styles use **CSS + classes (`` prefix) + @apply** — for multi-framework support
 - Shared patterns use **`@utility`** (focus-ring, status-disabled, etc.)
-- Use `cn()` from `@fried-ui/react/utils/cn` to merge BEM classes in components
+- Use `cn()` from `@fried-ui/react/utils/cn` to merge classes in components
 
 ### Documentation (Fumadocs)
 

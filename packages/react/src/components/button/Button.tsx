@@ -8,7 +8,7 @@ import type { ButtonRenderProps } from "react-aria-components";
 import { clsx } from "clsx";
 
 import { Spinner } from "../icons";
-import { bem } from "../../utils/bem";
+import { classes } from "../../utils/classes";
 
 import type { ButtonVariantsProps } from "./button.variants";
 
@@ -24,8 +24,8 @@ export type ButtonProps = ButtonVariantsProps & {
 const Button = (props: Readonly<ButtonProps>) => {
   const { children, className, isFullWidth, isIconOnly, radius, ref, size, variant, ...rest } = props;
 
-  const baseClassName = bem({
-    block: "fri-button",
+  const baseClassName = classes({
+    block: "button",
     modifiers: {
       variant,
       size,
@@ -44,7 +44,7 @@ const Button = (props: Readonly<ButtonProps>) => {
       {composeRenderProps(children, (child, { isPending }) => (
         <>
           {child}
-          {isPending && <Spinner className="fri-button__spinner" aria-hidden="true" />}
+          {isPending && <Spinner className="button-spinner" aria-hidden="true" />}
         </>
       ))}
     </AriaButton>

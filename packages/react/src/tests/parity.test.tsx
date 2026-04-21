@@ -10,45 +10,45 @@ import { Label } from "../components/label";
 import { Surface } from "../components/surface";
 
 describe("1:1 plain HTML parity — default props emit only base class", () => {
-  it("Button: <Button>X</Button> → class='fri-button'", () => {
+  it("Button: <Button>X</Button> → class='button'", () => {
     const { container } = render(<Button>X</Button>);
     const el = container.querySelector("button");
-    expect(el?.className).toBe("fri-button");
+    expect(el?.className).toBe("button");
   });
 
-  it("Badge: <Badge>X</Badge> → class='fri-badge'", () => {
+  it("Badge: <Badge>X</Badge> → class='badge'", () => {
     const { container } = render(<Badge>X</Badge>);
     const el = container.querySelector("span");
-    expect(el?.className).toBe("fri-badge");
+    expect(el?.className).toBe("badge");
   });
 
-  it("Surface: <Surface>X</Surface> → class='fri-surface'", () => {
+  it("Surface: <Surface>X</Surface> → class='surface'", () => {
     const { container } = render(<Surface>X</Surface>);
     const el = container.querySelector('[data-slot="surface"]');
-    expect(el?.className).toBe("fri-surface");
+    expect(el?.className).toBe("surface");
   });
 
-  it("Avatar: <Avatar /> → class='fri-avatar'", () => {
+  it("Avatar: <Avatar /> → class='avatar'", () => {
     const { container } = render(<Avatar />);
     const el = container.querySelector('[data-slot="avatar"]');
-    expect(el?.className).toBe("fri-avatar");
+    expect(el?.className).toBe("avatar");
   });
 
-  it("Input: <Input /> wrapper → class='fri-input'", () => {
+  it("Input: <Input /> wrapper → class='input'", () => {
     const { container } = render(<Input />);
     const el = container.querySelector('[data-slot="input-wrapper"]');
-    expect(el?.className).toBe("fri-input");
+    expect(el?.className).toBe("input");
   });
 
-  it("Label: <Label>X</Label> → class='fri-label'", () => {
+  it("Label: <Label>X</Label> → class='label'", () => {
     const { container } = render(<Label>X</Label>);
     const el = container.querySelector("label");
-    expect(el?.className).toBe("fri-label");
+    expect(el?.className).toBe("label");
   });
 
-  it("Description: <Description>X</Description> → class='fri-description'", () => {
+  it("Description: <Description>X</Description> → class='description'", () => {
     const { container } = render(<Description>X</Description>);
     const el = container.querySelector('[data-slot="description"]');
-    expect(el?.className).toBe("fri-description");
+    expect(el?.className).toBe("description");
   });
 });

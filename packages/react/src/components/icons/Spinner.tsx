@@ -2,8 +2,8 @@ import { type ComponentPropsWithRef, useId } from "react";
 
 const Spinner = (props: Readonly<ComponentPropsWithRef<"svg"> & { slot?: string }>) => {
   const id = useId();
-  const grad1 = `fri-spinner-grad-1-${id}`;
-  const grad2 = `fri-spinner-grad-2-${id}`;
+  const grad1 = `spinner-grad-1-${id}`;
+  const grad2 = `spinner-grad-2-${id}`;
   const fillGrad1 = `url(#${grad1})`;
   const fillGrad2 = `url(#${grad2})`;
 

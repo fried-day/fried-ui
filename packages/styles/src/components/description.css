@@ -1,28 +1,28 @@
 @layer components {
-  .fri-description {
+  .description {
     @apply block;
     @apply text-sm text-muted-foreground;
   }
 
-  .fri-description--size-sm {
+  .description-size-sm {
     @apply text-xs;
   }
 
-  .fri-description--size-md {
+  .description-size-md {
     @apply text-sm;
   }
 
-  .fri-description--size-lg {
+  .description-size-lg {
     @apply text-base;
   }
 
-  .fri-description--invalid {
+  .description-invalid {
     @apply text-danger;
   }
 
-  .fri-description--disabled,
-  .fri-description[aria-disabled="true"],
-  .fri-description[data-disabled] {
+  .description-disabled,
+  .description[aria-disabled="true"],
+  .description[data-disabled] {
     @apply pointer-events-none opacity-50;
   }
 }

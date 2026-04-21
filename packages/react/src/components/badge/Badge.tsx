@@ -4,7 +4,7 @@ import type { ComponentPropsWithRef } from "react";
 
 import { clsx } from "clsx";
 
-import { bem } from "../../utils/bem";
+import { classes } from "../../utils/classes";
 
 import type { BadgeVariantsProps } from "./badge.variants";
 
@@ -21,8 +21,8 @@ const Badge = (props: Readonly<BadgeProps>) => {
   const { children, className, isIconOnly, radius, ref, size, variant, ...rest } = props;
 
   const badgeClassName = clsx(
-    bem({
-      block: "fri-badge",
+    classes({
+      block: "badge",
       modifiers: {
         variant,
         size,
