@@ -84,6 +84,8 @@ Check **every prop** in `{name}.variants.ts`:
 - Size labels use `"Small {Name}"` pattern
 - Non-Sizes stories don't set `size=` (use default)
 - Storybook source.code blocks present
+- **Story layout horizontal** — `flex items-{center|end|start} gap-4`. **Flag** `flex-col` in variant comparison stories (Sizes/Spacing/Radius/Variants) — bad UX, should be 1 row for eye-scan comparison. Exception: FullWidth demos only.
+- Grep check: `grep -n 'flex-col' {name}.stories.tsx` — if found outside FullWidth story → P1 finding
 
 ---
 

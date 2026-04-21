@@ -294,7 +294,7 @@ const Spacing: Story = {
 
 const Spacing = () => {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex items-center gap-8">
       <AvatarGroup spacing="sm">
         <Avatar>
           <Avatar.Image alt="Avatar 1" src="${SRC_1}" />
@@ -352,7 +352,7 @@ const Spacing = () => {
     },
   },
   render: (args): React.JSX.Element => (
-    <div className="flex flex-col gap-4">
+    <div className="flex items-center gap-8">
       <AvatarGroup {...args} spacing="sm">
         <Avatar>
           <Avatar.Image alt="Avatar 1" src={SRC_1} />
@@ -415,7 +415,7 @@ const Sizes: Story = {
 
 const Sizes = () => {
   return (
-    <div className="flex flex-col items-start gap-4">
+    <div className="flex items-center gap-8">
       <AvatarGroup size="sm">
         <Avatar>
           <Avatar.Image alt="Avatar 1" src="${SRC_1}" />
@@ -507,7 +507,7 @@ const Sizes = () => {
     },
   },
   render: (args): React.JSX.Element => (
-    <div className="flex flex-col items-start gap-4">
+    <div className="flex items-center gap-8">
       <AvatarGroup {...args} size="sm">
         <Avatar>
           <Avatar.Image alt="Avatar 1" src={SRC_1} />

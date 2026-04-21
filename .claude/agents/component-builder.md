@@ -170,6 +170,7 @@ pnpm run build          # tsup + Next.js + Storybook builds
 10. **Action-based boolean JSDoc** — "Dims the..." instead of "Whether the..." — breaks convention
 11. **Magic values in CSS** — ❌ raw `rem` (`0.8rem`, `1.2rem`), ❌ arbitrary decimal scalars (`0.375`, `0.625`, `0.9`), ❌ raw `px`. Must use `@apply {utility}`, formula from `formula.md`, `var(--spacing) * N`, or explicit fraction `calc(A / B)`. See `.claude/rules/styles.md` "No Magic Values" section.
 12. **Choosing spacing "by eye"** — if value isn't from Tailwind scale (`-ms-3`, `px-4`) or golden ratio formula, flag it — AI tends to invent plausible-looking but untraceable numbers
+13. **Story layout `flex-col`** — ❌ ห้ามใช้ vertical stack สำหรับ variant comparison stories (Sizes/Spacing/Radius/Variants). ใช้ `flex items-center gap-4` (horizontal row). **Exception:** FullWidth demo ที่จงใจ stack vertical. See `.claude/rules/storybook.md` "Containers" section.
 
 ---
 

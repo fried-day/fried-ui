@@ -172,7 +172,7 @@ const StatusVariants: Story = {
 
 const StatusVariants = () => {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-wrap items-start gap-4">
       <Surface variant="success" className="p-4">
         <p className="font-bold">Success</p>
         <p className="mt-1 text-sm">Surface content</p>
@@ -196,7 +196,7 @@ const StatusVariants = () => {
     },
   },
   render: (args): React.JSX.Element => (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-wrap items-start gap-4">
       <Surface {...args} variant="success" className="p-4">
         <p className="font-bold">Success</p>
         <p className="mt-1 text-sm">Surface content</p>
