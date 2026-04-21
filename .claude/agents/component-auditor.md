@@ -54,6 +54,16 @@ For each component, report findings under 5 headings. Use tables for matrix audi
   - Grep check: `grep -nE '(^|[^(])[0-9]+\.[0-9]+rem|margin.*[0-9]+px' {name}.css`
 - Missing `data-slot` / `displayName` / `ref`
 - CSS cascade bug: `:active` written BEFORE `:hover` in interactive components → hover wins when pressed
+- **Focus ring triggered on mouse click** — flag `&:focus { @apply focus-ring }`, `&[data-focused] { @apply focus-ring }`, or `:has([data-focused])` → must be `:focus-visible` / `[data-focus-visible]` (keyboard-only). Grep: `grep -nE '\[data-focused\]|:focus\s*[,{]' {name}.css` (exclude focus-visible matches)
+- **Native pseudo-classes on React Aria components** — flag `:hover`, `:focus`, `:active` in Button/Input/Label/Description CSS (React Aria-wrapped) → must use `[data-hovered]`, `[data-focused]`, `[data-focus-visible]`, `[data-pressed]`. Exception: Radix-wrapped (Avatar) and `:focus-visible` (browser a11y) are allowed. Grep: `grep -nE ':(hover|focus|active)\b' {name}.css`
+- **Focused rule stacks with focus-visible** — flag `[data-focused]` without `:not(:has([data-focus-visible]))` exclusion → causes double effect on keyboard. Grep: `grep -n 'data-focused' {name}.css` then manually verify `:not()` exclusion exists
+- **Hover overrides focus (specificity trap)** — flag `:has([data-hovered]):not(...)` without `:not(:has([data-focused]))` → hover wins over focus. State priority: disabled > readonly > pressed > focus > hover > idle
+- **Cascade order** — `:hover` / `[data-hovered]` must appear BEFORE `:active` / `[data-pressed]` in CSS file so pressed wins click
+- **`transition-colors` with ring/shadow** — flag if CSS has `ring-*` / `shadow-*` in state but base uses `transition-colors` → ring won't fade smooth. Must use `transition` (all). Grep: `grep -n 'transition-colors' {name}.css` then check for ring-*/shadow-* in state rules
+- **Stories template defaults left unmodified** — flag if stories.tsx has `children: "{ComponentName}"`, `onPress` argType, or Button-style variant options (primary/secondary/ghost/outline/success/warning/danger/info all 8) when component's actual `variant` type is smaller. Stories MUST customize to match component API
+- **Icon slot padding missing** — flag if component uses `[slot="icon-start"]` / `[slot="icon-end"]` in CSS but doesn't have `:has([slot="icon-start"]) { pl-[calc(x/2.058)] }` padding-reduction rules. See Button/Badge/Input pattern
+- **Var-syntax on theme tokens** — flag `bg-(--color-X)`, `text-(--color-X)`, `border-(--color-X)`, `ring-(--color-X)` for theme tokens (Layer 2 semantic). Must use utility-style `bg-X`, `text-X`, `border-X`. Var-syntax allowed ONLY for component-local vars (`bg-(--fri-X-bg)`). Grep: `grep -nE '(bg\|text\|border\|ring\|ring-offset)-\\(--color-' {name}.css`
+- **Missing BEM class on internal elements** — flag internal `<span>/<div>/<svg>` in Component.tsx that has `data-slot="..."` but NO `className="fri-{name}__{part}"`. Every internal element MUST have BEM class for user `@apply` override (2026 pattern replaces slotProps). Grep in Component.tsx: `grep -nE 'data-slot="[^"]+"' | grep -v 'className'` — lines without className need BEM added
 - Skipping variant values in tests
 - Stories missing `parameters.docs.source.code`
 - `variant="X-bordered"` suffix (should use `isBordered` boolean)

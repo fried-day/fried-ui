@@ -4,7 +4,7 @@
   --color-primary: var(--color-fri-neutral-900);
   --color-primary-hover: var(--color-fri-neutral-700);
   --color-primary-active: var(--color-fri-neutral-950);
-  --color-primary-border: transparent;
+  --color-primary-border: var(--color-primary);
   --color-primary-foreground: oklch(100% 0 0);
   --color-primary-soft: var(--color-fri-neutral-100);
   --color-primary-soft-hover: var(--color-fri-neutral-200);
@@ -14,7 +14,7 @@
   --color-primary-flat: var(--color-fri-neutral-100);
   --color-primary-flat-hover: var(--color-fri-neutral-200);
   --color-primary-flat-active: var(--color-fri-neutral-300);
-  --color-primary-flat-border: transparent;
+  --color-primary-flat-border: var(--color-primary-flat);
   --color-primary-flat-foreground: oklch(0% 0 0);
   --color-primary-outline: transparent;
   --color-primary-outline-hover: var(--color-fri-neutral-100);
@@ -24,14 +24,14 @@
   --color-primary-ghost: transparent;
   --color-primary-ghost-hover: var(--color-fri-neutral-100);
   --color-primary-ghost-active: var(--color-fri-neutral-200);
-  --color-primary-ghost-border: transparent;
+  --color-primary-ghost-border: var(--color-primary-ghost);
   --color-primary-ghost-foreground: oklch(0% 0 0);
 
   --color-secondary: var(--color-fri-neutral-100);
   --color-secondary-hover: var(--color-fri-neutral-200);
   --color-secondary-active: var(--color-fri-neutral-300);
-  --color-secondary-border: transparent;
-  --color-secondary-foreground: var(--color-fri-neutral-950);
+  --color-secondary-border: var(--color-secondary);
+  --color-secondary-foreground: oklch(0% 0 0);
   --color-secondary-soft: var(--color-fri-neutral-50);
   --color-secondary-soft-hover: var(--color-fri-neutral-100);
   --color-secondary-soft-active: var(--color-fri-neutral-200);
@@ -40,7 +40,7 @@
   --color-secondary-flat: var(--color-fri-neutral-50);
   --color-secondary-flat-hover: var(--color-fri-neutral-100);
   --color-secondary-flat-active: var(--color-fri-neutral-200);
-  --color-secondary-flat-border: transparent;
+  --color-secondary-flat-border: var(--color-secondary-flat);
   --color-secondary-flat-foreground: var(--color-fri-neutral-600);
   --color-secondary-outline: transparent;
   --color-secondary-outline-hover: var(--color-fri-neutral-50);
@@ -50,13 +50,13 @@
   --color-secondary-ghost: transparent;
   --color-secondary-ghost-hover: var(--color-fri-neutral-50);
   --color-secondary-ghost-active: var(--color-fri-neutral-100);
-  --color-secondary-ghost-border: transparent;
+  --color-secondary-ghost-border: var(--color-secondary-ghost);
   --color-secondary-ghost-foreground: var(--color-fri-neutral-600);
 
   --color-accent: var(--color-fri-purple-500);
   --color-accent-hover: var(--color-fri-purple-600);
   --color-accent-active: var(--color-fri-purple-700);
-  --color-accent-border: transparent;
+  --color-accent-border: var(--color-accent);
   --color-accent-foreground: oklch(100% 0 0);
   --color-accent-soft: var(--color-fri-purple-50);
   --color-accent-soft-hover: var(--color-fri-purple-100);
@@ -66,7 +66,7 @@
   --color-accent-flat: var(--color-fri-purple-100);
   --color-accent-flat-hover: var(--color-fri-purple-200);
   --color-accent-flat-active: var(--color-fri-purple-300);
-  --color-accent-flat-border: transparent;
+  --color-accent-flat-border: var(--color-accent-flat);
   --color-accent-flat-foreground: var(--color-fri-purple-600);
   --color-accent-outline: transparent;
   --color-accent-outline-hover: var(--color-fri-purple-50);
@@ -76,13 +76,13 @@
   --color-accent-ghost: transparent;
   --color-accent-ghost-hover: var(--color-fri-purple-50);
   --color-accent-ghost-active: var(--color-fri-purple-100);
-  --color-accent-ghost-border: transparent;
+  --color-accent-ghost-border: var(--color-accent-ghost);
   --color-accent-ghost-foreground: var(--color-fri-purple-500);
 
   --color-success: var(--color-fri-green-500);
   --color-success-hover: var(--color-fri-green-600);
   --color-success-active: var(--color-fri-green-700);
-  --color-success-border: transparent;
+  --color-success-border: var(--color-success);
   --color-success-foreground: oklch(100% 0 0);
   --color-success-soft: var(--color-fri-green-50);
   --color-success-soft-hover: var(--color-fri-green-100);
@@ -92,7 +92,7 @@
   --color-success-flat: var(--color-fri-green-100);
   --color-success-flat-hover: var(--color-fri-green-200);
   --color-success-flat-active: var(--color-fri-green-300);
-  --color-success-flat-border: transparent;
+  --color-success-flat-border: var(--color-success-flat);
   --color-success-flat-foreground: var(--color-fri-green-600);
   --color-success-outline: transparent;
   --color-success-outline-hover: var(--color-fri-green-50);
@@ -102,13 +102,13 @@
   --color-success-ghost: transparent;
   --color-success-ghost-hover: var(--color-fri-green-50);
   --color-success-ghost-active: var(--color-fri-green-100);
-  --color-success-ghost-border: transparent;
+  --color-success-ghost-border: var(--color-success-ghost);
   --color-success-ghost-foreground: var(--color-fri-green-500);
 
   --color-warning: var(--color-fri-yellow-500);
   --color-warning-hover: var(--color-fri-yellow-600);
   --color-warning-active: var(--color-fri-yellow-700);
-  --color-warning-border: transparent;
+  --color-warning-border: var(--color-warning);
   --color-warning-foreground: oklch(100% 0 0);
   --color-warning-soft: var(--color-fri-yellow-50);
   --color-warning-soft-hover: var(--color-fri-yellow-100);
@@ -118,7 +118,7 @@
   --color-warning-flat: var(--color-fri-yellow-100);
   --color-warning-flat-hover: var(--color-fri-yellow-200);
   --color-warning-flat-active: var(--color-fri-yellow-300);
-  --color-warning-flat-border: transparent;
+  --color-warning-flat-border: var(--color-warning-flat);
   --color-warning-flat-foreground: var(--color-fri-yellow-600);
   --color-warning-outline: transparent;
   --color-warning-outline-hover: var(--color-fri-yellow-50);
@@ -128,13 +128,13 @@
   --color-warning-ghost: transparent;
   --color-warning-ghost-hover: var(--color-fri-yellow-50);
   --color-warning-ghost-active: var(--color-fri-yellow-100);
-  --color-warning-ghost-border: transparent;
+  --color-warning-ghost-border: var(--color-warning-ghost);
   --color-warning-ghost-foreground: var(--color-fri-yellow-500);
 
   --color-danger: var(--color-fri-red-500);
   --color-danger-hover: var(--color-fri-red-600);
   --color-danger-active: var(--color-fri-red-700);
-  --color-danger-border: transparent;
+  --color-danger-border: var(--color-danger);
   --color-danger-foreground: oklch(100% 0 0);
   --color-danger-soft: var(--color-fri-red-50);
   --color-danger-soft-hover: var(--color-fri-red-100);
@@ -144,7 +144,7 @@
   --color-danger-flat: var(--color-fri-red-100);
   --color-danger-flat-hover: var(--color-fri-red-200);
   --color-danger-flat-active: var(--color-fri-red-300);
-  --color-danger-flat-border: transparent;
+  --color-danger-flat-border: var(--color-danger-flat);
   --color-danger-flat-foreground: var(--color-fri-red-600);
   --color-danger-outline: transparent;
   --color-danger-outline-hover: var(--color-fri-red-50);
@@ -154,13 +154,13 @@
   --color-danger-ghost: transparent;
   --color-danger-ghost-hover: var(--color-fri-red-50);
   --color-danger-ghost-active: var(--color-fri-red-100);
-  --color-danger-ghost-border: transparent;
+  --color-danger-ghost-border: var(--color-danger-ghost);
   --color-danger-ghost-foreground: var(--color-fri-red-500);
 
   --color-info: var(--color-fri-blue-500);
   --color-info-hover: var(--color-fri-blue-600);
   --color-info-active: var(--color-fri-blue-700);
-  --color-info-border: transparent;
+  --color-info-border: var(--color-info);
   --color-info-foreground: oklch(100% 0 0);
   --color-info-soft: var(--color-fri-blue-50);
   --color-info-soft-hover: var(--color-fri-blue-100);
@@ -170,7 +170,7 @@
   --color-info-flat: var(--color-fri-blue-100);
   --color-info-flat-hover: var(--color-fri-blue-200);
   --color-info-flat-active: var(--color-fri-blue-300);
-  --color-info-flat-border: transparent;
+  --color-info-flat-border: var(--color-info-flat);
   --color-info-flat-foreground: var(--color-fri-blue-600);
   --color-info-outline: transparent;
   --color-info-outline-hover: var(--color-fri-blue-50);
@@ -180,7 +180,7 @@
   --color-info-ghost: transparent;
   --color-info-ghost-hover: var(--color-fri-blue-50);
   --color-info-ghost-active: var(--color-fri-blue-100);
-  --color-info-ghost-border: transparent;
+  --color-info-ghost-border: var(--color-info-ghost);
   --color-info-ghost-foreground: var(--color-fri-blue-500);
 
   --color-background: oklch(100% 0 0);
@@ -193,6 +193,28 @@
   --color-surface-plain: oklch(100% 0 0);
   --color-surface-plain-border: var(--color-fri-neutral-100);
   --color-surface-plain-foreground: oklch(0% 0 0);
+
+  --color-field: oklch(100% 0 0);
+  --color-field-hover: var(--color-field);
+  --color-field-border: var(--color-fri-neutral-200);
+  --color-field-border-hover: var(--color-fri-neutral-300);
+  --color-field-border-focus: oklch(0% 0 0);
+  --color-field-foreground: oklch(0% 0 0);
+  --color-field-placeholder: var(--color-fri-neutral-500);
+  --color-field-secondary: var(--color-fri-neutral-50);
+  --color-field-secondary-hover: var(--color-fri-neutral-100);
+  --color-field-secondary-border: var(--color-field-secondary);
+  --color-field-secondary-border-hover: transparent;
+  --color-field-secondary-border-focus: oklch(0% 0 0);
+  --color-field-secondary-foreground: oklch(0% 0 0);
+  --color-field-secondary-placeholder: var(--color-fri-neutral-500);
+  --color-field-plain: transparent;
+  --color-field-plain-hover: var(--color-fri-neutral-50);
+  --color-field-plain-border: var(--color-field-plain);
+  --color-field-plain-border-hover: transparent;
+  --color-field-plain-border-focus: oklch(0% 0 0);
+  --color-field-plain-foreground: oklch(0% 0 0);
+  --color-field-plain-placeholder: var(--color-fri-neutral-500);
 
   --color-avatar: var(--color-fri-neutral-50);
   --color-avatar-foreground: var(--color-fri-neutral-700);
@@ -223,13 +245,6 @@
 
   --color-separator: var(--color-fri-neutral-200);
   --color-skeleton: var(--color-fri-neutral-200);
-
-  --color-field: oklch(100% 0 0);
-  --color-field-hover: var(--color-fri-neutral-50);
-  --color-field-border: var(--color-fri-neutral-300);
-  --color-field-border-hover: var(--color-fri-neutral-400);
-  --color-field-foreground: oklch(0% 0 0);
-  --color-field-placeholder: var(--color-fri-neutral-400);
 
   --color-selection: var(--color-fri-neutral-200);
   --color-selection-foreground: oklch(0% 0 0);

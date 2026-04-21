@@ -13,3 +13,5 @@ export * from "./label";
 export * from "./description";
 
 export * from "./avatar-group";
+
+export * from "./input";

@@ -250,7 +250,7 @@ Prevents interaction and applies disabled styling.
 Text becomes transparent, spinner appears centered. All interaction is blocked.
 
 ```tsx
-<Button isPending>Saving...</Button>
+<Button isPending>Saving</Button>
 ```
 
 ### As a Link

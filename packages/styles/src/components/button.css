@@ -14,12 +14,11 @@
     @apply gap-[calc(1rem/2.058)] px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
     @apply rounded-md;
 
-    &:focus-visible,
     &[data-focus-visible] {
       @apply focus-ring;
     }
 
-    &.fri-button--disabled {
+    &[data-disabled] {
       @apply status-disabled;
     }
 
@@ -28,13 +27,11 @@
     }
 
     @media (hover: hover) {
-      &:hover,
       &[data-hovered] {
         @apply bg-(--fri-button-bg-hover);
       }
     }
 
-    &:active,
     &[data-pressed] {
       @apply bg-(--fri-button-bg-pressed) duration-(--duration-press);
     }

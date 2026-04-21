@@ -98,6 +98,29 @@ Minimum: Default, Variants, Sizes.
 
 Add per component: WithIcon, IconOnly, FullWidth, Disabled, Pending, RenderProps.
 
+## Interactive State Demos
+
+สำหรับ interactive components (Button, Input, ฯลฯ) ควรมี story แยกสำหรับ test state priority ด้วย:
+
+- **Default** — idle state
+- **Variants** — visual variants
+- **Sizes** — size scale
+- **WithIcon** — icon slots
+- **Disabled** — non-interactive
+- **ReadOnly** (inputs) — read-only editable state
+- **Invalid** (inputs) — error state
+- **Required** (inputs) — required form field
+
+**Hover/focus/pressed** states — user interact ด้วยเอง ใน Default story (ไม่ต้องแยก story)
+
+**Storybook test quick check:**
+- Click input → border เข้มขึ้น (ไม่มี ring)
+- Tab into input → ring ปรากฏ (border เดิม)
+- Click button → bg-pressed (override bg-hover)
+- Hover focused input → focus wins (no hover border change)
+
+ถ้า storybook demo ไม่ตรงกับที่คาด → มี bug ใน CSS cascade/specificity — ดู `.claude/rules/styles.md` "State Priority" + "Mutually Exclusive Focus States"
+
 ## Icon Examples
 
 Use slot attributes for icon positioning:

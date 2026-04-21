@@ -143,6 +143,38 @@ import { cn } from "src/utils/cn";
 
 React Aria states ใน CSS: `&[data-pressed]`, `&[data-hovered]`, `&[data-focused]`
 
+## BEM Class on EVERY Internal Element
+
+ทุก `<span>`, `<div>`, `<svg>` ภายใน component **ต้องมี BEM class** `.fri-{component}__{part}` — ไม่ใช่แค่ `data-slot` attribute
+
+**เหตุผล:**
+- User override ผ่าน `@apply` (2026 pattern — แทน slotProps):
+  ```css
+  /* User's app CSS */
+  .fri-input__icon-start { @apply size-5 text-primary; }
+  .fri-input__prefix { @apply font-mono text-accent; }
+  ```
+- Class selector สั้นกว่า attr selector (`.fri-input__icon-start` vs `[data-slot="input-icon-start"]`)
+- Performance ดีกว่า (class match faster than attr match)
+- Idiomatic BEM — docs อ่านง่าย
+
+**Pattern:**
+```tsx
+<span
+  className="fri-input__icon-start"   // ← styling hook
+  data-slot="input-icon-start"         // ← semantic marker (for React Aria context + tests)
+>
+  {startIcon}
+</span>
+```
+
+**Both present** — BEM class for styling, data-slot for semantic.
+
+**Example components that follow:**
+- `Avatar` — `fri-avatar__image`, `fri-avatar__fallback`
+- `Button` — `fri-button__spinner`
+- `Input` — `fri-input__field`, `fri-input__icon-start`, `fri-input__prefix`, `fri-input__suffix`, `fri-input__icon-end`, `fri-input__spinner`
+
 ## ❌ No Magic Values in CSS
 
 ทุก component CSS **ห้าม** มี magic values — ดู `.claude/rules/styles.md` "No Magic Values" section
