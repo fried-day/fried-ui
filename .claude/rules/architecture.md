@@ -143,6 +143,32 @@ import { cn } from "src/utils/cn";
 
 React Aria states ใน CSS: `&[data-pressed]`, `&[data-hovered]`, `&[data-focused]`
 
+## ❌ No Magic Values in CSS
+
+ทุก component CSS **ห้าม** มี magic values — ดู `.claude/rules/styles.md` "No Magic Values" section
+
+```css
+/* ❌ Raw rem */
+--fri-X-base: 0.8rem;
+
+/* ❌ Magic decimal scalar */
+--fri-X-ratio: 0.625;
+
+/* ✅ Tailwind @apply */
+@apply -ms-3;
+
+/* ✅ Formula (golden ratio) */
+@apply py-[calc(1rem/2.058)];
+
+/* ✅ Token-based calc */
+--fri-X-base: calc(var(--spacing) * 10);
+
+/* ✅ Explicit fraction */
+--fri-X-ratio: calc(5 / 8);  /* 62.5% */
+```
+
+**Decision tree**: Tailwind utility → formula → `var(--spacing) * N` → explicit fraction → flag if none fit
+
 ## Checklist: Component ใหม่
 
 1. สร้าง CSS → `packages/styles/src/components/{name}.css`

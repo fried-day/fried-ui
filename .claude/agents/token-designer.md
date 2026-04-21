@@ -140,3 +140,4 @@ Keep report under 500 words. Prefer diff-style snippets over prose.
 4. **Skipping 7-token group** → color can't be used in -soft/-flat/-outline matrices
 5. **Foreground pairing wrong** → pick white if L < 0.6, dark if L ≥ 0.6
 6. **Changing `@theme static` to `@theme`** → breaks library distribution
+7. **Magic values in token definitions** — token VALUES (the right side) should be raw oklch/hex/percentage — that's fine. But **references** should never be arbitrary decimals. If a token is calculated from another (e.g., opacity-based scrim), express as `oklch(L% 0 0 / A)` with clear A, not magic multiplier.

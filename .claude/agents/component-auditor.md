@@ -46,6 +46,12 @@ For each component, report findings under 5 headings. Use tables for matrix audi
 - Hardcoded values that should be tokens (`#ff4785`, `bg-blue-500`) → critical
 - Layer 1 palette tokens used in component CSS (`var(--color-fri-neutral-200)`) → critical
 - Semantic → semantic chain (`--color-surface: var(--color-background)`) → critical
+- **Magic values in CSS** → critical
+  - Raw `rem` outside formula (e.g., `0.8rem`, `1.2rem` as direct value)
+  - Arbitrary decimal scalars (e.g., `0.375`, `0.625`, `0.9` without source)
+  - Raw `px` outside 1px borders
+  - Must use `@apply {utility}`, formula from `formula.md`, `var(--spacing) * N`, or explicit `calc(A / B)` fractions
+  - Grep check: `grep -nE '(^|[^(])[0-9]+\.[0-9]+rem|margin.*[0-9]+px' {name}.css`
 - Missing `data-slot` / `displayName` / `ref`
 - CSS cascade bug: `:active` written BEFORE `:hover` in interactive components → hover wins when pressed
 - Skipping variant values in tests

@@ -146,6 +146,7 @@ pnpm run build          # tsup + Next.js + Storybook builds
 - [ ] `:hover` before `:active` in interactive components
 - [ ] Tailwind utility-style for theme tokens (no `bg-(--color-X)` shorthand)
 - [ ] Golden ratio formula for padding/gap
+- [ ] **Zero magic values** — no raw `rem`, no arbitrary decimals, no raw `px`. Use `@apply`, formula, `var(--spacing) * N`, or `calc(A / B)` fractions only
 - [ ] data-slot + displayName + ref forwarding
 - [ ] Test covers all enum values (forEach pattern)
 - [ ] Stories use generic text (no domain words)
@@ -167,6 +168,8 @@ pnpm run build          # tsup + Next.js + Storybook builds
 8. **`@example` in JSDoc** — Storybook handles examples, JSDoc stays terse (Mantine pattern)
 9. **Implementation detail in JSDoc** — e.g., "via golden ratio formula" — internal only, keep public API clean
 10. **Action-based boolean JSDoc** — "Dims the..." instead of "Whether the..." — breaks convention
+11. **Magic values in CSS** — ❌ raw `rem` (`0.8rem`, `1.2rem`), ❌ arbitrary decimal scalars (`0.375`, `0.625`, `0.9`), ❌ raw `px`. Must use `@apply {utility}`, formula from `formula.md`, `var(--spacing) * N`, or explicit fraction `calc(A / B)`. See `.claude/rules/styles.md` "No Magic Values" section.
+12. **Choosing spacing "by eye"** — if value isn't from Tailwind scale (`-ms-3`, `px-4`) or golden ratio formula, flag it — AI tends to invent plausible-looking but untraceable numbers
 
 ---
 
