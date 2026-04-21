@@ -13,6 +13,10 @@ export type SurfaceProps = Omit<ComponentPropsWithRef<"div">, "className"> &
     className?: string;
   };
 
+/**
+ * A styled container primitive — foundation for cards, alerts, and other
+ * composite components. Combine variant, isBordered, radius, and shadow freely.
+ */
 const Surface = (props: Readonly<SurfaceProps>) => {
   const { children, className, isBordered, radius, ref, shadow, variant, ...rest } = props;
 

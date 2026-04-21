@@ -13,6 +13,10 @@ export type BadgeProps = Omit<ComponentPropsWithRef<"span">, "className"> &
     className?: string;
   };
 
+/**
+ * A badge displays a small status indicator or label, non-interactive.
+ * Children with `slot="icon-start" | "icon-end" | "icon"` render as icons.
+ */
 const Badge = (props: Readonly<BadgeProps>) => {
   const { children, className, isIconOnly, radius, ref, size, variant, ...rest } = props;
 

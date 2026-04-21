@@ -17,6 +17,10 @@ export type ButtonProps = ButtonVariantsProps & {
   className?: string | ((renderProps: ButtonRenderProps) => string);
 } & Omit<ComponentPropsWithRef<typeof AriaButton>, "className" | "children">;
 
+/**
+ * A button allows a user to perform an action, with mouse, touch, and keyboard interactions.
+ * Children with `slot="icon-start" | "icon-end" | "icon"` render as icons.
+ */
 const Button = (props: Readonly<ButtonProps>) => {
   const { children, className, isFullWidth, isIconOnly, radius, ref, size, variant, ...rest } = props;
 

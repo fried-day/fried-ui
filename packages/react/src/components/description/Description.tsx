@@ -14,6 +14,10 @@ export type DescriptionProps = DescriptionVariantsProps & {
   className?: string;
 } & Omit<ComponentPropsWithRef<typeof AriaText>, "className" | "slot">;
 
+/**
+ * Helper text describing a form field, paired with a Label and input.
+ * Use `isInvalid` for inline error messages.
+ */
 const Description = (props: Readonly<DescriptionProps>) => {
   const { children, className, isDisabled, isInvalid, ref, size, ...rest } = props;
 
