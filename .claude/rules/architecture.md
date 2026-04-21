@@ -67,6 +67,63 @@ export type ButtonProps = { ... } & Omit<RACButtonProps, "className" | "children
 type ButtonVariant = "primary";
 ```
 
+## JSDoc Pattern (React Aria + Mantine hybrid)
+
+ทุก public component **ต้อง** มี JSDoc — ship ผ่าน .d.ts → IDE hover + LLM context สำหรับ end user
+
+### Component-level (1-2 บรรทัด)
+
+```typescript
+/**
+ * A button allows a user to perform an action, with mouse, touch, and keyboard interactions.
+ * Children with `slot="icon-start" | "icon-end" | "icon"` render as icons.
+ */
+const Button = (props) => { ... };
+```
+
+### Props (one-liner + @default)
+
+```typescript
+export interface ButtonVariantsProps {
+  /** Whether the button stretches to fill its container width. @default false */
+  isFullWidth?: boolean;
+  /** Border radius scale. @default 'md' */
+  radius?: "none" | "sm" | "md" | "lg" | "full";
+  /** Size scale. @default 'md' */
+  size?: "sm" | "md" | "lg" | "xl";
+  /** Visual style. @default 'primary' */
+  variant?: "primary" | "secondary" | ...;
+}
+```
+
+### Consistency Rules (lock in)
+
+**Sentence opening pattern** — ทุก prop ต้องขึ้นต้นตาม template:
+
+| Prop type | Pattern | Example |
+|-----------|---------|---------|
+| Boolean | `"Whether the {subject} ..."` | `"Whether the button is disabled (dims and removes pointer events)."` |
+| Enum size | `"Size scale."` | `"Size scale. @default 'md'"` |
+| Enum radius | `"Border radius scale."` | `"Border radius scale. @default 'md'"` |
+| Enum shadow | `"Elevation depth (...)."` | `"Elevation depth (orthogonal to variant — combine freely)."` |
+| Enum variant | `"Visual style. ..."` | `"Visual style. Base colors ... @default 'primary'"` |
+| Optional string | `"Text ... @default undefined"` | `"Text shown when ... @default undefined"` |
+
+**`@default` formatting:**
+- String: quoted — `@default 'md'`
+- Boolean: unquoted — `@default false`
+- Undefined/optional: `@default undefined`
+
+### Rules
+
+- ✅ One-liner per prop + `@default` (Mantine pattern)
+- ✅ Component description = intent + slot contract (if any)
+- ✅ Slot contract mention เฉพาะ component ที่รับ icon (Button/Badge)
+- ✅ Boolean props **ต้อง** ขึ้นต้นด้วย `"Whether the..."` — ห้ามใช้ action-based (`"Dims the..."`, `"Adds..."`, `"Shows..."`)
+- ✅ **ห้าม** ใส่ implementation detail ใน JSDoc (เช่น "via golden ratio formula") — เป็น internal, ไม่ใช่ public API
+- ❌ ห้าม `@example` ใน source (ใช้ Storybook แทน — ไม่ duplicate)
+- ❌ ห้าม multi-paragraph prose JSDoc (ใช้ docs site แทน)
+
 ## Import Pattern
 
 ```typescript

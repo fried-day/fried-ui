@@ -16,6 +16,10 @@ export type {{pascalCase name}}Props = {{pascalCase name}}VariantsProps & {
   className?: string | ((renderProps: ButtonRenderProps) => string);
 } & Omit<ComponentPropsWithRef<typeof AriaComponent>, "className" | "children">;
 
+/**
+ * TODO: Replace with one-line description of what {{pascalCase name}} does and when to use it.
+ * If the component supports icon slots, mention: Children with `slot="icon-start" | "icon-end" | "icon"` render as icons.
+ */
 const {{pascalCase name}} = (props: Readonly<{{pascalCase name}}Props>) => {
   const { children, className, ref, size, variant, ...rest } = props;
 
