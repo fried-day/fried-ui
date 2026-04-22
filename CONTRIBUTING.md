@@ -177,6 +177,10 @@ When making visual changes, include a screenshot or screen recording in your PR.
 
 Keep documentation in sync with code changes. Docs live in `apps/docs/src/content/docs/` using MDX format.
 
+## Documentation Style
+
+All `.md`, JSDoc, and inline comments must use words instead of transition symbols (`->`, `<-`, `=>`, emoji). Math formulas and code fences may keep symbols. See [.claude/rules/writing.md](.claude/rules/writing.md) for the full rule.
+
 ## Adding a New Component
 
 New components follow the scaffold-then-customize workflow:

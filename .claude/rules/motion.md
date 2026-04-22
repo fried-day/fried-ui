@@ -21,9 +21,9 @@ Slow    = 300ms  (modal, page)
 ## Easing
 
 ```text
-ease-smooth = cubic-bezier(0.4, 0, 0.2, 1)  ← default
-ease-in     = cubic-bezier(0.4, 0, 1, 1)     ← exit
-ease-out    = cubic-bezier(0, 0, 0.2, 1)     ← entrance
+ease-smooth = cubic-bezier(0.4, 0, 0.2, 1)  <- default
+ease-in     = cubic-bezier(0.4, 0, 1, 1)     <- exit
+ease-out    = cubic-bezier(0, 0, 0.2, 1)     <- entrance
 ```
 
 ห้ามใช้ linear

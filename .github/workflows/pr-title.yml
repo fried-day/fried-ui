@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Fast-pass for trusted bots
         if: ${{ env.IS_TRUSTED_BOT == 'true' }}
-        run: echo "Trusted bot PR → skip PR title validation but report success."
+        run: echo "Trusted bot PR detected, skip PR title validation but report success."
 
       - uses: amannn/action-semantic-pull-request@e32d7e603df1aa1ba07e981f2a23455dee596825 # v5
         if: ${{ env.IS_TRUSTED_BOT != 'true' }}

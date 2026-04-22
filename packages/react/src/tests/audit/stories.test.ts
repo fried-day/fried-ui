@@ -6,6 +6,7 @@ import {
   countStorySourceCodeBlocks,
   getAllStringLiterals,
   getClassNameStringLiterals,
+  getMetaArgTypeDescriptions,
   getStoryNames,
   loadSource,
   metaHasPath,
@@ -103,5 +104,26 @@ describe("Audit — stories conventions", () => {
     });
 
     expect(hasLayout, `${kebab}.stories.tsx meta missing layout: "centered" | "padded" | "fullscreen"`).toBe(true);
+  });
+
+  it.each(components)("$kebab: argType descriptions use words, not transition symbols", ({ kebab, storiesFile }) => {
+    const argTypes = getMetaArgTypeDescriptions({ storiesFile });
+    const bannedSymbols = [" -> ", " <- ", " => ", "\u2192", "\u2190"];
+    const offenders: string[] = [];
+
+    for (const { description, line, propName } of argTypes) {
+      for (const symbol of bannedSymbols) {
+        if (!description.includes(symbol)) continue;
+
+        offenders.push(
+          `${kebab}.stories.tsx:${String(line)} argTypes.${propName}.description contains "${symbol.trim()}" — replace with words ("leads to", "maps to", "transitions to", "derives from")`,
+        );
+      }
+    }
+
+    expect(
+      offenders,
+      `${kebab}.stories.tsx argType descriptions contain banned transition symbols — see .claude/rules/writing.md:\n${offenders.join("\n")}`,
+    ).toEqual([]);
   });
 });

@@ -10,10 +10,10 @@ paths:
 ## Layer
 
 ```text
-@fried-ui/react    ← React components (behavior + accessibility)
-@fried-ui/styles   ← CSS: design tokens + component styles (class)
-react-aria-components ← Accessibility primitives
-tailwindcss v4     ← Styling engine
+@fried-ui/react    <- React components (behavior + accessibility)
+@fried-ui/styles   <- CSS: design tokens + component styles (class)
+react-aria-components <- Accessibility primitives
+tailwindcss v4     <- Styling engine
 ```
 
 ## Package Boundary
@@ -21,26 +21,26 @@ tailwindcss v4     ← Styling engine
 ```text
 @fried-ui/styles (ไม่ depend on React)
   exports:
-    "." → CSS (tokens + component classes)
+    "." -> CSS (tokens + component classes)
 
 @fried-ui/react (depends on react-aria)
   exports:
-    "."          → barrel export
-    "./{name}"   → individual component
-    "./utils/cn" → cn utility
+    "."          -> barrel export
+    "./{name}"   -> individual component
+    "./utils/cn" -> cn utility
 ```
 
 ## Component Anatomy
 
-### Layer 1: Design Tokens → `packages/styles/src/tokens/`
+### Layer 1: Design Tokens in `packages/styles/src/tokens/`
 
 ทุก token อยู่ใน `@theme` — Tailwind v4 generate CSS variables ให้
 
-### Layer 2: Component Styles → `packages/styles/src/components/{name}.css`
+### Layer 2: Component Styles in `packages/styles/src/components/{name}.css`
 
 classes + `@apply` + CSS custom properties สำหรับ variant colors
 
-### Layer 3: React Component → `packages/react/src/components/{name}/`
+### Layer 3: React Component in `packages/react/src/components/{name}/`
 
 ```text
 {Name}.tsx           # "use client", wrap React Aria component
@@ -52,10 +52,10 @@ index.ts             # re-exports
 ## Data Flow
 
 ```text
-props → destructure { variant, size, className, children, ...rest }
-rest  → forward ไป React Aria
-className → classes({ block: "{name}", modifiers: { variant, size }, className })
-children  → composeRenderProps → wrap กับ internal UI
+props -> destructure { variant, size, className, children, ...rest }
+rest  -> forward ไป React Aria
+className -> classes({ block: "{name}", modifiers: { variant, size }, className })
+children  -> composeRenderProps -> wrap กับ internal UI
 ```
 
 ### `classes()` signature
@@ -63,13 +63,13 @@ children  → composeRenderProps → wrap กับ internal UI
 `classes()` ตอนนี้รับ `className` เป็น param ลำดับ 3 (optional) — **ห้าม** wrap ด้วย `clsx()` ภายนอกแล้ว:
 
 ```tsx
-// ❌ Old pattern (removed) — ห้ามใช้แล้ว
+// BAD: Old pattern (removed) — ห้ามใช้แล้ว
 const buttonClassName = clsx(
   classes({ block: "button", modifiers: { variant, size } }),
   className,
 );
 
-// ✅ New pattern — fold className เข้า classes() เลย
+// OK: New pattern — fold className เข้า classes() เลย
 const buttonClassName = classes({
   block: "button",
   modifiers: { variant, size },
@@ -78,7 +78,7 @@ const buttonClassName = classes({
 ```
 
 - Display components + non-render-prop interactive components: ไม่ต้อง `import { clsx }` แล้ว
-- Interactive components ที่ใช้ `composeRenderProps` (render-prop `className`) → ยังต้อง `clsx` ภายใน function wrapper เพื่อ merge base + consumer string ที่ function return (ดู Button.tsx)
+- Interactive components ที่ใช้ `composeRenderProps` (render-prop `className`) ยังต้อง `clsx` ภายใน function wrapper เพื่อ merge base + consumer string ที่ function return (ดู Button.tsx)
 - `clsx` ถูกใช้ภายใน `classes.ts` เสมอ — ไม่ต้อง import ซ้ำ
 
 ## Type Pattern
@@ -92,7 +92,7 @@ type ButtonVariant = "primary";
 
 ## JSDoc Pattern (React Aria + Mantine hybrid)
 
-ทุก public component **ต้อง** มี JSDoc — ship ผ่าน .d.ts → IDE hover + LLM context สำหรับ end user
+ทุก public component **ต้อง** มี JSDoc — ship ผ่าน .d.ts เพื่อให้ IDE hover และ LLM context สำหรับ end user
 
 ### Component-level (1-2 บรรทัด)
 
@@ -139,13 +139,14 @@ export interface ButtonVariantsProps {
 
 ### Rules
 
-- ✅ One-liner per prop + `@default` (Mantine pattern)
-- ✅ Component description = intent + slot contract (if any)
-- ✅ Slot contract mention เฉพาะ component ที่รับ icon (Button/Badge)
-- ✅ Boolean props **ต้อง** ขึ้นต้นด้วย `"Whether the..."` — ห้ามใช้ action-based (`"Dims the..."`, `"Adds..."`, `"Shows..."`)
-- ✅ **ห้าม** ใส่ implementation detail ใน JSDoc (เช่น "via golden ratio formula") — เป็น internal, ไม่ใช่ public API
-- ❌ ห้าม `@example` ใน source (ใช้ Storybook แทน — ไม่ duplicate)
-- ❌ ห้าม multi-paragraph prose JSDoc (ใช้ docs site แทน)
+- OK: One-liner per prop + `@default` (Mantine pattern)
+- OK: Component description = intent + slot contract (if any)
+- OK: Slot contract mention เฉพาะ component ที่รับ icon (Button/Badge)
+- OK: Boolean props **ต้อง** ขึ้นต้นด้วย `"Whether the..."` — ห้ามใช้ action-based (`"Dims the..."`, `"Adds..."`, `"Shows..."`)
+- OK: **ห้าม** ใส่ implementation detail ใน JSDoc (เช่น "via golden ratio formula") — เป็น internal, ไม่ใช่ public API
+- BAD: ห้าม `@example` ใน source (ใช้ Storybook แทน — ไม่ duplicate)
+- BAD: ห้าม multi-paragraph prose JSDoc (ใช้ docs site แทน)
+- BAD: ห้ามใช้ transition/causation symbols (`->`, `<-`, `=>`) หรือ emoji ใน JSDoc prose — ใช้คำเต็ม ("leads to", "maps to", "transitions to", "derives from"). See `.claude/rules/writing.md`
 
 ## Import Pattern
 
@@ -161,12 +162,12 @@ import { classes } from "../../utils/classes";
 `Label`, `Description`, `FieldError` ต้อง consume `TextFieldContext` + รองรับ prop-override — ใช้ hook `useFieldState(props)` เป็น canonical:
 
 ```tsx
-// ❌ Old pattern — manual context read ใน component (drift risk — FieldError เคยลืมทำ)
+// BAD: Old pattern — manual context read ใน component (drift risk — FieldError เคยลืมทำ)
 const ctx = useContext(TextFieldContext);
 const isDisabled = isDisabledProp ?? ctx?.isDisabled;
 const isInvalid = isInvalidProp ?? ctx?.isInvalid;
 
-// ✅ New pattern — one call, consistent across all field subcomponents
+// OK: New pattern — one call, consistent across all field subcomponents
 import { useFieldState } from "../text-field/use-field-state";
 
 const Label = (props) => {
@@ -183,10 +184,10 @@ const Label = (props) => {
 ## class-naming Naming
 
 ```text
-.{component}              → base
-.{component}--{variant}   → variant
-.{component}--{size}      → size
-.{component}--{state}     → state
+.{component}              -> base
+.{component}--{variant}   -> variant
+.{component}--{size}      -> size
+.{component}--{state}     -> state
 ```
 
 React Aria states ใน CSS: `&[data-pressed]`, `&[data-hovered]`, `&[data-focused]`
@@ -209,8 +210,8 @@ React Aria states ใน CSS: `&[data-pressed]`, `&[data-hovered]`, `&[data-focu
 **Pattern:**
 ```tsx
 <span
-  className="input-icon-start"   // ← styling hook
-  data-slot="input-icon-start"         // ← semantic marker (for React Aria context + tests)
+  className="input-icon-start"   // <- styling hook
+  data-slot="input-icon-start"         // <- semantic marker (for React Aria context + tests)
 >
   {startIcon}
 </span>
@@ -223,52 +224,52 @@ React Aria states ใน CSS: `&[data-pressed]`, `&[data-hovered]`, `&[data-focu
 - `Button` — `button-spinner`
 - `Input` — `input-field`, `input-icon-start`, `input-prefix`, `input-suffix`, `input-icon-end`, `input-spinner`
 
-## ❌ No Magic Values in CSS
+## No Magic Values in CSS
 
 ทุก component CSS **ห้าม** มี magic values — ดู `.claude/rules/styles.md` "No Magic Values" section
 
 ```css
-/* ❌ Raw rem */
+/* BAD: Raw rem */
 --X-base: 0.8rem;
 
-/* ❌ Magic decimal scalar */
+/* BAD: Magic decimal scalar */
 --X-ratio: 0.625;
 
-/* ✅ Tailwind @apply */
+/* OK: Tailwind @apply */
 @apply -ms-3;
 
-/* ✅ Formula (golden ratio) */
+/* OK: Formula (golden ratio) */
 @apply py-[calc(1rem/2.058)];
 
-/* ✅ Token-based calc */
+/* OK: Token-based calc */
 --X-base: calc(var(--spacing) * 10);
 
-/* ✅ Explicit fraction */
+/* OK: Explicit fraction */
 --X-ratio: calc(5 / 8);  /* 62.5% */
 ```
 
-**Decision tree**: Tailwind utility → formula → `var(--spacing) * N` → explicit fraction → flag if none fit
+**Decision tree**: Tailwind utility first, then formula, then `var(--spacing) * N`, then explicit fraction, then flag if none fit
 
 ## Checklist: Component ใหม่
 
-1. สร้าง CSS → `packages/styles/src/components/{name}.css`
-2. Import → `packages/styles/src/components/index.css`
-3. สร้าง component → `packages/react/src/components/{name}/`
-4. Re-export → `packages/react/src/components/index.ts`
-5. เพิ่ม tsup entry → `packages/react/tsup.config.ts`
-6. เพิ่ม export map → `packages/react/package.json`
+1. สร้าง CSS ที่ `packages/styles/src/components/{name}.css`
+2. Import ที่ `packages/styles/src/components/index.css`
+3. สร้าง component ที่ `packages/react/src/components/{name}/`
+4. Re-export ที่ `packages/react/src/components/index.ts`
+5. เพิ่ม tsup entry ที่ `packages/react/tsup.config.ts`
+6. เพิ่ม export map ที่ `packages/react/package.json`
 7. **Verify 1:1 parity** — base class default value == explicit default modifier value (variant/size/radius). JSDoc `@default` สะท้อน base class จริง. See `.claude/rules/styles.md` "Base = Default Modifier". **P0 — production risk**
 8. Build + lint + test ผ่าน
 
-## 1:1 Parity Check (React ≡ Plain HTML)
+## 1:1 Parity Check (React == Plain HTML)
 
 ทุก component ต้อง pass parity test นี้ — `<Component>` (no props) และ `<tag class="{name}">` (minimal) ต้อง render ตรงกัน:
 
 ```text
 Base class defines:
-  ✓ default variant tokens (e.g., primary)
-  ✓ default size spacing + font-size
-  ✓ default radius (formula matches --radius-{default})
+  - default variant tokens (e.g., primary)
+  - default size spacing + font-size
+  - default radius (formula matches --radius-{default})
 
 Default modifier rule produces same CSS as base:
   .X--{default-variant} { ... } === base class variant tokens
@@ -276,8 +277,8 @@ Default modifier rule produces same CSS as base:
   .X--radius-{default}  { ... } === base class radius
 
 JSDoc @default reflects base reality:
-  If base has rounded-full → @default 'full' (not 'md')
-  If base has primary tokens → @default 'primary'
+  If base has rounded-full -> @default 'full' (not 'md')
+  If base has primary tokens -> @default 'primary'
 ```
 
-**Why critical:** `@fried-ui/styles` ships as pure CSS for WP/PHP/HTML consumers. Any drift breaks their rendering. React consumers ก็โดนเพราะ `<Component>` no-props → classes() skips modifier → base class wins (might diverge from JSDoc promise).
+**Why critical:** `@fried-ui/styles` ships as pure CSS for WP/PHP/HTML consumers. Any drift breaks their rendering. React consumers ก็โดนเพราะ `<Component>` no-props ทำให้ classes() skips modifier, base class wins (might diverge from JSDoc promise).

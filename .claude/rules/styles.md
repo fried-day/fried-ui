@@ -9,11 +9,11 @@ paths:
 ## Token Files
 
 ```text
-tokens/palette.css    → primitive tokens (--color-fri-neutral-*, --color-fri-purple-*, ...)
-tokens/colors.css     → semantic tokens, overlay (@theme light + @layer base .dark)
-tokens/layout.css     → radius, z-index, focus offset, cursor, opacity
-tokens/motion.css     → duration, easing, keyframes
-tokens/typography.css → heading sizes
+tokens/palette.css    -> primitive tokens (--color-fri-neutral-*, --color-fri-purple-*, ...)
+tokens/colors.css     -> semantic tokens, overlay (@theme light + @layer base .dark)
+tokens/layout.css     -> radius, z-index, focus offset, cursor, opacity
+tokens/motion.css     -> duration, easing, keyframes
+tokens/typography.css -> heading sizes
 ```
 
 ## Token Architecture (2 layers)
@@ -26,12 +26,12 @@ Layer 2 — Semantic (meaningful)  tokens/colors.css      var(--color-avatar)
 **Component CSS must use Layer 2 only** — never reference Layer 1 palette tokens directly in component CSS. If a semantic token doesn't exist for the use case, add it to `tokens/colors.css` first, then reference.
 
 ```css
-/* ❌ Component referencing palette */
+/* BAD: Component referencing palette */
 .avatar {
   @apply bg-(--color-fri-neutral-200);
 }
 
-/* ✅ Component referencing semantic */
+/* OK: Component referencing semantic */
 .avatar {
   @apply bg-(--color-avatar);
 }
@@ -40,23 +40,23 @@ Layer 2 — Semantic (meaningful)  tokens/colors.css      var(--color-avatar)
 Semantic tokens must reference palette directly — never chain through another semantic token ("color ใคร color มัน").
 
 ```css
-/* ❌ Chaining semantic → semantic */
+/* BAD: Chaining semantic -> semantic */
 --color-surface-border: var(--color-border);
 
-/* ✅ Semantic → palette */
+/* OK: Semantic -> palette */
 --color-surface-border: var(--color-fri-neutral-200);
 ```
 
 ## Semantic Color Groups (7 tokens each)
 
 ```text
-{name}                 → solid bg
-{name}-hover           → bg hover
-{name}-active          → bg pressed
-{name}-foreground      → text on solid bg
-{name}-soft            → soft bg
-{name}-soft-foreground → text on pale bg
-{name}-soft-border     → border on pale bg
+{name}                 -> solid bg
+{name}-hover           -> bg hover
+{name}-active          -> bg pressed
+{name}-foreground      -> text on solid bg
+{name}-soft            -> soft bg
+{name}-soft-foreground -> text on pale bg
+{name}-soft-border     -> border on pale bg
 ```
 
 Groups: primary, secondary, success, warning, danger, info
@@ -73,16 +73,16 @@ Spacing and radius use golden ratio formula — see `formula.md`.
 **Rule:** Base class's default value **ต้องตรงกับ** explicit default modifier rule (same CSS output)
 
 ```css
-/* ❌ Drift — base ≠ modifier */
+/* BAD: Drift — base != modifier */
 .button {
   @apply rounded-md;                          /* Tailwind 0.375rem */
 }
 .button-radius-md {
   @apply rounded-[calc(1em*1.272*2/4)];       /* formula 0.636em */
 }
-/* <Button> renders 0.375rem, <Button radius="md"> renders 0.636em → different */
+/* <Button> renders 0.375rem, <Button radius="md"> renders 0.636em -> different */
 
-/* ✅ Aligned */
+/* OK: Aligned */
 .button {
   @apply rounded-[calc(1em*1.272*2/4)];       /* same formula */
 }
@@ -102,22 +102,22 @@ Spacing and radius use golden ratio formula — see `formula.md`.
 
 ### JSDoc `@default` must reflect reality
 
-`@default 'md'` in `.variants.ts` คือ **promise** to user ว่า `<Component>` (no props) ใช้ radius=md. ถ้า base class render `rounded-full` → JSDoc ต้องเป็น `@default 'full'`
+`@default 'md'` in `.variants.ts` คือ **promise** to user ว่า `<Component>` (no props) ใช้ radius=md. ถ้า base class render `rounded-full` แสดงว่า JSDoc ต้องเป็น `@default 'full'`
 
 ```tsx
-/* ❌ JSDoc ลอก promise */
+/* BAD: JSDoc ลอก promise */
 /** @default 'md' */ radius?: ...;
-// but base class uses rounded-full → actual default is 'full'
+// but base class uses rounded-full -> actual default is 'full'
 
-/* ✅ JSDoc สะท้อนความจริง */
+/* OK: JSDoc สะท้อนความจริง */
 /** @default 'full' */ radius?: ...;  // matches base
 ```
 
 ### Why this matters
 
 - **Plain HTML consumer** (WP/PHP): user writes `<button class="button">` — base class is only source of defaults
-- **React consumer**: `<Button>` with no props → classes() skips modifier (no class added) → base class wins
-- ถ้า drift → React default behavior ≠ plain HTML default behavior → **violates 1:1 parity promise**
+- **React consumer**: `<Button>` with no props causes classes() to skip modifier (no class added), base class wins
+- ถ้า drift จะทำให้ React default behavior != plain HTML default behavior ซึ่ง **violates 1:1 parity promise**
 
 ### Grep audit
 ```bash
@@ -128,19 +128,19 @@ grep -nE '^\s*\.\w+\s*\{|@apply.*rounded-(sm\|md\|lg)\b' packages/styles/src/com
 ## class-naming Class Naming
 
 ```text
-variant  → value only:   .{name}--primary
-size     → key-value:    .{name}--size-md
-radius   → key-value:    .{name}--radius-lg
-boolean  → key only:     .{name}--disabled
-element  → double under: .{name}__spinner
+variant  -> value only:   .{name}--primary
+size     -> key-value:    .{name}--size-md
+radius   -> key-value:    .{name}--radius-lg
+boolean  -> key only:     .{name}--disabled
+element  -> double under: .{name}__spinner
 ```
 
 ## Focus Ring (WCAG AAA two-color)
 
 ```text
---color-focus-outer    → outline color (neutral-950 / neutral-50)
---color-focus-inner    → ring color (white / neutral-950)
---outline-offset-focus → 2px (customizable)
+--color-focus-outer    -> outline color (neutral-950 / neutral-50)
+--color-focus-inner    -> ring color (white / neutral-950)
+--outline-offset-focus -> 2px (customizable)
 ```
 
 ```css
@@ -151,7 +151,7 @@ element  → double under: .{name}__spinner
 
 ### Mutually Exclusive Focus States
 
-**`data-focused` ≠ `data-focus-visible`** — ห้ามรวมกัน ต้องแยก 2 state ชัด:
+**`data-focused` != `data-focus-visible`** — ห้ามรวมกัน ต้องแยก 2 state ชัด:
 
 | State | Selector | Style | Trigger |
 |-------|----------|-------|---------|
@@ -161,7 +161,7 @@ element  → double under: .{name}__spinner
 Use `:not()` to **exclude** keyboard from mouse rule:
 
 ```css
-/* ✅ Input pattern — 2 exclusive states */
+/* OK: Input pattern — 2 exclusive states */
 .input {
   /* Mouse click only — NOT keyboard */
   &:has(:focus:not(:focus-visible)),
@@ -177,10 +177,10 @@ Use `:not()` to **exclude** keyboard from mouse rule:
 }
 ```
 
-**❌ ห้าม** — รวม 2 state ให้ stack กัน:
+**BAD: ห้าม** — รวม 2 state ให้ stack กัน:
 
 ```css
-/* ❌ Keyboard จะได้ทั้ง border + ring = noise */
+/* BAD: Keyboard จะได้ทั้ง border + ring = noise */
 &:has([data-focused]) { @apply border-(...) }
 &:has([data-focus-visible]) { @apply focus-ring; }
 ```
@@ -188,7 +188,7 @@ Use `:not()` to **exclude** keyboard from mouse rule:
 **Button-like components** (buttons, links) = keyboard-only, ไม่มี persistent focus state:
 
 ```css
-/* ✅ Button pattern */
+/* OK: Button pattern */
 .button {
   &:focus-visible,
   &[data-focus-visible] {
@@ -198,20 +198,20 @@ Use `:not()` to **exclude** keyboard from mouse rule:
 ```
 
 **Why?**
-- **Input** — holds focus while typing → needs visual feedback, but keyboard should have own clear indicator (ring, not border)
-- **Button** — focus momentary → only needs keyboard a11y indicator
+- **Input** — holds focus while typing, needs visual feedback, but keyboard should have own clear indicator (ring, not border)
+- **Button** — focus momentary, only needs keyboard a11y indicator
 
 **Rules:**
-1. `[data-focused]:not([data-focus-visible])` = mouse only → border change
-2. `[data-focus-visible]` = keyboard only → focus-ring
+1. `[data-focused]:not([data-focus-visible])` = mouse only, triggers border change
+2. `[data-focus-visible]` = keyboard only, triggers focus-ring
 3. ห้ามใช้ selector เดียวครอบทั้ง 2 state (เช่น `[data-focused]` ตัวเดียว จะ match ทั้ง mouse + keyboard)
 
 ## Icon Slots
 
 ```text
-slot="icon-start"  → icon left, reduces pl to py value
-slot="icon-end"    → icon right, reduces pr to py value
-slot="icon"        → icon-only (center, no text)
+slot="icon-start"  -> icon left, reduces pl to py value
+slot="icon-end"    -> icon right, reduces pr to py value
+slot="icon"        -> icon-only (center, no text)
 ```
 
 ```css
@@ -228,7 +228,7 @@ slot="icon"        → icon-only (center, no text)
 - Use `[calc(...)]` bracket syntax with formula — see `formula.md`
 - Use semantic tokens via `var()` — never raw Tailwind colors
 - Component CSS references semantic tokens only (Layer 2) — never `--color-*` palette (Layer 1)
-- Semantic tokens reference palette directly — never chain semantic → semantic
+- Semantic tokens reference palette directly — never chain semantic through another semantic
 - All spacing in rem — never px (except border 1px)
 - Interactive: wrap hover in `@media (hover: hover)`
 - Interactive: include `motion-reduce:transition-none`
@@ -246,7 +246,7 @@ slot="icon"        → icon-only (center, no text)
 **ห้าม** ใช้ `transition-colors` ถ้า component มี `ring-*` / `shadow-*` ใน state — ring จะไม่ animate smooth
 
 ```css
-/* ❌ Ring/shadow ไม่ fade smooth */
+/* BAD: Ring/shadow ไม่ fade smooth */
 .input {
   @apply transition-colors duration-(--duration-hover);
   &:has([data-focused]) {
@@ -254,19 +254,19 @@ slot="icon"        → icon-only (center, no text)
   }
 }
 
-/* ✅ ทุกอย่าง smooth */
+/* OK: ทุกอย่าง smooth */
 .input {
   @apply transition duration-(--duration-hover);
 }
 ```
 
-**Rule:** ถ้า interactive component ใช้ `ring-*`, `shadow-*`, `scale-*`, `-translate-*` ใน state change → ใช้ `transition` ไม่ใช่ `transition-colors`
+**Rule:** ถ้า interactive component ใช้ `ring-*`, `shadow-*`, `scale-*`, `-translate-*` ใน state change ให้ใช้ `transition` ไม่ใช่ `transition-colors`
 
 ## State Priority (cascade order)
 
 เมื่อหลาย state match พร้อมกัน ต้องมี priority ชัด — ไม่ให้ hover override focus/pressed
 
-**Priority (สูง → ต่ำ):** `disabled` > `readonly` > `pressed` > `focus` > `hover` > `idle`
+**Priority (สูงไปต่ำ):** `disabled` > `readonly` > `pressed` > `focus` > `hover` > `idle`
 
 ### Rules
 
@@ -274,7 +274,7 @@ slot="icon"        → icon-only (center, no text)
 2. **`:active` / `[data-pressed]` must come AFTER `:hover` / `[data-hovered]`** ใน CSS (cascade order) เพื่อ pressed override hover
 3. **`disabled` / `readonly` excludes hover entirely** — non-interactive
 
-### Pattern ✅ (dual selector)
+### Pattern OK (dual selector)
 
 ```css
 /* Exclude focused/pressed from hover */
@@ -306,19 +306,19 @@ slot="icon"        → icon-only (center, no text)
 }
 ```
 
-### Pattern ❌ — specificity trap
+### Pattern BAD — specificity trap
 
 ```css
-/* Hover rule has HIGHER specificity (2 :not) → wins over focus */
+/* Hover rule has HIGHER specificity (2 :not) -> wins over focus */
 &:has([data-hovered]):not(:has([data-readonly])):not(:has([data-disabled])) {
-  @apply border-hover;   /* ← wins */
+  @apply border-hover;   /* <- wins */
 }
 &:has([data-focused]) {
-  @apply border-focus;   /* ← LOSES due to lower specificity */
+  @apply border-focus;   /* <- LOSES due to lower specificity */
 }
 ```
 
-**แก้:** add exclusions to hover rule → same or higher specificity needed on winning rule.
+**แก้:** add exclusions to hover rule, same or higher specificity needed on winning rule.
 
 ## Dual Selector — Native pseudo-class + React Aria data-attr
 
@@ -425,11 +425,11 @@ slot="icon"        → icon-only (center, no text)
 
 | Pseudo | Self-only | Propagates to ancestors |
 |--------|-----------|-------------------------|
-| `:hover` | - | ✅ ใช้คลุมทั้ง wrapper + self ได้ |
-| `:focus-within` | - | ✅ matches both self + wrapper-with-focused-descendant |
-| `:focus`, `:focus-visible` | ✅ | - ต้อง `:has()` สำหรับ wrapper |
-| `:disabled`, `:read-only`, `:required`, `:invalid` | ✅ | - ต้อง `:has()` สำหรับ wrapper |
-| `[aria-invalid="true"]` | ✅ (attr) | - ต้อง `:has()` สำหรับ wrapper |
+| `:hover` | - | OK ใช้คลุมทั้ง wrapper + self ได้ |
+| `:focus-within` | - | OK matches both self + wrapper-with-focused-descendant |
+| `:focus`, `:focus-visible` | OK | - ต้อง `:has()` สำหรับ wrapper |
+| `:disabled`, `:read-only`, `:required`, `:invalid` | OK | - ต้อง `:has()` สำหรับ wrapper |
+| `[aria-invalid="true"]` | OK (attr) | - ต้อง `:has()` สำหรับ wrapper |
 
 **ใช้ `:focus-within` แทน `:has(:focus)` + `:focus`** — consolidate 1 selector ครอบ 2 mode
 
@@ -447,7 +447,7 @@ slot="icon"        → icon-only (center, no text)
 
 ### Native vs React Aria ชนกันไหม?
 
-ไม่ชน — style เหมือนกันใน 2 selector. React Aria ตั้ง `data-hovered` เพิ่ม cross-device logic (touch/keyboard) ขณะที่ native `:hover` ก็ fire จาก browser พร้อมกัน. ใน React app ทั้ง 2 match พร้อมกัน → apply same style. ใน plain HTML มีแค่ native pseudo-class fire
+ไม่ชน — style เหมือนกันใน 2 selector. React Aria ตั้ง `data-hovered` เพิ่ม cross-device logic (touch/keyboard) ขณะที่ native `:hover` ก็ fire จาก browser พร้อมกัน. ใน React app ทั้ง 2 match พร้อมกัน จึง apply same style. ใน plain HTML มีแค่ native pseudo-class fire
 
 ### Rules
 
@@ -473,10 +473,10 @@ grep -nE '\[data-(hovered|focused|focus-visible|pressed|disabled|readonly|requir
 classes({
   block: "input",
   modifiers: {
-    variant,    // ✅ own variant
-    size,       // ✅ own size
-    radius,     // ✅ own radius
-    // ❌ ไม่ใส่ state (React Aria handles via data-attr, CSS already handles native pseudo-class)
+    variant,    // OK: own variant
+    size,       // OK: own size
+    radius,     // OK: own radius
+    // BAD: ไม่ใส่ state (React Aria handles via data-attr, CSS already handles native pseudo-class)
   },
 })
 ```
@@ -490,25 +490,25 @@ Tailwind v4 `@theme static` generate utility class ให้ทุก semantic t
 | **Utility-style** (preferred) | theme tokens (Layer 2 semantic) | `text-foreground`, `bg-primary`, `border-danger`, `ring-focus-inner` |
 | **Var-syntax `bg-(--X)`** | Component-local CSS vars (Layer 3) | `bg-(--input-bg)`, `border-(--button-bg-hover)` |
 
-**❌ ห้าม — ซ้ำซ้อนกับ utility ที่มีอยู่แล้ว:**
+**BAD: ห้าม — ซ้ำซ้อนกับ utility ที่มีอยู่แล้ว:**
 ```css
-@apply text-(--color-foreground);     /* ❌ var-syntax for theme token */
-@apply bg-(--color-primary);           /* ❌ */
-@apply border-(--color-danger);        /* ❌ */
+@apply text-(--color-foreground);     /* BAD: var-syntax for theme token */
+@apply bg-(--color-primary);           /* BAD: */
+@apply border-(--color-danger);        /* BAD: */
 ```
 
-**✅ ใช้ utility-style:**
+**OK: ใช้ utility-style:**
 ```css
 @apply text-foreground;
 @apply bg-primary;
 @apply border-danger;
 ```
 
-**✅ Var-syntax ใช้ได้กับ component-local var เท่านั้น:**
+**OK: Var-syntax ใช้ได้กับ component-local var เท่านั้น:**
 ```css
 .input {
   --input-bg: var(--color-field);
-  @apply bg-(--input-bg);            /* ✅ local var indirection */
+  @apply bg-(--input-bg);            /* OK: local var indirection */
 }
 ```
 
@@ -524,36 +524,36 @@ grep -nE '(bg|text|border|ring|ring-offset)-\(--color-' packages/styles/src/comp
 ```
 ถ้าเจอ = violation (should be utility-style)
 
-## ❌ No Magic Values
+## No Magic Values
 
 **ห้ามเด็ดขาด** — ค่า rem/decimal ที่ไม่มีที่มา ใน component CSS:
 
 ```css
-/* ❌ Raw rem — no source of truth */
+/* BAD: Raw rem — no source of truth */
 .X {
   --X-base: 0.8rem;      /* magic */
   --X-spacing: 0.625;    /* magic scalar */
   margin-left: -14px;        /* magic px */
 }
 
-/* ✅ Tailwind @apply utility */
+/* OK: Tailwind @apply utility */
 .X { @apply -ms-3.5; }
 
-/* ✅ Formula with known constants */
+/* OK: Formula with known constants */
 .X { @apply py-[calc(1rem/2.058)]; }  /* golden ratio from formula.md */
 
-/* ✅ Tailwind spacing token in calc */
+/* OK: Tailwind spacing token in calc */
 .X { --X-base: calc(var(--spacing) * 8); }  /* = size-8 */
 
-/* ✅ Explicit fraction (intent clear) */
+/* OK: Explicit fraction (intent clear) */
 .X { --X-ratio: calc(3 / 8); }  /* 37.5% — documented intent */
 ```
 
 **Decision tree:**
-1. Is there a Tailwind utility for this? → use `@apply -ms-N`, `@apply py-4`, etc.
-2. Is it golden ratio spacing? → use formula from `formula.md`
-3. Need CSS var for dynamic calc? → use `var(--spacing) * N` where N matches Tailwind scale
-4. Need a ratio? → use explicit fraction `calc(A / B)` with comment showing percentage
+1. Is there a Tailwind utility for this? Use `@apply -ms-N`, `@apply py-4`, etc.
+2. Is it golden ratio spacing? Use formula from `formula.md`
+3. Need CSS var for dynamic calc? Use `var(--spacing) * N` where N matches Tailwind scale
+4. Need a ratio? Use explicit fraction `calc(A / B)` with comment showing percentage
 
 **Why dangerous:**
 - Magic values drift — no way to audit consistency
@@ -564,11 +564,11 @@ grep -nE '(bg|text|border|ring|ring-offset)-\(--color-' packages/styles/src/comp
 ## Utilities
 
 ```text
-focus-ring      → two-color focus (WCAG AAA)
-status-disabled → opacity + cursor + pointer-events (canonical disabled visual)
-status-pending  → pointer-events-none
-no-highlight    → -webkit-tap-highlight-color
-size-match-font → 1em × 1em (icon sizing)
+focus-ring      -> two-color focus (WCAG AAA)
+status-disabled -> opacity + cursor + pointer-events (canonical disabled visual)
+status-pending  -> pointer-events-none
+no-highlight    -> -webkit-tap-highlight-color
+size-match-font -> 1em x 1em (icon sizing)
 ```
 
 ### `status-disabled` is canonical — ห้ามเขียน raw
@@ -576,12 +576,12 @@ size-match-font → 1em × 1em (icon sizing)
 ทุก disabled rule (native `:disabled`, `[aria-disabled="true"]`, `[data-disabled]`, `--disabled` modifier) **ต้อง** ใช้ `@apply status-disabled` — ห้ามเขียน `@apply pointer-events-none opacity-50` ตรงๆ:
 
 ```css
-/* ❌ Raw disabled — ขาด cursor-not-allowed, drift กับ component อื่น */
+/* BAD: Raw disabled — ขาด cursor-not-allowed, drift กับ component อื่น */
 &[data-disabled] {
   @apply pointer-events-none opacity-50;
 }
 
-/* ✅ Canonical — ใช้ utility เดียวทั่วทั้ง library */
+/* OK: Canonical — ใช้ utility เดียวทั่วทั้ง library */
 &[data-disabled] {
   @apply status-disabled;
 }

@@ -47,6 +47,12 @@ export interface VariantPropInfo {
   name: string;
 }
 
+export interface ArgTypeDescription {
+  description: string;
+  line: number;
+  propName: string;
+}
+
 function loadSource({ file }: Readonly<LoadSourceParams>): SourceFile | undefined {
   if (!fs.existsSync(file)) return undefined;
 
@@ -220,6 +226,51 @@ function getAllStringLiterals({ storiesFile }: Readonly<StoryFileParams>): strin
   return source.getDescendantsOfKind(SyntaxKind.StringLiteral).map((literal) => literal.getLiteralText());
 }
 
+function getMetaArgTypeDescriptions({ storiesFile }: Readonly<StoryFileParams>): ArgTypeDescription[] {
+  const source = loadSource({ file: storiesFile });
+
+  if (!source) return [];
+
+  const metaObject = findMetaObject(source);
+
+  if (!Node.isObjectLiteralExpression(metaObject)) return [];
+
+  const argTypesProp = metaObject.getProperty("argTypes");
+
+  if (!Node.isPropertyAssignment(argTypesProp)) return [];
+
+  const argTypesObject = argTypesProp.getInitializer();
+
+  if (!Node.isObjectLiteralExpression(argTypesObject)) return [];
+
+  const results: ArgTypeDescription[] = [];
+
+  for (const argTypeProp of argTypesObject.getProperties()) {
+    if (!Node.isPropertyAssignment(argTypeProp)) continue;
+
+    const propName = argTypeProp.getName();
+    const config = argTypeProp.getInitializer();
+
+    if (!Node.isObjectLiteralExpression(config)) continue;
+
+    const descriptionProp = config.getProperty("description");
+
+    if (!Node.isPropertyAssignment(descriptionProp)) continue;
+
+    const descriptionInit = descriptionProp.getInitializer();
+
+    if (!Node.isStringLiteral(descriptionInit) && !Node.isNoSubstitutionTemplateLiteral(descriptionInit)) continue;
+
+    results.push({
+      description: descriptionInit.getLiteralText(),
+      line: descriptionInit.getStartLineNumber(),
+      propName,
+    });
+  }
+
+  return results;
+}
+
 function isComponentDisplayNameAssignment({ pascal, statement }: Readonly<DisplayNameAssignmentParams>): boolean {
   if (!Node.isExpressionStatement(statement)) return false;
 
@@ -245,6 +296,7 @@ export {
   getAllStringLiterals,
   getClassNameStringLiterals,
   getComponentVariableDeclaration,
+  getMetaArgTypeDescriptions,
   getStoryNames,
   getVariantsInterfaceProps,
   isComponentDisplayNameAssignment,

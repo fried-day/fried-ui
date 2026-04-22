@@ -29,7 +29,7 @@ const meta = {
       control: "select",
       options: ["sm", "md", "lg"],
       description:
-        "Wrapper gap scale between stacked slots (Label → Input → Description → FieldError). **Scale:** sm (dense gap, 0.75rem/2.058), md (standard gap, 0.875rem/2.058, default), lg (generous gap, 1rem/2.058). **Note:** This controls ONLY the vertical spacing between slots — child slots keep their own typography via their individual `size` prop. Use sm for table cells and compact filter bars, md for standard forms, lg for hero/landing flows where field spacing should read generous.",
+        "Wrapper gap scale between stacked slots (Label, Input, Description, FieldError). **Scale:** sm (dense gap, 0.75rem/2.058), md (standard gap, 0.875rem/2.058, default), lg (generous gap, 1rem/2.058). **Note:** This controls ONLY the vertical spacing between slots — child slots keep their own typography via their individual `size` prop. Use sm for table cells and compact filter bars, md for standard forms, lg for hero/landing flows where field spacing should read generous.",
       table: {
         type: { summary: '"sm" | "md" | "lg"' },
         defaultValue: { summary: "md" },
@@ -116,6 +116,7 @@ const Basic = () => {
     <TextField>
       <Label>Field label</Label>
       <Input placeholder="Type here" />
+      <Description>Help text describing the field</Description>
     </TextField>
   );
 };`,
@@ -126,6 +127,7 @@ const Basic = () => {
     <TextField {...args}>
       <Label>Field label</Label>
       <Input placeholder="Type here" />
+      <Description>Help text describing the field</Description>
     </TextField>
   ),
 };

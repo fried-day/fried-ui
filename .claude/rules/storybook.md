@@ -31,7 +31,7 @@ No `docs.description` — removed.
 - `control: "boolean"` for boolean props
 - `control: "text"` for string props
 - `control: false` for event handlers
-- Category order: **Children → Style Variants → State → Events → Styling**
+- Category order: **Children then Style Variants then State then Events then Styling**
 
 ## argType Description Pattern (enum props)
 
@@ -114,12 +114,12 @@ Add per component: WithIcon, IconOnly, FullWidth, Disabled, Pending, RenderProps
 **Hover/focus/pressed** states — user interact ด้วยเอง ใน Default story (ไม่ต้องแยก story)
 
 **Storybook test quick check:**
-- Click input → border เข้มขึ้น (ไม่มี ring)
-- Tab into input → ring ปรากฏ (border เดิม)
-- Click button → bg-pressed (override bg-hover)
-- Hover focused input → focus wins (no hover border change)
+- Click input ทำให้ border เข้มขึ้น (ไม่มี ring)
+- Tab into input ทำให้ ring ปรากฏ (border เดิม)
+- Click button ทำให้ bg-pressed (override bg-hover)
+- Hover focused input ทำให้ focus wins (no hover border change)
 
-ถ้า storybook demo ไม่ตรงกับที่คาด → มี bug ใน CSS cascade/specificity — ดู `.claude/rules/styles.md` "State Priority" + "Mutually Exclusive Focus States"
+ถ้า storybook demo ไม่ตรงกับที่คาด แสดงว่ามี bug ใน CSS cascade/specificity — ดู `.claude/rules/styles.md` "State Priority" + "Mutually Exclusive Focus States"
 
 ## Icon Examples
 
@@ -141,7 +141,7 @@ Use slot attributes for icon positioning:
 - Render: `(args): React.JSX.Element =>`
 - Multi-line siblings: empty line between
 - Single-line siblings: NO empty line
-- Prop order: strings → hyphenated → expressions → shorthand booleans
+- Prop order: strings, then hyphenated, then expressions, then shorthand booleans
 - Named exports BEFORE `export default meta`
 
 ## Containers
@@ -149,19 +149,19 @@ Use slot attributes for icon positioning:
 **Default = horizontal row with flex-wrap.** Variant comparison stories ต้องแสดง side-by-side (horizontal eye scan) แต่ต้องรองรับ responsive — ตกบรรทัดเมื่อย่อจอ
 
 ```tsx
-/* ✅ Horizontal + responsive wrap (preferred) */
+/* OK: Horizontal + responsive wrap (preferred) */
 <div className="flex flex-wrap items-center gap-4">
   <X variant="primary" />
   <X variant="secondary" />
 </div>
 
-/* ✅ Horizontal (items อยู่แถวเดียวพอดี — ไม่ต้อง wrap) */
+/* OK: Horizontal (items อยู่แถวเดียวพอดี — ไม่ต้อง wrap) */
 <div className="flex items-center gap-4">
 
-/* ❌ Vertical column — ห้ามใช้ใน variant comparison */
+/* BAD: Vertical column — ห้ามใช้ใน variant comparison */
 <div className="flex flex-col gap-4">
 
-/* ❌ Horizontal without wrap when variants ≥ 5 — overflow viewport on mobile */
+/* BAD: Horizontal without wrap when variants >= 5 — overflow viewport on mobile */
 <div className="flex items-center gap-4"> {/* 10 variants */}
 ```
 
@@ -171,8 +171,8 @@ Use slot attributes for icon positioning:
 - Bad UX เมื่อมี 5+ ตัว (หน้ายาวเกิน)
 
 **เหตุผลต้อง `flex-wrap`**:
-- Desktop → 1 แถว horizontal (optimal eye scan)
-- Mobile/narrow → ตกบรรทัดอัตโนมัติ (no horizontal scroll, no overflow)
+- Desktop แสดง 1 แถว horizontal (optimal eye scan)
+- Mobile/narrow จะตกบรรทัดอัตโนมัติ (no horizontal scroll, no overflow)
 - แก้ปัญหา viewport ไม่พอเก็บ variants ครบ
 
 **ยกเว้น** — `flex-col` OK เฉพาะกรณี:
@@ -180,7 +180,7 @@ Use slot attributes for icon positioning:
 - **Responsive conditional** `md:flex-col` (breakpoint-prefixed) — allowed
 - **Container nested content** (เช่น Card.Header + Body + Footer) — ไม่ใช่ variant comparison
 
-**Enforced by test:** `packages/react/src/tests/llm-audit.test.ts` — grep fails build ถ้าเจอ `flex-col` นอก FullWidth story
+**Enforced by test:** `packages/react/src/tests/audit/stories.test.ts` (AST-based, ts-morph) — build fails if `flex-col` appears on JSX `className` attribute outside FullWidth story
 
 **alignment:**
 - `items-center` — avatars, badges (center-aligned icon+text)

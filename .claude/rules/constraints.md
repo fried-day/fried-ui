@@ -7,7 +7,7 @@ paths:
 
 # Constraints
 
-## Typography Scale: √φ (1.272) ไม่ใช่ φ
+## Typography Scale: sqrtφ (1.272) ไม่ใช่ φ
 
 ```text
 n=0: 16px (base)
@@ -16,10 +16,10 @@ n=2: 26px (heading)
 n=3: 33px (display)
 ```
 
-## Body Text Line-height: x × φ
+## Body Text Line-height: x x φ
 
-Single-line (Button) → `leading-none`
-Paragraph → `line-height = x × φ` → 16px font = `leading-7` (28px)
+Single-line (Button) ใช้ `leading-none`
+Paragraph ใช้ `line-height = x x φ` ดังนั้น 16px font = `leading-7` (28px)
 
 ## Borders: ล็อก 1px
 
@@ -34,14 +34,14 @@ grid-template-columns: 1fr 1.618fr;
 
 ## Touch Target (WCAG 2.5.5)
 
-Mobile (< 768px) ทุก clickable ต้องมี hit area ≥ 44×44px
+Mobile (< 768px) ทุก clickable ต้องมี hit area >= 44x44px
 ใช้ `::after` pseudo-element ขยายแบบโปร่งใส
 
 ## Responsive Collapse
 
 ```text
-Desktop: container padding = x × φ → p-6
-Mobile:  container padding = x     → p-4
+Desktop: container padding = x x φ -> p-6
+Mobile:  container padding = x     -> p-4
 ```
 
 ## Icon Scale

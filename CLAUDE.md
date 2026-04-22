@@ -74,7 +74,7 @@ packages/react/src/
       component.test.ts     # JSDoc, destructure, displayName
       coverage.test.ts      # 5-file presence + parity inclusion
       css.test.ts           # outline/soft/ghost border tokens
-      parity.test.tsx       # React defaults → plain HTML class parity
+      parity.test.tsx       # React defaults -> plain HTML class parity
       stories.test.ts       # meta, source.code, no domain words, flex-col
       variants.test.ts      # JSDoc @default, "Whether the", no @example
     helpers/                # Shared test infrastructure (ast, components, css)
@@ -122,13 +122,14 @@ When adding a new component, add its export entry to `packages/react/package.jso
 ### Key Patterns
 
 - **Client components**: Add `"use client"` directive for interactive components
-- **TypeScript config chain**: `@repo/quality/tsconfig/base.json` → `react-library.json` (UI lib) or `nextjs.json` (apps)
+- **TypeScript config chain**: `@repo/quality/tsconfig/base.json` extends to `react-library.json` (UI lib) or `nextjs.json` (apps)
 - **ESLint**: Apps use `@repo/quality/eslint/next-js` config, UI package uses `@repo/quality/eslint/react-internal` config. Configs use factory functions (`createConfig`, `createReactConfig`, `createNextJsConfig`)
 - **No `eslint-disable`**: Never use `eslint-disable` comments or turn off rules to suppress warnings. Always fix the source code to satisfy the rule
 - **No `@ts-nocheck`**: Never use `// @ts-nocheck`, `// @ts-ignore`, or `// @ts-expect-error`. Always fix the actual type error
 - **`classes()` class generator**: Import from `@fried-ui/react/utils/classes`. Signature is `classes({ block, modifiers, className })` — `className` folds in as the 3rd param. **Never** wrap with outer `clsx(classes(...), className)` — that was the old pattern. `clsx` is only needed inside `composeRenderProps` for interactive components with render-prop `className` (e.g. `Button`).
 - **`useFieldState(props)` hook**: Field subcomponents (`Label`, `Description`, `FieldError`, and future TextField children) must use `useFieldState(props)` from `../text-field/use-field-state` to read `TextFieldContext` + prop-override. Never call `useContext(TextFieldContext)` directly in the subcomponent.
 - **`@apply status-disabled` for disabled styling**: The canonical disabled utility (defined in `packages/styles/src/utilities/status.css`). Expands to `pointer-events-none cursor-(--cursor-disabled) opacity-(--disabled-opacity)`. Never write raw `@apply pointer-events-none opacity-50` — missing `cursor-not-allowed` causes visual drift.
+- **Words over symbols in prose**: Never use `->`, `<-`, `=>` or emoji in documentation prose, JSDoc, or comments — they are Overloaded Tokens that cause LLM hallucination. Use explicit words ("leads to", "maps to", "transitions to", "derives from"). Math formulas and code fences are exempt. See `.claude/rules/writing.md`.
 - **Workspace deps**: `workspace:*` protocol
 - **Turbo tasks**: `build`, `lint`, `check-types`, `test` have `dependsOn: ["^<task>"]`. `dev` is persistent/uncached.
 - **Build**: `@fried-ui/react` uses tsup (ESM-only, .mjs output, external react/react-dom/tailwindcss)

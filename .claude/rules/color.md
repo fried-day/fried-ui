@@ -12,8 +12,8 @@ paths:
 Hover/Active ใช้ Tailwind palette step ที่มืดลงจาก base:
 
 ```text
-Hover  = base + 1 step (เช่น 500 → 600)
-Active = base + 2 steps (เช่น 500 → 700)
+Hover  = base + 1 step (เช่น 500 -> 600)
+Active = base + 2 steps (เช่น 500 -> 700)
 ```
 
 ทั้ง light mode และ dark mode ใช้ทิศทางเดียวกัน — มืดลงเสมอ
@@ -21,8 +21,8 @@ Active = base + 2 steps (เช่น 500 → 700)
 ## Contrast Auto-switch (WCAG 2.1)
 
 ```text
-L < 0.6  → foreground = white
-L ≥ 0.6  → foreground = gray-900/neutral-950
+L < 0.6  -> foreground = white
+L >= 0.6  -> foreground = gray-900/neutral-950
 ```
 
 ## Semantic Tokens Only
