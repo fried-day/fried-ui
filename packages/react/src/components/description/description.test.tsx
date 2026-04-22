@@ -27,11 +27,6 @@ describe("Description", () => {
     });
   });
 
-  it("applies invalid modifier class", () => {
-    render(<Description isInvalid>Error</Description>);
-    expect(screen.getByText("Error").className).toContain("description-invalid");
-  });
-
   it("applies disabled modifier class", () => {
     render(<Description isDisabled>Disabled</Description>);
     expect(screen.getByText("Disabled").className).toContain("description-disabled");

@@ -5,7 +5,6 @@ import type { ComponentPropsWithRef } from "react";
 import { Label as AriaLabel } from "react-aria-components";
 
 import { classes } from "../../utils/classes";
-import { useFieldState } from "../field/use-field-state";
 
 import type { LabelVariantsProps } from "./label.variants";
 
@@ -18,8 +17,7 @@ export type LabelProps = LabelVariantsProps & {
  * Use `isRequired` to show the asterisk or `optionalMessage` to mark optional fields.
  */
 const Label = (props: Readonly<LabelProps>) => {
-  const { children, className, optionalMessage, ref, size, weight, ...rest } = props;
-  const { isDisabled, isInvalid, isRequired } = useFieldState(props);
+  const { children, className, isDisabled, isInvalid, isRequired, optionalMessage, ref, size, weight, ...rest } = props;
 
   const labelClassName = classes({
     block: "label",

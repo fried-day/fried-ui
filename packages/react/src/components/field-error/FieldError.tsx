@@ -5,7 +5,6 @@ import type { ComponentPropsWithRef } from "react";
 import { FieldError as AriaFieldError } from "react-aria-components";
 
 import { classes } from "../../utils/classes";
-import { useFieldState } from "../field/use-field-state";
 
 import type { FieldErrorVariantsProps } from "./field-error.variants";
 
@@ -17,8 +16,7 @@ export type FieldErrorProps = FieldErrorVariantsProps & {
  * An error message for a form field. Renders inside TextField (or similar) and auto-shows when the field is invalid.
  */
 const FieldError = (props: Readonly<FieldErrorProps>) => {
-  const { children, className, ref, size, ...rest } = props;
-  const { isDisabled } = useFieldState(props);
+  const { children, className, isDisabled, ref, size, ...rest } = props;
 
   const fieldErrorClassName = classes({
     block: "field-error",
