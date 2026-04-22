@@ -6,5 +6,5 @@ export interface AvatarVariantsProps {
   /** Colored ring around the avatar (status indicator). @default undefined */
   ring?: "primary" | "secondary" | "accent" | "success" | "warning" | "danger" | "info";
   /** Size scale. @default 'md' */
-  size?: "sm" | "md" | "lg" | "xl" | "2xl";
+  size?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 }

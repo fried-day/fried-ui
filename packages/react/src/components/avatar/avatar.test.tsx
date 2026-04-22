@@ -28,7 +28,7 @@ describe("Avatar", () => {
   });
 
   it("applies all size classes", () => {
-    const sizes = ["sm", "md", "lg", "xl", "2xl"] as const;
+    const sizes = ["xs", "sm", "md", "lg", "xl", "2xl"] as const;
 
     sizes.forEach((size) => {
       const { container, unmount } = render(

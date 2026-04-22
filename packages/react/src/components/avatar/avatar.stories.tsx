@@ -50,10 +50,10 @@ const meta = {
     },
     size: {
       control: "select",
-      options: ["sm", "md", "lg", "xl", "2xl"],
+      options: ["xs", "sm", "md", "lg", "xl", "2xl"],
       description: "The size of the avatar",
       table: {
-        type: { summary: '"sm" | "md" | "lg" | "xl" | "2xl"' },
+        type: { summary: '"xs" | "sm" | "md" | "lg" | "xl" | "2xl"' },
         defaultValue: { summary: "md" },
         category: "Style Variants",
       },
@@ -181,29 +181,34 @@ const Sizes: Story = {
 const Sizes = () => {
   return (
     <div className="flex items-end gap-4">
-      <Avatar size="sm">
+      <Avatar size="xs">
         <AvatarImage alt="Avatar 1" src="${SAMPLE_SRC_1}" />
         <AvatarFallback>A1</AvatarFallback>
       </Avatar>
 
-      <Avatar size="md">
+      <Avatar size="sm">
         <AvatarImage alt="Avatar 2" src="${SAMPLE_SRC_2}" />
         <AvatarFallback>A2</AvatarFallback>
       </Avatar>
 
-      <Avatar size="lg">
+      <Avatar size="md">
         <AvatarImage alt="Avatar 3" src="${SAMPLE_SRC_3}" />
         <AvatarFallback>A3</AvatarFallback>
       </Avatar>
 
-      <Avatar size="xl">
+      <Avatar size="lg">
         <AvatarImage alt="Avatar 4" src="${SAMPLE_SRC_4}" />
         <AvatarFallback>A4</AvatarFallback>
       </Avatar>
 
-      <Avatar size="2xl">
+      <Avatar size="xl">
         <AvatarImage alt="Avatar 5" src="${SAMPLE_SRC_5}" />
         <AvatarFallback>A5</AvatarFallback>
+      </Avatar>
+
+      <Avatar size="2xl">
+        <AvatarImage alt="Avatar 6" src="${SAMPLE_SRC_6}" />
+        <AvatarFallback>A6</AvatarFallback>
       </Avatar>
     </div>
   );
@@ -213,29 +218,34 @@ const Sizes = () => {
   },
   render: (args): React.JSX.Element => (
     <div className="flex items-end gap-4">
-      <Avatar {...args} size="sm">
+      <Avatar {...args} size="xs">
         <AvatarImage alt="Avatar 1" src={SAMPLE_SRC_1} />
         <AvatarFallback>A1</AvatarFallback>
       </Avatar>
 
-      <Avatar {...args} size="md">
+      <Avatar {...args} size="sm">
         <AvatarImage alt="Avatar 2" src={SAMPLE_SRC_2} />
         <AvatarFallback>A2</AvatarFallback>
       </Avatar>
 
-      <Avatar {...args} size="lg">
+      <Avatar {...args} size="md">
         <AvatarImage alt="Avatar 3" src={SAMPLE_SRC_3} />
         <AvatarFallback>A3</AvatarFallback>
       </Avatar>
 
-      <Avatar {...args} size="xl">
+      <Avatar {...args} size="lg">
         <AvatarImage alt="Avatar 4" src={SAMPLE_SRC_4} />
         <AvatarFallback>A4</AvatarFallback>
       </Avatar>
 
-      <Avatar {...args} size="2xl">
+      <Avatar {...args} size="xl">
         <AvatarImage alt="Avatar 5" src={SAMPLE_SRC_5} />
         <AvatarFallback>A5</AvatarFallback>
+      </Avatar>
+
+      <Avatar {...args} size="2xl">
+        <AvatarImage alt="Avatar 6" src={SAMPLE_SRC_6} />
+        <AvatarFallback>A6</AvatarFallback>
       </Avatar>
     </div>
   ),

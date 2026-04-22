@@ -215,6 +215,8 @@
   --color-field-plain-border-focus: oklch(0% 0 0);
   --color-field-plain-foreground: oklch(0% 0 0);
   --color-field-plain-placeholder: var(--color-fri-neutral-500);
+  --color-field-slot: transparent;
+  --color-field-slot-border: transparent;
 
   --color-avatar: var(--color-fri-neutral-50);
   --color-avatar-foreground: var(--color-fri-neutral-700);
@@ -268,6 +270,9 @@
   --color-scrim-active: oklch(0% 0 0 / 0.85);
   --color-scrim-border: oklch(100% 0 0 / 0.2);
   --color-scrim-foreground: oklch(100% 0 0);
+
+  /* Generic transparent slot token for any component variant that needs no fill (ghost, outline, frost, separator dashed/dotted, surface base border, button pending text). Designer overrides at :root or .dark to introduce a subtle tint globally. */
+  --color-transparent: transparent;
 }
 
 @layer base {

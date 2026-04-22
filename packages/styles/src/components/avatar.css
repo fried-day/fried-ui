@@ -14,6 +14,10 @@
     @apply flex size-full items-center justify-center;
   }
 
+  .avatar-size-xs {
+    @apply size-6 text-xs;
+  }
+
   .avatar-size-sm {
     @apply size-8 text-xs;
   }
