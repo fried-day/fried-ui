@@ -16,13 +16,13 @@ describe("{{pascalCase name}}", () => {
     render(<{{pascalCase name}}>Default</{{pascalCase name}}>);
     const el = screen.getByText("Default");
     expect(el.className).toContain("{{dashCase name}}");
-    expect(el.className).not.toContain("{{dashCase name}}--primary");
-    expect(el.className).not.toContain("{{dashCase name}}--size-md");
+    expect(el.className).not.toContain("{{dashCase name}}-primary");
+    expect(el.className).not.toContain("{{dashCase name}}-size-md");
   });
 
   it("applies variant class only when explicitly set", () => {
     render(<{{pascalCase name}} variant="primary">Test</{{pascalCase name}}>);
-    expect(screen.getByText("Test").className).toContain("{{dashCase name}}--primary");
+    expect(screen.getByText("Test").className).toContain("{{dashCase name}}-primary");
   });
 
   it("applies all variant classes", () => {
@@ -30,7 +30,7 @@ describe("{{pascalCase name}}", () => {
 
     variants.forEach((variant) => {
       const { unmount } = render(<{{pascalCase name}} variant={variant}>{variant}</{{pascalCase name}}>);
-      expect(screen.getByText(variant).className).toContain(`{{dashCase name}}--${variant}`);
+      expect(screen.getByText(variant).className).toContain(`{{dashCase name}}-${variant}`);
       unmount();
     });
   });
@@ -40,7 +40,7 @@ describe("{{pascalCase name}}", () => {
 
     sizes.forEach((size) => {
       const { unmount } = render(<{{pascalCase name}} size={size}>{size}</{{pascalCase name}}>);
-      expect(screen.getByText(size).className).toContain(`{{dashCase name}}--size-${size}`);
+      expect(screen.getByText(size).className).toContain(`{{dashCase name}}-size-${size}`);
       unmount();
     });
   });
@@ -67,7 +67,7 @@ describe("{{pascalCase name}}", () => {
 
   it("applies disabled class", () => {
     render(<{{pascalCase name}} isDisabled>Disabled</{{pascalCase name}}>);
-    expect(screen.getByText("Disabled").className).toContain("{{dashCase name}}--disabled");
+    expect(screen.getByText("Disabled").className).toContain("{{dashCase name}}-disabled");
   });
 
   it("fires onPress when clicked", async () => {

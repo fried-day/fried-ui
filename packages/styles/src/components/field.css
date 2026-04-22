@@ -1,0 +1,249 @@
+@layer components {
+  .field {
+    @apply inline-flex flex-col;
+    @apply gap-[calc(0.875rem/2.058)];
+  }
+
+  .field-size-sm {
+    @apply gap-[calc(0.75rem/2.058)];
+  }
+
+  .field-size-md {
+    @apply gap-[calc(0.875rem/2.058)];
+  }
+
+  .field-size-lg {
+    @apply gap-[calc(1rem/2.058)];
+  }
+
+  .field-orientation-vertical {
+    @apply flex-col;
+  }
+
+  .field-orientation-horizontal {
+    @apply flex-row items-center;
+  }
+
+  .field-orientation-responsive {
+    @apply flex-col md:flex-row md:items-center;
+  }
+
+  .field-full-width {
+    @apply flex w-full;
+  }
+
+  .field-full-width .input,
+  .field-full-width .input-group,
+  .field-full-width .textarea {
+    @apply w-full;
+  }
+
+  /* FieldLabel */
+  .field-label {
+    @apply inline-flex items-center gap-1 select-none;
+    @apply text-sm font-medium;
+    @apply text-foreground;
+  }
+
+  .field-label-required {
+    @apply text-danger;
+  }
+
+  .field-label-optional {
+    @apply font-normal text-muted-foreground;
+  }
+
+  .field-label-size-sm {
+    @apply text-xs;
+  }
+
+  .field-label-size-md {
+    @apply text-sm;
+  }
+
+  .field-label-size-lg {
+    @apply text-base;
+  }
+
+  .field-label-weight-normal {
+    @apply font-normal;
+  }
+
+  .field-label-weight-medium {
+    @apply font-medium;
+  }
+
+  .field-label-weight-semibold {
+    @apply font-semibold;
+  }
+
+  .field-label-invalid {
+    @apply text-danger;
+  }
+
+  .field-label-disabled,
+  .field-label[aria-disabled="true"],
+  .field-label[data-disabled] {
+    @apply status-disabled;
+  }
+
+  /* FieldDescription */
+  .field-description {
+    @apply block;
+    @apply text-sm text-muted-foreground;
+  }
+
+  .field-description-size-sm {
+    @apply text-xs;
+  }
+
+  .field-description-size-md {
+    @apply text-sm;
+  }
+
+  .field-description-size-lg {
+    @apply text-base;
+  }
+
+  .field-description-disabled,
+  .field-description[aria-disabled="true"],
+  .field-description[data-disabled] {
+    @apply status-disabled;
+  }
+
+  /* FieldError */
+  .field-error {
+    @apply block;
+    @apply text-sm text-danger;
+  }
+
+  .field-error-size-sm {
+    @apply text-xs;
+  }
+
+  .field-error-size-md {
+    @apply text-sm;
+  }
+
+  .field-error-size-lg {
+    @apply text-base;
+  }
+
+  .field-error-disabled,
+  .field-error[aria-disabled="true"],
+  .field-error[data-disabled] {
+    @apply status-disabled;
+  }
+
+  /* FieldSet */
+  .field-set {
+    @apply flex flex-col gap-[calc(1rem/2.058)];
+    @apply m-0 border-0 p-0;
+  }
+
+  .field-set-bordered {
+    @apply rounded-[calc(1em*1.272*2/4)] border border-border p-[calc(1rem)];
+  }
+
+  .field-set-card {
+    @apply rounded-[calc(1em*1.272*2/4)] border border-border bg-surface p-[calc(1rem)];
+  }
+
+  .field-set:disabled,
+  .field-set[data-disabled] {
+    @apply status-disabled;
+  }
+
+  /* FieldLegend */
+  .field-legend {
+    @apply text-base font-semibold text-foreground;
+    @apply mb-[calc(1rem/2.058)];
+  }
+
+  .field-legend-size-sm {
+    @apply text-sm;
+  }
+
+  .field-legend-size-md {
+    @apply text-base;
+  }
+
+  .field-legend-size-lg {
+    @apply text-lg;
+  }
+
+  /* FieldGroup */
+  .field-group {
+    @apply flex flex-col gap-[calc(1rem/2.058)];
+  }
+
+  .field-group-orientation-vertical {
+    @apply flex-col;
+  }
+
+  .field-group-orientation-horizontal {
+    @apply flex-row items-start;
+  }
+
+  .field-group-orientation-responsive {
+    @apply flex-col md:flex-row md:items-start;
+  }
+
+  .field-group-size-sm {
+    @apply gap-[calc(0.75rem/2.058)];
+  }
+
+  .field-group-size-md {
+    @apply gap-[calc(1rem/2.058)];
+  }
+
+  .field-group-size-lg {
+    @apply gap-[calc(1.25rem/2.058)];
+  }
+
+  /* FieldTitle */
+  .field-title {
+    @apply text-base font-semibold text-foreground;
+  }
+
+  .field-title-size-sm {
+    @apply text-sm;
+  }
+
+  .field-title-size-md {
+    @apply text-base;
+  }
+
+  .field-title-size-lg {
+    @apply text-lg;
+  }
+
+  /* FieldSeparator */
+  .field-separator {
+    --field-separator-bg: var(--color-border);
+    --field-separator-border: transparent;
+
+    @apply h-px bg-(--field-separator-bg);
+    @apply border-0 border-t border-(--field-separator-border);
+    @apply my-[calc(1rem/2.058)];
+  }
+
+  .field-separator-solid {
+    --field-separator-bg: var(--color-border);
+    --field-separator-border: transparent;
+  }
+
+  .field-separator-dashed {
+    --field-separator-bg: transparent;
+    --field-separator-border: var(--color-border);
+
+    @apply border-dashed;
+  }
+
+  .field-separator-dotted {
+    --field-separator-bg: transparent;
+    --field-separator-border: var(--color-border);
+
+    @apply border-dotted;
+  }
+}

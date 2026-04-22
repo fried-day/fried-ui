@@ -3,7 +3,7 @@
 import type { ComponentPropsWithRef, ReactElement } from "react";
 import { Children, cloneElement, isValidElement } from "react";
 
-import { Avatar, type AvatarProps } from "../avatar";
+import { Avatar, AvatarFallback, type AvatarProps } from "../avatar";
 import { classes } from "../../utils/classes";
 
 import type { AvatarGroupVariantsProps } from "./avatar-group.variants";
@@ -48,7 +48,7 @@ const AvatarGroup = (props: Readonly<AvatarGroupProps>) => {
 
       {hiddenCount > 0 && (
         <Avatar className="avatar-group-counter" aria-label={counterLabel} size={size}>
-          <Avatar.Fallback>{counterText}</Avatar.Fallback>
+          <AvatarFallback>{counterText}</AvatarFallback>
         </Avatar>
       )}
     </div>

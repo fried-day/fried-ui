@@ -157,6 +157,130 @@ import { classes } from "../../utils/classes";
 // `clsx` only needed when component uses composeRenderProps (interactive render-prop className)
 ```
 
+## Over-declare — VariantsProps vs Pass-through
+
+`{name}.variants.ts` (`{Name}VariantsProps`) **ต้องมีเฉพาะ fried-ui-specific props** — style/layout modifiers ที่ map ตรงกับ CSS class (`variant`, `size`, `radius`, `isFullWidth`, `isPending`, `isIconOnly`). **ห้าม** redeclare props ที่ underlying primitive (React Aria / native HTML) ให้อยู่แล้ว
+
+```ts
+/* BAD: Over-declare — ซ้ำกับ AriaTextField */
+export interface TextFieldVariantsProps {
+  isDisabled?: boolean;   // AriaTextField ให้แล้ว
+  isInvalid?: boolean;    // AriaTextField ให้แล้ว
+  isReadOnly?: boolean;   // AriaTextField ให้แล้ว
+  isRequired?: boolean;   // AriaTextField ให้แล้ว
+  isFullWidth?: boolean;  // fried-ui ของเราเอง (OK)
+  size?: "sm" | "md" | "lg"; // fried-ui ของเราเอง (OK)
+}
+
+/* BAD: Over-declare — ซ้ำกับ native HTML input */
+export interface InputVariantsProps {
+  isDisabled?: boolean;   // native `disabled` ให้แล้ว
+  isReadOnly?: boolean;   // native `readOnly` ให้แล้ว
+  isRequired?: boolean;   // native `required` ให้แล้ว
+  isInvalid?: boolean;    // native `aria-invalid` ให้แล้ว
+}
+
+/* OK: เฉพาะของ fried-ui */
+export interface InputVariantsProps {
+  isFullWidth?: boolean;
+  isPending?: boolean;
+  radius?: "none" | "sm" | "md" | "lg" | "full";
+  size?: "sm" | "md" | "lg";
+  variant?: "primary" | "secondary" | "plain";
+}
+```
+
+**Prop surface propagates via intersection type:**
+
+```ts
+export type InputProps = InputVariantsProps & {
+  // ...fried-ui-only extras (className, startIcon, endIcon, prefix, suffix)
+} & Omit<ComponentPropsWithRef<typeof AriaInput>, "className" | "children" | "size">;
+```
+
+Consumer receives **both** fried-ui modifiers AND native/Aria attrs in one surface. Destructure only what you transform (style/layout/composition props); spread `...rest` to the primitive.
+
+### Why over-declare is bad
+
+1. **Duplicate source of truth** — if we declare `isDisabled` ourselves and user passes `disabled`, the winner is unclear. Either we hand-merge (fragile) or drift silently.
+2. **Type narrowing** — our `isDisabled?: boolean` hides React Aria's richer types (controlled vs uncontrolled signatures).
+3. **JSDoc drift** — two copies (ours + React Aria) describe the same prop with different wording — consumers get conflicting hints.
+4. **Maintenance** — primitive adds a new prop, we must mirror it or lose the feature.
+
+### Story argTypes — the EXCEPTION
+
+**Pass-through props MUST still appear in Storybook `argTypes`** even when not in VariantsProps:
+
+1. **Controls panel** — devs toggle `disabled`/`readOnly` to verify CSS effects (`:disabled` / `[data-disabled]` rules render correctly).
+2. **LLM documentation** — `npm publish` ships Storybook `autodocs`. LLM consumers read them as the canonical spec. If we silently drop `disabled` from argTypes, LLMs hallucinate which props fried-ui accepts.
+3. **Consumer discovery** — Storybook Docs tab is the first stop for external devs exploring the API.
+
+```tsx
+// VariantsProps contains only fried-ui props.
+// argTypes covers BOTH fried-ui and pass-through props.
+argTypes: {
+  size:          { ... },   // fried-ui (in VariantsProps)
+  variant:       { ... },   // fried-ui (in VariantsProps)
+  isFullWidth:   { ... },   // fried-ui (in VariantsProps)
+  disabled:      { ... },   // pass-through (native HTML attr)
+  readOnly:      { ... },   // pass-through (native HTML attr)
+  required:      { ... },   // pass-through (native HTML attr)
+  "aria-invalid":{ ... },   // pass-through (ARIA attr)
+}
+```
+
+**Naming convention:**
+- React Aria-wrapped (TextField, Button, Select): camelCase — `isDisabled`, `isInvalid`, `isReadOnly`, `isRequired`
+- Native HTML wrapped (Input): native names — `disabled`, `readOnly`, `required`, `aria-invalid`
+
+### Rule summary
+
+| Layer                                    | Over-declare? |
+|------------------------------------------|---------------|
+| `{name}.variants.ts` (`VariantsProps`)   | BAD — fried-ui-specific only |
+| `{Name}Props` type alias                 | auto — intersection type brings primitive props |
+| `{name}.stories.tsx` argTypes            | MUST — pass-through for DX + LLM discovery |
+| `{name}.test.tsx`                        | test via primitive's native / Aria attr name |
+
+## Component Composition — Named Imports with Prefix (shadcn pattern)
+
+**Rule:** ทุก subpart/slot **export เป็น named import with prefix** — **ห้าม** dot notation (`Parent.Sub`). aligned กับ shadcn pattern, best for LLM fluency + multi-framework port + tree-shake
+
+```tsx
+// OK: Named imports with prefix (shadcn pattern — canonical)
+import {
+  Field, FieldLabel, FieldDescription, FieldError,
+  FieldSet, FieldLegend, FieldGroup, FieldSeparator,
+  InputGroup, InputGroupAddon, InputGroupInput, InputGroupTextarea,
+  Avatar, AvatarImage, AvatarFallback,
+} from "@fried-ui/react";
+
+// BAD: Dot notation — ห้าม
+import { Field } from "@fried-ui/react";
+<Field.Label />  // ❌
+```
+
+### Rationale
+
+1. **LLM fluency** — shadcn trained on LLMs heavily → named imports = LLM generate fried-ui easily
+2. **Multi-framework** — Vue/Solid ports copy named exports 1:1 (ไม่ต้อง Object.assign)
+3. **Tree-shake** — flat exports = bundler optimize ดีกว่า
+4. **Flexibility** — subpart ใช้นอก parent ได้ (เช่น `<FieldLabel>` ใช้กับ `<Checkbox>` นอก `<Field>` wrapper)
+5. **Plain HTML parity** — each named component = distinct CSS class (`.field-label`, `.input-group-addon`)
+
+### When to create new component vs reuse existing
+
+- **Create new** เมื่อ existing primitive configure ไม่ได้ (เช่น Input inside InputGroup ต้อง strip border → `InputGroupInput` ใหม่ class `.input-group-input`)
+- **Reuse existing** เมื่อ variant/size ครอบคลุมได้ (เช่น Button ภายใน InputGroupAddon ใช้ `<Button size="sm" variant="ghost">` — ไม่สร้าง `InputGroupButton`)
+
+### Breaking change — component rename (shadcn alignment)
+
+- `TextField` → `Field`
+- `Label` → `FieldLabel`
+- `Description` → `FieldDescription`
+- `FieldError` keep (already shadcn-aligned)
+- Existing `Avatar.Image` / `Avatar.Fallback` → `AvatarImage` / `AvatarFallback` (drop dot)
+
 ## Field Subcomponents — `useFieldState(props)`
 
 `Label`, `Description`, `FieldError` ต้อง consume `TextFieldContext` + รองรับ prop-override — ใช้ hook `useFieldState(props)` เป็น canonical:

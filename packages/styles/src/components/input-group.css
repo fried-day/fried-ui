@@ -1,0 +1,156 @@
+@layer components {
+  .input-group {
+    @apply inline-flex items-stretch;
+    @apply transition duration-(--duration-hover) ease-out motion-reduce:transition-none;
+
+    --input-group-bg: var(--color-field);
+    --input-group-bg-hover: var(--color-field-hover);
+    --input-group-border: var(--color-field-border);
+    --input-group-border-hover: var(--color-field-border-hover);
+    --input-group-border-focus: var(--color-field-border-focus);
+    --input-group-fg: var(--color-field-foreground);
+
+    @apply bg-(--input-group-bg) text-(--input-group-fg);
+    @apply border border-(--input-group-border);
+    @apply rounded-[calc(1em*1.272*2/4)];
+    @apply text-sm;
+
+    &:hover:not(:focus-within):not(:has(:read-only)):not(:has(:disabled)),
+    &:has([data-hovered]):not(:has([data-focused])):not(:has([data-readonly])):not(:has([data-disabled])) {
+      @apply border-(--input-group-border-hover) bg-(--input-group-bg-hover);
+    }
+
+    &:focus-within:not(:has(:focus-visible)),
+    &:has([data-focused]:not([data-focus-visible])) {
+      @apply border-(--input-group-border-focus);
+    }
+
+    &:has(:focus-visible),
+    &:has([data-focus-visible]) {
+      @apply border-(--input-group-border-focus) focus-ring;
+    }
+
+    &:has([aria-invalid="true"]),
+    &:has([data-invalid]) {
+      --input-group-border: var(--color-danger);
+      --input-group-border-hover: var(--color-danger);
+      --input-group-border-focus: var(--color-danger);
+    }
+
+    &:has(:disabled),
+    &:has([data-disabled]) {
+      @apply status-disabled;
+    }
+  }
+
+  .input-group-primary {
+    --input-group-bg: var(--color-field);
+    --input-group-bg-hover: var(--color-field-hover);
+    --input-group-border: var(--color-field-border);
+    --input-group-border-hover: var(--color-field-border-hover);
+    --input-group-border-focus: var(--color-field-border-focus);
+    --input-group-fg: var(--color-field-foreground);
+  }
+
+  .input-group-secondary {
+    --input-group-bg: var(--color-field-secondary);
+    --input-group-bg-hover: var(--color-field-secondary-hover);
+    --input-group-border: var(--color-field-secondary-border);
+    --input-group-border-hover: var(--color-field-secondary-border-hover);
+    --input-group-border-focus: var(--color-field-secondary-border-focus);
+    --input-group-fg: var(--color-field-secondary-foreground);
+  }
+
+  .input-group-size-sm {
+    @apply text-xs;
+  }
+
+  .input-group-size-md {
+    @apply text-sm;
+  }
+
+  .input-group-size-lg {
+    @apply text-base;
+  }
+
+  .input-group-full-width {
+    @apply flex w-full;
+  }
+
+  .input-group-radius-none {
+    @apply rounded-none;
+  }
+
+  .input-group-radius-sm {
+    @apply rounded-[calc(1em*1.272/4)];
+  }
+
+  .input-group-radius-md {
+    @apply rounded-[calc(1em*1.272*2/4)];
+  }
+
+  .input-group-radius-lg {
+    @apply rounded-[calc(1em*1.272*3/4)];
+  }
+
+  .input-group-radius-full {
+    @apply rounded-full;
+  }
+
+  .input-group:has(.input-group-addon-align-block-start),
+  .input-group:has(.input-group-addon-align-block-end) {
+    @apply flex flex-col items-stretch;
+  }
+
+  .input-group-addon {
+    @apply inline-flex items-center justify-center self-stretch;
+    @apply px-[calc(1em/2.058)] text-(--color-muted-foreground);
+    @apply select-none;
+  }
+
+  .input-group-addon-align-inline-start {
+    @apply order-first;
+  }
+
+  .input-group-addon-align-inline-end {
+    @apply order-last;
+  }
+
+  .input-group-addon-align-block-start {
+    @apply order-first self-start px-[calc(1em)] py-[calc(1em/2.058)];
+  }
+
+  .input-group-addon-align-block-end {
+    @apply order-last self-end px-[calc(1em)] py-[calc(1em/2.058)];
+  }
+
+  .input-group-input,
+  .input-group-textarea {
+    --input-group-slot-bg: transparent;
+    --input-group-slot-border: transparent;
+
+    @apply min-w-0 flex-1 leading-none text-inherit outline-none;
+    @apply bg-(--input-group-slot-bg);
+    @apply border border-(--input-group-slot-border);
+    @apply px-[calc(1em)] py-[calc(1em/2.058)];
+    @apply placeholder:text-(--color-field-placeholder);
+  }
+
+  .input-group-textarea {
+    @apply resize-y leading-[calc(1em*1.618)];
+  }
+
+  .input-group-input:disabled,
+  .input-group-textarea:disabled,
+  .input-group-input[data-disabled],
+  .input-group-textarea[data-disabled] {
+    @apply cursor-not-allowed;
+  }
+
+  .input-group-input:read-only,
+  .input-group-textarea:read-only,
+  .input-group-input[data-readonly],
+  .input-group-textarea[data-readonly] {
+    @apply cursor-default;
+  }
+}

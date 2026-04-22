@@ -86,7 +86,23 @@ Edit the generated files to match the component's real needs:
   const cn = composeRenderProps(className, (c) => clsx(base, c));
   ```
 
-- **Field subcomponents** (Label / Description / FieldError / helpers that live under TextField): use `useFieldState(props)` — never `useContext(TextFieldContext)` directly:
+- **Named imports with prefix (shadcn pattern)** — ทุก subpart/slot export เป็น **named import with parent prefix** — **ห้าม** dot notation (`Parent.Sub`). Examples:
+
+  ```tsx
+  // OK
+  export { Field, FieldLabel, FieldDescription, FieldError };
+  export { InputGroup, InputGroupAddon, InputGroupInput, InputGroupTextarea };
+  export { Avatar, AvatarImage, AvatarFallback };
+
+  // BAD: dot notation ห้าม
+  Avatar.Image = AvatarImage;  // ❌
+  ```
+
+  **When to create new component:** existing primitive configure ไม่ได้ (e.g., `InputGroupInput` exists because Input inside group needs no border). **When to reuse:** variant/size ครอบคลุมได้ (e.g., `<Button size="sm" variant="ghost">` inside `<InputGroupAddon>` — ไม่สร้าง `InputGroupButton`).
+
+  See `.claude/rules/architecture.md` "Component Composition — Named Imports with Prefix".
+
+- **Field subcomponents** (FieldLabel / FieldDescription / FieldError / helpers that live under Field): use `useFieldState(props)` — never `useContext(FieldContext)` directly:
 
   ```tsx
   import { useFieldState } from "../text-field/use-field-state";
@@ -96,6 +112,7 @@ Edit the generated files to match the component's real needs:
 
 **`{name}.variants.ts`:**
 
+- **Over-declare rule** — declare ONLY fried-ui-specific props (style/layout modifiers that map to CSS classes). Do NOT redeclare props that React Aria / native HTML already provide (`isDisabled`, `isInvalid`, `isReadOnly`, `isRequired`, `disabled`, `readOnly`, `required`, `aria-invalid`). They flow through via the intersection type `{Name}VariantsProps & Omit<ComponentPropsWithRef<Primitive>, "className" | "children">`. See `.claude/rules/architecture.md` "Over-declare".
 - Define real props (not default `variant`/`size` from scaffold if not needed)
 - **JSDoc rules** (locked in `.claude/rules/architecture.md`):
   - Boolean: `"Whether the {subject} ... @default false"`
@@ -126,6 +143,7 @@ Edit the generated files to match the component's real needs:
 - Required stories: `Default`, `Variants`, `Sizes` (minimum)
 - Add per component: `WithIcon`, `IconOnly`, `FullWidth`, `Disabled`, `Pending`, `RenderProps`
 - Every story has `parameters.docs.source.code` with full example
+- **Pass-through argTypes (MUST)** — even though state props like `isDisabled` / `disabled`, `isInvalid` / `aria-invalid`, `isReadOnly` / `readOnly`, `isRequired` / `required` are NOT in VariantsProps, they **must** appear in `meta.argTypes` (and `meta.args` with `false` defaults) so: (a) Storybook controls panel exposes them for CSS effect toggling, (b) LLMs reading `autodocs` when we `npm publish` see the full accepted surface. Use camelCase (`isDisabled`) for React Aria wrappers, native names (`disabled`, `aria-invalid`) for thin native-HTML wrappers. See `.claude/rules/storybook.md` "Pass-through Props".
 - **argType for variant prop**: follow 4-part pattern (intent + groups + modifiers + usage) — 50-120 words
 - **Generic body text** — use component name ("Small {{Name}}", "Surface content", etc.) — never domain-specific ("Email", "Password")
 - Size labels pattern: `Small {Name}` / `Medium {Name}` / `Large {Name}`
@@ -224,6 +242,8 @@ pnpm run build          # tsup + Next.js + Storybook builds
 29. **Raw `pointer-events-none opacity-50` ใน disabled CSS** — BAD canonical คือ `@apply status-disabled` (utility ใน `packages/styles/src/utilities/status.css`) — รวม `pointer-events-none cursor-(--cursor-disabled) opacity-(--disabled-opacity)`. Raw pattern ขาด `cursor-not-allowed` ทำให้ visual drift. See `.claude/rules/styles.md` "`status-disabled` is canonical".
 30. **Field subcomponents ไม่ใช้ `useFieldState(props)` P0** — BAD ห้าม `useContext(TextFieldContext)` + manual `isDisabled ?? ctx?.isDisabled` ใน Label / Description / FieldError / future field subcomponent. ใช้ hook เดียว: `const { isDisabled, isInvalid, isRequired } = useFieldState(props)`. **Why:** consolidate prop-override fallback — FieldError เคย drift (ลืม read context เลย) ก่อนที่ hook จะมี. See `.claude/rules/architecture.md` "Field Subcomponents".
 31. **Symbols in prose (docs, JSDoc, argType descriptions)** — Never use transition/causation arrows (`->`, `<-`, `=>`) or emojis in prose text. They are Overloaded Tokens causing LLM hallucination. Replace with explicit words: "leads to", "transitions to", "maps to", "derives from", "then". Math formulas and code fences are exempt. See `.claude/rules/writing.md`.
+32. **Over-declare ใน VariantsProps** — BAD ห้าม redeclare props ที่ React Aria / native HTML ให้อยู่แล้ว (`isDisabled`, `isInvalid`, `isReadOnly`, `isRequired`, `disabled`, `readOnly`, `required`, `aria-invalid`). VariantsProps มีแต่ fried-ui-specific (`variant`, `size`, `radius`, `isFullWidth`, `isPending`, `isIconOnly`). Primitive props flow through via intersection type. ดู `.claude/rules/architecture.md` "Over-declare".
+33. **Missing pass-through argTypes in stories** — BAD แม้ VariantsProps จะไม่ declare state props แล้ว แต่ `meta.argTypes` + `meta.args` ใน stories **ต้อง** มี `disabled` / `isDisabled`, `readOnly` / `isReadOnly`, `required` / `isRequired`, `aria-invalid` / `isInvalid` ครบ — เพื่อ Storybook controls + LLM autodocs (ตอน `npm publish` consumers อ่าน docs 100%). ดู `.claude/rules/storybook.md` "Pass-through Props".
 
 ---
 

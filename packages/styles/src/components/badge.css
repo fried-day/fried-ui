@@ -1,48 +1,53 @@
 @layer components {
   .badge {
     @apply inline-flex items-center justify-center;
-    @apply leading-none font-medium whitespace-nowrap;
-    @apply border border-transparent select-none;
+    @apply leading-none font-medium whitespace-nowrap select-none;
 
     --badge-bg: var(--color-primary);
+    --badge-border: var(--color-primary-border);
     --badge-fg: var(--color-primary-foreground);
 
     @apply bg-(--badge-bg) text-(--badge-fg);
+    @apply border border-(--badge-border);
     @apply gap-[calc(0.875rem/2.058)] px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
     @apply rounded-full;
   }
 
   .badge-primary {
     --badge-bg: var(--color-primary);
+    --badge-border: var(--color-primary-border);
     --badge-fg: var(--color-primary-foreground);
   }
 
   .badge-secondary {
     --badge-bg: var(--color-secondary);
+    --badge-border: var(--color-secondary-border);
     --badge-fg: var(--color-secondary-foreground);
   }
 
   .badge-accent {
     --badge-bg: var(--color-accent);
+    --badge-border: var(--color-accent-border);
     --badge-fg: var(--color-accent-foreground);
   }
 
   .badge-outline {
     --badge-bg: transparent;
+    --badge-border: var(--color-primary-outline-border);
     --badge-fg: var(--color-primary);
-
-    @apply border border-primary-outline-border;
   }
 
   .badge-glass {
     --badge-bg: var(--color-glass);
+    --badge-border: var(--color-glass-border);
     --badge-fg: var(--color-glass-foreground);
 
-    @apply border border-glass-border backdrop-blur-xl backdrop-saturate-200;
+    @apply backdrop-blur-xl backdrop-saturate-200;
   }
 
   .badge-frost {
     --badge-bg: var(--color-glass);
+    --badge-border: transparent;
     --badge-fg: var(--color-glass-foreground);
 
     @apply backdrop-blur-2xl backdrop-saturate-200;
@@ -50,162 +55,160 @@
 
   .badge-overlay {
     --badge-bg: var(--color-scrim);
+    --badge-border: var(--color-scrim-border);
     --badge-fg: var(--color-scrim-foreground);
 
-    @apply border border-scrim-border backdrop-blur-xl backdrop-saturate-150;
+    @apply backdrop-blur-xl backdrop-saturate-150;
   }
 
   .badge-success {
     --badge-bg: var(--color-success);
+    --badge-border: var(--color-success-border);
     --badge-fg: var(--color-success-foreground);
   }
 
   .badge-warning {
     --badge-bg: var(--color-warning);
+    --badge-border: var(--color-warning-border);
     --badge-fg: var(--color-warning-foreground);
   }
 
   .badge-danger {
     --badge-bg: var(--color-danger);
+    --badge-border: var(--color-danger-border);
     --badge-fg: var(--color-danger-foreground);
   }
 
   .badge-info {
     --badge-bg: var(--color-info);
+    --badge-border: var(--color-info-border);
     --badge-fg: var(--color-info-foreground);
   }
 
   .badge-primary-soft {
     --badge-bg: var(--color-primary-soft);
+    --badge-border: var(--color-primary-soft-border);
     --badge-fg: var(--color-primary-soft-foreground);
-
-    @apply border border-primary-soft-border;
   }
 
   .badge-secondary-soft {
     --badge-bg: var(--color-secondary-soft);
+    --badge-border: var(--color-secondary-soft-border);
     --badge-fg: var(--color-secondary-soft-foreground);
-
-    @apply border border-secondary-soft-border;
   }
 
   .badge-accent-soft {
     --badge-bg: var(--color-accent-soft);
+    --badge-border: var(--color-accent-soft-border);
     --badge-fg: var(--color-accent-soft-foreground);
-
-    @apply border border-accent-soft-border;
   }
 
   .badge-success-soft {
     --badge-bg: var(--color-success-soft);
+    --badge-border: var(--color-success-soft-border);
     --badge-fg: var(--color-success-soft-foreground);
-
-    @apply border border-success-soft-border;
   }
 
   .badge-warning-soft {
     --badge-bg: var(--color-warning-soft);
+    --badge-border: var(--color-warning-soft-border);
     --badge-fg: var(--color-warning-soft-foreground);
-
-    @apply border border-warning-soft-border;
   }
 
   .badge-danger-soft {
     --badge-bg: var(--color-danger-soft);
+    --badge-border: var(--color-danger-soft-border);
     --badge-fg: var(--color-danger-soft-foreground);
-
-    @apply border border-danger-soft-border;
   }
 
   .badge-info-soft {
     --badge-bg: var(--color-info-soft);
+    --badge-border: var(--color-info-soft-border);
     --badge-fg: var(--color-info-soft-foreground);
-
-    @apply border border-info-soft-border;
   }
 
   .badge-primary-flat {
     --badge-bg: var(--color-primary-flat);
+    --badge-border: var(--color-primary-flat-border);
     --badge-fg: var(--color-primary-flat-foreground);
   }
 
   .badge-secondary-flat {
     --badge-bg: var(--color-secondary-flat);
+    --badge-border: var(--color-secondary-flat-border);
     --badge-fg: var(--color-secondary-flat-foreground);
   }
 
   .badge-accent-flat {
     --badge-bg: var(--color-accent-flat);
+    --badge-border: var(--color-accent-flat-border);
     --badge-fg: var(--color-accent-flat-foreground);
   }
 
   .badge-success-flat {
     --badge-bg: var(--color-success-flat);
+    --badge-border: var(--color-success-flat-border);
     --badge-fg: var(--color-success-flat-foreground);
   }
 
   .badge-warning-flat {
     --badge-bg: var(--color-warning-flat);
+    --badge-border: var(--color-warning-flat-border);
     --badge-fg: var(--color-warning-flat-foreground);
   }
 
   .badge-danger-flat {
     --badge-bg: var(--color-danger-flat);
+    --badge-border: var(--color-danger-flat-border);
     --badge-fg: var(--color-danger-flat-foreground);
   }
 
   .badge-info-flat {
     --badge-bg: var(--color-info-flat);
+    --badge-border: var(--color-info-flat-border);
     --badge-fg: var(--color-info-flat-foreground);
   }
 
   .badge-primary-outline {
     --badge-bg: var(--color-primary-outline);
+    --badge-border: var(--color-primary-outline-border);
     --badge-fg: var(--color-primary-outline-foreground);
-
-    @apply border border-primary-outline-border;
   }
 
   .badge-secondary-outline {
     --badge-bg: var(--color-secondary-outline);
+    --badge-border: var(--color-secondary-outline-border);
     --badge-fg: var(--color-secondary-outline-foreground);
-
-    @apply border border-secondary-outline-border;
   }
 
   .badge-accent-outline {
     --badge-bg: var(--color-accent-outline);
+    --badge-border: var(--color-accent-outline-border);
     --badge-fg: var(--color-accent-outline-foreground);
-
-    @apply border border-accent-outline-border;
   }
 
   .badge-success-outline {
     --badge-bg: var(--color-success-outline);
+    --badge-border: var(--color-success-outline-border);
     --badge-fg: var(--color-success-outline-foreground);
-
-    @apply border border-success-outline-border;
   }
 
   .badge-warning-outline {
     --badge-bg: var(--color-warning-outline);
+    --badge-border: var(--color-warning-outline-border);
     --badge-fg: var(--color-warning-outline-foreground);
-
-    @apply border border-warning-outline-border;
   }
 
   .badge-danger-outline {
     --badge-bg: var(--color-danger-outline);
+    --badge-border: var(--color-danger-outline-border);
     --badge-fg: var(--color-danger-outline-foreground);
-
-    @apply border border-danger-outline-border;
   }
 
   .badge-info-outline {
     --badge-bg: var(--color-info-outline);
+    --badge-border: var(--color-info-outline-border);
     --badge-fg: var(--color-info-outline-foreground);
-
-    @apply border border-info-outline-border;
   }
 
   .badge-radius-none {

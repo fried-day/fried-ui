@@ -3,7 +3,7 @@ import { createRef } from "react";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { Avatar } from "../avatar";
+import { Avatar, AvatarFallback } from "../avatar";
 import { AvatarGroup } from "./AvatarGroup";
 
 describe("AvatarGroup", () => {
@@ -11,7 +11,7 @@ describe("AvatarGroup", () => {
     const { container } = render(
       <AvatarGroup>
         <Avatar>
-          <Avatar.Fallback>A</Avatar.Fallback>
+          <AvatarFallback>A</AvatarFallback>
         </Avatar>
       </AvatarGroup>,
     );
@@ -23,7 +23,7 @@ describe("AvatarGroup", () => {
     const { container } = render(
       <AvatarGroup>
         <Avatar>
-          <Avatar.Fallback>A</Avatar.Fallback>
+          <AvatarFallback>A</AvatarFallback>
         </Avatar>
       </AvatarGroup>,
     );
@@ -39,7 +39,7 @@ describe("AvatarGroup", () => {
       const { container, unmount } = render(
         <AvatarGroup size={size}>
           <Avatar>
-            <Avatar.Fallback>A</Avatar.Fallback>
+            <AvatarFallback>A</AvatarFallback>
           </Avatar>
         </AvatarGroup>,
       );
@@ -57,7 +57,7 @@ describe("AvatarGroup", () => {
       const { container, unmount } = render(
         <AvatarGroup spacing={spacing}>
           <Avatar>
-            <Avatar.Fallback>A</Avatar.Fallback>
+            <AvatarFallback>A</AvatarFallback>
           </Avatar>
         </AvatarGroup>,
       );
@@ -72,11 +72,11 @@ describe("AvatarGroup", () => {
     const { container } = render(
       <AvatarGroup size="lg">
         <Avatar>
-          <Avatar.Fallback>A</Avatar.Fallback>
+          <AvatarFallback>A</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Fallback>B</Avatar.Fallback>
+          <AvatarFallback>B</AvatarFallback>
         </Avatar>
       </AvatarGroup>,
     );
@@ -92,7 +92,7 @@ describe("AvatarGroup", () => {
     const { container } = render(
       <AvatarGroup size="lg">
         <Avatar size="sm">
-          <Avatar.Fallback>A</Avatar.Fallback>
+          <AvatarFallback>A</AvatarFallback>
         </Avatar>
       </AvatarGroup>,
     );
@@ -105,19 +105,19 @@ describe("AvatarGroup", () => {
     const { container } = render(
       <AvatarGroup max={2}>
         <Avatar>
-          <Avatar.Fallback>A</Avatar.Fallback>
+          <AvatarFallback>A</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Fallback>B</Avatar.Fallback>
+          <AvatarFallback>B</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Fallback>C</Avatar.Fallback>
+          <AvatarFallback>C</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Fallback>D</Avatar.Fallback>
+          <AvatarFallback>D</AvatarFallback>
         </Avatar>
       </AvatarGroup>,
     );
@@ -131,15 +131,15 @@ describe("AvatarGroup", () => {
     const { container } = render(
       <AvatarGroup>
         <Avatar>
-          <Avatar.Fallback>A</Avatar.Fallback>
+          <AvatarFallback>A</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Fallback>B</Avatar.Fallback>
+          <AvatarFallback>B</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Fallback>C</Avatar.Fallback>
+          <AvatarFallback>C</AvatarFallback>
         </Avatar>
       </AvatarGroup>,
     );
@@ -153,15 +153,15 @@ describe("AvatarGroup", () => {
     render(
       <AvatarGroup max={2} total={10}>
         <Avatar>
-          <Avatar.Fallback>A</Avatar.Fallback>
+          <AvatarFallback>A</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Fallback>B</Avatar.Fallback>
+          <AvatarFallback>B</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Fallback>C</Avatar.Fallback>
+          <AvatarFallback>C</AvatarFallback>
         </Avatar>
       </AvatarGroup>,
     );
@@ -173,11 +173,11 @@ describe("AvatarGroup", () => {
     const { container } = render(
       <AvatarGroup max={5}>
         <Avatar>
-          <Avatar.Fallback>A</Avatar.Fallback>
+          <AvatarFallback>A</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Fallback>B</Avatar.Fallback>
+          <AvatarFallback>B</AvatarFallback>
         </Avatar>
       </AvatarGroup>,
     );
@@ -189,15 +189,15 @@ describe("AvatarGroup", () => {
     const { container } = render(
       <AvatarGroup size="xl" max={1}>
         <Avatar>
-          <Avatar.Fallback>A</Avatar.Fallback>
+          <AvatarFallback>A</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Fallback>B</Avatar.Fallback>
+          <AvatarFallback>B</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Fallback>C</Avatar.Fallback>
+          <AvatarFallback>C</AvatarFallback>
         </Avatar>
       </AvatarGroup>,
     );
@@ -211,7 +211,7 @@ describe("AvatarGroup", () => {
     const { container } = render(
       <AvatarGroup isHoverable>
         <Avatar>
-          <Avatar.Fallback>A</Avatar.Fallback>
+          <AvatarFallback>A</AvatarFallback>
         </Avatar>
       </AvatarGroup>,
     );
@@ -224,7 +224,7 @@ describe("AvatarGroup", () => {
     const { container } = render(
       <AvatarGroup>
         <Avatar>
-          <Avatar.Fallback>A</Avatar.Fallback>
+          <AvatarFallback>A</AvatarFallback>
         </Avatar>
       </AvatarGroup>,
     );
@@ -237,7 +237,7 @@ describe("AvatarGroup", () => {
     const { container } = render(
       <AvatarGroup className="mt-4">
         <Avatar>
-          <Avatar.Fallback>A</Avatar.Fallback>
+          <AvatarFallback>A</AvatarFallback>
         </Avatar>
       </AvatarGroup>,
     );
@@ -252,7 +252,7 @@ describe("AvatarGroup", () => {
     render(
       <AvatarGroup ref={ref}>
         <Avatar>
-          <Avatar.Fallback>A</Avatar.Fallback>
+          <AvatarFallback>A</AvatarFallback>
         </Avatar>
       </AvatarGroup>,
     );
@@ -268,7 +268,7 @@ describe("AvatarGroup", () => {
     render(
       <AvatarGroup id="my-group" data-testid="custom">
         <Avatar>
-          <Avatar.Fallback>A</Avatar.Fallback>
+          <AvatarFallback>A</AvatarFallback>
         </Avatar>
       </AvatarGroup>,
     );

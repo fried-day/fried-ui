@@ -65,7 +65,7 @@ describe("Audit — Component.tsx conventions", () => {
 });
 
 describe("Audit — drift guardrails (AST)", () => {
-  const fieldSubcomponents = new Set(["label", "description", "field-error"]);
+  const fieldSubcomponents = new Set(["field"]);
   const renderPropComponents = new Set(["button"]);
 
   it.each(components)("$kebab: no outer clsx(classes(...), className) wrap", ({ componentFile, kebab }) => {
@@ -105,13 +105,6 @@ describe("Audit — drift guardrails (AST)", () => {
       const source = loadSource({ file: componentFile });
       if (!source) return;
 
-      const importsTextFieldContextDirectly = source.getImportDeclarations().some((decl) => {
-        const moduleSpecifier = decl.getModuleSpecifierValue();
-        if (!moduleSpecifier.includes("text-field-context")) return false;
-
-        return decl.getNamedImports().some((named) => named.getName() === "TextFieldContext");
-      });
-
       const importsUseFieldState = source.getImportDeclarations().some((decl) => {
         const moduleSpecifier = decl.getModuleSpecifierValue();
         if (!moduleSpecifier.includes("use-field-state")) return false;
@@ -120,13 +113,8 @@ describe("Audit — drift guardrails (AST)", () => {
       });
 
       expect(
-        importsTextFieldContextDirectly,
-        `${kebab}: must not import TextFieldContext directly — use useFieldState(props) hook from "../text-field/use-field-state" instead (consolidates prop-override + context fallback chain).`,
-      ).toBe(false);
-
-      expect(
         importsUseFieldState,
-        `${kebab}: field subcomponent must import useFieldState from "../text-field/use-field-state" to consume TextFieldContext with prop-override fallback.`,
+        `${kebab}: Field subcomponents (FieldLabel/FieldDescription/FieldError) must use useFieldState hook from "./use-field-state" to consume FieldContext with prop-override fallback.`,
       ).toBe(true);
     },
   );

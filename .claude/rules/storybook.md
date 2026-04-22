@@ -8,7 +8,13 @@ paths:
 
 ## Source of Truth
 
-Read `{Name}.tsx` first — argTypes must match actual TypeScript props only.
+Read `{Name}.tsx` first — argTypes must match the component's **full prop surface**, which is `{Name}VariantsProps & Omit<ComponentPropsWithRef<Primitive>, "className" | "children">`.
+
+That means argTypes **must document BOTH**:
+1. **fried-ui-specific props** declared in `{name}.variants.ts` (VariantsProps): `variant`, `size`, `radius`, `isFullWidth`, `isPending`, `isIconOnly`
+2. **Pass-through props** inherited from the underlying primitive (React Aria / native HTML): `isDisabled` / `disabled`, `isReadOnly` / `readOnly`, `isRequired` / `required`, `isInvalid` / `aria-invalid`, etc.
+
+Rationale: VariantsProps stays slim to avoid over-declaring (see `.claude/rules/architecture.md` "Over-declare"), but Storybook remains the canonical spec that consumers and LLMs read when the package is `npm publish`ed — dropping pass-through props from argTypes makes LLMs hallucinate a narrower API than we actually ship.
 
 ## Meta
 
@@ -32,6 +38,49 @@ No `docs.description` — removed.
 - `control: "text"` for string props
 - `control: false` for event handlers
 - Category order: **Children then Style Variants then State then Events then Styling**
+
+## Pass-through Props (MUST document in argTypes)
+
+Pass-through props are inherited from the primitive (React Aria / native HTML) via the intersection type — they do NOT live in VariantsProps but they still land on the component. Because Storybook is the canonical spec for npm consumers and LLMs, every pass-through prop that affects state / accessibility / forms **MUST** appear in `argTypes`.
+
+**Minimum pass-through argTypes per component type:**
+
+| Primitive                       | Required argTypes                                           | Naming |
+|---------------------------------|-------------------------------------------------------------|--------|
+| React Aria wrapper (TextField, Select, Combobox) | `isDisabled`, `isInvalid`, `isReadOnly`, `isRequired`       | camelCase |
+| React Aria Button               | `isDisabled`, `isPending` (if supported)                    | camelCase |
+| Native HTML input (Input, Textarea thin wrapper) | `disabled`, `readOnly`, `required`, `aria-invalid`          | native names |
+| Native HTML button              | `disabled`, `aria-pressed` (toggles)                        | native names |
+
+**Example (Input — native HTML wrapper):**
+
+```tsx
+argTypes: {
+  disabled: {
+    control: "boolean",
+    description: "Native HTML `disabled` attribute. Dims the input and removes pointer events. Forwarded to the underlying `<input>` element. Inside TextField, React Aria propagates this via slot context automatically.",
+    table: { type: { summary: "boolean" }, defaultValue: { summary: "false" }, category: "State" },
+  },
+  readOnly:      { /* ... */ },
+  required:      { /* ... */ },
+  "aria-invalid":{ /* ... */ },
+}
+```
+
+**Example (TextField — React Aria wrapper):**
+
+```tsx
+argTypes: {
+  isDisabled: { control: "boolean", description: "Whether the text field is disabled", table: { category: "State" } },
+  isInvalid:  { control: "boolean", description: "Whether the text field is in error state (enables FieldError rendering)", table: { category: "State" } },
+  isReadOnly: { control: "boolean", description: "Whether the text field is read-only", table: { category: "State" } },
+  isRequired: { control: "boolean", description: "Whether the text field is required for form submission", table: { category: "State" } },
+}
+```
+
+**Why both `args` defaults AND argTypes:** `args` defaults populate the Storybook controls panel with a starting value (usually `false`). Without the default, Storybook may show the control as undefined and the CSS effect won't render on toggle. Keep them paired.
+
+**Do NOT** add controls for props that are irrelevant to the component (e.g., don't add `aria-invalid` to Button — it has no invalid styling).
 
 ## argType Description Pattern (enum props)
 

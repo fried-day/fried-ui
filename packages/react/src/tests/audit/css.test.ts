@@ -74,7 +74,7 @@ describe("CSS audit — drift guardrails", () => {
       /(?:&\s*:required|&\s*\[data-required\]|:has\(\s*:required\s*\)|:has\(\s*\[data-required\]\s*\))/;
 
     for (const file of listCssFiles()) {
-      if (file === "label.css") continue;
+      if (file === "field.css") continue;
 
       const content = readCss({ file });
       const lines = content.split("\n");
@@ -84,7 +84,7 @@ describe("CSS audit — drift guardrails", () => {
 
         if (requiredSelector.test(line)) {
           errors.push(
-            `${file}:${index + 1}: ${line.trim()} — :required / [data-required] visual rule forbidden outside Label`,
+            `${file}:${index + 1}: ${line.trim()} — :required / [data-required] visual rule forbidden outside FieldLabel`,
           );
         }
       }
@@ -92,7 +92,7 @@ describe("CSS audit — drift guardrails", () => {
 
     expect(
       errors,
-      `Required state is semantic-only — signal via Label asterisk (.label-required span). Do NOT change input border/ring/color based on :required or [data-required]. See memory feedback_required_semantic_only.md.\n${errors.join("\n")}`,
+      `Required state is semantic-only — signal via FieldLabel asterisk (.field-label-required span). Do NOT change input border/ring/color based on :required or [data-required]. See memory feedback_required_semantic_only.md.\n${errors.join("\n")}`,
     ).toEqual([]);
   });
 

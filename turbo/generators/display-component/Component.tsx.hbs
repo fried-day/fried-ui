@@ -1,5 +1,15 @@
 "use client";
 
+/*
+ * SCAFFOLD — single display component. If your component needs subparts (e.g., Card + CardHeader + CardBody),
+ * use **named exports with the parent's prefix** (not dot notation). Example:
+ *
+ *   export { Card, CardHeader, CardBody, CardFooter };  // OK — shadcn pattern
+ *   Card.Header = CardHeader;                            // BAD — dot notation banned
+ *
+ * See .claude/rules/architecture.md "Component Composition — Named Imports with Prefix".
+ */
+
 import type { ComponentPropsWithRef } from "react";
 
 import { classes } from "../../utils/classes";

@@ -1,5 +1,16 @@
 "use client";
 
+/*
+ * SCAFFOLD — single interactive component (Button-style by default). Customize the Aria primitive import
+ * (e.g., `Checkbox`, `Switch`, `Link`) for your use case. If your component needs subparts (e.g., Menu +
+ * MenuItem + MenuTrigger), use **named exports with the parent's prefix** (not dot notation). Example:
+ *
+ *   export { Menu, MenuItem, MenuTrigger };  // OK — shadcn pattern
+ *   Menu.Item = MenuItem;                     // BAD — dot notation banned
+ *
+ * See .claude/rules/architecture.md "Component Composition — Named Imports with Prefix".
+ */
+
 import type { ComponentPropsWithRef, ReactNode } from "react";
 
 import { Button as AriaComponent, composeRenderProps } from "react-aria-components";

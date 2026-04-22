@@ -3,13 +3,13 @@ import { createRef } from "react";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { Avatar } from "./Avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "./Avatar";
 
 describe("Avatar", () => {
   it("renders with default props", () => {
     const { container } = render(
       <Avatar>
-        <Avatar.Fallback>JD</Avatar.Fallback>
+        <AvatarFallback>JD</AvatarFallback>
       </Avatar>,
     );
 
@@ -19,7 +19,7 @@ describe("Avatar", () => {
   it("renders base class without explicit modifiers", () => {
     const { container } = render(
       <Avatar>
-        <Avatar.Fallback>A</Avatar.Fallback>
+        <AvatarFallback>A</AvatarFallback>
       </Avatar>,
     );
 
@@ -33,7 +33,7 @@ describe("Avatar", () => {
     sizes.forEach((size) => {
       const { container, unmount } = render(
         <Avatar size={size}>
-          <Avatar.Fallback>A</Avatar.Fallback>
+          <AvatarFallback>A</AvatarFallback>
         </Avatar>,
       );
 
@@ -49,7 +49,7 @@ describe("Avatar", () => {
     rings.forEach((ring) => {
       const { container, unmount } = render(
         <Avatar ring={ring}>
-          <Avatar.Fallback>A</Avatar.Fallback>
+          <AvatarFallback>A</AvatarFallback>
         </Avatar>,
       );
 
@@ -65,7 +65,7 @@ describe("Avatar", () => {
     radii.forEach((radius) => {
       const { container, unmount } = render(
         <Avatar radius={radius}>
-          <Avatar.Fallback>A</Avatar.Fallback>
+          <AvatarFallback>A</AvatarFallback>
         </Avatar>,
       );
 
@@ -78,7 +78,7 @@ describe("Avatar", () => {
   it("applies disabled modifier", () => {
     const { container } = render(
       <Avatar isDisabled>
-        <Avatar.Fallback>A</Avatar.Fallback>
+        <AvatarFallback>A</AvatarFallback>
       </Avatar>,
     );
 
@@ -89,7 +89,7 @@ describe("Avatar", () => {
   it("renders fallback content", () => {
     render(
       <Avatar>
-        <Avatar.Fallback>XL</Avatar.Fallback>
+        <AvatarFallback>XL</AvatarFallback>
       </Avatar>,
     );
 
@@ -99,7 +99,7 @@ describe("Avatar", () => {
   it("applies fallback class and data-slot", () => {
     const { container } = render(
       <Avatar>
-        <Avatar.Fallback>A</Avatar.Fallback>
+        <AvatarFallback>A</AvatarFallback>
       </Avatar>,
     );
 
@@ -111,7 +111,7 @@ describe("Avatar", () => {
   it("merges custom className on Root", () => {
     const { container } = render(
       <Avatar className="mt-4">
-        <Avatar.Fallback>A</Avatar.Fallback>
+        <AvatarFallback>A</AvatarFallback>
       </Avatar>,
     );
 
@@ -122,7 +122,7 @@ describe("Avatar", () => {
   it("merges custom className on Fallback", () => {
     const { container } = render(
       <Avatar>
-        <Avatar.Fallback className="font-bold">A</Avatar.Fallback>
+        <AvatarFallback className="font-bold">A</AvatarFallback>
       </Avatar>,
     );
 
@@ -135,7 +135,7 @@ describe("Avatar", () => {
 
     render(
       <Avatar ref={ref}>
-        <Avatar.Fallback>A</Avatar.Fallback>
+        <AvatarFallback>A</AvatarFallback>
       </Avatar>,
     );
 
@@ -144,7 +144,7 @@ describe("Avatar", () => {
 
   it("sets displayName", () => {
     expect(Avatar.displayName).toBe("Avatar");
-    expect(Avatar.Image.displayName).toBe("Avatar.Image");
-    expect(Avatar.Fallback.displayName).toBe("Avatar.Fallback");
+    expect(AvatarImage.displayName).toBe("AvatarImage");
+    expect(AvatarFallback.displayName).toBe("AvatarFallback");
   });
 });

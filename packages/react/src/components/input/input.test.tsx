@@ -14,11 +14,11 @@ describe("Input", () => {
 
   it("renders only base class without explicit variant/size/radius props", () => {
     render(<Input placeholder="Default" />);
-    const wrapper = screen.getByPlaceholderText("Default").parentElement;
-    expect(wrapper?.className).toContain("input");
-    expect(wrapper?.className).not.toContain("input-primary");
-    expect(wrapper?.className).not.toContain("input-size-md");
-    expect(wrapper?.className).not.toContain("input-radius-md");
+    const input = screen.getByPlaceholderText("Default");
+    expect(input.className).toContain("input");
+    expect(input.className).not.toContain("input-primary");
+    expect(input.className).not.toContain("input-size-md");
+    expect(input.className).not.toContain("input-radius-md");
   });
 
   it("applies all variant classes", () => {
@@ -26,8 +26,8 @@ describe("Input", () => {
 
     variants.forEach((variant) => {
       const { unmount } = render(<Input variant={variant} placeholder={variant} />);
-      const wrapper = screen.getByPlaceholderText(variant).parentElement;
-      expect(wrapper?.className).toContain(`input-${variant}`);
+      const input = screen.getByPlaceholderText(variant);
+      expect(input.className).toContain(`input-${variant}`);
       unmount();
     });
   });
@@ -37,8 +37,8 @@ describe("Input", () => {
 
     sizes.forEach((size) => {
       const { unmount } = render(<Input size={size} placeholder={size} />);
-      const wrapper = screen.getByPlaceholderText(size).parentElement;
-      expect(wrapper?.className).toContain(`input-size-${size}`);
+      const input = screen.getByPlaceholderText(size);
+      expect(input.className).toContain(`input-size-${size}`);
       unmount();
     });
   });
@@ -48,36 +48,36 @@ describe("Input", () => {
 
     radiusValues.forEach((radius) => {
       const { unmount } = render(<Input radius={radius} placeholder={radius} />);
-      const wrapper = screen.getByPlaceholderText(radius).parentElement;
-      expect(wrapper?.className).toContain(`input-radius-${radius}`);
+      const input = screen.getByPlaceholderText(radius);
+      expect(input.className).toContain(`input-radius-${radius}`);
       unmount();
     });
   });
 
-  it("sets aria-invalid when isInvalid is true", () => {
-    render(<Input placeholder="Invalid" isInvalid />);
+  it("sets aria-invalid when aria-invalid is true", () => {
+    render(<Input placeholder="Invalid" aria-invalid="true" />);
     expect(screen.getByPlaceholderText("Invalid")).toHaveAttribute("aria-invalid", "true");
   });
 
-  it("disables input when isDisabled is true", () => {
-    render(<Input placeholder="Disabled" isDisabled />);
+  it("disables input when disabled prop is true", () => {
+    render(<Input placeholder="Disabled" disabled />);
     expect(screen.getByPlaceholderText("Disabled")).toBeDisabled();
   });
 
-  it("sets readOnly attribute when isReadOnly is true", () => {
-    render(<Input placeholder="ReadOnly" isReadOnly />);
+  it("sets readOnly attribute when readOnly prop is true", () => {
+    render(<Input placeholder="ReadOnly" readOnly />);
     expect(screen.getByPlaceholderText("ReadOnly")).toHaveAttribute("readonly");
   });
 
-  it("sets required attribute when isRequired is true", () => {
-    render(<Input placeholder="Required" isRequired />);
+  it("sets required attribute when required prop is true", () => {
+    render(<Input placeholder="Required" required />);
     expect(screen.getByPlaceholderText("Required")).toBeRequired();
   });
 
   it("applies full-width modifier class when isFullWidth is true", () => {
     render(<Input placeholder="FullWidth" isFullWidth />);
-    const wrapper = screen.getByPlaceholderText("FullWidth").parentElement;
-    expect(wrapper?.className).toContain("input-full-width");
+    const input = screen.getByPlaceholderText("FullWidth");
+    expect(input.className).toContain("input-full-width");
   });
 
   it("focuses the input via keyboard navigation", async () => {
@@ -90,18 +90,17 @@ describe("Input", () => {
     expect(input).toHaveFocus();
   });
 
-  it("sets data-slot='input-wrapper' on wrapper and data-slot='input' on input", () => {
+  it("sets data-slot='input' on the input element", () => {
     render(<Input placeholder="Slot" />);
     const input = screen.getByPlaceholderText("Slot");
     expect(input).toHaveAttribute("data-slot", "input");
-    expect(input.parentElement).toHaveAttribute("data-slot", "input-wrapper");
   });
 
-  it("merges custom className onto the wrapper", () => {
+  it("merges custom className onto the input", () => {
     render(<Input className="mt-4" placeholder="Styled" />);
-    const wrapper = screen.getByPlaceholderText("Styled").parentElement;
-    expect(wrapper?.className).toContain("input");
-    expect(wrapper?.className).toContain("mt-4");
+    const input = screen.getByPlaceholderText("Styled");
+    expect(input.className).toContain("input");
+    expect(input.className).toContain("mt-4");
   });
 
   it("forwards ref to the input element", () => {
@@ -129,42 +128,5 @@ describe("Input", () => {
 
     expect(onChange).toHaveBeenCalled();
     expect((screen.getByPlaceholderText("Type") as HTMLInputElement).value).toBe("hello");
-  });
-
-  it("renders startIcon and endIcon in the wrapper", () => {
-    render(
-      <Input
-        placeholder="Icons"
-        startIcon={<svg data-testid="start-icon" />}
-        endIcon={<svg data-testid="end-icon" />}
-      />,
-    );
-
-    const wrapper = screen.getByPlaceholderText("Icons").parentElement;
-    expect(wrapper).toContainElement(screen.getByTestId("start-icon"));
-    expect(wrapper).toContainElement(screen.getByTestId("end-icon"));
-  });
-
-  it("renders prefix and suffix slots", () => {
-    render(<Input placeholder="Affix" prefix="https://" suffix=".com" />);
-    const wrapper = screen.getByPlaceholderText("Affix").parentElement;
-    const prefix = wrapper?.querySelector('[data-slot="input-prefix"]');
-    const suffix = wrapper?.querySelector('[data-slot="input-suffix"]');
-    expect(prefix).toHaveTextContent("https://");
-    expect(suffix).toHaveTextContent(".com");
-  });
-
-  it("renders spinner and hides endIcon when isPending is true", () => {
-    render(<Input placeholder="Pending" endIcon={<svg data-testid="end-icon" />} isPending />);
-    const wrapper = screen.getByPlaceholderText("Pending").parentElement;
-    const spinner = wrapper?.querySelector('[data-slot="input-spinner"]');
-    expect(spinner).toBeInTheDocument();
-    expect(screen.queryByTestId("end-icon")).not.toBeInTheDocument();
-  });
-
-  it("sets data-pending on wrapper when isPending is true", () => {
-    render(<Input placeholder="PendingAttr" isPending />);
-    const wrapper = screen.getByPlaceholderText("PendingAttr").parentElement;
-    expect(wrapper).toHaveAttribute("data-pending", "true");
   });
 });

@@ -33,7 +33,7 @@ export default [
     },
   },
   {
-    files: ["src/components/text-field/TextField.tsx"],
+    files: ["src/components/field/Field.tsx", "src/components/text-field/TextField.tsx"],
     rules: {
       "nextfriday/prefer-import-type": "off",
     },

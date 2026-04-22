@@ -1,16 +1,18 @@
 @layer components {
   .{{dashCase name}} {
-    @apply inline-flex items-center justify-center;
+    @apply relative inline-flex items-center justify-center;
     @apply leading-none font-medium whitespace-nowrap;
-    @apply cursor-pointer border border-transparent select-none no-highlight;
-    @apply transition duration-(--duration-hover) ease-out motion-reduce:transition-none;
+    @apply cursor-pointer select-none no-highlight;
+    @apply transition-colors duration-(--duration-hover) ease-out motion-reduce:transition-none;
 
     --{{dashCase name}}-bg: var(--color-primary);
     --{{dashCase name}}-bg-hover: var(--color-primary-hover);
     --{{dashCase name}}-bg-pressed: var(--color-primary-active);
+    --{{dashCase name}}-border: var(--color-primary-border);
     --{{dashCase name}}-fg: var(--color-primary-foreground);
 
     @apply bg-(--{{dashCase name}}-bg) text-(--{{dashCase name}}-fg);
+    @apply border border-(--{{dashCase name}}-border);
     @apply gap-[calc(1rem/2.058)] px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
     @apply rounded-[calc(1em*1.272*2/4)];
 
@@ -37,61 +39,74 @@
     }
   }
 
-  .{{dashCase name}}--primary {
+  /*
+   * Variant classes — override tokens only (no @apply border-X-border).
+   * Consumer overrides ANY of these tokens in their :root to theme globally.
+   * Add new variants by defining the 5 tokens above (bg/bg-hover/bg-pressed/border/fg).
+   * If a required token doesn't exist in packages/styles/src/tokens/colors.css, add it there first.
+   */
+
+  .{{dashCase name}}-primary {
     --{{dashCase name}}-bg: var(--color-primary);
     --{{dashCase name}}-bg-hover: var(--color-primary-hover);
     --{{dashCase name}}-bg-pressed: var(--color-primary-active);
+    --{{dashCase name}}-border: var(--color-primary-border);
     --{{dashCase name}}-fg: var(--color-primary-foreground);
   }
 
-  .{{dashCase name}}--secondary {
+  .{{dashCase name}}-secondary {
     --{{dashCase name}}-bg: var(--color-secondary);
     --{{dashCase name}}-bg-hover: var(--color-secondary-hover);
     --{{dashCase name}}-bg-pressed: var(--color-secondary-active);
+    --{{dashCase name}}-border: var(--color-secondary-border);
     --{{dashCase name}}-fg: var(--color-secondary-foreground);
   }
 
-  .{{dashCase name}}--ghost {
+  .{{dashCase name}}-ghost {
     --{{dashCase name}}-bg: transparent;
     --{{dashCase name}}-bg-hover: var(--color-muted);
     --{{dashCase name}}-bg-pressed: var(--color-muted-hover);
+    --{{dashCase name}}-border: transparent;
     --{{dashCase name}}-fg: var(--color-foreground);
   }
 
-  .{{dashCase name}}--outline {
+  .{{dashCase name}}-outline {
     --{{dashCase name}}-bg: transparent;
     --{{dashCase name}}-bg-hover: var(--color-muted);
     --{{dashCase name}}-bg-pressed: var(--color-muted-hover);
+    --{{dashCase name}}-border: var(--color-border);
     --{{dashCase name}}-fg: var(--color-foreground);
-
-    @apply border-border;
   }
 
-  .{{dashCase name}}--success {
+  .{{dashCase name}}-success {
     --{{dashCase name}}-bg: var(--color-success);
     --{{dashCase name}}-bg-hover: var(--color-success-hover);
     --{{dashCase name}}-bg-pressed: var(--color-success-active);
+    --{{dashCase name}}-border: var(--color-success-border);
     --{{dashCase name}}-fg: var(--color-success-foreground);
   }
 
-  .{{dashCase name}}--warning {
+  .{{dashCase name}}-warning {
     --{{dashCase name}}-bg: var(--color-warning);
     --{{dashCase name}}-bg-hover: var(--color-warning-hover);
     --{{dashCase name}}-bg-pressed: var(--color-warning-active);
+    --{{dashCase name}}-border: var(--color-warning-border);
     --{{dashCase name}}-fg: var(--color-warning-foreground);
   }
 
-  .{{dashCase name}}--danger {
+  .{{dashCase name}}-danger {
     --{{dashCase name}}-bg: var(--color-danger);
     --{{dashCase name}}-bg-hover: var(--color-danger-hover);
     --{{dashCase name}}-bg-pressed: var(--color-danger-active);
+    --{{dashCase name}}-border: var(--color-danger-border);
     --{{dashCase name}}-fg: var(--color-danger-foreground);
   }
 
-  .{{dashCase name}}--info {
+  .{{dashCase name}}-info {
     --{{dashCase name}}-bg: var(--color-info);
     --{{dashCase name}}-bg-hover: var(--color-info-hover);
     --{{dashCase name}}-bg-pressed: var(--color-info-active);
+    --{{dashCase name}}-border: var(--color-info-border);
     --{{dashCase name}}-fg: var(--color-info-foreground);
   }
 
@@ -101,35 +116,35 @@
     @apply size-match-font;
   }
 
-  .{{dashCase name}}--size-sm {
+  .{{dashCase name}}-size-sm {
     @apply gap-[calc(0.875rem/2.058)] px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
   }
 
-  .{{dashCase name}}--size-md {
+  .{{dashCase name}}-size-md {
     @apply gap-[calc(1rem/2.058)] px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
   }
 
-  .{{dashCase name}}--size-lg {
+  .{{dashCase name}}-size-lg {
     @apply gap-[calc(1.25rem/2.058)] px-[calc(1.25rem)] py-[calc(1.25rem/2.058)] text-xl;
   }
 
-  .{{dashCase name}}--radius-none {
+  .{{dashCase name}}-radius-none {
     @apply rounded-none;
   }
 
-  .{{dashCase name}}--radius-sm {
+  .{{dashCase name}}-radius-sm {
     @apply rounded-[calc(1em*1.272/4)];
   }
 
-  .{{dashCase name}}--radius-md {
+  .{{dashCase name}}-radius-md {
     @apply rounded-[calc(1em*1.272*2/4)];
   }
 
-  .{{dashCase name}}--radius-lg {
+  .{{dashCase name}}-radius-lg {
     @apply rounded-[calc(1em*1.272*3/4)];
   }
 
-  .{{dashCase name}}--radius-full {
+  .{{dashCase name}}-radius-full {
     @apply rounded-full;
   }
 }

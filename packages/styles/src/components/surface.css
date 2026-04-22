@@ -1,80 +1,99 @@
 @layer components {
   .surface {
-    @apply border border-transparent;
-    @apply bg-surface text-surface-foreground;
+    --surface-bg: var(--color-surface);
+    --surface-border: transparent;
+    --surface-fg: var(--color-surface-foreground);
+
+    @apply bg-(--surface-bg) text-(--surface-fg);
+    @apply border border-(--surface-border);
     @apply rounded-[calc(1em*1.272*2/4)];
   }
 
   .surface-default {
-    @apply bg-surface text-surface-foreground;
+    --surface-bg: var(--color-surface);
+    --surface-fg: var(--color-surface-foreground);
   }
 
   .surface-plain {
-    @apply bg-surface-plain text-surface-plain-foreground;
+    --surface-bg: var(--color-surface-plain);
+    --surface-fg: var(--color-surface-plain-foreground);
   }
 
   .surface-success {
-    @apply bg-success-soft text-success-soft-foreground;
+    --surface-bg: var(--color-success-soft);
+    --surface-fg: var(--color-success-soft-foreground);
   }
 
   .surface-warning {
-    @apply bg-warning-soft text-warning-soft-foreground;
+    --surface-bg: var(--color-warning-soft);
+    --surface-fg: var(--color-warning-soft-foreground);
   }
 
   .surface-danger {
-    @apply bg-danger-soft text-danger-soft-foreground;
+    --surface-bg: var(--color-danger-soft);
+    --surface-fg: var(--color-danger-soft-foreground);
   }
 
   .surface-info {
-    @apply bg-info-soft text-info-soft-foreground;
+    --surface-bg: var(--color-info-soft);
+    --surface-fg: var(--color-info-soft-foreground);
   }
 
   .surface-glass {
-    @apply bg-glass text-glass-foreground backdrop-blur-xl backdrop-saturate-200;
+    --surface-bg: var(--color-glass);
+    --surface-fg: var(--color-glass-foreground);
+
+    @apply backdrop-blur-xl backdrop-saturate-200;
   }
 
   .surface-frost {
-    @apply bg-glass text-glass-foreground backdrop-blur-2xl backdrop-saturate-200;
+    --surface-bg: var(--color-glass);
+    --surface-fg: var(--color-glass-foreground);
+
+    @apply backdrop-blur-2xl backdrop-saturate-200;
   }
 
   .surface-overlay {
-    @apply bg-scrim text-scrim-foreground backdrop-blur-xl backdrop-saturate-150;
+    --surface-bg: var(--color-scrim);
+    --surface-fg: var(--color-scrim-foreground);
+
+    @apply backdrop-blur-xl backdrop-saturate-150;
   }
 
   .surface-bordered.surface-default {
-    @apply border-surface-border;
+    --surface-border: var(--color-surface-border);
   }
 
   .surface-bordered.surface-plain {
-    @apply border-surface-plain-border;
+    --surface-border: var(--color-surface-plain-border);
   }
 
   .surface-bordered.surface-success {
-    @apply border-success-soft-border;
+    --surface-border: var(--color-success-soft-border);
   }
 
   .surface-bordered.surface-warning {
-    @apply border-warning-soft-border;
+    --surface-border: var(--color-warning-soft-border);
   }
 
   .surface-bordered.surface-danger {
-    @apply border-danger-soft-border;
+    --surface-border: var(--color-danger-soft-border);
   }
 
   .surface-bordered.surface-info {
-    @apply border-info-soft-border;
+    --surface-border: var(--color-info-soft-border);
   }
 
   .surface-bordered.surface-glass {
-    @apply border-glass-border;
+    --surface-border: var(--color-glass-border);
   }
 
   .surface-bordered.surface-frost {
-    @apply border-glass-border;
+    --surface-border: var(--color-glass-border);
   }
 
   .surface-bordered.surface-overlay {
-    @apply border-scrim-border;
+    --surface-border: var(--color-scrim-border);
   }
 
   .surface-shadow-none {

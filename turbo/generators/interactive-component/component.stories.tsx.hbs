@@ -11,10 +11,19 @@ import { {{pascalCase name}} } from "./{{pascalCase name}}";
  * 1. Remove `children`/`onPress` if the component doesn't use them (e.g. Input uses `placeholder`)
  * 2. Rewrite `variant` options + 4-part description to match this component's real variants
  * 3. Update variant TypeScript summary string to match `{{pascalCase name}}VariantsProps`
- * 4. Remove or add argTypes (isInvalid, isReadOnly, isRequired, isFullWidth, etc.)
+ * 4. Add pass-through argTypes for state props NOT in VariantsProps but accepted by the
+ *    underlying primitive (React Aria / native HTML). MUST cover:
+ *      - React Aria wrapper (Button, TextField, Select, Combobox):
+ *          isDisabled, isInvalid, isReadOnly, isRequired
+ *      - Native HTML wrapper (Input-style):
+ *          disabled, readOnly, required, aria-invalid
+ *    Pair each with `meta.args` default (usually `false`) so Storybook controls render
+ *    and LLM autodocs show the full prop surface. Rationale: see
+ *    .claude/rules/storybook.md "Pass-through Props" + .claude/rules/architecture.md
+ *    "Over-declare".
  * 5. Rewrite render blocks with realistic props (NOT template defaults)
  *
- * Reference: Input/Button/Badge stories as live examples. Never ship this scaffold verbatim.
+ * Reference: Input/Button/Badge/TextField stories as live examples. Never ship this scaffold verbatim.
  */
 
 const meta = {

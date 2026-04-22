@@ -2,15 +2,17 @@
   .button {
     @apply relative inline-flex items-center justify-center;
     @apply leading-none font-medium whitespace-nowrap;
-    @apply cursor-pointer border border-transparent select-none no-highlight;
+    @apply cursor-pointer select-none no-highlight;
     @apply transition-colors duration-(--duration-hover) ease-out motion-reduce:transition-none;
 
     --button-bg: var(--color-primary);
     --button-bg-hover: var(--color-primary-hover);
     --button-bg-pressed: var(--color-primary-active);
+    --button-border: var(--color-primary-border);
     --button-fg: var(--color-primary-foreground);
 
     @apply bg-(--button-bg) text-(--button-fg);
+    @apply border border-(--button-border);
     @apply gap-[calc(1rem/2.058)] px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
     @apply rounded-[calc(1em*1.272*2/4)];
 
@@ -45,6 +47,7 @@
     --button-bg: var(--color-primary);
     --button-bg-hover: var(--color-primary-hover);
     --button-bg-pressed: var(--color-primary-active);
+    --button-border: var(--color-primary-border);
     --button-fg: var(--color-primary-foreground);
   }
 
@@ -52,6 +55,7 @@
     --button-bg: var(--color-secondary);
     --button-bg-hover: var(--color-secondary-hover);
     --button-bg-pressed: var(--color-secondary-active);
+    --button-border: var(--color-secondary-border);
     --button-fg: var(--color-secondary-foreground);
   }
 
@@ -59,6 +63,7 @@
     --button-bg: var(--color-accent);
     --button-bg-hover: var(--color-accent-hover);
     --button-bg-pressed: var(--color-accent-active);
+    --button-border: var(--color-accent-border);
     --button-fg: var(--color-accent-foreground);
   }
 
@@ -66,6 +71,7 @@
     --button-bg: transparent;
     --button-bg-hover: var(--color-muted);
     --button-bg-pressed: var(--color-muted-hover);
+    --button-border: transparent;
     --button-fg: var(--color-foreground);
   }
 
@@ -73,24 +79,25 @@
     --button-bg: transparent;
     --button-bg-hover: var(--color-muted);
     --button-bg-pressed: var(--color-muted-hover);
+    --button-border: var(--color-border);
     --button-fg: var(--color-foreground);
-
-    @apply border-border;
   }
 
   .button-glass {
     --button-bg: var(--color-glass);
     --button-bg-hover: var(--color-glass-hover);
     --button-bg-pressed: var(--color-glass-active);
+    --button-border: var(--color-glass-border);
     --button-fg: var(--color-glass-foreground);
 
-    @apply border-glass-border backdrop-blur-xl backdrop-saturate-200;
+    @apply backdrop-blur-xl backdrop-saturate-200;
   }
 
   .button-frost {
     --button-bg: var(--color-glass);
     --button-bg-hover: var(--color-glass-hover);
     --button-bg-pressed: var(--color-glass-active);
+    --button-border: transparent;
     --button-fg: var(--color-glass-foreground);
 
     @apply backdrop-blur-2xl backdrop-saturate-200;
@@ -100,15 +107,17 @@
     --button-bg: var(--color-scrim);
     --button-bg-hover: var(--color-scrim-hover);
     --button-bg-pressed: var(--color-scrim-active);
+    --button-border: var(--color-scrim-border);
     --button-fg: var(--color-scrim-foreground);
 
-    @apply border-scrim-border backdrop-blur-xl backdrop-saturate-150;
+    @apply backdrop-blur-xl backdrop-saturate-150;
   }
 
   .button-success {
     --button-bg: var(--color-success);
     --button-bg-hover: var(--color-success-hover);
     --button-bg-pressed: var(--color-success-active);
+    --button-border: var(--color-success-border);
     --button-fg: var(--color-success-foreground);
   }
 
@@ -116,6 +125,7 @@
     --button-bg: var(--color-warning);
     --button-bg-hover: var(--color-warning-hover);
     --button-bg-pressed: var(--color-warning-active);
+    --button-border: var(--color-warning-border);
     --button-fg: var(--color-warning-foreground);
   }
 
@@ -123,6 +133,7 @@
     --button-bg: var(--color-danger);
     --button-bg-hover: var(--color-danger-hover);
     --button-bg-pressed: var(--color-danger-active);
+    --button-border: var(--color-danger-border);
     --button-fg: var(--color-danger-foreground);
   }
 
@@ -130,75 +141,71 @@
     --button-bg: var(--color-info);
     --button-bg-hover: var(--color-info-hover);
     --button-bg-pressed: var(--color-info-active);
+    --button-border: var(--color-info-border);
     --button-fg: var(--color-info-foreground);
   }
+
   .button-primary-soft {
     --button-bg: var(--color-primary-soft);
     --button-bg-hover: var(--color-primary-soft-hover);
     --button-bg-pressed: var(--color-primary-soft-active);
+    --button-border: var(--color-primary-soft-border);
     --button-fg: var(--color-primary-soft-foreground);
-
-    @apply border border-primary-soft-border;
   }
 
   .button-secondary-soft {
     --button-bg: var(--color-secondary-soft);
     --button-bg-hover: var(--color-secondary-soft-hover);
     --button-bg-pressed: var(--color-secondary-soft-active);
+    --button-border: var(--color-secondary-soft-border);
     --button-fg: var(--color-secondary-soft-foreground);
-
-    @apply border border-secondary-soft-border;
   }
 
   .button-accent-soft {
     --button-bg: var(--color-accent-soft);
     --button-bg-hover: var(--color-accent-soft-hover);
     --button-bg-pressed: var(--color-accent-soft-active);
+    --button-border: var(--color-accent-soft-border);
     --button-fg: var(--color-accent-soft-foreground);
-
-    @apply border border-accent-soft-border;
   }
 
   .button-success-soft {
     --button-bg: var(--color-success-soft);
     --button-bg-hover: var(--color-success-soft-hover);
     --button-bg-pressed: var(--color-success-soft-active);
+    --button-border: var(--color-success-soft-border);
     --button-fg: var(--color-success-soft-foreground);
-
-    @apply border border-success-soft-border;
   }
 
   .button-warning-soft {
     --button-bg: var(--color-warning-soft);
     --button-bg-hover: var(--color-warning-soft-hover);
     --button-bg-pressed: var(--color-warning-soft-active);
+    --button-border: var(--color-warning-soft-border);
     --button-fg: var(--color-warning-soft-foreground);
-
-    @apply border border-warning-soft-border;
   }
 
   .button-danger-soft {
     --button-bg: var(--color-danger-soft);
     --button-bg-hover: var(--color-danger-soft-hover);
     --button-bg-pressed: var(--color-danger-soft-active);
+    --button-border: var(--color-danger-soft-border);
     --button-fg: var(--color-danger-soft-foreground);
-
-    @apply border border-danger-soft-border;
   }
 
   .button-info-soft {
     --button-bg: var(--color-info-soft);
     --button-bg-hover: var(--color-info-soft-hover);
     --button-bg-pressed: var(--color-info-soft-active);
+    --button-border: var(--color-info-soft-border);
     --button-fg: var(--color-info-soft-foreground);
-
-    @apply border border-info-soft-border;
   }
 
   .button-primary-flat {
     --button-bg: var(--color-primary-flat);
     --button-bg-hover: var(--color-primary-flat-hover);
     --button-bg-pressed: var(--color-primary-flat-active);
+    --button-border: var(--color-primary-flat-border);
     --button-fg: var(--color-primary-flat-foreground);
   }
 
@@ -206,6 +213,7 @@
     --button-bg: var(--color-secondary-flat);
     --button-bg-hover: var(--color-secondary-flat-hover);
     --button-bg-pressed: var(--color-secondary-flat-active);
+    --button-border: var(--color-secondary-flat-border);
     --button-fg: var(--color-secondary-flat-foreground);
   }
 
@@ -213,6 +221,7 @@
     --button-bg: var(--color-accent-flat);
     --button-bg-hover: var(--color-accent-flat-hover);
     --button-bg-pressed: var(--color-accent-flat-active);
+    --button-border: var(--color-accent-flat-border);
     --button-fg: var(--color-accent-flat-foreground);
   }
 
@@ -220,6 +229,7 @@
     --button-bg: var(--color-success-flat);
     --button-bg-hover: var(--color-success-flat-hover);
     --button-bg-pressed: var(--color-success-flat-active);
+    --button-border: var(--color-success-flat-border);
     --button-fg: var(--color-success-flat-foreground);
   }
 
@@ -227,6 +237,7 @@
     --button-bg: var(--color-warning-flat);
     --button-bg-hover: var(--color-warning-flat-hover);
     --button-bg-pressed: var(--color-warning-flat-active);
+    --button-border: var(--color-warning-flat-border);
     --button-fg: var(--color-warning-flat-foreground);
   }
 
@@ -234,6 +245,7 @@
     --button-bg: var(--color-danger-flat);
     --button-bg-hover: var(--color-danger-flat-hover);
     --button-bg-pressed: var(--color-danger-flat-active);
+    --button-border: var(--color-danger-flat-border);
     --button-fg: var(--color-danger-flat-foreground);
   }
 
@@ -241,6 +253,7 @@
     --button-bg: var(--color-info-flat);
     --button-bg-hover: var(--color-info-flat-hover);
     --button-bg-pressed: var(--color-info-flat-active);
+    --button-border: var(--color-info-flat-border);
     --button-fg: var(--color-info-flat-foreground);
   }
 
@@ -248,69 +261,63 @@
     --button-bg: var(--color-primary-outline);
     --button-bg-hover: var(--color-primary-outline-hover);
     --button-bg-pressed: var(--color-primary-outline-active);
+    --button-border: var(--color-primary-outline-border);
     --button-fg: var(--color-primary-outline-foreground);
-
-    @apply border border-primary-outline-border;
   }
 
   .button-secondary-outline {
     --button-bg: var(--color-secondary-outline);
     --button-bg-hover: var(--color-secondary-outline-hover);
     --button-bg-pressed: var(--color-secondary-outline-active);
+    --button-border: var(--color-secondary-outline-border);
     --button-fg: var(--color-secondary-outline-foreground);
-
-    @apply border border-secondary-outline-border;
   }
 
   .button-accent-outline {
     --button-bg: var(--color-accent-outline);
     --button-bg-hover: var(--color-accent-outline-hover);
     --button-bg-pressed: var(--color-accent-outline-active);
+    --button-border: var(--color-accent-outline-border);
     --button-fg: var(--color-accent-outline-foreground);
-
-    @apply border border-accent-outline-border;
   }
 
   .button-success-outline {
     --button-bg: var(--color-success-outline);
     --button-bg-hover: var(--color-success-outline-hover);
     --button-bg-pressed: var(--color-success-outline-active);
+    --button-border: var(--color-success-outline-border);
     --button-fg: var(--color-success-outline-foreground);
-
-    @apply border border-success-outline-border;
   }
 
   .button-warning-outline {
     --button-bg: var(--color-warning-outline);
     --button-bg-hover: var(--color-warning-outline-hover);
     --button-bg-pressed: var(--color-warning-outline-active);
+    --button-border: var(--color-warning-outline-border);
     --button-fg: var(--color-warning-outline-foreground);
-
-    @apply border border-warning-outline-border;
   }
 
   .button-danger-outline {
     --button-bg: var(--color-danger-outline);
     --button-bg-hover: var(--color-danger-outline-hover);
     --button-bg-pressed: var(--color-danger-outline-active);
+    --button-border: var(--color-danger-outline-border);
     --button-fg: var(--color-danger-outline-foreground);
-
-    @apply border border-danger-outline-border;
   }
 
   .button-info-outline {
     --button-bg: var(--color-info-outline);
     --button-bg-hover: var(--color-info-outline-hover);
     --button-bg-pressed: var(--color-info-outline-active);
+    --button-border: var(--color-info-outline-border);
     --button-fg: var(--color-info-outline-foreground);
-
-    @apply border border-info-outline-border;
   }
 
   .button-primary-ghost {
     --button-bg: var(--color-primary-ghost);
     --button-bg-hover: var(--color-primary-ghost-hover);
     --button-bg-pressed: var(--color-primary-ghost-active);
+    --button-border: var(--color-primary-ghost-border);
     --button-fg: var(--color-primary-ghost-foreground);
   }
 
@@ -318,6 +325,7 @@
     --button-bg: var(--color-secondary-ghost);
     --button-bg-hover: var(--color-secondary-ghost-hover);
     --button-bg-pressed: var(--color-secondary-ghost-active);
+    --button-border: var(--color-secondary-ghost-border);
     --button-fg: var(--color-secondary-ghost-foreground);
   }
 
@@ -325,6 +333,7 @@
     --button-bg: var(--color-accent-ghost);
     --button-bg-hover: var(--color-accent-ghost-hover);
     --button-bg-pressed: var(--color-accent-ghost-active);
+    --button-border: var(--color-accent-ghost-border);
     --button-fg: var(--color-accent-ghost-foreground);
   }
 
@@ -332,6 +341,7 @@
     --button-bg: var(--color-success-ghost);
     --button-bg-hover: var(--color-success-ghost-hover);
     --button-bg-pressed: var(--color-success-ghost-active);
+    --button-border: var(--color-success-ghost-border);
     --button-fg: var(--color-success-ghost-foreground);
   }
 
@@ -339,6 +349,7 @@
     --button-bg: var(--color-warning-ghost);
     --button-bg-hover: var(--color-warning-ghost-hover);
     --button-bg-pressed: var(--color-warning-ghost-active);
+    --button-border: var(--color-warning-ghost-border);
     --button-fg: var(--color-warning-ghost-foreground);
   }
 
@@ -346,6 +357,7 @@
     --button-bg: var(--color-danger-ghost);
     --button-bg-hover: var(--color-danger-ghost-hover);
     --button-bg-pressed: var(--color-danger-ghost-active);
+    --button-border: var(--color-danger-ghost-border);
     --button-fg: var(--color-danger-ghost-foreground);
   }
 
@@ -353,6 +365,7 @@
     --button-bg: var(--color-info-ghost);
     --button-bg-hover: var(--color-info-ghost-hover);
     --button-bg-pressed: var(--color-info-ghost-active);
+    --button-border: var(--color-info-ghost-border);
     --button-fg: var(--color-info-ghost-foreground);
   }
 
@@ -413,7 +426,7 @@
   }
 
   .button-pending {
-    @apply text-transparent;
+    --button-fg: transparent;
   }
 
   .button [slot="icon"],

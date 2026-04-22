@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { TextFieldContext } from "./text-field-context";
+import { FieldContext } from "./field-context";
 
 export interface FieldStateInput {
   isDisabled?: boolean;
@@ -17,7 +17,7 @@ export interface FieldState {
 }
 
 function useFieldState(props: Readonly<FieldStateInput>): FieldState {
-  const ctx = useContext(TextFieldContext);
+  const ctx = useContext(FieldContext);
   const isDisabled = props.isDisabled ?? ctx?.isDisabled;
   const isInvalid = props.isInvalid ?? ctx?.isInvalid;
   const isReadOnly = props.isReadOnly ?? ctx?.isReadOnly;

@@ -1,0 +1,135 @@
+@layer components {
+  .textarea {
+    @apply block w-auto leading-[calc(1em*1.618)] font-normal outline-none;
+    @apply transition duration-(--duration-hover) ease-out motion-reduce:transition-none;
+
+    --textarea-bg: var(--color-field);
+    --textarea-bg-hover: var(--color-field-hover);
+    --textarea-border: var(--color-field-border);
+    --textarea-border-hover: var(--color-field-border-hover);
+    --textarea-border-focus: var(--color-field-border-focus);
+    --textarea-fg: var(--color-field-foreground);
+    --textarea-placeholder: var(--color-field-placeholder);
+
+    @apply bg-(--textarea-bg) text-(--textarea-fg);
+    @apply border border-(--textarea-border);
+    @apply px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
+    @apply rounded-[calc(1em*1.272*2/4)];
+    @apply placeholder:text-(--textarea-placeholder);
+    @apply resize-y;
+
+    &:hover:not(:focus):not(:read-only):not(:disabled),
+    &[data-hovered]:not([data-focused]):not([data-readonly]):not([data-disabled]) {
+      @apply border-(--textarea-border-hover) bg-(--textarea-bg-hover);
+    }
+
+    &:focus:not(:focus-visible),
+    &[data-focused]:not([data-focus-visible]) {
+      @apply border-(--textarea-border-focus);
+    }
+
+    &:focus-visible,
+    &[data-focus-visible] {
+      @apply border-(--textarea-border-focus) focus-ring;
+    }
+
+    &[aria-invalid="true"],
+    &[data-invalid] {
+      --textarea-border: var(--color-danger);
+      --textarea-border-hover: var(--color-danger);
+      --textarea-border-focus: var(--color-danger);
+    }
+
+    &:disabled,
+    &[data-disabled] {
+      @apply status-disabled;
+    }
+
+    &:read-only,
+    &[data-readonly] {
+      @apply cursor-default;
+    }
+  }
+
+  .textarea-primary {
+    --textarea-bg: var(--color-field);
+    --textarea-bg-hover: var(--color-field-hover);
+    --textarea-border: var(--color-field-border);
+    --textarea-border-hover: var(--color-field-border-hover);
+    --textarea-border-focus: var(--color-field-border-focus);
+    --textarea-fg: var(--color-field-foreground);
+    --textarea-placeholder: var(--color-field-placeholder);
+  }
+
+  .textarea-secondary {
+    --textarea-bg: var(--color-field-secondary);
+    --textarea-bg-hover: var(--color-field-secondary-hover);
+    --textarea-border: var(--color-field-secondary-border);
+    --textarea-border-hover: var(--color-field-secondary-border-hover);
+    --textarea-border-focus: var(--color-field-secondary-border-focus);
+    --textarea-fg: var(--color-field-secondary-foreground);
+    --textarea-placeholder: var(--color-field-secondary-placeholder);
+  }
+
+  .textarea-plain {
+    --textarea-bg: var(--color-field-plain);
+    --textarea-bg-hover: var(--color-field-plain-hover);
+    --textarea-border: var(--color-field-plain-border);
+    --textarea-border-hover: var(--color-field-plain-border-hover);
+    --textarea-border-focus: var(--color-field-plain-border-focus);
+    --textarea-fg: var(--color-field-plain-foreground);
+    --textarea-placeholder: var(--color-field-plain-placeholder);
+  }
+
+  .textarea-size-sm {
+    @apply px-[calc(0.75rem)] py-[calc(0.75rem/2.058)] text-xs;
+  }
+
+  .textarea-size-md {
+    @apply px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
+  }
+
+  .textarea-size-lg {
+    @apply px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
+  }
+
+  .textarea-resize-none {
+    @apply resize-none;
+  }
+
+  .textarea-resize-vertical {
+    @apply resize-y;
+  }
+
+  .textarea-resize-horizontal {
+    @apply resize-x;
+  }
+
+  .textarea-resize-both {
+    @apply resize;
+  }
+
+  .textarea-full-width {
+    @apply w-full;
+  }
+
+  .textarea-radius-none {
+    @apply rounded-none;
+  }
+
+  .textarea-radius-sm {
+    @apply rounded-[calc(1em*1.272/4)];
+  }
+
+  .textarea-radius-md {
+    @apply rounded-[calc(1em*1.272*2/4)];
+  }
+
+  .textarea-radius-lg {
+    @apply rounded-[calc(1em*1.272*3/4)];
+  }
+
+  .textarea-radius-full {
+    @apply rounded-full;
+  }
+}

@@ -4,8 +4,6 @@ import type { ComponentPropsWithRef } from "react";
 
 import * as RadixAvatar from "@radix-ui/react-avatar";
 
-import { clsx } from "clsx";
-
 import { classes } from "../../utils/classes";
 
 import type { AvatarVariantsProps } from "./avatar.variants";
@@ -24,38 +22,8 @@ export type AvatarFallbackProps = Omit<ComponentPropsWithRef<typeof RadixAvatar.
 };
 
 /**
- * Image element rendered inside an Avatar. Hidden until the image loads
- * successfully, falling back to Avatar.Fallback on error.
- */
-const AvatarImage = (props: Readonly<AvatarImageProps>) => {
-  const { className, ref, ...rest } = props;
-  const imageClassName = clsx("avatar-image", className);
-
-  return <RadixAvatar.Image data-slot="avatar-image" className={imageClassName} ref={ref} {...rest} />;
-};
-
-AvatarImage.displayName = "Avatar.Image";
-
-/**
- * Content rendered when Avatar.Image fails to load or is not provided.
- * Typically initials or a placeholder icon.
- */
-const AvatarFallback = (props: Readonly<AvatarFallbackProps>) => {
-  const { children, className, ref, ...rest } = props;
-  const fallbackClassName = clsx("avatar-fallback", className);
-
-  return (
-    <RadixAvatar.Fallback data-slot="avatar-fallback" className={fallbackClassName} ref={ref} {...rest}>
-      {children}
-    </RadixAvatar.Fallback>
-  );
-};
-
-AvatarFallback.displayName = "Avatar.Fallback";
-
-/**
  * An avatar represents a user or entity with an image, initials, or icon.
- * Compose with `Avatar.Image` and `Avatar.Fallback` for image + fallback handling.
+ * Compose with standalone `AvatarImage` and `AvatarFallback` for image + fallback handling.
  */
 const Avatar = (props: Readonly<AvatarProps>) => {
   const { children, className, isDisabled, radius, ref, ring, size, ...rest } = props;
@@ -79,7 +47,35 @@ const Avatar = (props: Readonly<AvatarProps>) => {
 };
 
 Avatar.displayName = "Avatar";
-Avatar.Image = AvatarImage;
-Avatar.Fallback = AvatarFallback;
 
-export { Avatar };
+/**
+ * Image element rendered inside an Avatar. Hidden until the image loads
+ * successfully, falling back to AvatarFallback on error.
+ */
+const AvatarImage = (props: Readonly<AvatarImageProps>) => {
+  const { className, ref, ...rest } = props;
+  const imageClassName = classes({ block: "avatar-image", modifiers: {}, className });
+
+  return <RadixAvatar.Image data-slot="avatar-image" className={imageClassName} ref={ref} {...rest} />;
+};
+
+AvatarImage.displayName = "AvatarImage";
+
+/**
+ * Content rendered when AvatarImage fails to load or is not provided.
+ * Typically initials or a placeholder icon.
+ */
+const AvatarFallback = (props: Readonly<AvatarFallbackProps>) => {
+  const { children, className, ref, ...rest } = props;
+  const fallbackClassName = classes({ block: "avatar-fallback", modifiers: {}, className });
+
+  return (
+    <RadixAvatar.Fallback data-slot="avatar-fallback" className={fallbackClassName} ref={ref} {...rest}>
+      {children}
+    </RadixAvatar.Fallback>
+  );
+};
+
+AvatarFallback.displayName = "AvatarFallback";
+
+export { Avatar, AvatarImage, AvatarFallback };

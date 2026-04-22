@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { UserIcon } from "../icons";
-import { Avatar } from "./Avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "./Avatar";
 
 const SAMPLE_SRC_1 =
   "https://images.unsplash.com/photo-1729017256081-0271b3fcc08e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTQ4fHxwcm9maWxlfGVufDB8fDB8fHww";
@@ -42,7 +42,7 @@ const meta = {
   argTypes: {
     children: {
       control: false,
-      description: "Compound children — `<Avatar.Image />` and `<Avatar.Fallback />`",
+      description: "Compound children — `<AvatarImage />` and `<AvatarFallback />`",
       table: {
         type: { summary: "ReactNode" },
         category: "Children",
@@ -111,8 +111,8 @@ const Default: Story = {
 const Basic = () => {
   return (
     <Avatar>
-      <Avatar.Image alt="Colm Tuite" src="${SAMPLE_SRC_1}" />
-      <Avatar.Fallback>CT</Avatar.Fallback>
+      <AvatarImage alt="Colm Tuite" src="${SAMPLE_SRC_1}" />
+      <AvatarFallback>CT</AvatarFallback>
     </Avatar>
   );
 };`,
@@ -121,8 +121,8 @@ const Basic = () => {
   },
   render: (args): React.JSX.Element => (
     <Avatar {...args}>
-      <Avatar.Image alt="Colm Tuite" src={SAMPLE_SRC_1} />
-      <Avatar.Fallback>CT</Avatar.Fallback>
+      <AvatarImage alt="Colm Tuite" src={SAMPLE_SRC_1} />
+      <AvatarFallback>CT</AvatarFallback>
     </Avatar>
   ),
 };
@@ -137,15 +137,15 @@ const WithFallback = () => {
   return (
     <div className="flex items-end gap-4">
       <Avatar>
-        <Avatar.Fallback>YK</Avatar.Fallback>
+        <AvatarFallback>YK</AvatarFallback>
       </Avatar>
       <Avatar>
-        <Avatar.Fallback>RT</Avatar.Fallback>
+        <AvatarFallback>RT</AvatarFallback>
       </Avatar>
       <Avatar>
-        <Avatar.Fallback>
+        <AvatarFallback>
           <UserIcon className="size-match-font" />
-        </Avatar.Fallback>
+        </AvatarFallback>
       </Avatar>
     </div>
   );
@@ -156,17 +156,17 @@ const WithFallback = () => {
   render: (args): React.JSX.Element => (
     <div className="flex items-end gap-4">
       <Avatar {...args}>
-        <Avatar.Fallback>YK</Avatar.Fallback>
+        <AvatarFallback>YK</AvatarFallback>
       </Avatar>
 
       <Avatar {...args}>
-        <Avatar.Fallback>RT</Avatar.Fallback>
+        <AvatarFallback>RT</AvatarFallback>
       </Avatar>
 
       <Avatar {...args}>
-        <Avatar.Fallback>
+        <AvatarFallback>
           <UserIcon className="size-match-font" />
-        </Avatar.Fallback>
+        </AvatarFallback>
       </Avatar>
     </div>
   ),
@@ -182,28 +182,28 @@ const Sizes = () => {
   return (
     <div className="flex items-end gap-4">
       <Avatar size="sm">
-        <Avatar.Image alt="Avatar 1" src="${SAMPLE_SRC_1}" />
-        <Avatar.Fallback>A1</Avatar.Fallback>
+        <AvatarImage alt="Avatar 1" src="${SAMPLE_SRC_1}" />
+        <AvatarFallback>A1</AvatarFallback>
       </Avatar>
 
       <Avatar size="md">
-        <Avatar.Image alt="Avatar 2" src="${SAMPLE_SRC_2}" />
-        <Avatar.Fallback>A2</Avatar.Fallback>
+        <AvatarImage alt="Avatar 2" src="${SAMPLE_SRC_2}" />
+        <AvatarFallback>A2</AvatarFallback>
       </Avatar>
 
       <Avatar size="lg">
-        <Avatar.Image alt="Avatar 3" src="${SAMPLE_SRC_3}" />
-        <Avatar.Fallback>A3</Avatar.Fallback>
+        <AvatarImage alt="Avatar 3" src="${SAMPLE_SRC_3}" />
+        <AvatarFallback>A3</AvatarFallback>
       </Avatar>
 
       <Avatar size="xl">
-        <Avatar.Image alt="Avatar 4" src="${SAMPLE_SRC_4}" />
-        <Avatar.Fallback>A4</Avatar.Fallback>
+        <AvatarImage alt="Avatar 4" src="${SAMPLE_SRC_4}" />
+        <AvatarFallback>A4</AvatarFallback>
       </Avatar>
 
       <Avatar size="2xl">
-        <Avatar.Image alt="Avatar 5" src="${SAMPLE_SRC_5}" />
-        <Avatar.Fallback>A5</Avatar.Fallback>
+        <AvatarImage alt="Avatar 5" src="${SAMPLE_SRC_5}" />
+        <AvatarFallback>A5</AvatarFallback>
       </Avatar>
     </div>
   );
@@ -214,28 +214,28 @@ const Sizes = () => {
   render: (args): React.JSX.Element => (
     <div className="flex items-end gap-4">
       <Avatar {...args} size="sm">
-        <Avatar.Image alt="Avatar 1" src={SAMPLE_SRC_1} />
-        <Avatar.Fallback>A1</Avatar.Fallback>
+        <AvatarImage alt="Avatar 1" src={SAMPLE_SRC_1} />
+        <AvatarFallback>A1</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} size="md">
-        <Avatar.Image alt="Avatar 2" src={SAMPLE_SRC_2} />
-        <Avatar.Fallback>A2</Avatar.Fallback>
+        <AvatarImage alt="Avatar 2" src={SAMPLE_SRC_2} />
+        <AvatarFallback>A2</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} size="lg">
-        <Avatar.Image alt="Avatar 3" src={SAMPLE_SRC_3} />
-        <Avatar.Fallback>A3</Avatar.Fallback>
+        <AvatarImage alt="Avatar 3" src={SAMPLE_SRC_3} />
+        <AvatarFallback>A3</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} size="xl">
-        <Avatar.Image alt="Avatar 4" src={SAMPLE_SRC_4} />
-        <Avatar.Fallback>A4</Avatar.Fallback>
+        <AvatarImage alt="Avatar 4" src={SAMPLE_SRC_4} />
+        <AvatarFallback>A4</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} size="2xl">
-        <Avatar.Image alt="Avatar 5" src={SAMPLE_SRC_5} />
-        <Avatar.Fallback>A5</Avatar.Fallback>
+        <AvatarImage alt="Avatar 5" src={SAMPLE_SRC_5} />
+        <AvatarFallback>A5</AvatarFallback>
       </Avatar>
     </div>
   ),
@@ -251,28 +251,28 @@ const Radius = () => {
   return (
     <div className="flex items-end gap-4">
       <Avatar radius="none">
-        <Avatar.Image alt="Avatar" src="${RADIUS_SRC}" />
-        <Avatar.Fallback>A</Avatar.Fallback>
+        <AvatarImage alt="Avatar" src="${RADIUS_SRC}" />
+        <AvatarFallback>A</AvatarFallback>
       </Avatar>
 
       <Avatar radius="sm">
-        <Avatar.Image alt="Avatar" src="${RADIUS_SRC}" />
-        <Avatar.Fallback>A</Avatar.Fallback>
+        <AvatarImage alt="Avatar" src="${RADIUS_SRC}" />
+        <AvatarFallback>A</AvatarFallback>
       </Avatar>
 
       <Avatar radius="md">
-        <Avatar.Image alt="Avatar" src="${RADIUS_SRC}" />
-        <Avatar.Fallback>A</Avatar.Fallback>
+        <AvatarImage alt="Avatar" src="${RADIUS_SRC}" />
+        <AvatarFallback>A</AvatarFallback>
       </Avatar>
 
       <Avatar radius="lg">
-        <Avatar.Image alt="Avatar" src="${RADIUS_SRC}" />
-        <Avatar.Fallback>A</Avatar.Fallback>
+        <AvatarImage alt="Avatar" src="${RADIUS_SRC}" />
+        <AvatarFallback>A</AvatarFallback>
       </Avatar>
 
       <Avatar radius="full">
-        <Avatar.Image alt="Avatar" src="${RADIUS_SRC}" />
-        <Avatar.Fallback>A</Avatar.Fallback>
+        <AvatarImage alt="Avatar" src="${RADIUS_SRC}" />
+        <AvatarFallback>A</AvatarFallback>
       </Avatar>
     </div>
   );
@@ -283,28 +283,28 @@ const Radius = () => {
   render: (args): React.JSX.Element => (
     <div className="flex items-end gap-4">
       <Avatar {...args} radius="none">
-        <Avatar.Image alt="Avatar" src={RADIUS_SRC} />
-        <Avatar.Fallback>A</Avatar.Fallback>
+        <AvatarImage alt="Avatar" src={RADIUS_SRC} />
+        <AvatarFallback>A</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} radius="sm">
-        <Avatar.Image alt="Avatar" src={RADIUS_SRC} />
-        <Avatar.Fallback>A</Avatar.Fallback>
+        <AvatarImage alt="Avatar" src={RADIUS_SRC} />
+        <AvatarFallback>A</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} radius="md">
-        <Avatar.Image alt="Avatar" src={RADIUS_SRC} />
-        <Avatar.Fallback>A</Avatar.Fallback>
+        <AvatarImage alt="Avatar" src={RADIUS_SRC} />
+        <AvatarFallback>A</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} radius="lg">
-        <Avatar.Image alt="Avatar" src={RADIUS_SRC} />
-        <Avatar.Fallback>A</Avatar.Fallback>
+        <AvatarImage alt="Avatar" src={RADIUS_SRC} />
+        <AvatarFallback>A</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} radius="full">
-        <Avatar.Image alt="Avatar" src={RADIUS_SRC} />
-        <Avatar.Fallback>A</Avatar.Fallback>
+        <AvatarImage alt="Avatar" src={RADIUS_SRC} />
+        <AvatarFallback>A</AvatarFallback>
       </Avatar>
     </div>
   ),
@@ -320,38 +320,38 @@ const Ring = () => {
   return (
     <div className="flex items-end gap-6">
       <Avatar ring="primary">
-        <Avatar.Image alt="Colm Tuite" src="${SAMPLE_SRC_1}" />
-        <Avatar.Fallback>CT</Avatar.Fallback>
+        <AvatarImage alt="Colm Tuite" src="${SAMPLE_SRC_1}" />
+        <AvatarFallback>CT</AvatarFallback>
       </Avatar>
 
       <Avatar ring="secondary">
-        <Avatar.Image alt="Rio Tanaka" src="${SAMPLE_SRC_2}" />
-        <Avatar.Fallback>RT</Avatar.Fallback>
+        <AvatarImage alt="Rio Tanaka" src="${SAMPLE_SRC_2}" />
+        <AvatarFallback>RT</AvatarFallback>
       </Avatar>
 
       <Avatar ring="accent">
-        <Avatar.Image alt="Yuna Kim" src="${SAMPLE_SRC_3}" />
-        <Avatar.Fallback>YK</Avatar.Fallback>
+        <AvatarImage alt="Yuna Kim" src="${SAMPLE_SRC_3}" />
+        <AvatarFallback>YK</AvatarFallback>
       </Avatar>
 
       <Avatar ring="success">
-        <Avatar.Image alt="Nova Vega" src="${SAMPLE_SRC_4}" />
-        <Avatar.Fallback>NV</Avatar.Fallback>
+        <AvatarImage alt="Nova Vega" src="${SAMPLE_SRC_4}" />
+        <AvatarFallback>NV</AvatarFallback>
       </Avatar>
 
       <Avatar ring="warning">
-        <Avatar.Image alt="Iris Ono" src="${SAMPLE_SRC_5}" />
-        <Avatar.Fallback>IO</Avatar.Fallback>
+        <AvatarImage alt="Iris Ono" src="${SAMPLE_SRC_5}" />
+        <AvatarFallback>IO</AvatarFallback>
       </Avatar>
 
       <Avatar ring="danger">
-        <Avatar.Image alt="Zoe Xu" src="${SAMPLE_SRC_6}" />
-        <Avatar.Fallback>ZX</Avatar.Fallback>
+        <AvatarImage alt="Zoe Xu" src="${SAMPLE_SRC_6}" />
+        <AvatarFallback>ZX</AvatarFallback>
       </Avatar>
 
       <Avatar ring="info">
-        <Avatar.Image alt="Aria Park" src="${SAMPLE_SRC_7}" />
-        <Avatar.Fallback>AP</Avatar.Fallback>
+        <AvatarImage alt="Aria Park" src="${SAMPLE_SRC_7}" />
+        <AvatarFallback>AP</AvatarFallback>
       </Avatar>
     </div>
   );
@@ -362,38 +362,38 @@ const Ring = () => {
   render: (args): React.JSX.Element => (
     <div className="flex items-end gap-6">
       <Avatar {...args} ring="primary">
-        <Avatar.Image alt="Colm Tuite" src={SAMPLE_SRC_1} />
-        <Avatar.Fallback>CT</Avatar.Fallback>
+        <AvatarImage alt="Colm Tuite" src={SAMPLE_SRC_1} />
+        <AvatarFallback>CT</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} ring="secondary">
-        <Avatar.Image alt="Rio Tanaka" src={SAMPLE_SRC_2} />
-        <Avatar.Fallback>RT</Avatar.Fallback>
+        <AvatarImage alt="Rio Tanaka" src={SAMPLE_SRC_2} />
+        <AvatarFallback>RT</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} ring="accent">
-        <Avatar.Image alt="Yuna Kim" src={SAMPLE_SRC_3} />
-        <Avatar.Fallback>YK</Avatar.Fallback>
+        <AvatarImage alt="Yuna Kim" src={SAMPLE_SRC_3} />
+        <AvatarFallback>YK</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} ring="success">
-        <Avatar.Image alt="Nova Vega" src={SAMPLE_SRC_4} />
-        <Avatar.Fallback>NV</Avatar.Fallback>
+        <AvatarImage alt="Nova Vega" src={SAMPLE_SRC_4} />
+        <AvatarFallback>NV</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} ring="warning">
-        <Avatar.Image alt="Iris Ono" src={SAMPLE_SRC_5} />
-        <Avatar.Fallback>IO</Avatar.Fallback>
+        <AvatarImage alt="Iris Ono" src={SAMPLE_SRC_5} />
+        <AvatarFallback>IO</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} ring="danger">
-        <Avatar.Image alt="Zoe Xu" src={SAMPLE_SRC_6} />
-        <Avatar.Fallback>ZX</Avatar.Fallback>
+        <AvatarImage alt="Zoe Xu" src={SAMPLE_SRC_6} />
+        <AvatarFallback>ZX</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} ring="info">
-        <Avatar.Image alt="Aria Park" src={SAMPLE_SRC_7} />
-        <Avatar.Fallback>AP</Avatar.Fallback>
+        <AvatarImage alt="Aria Park" src={SAMPLE_SRC_7} />
+        <AvatarFallback>AP</AvatarFallback>
       </Avatar>
     </div>
   ),
@@ -408,8 +408,8 @@ const Disabled: Story = {
 const Disabled = () => {
   return (
     <Avatar isDisabled>
-      <Avatar.Image alt="Luna Park" src="${SAMPLE_SRC_1}" />
-      <Avatar.Fallback>LP</Avatar.Fallback>
+      <AvatarImage alt="Luna Park" src="${SAMPLE_SRC_1}" />
+      <AvatarFallback>LP</AvatarFallback>
     </Avatar>
   );
 };`,
@@ -421,8 +421,8 @@ const Disabled = () => {
   },
   render: (args): React.JSX.Element => (
     <Avatar {...args}>
-      <Avatar.Image alt="Luna Park" src={SAMPLE_SRC_1} />
-      <Avatar.Fallback>LP</Avatar.Fallback>
+      <AvatarImage alt="Luna Park" src={SAMPLE_SRC_1} />
+      <AvatarFallback>LP</AvatarFallback>
     </Avatar>
   ),
 };
@@ -436,8 +436,8 @@ const BrokenImage: Story = {
 const BrokenImage = () => {
   return (
     <Avatar>
-      <Avatar.Image alt="Zoe Xu" src="https://broken.url/image.jpg" />
-      <Avatar.Fallback>ZX</Avatar.Fallback>
+      <AvatarImage alt="Zoe Xu" src="https://broken.url/image.jpg" />
+      <AvatarFallback>ZX</AvatarFallback>
     </Avatar>
   );
 };`,
@@ -446,8 +446,8 @@ const BrokenImage = () => {
   },
   render: (args): React.JSX.Element => (
     <Avatar {...args}>
-      <Avatar.Image alt="Zoe Xu" src="https://broken.url/image.jpg" />
-      <Avatar.Fallback>ZX</Avatar.Fallback>
+      <AvatarImage alt="Zoe Xu" src="https://broken.url/image.jpg" />
+      <AvatarFallback>ZX</AvatarFallback>
     </Avatar>
   ),
 };

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Avatar } from "../avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "../avatar";
 import { AvatarGroup } from "./AvatarGroup";
 
 const SRC_1 =
@@ -112,18 +112,18 @@ const Basic = () => {
   return (
     <AvatarGroup>
       <Avatar>
-        <Avatar.Image alt="Avatar 1" src="${SRC_1}" />
-        <Avatar.Fallback>A1</Avatar.Fallback>
+        <AvatarImage alt="Avatar 1" src="${SRC_1}" />
+        <AvatarFallback>A1</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Image alt="Avatar 2" src="${SRC_2}" />
-        <Avatar.Fallback>A2</Avatar.Fallback>
+        <AvatarImage alt="Avatar 2" src="${SRC_2}" />
+        <AvatarFallback>A2</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Image alt="Avatar 3" src="${SRC_3}" />
-        <Avatar.Fallback>A3</Avatar.Fallback>
+        <AvatarImage alt="Avatar 3" src="${SRC_3}" />
+        <AvatarFallback>A3</AvatarFallback>
       </Avatar>
     </AvatarGroup>
   );
@@ -134,18 +134,18 @@ const Basic = () => {
   render: (args): React.JSX.Element => (
     <AvatarGroup {...args}>
       <Avatar>
-        <Avatar.Image alt="Avatar 1" src={SRC_1} />
-        <Avatar.Fallback>A1</Avatar.Fallback>
+        <AvatarImage alt="Avatar 1" src={SRC_1} />
+        <AvatarFallback>A1</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Image alt="Avatar 2" src={SRC_2} />
-        <Avatar.Fallback>A2</Avatar.Fallback>
+        <AvatarImage alt="Avatar 2" src={SRC_2} />
+        <AvatarFallback>A2</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Image alt="Avatar 3" src={SRC_3} />
-        <Avatar.Fallback>A3</Avatar.Fallback>
+        <AvatarImage alt="Avatar 3" src={SRC_3} />
+        <AvatarFallback>A3</AvatarFallback>
       </Avatar>
     </AvatarGroup>
   ),
@@ -161,33 +161,33 @@ const WithMax = () => {
   return (
     <AvatarGroup max={3}>
       <Avatar>
-        <Avatar.Image alt="Avatar 1" src="${SRC_1}" />
-        <Avatar.Fallback>A1</Avatar.Fallback>
+        <AvatarImage alt="Avatar 1" src="${SRC_1}" />
+        <AvatarFallback>A1</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Image alt="Avatar 2" src="${SRC_2}" />
-        <Avatar.Fallback>A2</Avatar.Fallback>
+        <AvatarImage alt="Avatar 2" src="${SRC_2}" />
+        <AvatarFallback>A2</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Image alt="Avatar 3" src="${SRC_3}" />
-        <Avatar.Fallback>A3</Avatar.Fallback>
+        <AvatarImage alt="Avatar 3" src="${SRC_3}" />
+        <AvatarFallback>A3</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Image alt="Avatar 4" src="${SRC_4}" />
-        <Avatar.Fallback>A4</Avatar.Fallback>
+        <AvatarImage alt="Avatar 4" src="${SRC_4}" />
+        <AvatarFallback>A4</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Image alt="Avatar 5" src="${SRC_5}" />
-        <Avatar.Fallback>A5</Avatar.Fallback>
+        <AvatarImage alt="Avatar 5" src="${SRC_5}" />
+        <AvatarFallback>A5</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Image alt="Avatar 6" src="${SRC_6}" />
-        <Avatar.Fallback>A6</Avatar.Fallback>
+        <AvatarImage alt="Avatar 6" src="${SRC_6}" />
+        <AvatarFallback>A6</AvatarFallback>
       </Avatar>
     </AvatarGroup>
   );
@@ -201,33 +201,33 @@ const WithMax = () => {
   render: (args): React.JSX.Element => (
     <AvatarGroup {...args}>
       <Avatar>
-        <Avatar.Image alt="Avatar 1" src={SRC_1} />
-        <Avatar.Fallback>A1</Avatar.Fallback>
+        <AvatarImage alt="Avatar 1" src={SRC_1} />
+        <AvatarFallback>A1</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Image alt="Avatar 2" src={SRC_2} />
-        <Avatar.Fallback>A2</Avatar.Fallback>
+        <AvatarImage alt="Avatar 2" src={SRC_2} />
+        <AvatarFallback>A2</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Image alt="Avatar 3" src={SRC_3} />
-        <Avatar.Fallback>A3</Avatar.Fallback>
+        <AvatarImage alt="Avatar 3" src={SRC_3} />
+        <AvatarFallback>A3</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Image alt="Avatar 4" src={SRC_4} />
-        <Avatar.Fallback>A4</Avatar.Fallback>
+        <AvatarImage alt="Avatar 4" src={SRC_4} />
+        <AvatarFallback>A4</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Image alt="Avatar 5" src={SRC_5} />
-        <Avatar.Fallback>A5</Avatar.Fallback>
+        <AvatarImage alt="Avatar 5" src={SRC_5} />
+        <AvatarFallback>A5</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Image alt="Avatar 6" src={SRC_6} />
-        <Avatar.Fallback>A6</Avatar.Fallback>
+        <AvatarImage alt="Avatar 6" src={SRC_6} />
+        <AvatarFallback>A6</AvatarFallback>
       </Avatar>
     </AvatarGroup>
   ),
@@ -243,18 +243,18 @@ const WithTotal = () => {
   return (
     <AvatarGroup max={3} total={42}>
       <Avatar>
-        <Avatar.Image alt="Avatar 1" src="${SRC_1}" />
-        <Avatar.Fallback>A1</Avatar.Fallback>
+        <AvatarImage alt="Avatar 1" src="${SRC_1}" />
+        <AvatarFallback>A1</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Image alt="Avatar 2" src="${SRC_2}" />
-        <Avatar.Fallback>A2</Avatar.Fallback>
+        <AvatarImage alt="Avatar 2" src="${SRC_2}" />
+        <AvatarFallback>A2</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Image alt="Avatar 3" src="${SRC_3}" />
-        <Avatar.Fallback>A3</Avatar.Fallback>
+        <AvatarImage alt="Avatar 3" src="${SRC_3}" />
+        <AvatarFallback>A3</AvatarFallback>
       </Avatar>
     </AvatarGroup>
   );
@@ -269,18 +269,18 @@ const WithTotal = () => {
   render: (args): React.JSX.Element => (
     <AvatarGroup {...args}>
       <Avatar>
-        <Avatar.Image alt="Avatar 1" src={SRC_1} />
-        <Avatar.Fallback>A1</Avatar.Fallback>
+        <AvatarImage alt="Avatar 1" src={SRC_1} />
+        <AvatarFallback>A1</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Image alt="Avatar 2" src={SRC_2} />
-        <Avatar.Fallback>A2</Avatar.Fallback>
+        <AvatarImage alt="Avatar 2" src={SRC_2} />
+        <AvatarFallback>A2</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Image alt="Avatar 3" src={SRC_3} />
-        <Avatar.Fallback>A3</Avatar.Fallback>
+        <AvatarImage alt="Avatar 3" src={SRC_3} />
+        <AvatarFallback>A3</AvatarFallback>
       </Avatar>
     </AvatarGroup>
   ),
@@ -297,52 +297,52 @@ const Spacing = () => {
     <div className="flex items-center gap-8">
       <AvatarGroup spacing="sm">
         <Avatar>
-          <Avatar.Image alt="Avatar 1" src="${SRC_1}" />
-          <Avatar.Fallback>A1</Avatar.Fallback>
+          <AvatarImage alt="Avatar 1" src="${SRC_1}" />
+          <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 2" src="${SRC_2}" />
-          <Avatar.Fallback>A2</Avatar.Fallback>
+          <AvatarImage alt="Avatar 2" src="${SRC_2}" />
+          <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 3" src="${SRC_3}" />
-          <Avatar.Fallback>A3</Avatar.Fallback>
+          <AvatarImage alt="Avatar 3" src="${SRC_3}" />
+          <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
 
       <AvatarGroup spacing="md">
         <Avatar>
-          <Avatar.Image alt="Avatar 1" src="${SRC_1}" />
-          <Avatar.Fallback>A1</Avatar.Fallback>
+          <AvatarImage alt="Avatar 1" src="${SRC_1}" />
+          <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 2" src="${SRC_2}" />
-          <Avatar.Fallback>A2</Avatar.Fallback>
+          <AvatarImage alt="Avatar 2" src="${SRC_2}" />
+          <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 3" src="${SRC_3}" />
-          <Avatar.Fallback>A3</Avatar.Fallback>
+          <AvatarImage alt="Avatar 3" src="${SRC_3}" />
+          <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
 
       <AvatarGroup spacing="lg">
         <Avatar>
-          <Avatar.Image alt="Avatar 1" src="${SRC_1}" />
-          <Avatar.Fallback>A1</Avatar.Fallback>
+          <AvatarImage alt="Avatar 1" src="${SRC_1}" />
+          <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 2" src="${SRC_2}" />
-          <Avatar.Fallback>A2</Avatar.Fallback>
+          <AvatarImage alt="Avatar 2" src="${SRC_2}" />
+          <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 3" src="${SRC_3}" />
-          <Avatar.Fallback>A3</Avatar.Fallback>
+          <AvatarImage alt="Avatar 3" src="${SRC_3}" />
+          <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
     </div>
@@ -355,52 +355,52 @@ const Spacing = () => {
     <div className="flex items-center gap-8">
       <AvatarGroup {...args} spacing="sm">
         <Avatar>
-          <Avatar.Image alt="Avatar 1" src={SRC_1} />
-          <Avatar.Fallback>A1</Avatar.Fallback>
+          <AvatarImage alt="Avatar 1" src={SRC_1} />
+          <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 2" src={SRC_2} />
-          <Avatar.Fallback>A2</Avatar.Fallback>
+          <AvatarImage alt="Avatar 2" src={SRC_2} />
+          <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 3" src={SRC_3} />
-          <Avatar.Fallback>A3</Avatar.Fallback>
+          <AvatarImage alt="Avatar 3" src={SRC_3} />
+          <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
 
       <AvatarGroup {...args} spacing="md">
         <Avatar>
-          <Avatar.Image alt="Avatar 1" src={SRC_1} />
-          <Avatar.Fallback>A1</Avatar.Fallback>
+          <AvatarImage alt="Avatar 1" src={SRC_1} />
+          <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 2" src={SRC_2} />
-          <Avatar.Fallback>A2</Avatar.Fallback>
+          <AvatarImage alt="Avatar 2" src={SRC_2} />
+          <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 3" src={SRC_3} />
-          <Avatar.Fallback>A3</Avatar.Fallback>
+          <AvatarImage alt="Avatar 3" src={SRC_3} />
+          <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
 
       <AvatarGroup {...args} spacing="lg">
         <Avatar>
-          <Avatar.Image alt="Avatar 1" src={SRC_1} />
-          <Avatar.Fallback>A1</Avatar.Fallback>
+          <AvatarImage alt="Avatar 1" src={SRC_1} />
+          <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 2" src={SRC_2} />
-          <Avatar.Fallback>A2</Avatar.Fallback>
+          <AvatarImage alt="Avatar 2" src={SRC_2} />
+          <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 3" src={SRC_3} />
-          <Avatar.Fallback>A3</Avatar.Fallback>
+          <AvatarImage alt="Avatar 3" src={SRC_3} />
+          <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
     </div>
@@ -418,86 +418,86 @@ const Sizes = () => {
     <div className="flex items-center gap-8">
       <AvatarGroup size="sm">
         <Avatar>
-          <Avatar.Image alt="Avatar 1" src="${SRC_1}" />
-          <Avatar.Fallback>A1</Avatar.Fallback>
+          <AvatarImage alt="Avatar 1" src="${SRC_1}" />
+          <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 2" src="${SRC_2}" />
-          <Avatar.Fallback>A2</Avatar.Fallback>
+          <AvatarImage alt="Avatar 2" src="${SRC_2}" />
+          <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 3" src="${SRC_3}" />
-          <Avatar.Fallback>A3</Avatar.Fallback>
+          <AvatarImage alt="Avatar 3" src="${SRC_3}" />
+          <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
 
       <AvatarGroup size="md">
         <Avatar>
-          <Avatar.Image alt="Avatar 1" src="${SRC_1}" />
-          <Avatar.Fallback>A1</Avatar.Fallback>
+          <AvatarImage alt="Avatar 1" src="${SRC_1}" />
+          <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 2" src="${SRC_2}" />
-          <Avatar.Fallback>A2</Avatar.Fallback>
+          <AvatarImage alt="Avatar 2" src="${SRC_2}" />
+          <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 3" src="${SRC_3}" />
-          <Avatar.Fallback>A3</Avatar.Fallback>
+          <AvatarImage alt="Avatar 3" src="${SRC_3}" />
+          <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
 
       <AvatarGroup size="lg">
         <Avatar>
-          <Avatar.Image alt="Avatar 1" src="${SRC_1}" />
-          <Avatar.Fallback>A1</Avatar.Fallback>
+          <AvatarImage alt="Avatar 1" src="${SRC_1}" />
+          <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 2" src="${SRC_2}" />
-          <Avatar.Fallback>A2</Avatar.Fallback>
+          <AvatarImage alt="Avatar 2" src="${SRC_2}" />
+          <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 3" src="${SRC_3}" />
-          <Avatar.Fallback>A3</Avatar.Fallback>
+          <AvatarImage alt="Avatar 3" src="${SRC_3}" />
+          <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
 
       <AvatarGroup size="xl">
         <Avatar>
-          <Avatar.Image alt="Avatar 1" src="${SRC_1}" />
-          <Avatar.Fallback>A1</Avatar.Fallback>
+          <AvatarImage alt="Avatar 1" src="${SRC_1}" />
+          <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 2" src="${SRC_2}" />
-          <Avatar.Fallback>A2</Avatar.Fallback>
+          <AvatarImage alt="Avatar 2" src="${SRC_2}" />
+          <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 3" src="${SRC_3}" />
-          <Avatar.Fallback>A3</Avatar.Fallback>
+          <AvatarImage alt="Avatar 3" src="${SRC_3}" />
+          <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
 
       <AvatarGroup size="2xl">
         <Avatar>
-          <Avatar.Image alt="Avatar 1" src="${SRC_1}" />
-          <Avatar.Fallback>A1</Avatar.Fallback>
+          <AvatarImage alt="Avatar 1" src="${SRC_1}" />
+          <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 2" src="${SRC_2}" />
-          <Avatar.Fallback>A2</Avatar.Fallback>
+          <AvatarImage alt="Avatar 2" src="${SRC_2}" />
+          <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 3" src="${SRC_3}" />
-          <Avatar.Fallback>A3</Avatar.Fallback>
+          <AvatarImage alt="Avatar 3" src="${SRC_3}" />
+          <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
     </div>
@@ -510,86 +510,86 @@ const Sizes = () => {
     <div className="flex items-center gap-8">
       <AvatarGroup {...args} size="sm">
         <Avatar>
-          <Avatar.Image alt="Avatar 1" src={SRC_1} />
-          <Avatar.Fallback>A1</Avatar.Fallback>
+          <AvatarImage alt="Avatar 1" src={SRC_1} />
+          <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 2" src={SRC_2} />
-          <Avatar.Fallback>A2</Avatar.Fallback>
+          <AvatarImage alt="Avatar 2" src={SRC_2} />
+          <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 3" src={SRC_3} />
-          <Avatar.Fallback>A3</Avatar.Fallback>
+          <AvatarImage alt="Avatar 3" src={SRC_3} />
+          <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
 
       <AvatarGroup {...args} size="md">
         <Avatar>
-          <Avatar.Image alt="Avatar 1" src={SRC_1} />
-          <Avatar.Fallback>A1</Avatar.Fallback>
+          <AvatarImage alt="Avatar 1" src={SRC_1} />
+          <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 2" src={SRC_2} />
-          <Avatar.Fallback>A2</Avatar.Fallback>
+          <AvatarImage alt="Avatar 2" src={SRC_2} />
+          <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 3" src={SRC_3} />
-          <Avatar.Fallback>A3</Avatar.Fallback>
+          <AvatarImage alt="Avatar 3" src={SRC_3} />
+          <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
 
       <AvatarGroup {...args} size="lg">
         <Avatar>
-          <Avatar.Image alt="Avatar 1" src={SRC_1} />
-          <Avatar.Fallback>A1</Avatar.Fallback>
+          <AvatarImage alt="Avatar 1" src={SRC_1} />
+          <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 2" src={SRC_2} />
-          <Avatar.Fallback>A2</Avatar.Fallback>
+          <AvatarImage alt="Avatar 2" src={SRC_2} />
+          <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 3" src={SRC_3} />
-          <Avatar.Fallback>A3</Avatar.Fallback>
+          <AvatarImage alt="Avatar 3" src={SRC_3} />
+          <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
 
       <AvatarGroup {...args} size="xl">
         <Avatar>
-          <Avatar.Image alt="Avatar 1" src={SRC_1} />
-          <Avatar.Fallback>A1</Avatar.Fallback>
+          <AvatarImage alt="Avatar 1" src={SRC_1} />
+          <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 2" src={SRC_2} />
-          <Avatar.Fallback>A2</Avatar.Fallback>
+          <AvatarImage alt="Avatar 2" src={SRC_2} />
+          <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 3" src={SRC_3} />
-          <Avatar.Fallback>A3</Avatar.Fallback>
+          <AvatarImage alt="Avatar 3" src={SRC_3} />
+          <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
 
       <AvatarGroup {...args} size="2xl">
         <Avatar>
-          <Avatar.Image alt="Avatar 1" src={SRC_1} />
-          <Avatar.Fallback>A1</Avatar.Fallback>
+          <AvatarImage alt="Avatar 1" src={SRC_1} />
+          <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 2" src={SRC_2} />
-          <Avatar.Fallback>A2</Avatar.Fallback>
+          <AvatarImage alt="Avatar 2" src={SRC_2} />
+          <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <Avatar.Image alt="Avatar 3" src={SRC_3} />
-          <Avatar.Fallback>A3</Avatar.Fallback>
+          <AvatarImage alt="Avatar 3" src={SRC_3} />
+          <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
     </div>
@@ -606,27 +606,27 @@ const WithFallback = () => {
   return (
     <AvatarGroup max={4}>
       <Avatar>
-        <Avatar.Fallback>A1</Avatar.Fallback>
+        <AvatarFallback>A1</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Fallback>A2</Avatar.Fallback>
+        <AvatarFallback>A2</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Fallback>A3</Avatar.Fallback>
+        <AvatarFallback>A3</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Fallback>A4</Avatar.Fallback>
+        <AvatarFallback>A4</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Fallback>A5</Avatar.Fallback>
+        <AvatarFallback>A5</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Fallback>A6</Avatar.Fallback>
+        <AvatarFallback>A6</AvatarFallback>
       </Avatar>
     </AvatarGroup>
   );
@@ -640,27 +640,27 @@ const WithFallback = () => {
   render: (args): React.JSX.Element => (
     <AvatarGroup {...args}>
       <Avatar>
-        <Avatar.Fallback>A1</Avatar.Fallback>
+        <AvatarFallback>A1</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Fallback>A2</Avatar.Fallback>
+        <AvatarFallback>A2</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Fallback>A3</Avatar.Fallback>
+        <AvatarFallback>A3</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Fallback>A4</Avatar.Fallback>
+        <AvatarFallback>A4</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Fallback>A5</Avatar.Fallback>
+        <AvatarFallback>A5</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Fallback>A6</Avatar.Fallback>
+        <AvatarFallback>A6</AvatarFallback>
       </Avatar>
     </AvatarGroup>
   ),
@@ -676,23 +676,23 @@ const Hoverable = () => {
   return (
     <AvatarGroup isHoverable>
       <Avatar>
-        <Avatar.Image alt="Avatar 1" src="${SRC_1}" />
-        <Avatar.Fallback>A1</Avatar.Fallback>
+        <AvatarImage alt="Avatar 1" src="${SRC_1}" />
+        <AvatarFallback>A1</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Image alt="Avatar 2" src="${SRC_2}" />
-        <Avatar.Fallback>A2</Avatar.Fallback>
+        <AvatarImage alt="Avatar 2" src="${SRC_2}" />
+        <AvatarFallback>A2</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Image alt="Avatar 3" src="${SRC_3}" />
-        <Avatar.Fallback>A3</Avatar.Fallback>
+        <AvatarImage alt="Avatar 3" src="${SRC_3}" />
+        <AvatarFallback>A3</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Image alt="Avatar 4" src="${SRC_4}" />
-        <Avatar.Fallback>A4</Avatar.Fallback>
+        <AvatarImage alt="Avatar 4" src="${SRC_4}" />
+        <AvatarFallback>A4</AvatarFallback>
       </Avatar>
     </AvatarGroup>
   );
@@ -706,23 +706,23 @@ const Hoverable = () => {
   render: (args): React.JSX.Element => (
     <AvatarGroup {...args}>
       <Avatar>
-        <Avatar.Image alt="Avatar 1" src={SRC_1} />
-        <Avatar.Fallback>A1</Avatar.Fallback>
+        <AvatarImage alt="Avatar 1" src={SRC_1} />
+        <AvatarFallback>A1</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Image alt="Avatar 2" src={SRC_2} />
-        <Avatar.Fallback>A2</Avatar.Fallback>
+        <AvatarImage alt="Avatar 2" src={SRC_2} />
+        <AvatarFallback>A2</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Image alt="Avatar 3" src={SRC_3} />
-        <Avatar.Fallback>A3</Avatar.Fallback>
+        <AvatarImage alt="Avatar 3" src={SRC_3} />
+        <AvatarFallback>A3</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <Avatar.Image alt="Avatar 4" src={SRC_4} />
-        <Avatar.Fallback>A4</Avatar.Fallback>
+        <AvatarImage alt="Avatar 4" src={SRC_4} />
+        <AvatarFallback>A4</AvatarFallback>
       </Avatar>
     </AvatarGroup>
   ),

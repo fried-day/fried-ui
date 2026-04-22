@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { CheckCircleIcon, ExclamationTriangleIcon, InformationCircleIcon, LockIcon, XCircleIcon } from "../icons";
-import { Surface } from "../surface";
 import { Input } from "./Input";
 
 const meta = {
@@ -16,12 +14,11 @@ const meta = {
     variant: "primary",
     size: "md",
     radius: "md",
-    isInvalid: false,
-    isDisabled: false,
-    isReadOnly: false,
-    isRequired: false,
-    isPending: false,
     isFullWidth: false,
+    disabled: false,
+    readOnly: false,
+    required: false,
+    "aria-invalid": false,
   },
   argTypes: {
     placeholder: {
@@ -29,38 +26,6 @@ const meta = {
       description: "Placeholder text shown when input is empty",
       table: {
         type: { summary: "string" },
-        category: "Content",
-      },
-    },
-    startIcon: {
-      control: false,
-      description: "Icon rendered at the leading edge of the input",
-      table: {
-        type: { summary: "ReactNode" },
-        category: "Content",
-      },
-    },
-    endIcon: {
-      control: false,
-      description: "Icon rendered at the trailing edge of the input",
-      table: {
-        type: { summary: "ReactNode" },
-        category: "Content",
-      },
-    },
-    prefix: {
-      control: "text",
-      description: "Text rendered before the input value (e.g. '$')",
-      table: {
-        type: { summary: "ReactNode" },
-        category: "Content",
-      },
-    },
-    suffix: {
-      control: "text",
-      description: "Text rendered after the input value (e.g. '.com')",
-      table: {
-        type: { summary: "ReactNode" },
         category: "Content",
       },
     },
@@ -97,51 +62,6 @@ const meta = {
         category: "Style Variants",
       },
     },
-    isInvalid: {
-      control: "boolean",
-      description: "Whether the input is in error state",
-      table: {
-        type: { summary: "boolean" },
-        defaultValue: { summary: "false" },
-        category: "Style Variants",
-      },
-    },
-    isDisabled: {
-      control: "boolean",
-      description: "Whether the input is disabled",
-      table: {
-        type: { summary: "boolean" },
-        defaultValue: { summary: "false" },
-        category: "State",
-      },
-    },
-    isReadOnly: {
-      control: "boolean",
-      description: "Whether the input is read-only",
-      table: {
-        type: { summary: "boolean" },
-        defaultValue: { summary: "false" },
-        category: "State",
-      },
-    },
-    isRequired: {
-      control: "boolean",
-      description: "Whether the input is required for form submission",
-      table: {
-        type: { summary: "boolean" },
-        defaultValue: { summary: "false" },
-        category: "State",
-      },
-    },
-    isPending: {
-      control: "boolean",
-      description: "Whether the input is in a loading state (shows spinner, read-only)",
-      table: {
-        type: { summary: "boolean" },
-        defaultValue: { summary: "false" },
-        category: "State",
-      },
-    },
     isFullWidth: {
       control: "boolean",
       description: "Whether the input stretches to fill its container width",
@@ -149,6 +69,46 @@ const meta = {
         type: { summary: "boolean" },
         defaultValue: { summary: "false" },
         category: "Style Variants",
+      },
+    },
+    disabled: {
+      control: "boolean",
+      description:
+        "Native HTML `disabled` attribute. Dims the input and removes pointer events. Forwarded to the underlying `<input>` element. Inside TextField, React Aria propagates this via slot context automatically.",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "State",
+      },
+    },
+    readOnly: {
+      control: "boolean",
+      description:
+        "Native HTML `readOnly` attribute. Value is selectable but not editable. Forwarded to the underlying `<input>` element. Inside TextField, React Aria propagates this via slot context automatically.",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "State",
+      },
+    },
+    required: {
+      control: "boolean",
+      description:
+        "Native HTML `required` attribute. Signals required-field semantics (use Label `isRequired` for the visible asterisk). Does not change the input's border or ring.",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "State",
+      },
+    },
+    "aria-invalid": {
+      control: "boolean",
+      description:
+        "ARIA `aria-invalid` attribute. Activates error styling (red border + danger ring on focus). Pair with a sibling `FieldError` so the message reads out to assistive tech.",
+      table: {
+        type: { summary: '"true" | "false" | boolean' },
+        defaultValue: { summary: "false" },
+        category: "State",
       },
     },
     className: {
@@ -189,6 +149,7 @@ const Variants = () => {
     <div className="flex items-center gap-4">
       <Input variant="primary" placeholder="Primary" />
       <Input variant="secondary" placeholder="Secondary" />
+      <Input variant="plain" placeholder="Plain" />
     </div>
   );
 };`,
@@ -199,30 +160,8 @@ const Variants = () => {
     <div className="flex items-center gap-4">
       <Input {...args} variant="primary" placeholder="Primary" />
       <Input {...args} variant="secondary" placeholder="Secondary" />
+      <Input {...args} variant="plain" placeholder="Plain" />
     </div>
-  ),
-};
-
-const PlainVariant: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Input, Surface } from "@fried-ui/react";
-
-const PlainVariant = () => {
-  return (
-    <Surface variant="default" radius="lg" className="p-6">
-      <Input variant="plain" placeholder="Search anything" />
-    </Surface>
-  );
-};`,
-      },
-    },
-  },
-  render: (args): React.JSX.Element => (
-    <Surface variant="default" radius="lg" className="p-6">
-      <Input {...args} variant="plain" placeholder="Search anything" />
-    </Surface>
   ),
 };
 
@@ -284,86 +223,22 @@ const Radius = () => {
   ),
 };
 
-const WithIcon: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Input, CheckCircleIcon, InformationCircleIcon, LockIcon, XCircleIcon } from "@fried-ui/react";
-
-const WithIcon = () => {
-  return (
-    <div className="flex items-center gap-4">
-      <Input placeholder="Leading icon" startIcon={<InformationCircleIcon />} />
-      <Input placeholder="Trailing icon" endIcon={<CheckCircleIcon />} />
-      <Input placeholder="Both icons" startIcon={<LockIcon />} endIcon={<XCircleIcon />} />
-    </div>
-  );
-};`,
-      },
-    },
-  },
-  render: (args): React.JSX.Element => (
-    <div className="flex items-center gap-4">
-      <Input {...args} placeholder="Leading icon" startIcon={<InformationCircleIcon />} />
-      <Input {...args} placeholder="Trailing icon" endIcon={<CheckCircleIcon />} />
-      <Input {...args} placeholder="Both icons" startIcon={<LockIcon />} endIcon={<XCircleIcon />} />
-    </div>
-  ),
-};
-
-const PrefixSuffix: Story = {
+const Invalid: Story = {
   parameters: {
     docs: {
       source: {
         code: `import { Input } from "@fried-ui/react";
 
-const PrefixSuffix = () => {
-  return (
-    <div className="flex items-center gap-4">
-      <Input prefix="$" placeholder="0.00" />
-      <Input suffix=".com" placeholder="example" />
-      <Input prefix="Path" placeholder="src/app" />
-    </div>
-  );
-};`,
-      },
-    },
-  },
-  render: (args): React.JSX.Element => (
-    <div className="flex items-center gap-4">
-      <Input {...args} prefix="$" placeholder="0.00" />
-      <Input {...args} suffix=".com" placeholder="example" />
-      <Input {...args} prefix="Path" placeholder="src/app" />
-    </div>
-  ),
-};
-
-const Invalid: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Input, ExclamationTriangleIcon, XCircleIcon } from "@fried-ui/react";
-
 const Invalid = () => {
-  return (
-    <Input
-      isInvalid
-      placeholder="Invalid value"
-      startIcon={<ExclamationTriangleIcon />}
-      endIcon={<XCircleIcon />}
-    />
-  );
+  return <Input aria-invalid="true" placeholder="Invalid value" />;
 };`,
       },
     },
   },
   args: {
-    isInvalid: true,
     placeholder: "Invalid value",
   },
-  render: (args): React.JSX.Element => (
-    <Input {...args} startIcon={<ExclamationTriangleIcon />} endIcon={<XCircleIcon />} />
-  ),
+  render: (args): React.JSX.Element => <Input {...args} aria-invalid="true" />,
 };
 
 const Disabled: Story = {
@@ -373,15 +248,15 @@ const Disabled: Story = {
         code: `import { Input } from "@fried-ui/react";
 
 const Disabled = () => {
-  return <Input isDisabled placeholder="Disabled" />;
+  return <Input disabled placeholder="Disabled" />;
 };`,
       },
     },
   },
   args: {
-    isDisabled: true,
     placeholder: "Disabled",
   },
+  render: (args): React.JSX.Element => <Input {...args} disabled />,
 };
 
 const ReadOnly: Story = {
@@ -391,52 +266,33 @@ const ReadOnly: Story = {
         code: `import { Input } from "@fried-ui/react";
 
 const ReadOnly = () => {
-  return <Input isReadOnly defaultValue="Read-only value" />;
+  return <Input readOnly defaultValue="Read-only value" />;
 };`,
       },
     },
   },
   args: {
-    isReadOnly: true,
     defaultValue: "Read-only value",
   },
+  render: (args): React.JSX.Element => <Input {...args} readOnly />,
 };
 
 const Required: Story = {
   parameters: {
     docs: {
       source: {
-        code: `import { Input, LockIcon } from "@fried-ui/react";
-
-const Required = () => {
-  return <Input isRequired placeholder="Required field" startIcon={<LockIcon />} />;
-};`,
-      },
-    },
-  },
-  args: {
-    isRequired: true,
-    placeholder: "Required field",
-  },
-  render: (args): React.JSX.Element => <Input {...args} startIcon={<LockIcon />} />,
-};
-
-const Pending: Story = {
-  parameters: {
-    docs: {
-      source: {
         code: `import { Input } from "@fried-ui/react";
 
-const Pending = () => {
-  return <Input isPending defaultValue="Validating" />;
+const Required = () => {
+  return <Input required placeholder="Required field" />;
 };`,
       },
     },
   },
   args: {
-    isPending: true,
-    defaultValue: "Validating",
+    placeholder: "Required field",
   },
+  render: (args): React.JSX.Element => <Input {...args} required />,
 };
 
 const FullWidth: Story = {
@@ -466,20 +322,6 @@ const FullWidth = () => {
   ),
 };
 
-export {
-  Default,
-  Variants,
-  PlainVariant,
-  Sizes,
-  Radius,
-  WithIcon,
-  PrefixSuffix,
-  Invalid,
-  Disabled,
-  ReadOnly,
-  Required,
-  Pending,
-  FullWidth,
-};
+export { Default, Variants, Sizes, Radius, Invalid, Disabled, ReadOnly, Required, FullWidth };
 
 export default meta;

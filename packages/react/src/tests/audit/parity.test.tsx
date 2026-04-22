@@ -1,4 +1,4 @@
-import { TextField } from "react-aria-components";
+import { TextField as AriaTextField } from "react-aria-components";
 
 import { render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
@@ -7,12 +7,21 @@ import { Avatar } from "../../components/avatar";
 import { AvatarGroup } from "../../components/avatar-group";
 import { Badge } from "../../components/badge";
 import { Button } from "../../components/button";
-import { Description } from "../../components/description";
-import { FieldError } from "../../components/field-error";
+import {
+  Field,
+  FieldDescription,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+  FieldLegend,
+  FieldSeparator,
+  FieldSet,
+  FieldTitle,
+} from "../../components/field";
 import { Input } from "../../components/input";
-import { Label } from "../../components/label";
+import { InputGroup } from "../../components/input-group";
 import { Surface } from "../../components/surface";
-import { TextField as FriedTextField } from "../../components/text-field";
+import { Textarea } from "../../components/textarea";
 
 describe("1:1 plain HTML parity — default props emit only base class", () => {
   it("Button: <Button>X</Button> renders class='button'", () => {
@@ -45,43 +54,90 @@ describe("1:1 plain HTML parity — default props emit only base class", () => {
     expect(el?.className).toBe("avatar-group");
   });
 
-  it("Input: <Input /> wrapper renders class='input'", () => {
+  it("Input: <Input /> renders class='input' on input element", () => {
     const { container } = render(<Input />);
-    const el = container.querySelector('[data-slot="input-wrapper"]');
+    const el = container.querySelector('[data-slot="input"]');
     expect(el?.className).toBe("input");
   });
 
-  it("Label: <Label>X</Label> renders class='label'", () => {
-    const { container } = render(<Label>X</Label>);
-    const el = container.querySelector("label");
-    expect(el?.className).toBe("label");
+  it("InputGroup: <InputGroup /> renders class='input-group'", () => {
+    const { container } = render(<InputGroup />);
+    const el = container.querySelector('[data-slot="input-group"]');
+    expect(el?.className).toBe("input-group");
   });
 
-  it("Description: <Description>X</Description> renders class='description'", () => {
-    const { container } = render(<Description>X</Description>);
-    const el = container.querySelector('[data-slot="description"]');
-    expect(el?.className).toBe("description");
+  it("Textarea: <Textarea /> renders class='textarea' on textarea element", () => {
+    const { container } = render(<Textarea />);
+    const el = container.querySelector('[data-slot="textarea"]');
+    expect(el?.className).toBe("textarea");
+  });
+
+  it("Field: <Field><Input/></Field> renders class='field'", () => {
+    const { container } = render(
+      <Field>
+        <Input />
+      </Field>,
+    );
+
+    const el = container.querySelector('[data-slot="field"]');
+    expect(el?.className).toBe("field");
+  });
+
+  it("FieldLabel: <FieldLabel>X</FieldLabel> renders class='field-label'", () => {
+    const { container } = render(<FieldLabel>X</FieldLabel>);
+    const el = container.querySelector("label");
+    expect(el?.className).toBe("field-label");
+  });
+
+  it("FieldDescription: <FieldDescription>X</FieldDescription> renders class='field-description'", () => {
+    const { container } = render(<FieldDescription>X</FieldDescription>);
+    const el = container.querySelector('[data-slot="field-description"]');
+    expect(el?.className).toBe("field-description");
   });
 
   it("FieldError: <FieldError>X</FieldError> renders class='field-error'", () => {
     const { container } = render(
-      <TextField isInvalid>
+      <AriaTextField isInvalid>
         <FieldError>X</FieldError>
-      </TextField>,
+      </AriaTextField>,
     );
 
     const el = container.querySelector('[data-slot="field-error"]');
     expect(el?.className).toBe("field-error");
   });
 
-  it("TextField: <TextField><Input/></TextField> renders class='text-field'", () => {
+  it("FieldSet: <FieldSet>X</FieldSet> renders class='field-set'", () => {
+    const { container } = render(<FieldSet>X</FieldSet>);
+    const el = container.querySelector('[data-slot="field-set"]');
+    expect(el?.className).toBe("field-set");
+  });
+
+  it("FieldLegend: <FieldLegend>X</FieldLegend> renders class='field-legend'", () => {
     const { container } = render(
-      <FriedTextField>
-        <Input />
-      </FriedTextField>,
+      <FieldSet>
+        <FieldLegend>X</FieldLegend>
+      </FieldSet>,
     );
 
-    const el = container.querySelector('[data-slot="text-field"]');
-    expect(el?.className).toBe("text-field");
+    const el = container.querySelector("legend");
+    expect(el?.className).toBe("field-legend");
+  });
+
+  it("FieldGroup: <FieldGroup>X</FieldGroup> renders class='field-group'", () => {
+    const { container } = render(<FieldGroup>X</FieldGroup>);
+    const el = container.querySelector('[data-slot="field-group"]');
+    expect(el?.className).toBe("field-group");
+  });
+
+  it("FieldTitle: <FieldTitle>X</FieldTitle> renders class='field-title'", () => {
+    const { container } = render(<FieldTitle>X</FieldTitle>);
+    const el = container.querySelector("h3");
+    expect(el?.className).toBe("field-title");
+  });
+
+  it("FieldSeparator: <FieldSeparator /> renders class='field-separator'", () => {
+    const { container } = render(<FieldSeparator />);
+    const el = container.querySelector("hr");
+    expect(el?.className).toBe("field-separator");
   });
 });

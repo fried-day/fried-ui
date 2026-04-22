@@ -43,29 +43,29 @@
       "types": "./dist/components/button/index.d.ts",
       "import": "./dist/components/button/index.mjs"
     },
-    "./description": {
-      "types": "./dist/components/description/index.d.ts",
-      "import": "./dist/components/description/index.mjs"
-    },
-    "./field-error": {
-      "types": "./dist/components/field-error/index.d.ts",
-      "import": "./dist/components/field-error/index.mjs"
+    "./field": {
+      "types": "./dist/components/field/index.d.ts",
+      "import": "./dist/components/field/index.mjs"
     },
     "./icons": {
       "types": "./dist/components/icons/index.d.ts",
       "import": "./dist/components/icons/index.mjs"
     },
-    "./label": {
-      "types": "./dist/components/label/index.d.ts",
-      "import": "./dist/components/label/index.mjs"
+    "./input": {
+      "types": "./dist/components/input/index.d.ts",
+      "import": "./dist/components/input/index.mjs"
+    },
+    "./input-group": {
+      "types": "./dist/components/input-group/index.d.ts",
+      "import": "./dist/components/input-group/index.mjs"
     },
     "./surface": {
       "types": "./dist/components/surface/index.d.ts",
       "import": "./dist/components/surface/index.mjs"
     },
-    "./text-field": {
-      "types": "./dist/components/text-field/index.d.ts",
-      "import": "./dist/components/text-field/index.mjs"
+    "./textarea": {
+      "types": "./dist/components/textarea/index.d.ts",
+      "import": "./dist/components/textarea/index.mjs"
     }
   },
   "main": "./dist/index.mjs",
