@@ -5,7 +5,7 @@ import type { ComponentPropsWithRef } from "react";
 import { Label as AriaLabel } from "react-aria-components";
 
 import { classes } from "../../utils/classes";
-import { useFieldState } from "../text-field/use-field-state";
+import { useFieldState } from "../field/use-field-state";
 
 import type { LabelVariantsProps } from "./label.variants";
 
