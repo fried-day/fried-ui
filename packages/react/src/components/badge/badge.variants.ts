@@ -6,17 +6,13 @@ export interface BadgeVariantsProps {
   /** Size scale. @default 'md' */
   size?: "sm" | "md" | "lg";
   /**
-   * Visual style. Base colors paired with style modifiers (-soft, -flat,
-   * -outline) plus glass/frost/overlay for media contexts. @default 'primary'
+   * Visual style. Base colors paired with style modifiers (-soft, -flat, -outline). @default 'primary'
    */
   variant?:
     | "primary"
     | "secondary"
     | "accent"
     | "outline"
-    | "glass"
-    | "frost"
-    | "overlay"
     | "success"
     | "warning"
     | "danger"

@@ -30,12 +30,12 @@ const meta = {
     },
     variant: {
       control: "select",
-      options: ["default", "plain", "success", "warning", "danger", "info", "glass", "frost", "overlay"],
+      options: ["default", "plain", "success", "warning", "danger", "info"],
       description:
-        "Visual style. **Base:** default (neutral gray on white pages), plain (pure white on gray pages). **Status:** success (positive — completed actions), warning (caution — needs attention), danger (negative — destructive/error), info (neutral notice). **Special:** glass (frosted blur with border — premium overlay on media), frost (heavier blur no border — text-heavy overlay), overlay (dark scrim — subtitle/caption over images). Pair with `isBordered` for emphasis border on any variant. Use default for cards on white background, plain for cards on gray background, status variants for alert/callout boxes, glass/frost/overlay for media-heavy designs.",
+        "Visual style. **Base:** default (neutral gray on white pages), plain (pure white on gray pages). **Status:** success (positive — completed actions), warning (caution — needs attention), danger (negative — destructive/error), info (neutral notice). Pair with `isBordered` for emphasis border on any variant. Use default for cards on white background, plain for cards on gray background, status variants for alert/callout boxes.",
       table: {
         type: {
-          summary: '"default" | "plain" | "success" | "warning" | "danger" | "info" | "glass" | "frost" | "overlay"',
+          summary: '"default" | "plain" | "success" | "warning" | "danger" | "info"',
         },
         defaultValue: {
           summary: "default",
@@ -168,39 +168,6 @@ const PlainVariants: Story = {
   ),
 };
 
-const GlassVariants: Story = {
-  render: (args): React.JSX.Element => (
-    <div className="flex h-80 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
-      <Surface {...args} variant="glass" radius="lg" className="p-6" isBordered>
-        <p className="font-bold">Glass Surface</p>
-        <p className="mt-2 text-sm">Content</p>
-      </Surface>
-    </div>
-  ),
-};
-
-const FrostVariants: Story = {
-  render: (args): React.JSX.Element => (
-    <div className="flex h-80 w-160 items-center justify-center bg-linear-to-br from-emerald-400 via-cyan-500 via-sky-500 via-teal-500 to-purple-600 p-16">
-      <Surface {...args} variant="frost" radius="lg" className="p-6">
-        <p className="font-bold">Frost Surface</p>
-        <p className="mt-2 text-sm">Content</p>
-      </Surface>
-    </div>
-  ),
-};
-
-const OverlayVariants: Story = {
-  render: (args): React.JSX.Element => (
-    <div className="flex h-80 w-160 items-center justify-center bg-linear-to-br from-orange-400 via-fuchsia-500 via-purple-500 via-rose-500 to-purple-600 p-16">
-      <Surface {...args} variant="overlay" radius="lg" className="p-6" isBordered>
-        <p className="font-bold">Overlay Surface</p>
-        <p className="mt-2 text-sm">Content</p>
-      </Surface>
-    </div>
-  ),
-};
-
 const Radius: Story = {
   render: (args): React.JSX.Element => (
     <>
@@ -297,17 +264,6 @@ const Bordered: Story = {
   ),
 };
 
-export {
-  Default,
-  Variants,
-  StatusVariants,
-  PlainVariants,
-  GlassVariants,
-  FrostVariants,
-  OverlayVariants,
-  Bordered,
-  Radius,
-  Shadow,
-};
+export { Default, Variants, StatusVariants, PlainVariants, Bordered, Radius, Shadow };
 
 export default meta;

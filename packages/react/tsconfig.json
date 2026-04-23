@@ -7,5 +7,5 @@
   },
   "include": ["src"],
   "files": ["src/tests/globals.d.ts"],
-  "exclude": ["node_modules", "dist", "src/**/*.stories.tsx"]
+  "exclude": ["node_modules", "dist"]
 }

@@ -1,19 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import {
-  ArrowRightIcon,
-  BellIcon,
   CheckCircleIcon,
   ExclamationTriangleIcon,
-  HeartIcon,
   InformationCircleIcon,
   MoreIcon,
-  PauseIcon,
-  PlayIcon,
   PlusIcon,
   SettingsIcon,
   ShareIcon,
-  SpeakerIcon,
   XCircleIcon,
 } from "../icons";
 import { Button } from "./Button";
@@ -52,9 +46,6 @@ const meta = {
         "accent",
         "ghost",
         "outline",
-        "glass",
-        "frost",
-        "overlay",
         "success",
         "warning",
         "danger",
@@ -89,11 +80,11 @@ const meta = {
         "info-ghost",
       ],
       description:
-        "Visual style. **Base colors:** primary (main CTA), secondary (neutral action), accent (brand highlight), ghost (dismissive), outline (neutral outlined), success/warning/danger/info (status). **Modifiers:** -soft (pale + border), -flat (pale no border), -outline (transparent + colored border), -ghost (transparent, hover reveal). **Special:** glass (frosted + border), frost (frosted no border), overlay (dark scrim). Use primary for primary CTA, accent for brand CTA, danger for destructive, ghost for cancel/dismiss.",
+        "Visual style. **Base colors:** primary (main CTA), secondary (neutral action), accent (brand highlight), ghost (dismissive), outline (neutral outlined), success/warning/danger/info (status). **Modifiers:** -soft (pale + border), -flat (pale no border), -outline (transparent + colored border), -ghost (transparent, hover reveal). Use primary for primary CTA, accent for brand CTA, danger for destructive, ghost for cancel/dismiss.",
       table: {
         type: {
           summary:
-            '"primary" | "secondary" | "accent" | "ghost" | "outline" | "glass" | "frost" | "overlay" | "success" | "warning" | "danger" | "info" | "primary-soft" | "secondary-soft" | "accent-soft" | "success-soft" | "warning-soft" | "danger-soft" | "info-soft" | "primary-flat" | "secondary-flat" | "accent-flat" | "success-flat" | "warning-flat" | "danger-flat" | "info-flat" | "primary-outline" | "secondary-outline" | "accent-outline" | "success-outline" | "warning-outline" | "danger-outline" | "info-outline" | "primary-ghost" | "secondary-ghost" | "accent-ghost" | "success-ghost" | "warning-ghost" | "danger-ghost" | "info-ghost"',
+            '"primary" | "secondary" | "accent" | "ghost" | "outline" | "success" | "warning" | "danger" | "info" | "primary-soft" | "secondary-soft" | "accent-soft" | "success-soft" | "warning-soft" | "danger-soft" | "info-soft" | "primary-flat" | "secondary-flat" | "accent-flat" | "success-flat" | "warning-flat" | "danger-flat" | "info-flat" | "primary-outline" | "secondary-outline" | "accent-outline" | "success-outline" | "warning-outline" | "danger-outline" | "info-outline" | "primary-ghost" | "secondary-ghost" | "accent-ghost" | "success-ghost" | "warning-ghost" | "danger-ghost" | "info-ghost"',
         },
         defaultValue: {
           summary: "primary",
@@ -513,75 +504,6 @@ const RenderProps: Story = {
   ),
 };
 
-const GlassVariants: Story = {
-  render: (args): React.JSX.Element => (
-    <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
-      <div className="flex flex-wrap items-end justify-center gap-4">
-        <Button {...args} variant="glass">
-          <PlusIcon slot="icon-start" />
-          Create
-        </Button>
-
-        <Button {...args} variant="glass">
-          Continue
-          <ArrowRightIcon slot="icon-end" />
-        </Button>
-
-        <Button {...args} variant="glass">
-          <SettingsIcon slot="icon-start" />
-          Settings
-        </Button>
-      </div>
-    </div>
-  ),
-};
-
-const FrostVariants: Story = {
-  render: (args): React.JSX.Element => (
-    <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-emerald-400 via-cyan-500 via-sky-500 via-teal-500 to-purple-600 p-16">
-      <div className="flex flex-wrap items-end justify-center gap-4">
-        <Button {...args} variant="frost">
-          <HeartIcon slot="icon-start" />
-          Like
-        </Button>
-
-        <Button {...args} variant="frost">
-          Share
-          <ShareIcon slot="icon-end" />
-        </Button>
-
-        <Button {...args} variant="frost">
-          <BellIcon slot="icon-start" />
-          Subscribe
-        </Button>
-      </div>
-    </div>
-  ),
-};
-
-const OverlayVariants: Story = {
-  render: (args): React.JSX.Element => (
-    <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-orange-400 via-fuchsia-500 via-purple-500 via-rose-500 to-purple-600 p-16">
-      <div className="flex flex-wrap items-end justify-center gap-4">
-        <Button {...args} variant="overlay">
-          <PlayIcon slot="icon-start" />
-          Play
-        </Button>
-
-        <Button {...args} variant="overlay">
-          Pause
-          <PauseIcon slot="icon-end" />
-        </Button>
-
-        <Button {...args} variant="overlay">
-          <SpeakerIcon slot="icon-start" />
-          Mute
-        </Button>
-      </div>
-    </div>
-  ),
-};
-
 export {
   Default,
   Variants,
@@ -589,9 +511,6 @@ export {
   FlatVariants,
   OutlineVariants,
   GhostVariants,
-  GlassVariants,
-  FrostVariants,
-  OverlayVariants,
   Sizes,
   Radius,
   WithIcon,

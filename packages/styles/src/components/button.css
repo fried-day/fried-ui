@@ -83,36 +83,6 @@
     --button-fg: var(--color-foreground);
   }
 
-  .button-glass {
-    --button-bg: var(--color-glass);
-    --button-bg-hover: var(--color-glass-hover);
-    --button-bg-pressed: var(--color-glass-active);
-    --button-border: var(--color-glass-border);
-    --button-fg: var(--color-glass-foreground);
-
-    @apply backdrop-blur-xl backdrop-saturate-200;
-  }
-
-  .button-frost {
-    --button-bg: var(--color-glass);
-    --button-bg-hover: var(--color-glass-hover);
-    --button-bg-pressed: var(--color-glass-active);
-    --button-border: transparent;
-    --button-fg: var(--color-glass-foreground);
-
-    @apply backdrop-blur-2xl backdrop-saturate-200;
-  }
-
-  .button-overlay {
-    --button-bg: var(--color-scrim);
-    --button-bg-hover: var(--color-scrim-hover);
-    --button-bg-pressed: var(--color-scrim-active);
-    --button-border: var(--color-scrim-border);
-    --button-fg: var(--color-scrim-foreground);
-
-    @apply backdrop-blur-xl backdrop-saturate-150;
-  }
-
   .button-success {
     --button-bg: var(--color-success);
     --button-bg-hover: var(--color-success-hover);

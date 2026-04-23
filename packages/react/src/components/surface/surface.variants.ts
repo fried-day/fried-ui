@@ -6,8 +6,7 @@ export interface SurfaceVariantsProps {
   /** Elevation depth (orthogonal to variant — combine freely). @default 'none' */
   shadow?: "none" | "sm" | "md" | "lg" | "xl";
   /**
-   * Visual style. Base colors (default/plain) plus status (success/warning/danger/info)
-   * and special modifiers (glass/frost/overlay) for media contexts. @default 'default'
+   * Visual style. Base colors (default/plain) plus status (success/warning/danger/info). @default 'default'
    */
-  variant?: "default" | "plain" | "success" | "warning" | "danger" | "info" | "glass" | "frost" | "overlay";
+  variant?: "default" | "plain" | "success" | "warning" | "danger" | "info";
 }

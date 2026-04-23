@@ -6,7 +6,6 @@ import {
   ExclamationTriangleIcon,
   HeartIcon,
   InformationCircleIcon,
-  LockIcon,
   StarIcon,
   XCircleIcon,
 } from "../icons";
@@ -45,9 +44,6 @@ const meta = {
         "secondary",
         "accent",
         "outline",
-        "glass",
-        "frost",
-        "overlay",
         "success",
         "warning",
         "danger",
@@ -75,11 +71,11 @@ const meta = {
         "info-outline",
       ],
       description:
-        "Visual style. **Base colors:** primary (default), secondary (neutral), accent (brand), success/warning/danger/info (status). **Style modifiers:** -soft (pale bg + border), -flat (pale bg no border), -outline (transparent + colored border). **Special:** glass (frosted + border), frost (frosted no border), overlay (dark scrim). Use primary for main labels, success/danger for status, -soft for subtle tags.",
+        "Visual style. **Base colors:** primary (default), secondary (neutral), accent (brand), success/warning/danger/info (status). **Style modifiers:** -soft (pale bg + border), -flat (pale bg no border), -outline (transparent + colored border). Use primary for main labels, success/danger for status, -soft for subtle tags.",
       table: {
         type: {
           summary:
-            '"primary" | "secondary" | "accent" | "outline" | "glass" | "frost" | "overlay" | "success" | "warning" | "danger" | "info" | "primary-soft" | "secondary-soft" | "accent-soft" | "success-soft" | "warning-soft" | "danger-soft" | "info-soft" | "primary-flat" | "secondary-flat" | "accent-flat" | "success-flat" | "warning-flat" | "danger-flat" | "info-flat" | "primary-outline" | "secondary-outline" | "accent-outline" | "success-outline" | "warning-outline" | "danger-outline" | "info-outline"',
+            '"primary" | "secondary" | "accent" | "outline" | "success" | "warning" | "danger" | "info" | "primary-soft" | "secondary-soft" | "accent-soft" | "success-soft" | "warning-soft" | "danger-soft" | "info-soft" | "primary-flat" | "secondary-flat" | "accent-flat" | "success-flat" | "warning-flat" | "danger-flat" | "info-flat" | "primary-outline" | "secondary-outline" | "accent-outline" | "success-outline" | "warning-outline" | "danger-outline" | "info-outline"',
         },
         defaultValue: {
           summary: "primary",
@@ -285,75 +281,6 @@ const OutlineVariants: Story = {
   ),
 };
 
-const GlassVariants: Story = {
-  render: (args): React.JSX.Element => (
-    <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
-      <div className="flex flex-wrap items-end justify-center gap-4">
-        <Badge {...args} variant="glass">
-          <StarIcon slot="icon-start" />
-          Featured
-        </Badge>
-
-        <Badge {...args} variant="glass">
-          Badge
-          <BellIcon slot="icon-end" />
-        </Badge>
-
-        <Badge {...args} variant="glass">
-          <LockIcon slot="icon-start" />
-          Premium
-        </Badge>
-      </div>
-    </div>
-  ),
-};
-
-const FrostVariants: Story = {
-  render: (args): React.JSX.Element => (
-    <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-emerald-400 via-cyan-500 via-sky-500 via-teal-500 to-purple-600 p-16">
-      <div className="flex flex-wrap items-end justify-center gap-4">
-        <Badge {...args} variant="frost">
-          <CheckCircleIcon slot="icon-start" />
-          Verified
-        </Badge>
-
-        <Badge {...args} variant="frost">
-          Favorite
-          <HeartIcon slot="icon-end" />
-        </Badge>
-
-        <Badge {...args} variant="frost">
-          <StarIcon slot="icon-start" />
-          Top Rated
-        </Badge>
-      </div>
-    </div>
-  ),
-};
-
-const OverlayVariants: Story = {
-  render: (args): React.JSX.Element => (
-    <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-orange-400 via-fuchsia-500 via-purple-500 via-rose-500 to-purple-600 p-16">
-      <div className="flex flex-wrap items-end justify-center gap-4">
-        <Badge {...args} variant="overlay">
-          <BellIcon slot="icon-start" />
-          Live
-        </Badge>
-
-        <Badge {...args} variant="overlay">
-          HD
-          <StarIcon slot="icon-end" />
-        </Badge>
-
-        <Badge {...args} variant="overlay">
-          <CheckCircleIcon slot="icon-start" />
-          4K
-        </Badge>
-      </div>
-    </div>
-  ),
-};
-
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
     <>
@@ -443,27 +370,10 @@ const IconOnly: Story = {
       <Badge {...args} variant="outline" aria-label="Favorite" isIconOnly>
         <HeartIcon slot="icon" />
       </Badge>
-
-      <Badge {...args} variant="ghost" aria-label="Private" isIconOnly>
-        <LockIcon slot="icon" />
-      </Badge>
     </>
   ),
 };
 
-export {
-  Default,
-  Variants,
-  SoftVariants,
-  FlatVariants,
-  OutlineVariants,
-  GlassVariants,
-  FrostVariants,
-  OverlayVariants,
-  Sizes,
-  Radius,
-  WithIcon,
-  IconOnly,
-};
+export { Default, Variants, SoftVariants, FlatVariants, OutlineVariants, Sizes, Radius, WithIcon, IconOnly };
 
 export default meta;

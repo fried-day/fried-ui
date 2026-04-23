@@ -36,8 +36,6 @@ describe("Badge", () => {
       "warning",
       "danger",
       "info",
-      "glass",
-      "overlay",
       "primary-soft",
       "secondary-soft",
       "accent-soft",

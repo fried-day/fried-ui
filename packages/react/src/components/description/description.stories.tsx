@@ -37,15 +37,6 @@ const meta = {
         category: "Style Variants",
       },
     },
-    isInvalid: {
-      control: "boolean",
-      description: "Error state — description text in danger color (use for error messages)",
-      table: {
-        type: { summary: "boolean" },
-        defaultValue: { summary: "false" },
-        category: "Style Variants",
-      },
-    },
     isDisabled: {
       control: "boolean",
       description: "Dims the description and disables pointer events",
@@ -88,13 +79,6 @@ const Sizes: Story = {
   ),
 };
 
-const Invalid: Story = {
-  args: {
-    children: "Invalid Description",
-    isInvalid: true,
-  },
-};
-
 const Disabled: Story = {
   args: {
     children: "Disabled Description",
@@ -102,6 +86,6 @@ const Disabled: Story = {
   },
 };
 
-export { Default, Sizes, Invalid, Disabled };
+export { Default, Sizes, Disabled };
 
 export default meta;

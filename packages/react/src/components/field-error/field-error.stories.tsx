@@ -4,7 +4,7 @@ import { TextField } from "react-aria-components";
 
 import { FieldError } from "./FieldError";
 
-const meta = {
+const meta: Meta<typeof FieldError> = {
   title: "Components/FieldError",
   component: FieldError,
   tags: ["autodocs"],
@@ -13,8 +13,6 @@ const meta = {
   },
   args: {
     children: "Error message",
-    size: "md",
-    isDisabled: false,
   },
   argTypes: {
     children: {

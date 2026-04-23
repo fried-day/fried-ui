@@ -39,27 +39,6 @@
     --surface-fg: var(--color-info-soft-foreground);
   }
 
-  .surface-glass {
-    --surface-bg: var(--color-glass);
-    --surface-fg: var(--color-glass-foreground);
-
-    @apply backdrop-blur-xl backdrop-saturate-200;
-  }
-
-  .surface-frost {
-    --surface-bg: var(--color-glass);
-    --surface-fg: var(--color-glass-foreground);
-
-    @apply backdrop-blur-2xl backdrop-saturate-200;
-  }
-
-  .surface-overlay {
-    --surface-bg: var(--color-scrim);
-    --surface-fg: var(--color-scrim-foreground);
-
-    @apply backdrop-blur-xl backdrop-saturate-150;
-  }
-
   .surface-bordered.surface-default {
     --surface-border: var(--color-surface-border);
   }
@@ -82,18 +61,6 @@
 
   .surface-bordered.surface-info {
     --surface-border: var(--color-info-soft-border);
-  }
-
-  .surface-bordered.surface-glass {
-    --surface-border: var(--color-glass-border);
-  }
-
-  .surface-bordered.surface-frost {
-    --surface-border: var(--color-glass-border);
-  }
-
-  .surface-bordered.surface-overlay {
-    --surface-border: var(--color-scrim-border);
   }
 
   .surface-shadow-none {

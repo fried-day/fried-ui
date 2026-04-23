@@ -119,6 +119,7 @@ const meta = {
 type Story = StoryObj<typeof meta>;
 
 const Default: Story = {
+  args: { children: null },
   render: (args): React.JSX.Element => (
     <Field {...args}>
       <FieldLabel optionalMessage="(Optional)">Full name</FieldLabel>
@@ -129,7 +130,10 @@ const Default: Story = {
 };
 
 const Required: Story = {
-  args: { isRequired: true },
+  args: {
+    isRequired: true,
+    children: null,
+  },
   render: (args): React.JSX.Element => (
     <Field {...args}>
       <FieldLabel>Email</FieldLabel>
@@ -139,7 +143,10 @@ const Required: Story = {
 };
 
 const WithError: Story = {
-  args: { isInvalid: true },
+  args: {
+    isInvalid: true,
+    children: null,
+  },
   render: (args): React.JSX.Element => (
     <Field {...args}>
       <FieldLabel>Email</FieldLabel>
@@ -150,7 +157,10 @@ const WithError: Story = {
 };
 
 const Disabled: Story = {
-  args: { isDisabled: true },
+  args: {
+    isDisabled: true,
+    children: null,
+  },
   render: (args): React.JSX.Element => (
     <Field {...args}>
       <FieldLabel>Disabled field</FieldLabel>
@@ -160,6 +170,7 @@ const Disabled: Story = {
 };
 
 const Sizes: Story = {
+  args: { children: null },
   render: (args): React.JSX.Element => (
     <>
       <Field {...args} size="sm">
@@ -181,7 +192,10 @@ const Sizes: Story = {
 };
 
 const FullWidth: Story = {
-  args: { isFullWidth: true },
+  args: {
+    isFullWidth: true,
+    children: null,
+  },
   render: (args): React.JSX.Element => (
     <>
       <Field {...args}>
@@ -193,6 +207,7 @@ const FullWidth: Story = {
 };
 
 const WithFieldSet: Story = {
+  args: { children: null },
   render: (): React.JSX.Element => (
     <FieldSet variant="bordered">
       <FieldLegend>Profile</FieldLegend>
@@ -214,6 +229,7 @@ const WithFieldSet: Story = {
 };
 
 const WithSeparator: Story = {
+  args: { children: null },
   render: (): React.JSX.Element => (
     <FieldGroup>
       <FieldSet>
@@ -240,6 +256,7 @@ const WithSeparator: Story = {
 };
 
 const WithTitle: Story = {
+  args: { children: null },
   render: (): React.JSX.Element => (
     <FieldGroup>
       <FieldTitle as="h3">Account</FieldTitle>

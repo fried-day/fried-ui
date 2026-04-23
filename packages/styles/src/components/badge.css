@@ -37,30 +37,6 @@
     --badge-fg: var(--color-primary);
   }
 
-  .badge-glass {
-    --badge-bg: var(--color-glass);
-    --badge-border: var(--color-glass-border);
-    --badge-fg: var(--color-glass-foreground);
-
-    @apply backdrop-blur-xl backdrop-saturate-200;
-  }
-
-  .badge-frost {
-    --badge-bg: var(--color-glass);
-    --badge-border: transparent;
-    --badge-fg: var(--color-glass-foreground);
-
-    @apply backdrop-blur-2xl backdrop-saturate-200;
-  }
-
-  .badge-overlay {
-    --badge-bg: var(--color-scrim);
-    --badge-border: var(--color-scrim-border);
-    --badge-fg: var(--color-scrim-foreground);
-
-    @apply backdrop-blur-xl backdrop-saturate-150;
-  }
-
   .badge-success {
     --badge-bg: var(--color-success);
     --badge-border: var(--color-success-border);

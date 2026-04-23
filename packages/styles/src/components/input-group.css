@@ -126,14 +126,10 @@
 
   .input-group-input,
   .input-group-textarea {
-    --input-group-slot-bg: transparent;
-    --input-group-slot-border: transparent;
-
     @apply min-w-0 flex-1 leading-none text-inherit outline-none;
-    @apply bg-(--input-group-slot-bg);
-    @apply border border-(--input-group-slot-border);
+    @apply border border-field-slot-border bg-field-slot;
     @apply px-[calc(1em)] py-[calc(1em/2.058)];
-    @apply placeholder:text-(--color-field-placeholder);
+    @apply placeholder:text-field-placeholder;
   }
 
   .input-group-textarea {
