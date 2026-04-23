@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback } from "../avatar";
 import { BellIcon } from "../icons";
 import { Badge } from "./Badge";
 
-const meta = {
+const meta: Meta<typeof Badge> = {
   title: "Components/Badge",
   component: Badge,
   tags: ["autodocs"],
@@ -18,7 +18,11 @@ const meta = {
     children: {
       control: "text",
       description: "Badge content (number for count, text for status label, or empty when isDot)",
-      type: { name: "other", value: "ReactNode", required: true },
+      type: {
+        name: "other",
+        value: "ReactNode",
+        required: true,
+      },
       table: {
         type: { summary: "ReactNode" },
         category: "Children",
@@ -113,17 +117,11 @@ const Variants: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-center gap-6">
       <Badge {...args} variant="primary" />
-
       <Badge {...args} variant="secondary" />
-
       <Badge {...args} variant="accent" />
-
       <Badge {...args} variant="success" />
-
       <Badge {...args} variant="warning" />
-
       <Badge {...args} variant="danger" />
-
       <Badge {...args} variant="info" />
     </div>
   ),
@@ -140,9 +138,7 @@ const Sizes: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-center gap-6">
       <Badge {...args} size="xs" />
-
       <Badge {...args} size="sm" />
-
       <Badge {...args} size="md" />
     </div>
   ),
