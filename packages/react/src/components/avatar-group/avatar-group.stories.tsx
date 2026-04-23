@@ -17,15 +17,16 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  args: {
-    size: "md",
-    spacing: "default",
-    isHoverable: false,
-  },
+  args: {},
   argTypes: {
     children: {
       control: false,
       description: "A collection of `<Avatar />` elements to render in the stack",
+      type: {
+        name: "other",
+        value: "ReactNode",
+        required: true,
+      },
       table: {
         type: { summary: "ReactNode" },
         category: "Children",

@@ -20,6 +20,11 @@ const meta = {
     children: {
       control: "text",
       description: "Error message content shown when the parent field is invalid.",
+      type: {
+        name: "other",
+        value: "ReactNode",
+        required: true,
+      },
       table: {
         type: { summary: "ReactNode" },
         category: "Children",

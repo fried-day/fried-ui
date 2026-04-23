@@ -11,14 +11,16 @@ const meta = {
   },
   args: {
     children: "Description",
-    size: "md",
-    isInvalid: false,
-    isDisabled: false,
   },
   argTypes: {
     children: {
       control: "text",
       description: "Description content",
+      type: {
+        name: "other",
+        value: "ReactNode",
+        required: true,
+      },
       table: {
         type: { summary: "ReactNode" },
         category: "Children",

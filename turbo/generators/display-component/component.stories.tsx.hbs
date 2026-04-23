@@ -11,13 +11,12 @@ const meta = {
   },
   args: {
     children: "{{pascalCase name}}",
-    variant: "primary",
-    size: "md",
   },
   argTypes: {
     children: {
       control: "text",
       description: "{{pascalCase name}} content",
+      type: { name: "other", value: "ReactNode", required: true },
       table: {
         type: { summary: "ReactNode" },
         category: "Children",

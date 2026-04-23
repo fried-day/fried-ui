@@ -11,15 +11,6 @@ const meta = {
   },
   args: {
     placeholder: "Type here",
-    variant: "primary",
-    size: "md",
-    radius: "md",
-    resize: "vertical",
-    isFullWidth: false,
-    disabled: false,
-    readOnly: false,
-    required: false,
-    "aria-invalid": false,
   },
   argTypes: {
     placeholder: {

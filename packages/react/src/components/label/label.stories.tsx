@@ -21,6 +21,11 @@ const meta = {
     children: {
       control: "text",
       description: "Label content",
+      type: {
+        name: "other",
+        value: "ReactNode",
+        required: true,
+      },
       table: {
         type: { summary: "ReactNode" },
         category: "Children",

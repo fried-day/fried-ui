@@ -21,15 +21,16 @@ const meta = {
   },
   args: {
     children: "Badge",
-    variant: "primary",
-    size: "md",
-    radius: "full",
-    isIconOnly: false,
   },
   argTypes: {
     children: {
       control: "text",
       description: "Badge content (text or icon)",
+      type: {
+        name: "other",
+        value: "ReactNode",
+        required: true,
+      },
       table: {
         type: {
           summary: "ReactNode",

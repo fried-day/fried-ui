@@ -21,11 +21,7 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  args: {
-    size: "md",
-    radius: "full",
-    isDisabled: false,
-  },
+  args: {},
   argTypes: {
     children: {
       control: false,

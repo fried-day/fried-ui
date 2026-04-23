@@ -1,6 +1,8 @@
+import "./styles.css";
+
 import type { Preview } from "@storybook/react";
 
-import "./styles.css";
+import { formatSource } from "./format-source";
 
 const preview: Preview = {
   parameters: {
@@ -30,6 +32,7 @@ const preview: Preview = {
       codePanel: true,
       source: {
         type: "dynamic",
+        transform: formatSource,
       },
     },
     controls: {

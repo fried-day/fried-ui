@@ -27,18 +27,16 @@ const meta = {
   },
   args: {
     children: "Button",
-    variant: "primary",
-    size: "md",
-    radius: "md",
-    isIconOnly: false,
-    isFullWidth: false,
-    isDisabled: false,
-    isPending: false,
   },
   argTypes: {
     children: {
       control: "text",
       description: "Button content (text, icons, or both)",
+      type: {
+        name: "other",
+        value: "ReactNode",
+        required: true,
+      },
       table: {
         type: {
           summary: "ReactNode",
