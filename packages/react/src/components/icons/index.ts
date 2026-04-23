@@ -20,3 +20,4 @@ export { StarIcon } from "./StarIcon";
 export { StorybookIcon } from "./StorybookIcon";
 export { UserIcon } from "./UserIcon";
 export { XCircleIcon } from "./XCircleIcon";
+export { XIcon } from "./XIcon";

@@ -40,6 +40,13 @@
       --textarea-border-focus: var(--color-danger);
     }
 
+    &[aria-invalid="true"]:focus-visible,
+    &[aria-invalid="true"][data-focus-visible],
+    &[data-invalid]:focus-visible,
+    &[data-invalid][data-focus-visible] {
+      @apply focus-ring-danger;
+    }
+
     &:disabled,
     &[data-disabled] {
       @apply status-disabled;

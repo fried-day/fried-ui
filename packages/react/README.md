@@ -32,7 +32,7 @@ import { Button } from "@fried-ui/react";
 | Path                      | Description                 |
 | ------------------------- | --------------------------- |
 | `@fried-ui/react`         | All components + icons      |
-| `@fried-ui/react/badge`   | Badge component             |
+| `@fried-ui/react/chip`    | Chip component              |
 | `@fried-ui/react/button`  | Button component            |
 | `@fried-ui/react/icons`   | SVG icon components         |
 | `@fried-ui/react/surface` | Surface container component |

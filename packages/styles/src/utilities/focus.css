@@ -1,3 +1,7 @@
 @utility focus-ring {
   @apply ring-2 ring-focus-inner outline-2 outline-offset-focus outline-focus-outer outline-solid;
 }
+
+@utility focus-ring-danger {
+  @apply ring-2 ring-focus-inner outline-2 outline-offset-focus outline-danger outline-solid;
+}

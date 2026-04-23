@@ -5,7 +5,7 @@ export default defineConfig({
     index: "src/index.ts",
     "components/avatar/index": "src/components/avatar/index.ts",
     "components/avatar-group/index": "src/components/avatar-group/index.ts",
-    "components/badge/index": "src/components/badge/index.ts",
+    "components/chip/index": "src/components/chip/index.ts",
     "components/button/index": "src/components/button/index.ts",
     "components/field/index": "src/components/field/index.ts",
     "components/icons/index": "src/components/icons/index.ts",

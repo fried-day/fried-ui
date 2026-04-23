@@ -1,0 +1,228 @@
+@layer components {
+  .chip {
+    @apply relative inline-flex items-center justify-center;
+    @apply leading-none font-medium whitespace-nowrap select-none;
+    @apply transition duration-(--duration-hover) ease-out motion-reduce:transition-none;
+
+    --chip-bg: var(--color-primary);
+    --chip-bg-hover: var(--color-primary-hover);
+    --chip-bg-pressed: var(--color-primary-active);
+    --chip-border: var(--color-primary-border);
+    --chip-fg: var(--color-primary-foreground);
+
+    @apply bg-(--chip-bg) text-(--chip-fg);
+    @apply border border-(--chip-border);
+    @apply gap-[calc(0.875rem/2.058)] px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
+    @apply rounded-full;
+  }
+
+  .chip-primary {
+    --chip-bg: var(--color-primary);
+    --chip-bg-hover: var(--color-primary-hover);
+    --chip-bg-pressed: var(--color-primary-active);
+    --chip-border: var(--color-primary-border);
+    --chip-fg: var(--color-primary-foreground);
+  }
+
+  .chip-secondary {
+    --chip-bg: var(--color-secondary);
+    --chip-bg-hover: var(--color-secondary-hover);
+    --chip-bg-pressed: var(--color-secondary-active);
+    --chip-border: var(--color-secondary-border);
+    --chip-fg: var(--color-secondary-foreground);
+  }
+
+  .chip-ghost {
+    --chip-bg: transparent;
+    --chip-bg-hover: var(--color-muted);
+    --chip-bg-pressed: var(--color-muted-hover);
+    --chip-border: transparent;
+    --chip-fg: var(--color-foreground);
+  }
+
+  .chip-accent {
+    --chip-bg: var(--color-accent);
+    --chip-bg-hover: var(--color-accent-hover);
+    --chip-bg-pressed: var(--color-accent-active);
+    --chip-border: var(--color-accent-border);
+    --chip-fg: var(--color-accent-foreground);
+  }
+
+  .chip-success {
+    --chip-bg: var(--color-success);
+    --chip-bg-hover: var(--color-success-hover);
+    --chip-bg-pressed: var(--color-success-active);
+    --chip-border: var(--color-success-border);
+    --chip-fg: var(--color-success-foreground);
+  }
+
+  .chip-warning {
+    --chip-bg: var(--color-warning);
+    --chip-bg-hover: var(--color-warning-hover);
+    --chip-bg-pressed: var(--color-warning-active);
+    --chip-border: var(--color-warning-border);
+    --chip-fg: var(--color-warning-foreground);
+  }
+
+  .chip-danger {
+    --chip-bg: var(--color-danger);
+    --chip-bg-hover: var(--color-danger-hover);
+    --chip-bg-pressed: var(--color-danger-active);
+    --chip-border: var(--color-danger-border);
+    --chip-fg: var(--color-danger-foreground);
+  }
+
+  .chip-info {
+    --chip-bg: var(--color-info);
+    --chip-bg-hover: var(--color-info-hover);
+    --chip-bg-pressed: var(--color-info-active);
+    --chip-border: var(--color-info-border);
+    --chip-fg: var(--color-info-foreground);
+  }
+
+  .chip-selected {
+    @apply focus-ring;
+  }
+
+  .chip-disabled,
+  .chip[aria-disabled="true"],
+  .chip[data-disabled] {
+    @apply status-disabled;
+  }
+
+  .chip-interactive {
+    @apply cursor-pointer no-highlight;
+  }
+
+  .chip-interactive:focus-visible,
+  .chip-interactive[data-focus-visible] {
+    @apply focus-ring;
+  }
+
+  @media (hover: hover) {
+    .chip-interactive:hover:not(:disabled):not(:active),
+    .chip-interactive[data-hovered] {
+      @apply bg-(--chip-bg-hover);
+    }
+  }
+
+  .chip-interactive:active:not(:disabled),
+  .chip-interactive[data-pressed] {
+    @apply bg-(--chip-bg-pressed) duration-(--duration-press);
+  }
+
+  .chip-radius-none {
+    @apply rounded-none;
+  }
+
+  .chip-radius-sm {
+    @apply rounded-[calc(1em*1.272/4)];
+  }
+
+  .chip-radius-md {
+    @apply rounded-[calc(1em*1.272*2/4)];
+  }
+
+  .chip-radius-lg {
+    @apply rounded-[calc(1em*1.272*3/4)];
+  }
+
+  .chip-radius-full {
+    @apply rounded-full;
+  }
+
+  .chip [slot="icon"],
+  .chip [slot="icon-start"],
+  .chip [slot="icon-end"] {
+    @apply size-match-font;
+  }
+
+  .chip [slot="avatar"] {
+    @apply aspect-square h-[calc(1em*1.272)] rounded-full;
+  }
+
+  .chip:has([slot="icon-start"]),
+  .chip:has([slot="avatar"]) {
+    @apply pl-[calc(0.875rem/2.058)];
+  }
+
+  .chip:has([slot="icon-end"]) {
+    @apply pr-[calc(0.875rem/2.058)];
+  }
+
+  .chip:has(.chip-dismiss) {
+    @apply pr-[calc(0.875rem/2.058)];
+  }
+
+  .chip-size-sm {
+    @apply gap-[calc(0.75rem/2.058)] px-[calc(0.75rem)] py-[calc(0.75rem/2.058)] text-xs;
+  }
+
+  .chip-size-sm:has([slot="icon-start"]),
+  .chip-size-sm:has([slot="avatar"]) {
+    @apply pl-[calc(0.75rem/2.058)];
+  }
+
+  .chip-size-sm:has([slot="icon-end"]),
+  .chip-size-sm:has(.chip-dismiss) {
+    @apply pr-[calc(0.75rem/2.058)];
+  }
+
+  .chip-size-md {
+    @apply gap-[calc(0.875rem/2.058)] px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
+  }
+
+  .chip-size-md:has([slot="icon-start"]),
+  .chip-size-md:has([slot="avatar"]) {
+    @apply pl-[calc(0.875rem/2.058)];
+  }
+
+  .chip-size-md:has([slot="icon-end"]),
+  .chip-size-md:has(.chip-dismiss) {
+    @apply pr-[calc(0.875rem/2.058)];
+  }
+
+  .chip-size-lg {
+    @apply gap-[calc(1rem/2.058)] px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
+  }
+
+  .chip-size-lg:has([slot="icon-start"]),
+  .chip-size-lg:has([slot="avatar"]) {
+    @apply pl-[calc(1rem/2.058)];
+  }
+
+  .chip-size-lg:has([slot="icon-end"]),
+  .chip-size-lg:has(.chip-dismiss) {
+    @apply pr-[calc(1rem/2.058)];
+  }
+
+  .chip-icon-only {
+    @apply aspect-square w-[calc(0.875rem+2*(0.875rem/2.058)+0.125rem)] justify-center gap-0 p-0;
+  }
+
+  .chip-icon-only.chip-size-sm {
+    @apply w-[calc(0.75rem+2*(0.75rem/2.058)+0.125rem)];
+  }
+
+  .chip-icon-only.chip-size-lg {
+    @apply w-[calc(1rem+2*(1rem/2.058)+0.125rem)];
+  }
+
+  .chip-dismiss {
+    @apply inline-flex cursor-pointer items-center justify-center rounded-full;
+    @apply size-match-font opacity-70;
+    @apply transition duration-(--duration-hover) ease-out motion-reduce:transition-none;
+  }
+
+  @media (hover: hover) {
+    .chip-dismiss:hover:not(:disabled),
+    .chip-dismiss[data-hovered] {
+      @apply opacity-100;
+    }
+  }
+
+  .chip-dismiss:focus-visible,
+  .chip-dismiss[data-focus-visible] {
+    @apply opacity-100 focus-ring;
+  }
+}

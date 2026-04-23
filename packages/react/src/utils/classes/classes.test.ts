@@ -97,10 +97,10 @@ describe("classes()", () => {
   it("folds multi-class className string (clsx joins whitespace-separated)", () => {
     expect(
       classes({
-        block: "badge",
+        block: "chip",
         modifiers: {},
         className: "custom-1 custom-2",
       }),
-    ).toBe("badge custom-1 custom-2");
+    ).toBe("chip custom-1 custom-2");
   });
 });

@@ -92,7 +92,7 @@ type(scope): Subject
 Examples:
 
 ```txt
-feat(badge): Add soft variants
+feat(chip): Add soft variants
 fix(button): Fix focus ring on Safari
 docs(styles): Update color token docs
 ```
@@ -188,7 +188,7 @@ New components follow the scaffold-then-customize workflow:
 1. Scaffold with turbo gen:
 
 ```bash
-pnpm turbo gen display-component      # For Badge, Surface, Divider, etc.
+pnpm turbo gen display-component      # For Chip, Surface, Divider, etc.
 pnpm turbo gen interactive-component  # For Button, Link, Switch, etc.
 ```
 

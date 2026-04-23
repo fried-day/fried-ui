@@ -37,6 +37,13 @@
       --input-group-border-focus: var(--color-danger);
     }
 
+    &:has([aria-invalid="true"]):has(:focus-visible),
+    &:has([aria-invalid="true"]):has([data-focus-visible]),
+    &:has([data-invalid]):has(:focus-visible),
+    &:has([data-invalid]):has([data-focus-visible]) {
+      @apply focus-ring-danger;
+    }
+
     &:has(:disabled),
     &:has([data-disabled]) {
       @apply status-disabled;
