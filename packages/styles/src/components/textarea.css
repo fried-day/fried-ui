@@ -1,6 +1,6 @@
 @layer components {
   .textarea {
-    @apply block w-auto leading-[calc(1em*1.618)] font-normal outline-none;
+    @apply block w-auto leading-relaxed font-normal outline-none;
     @apply transition duration-(--duration-hover) ease-out motion-reduce:transition-none;
 
     --textarea-bg: var(--color-field);
@@ -13,8 +13,8 @@
 
     @apply bg-(--textarea-bg) text-(--textarea-fg);
     @apply border border-(--textarea-border);
-    @apply px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
-    @apply rounded-[calc(1em*1.272*2/4)];
+    @apply px-3.5 py-1.5 text-sm;
+    @apply rounded-md;
     @apply placeholder:text-(--textarea-placeholder);
     @apply resize-y;
 
@@ -89,15 +89,15 @@
   }
 
   .textarea-size-sm {
-    @apply px-[calc(0.75rem)] py-[calc(0.75rem/2.058)] text-xs;
+    @apply px-3 py-1.5 text-xs;
   }
 
   .textarea-size-md {
-    @apply px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
+    @apply px-3.5 py-1.5 text-sm;
   }
 
   .textarea-size-lg {
-    @apply px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
+    @apply px-4 py-2 text-base;
   }
 
   .textarea-resize-none {
@@ -125,15 +125,15 @@
   }
 
   .textarea-radius-sm {
-    @apply rounded-[calc(1em*1.272/4)];
+    @apply rounded-sm;
   }
 
   .textarea-radius-md {
-    @apply rounded-[calc(1em*1.272*2/4)];
+    @apply rounded-md;
   }
 
   .textarea-radius-lg {
-    @apply rounded-[calc(1em*1.272*3/4)];
+    @apply rounded-lg;
   }
 
   .textarea-radius-full {

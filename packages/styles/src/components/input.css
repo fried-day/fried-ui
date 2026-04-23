@@ -13,8 +13,8 @@
 
     @apply bg-(--input-bg) text-(--input-fg);
     @apply border border-(--input-border);
-    @apply px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
-    @apply rounded-[calc(1em*1.272*2/4)];
+    @apply h-10 px-3.5 text-sm;
+    @apply rounded-md;
     @apply placeholder:text-(--input-placeholder);
 
     &:hover:not(:focus):not(:read-only):not(:disabled),
@@ -88,15 +88,15 @@
   }
 
   .input-size-sm {
-    @apply px-[calc(0.75rem)] py-[calc(0.75rem/2.058)] text-xs;
+    @apply h-8 px-3 text-xs;
   }
 
   .input-size-md {
-    @apply px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
+    @apply h-10 px-3.5 text-sm;
   }
 
   .input-size-lg {
-    @apply px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
+    @apply h-12 px-4 text-base;
   }
 
   .input-full-width {
@@ -108,15 +108,15 @@
   }
 
   .input-radius-sm {
-    @apply rounded-[calc(1em*1.272/4)];
+    @apply rounded-sm;
   }
 
   .input-radius-md {
-    @apply rounded-[calc(1em*1.272*2/4)];
+    @apply rounded-md;
   }
 
   .input-radius-lg {
-    @apply rounded-[calc(1em*1.272*3/4)];
+    @apply rounded-lg;
   }
 
   .input-radius-full {

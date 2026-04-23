@@ -6,7 +6,7 @@
 
     @apply bg-(--surface-bg) text-(--surface-fg);
     @apply border border-(--surface-border);
-    @apply rounded-[calc(1em*1.272*2/4)];
+    @apply rounded-md;
   }
 
   .surface-default {
@@ -71,18 +71,18 @@
   }
 
   .surface-radius-sm {
-    @apply rounded-[calc(1em*1.272/4)];
+    @apply rounded-sm;
   }
 
   .surface-radius-md {
-    @apply rounded-[calc(1em*1.272*2/4)];
+    @apply rounded-md;
   }
 
   .surface-radius-lg {
-    @apply rounded-[calc(1em*1.272*3/4)];
+    @apply rounded-lg;
   }
 
   .surface-radius-xl {
-    @apply rounded-[calc(1em*1.272)];
+    @apply rounded-xl;
   }
 }

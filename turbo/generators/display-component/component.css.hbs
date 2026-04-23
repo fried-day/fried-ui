@@ -9,8 +9,8 @@
 
     @apply bg-(--{{dashCase name}}-bg) text-(--{{dashCase name}}-fg);
     @apply border border-(--{{dashCase name}}-border);
-    @apply gap-[calc(1rem/2.058)] px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
-    @apply rounded-[calc(1em*1.272*2/4)];
+    @apply h-8 gap-1.5 px-3 text-sm;
+    @apply rounded-md;
   }
 
   /*
@@ -69,15 +69,15 @@
   }
 
   .{{dashCase name}}-size-sm {
-    @apply gap-[calc(0.875rem/2.058)] px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
+    @apply h-6 gap-1 px-2 text-xs;
   }
 
   .{{dashCase name}}-size-md {
-    @apply gap-[calc(1rem/2.058)] px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
+    @apply h-8 gap-1.5 px-3 text-sm;
   }
 
   .{{dashCase name}}-size-lg {
-    @apply gap-[calc(1.25rem/2.058)] px-[calc(1.25rem)] py-[calc(1.25rem/2.058)] text-xl;
+    @apply h-10 gap-2 px-4 text-base;
   }
 
   .{{dashCase name}}-radius-none {
@@ -85,15 +85,15 @@
   }
 
   .{{dashCase name}}-radius-sm {
-    @apply rounded-[calc(1em*1.272/4)];
+    @apply rounded-sm;
   }
 
   .{{dashCase name}}-radius-md {
-    @apply rounded-[calc(1em*1.272*2/4)];
+    @apply rounded-md;
   }
 
   .{{dashCase name}}-radius-lg {
-    @apply rounded-[calc(1em*1.272*3/4)];
+    @apply rounded-lg;
   }
 
   .{{dashCase name}}-radius-full {

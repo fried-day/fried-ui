@@ -1,19 +1,19 @@
 @layer components {
   .field {
     @apply inline-flex flex-col;
-    @apply gap-[calc(0.875rem/2.058)];
+    @apply gap-1.5;
   }
 
   .field-size-sm {
-    @apply gap-[calc(0.75rem/2.058)];
+    @apply gap-1.5;
   }
 
   .field-size-md {
-    @apply gap-[calc(0.875rem/2.058)];
+    @apply gap-1.5;
   }
 
   .field-size-lg {
-    @apply gap-[calc(1rem/2.058)];
+    @apply gap-2;
   }
 
   .field-orientation-vertical {
@@ -133,12 +133,12 @@
   }
 
   .field-set {
-    @apply flex flex-col gap-[calc(1rem/2.058)];
+    @apply flex flex-col gap-2;
     @apply m-0 border-0 p-0;
   }
 
   .field-set-bordered {
-    @apply rounded-[calc(1em*1.272*2/4)] border border-border p-[calc(1rem)];
+    @apply rounded-md border border-border p-4;
   }
 
   .field-set:disabled,
@@ -148,7 +148,7 @@
 
   .field-legend {
     @apply text-base font-semibold text-foreground;
-    @apply mb-[calc(1rem/2.058)];
+    @apply mb-2;
   }
 
   .field-legend-size-sm {
@@ -164,7 +164,7 @@
   }
 
   .field-group {
-    @apply flex flex-col gap-[calc(1rem/2.058)];
+    @apply flex flex-col gap-2;
   }
 
   .field-group-orientation-vertical {
@@ -180,15 +180,15 @@
   }
 
   .field-group-size-sm {
-    @apply gap-[calc(0.75rem/2.058)];
+    @apply gap-1.5;
   }
 
   .field-group-size-md {
-    @apply gap-[calc(1rem/2.058)];
+    @apply gap-2;
   }
 
   .field-group-size-lg {
-    @apply gap-[calc(1.25rem/2.058)];
+    @apply gap-2.5;
   }
 
   .field-title {
@@ -213,7 +213,7 @@
 
     @apply h-px bg-(--field-separator-bg);
     @apply border-0 border-t border-(--field-separator-border);
-    @apply my-[calc(1rem/2.058)];
+    @apply my-2;
   }
 
   .field-separator-solid {

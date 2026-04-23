@@ -13,8 +13,8 @@
 
     @apply bg-(--button-bg) text-(--button-fg);
     @apply border border-(--button-border);
-    @apply gap-[calc(1rem/2.058)] px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
-    @apply rounded-[calc(1em*1.272*2/4)];
+    @apply h-10 gap-2 px-4 text-base;
+    @apply rounded-md;
 
     &:focus-visible,
     &[data-focus-visible] {
@@ -100,19 +100,19 @@
   }
 
   .button-size-sm {
-    @apply gap-[calc(0.875rem/2.058)] px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
+    @apply h-8 gap-1.5 px-3 text-sm;
   }
 
   .button-size-md {
-    @apply gap-[calc(1rem/2.058)] px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
+    @apply h-10 gap-2 px-4 text-base;
   }
 
   .button-size-lg {
-    @apply gap-[calc(1.25rem/2.058)] px-[calc(1.25rem)] py-[calc(1.25rem/2.058)] text-xl;
+    @apply h-12 gap-2.5 px-6 text-xl;
   }
 
   .button-size-xl {
-    @apply gap-[calc(1.5rem/2.058)] px-[calc(1.5rem)] py-[calc(1.5rem/2.058)] text-2xl;
+    @apply h-14 gap-3 px-8 text-2xl;
   }
 
   .button-full-width {
@@ -120,19 +120,19 @@
   }
 
   .button-icon-only {
-    @apply aspect-square w-[calc(1rem+2*(1rem/2.058)+0.125rem)] justify-center gap-0 p-0;
+    @apply size-10 justify-center gap-0 p-0;
   }
 
   .button-icon-only.button-size-sm {
-    @apply w-[calc(0.875rem+2*(0.875rem/2.058)+0.125rem)];
+    @apply size-8;
   }
 
   .button-icon-only.button-size-lg {
-    @apply w-[calc(1.25rem+2*(1.25rem/2.058)+0.125rem)];
+    @apply size-12;
   }
 
   .button-icon-only.button-size-xl {
-    @apply w-[calc(1.5rem+2*(1.5rem/2.058)+0.125rem)];
+    @apply size-14;
   }
 
   .button-radius-none {
@@ -140,15 +140,15 @@
   }
 
   .button-radius-sm {
-    @apply rounded-[calc(1em*1.272/4)];
+    @apply rounded-sm;
   }
 
   .button-radius-md {
-    @apply rounded-[calc(1em*1.272*2/4)];
+    @apply rounded-md;
   }
 
   .button-radius-lg {
-    @apply rounded-[calc(1em*1.272*3/4)];
+    @apply rounded-lg;
   }
 
   .button-radius-full {
@@ -166,35 +166,35 @@
   }
 
   .button:has([slot="icon-start"]) {
-    @apply pl-[calc(1rem/2.058)];
+    @apply pl-2;
   }
 
   .button:has([slot="icon-end"]) {
-    @apply pr-[calc(1rem/2.058)];
+    @apply pr-2;
   }
 
   .button-size-sm:has([slot="icon-start"]) {
-    @apply pl-[calc(0.875rem/2.058)];
+    @apply pl-1.5;
   }
 
   .button-size-sm:has([slot="icon-end"]) {
-    @apply pr-[calc(0.875rem/2.058)];
+    @apply pr-1.5;
   }
 
   .button-size-lg:has([slot="icon-start"]) {
-    @apply pl-[calc(1.25rem/2.058)];
+    @apply pl-3;
   }
 
   .button-size-lg:has([slot="icon-end"]) {
-    @apply pr-[calc(1.25rem/2.058)];
+    @apply pr-3;
   }
 
   .button-size-xl:has([slot="icon-start"]) {
-    @apply pl-[calc(1.5rem/2.058)];
+    @apply pl-4;
   }
 
   .button-size-xl:has([slot="icon-end"]) {
-    @apply pr-[calc(1.5rem/2.058)];
+    @apply pr-4;
   }
 
   .button-spinner {

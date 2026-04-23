@@ -12,7 +12,7 @@
 
     @apply bg-(--chip-bg) text-(--chip-fg);
     @apply border border-(--chip-border);
-    @apply gap-[calc(0.875rem/2.058)] px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
+    @apply h-8 gap-1.5 px-3 text-sm;
     @apply rounded-full;
   }
 
@@ -119,20 +119,32 @@
     @apply bg-(--chip-bg-pressed) duration-(--duration-press);
   }
 
+  .chip-size-sm {
+    @apply h-6 gap-1 px-2 text-xs;
+  }
+
+  .chip-size-md {
+    @apply h-8 gap-1.5 px-3 text-sm;
+  }
+
+  .chip-size-lg {
+    @apply h-10 gap-2 px-4 text-base;
+  }
+
   .chip-radius-none {
     @apply rounded-none;
   }
 
   .chip-radius-sm {
-    @apply rounded-[calc(1em*1.272/4)];
+    @apply rounded-sm;
   }
 
   .chip-radius-md {
-    @apply rounded-[calc(1em*1.272*2/4)];
+    @apply rounded-md;
   }
 
   .chip-radius-lg {
-    @apply rounded-[calc(1em*1.272*3/4)];
+    @apply rounded-lg;
   }
 
   .chip-radius-full {
@@ -146,74 +158,49 @@
   }
 
   .chip [slot="avatar"] {
-    @apply aspect-square h-[calc(1em*1.272)] rounded-full;
+    @apply aspect-square size-5 rounded-full;
   }
 
   .chip:has([slot="icon-start"]),
   .chip:has([slot="avatar"]) {
-    @apply pl-[calc(0.875rem/2.058)];
+    @apply pl-1.5;
   }
 
-  .chip:has([slot="icon-end"]) {
-    @apply pr-[calc(0.875rem/2.058)];
-  }
-
+  .chip:has([slot="icon-end"]),
   .chip:has(.chip-dismiss) {
-    @apply pr-[calc(0.875rem/2.058)];
-  }
-
-  .chip-size-sm {
-    @apply gap-[calc(0.75rem/2.058)] px-[calc(0.75rem)] py-[calc(0.75rem/2.058)] text-xs;
+    @apply pr-1.5;
   }
 
   .chip-size-sm:has([slot="icon-start"]),
   .chip-size-sm:has([slot="avatar"]) {
-    @apply pl-[calc(0.75rem/2.058)];
+    @apply pl-1;
   }
 
   .chip-size-sm:has([slot="icon-end"]),
   .chip-size-sm:has(.chip-dismiss) {
-    @apply pr-[calc(0.75rem/2.058)];
-  }
-
-  .chip-size-md {
-    @apply gap-[calc(0.875rem/2.058)] px-[calc(0.875rem)] py-[calc(0.875rem/2.058)] text-sm;
-  }
-
-  .chip-size-md:has([slot="icon-start"]),
-  .chip-size-md:has([slot="avatar"]) {
-    @apply pl-[calc(0.875rem/2.058)];
-  }
-
-  .chip-size-md:has([slot="icon-end"]),
-  .chip-size-md:has(.chip-dismiss) {
-    @apply pr-[calc(0.875rem/2.058)];
-  }
-
-  .chip-size-lg {
-    @apply gap-[calc(1rem/2.058)] px-[calc(1rem)] py-[calc(1rem/2.058)] text-base;
+    @apply pr-1;
   }
 
   .chip-size-lg:has([slot="icon-start"]),
   .chip-size-lg:has([slot="avatar"]) {
-    @apply pl-[calc(1rem/2.058)];
+    @apply pl-2;
   }
 
   .chip-size-lg:has([slot="icon-end"]),
   .chip-size-lg:has(.chip-dismiss) {
-    @apply pr-[calc(1rem/2.058)];
+    @apply pr-2;
   }
 
   .chip-icon-only {
-    @apply aspect-square w-[calc(0.875rem+2*(0.875rem/2.058)+0.125rem)] justify-center gap-0 p-0;
+    @apply size-8 justify-center gap-0 p-0;
   }
 
   .chip-icon-only.chip-size-sm {
-    @apply w-[calc(0.75rem+2*(0.75rem/2.058)+0.125rem)];
+    @apply size-6;
   }
 
   .chip-icon-only.chip-size-lg {
-    @apply w-[calc(1rem+2*(1rem/2.058)+0.125rem)];
+    @apply size-10;
   }
 
   .chip-dismiss {
