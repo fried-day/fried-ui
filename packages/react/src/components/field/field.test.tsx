@@ -389,7 +389,7 @@ describe("FieldSet", () => {
   });
 
   it("applies variant classes", () => {
-    const variants = ["default", "bordered", "card"] as const;
+    const variants = ["default", "bordered"] as const;
 
     variants.forEach((variant) => {
       const { container, unmount } = render(<FieldSet variant={variant}>content</FieldSet>);

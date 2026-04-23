@@ -8,5 +8,5 @@ export interface ChipVariantsProps {
   /** Size scale. @default 'md' */
   size?: "sm" | "md" | "lg";
   /** Visual style — category colors. @default 'primary' */
-  variant?: "primary" | "secondary" | "ghost" | "accent" | "success" | "warning" | "danger" | "info";
+  variant?: "primary" | "secondary" | "ghost" | "overlay" | "accent" | "success" | "warning" | "danger" | "info";
 }

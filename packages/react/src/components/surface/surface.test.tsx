@@ -17,7 +17,7 @@ describe("Surface", () => {
   });
 
   it("applies all variant classes", () => {
-    const variants = ["default", "success", "warning", "danger", "info"] as const;
+    const variants = ["default", "subtle", "plain", "overlay"] as const;
 
     variants.forEach((variant) => {
       const { unmount } = render(<Surface variant={variant}>{variant}</Surface>);
@@ -51,15 +51,14 @@ describe("Surface", () => {
     });
   });
 
-  it("combines variant + isBordered + radius + shadow", () => {
+  it("combines isBordered + radius + shadow", () => {
     render(
-      <Surface variant="info" radius="lg" shadow="md" isBordered>
+      <Surface radius="lg" shadow="md" isBordered>
         Combined
       </Surface>,
     );
 
     const el = screen.getByText("Combined");
-    expect(el.className).toContain("surface-info");
     expect(el.className).toContain("surface-bordered");
     expect(el.className).toContain("surface-radius-lg");
     expect(el.className).toContain("surface-shadow-md");

@@ -40,6 +40,14 @@
     --chip-fg: var(--color-foreground);
   }
 
+  .chip-overlay {
+    --chip-bg: var(--color-on-overlay);
+    --chip-bg-hover: var(--color-on-overlay-hover);
+    --chip-bg-pressed: var(--color-on-overlay-active);
+    --chip-border: var(--color-on-overlay-border);
+    --chip-fg: var(--color-on-overlay-foreground);
+  }
+
   .chip-accent {
     --chip-bg: var(--color-accent);
     --chip-bg-hover: var(--color-accent-hover);
@@ -81,7 +89,7 @@
   }
 
   .chip-selected {
-    @apply focus-ring;
+    @apply bg-(--chip-bg-pressed);
   }
 
   .chip-disabled,

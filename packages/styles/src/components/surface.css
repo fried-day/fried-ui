@@ -14,44 +14,36 @@
     --surface-fg: var(--color-surface-foreground);
   }
 
-  .surface-success {
-    --surface-bg: var(--color-success-soft);
-    --surface-fg: var(--color-success-soft-foreground);
+  .surface-subtle {
+    --surface-bg: var(--color-surface-subtle);
+    --surface-fg: var(--color-surface-foreground);
   }
 
-  .surface-warning {
-    --surface-bg: var(--color-warning-soft);
-    --surface-fg: var(--color-warning-soft-foreground);
+  .surface-plain {
+    --surface-bg: var(--color-surface-plain);
+    --surface-fg: var(--color-surface-foreground);
   }
 
-  .surface-danger {
-    --surface-bg: var(--color-danger-soft);
-    --surface-fg: var(--color-danger-soft-foreground);
+  .surface-overlay {
+    --surface-bg: var(--color-on-overlay);
+    --surface-fg: var(--color-on-overlay-foreground);
   }
 
-  .surface-info {
-    --surface-bg: var(--color-info-soft);
-    --surface-fg: var(--color-info-soft-foreground);
-  }
-
-  .surface-bordered.surface-default {
+  .surface-bordered.surface-default,
+  .surface-bordered:not(.surface-subtle):not(.surface-plain):not(.surface-overlay) {
     --surface-border: var(--color-surface-border);
   }
 
-  .surface-bordered.surface-success {
-    --surface-border: var(--color-success-soft-border);
+  .surface-bordered.surface-subtle {
+    --surface-border: var(--color-surface-subtle-border);
   }
 
-  .surface-bordered.surface-warning {
-    --surface-border: var(--color-warning-soft-border);
+  .surface-bordered.surface-plain {
+    --surface-border: var(--color-surface-plain-border);
   }
 
-  .surface-bordered.surface-danger {
-    --surface-border: var(--color-danger-soft-border);
-  }
-
-  .surface-bordered.surface-info {
-    --surface-border: var(--color-info-soft-border);
+  .surface-bordered.surface-overlay {
+    --surface-border: var(--color-on-overlay-border);
   }
 
   .surface-shadow-none {

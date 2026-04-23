@@ -30,29 +30,21 @@ const meta = {
     },
     variant: {
       control: "select",
-      options: ["default", "success", "warning", "danger", "info"],
+      options: ["default", "subtle", "plain", "overlay"],
       description:
-        "Visual style. **Base:** default (neutral surface for cards). **Status:** success (positive, completed actions), warning (caution, needs attention), danger (negative, destructive or error), info (neutral notice). Pair with `isBordered` for emphasis border on any variant. Use default for cards on page background, status variants for alert or callout boxes.",
+        "Background layer tone (layer cake). **default** — neutral gray (neutral-50, standard card on white page). **subtle** — deeper gray (neutral-100, nested or inset, deeper emphasis). **plain** — pure white (layer-0, inverted or elevated card on dimmed bg). **overlay** — surface on top of a dim scrim (popover/modal content). Use default for standard cards, subtle for nested blocks, plain for modals on dimmed bg, overlay for content above scrim overlays.",
       table: {
-        type: {
-          summary: '"default" | "success" | "warning" | "danger" | "info"',
-        },
-        defaultValue: {
-          summary: "default",
-        },
+        type: { summary: '"default" | "subtle" | "plain" | "overlay"' },
+        defaultValue: { summary: "default" },
         category: "Style Variants",
       },
     },
     isBordered: {
       control: "boolean",
-      description: "Whether the surface has an emphasis border (uses variant-specific border token)",
+      description: "Whether the surface has an emphasis border",
       table: {
-        type: {
-          summary: "boolean",
-        },
-        defaultValue: {
-          summary: "false",
-        },
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
         category: "Style Variants",
       },
     },
@@ -60,14 +52,10 @@ const meta = {
       control: "select",
       options: ["none", "sm", "md", "lg", "xl"],
       description:
-        "Border radius scale. **none** (sharp corners, data tables, embedded). **sm** (subtle rounding). **md** (default, standard cards). **lg** (emphasized cards, dialogs). **xl** (hero cards, banners).",
+        "Border radius scale. **none** (sharp corners). **sm** (subtle). **md** (default, standard cards). **lg** (emphasized). **xl** (hero cards).",
       table: {
-        type: {
-          summary: '"none" | "sm" | "md" | "lg" | "xl"',
-        },
-        defaultValue: {
-          summary: "md",
-        },
+        type: { summary: '"none" | "sm" | "md" | "lg" | "xl"' },
+        defaultValue: { summary: "md" },
         category: "Style Variants",
       },
     },
@@ -75,14 +63,10 @@ const meta = {
       control: "select",
       options: ["none", "sm", "md", "lg", "xl"],
       description:
-        "Elevation depth (orthogonal to variant — combine freely). **none** (default, flat). **sm** (subtle lift, hover hint). **md** (noticeable elevation, cards). **lg** (floating, popovers). **xl** (strong elevation, modals/dialogs).",
+        "Elevation depth. **none** (default, flat). **sm** (subtle lift). **md** (cards). **lg** (popovers). **xl** (modals).",
       table: {
-        type: {
-          summary: '"none" | "sm" | "md" | "lg" | "xl"',
-        },
-        defaultValue: {
-          summary: "none",
-        },
+        type: { summary: '"none" | "sm" | "md" | "lg" | "xl"' },
+        defaultValue: { summary: "none" },
         category: "Style Variants",
       },
     },
@@ -90,9 +74,7 @@ const meta = {
       control: "text",
       description: "Additional CSS classes",
       table: {
-        type: {
-          summary: "string",
-        },
+        type: { summary: "string" },
         category: "Styling",
       },
     },
@@ -120,29 +102,54 @@ const Variants: Story = {
     <>
       <Surface {...args} variant="default" className="p-6">
         <p className="font-bold">Default</p>
-        <p className="mt-2 text-sm">Content</p>
+        <p className="mt-2 text-sm">Standard card (neutral-50)</p>
       </Surface>
 
-      <Surface {...args} variant="success" className="p-6">
-        <p className="font-bold">Success</p>
-        <p className="mt-2 text-sm">Content</p>
+      <Surface {...args} variant="subtle" className="p-6">
+        <p className="font-bold">Subtle</p>
+        <p className="mt-2 text-sm">Nested deeper (neutral-100)</p>
       </Surface>
 
-      <Surface {...args} variant="warning" className="p-6">
-        <p className="font-bold">Warning</p>
-        <p className="mt-2 text-sm">Content</p>
-      </Surface>
-
-      <Surface {...args} variant="danger" className="p-6">
-        <p className="font-bold">Danger</p>
-        <p className="mt-2 text-sm">Content</p>
-      </Surface>
-
-      <Surface {...args} variant="info" className="p-6">
-        <p className="font-bold">Info</p>
-        <p className="mt-2 text-sm">Content</p>
+      <Surface {...args} variant="plain" className="p-6">
+        <p className="font-bold">Plain</p>
+        <p className="mt-2 text-sm">Pure white (layer-0)</p>
       </Surface>
     </>
+  ),
+};
+
+const Bordered: Story = {
+  args: {
+    isBordered: true,
+  },
+  render: (args): React.JSX.Element => (
+    <>
+      <Surface {...args} variant="default" className="p-6">
+        <p className="font-bold">Default</p>
+        <p className="mt-2 text-sm">Standard card (neutral-50)</p>
+      </Surface>
+
+      <Surface {...args} variant="subtle" className="p-6">
+        <p className="font-bold">Subtle</p>
+        <p className="mt-2 text-sm">Nested deeper (neutral-100)</p>
+      </Surface>
+
+      <Surface {...args} variant="plain" className="p-6">
+        <p className="font-bold">Plain</p>
+        <p className="mt-2 text-sm">Pure white (layer-0)</p>
+      </Surface>
+    </>
+  ),
+};
+
+const OverlayVariant: Story = {
+  render: (args): React.JSX.Element => (
+    <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
+      <Surface {...args} variant="overlay" className="p-6">
+        <p className="font-bold">Overlay</p>
+        <p className="mt-2 text-sm">On scrim (popover/modal)</p>
+      </Surface>
+    </div>
   ),
 };
 
@@ -208,40 +215,6 @@ const Shadow: Story = {
   ),
 };
 
-const Bordered: Story = {
-  args: {
-    isBordered: true,
-  },
-  render: (args): React.JSX.Element => (
-    <>
-      <Surface {...args} variant="default" className="p-6">
-        <p className="font-bold">Default</p>
-        <p className="mt-2 text-sm">Content</p>
-      </Surface>
-
-      <Surface {...args} variant="success" className="p-6">
-        <p className="font-bold">Success</p>
-        <p className="mt-2 text-sm">Content</p>
-      </Surface>
-
-      <Surface {...args} variant="warning" className="p-6">
-        <p className="font-bold">Warning</p>
-        <p className="mt-2 text-sm">Content</p>
-      </Surface>
-
-      <Surface {...args} variant="danger" className="p-6">
-        <p className="font-bold">Danger</p>
-        <p className="mt-2 text-sm">Content</p>
-      </Surface>
-
-      <Surface {...args} variant="info" className="p-6">
-        <p className="font-bold">Info</p>
-        <p className="mt-2 text-sm">Content</p>
-      </Surface>
-    </>
-  ),
-};
-
-export { Default, Variants, Bordered, Radius, Shadow };
+export { Default, Variants, OverlayVariant, Bordered, Radius, Shadow };
 
 export default meta;

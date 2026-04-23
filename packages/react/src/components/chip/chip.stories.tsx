@@ -41,12 +41,13 @@ const meta = {
     },
     variant: {
       control: "select",
-      options: ["primary", "secondary", "ghost", "accent", "success", "warning", "danger", "info"],
+      options: ["primary", "secondary", "ghost", "overlay", "accent", "success", "warning", "danger", "info"],
       description:
-        "Visual style — category colors. **Brand:** primary (default filled), secondary (neutral), ghost (transparent, minimal), accent (brand highlight). **Status:** success (positive/active), warning (caution/pending), danger (negative/error), info (neutral/notice). Use primary for main labels, ghost for low-emphasis tags, success for active state, danger for expired/error, info for notices.",
+        "Visual style — category colors. **Brand:** primary (default filled), secondary (neutral), ghost (transparent, minimal), overlay (on dark media/scrim), accent (brand highlight). **Status:** success (positive/active), warning (caution/pending), danger (negative/error), info (neutral/notice). Use primary for main labels, ghost for low-emphasis tags, overlay on images/dark bg, success for active state, danger for expired/error, info for notices.",
       table: {
         type: {
-          summary: '"primary" | "secondary" | "ghost" | "accent" | "success" | "warning" | "danger" | "info"',
+          summary:
+            '"primary" | "secondary" | "ghost" | "overlay" | "accent" | "success" | "warning" | "danger" | "info"',
         },
         defaultValue: {
           summary: "primary",
@@ -182,6 +183,16 @@ const Variants: Story = {
         Info
       </Chip>
     </>
+  ),
+};
+
+const OverlayVariant: Story = {
+  render: (args): React.JSX.Element => (
+    <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
+      <Chip {...args} variant="overlay">
+        Overlay
+      </Chip>
+    </div>
   ),
 };
 
@@ -417,6 +428,7 @@ const Disabled: Story = {
 export {
   Default,
   Variants,
+  OverlayVariant,
   Sizes,
   Radius,
   WithIcon,

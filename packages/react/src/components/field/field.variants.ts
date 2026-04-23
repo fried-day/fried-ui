@@ -38,7 +38,7 @@ export interface FieldErrorVariantsProps {
 
 export interface FieldSetVariantsProps {
   /** Visual style. @default 'default' */
-  variant?: "default" | "bordered" | "card";
+  variant?: "default" | "bordered";
 }
 
 export interface FieldLegendVariantsProps {

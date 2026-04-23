@@ -33,7 +33,17 @@ describe("Chip", () => {
   });
 
   it("applies all variant classes", () => {
-    const variants = ["primary", "secondary", "ghost", "accent", "success", "warning", "danger", "info"] as const;
+    const variants = [
+      "primary",
+      "secondary",
+      "ghost",
+      "overlay",
+      "accent",
+      "success",
+      "warning",
+      "danger",
+      "info",
+    ] as const;
 
     variants.forEach((variant) => {
       const { unmount } = render(<Chip variant={variant}>{variant}</Chip>);

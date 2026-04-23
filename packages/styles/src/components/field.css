@@ -141,10 +141,6 @@
     @apply rounded-[calc(1em*1.272*2/4)] border border-border p-[calc(1rem)];
   }
 
-  .field-set-card {
-    @apply rounded-[calc(1em*1.272*2/4)] border border-border bg-surface p-[calc(1rem)];
-  }
-
   .field-set:disabled,
   .field-set[data-disabled] {
     @apply status-disabled;
