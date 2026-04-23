@@ -66,50 +66,9 @@ const meta = {
 
 type Story = StoryObj<typeof meta>;
 
-const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { TextField } from "react-aria-components";
-import { FieldError } from "@fried-ui/react";
-
-const Basic = () => {
-  return (
-    <TextField isInvalid>
-      <FieldError>Error message</FieldError>
-    </TextField>
-  );
-};`,
-      },
-    },
-  },
-};
+const Default: Story = {};
 
 const Sizes: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { TextField } from "react-aria-components";
-import { FieldError } from "@fried-ui/react";
-
-const Sizes = () => {
-  return (
-    <div className="flex items-center gap-8">
-      <TextField isInvalid>
-        <FieldError size="sm">Small FieldError</FieldError>
-      </TextField>
-      <TextField isInvalid>
-        <FieldError size="md">Medium FieldError</FieldError>
-      </TextField>
-      <TextField isInvalid>
-        <FieldError size="lg">Large FieldError</FieldError>
-      </TextField>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex items-center gap-8">
       <TextField isInvalid>
@@ -135,22 +94,6 @@ const Sizes = () => {
 };
 
 const Disabled: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { TextField } from "react-aria-components";
-import { FieldError } from "@fried-ui/react";
-
-const Disabled = () => {
-  return (
-    <TextField isInvalid>
-      <FieldError isDisabled>Disabled FieldError</FieldError>
-    </TextField>
-  );
-};`,
-      },
-    },
-  },
   args: {
     children: "Disabled FieldError",
     isDisabled: true,

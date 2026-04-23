@@ -105,32 +105,9 @@ const meta = {
 
 type Story = StoryObj<typeof meta>;
 
-const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Label } from "@fried-ui/react";
-
-const Basic = () => {
-  return <Label>Label</Label>;
-};`,
-      },
-    },
-  },
-};
+const Default: Story = {};
 
 const Required: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Label } from "@fried-ui/react";
-
-const Required = () => {
-  return <Label isRequired>Required Label</Label>;
-};`,
-      },
-    },
-  },
   args: {
     children: "Required Label",
     isRequired: true,
@@ -138,17 +115,6 @@ const Required = () => {
 };
 
 const Optional: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Label } from "@fried-ui/react";
-
-const Optional = () => {
-  return <Label optionalMessage="(Optional)">Optional Label</Label>;
-};`,
-      },
-    },
-  },
   args: {
     children: "Optional Label",
     optionalMessage: "(Optional)",
@@ -156,23 +122,6 @@ const Optional = () => {
 };
 
 const Sizes: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Label } from "@fried-ui/react";
-
-const Sizes = () => {
-  return (
-    <div className="flex items-center gap-8">
-      <Label size="sm">Small Label</Label>
-      <Label size="md">Medium Label</Label>
-      <Label size="lg">Large Label</Label>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex items-center gap-8">
       <Label {...args} size="sm">
@@ -191,23 +140,6 @@ const Sizes = () => {
 };
 
 const Weights: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Label } from "@fried-ui/react";
-
-const Weights = () => {
-  return (
-    <div className="flex gap-8">
-      <Label weight="normal">Normal (400)</Label>
-      <Label weight="medium">Medium (500)</Label>
-      <Label weight="semibold">Semibold (600)</Label>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex gap-8">
       <Label {...args} weight="normal">
@@ -226,17 +158,6 @@ const Weights = () => {
 };
 
 const Invalid: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Label } from "@fried-ui/react";
-
-const Invalid = () => {
-  return <Label isInvalid>Invalid Label</Label>;
-};`,
-      },
-    },
-  },
   args: {
     children: "Invalid Label",
     isInvalid: true,
@@ -244,17 +165,6 @@ const Invalid = () => {
 };
 
 const Disabled: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Label } from "@fried-ui/react";
-
-const Disabled = () => {
-  return <Label isDisabled>Disabled Label</Label>;
-};`,
-      },
-    },
-  },
   args: {
     children: "Disabled Label",
     isDisabled: true,

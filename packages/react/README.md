@@ -23,7 +23,7 @@ Peer dependencies: `react >=19.0.0`, `react-dom >=19.0.0`, `tailwindcss >=4.0.0`
 import { Button } from "@fried-ui/react";
 
 <Button variant="primary" size="md">
-  Click me
+  Button
 </Button>;
 ```
 

@@ -3,29 +3,16 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { UserIcon } from "../icons";
 import { Avatar, AvatarFallback, AvatarImage } from "./Avatar";
 
-const SAMPLE_SRC_1 =
-  "https://images.unsplash.com/photo-1729017256081-0271b3fcc08e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTQ4fHxwcm9maWxlfGVufDB8fDB8fHww";
-
-const SAMPLE_SRC_2 =
-  "https://images.unsplash.com/photo-1569913486515-b74bf7751574?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D";
-
-const SAMPLE_SRC_3 =
-  "https://images.unsplash.com/photo-1576348076752-6085814e5a51?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fGF2YXRhciUyMGN1dGUlMjBnaXJsfGVufDB8fDB8fHww";
-
-const RADIUS_SRC =
-  "https://images.unsplash.com/photo-1656919380078-f0ff7bcd1d92?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjE5fHxwYXN0ZWx8ZW58MHx8MHx8fDA%3D";
-
-const SAMPLE_SRC_4 =
-  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZhY2V8ZW58MHx8MHx8fDA%3D";
-
-const SAMPLE_SRC_5 =
-  "https://images.unsplash.com/photo-1724690336308-02af024b76ab?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHdvbWVuJTIwY3V0ZXxlbnwwfHwwfHx8MA%3D%3D";
-
-const SAMPLE_SRC_6 =
-  "https://images.unsplash.com/photo-1596554002543-83af3d801c6f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODd8fHdvbWVuJTIwY3V0ZXxlbnwwfHwwfHx8MA%3D%3D";
+const RADIUS_SRC = "https://images.unsplash.com/photo-1656919380078-f0ff7bcd1d92?w=500&auto=format&fit=crop&q=60";
+const SAMPLE_SRC_1 = "https://images.unsplash.com/photo-1729017256081-0271b3fcc08e?w=500&auto=format&fit=crop&q=60";
+const SAMPLE_SRC_2 = "https://images.unsplash.com/photo-1569913486515-b74bf7751574?w=500&auto=format&fit=crop&q=60";
+const SAMPLE_SRC_3 = "https://images.unsplash.com/photo-1576348076752-6085814e5a51?w=500&auto=format&fit=crop&q=60";
+const SAMPLE_SRC_4 = "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=500&auto=format&fit=crop&q=60";
+const SAMPLE_SRC_5 = "https://images.unsplash.com/photo-1724690336308-02af024b76ab?w=500&auto=format&fit=crop&q=60";
+const SAMPLE_SRC_6 = "https://images.unsplash.com/photo-1596554002543-83af3d801c6f?w=500&auto=format&fit=crop&q=60";
 
 const SAMPLE_SRC_7 =
-  "https://images.unsplash.com/flagged/photo-1557610650-841aa71a5c3d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTA5fHx3b21lbiUyMGN1dGV8ZW58MHx8MHx8fDA%3D";
+  "https://images.unsplash.com/flagged/photo-1557610650-841aa71a5c3d?w=500&auto=format&fit=crop&q=60";
 
 const meta = {
   title: "Components/Avatar",
@@ -103,56 +90,15 @@ const meta = {
 type Story = StoryObj<typeof meta>;
 
 const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Avatar } from "@fried-ui/react";
-
-const Basic = () => {
-  return (
-    <Avatar>
-      <AvatarImage alt="Colm Tuite" src="${SAMPLE_SRC_1}" />
-      <AvatarFallback>CT</AvatarFallback>
-    </Avatar>
-  );
-};`,
-      },
-    },
+  args: {
+    children: [
+      <AvatarImage key="img" alt="Colm Tuite" src={SAMPLE_SRC_1} />,
+      <AvatarFallback key="fb">CT</AvatarFallback>,
+    ],
   },
-  render: (args): React.JSX.Element => (
-    <Avatar {...args}>
-      <AvatarImage alt="Colm Tuite" src={SAMPLE_SRC_1} />
-      <AvatarFallback>CT</AvatarFallback>
-    </Avatar>
-  ),
 };
 
 const WithFallback: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Avatar, UserIcon } from "@fried-ui/react";
-
-const WithFallback = () => {
-  return (
-    <div className="flex items-end gap-4">
-      <Avatar>
-        <AvatarFallback>YK</AvatarFallback>
-      </Avatar>
-      <Avatar>
-        <AvatarFallback>RT</AvatarFallback>
-      </Avatar>
-      <Avatar>
-        <AvatarFallback>
-          <UserIcon className="size-match-font" />
-        </AvatarFallback>
-      </Avatar>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex items-end gap-4">
       <Avatar {...args}>
@@ -165,7 +111,7 @@ const WithFallback = () => {
 
       <Avatar {...args}>
         <AvatarFallback>
-          <UserIcon className="size-match-font" />
+          <UserIcon className="size-5" />
         </AvatarFallback>
       </Avatar>
     </div>
@@ -173,49 +119,6 @@ const WithFallback = () => {
 };
 
 const Sizes: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Avatar } from "@fried-ui/react";
-
-const Sizes = () => {
-  return (
-    <div className="flex items-end gap-4">
-      <Avatar size="xs">
-        <AvatarImage alt="Avatar 1" src="${SAMPLE_SRC_1}" />
-        <AvatarFallback>A1</AvatarFallback>
-      </Avatar>
-
-      <Avatar size="sm">
-        <AvatarImage alt="Avatar 2" src="${SAMPLE_SRC_2}" />
-        <AvatarFallback>A2</AvatarFallback>
-      </Avatar>
-
-      <Avatar size="md">
-        <AvatarImage alt="Avatar 3" src="${SAMPLE_SRC_3}" />
-        <AvatarFallback>A3</AvatarFallback>
-      </Avatar>
-
-      <Avatar size="lg">
-        <AvatarImage alt="Avatar 4" src="${SAMPLE_SRC_4}" />
-        <AvatarFallback>A4</AvatarFallback>
-      </Avatar>
-
-      <Avatar size="xl">
-        <AvatarImage alt="Avatar 5" src="${SAMPLE_SRC_5}" />
-        <AvatarFallback>A5</AvatarFallback>
-      </Avatar>
-
-      <Avatar size="2xl">
-        <AvatarImage alt="Avatar 6" src="${SAMPLE_SRC_6}" />
-        <AvatarFallback>A6</AvatarFallback>
-      </Avatar>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex items-end gap-4">
       <Avatar {...args} size="xs">
@@ -252,44 +155,6 @@ const Sizes = () => {
 };
 
 const Radius: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Avatar } from "@fried-ui/react";
-
-const Radius = () => {
-  return (
-    <div className="flex items-end gap-4">
-      <Avatar radius="none">
-        <AvatarImage alt="Avatar" src="${RADIUS_SRC}" />
-        <AvatarFallback>A</AvatarFallback>
-      </Avatar>
-
-      <Avatar radius="sm">
-        <AvatarImage alt="Avatar" src="${RADIUS_SRC}" />
-        <AvatarFallback>A</AvatarFallback>
-      </Avatar>
-
-      <Avatar radius="md">
-        <AvatarImage alt="Avatar" src="${RADIUS_SRC}" />
-        <AvatarFallback>A</AvatarFallback>
-      </Avatar>
-
-      <Avatar radius="lg">
-        <AvatarImage alt="Avatar" src="${RADIUS_SRC}" />
-        <AvatarFallback>A</AvatarFallback>
-      </Avatar>
-
-      <Avatar radius="full">
-        <AvatarImage alt="Avatar" src="${RADIUS_SRC}" />
-        <AvatarFallback>A</AvatarFallback>
-      </Avatar>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex items-end gap-4">
       <Avatar {...args} radius="none">
@@ -321,54 +186,6 @@ const Radius = () => {
 };
 
 const Ring: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Avatar } from "@fried-ui/react";
-
-const Ring = () => {
-  return (
-    <div className="flex items-end gap-6">
-      <Avatar ring="primary">
-        <AvatarImage alt="Colm Tuite" src="${SAMPLE_SRC_1}" />
-        <AvatarFallback>CT</AvatarFallback>
-      </Avatar>
-
-      <Avatar ring="secondary">
-        <AvatarImage alt="Rio Tanaka" src="${SAMPLE_SRC_2}" />
-        <AvatarFallback>RT</AvatarFallback>
-      </Avatar>
-
-      <Avatar ring="accent">
-        <AvatarImage alt="Yuna Kim" src="${SAMPLE_SRC_3}" />
-        <AvatarFallback>YK</AvatarFallback>
-      </Avatar>
-
-      <Avatar ring="success">
-        <AvatarImage alt="Nova Vega" src="${SAMPLE_SRC_4}" />
-        <AvatarFallback>NV</AvatarFallback>
-      </Avatar>
-
-      <Avatar ring="warning">
-        <AvatarImage alt="Iris Ono" src="${SAMPLE_SRC_5}" />
-        <AvatarFallback>IO</AvatarFallback>
-      </Avatar>
-
-      <Avatar ring="danger">
-        <AvatarImage alt="Zoe Xu" src="${SAMPLE_SRC_6}" />
-        <AvatarFallback>ZX</AvatarFallback>
-      </Avatar>
-
-      <Avatar ring="info">
-        <AvatarImage alt="Aria Park" src="${SAMPLE_SRC_7}" />
-        <AvatarFallback>AP</AvatarFallback>
-      </Avatar>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex items-end gap-6">
       <Avatar {...args} ring="primary">
@@ -410,56 +227,22 @@ const Ring = () => {
 };
 
 const Disabled: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Avatar } from "@fried-ui/react";
-
-const Disabled = () => {
-  return (
-    <Avatar isDisabled>
-      <AvatarImage alt="Luna Park" src="${SAMPLE_SRC_1}" />
-      <AvatarFallback>LP</AvatarFallback>
-    </Avatar>
-  );
-};`,
-      },
-    },
-  },
   args: {
     isDisabled: true,
+    children: [
+      <AvatarImage key="img" alt="Luna Park" src={SAMPLE_SRC_1} />,
+      <AvatarFallback key="fb">LP</AvatarFallback>,
+    ],
   },
-  render: (args): React.JSX.Element => (
-    <Avatar {...args}>
-      <AvatarImage alt="Luna Park" src={SAMPLE_SRC_1} />
-      <AvatarFallback>LP</AvatarFallback>
-    </Avatar>
-  ),
 };
 
 const BrokenImage: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Avatar } from "@fried-ui/react";
-
-const BrokenImage = () => {
-  return (
-    <Avatar>
-      <AvatarImage alt="Zoe Xu" src="https://broken.url/image.jpg" />
-      <AvatarFallback>ZX</AvatarFallback>
-    </Avatar>
-  );
-};`,
-      },
-    },
+  args: {
+    children: [
+      <AvatarImage key="img" alt="Zoe Xu" src="https://broken.url/image.jpg" />,
+      <AvatarFallback key="fb">ZX</AvatarFallback>,
+    ],
   },
-  render: (args): React.JSX.Element => (
-    <Avatar {...args}>
-      <AvatarImage alt="Zoe Xu" src="https://broken.url/image.jpg" />
-      <AvatarFallback>ZX</AvatarFallback>
-    </Avatar>
-  ),
 };
 
 export { Default, WithFallback, Sizes, Radius, Ring, Disabled, BrokenImage };

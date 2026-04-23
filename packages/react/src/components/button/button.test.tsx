@@ -8,8 +8,8 @@ import { Button } from "./Button";
 
 describe("Button", () => {
   it("renders with default props", () => {
-    render(<Button>Click me</Button>);
-    const el = screen.getByRole("button", { name: "Click me" });
+    render(<Button>Button</Button>);
+    const el = screen.getByRole("button", { name: "Button" });
     expect(el).toBeInTheDocument();
   });
 

@@ -26,8 +26,6 @@ const meta = {
     variant: {
       control: "select",
       options: ["primary", "secondary", "ghost", "outline", "success", "warning", "danger", "info"],
-      // TODO: rewrite this description following the 4-part pattern in .claude/rules/storybook.md (intent + groups + modifiers + usage).
-      // Length: 50-120 words. Bold headings. End with "Use X for Y" guidance. See Badge/Surface for reference.
       description: "Visual style. **Base:** TODO. **Status:** TODO. Use primary for TODO, success/danger for TODO.",
       table: {
         type: { summary: '"primary" | "secondary" | "ghost" | "outline" | "success" | "warning" | "danger" | "info"' },
@@ -58,43 +56,9 @@ const meta = {
 
 type Story = StoryObj<typeof meta>;
 
-const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { {{pascalCase name}} } from "@fried-ui/react";
-
-const Basic = () => {
-  return <{{pascalCase name}}>Content</{{pascalCase name}}>;
-};`,
-      },
-    },
-  },
-};
+const Default: Story = {};
 
 const Variants: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { {{pascalCase name}} } from "@fried-ui/react";
-
-const Variants = () => {
-  return (
-    <div className="flex flex-wrap gap-4">
-      <{{pascalCase name}} variant="primary">Primary</{{pascalCase name}}>
-      <{{pascalCase name}} variant="secondary">Secondary</{{pascalCase name}}>
-      <{{pascalCase name}} variant="ghost">Ghost</{{pascalCase name}}>
-      <{{pascalCase name}} variant="outline">Outline</{{pascalCase name}}>
-      <{{pascalCase name}} variant="success">Success</{{pascalCase name}}>
-      <{{pascalCase name}} variant="warning">Warning</{{pascalCase name}}>
-      <{{pascalCase name}} variant="danger">Danger</{{pascalCase name}}>
-      <{{pascalCase name}} variant="info">Info</{{pascalCase name}}>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-end gap-4">
       <{{pascalCase name}} {...args} variant="primary">Primary</{{pascalCase name}}>
@@ -110,23 +74,6 @@ const Variants = () => {
 };
 
 const Sizes: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { {{pascalCase name}} } from "@fried-ui/react";
-
-const Sizes = () => {
-  return (
-    <div className="flex items-end gap-4">
-      <{{pascalCase name}} size="sm">Small {{pascalCase name}}</{{pascalCase name}}>
-      <{{pascalCase name}} size="md">Medium {{pascalCase name}}</{{pascalCase name}}>
-      <{{pascalCase name}} size="lg">Large {{pascalCase name}}</{{pascalCase name}}>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex items-end gap-4">
       <{{pascalCase name}} {...args} size="sm">Small {{pascalCase name}}</{{pascalCase name}}>

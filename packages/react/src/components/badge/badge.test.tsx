@@ -7,8 +7,8 @@ import { Badge } from "./Badge";
 
 describe("Badge", () => {
   it("renders with default props", () => {
-    render(<Badge>New</Badge>);
-    expect(screen.getByText("New")).toBeInTheDocument();
+    render(<Badge>Badge</Badge>);
+    expect(screen.getByText("Badge")).toBeInTheDocument();
   });
 
   it("renders only base class without explicit props", () => {

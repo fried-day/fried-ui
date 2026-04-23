@@ -10,7 +10,7 @@ const meta = {
     layout: "centered",
   },
   args: {
-    children: "Surface content",
+    children: "Content",
     variant: "default",
     radius: "md",
     shadow: "none",
@@ -19,7 +19,7 @@ const meta = {
   argTypes: {
     children: {
       control: "text",
-      description: "Surface content (ReactNode)",
+      description: "Content (ReactNode)",
       table: {
         type: {
           summary: "ReactNode",
@@ -101,418 +101,168 @@ const meta = {
 type Story = StoryObj<typeof meta>;
 
 const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Surface } from "@fried-ui/react";
-
-const Card = () => {
-  return (
-    <Surface className="p-6">
-      <p className="font-bold">Card Title</p>
-      <p className="mt-2 text-sm">Surface content</p>
-    </Surface>
-  );
-};`,
-      },
-    },
+  args: {
+    className: "p-6",
+    children: [
+      <p key="title" className="font-bold">
+        Title
+      </p>,
+      <p key="body" className="mt-2 text-sm">
+        Content
+      </p>,
+    ],
   },
-  render: (args): React.JSX.Element => (
-    <Surface {...args} className="p-6">
-      <p className="font-bold">Card Title</p>
-      <p className="mt-2 text-sm">Surface content</p>
-    </Surface>
-  ),
 };
 
 const Variants: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Surface } from "@fried-ui/react";
-
-const Variants = () => {
-  return (
-    <div className="flex flex-wrap gap-4">
-      <Surface variant="default" className="p-6">
-        <p className="font-bold">Default</p>
-        <p className="mt-2 text-sm">Surface content</p>
-      </Surface>
-
-      <Surface variant="default" isBordered className="p-6">
-        <p className="font-bold">Default Bordered</p>
-        <p className="mt-2 text-sm">Surface content</p>
-      </Surface>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-start gap-4">
       <Surface {...args} variant="default" className="p-6">
         <p className="font-bold">Default</p>
-        <p className="mt-2 text-sm">Surface content</p>
+        <p className="mt-2 text-sm">Content</p>
       </Surface>
 
       <Surface {...args} variant="default" className="p-6" isBordered>
         <p className="font-bold">Default Bordered</p>
-        <p className="mt-2 text-sm">Surface content</p>
+        <p className="mt-2 text-sm">Content</p>
       </Surface>
     </div>
   ),
 };
 
 const StatusVariants: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Surface } from "@fried-ui/react";
-
-const StatusVariants = () => {
-  return (
-    <div className="flex flex-wrap items-start gap-4">
-      <Surface variant="success" className="p-4">
-        <p className="font-bold">Success</p>
-        <p className="mt-1 text-sm">Surface content</p>
-      </Surface>
-      <Surface variant="warning" isBordered className="p-4">
-        <p className="font-bold">Warning</p>
-        <p className="mt-1 text-sm">Surface content</p>
-      </Surface>
-      <Surface variant="danger" className="p-4">
-        <p className="font-bold">Danger</p>
-        <p className="mt-1 text-sm">Surface content</p>
-      </Surface>
-      <Surface variant="info" isBordered className="p-4">
-        <p className="font-bold">Info</p>
-        <p className="mt-1 text-sm">Surface content</p>
-      </Surface>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-start gap-4">
       <Surface {...args} variant="success" className="p-4">
         <p className="font-bold">Success</p>
-        <p className="mt-1 text-sm">Surface content</p>
+        <p className="mt-1 text-sm">Content</p>
       </Surface>
 
       <Surface {...args} variant="warning" className="p-4" isBordered>
         <p className="font-bold">Warning</p>
-        <p className="mt-1 text-sm">Surface content</p>
+        <p className="mt-1 text-sm">Content</p>
       </Surface>
 
       <Surface {...args} variant="danger" className="p-4">
         <p className="font-bold">Danger</p>
-        <p className="mt-1 text-sm">Surface content</p>
+        <p className="mt-1 text-sm">Content</p>
       </Surface>
 
       <Surface {...args} variant="info" className="p-4" isBordered>
         <p className="font-bold">Info</p>
-        <p className="mt-1 text-sm">Surface content</p>
+        <p className="mt-1 text-sm">Content</p>
       </Surface>
     </div>
   ),
 };
 
 const PlainVariants: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Surface } from "@fried-ui/react";
-
-const PlainVariants = () => {
-  return (
-    <div className="flex h-80 w-160 items-center justify-center bg-background-secondary p-16">
-      <Surface variant="plain" radius="lg" className="p-6">
-        <p className="font-bold">Plain</p>
-        <p className="mt-2 text-sm">Surface content</p>
-      </Surface>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex h-80 w-160 items-center justify-center bg-background-secondary p-16">
       <Surface {...args} variant="plain" radius="lg" className="p-6">
         <p className="font-bold">Plain</p>
-        <p className="mt-2 text-sm">Surface content</p>
+        <p className="mt-2 text-sm">Content</p>
       </Surface>
     </div>
   ),
 };
 
 const GlassVariants: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Surface } from "@fried-ui/react";
-
-const GlassVariants = () => {
-  return (
-    <div className="flex h-80 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
-      <Surface variant="glass" isBordered radius="lg" className="p-6">
-        <p className="font-bold">Glass Surface</p>
-        <p className="mt-2 text-sm">Surface content</p>
-      </Surface>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex h-80 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
       <Surface {...args} variant="glass" radius="lg" className="p-6" isBordered>
         <p className="font-bold">Glass Surface</p>
-        <p className="mt-2 text-sm">Surface content</p>
+        <p className="mt-2 text-sm">Content</p>
       </Surface>
     </div>
   ),
 };
 
 const FrostVariants: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Surface } from "@fried-ui/react";
-
-const FrostVariants = () => {
-  return (
-    <div className="flex h-80 w-160 items-center justify-center bg-linear-to-br from-emerald-400 via-teal-500 via-cyan-500 via-sky-500 to-purple-600 p-16">
-      <Surface variant="frost" radius="lg" className="p-6">
-        <p className="font-bold">Frost Surface</p>
-        <p className="mt-2 text-sm">Surface content</p>
-      </Surface>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex h-80 w-160 items-center justify-center bg-linear-to-br from-emerald-400 via-cyan-500 via-sky-500 via-teal-500 to-purple-600 p-16">
       <Surface {...args} variant="frost" radius="lg" className="p-6">
         <p className="font-bold">Frost Surface</p>
-        <p className="mt-2 text-sm">Surface content</p>
+        <p className="mt-2 text-sm">Content</p>
       </Surface>
     </div>
   ),
 };
 
 const OverlayVariants: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Surface } from "@fried-ui/react";
-
-const OverlayVariants = () => {
-  return (
-    <div className="flex h-80 w-160 items-center justify-center bg-linear-to-br from-orange-400 via-rose-500 via-fuchsia-500 via-purple-500 to-purple-600 p-16">
-      <Surface variant="overlay" isBordered radius="lg" className="p-6">
-        <p className="font-bold">Overlay Surface</p>
-        <p className="mt-2 text-sm">Surface content</p>
-      </Surface>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex h-80 w-160 items-center justify-center bg-linear-to-br from-orange-400 via-fuchsia-500 via-purple-500 via-rose-500 to-purple-600 p-16">
       <Surface {...args} variant="overlay" radius="lg" className="p-6" isBordered>
         <p className="font-bold">Overlay Surface</p>
-        <p className="mt-2 text-sm">Surface content</p>
+        <p className="mt-2 text-sm">Content</p>
       </Surface>
     </div>
   ),
 };
 
 const Radius: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Surface } from "@fried-ui/react";
-
-const Radius = () => {
-  return (
-    <div className="flex flex-wrap gap-4">
-      <Surface radius="none" className="p-6">
-        <p className="font-bold">None</p>
-        <p className="mt-2 text-sm">Surface content</p>
-      </Surface>
-
-      <Surface radius="sm" className="p-6">
-        <p className="font-bold">Small</p>
-        <p className="mt-2 text-sm">Surface content</p>
-      </Surface>
-
-      <Surface radius="md" className="p-6">
-        <p className="font-bold">Medium</p>
-        <p className="mt-2 text-sm">Surface content</p>
-      </Surface>
-
-      <Surface radius="lg" className="p-6">
-        <p className="font-bold">Large</p>
-        <p className="mt-2 text-sm">Surface content</p>
-      </Surface>
-
-      <Surface radius="xl" className="p-6">
-        <p className="font-bold">Extra Large</p>
-        <p className="mt-2 text-sm">Surface content</p>
-      </Surface>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-start gap-4">
       <Surface {...args} radius="none" className="p-6">
         <p className="font-bold">None</p>
-        <p className="mt-2 text-sm">Surface content</p>
+        <p className="mt-2 text-sm">Content</p>
       </Surface>
 
       <Surface {...args} radius="sm" className="p-6">
         <p className="font-bold">Small</p>
-        <p className="mt-2 text-sm">Surface content</p>
+        <p className="mt-2 text-sm">Content</p>
       </Surface>
 
       <Surface {...args} radius="md" className="p-6">
         <p className="font-bold">Medium</p>
-        <p className="mt-2 text-sm">Surface content</p>
+        <p className="mt-2 text-sm">Content</p>
       </Surface>
 
       <Surface {...args} radius="lg" className="p-6">
         <p className="font-bold">Large</p>
-        <p className="mt-2 text-sm">Surface content</p>
+        <p className="mt-2 text-sm">Content</p>
       </Surface>
 
       <Surface {...args} radius="xl" className="p-6">
         <p className="font-bold">Extra Large</p>
-        <p className="mt-2 text-sm">Surface content</p>
+        <p className="mt-2 text-sm">Content</p>
       </Surface>
     </div>
   ),
 };
 
 const Shadow: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Surface } from "@fried-ui/react";
-
-const Shadow = () => {
-  return (
-    <div className="flex flex-wrap gap-8">
-      <Surface shadow="none" className="p-6">
-        <p className="font-bold">None</p>
-        <p className="mt-2 text-sm">Surface content</p>
-      </Surface>
-
-      <Surface shadow="sm" className="p-6">
-        <p className="font-bold">Small</p>
-        <p className="mt-2 text-sm">Surface content</p>
-      </Surface>
-
-      <Surface shadow="md" className="p-6">
-        <p className="font-bold">Medium</p>
-        <p className="mt-2 text-sm">Surface content</p>
-      </Surface>
-
-      <Surface shadow="lg" className="p-6">
-        <p className="font-bold">Large</p>
-        <p className="mt-2 text-sm">Surface content</p>
-      </Surface>
-
-      <Surface shadow="xl" className="p-6">
-        <p className="font-bold">Extra Large</p>
-        <p className="mt-2 text-sm">Surface content</p>
-      </Surface>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-start gap-8">
       <Surface {...args} shadow="none" className="p-6">
         <p className="font-bold">None</p>
-        <p className="mt-2 text-sm">Surface content</p>
+        <p className="mt-2 text-sm">Content</p>
       </Surface>
 
       <Surface {...args} shadow="sm" className="p-6">
         <p className="font-bold">Small</p>
-        <p className="mt-2 text-sm">Surface content</p>
+        <p className="mt-2 text-sm">Content</p>
       </Surface>
 
       <Surface {...args} shadow="md" className="p-6">
         <p className="font-bold">Medium</p>
-        <p className="mt-2 text-sm">Surface content</p>
+        <p className="mt-2 text-sm">Content</p>
       </Surface>
 
       <Surface {...args} shadow="lg" className="p-6">
         <p className="font-bold">Large</p>
-        <p className="mt-2 text-sm">Surface content</p>
+        <p className="mt-2 text-sm">Content</p>
       </Surface>
 
       <Surface {...args} shadow="xl" className="p-6">
         <p className="font-bold">Extra Large</p>
-        <p className="mt-2 text-sm">Surface content</p>
+        <p className="mt-2 text-sm">Content</p>
       </Surface>
     </div>
   ),
 };
 
 const Bordered: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Surface } from "@fried-ui/react";
-
-const Bordered = () => {
-  return (
-    <div className="flex flex-wrap gap-4">
-      <Surface variant="default" isBordered className="p-6">
-        <p className="font-bold">Default</p>
-        <p className="mt-2 text-sm">Surface content</p>
-      </Surface>
-
-      <Surface variant="success" isBordered className="p-6">
-        <p className="font-bold">Success</p>
-        <p className="mt-2 text-sm">Surface content</p>
-      </Surface>
-
-      <Surface variant="warning" isBordered className="p-6">
-        <p className="font-bold">Warning</p>
-        <p className="mt-2 text-sm">Surface content</p>
-      </Surface>
-
-      <Surface variant="danger" isBordered className="p-6">
-        <p className="font-bold">Danger</p>
-        <p className="mt-2 text-sm">Surface content</p>
-      </Surface>
-
-      <Surface variant="info" isBordered className="p-6">
-        <p className="font-bold">Info</p>
-        <p className="mt-2 text-sm">Surface content</p>
-      </Surface>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   args: {
     isBordered: true,
   },
@@ -520,27 +270,27 @@ const Bordered = () => {
     <div className="flex flex-wrap items-start gap-4">
       <Surface {...args} variant="default" className="p-6">
         <p className="font-bold">Default</p>
-        <p className="mt-2 text-sm">Surface content</p>
+        <p className="mt-2 text-sm">Content</p>
       </Surface>
 
       <Surface {...args} variant="success" className="p-6">
         <p className="font-bold">Success</p>
-        <p className="mt-2 text-sm">Surface content</p>
+        <p className="mt-2 text-sm">Content</p>
       </Surface>
 
       <Surface {...args} variant="warning" className="p-6">
         <p className="font-bold">Warning</p>
-        <p className="mt-2 text-sm">Surface content</p>
+        <p className="mt-2 text-sm">Content</p>
       </Surface>
 
       <Surface {...args} variant="danger" className="p-6">
         <p className="font-bold">Danger</p>
-        <p className="mt-2 text-sm">Surface content</p>
+        <p className="mt-2 text-sm">Content</p>
       </Surface>
 
       <Surface {...args} variant="info" className="p-6">
         <p className="font-bold">Info</p>
-        <p className="mt-2 text-sm">Surface content</p>
+        <p className="mt-2 text-sm">Content</p>
       </Surface>
     </div>
   ),

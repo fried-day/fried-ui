@@ -3,11 +3,9 @@ import { Node } from "ts-morph";
 import { describe, expect, it } from "vitest";
 
 import {
-  countStorySourceCodeBlocks,
   getAllStringLiterals,
   getClassNameStringLiterals,
   getMetaArgTypeDescriptions,
-  getStoryNames,
   loadSource,
   metaHasPath,
 } from "../helpers/ast";
@@ -64,16 +62,6 @@ describe("Audit — stories conventions", () => {
       offenders,
       `${kebab}.stories.tsx has flex-col outside FullWidth — use flex-wrap for responsive variant comparison:\n${offenders.join("\n")}`,
     ).toEqual([]);
-  });
-
-  it.each(components)("$kebab: every named story has parameters.docs.source.code", ({ kebab, storiesFile }) => {
-    const storyNames = getStoryNames({ storiesFile });
-    const sourceCodeCount = countStorySourceCodeBlocks({ storiesFile });
-
-    expect(
-      sourceCodeCount,
-      `${kebab}.stories.tsx has ${storyNames.length} Story declarations but only ${sourceCodeCount} parameters.docs.source.code blocks`,
-    ).toBeGreaterThanOrEqual(storyNames.length);
   });
 
   it.each(components)("$kebab: meta has tags:['autodocs']", ({ kebab, storiesFile }) => {

@@ -209,41 +209,12 @@ const meta = {
 type Story = StoryObj<typeof meta>;
 
 const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Button } from "@fried-ui/react";
-
-const Basic = () => {
-  return <Button onPress={() => console.log("pressed")}>Click me</Button>;
-};`,
-      },
-    },
+  args: {
+    children: "Button",
   },
 };
 
 const Variants: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Button } from "@fried-ui/react";
-
-const Variants = () => {
-  return (
-    <div className="flex flex-wrap items-end gap-4">
-      <Button variant="primary">Primary</Button>
-      <Button variant="secondary">Secondary</Button>
-      <Button variant="accent">Accent</Button>
-      <Button variant="success">Success</Button>
-      <Button variant="warning">Warning</Button>
-      <Button variant="danger">Danger</Button>
-      <Button variant="info">Info</Button>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-end gap-4">
       <Button {...args} variant="primary">
@@ -278,27 +249,6 @@ const Variants = () => {
 };
 
 const SoftVariants: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Button } from "@fried-ui/react";
-
-const SoftVariants = () => {
-  return (
-    <div className="flex flex-wrap items-end gap-4">
-      <Button variant="primary-soft">Primary</Button>
-      <Button variant="secondary-soft">Secondary</Button>
-      <Button variant="accent-soft">Accent</Button>
-      <Button variant="success-soft">Success</Button>
-      <Button variant="warning-soft">Warning</Button>
-      <Button variant="danger-soft">Danger</Button>
-      <Button variant="info-soft">Info</Button>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-end gap-4">
       <Button {...args} variant="primary-soft">
@@ -333,27 +283,6 @@ const SoftVariants = () => {
 };
 
 const FlatVariants: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Button } from "@fried-ui/react";
-
-const FlatVariants = () => {
-  return (
-    <div className="flex flex-wrap items-end gap-4">
-      <Button variant="primary-flat">Primary</Button>
-      <Button variant="secondary-flat">Secondary</Button>
-      <Button variant="accent-flat">Accent</Button>
-      <Button variant="success-flat">Success</Button>
-      <Button variant="warning-flat">Warning</Button>
-      <Button variant="danger-flat">Danger</Button>
-      <Button variant="info-flat">Info</Button>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-end gap-4">
       <Button {...args} variant="primary-flat">
@@ -388,27 +317,6 @@ const FlatVariants = () => {
 };
 
 const OutlineVariants: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Button } from "@fried-ui/react";
-
-const OutlineVariants = () => {
-  return (
-    <div className="flex flex-wrap items-end gap-4">
-      <Button variant="primary-outline">Primary</Button>
-      <Button variant="secondary-outline">Secondary</Button>
-      <Button variant="accent-outline">Accent</Button>
-      <Button variant="success-outline">Success</Button>
-      <Button variant="warning-outline">Warning</Button>
-      <Button variant="danger-outline">Danger</Button>
-      <Button variant="info-outline">Info</Button>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-end gap-4">
       <Button {...args} variant="primary-outline">
@@ -443,27 +351,6 @@ const OutlineVariants = () => {
 };
 
 const GhostVariants: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Button } from "@fried-ui/react";
-
-const GhostVariants = () => {
-  return (
-    <div className="flex flex-wrap items-end gap-4">
-      <Button variant="primary-ghost">Primary</Button>
-      <Button variant="secondary-ghost">Secondary</Button>
-      <Button variant="accent-ghost">Accent</Button>
-      <Button variant="success-ghost">Success</Button>
-      <Button variant="warning-ghost">Warning</Button>
-      <Button variant="danger-ghost">Danger</Button>
-      <Button variant="info-ghost">Info</Button>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-end gap-4">
       <Button {...args} variant="primary-ghost">
@@ -498,24 +385,6 @@ const GhostVariants = () => {
 };
 
 const Sizes: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Button } from "@fried-ui/react";
-
-const Sizes = () => {
-  return (
-    <div className="flex items-end gap-4">
-      <Button size="sm">Small</Button>
-      <Button size="md">Medium</Button>
-      <Button size="lg">Large</Button>
-      <Button size="xl">Extra Large</Button>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex items-end gap-4">
       <Button {...args} size="sm">
@@ -538,25 +407,6 @@ const Sizes = () => {
 };
 
 const Radius: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Button } from "@fried-ui/react";
-
-const Radius = () => {
-  return (
-    <div className="flex items-end gap-4">
-      <Button radius="none">None</Button>
-      <Button radius="sm">Small</Button>
-      <Button radius="md">Medium</Button>
-      <Button radius="lg">Large</Button>
-      <Button radius="full">Full</Button>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex items-end gap-4">
       <Button {...args} radius="none">
@@ -583,44 +433,6 @@ const Radius = () => {
 };
 
 const WithIcon: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Button, ArrowRightIcon } from "@fried-ui/react";
-
-const WithIcon = () => {
-  return (
-    <div className="flex items-end gap-4">
-      <Button variant="primary">
-        <PlusIcon slot="icon-start" />
-        Create
-      </Button>
-
-      <Button variant="info">
-        <InformationCircleIcon slot="icon-start" />
-        Info
-      </Button>
-
-      <Button variant="success">
-        Complete
-        <CheckCircleIcon slot="icon-end" />
-      </Button>
-
-      <Button variant="warning">
-        <ExclamationTriangleIcon slot="icon-start" />
-        Warning
-      </Button>
-
-      <Button variant="danger">
-        Delete
-        <XCircleIcon slot="icon-end" />
-      </Button>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex items-end gap-4">
       <Button {...args} variant="primary">
@@ -652,35 +464,6 @@ const WithIcon = () => {
 };
 
 const IconOnly: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Button, MoreIcon, PlusIcon, SettingsIcon, ShareIcon } from "@fried-ui/react";
-
-const IconOnly = () => {
-  return (
-    <div className="flex items-end gap-4">
-      <Button aria-label="Settings" isIconOnly>
-        <SettingsIcon className="size-match-font" />
-      </Button>
-
-      <Button variant="secondary" aria-label="More" isIconOnly>
-        <MoreIcon className="size-match-font" />
-      </Button>
-
-      <Button variant="outline" aria-label="Add" isIconOnly>
-        <PlusIcon className="size-match-font" />
-      </Button>
-
-      <Button variant="ghost" aria-label="Share" isIconOnly>
-        <ShareIcon className="size-match-font" />
-      </Button>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex items-end gap-4">
       <Button {...args} aria-label="Settings" isIconOnly>
@@ -703,21 +486,6 @@ const IconOnly = () => {
 };
 
 const FullWidth: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Button } from "@fried-ui/react";
-
-const FullWidth = () => {
-  return (
-    <div className="flex w-80 flex-col gap-4">
-      <Button isFullWidth>Full Width</Button>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex w-80 flex-col gap-4">
       <Button {...args} isFullWidth>
@@ -728,17 +496,6 @@ const FullWidth = () => {
 };
 
 const Disabled: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Button } from "@fried-ui/react";
-
-const Disabled = () => {
-  return <Button isDisabled>Disabled</Button>;
-};`,
-      },
-    },
-  },
   args: {
     children: "Disabled",
     isDisabled: true,
@@ -746,17 +503,6 @@ const Disabled = () => {
 };
 
 const Pending: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Button } from "@fried-ui/react";
-
-const Pending = () => {
-  return <Button isPending>Pending</Button>;
-};`,
-      },
-    },
-  },
   args: {
     children: "Pending",
     isPending: true,
@@ -764,57 +510,12 @@ const Pending = () => {
 };
 
 const RenderProps: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Button } from "@fried-ui/react";
-
-const RenderProps = () => {
-  return (
-    <Button>
-      {({ isHovered }) => (isHovered ? "Hovering" : "Hover")}
-    </Button>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <Button {...args}>{({ isHovered }): string => (isHovered ? "Hovering" : "Hover")}</Button>
   ),
 };
 
 const GlassVariants: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Button } from "@fried-ui/react";
-
-const GlassVariants = () => {
-  return (
-    <div className="flex w-[640px] h-56 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-600 via-purple-500 to-blue-600 p-16">
-      <div className="flex flex-wrap items-end gap-4">
-        <Button variant="glass">
-          <PlusIcon slot="icon-start" />
-          Create
-        </Button>
-
-        <Button variant="glass">
-          Continue
-          <ArrowRightIcon slot="icon-end" />
-        </Button>
-
-        <Button variant="glass">
-          <SettingsIcon slot="icon-start" />
-          Settings
-        </Button>
-      </div>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
@@ -838,36 +539,6 @@ const GlassVariants = () => {
 };
 
 const FrostVariants: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Button } from "@fried-ui/react";
-
-const FrostVariants = () => {
-  return (
-    <div className="flex w-[640px] h-56 items-center justify-center bg-linear-to-br from-emerald-400 via-teal-500 via-cyan-500 via-sky-500 to-purple-600 p-16">
-      <div className="flex flex-wrap items-end gap-4">
-        <Button variant="frost">
-          <HeartIcon slot="icon-start" />
-          Like
-        </Button>
-
-        <Button variant="frost">
-          Share
-          <ShareIcon slot="icon-end" />
-        </Button>
-
-        <Button variant="frost">
-          <BellIcon slot="icon-start" />
-          Subscribe
-        </Button>
-      </div>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-emerald-400 via-cyan-500 via-sky-500 via-teal-500 to-purple-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
@@ -891,36 +562,6 @@ const FrostVariants = () => {
 };
 
 const OverlayVariants: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Button } from "@fried-ui/react";
-
-const OverlayVariants = () => {
-  return (
-    <div className="flex w-[640px] h-56 items-center justify-center bg-linear-to-br from-orange-400 via-rose-500 via-fuchsia-500 via-purple-500 to-purple-600 p-16">
-      <div className="flex flex-wrap items-end gap-4">
-        <Button variant="overlay">
-          <PlayIcon slot="icon-start" />
-          Play
-        </Button>
-
-        <Button variant="overlay">
-          Pause
-          <PauseIcon slot="icon-end" />
-        </Button>
-
-        <Button variant="overlay">
-          <SpeakerIcon slot="icon-start" />
-          Mute
-        </Button>
-      </div>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-orange-400 via-fuchsia-500 via-purple-500 via-rose-500 to-purple-600 p-16">
       <div className="flex flex-wrap items-end gap-4">

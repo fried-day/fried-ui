@@ -124,38 +124,9 @@ const meta = {
 
 type Story = StoryObj<typeof meta>;
 
-const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Input } from "@fried-ui/react";
-
-const Basic = () => {
-  return <Input placeholder="Type here" />;
-};`,
-      },
-    },
-  },
-};
+const Default: Story = {};
 
 const Variants: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Input } from "@fried-ui/react";
-
-const Variants = () => {
-  return (
-    <div className="flex items-center gap-4">
-      <Input variant="primary" placeholder="Primary" />
-      <Input variant="secondary" placeholder="Secondary" />
-      <Input variant="plain" placeholder="Plain" />
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex items-center gap-4">
       <Input {...args} variant="primary" placeholder="Primary" />
@@ -166,23 +137,6 @@ const Variants = () => {
 };
 
 const Sizes: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Input } from "@fried-ui/react";
-
-const Sizes = () => {
-  return (
-    <div className="flex items-center gap-4">
-      <Input size="sm" placeholder="Small" />
-      <Input size="md" placeholder="Medium" />
-      <Input size="lg" placeholder="Large" />
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex items-center gap-4">
       <Input {...args} size="sm" placeholder="Small" />
@@ -193,25 +147,6 @@ const Sizes = () => {
 };
 
 const Radius: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Input } from "@fried-ui/react";
-
-const Radius = () => {
-  return (
-    <div className="flex items-center gap-4">
-      <Input radius="none" placeholder="None" />
-      <Input radius="sm" placeholder="Small" />
-      <Input radius="md" placeholder="Medium" />
-      <Input radius="lg" placeholder="Large" />
-      <Input radius="full" placeholder="Full" />
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex items-center gap-4">
       <Input {...args} radius="none" placeholder="None" />
@@ -224,93 +159,34 @@ const Radius = () => {
 };
 
 const Invalid: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Input } from "@fried-ui/react";
-
-const Invalid = () => {
-  return <Input aria-invalid="true" placeholder="Invalid value" />;
-};`,
-      },
-    },
-  },
   args: {
     placeholder: "Invalid value",
+    "aria-invalid": "true",
   },
-  render: (args): React.JSX.Element => <Input {...args} aria-invalid="true" />,
 };
 
 const Disabled: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Input } from "@fried-ui/react";
-
-const Disabled = () => {
-  return <Input disabled placeholder="Disabled" />;
-};`,
-      },
-    },
-  },
   args: {
     placeholder: "Disabled",
+    disabled: true,
   },
-  render: (args): React.JSX.Element => <Input {...args} disabled />,
 };
 
 const ReadOnly: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Input } from "@fried-ui/react";
-
-const ReadOnly = () => {
-  return <Input readOnly defaultValue="Read-only value" />;
-};`,
-      },
-    },
-  },
   args: {
     defaultValue: "Read-only value",
+    readOnly: true,
   },
-  render: (args): React.JSX.Element => <Input {...args} readOnly />,
 };
 
 const Required: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Input } from "@fried-ui/react";
-
-const Required = () => {
-  return <Input required placeholder="Required field" />;
-};`,
-      },
-    },
-  },
   args: {
     placeholder: "Required field",
+    required: true,
   },
-  render: (args): React.JSX.Element => <Input {...args} required />,
 };
 
 const FullWidth: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Input } from "@fried-ui/react";
-
-const FullWidth = () => {
-  return (
-    <div className="w-80">
-      <Input isFullWidth placeholder="Full width" />
-    </div>
-  );
-};`,
-      },
-    },
-  },
   args: {
     isFullWidth: true,
     placeholder: "Full width",

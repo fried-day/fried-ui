@@ -29,7 +29,7 @@ const preview: Preview = {
     docs: {
       codePanel: true,
       source: {
-        type: "code",
+        type: "dynamic",
       },
     },
     controls: {

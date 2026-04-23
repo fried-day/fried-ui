@@ -22,7 +22,7 @@ import { Surface } from "@fried-ui/react";
 | `radius`    | `"none"` \| `"sm"` \| `"md"` \| `"lg"` \| `"xl"`        | `"md"`      | Border radius            |
 | `className` | `string`                                                | -           | Additional CSS classes   |
 | `ref`       | `Ref<HTMLDivElement>`                                   | -           | Forwarded ref to the div |
-| `children`  | `ReactNode`                                             | -           | Surface content          |
+| `children`  | `ReactNode`                                             | -           | Content                  |
 
 ## CSS Classes
 
@@ -45,7 +45,7 @@ import { Surface } from "@fried-ui/react";
 
 ```tsx
 <Surface className="p-6">
-  <h2>Card Title</h2>
+  <h2>Title</h2>
   <p>Content goes here.</p>
 </Surface>
 ```

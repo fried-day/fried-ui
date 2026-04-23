@@ -143,41 +143,12 @@ const meta = {
 type Story = StoryObj<typeof meta>;
 
 const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Badge } from "@fried-ui/react";
-
-const Basic = () => {
-  return <Badge>New</Badge>;
-};`,
-      },
-    },
+  args: {
+    children: "Badge",
   },
 };
 
 const Variants: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Badge } from "@fried-ui/react";
-
-const Variants = () => {
-  return (
-    <div className="flex flex-wrap items-end gap-4">
-      <Badge variant="primary">Primary</Badge>
-      <Badge variant="secondary">Secondary</Badge>
-      <Badge variant="accent">Accent</Badge>
-      <Badge variant="success">Success</Badge>
-      <Badge variant="warning">Warning</Badge>
-      <Badge variant="danger">Danger</Badge>
-      <Badge variant="info">Info</Badge>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-end gap-4">
       <Badge {...args} variant="primary">
@@ -212,27 +183,6 @@ const Variants = () => {
 };
 
 const SoftVariants: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Badge } from "@fried-ui/react";
-
-const SoftVariants = () => {
-  return (
-    <div className="flex flex-wrap items-end gap-4">
-      <Badge variant="primary-soft">Primary</Badge>
-      <Badge variant="secondary-soft">Secondary</Badge>
-      <Badge variant="accent-soft">Accent</Badge>
-      <Badge variant="success-soft">Success</Badge>
-      <Badge variant="warning-soft">Warning</Badge>
-      <Badge variant="danger-soft">Danger</Badge>
-      <Badge variant="info-soft">Info</Badge>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-end gap-4">
       <Badge {...args} variant="primary-soft">
@@ -267,27 +217,6 @@ const SoftVariants = () => {
 };
 
 const FlatVariants: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Badge } from "@fried-ui/react";
-
-const FlatVariants = () => {
-  return (
-    <div className="flex flex-wrap items-end gap-4">
-      <Badge variant="primary-flat">Primary</Badge>
-      <Badge variant="secondary-flat">Secondary</Badge>
-      <Badge variant="accent-flat">Accent</Badge>
-      <Badge variant="success-flat">Success</Badge>
-      <Badge variant="warning-flat">Warning</Badge>
-      <Badge variant="danger-flat">Danger</Badge>
-      <Badge variant="info-flat">Info</Badge>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-end gap-4">
       <Badge {...args} variant="primary-flat">
@@ -322,27 +251,6 @@ const FlatVariants = () => {
 };
 
 const OutlineVariants: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Badge } from "@fried-ui/react";
-
-const OutlineVariants = () => {
-  return (
-    <div className="flex flex-wrap items-end gap-4">
-      <Badge variant="primary-outline">Primary</Badge>
-      <Badge variant="secondary-outline">Secondary</Badge>
-      <Badge variant="accent-outline">Accent</Badge>
-      <Badge variant="success-outline">Success</Badge>
-      <Badge variant="warning-outline">Warning</Badge>
-      <Badge variant="danger-outline">Danger</Badge>
-      <Badge variant="info-outline">Info</Badge>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-end gap-4">
       <Badge {...args} variant="primary-outline">
@@ -377,36 +285,6 @@ const OutlineVariants = () => {
 };
 
 const GlassVariants: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Badge } from "@fried-ui/react";
-
-const GlassVariants = () => {
-  return (
-    <div className="flex w-160 h-56 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
-      <div className="flex flex-wrap items-end gap-4">
-        <Badge variant="glass">
-          <StarIcon slot="icon-start" />
-          Featured
-        </Badge>
-
-        <Badge variant="glass">
-          New
-          <BellIcon slot="icon-end" />
-        </Badge>
-
-        <Badge variant="glass">
-          <LockIcon slot="icon-start" />
-          Premium
-        </Badge>
-      </div>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
@@ -416,7 +294,7 @@ const GlassVariants = () => {
         </Badge>
 
         <Badge {...args} variant="glass">
-          New
+          Badge
           <BellIcon slot="icon-end" />
         </Badge>
 
@@ -430,36 +308,6 @@ const GlassVariants = () => {
 };
 
 const FrostVariants: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Badge } from "@fried-ui/react";
-
-const FrostVariants = () => {
-  return (
-    <div className="flex w-160 h-56 items-center justify-center bg-linear-to-br from-emerald-400 via-teal-500 via-cyan-500 via-sky-500 to-purple-600 p-16">
-      <div className="flex flex-wrap items-end gap-4">
-        <Badge variant="frost">
-          <CheckCircleIcon slot="icon-start" />
-          Verified
-        </Badge>
-
-        <Badge variant="frost">
-          Favorite
-          <HeartIcon slot="icon-end" />
-        </Badge>
-
-        <Badge variant="frost">
-          <StarIcon slot="icon-start" />
-          Top Rated
-        </Badge>
-      </div>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-emerald-400 via-cyan-500 via-sky-500 via-teal-500 to-purple-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
@@ -483,36 +331,6 @@ const FrostVariants = () => {
 };
 
 const OverlayVariants: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Badge } from "@fried-ui/react";
-
-const OverlayVariants = () => {
-  return (
-    <div className="flex w-160 h-56 items-center justify-center bg-linear-to-br from-orange-400 via-rose-500 via-fuchsia-500 via-purple-500 to-purple-600 p-16">
-      <div className="flex flex-wrap items-end gap-4">
-        <Badge variant="overlay">
-          <BellIcon slot="icon-start" />
-          Live
-        </Badge>
-
-        <Badge variant="overlay">
-          HD
-          <StarIcon slot="icon-end" />
-        </Badge>
-
-        <Badge variant="overlay">
-          <CheckCircleIcon slot="icon-start" />
-          4K
-        </Badge>
-      </div>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-orange-400 via-fuchsia-500 via-purple-500 via-rose-500 to-purple-600 p-16">
       <div className="flex flex-wrap items-end gap-4">
@@ -536,23 +354,6 @@ const OverlayVariants = () => {
 };
 
 const Sizes: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Badge } from "@fried-ui/react";
-
-const Sizes = () => {
-  return (
-    <div className="flex items-end gap-4">
-      <Badge size="sm">Small</Badge>
-      <Badge size="md">Medium</Badge>
-      <Badge size="lg">Large</Badge>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex items-end gap-4">
       <Badge {...args} size="sm">
@@ -571,25 +372,6 @@ const Sizes = () => {
 };
 
 const Radius: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Badge } from "@fried-ui/react";
-
-const Radius = () => {
-  return (
-    <div className="flex flex-wrap items-end gap-4">
-      <Badge radius="none">None</Badge>
-      <Badge radius="sm">Small</Badge>
-      <Badge radius="md">Medium</Badge>
-      <Badge radius="lg">Large</Badge>
-      <Badge radius="full">Full</Badge>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-end gap-4">
       <Badge {...args} radius="none">
@@ -616,44 +398,6 @@ const Radius = () => {
 };
 
 const WithIcon: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Badge, CheckCircleIcon, ExclamationTriangleIcon, InformationCircleIcon, StarIcon, XCircleIcon } from "@fried-ui/react";
-
-const WithIcon = () => {
-  return (
-    <div className="flex items-end gap-4">
-      <Badge variant="primary">
-        <StarIcon slot="icon-start" />
-        Featured
-      </Badge>
-
-      <Badge variant="info">
-        <InformationCircleIcon slot="icon-start" />
-        Info
-      </Badge>
-
-      <Badge variant="success">
-        Success
-        <CheckCircleIcon slot="icon-end" />
-      </Badge>
-
-      <Badge variant="warning">
-        <ExclamationTriangleIcon slot="icon-start" />
-        Warning
-      </Badge>
-
-      <Badge variant="danger">
-        Danger
-        <XCircleIcon slot="icon-end" />
-      </Badge>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex items-end gap-4">
       <Badge {...args} variant="primary">
@@ -685,35 +429,6 @@ const WithIcon = () => {
 };
 
 const IconOnly: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Badge, BellIcon, HeartIcon, LockIcon, StarIcon } from "@fried-ui/react";
-
-const IconOnly = () => {
-  return (
-    <div className="flex items-end gap-4">
-      <Badge aria-label="Featured" isIconOnly>
-        <StarIcon slot="icon" />
-      </Badge>
-
-      <Badge variant="secondary" aria-label="Notification" isIconOnly>
-        <BellIcon slot="icon" />
-      </Badge>
-
-      <Badge variant="outline" aria-label="Favorite" isIconOnly>
-        <HeartIcon slot="icon" />
-      </Badge>
-
-      <Badge variant="ghost" aria-label="Private" isIconOnly>
-        <LockIcon slot="icon" />
-      </Badge>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex items-end gap-4">
       <Badge {...args} aria-label="Featured" isIconOnly>

@@ -133,38 +133,9 @@ const meta = {
 
 type Story = StoryObj<typeof meta>;
 
-const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Textarea } from "@fried-ui/react";
-
-const Basic = () => {
-  return <Textarea placeholder="Type here" />;
-};`,
-      },
-    },
-  },
-};
+const Default: Story = {};
 
 const Variants: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Textarea } from "@fried-ui/react";
-
-const Variants = () => {
-  return (
-    <div className="flex items-start gap-4">
-      <Textarea variant="primary" placeholder="Primary" />
-      <Textarea variant="secondary" placeholder="Secondary" />
-      <Textarea variant="plain" placeholder="Plain" />
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex items-start gap-4">
       <Textarea {...args} variant="primary" placeholder="Primary" />
@@ -175,23 +146,6 @@ const Variants = () => {
 };
 
 const Sizes: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Textarea } from "@fried-ui/react";
-
-const Sizes = () => {
-  return (
-    <div className="flex items-start gap-4">
-      <Textarea size="sm" placeholder="Small" />
-      <Textarea size="md" placeholder="Medium" />
-      <Textarea size="lg" placeholder="Large" />
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex items-start gap-4">
       <Textarea {...args} size="sm" placeholder="Small" />
@@ -202,24 +156,6 @@ const Sizes = () => {
 };
 
 const Radius: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Textarea } from "@fried-ui/react";
-
-const Radius = () => {
-  return (
-    <div className="flex items-start gap-4">
-      <Textarea radius="none" placeholder="None" />
-      <Textarea radius="sm" placeholder="Small" />
-      <Textarea radius="md" placeholder="Medium" />
-      <Textarea radius="lg" placeholder="Large" />
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex items-start gap-4">
       <Textarea {...args} radius="none" placeholder="None" />
@@ -231,24 +167,6 @@ const Radius = () => {
 };
 
 const Resize: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Textarea } from "@fried-ui/react";
-
-const Resize = () => {
-  return (
-    <div className="flex items-start gap-4">
-      <Textarea resize="none" placeholder="No resize" />
-      <Textarea resize="vertical" placeholder="Vertical" />
-      <Textarea resize="horizontal" placeholder="Horizontal" />
-      <Textarea resize="both" placeholder="Both" />
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex items-start gap-4">
       <Textarea {...args} resize="none" placeholder="No resize" />
@@ -260,85 +178,34 @@ const Resize = () => {
 };
 
 const Invalid: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Textarea } from "@fried-ui/react";
-
-const Invalid = () => {
-  return <Textarea aria-invalid="true" placeholder="Invalid value" />;
-};`,
-      },
-    },
+  args: {
+    placeholder: "Invalid value",
+    "aria-invalid": "true",
   },
-  args: { placeholder: "Invalid value" },
-  render: (args): React.JSX.Element => <Textarea {...args} aria-invalid="true" />,
 };
 
 const Disabled: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Textarea } from "@fried-ui/react";
-
-const Disabled = () => {
-  return <Textarea disabled placeholder="Disabled" />;
-};`,
-      },
-    },
+  args: {
+    placeholder: "Disabled",
+    disabled: true,
   },
-  args: { placeholder: "Disabled" },
-  render: (args): React.JSX.Element => <Textarea {...args} disabled />,
 };
 
 const ReadOnly: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Textarea } from "@fried-ui/react";
-
-const ReadOnly = () => {
-  return <Textarea readOnly defaultValue="Read-only content" />;
-};`,
-      },
-    },
+  args: {
+    defaultValue: "Read-only content",
+    readOnly: true,
   },
-  args: { defaultValue: "Read-only content" },
-  render: (args): React.JSX.Element => <Textarea {...args} readOnly />,
 };
 
 const Required: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Textarea } from "@fried-ui/react";
-
-const Required = () => {
-  return <Textarea required placeholder="Required field" />;
-};`,
-      },
-    },
+  args: {
+    placeholder: "Required field",
+    required: true,
   },
-  args: { placeholder: "Required field" },
-  render: (args): React.JSX.Element => <Textarea {...args} required />,
 };
 
 const FullWidth: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Textarea } from "@fried-ui/react";
-
-const FullWidth = () => {
-  return (
-    <div className="w-80">
-      <Textarea isFullWidth placeholder="Full width" />
-    </div>
-  );
-};`,
-      },
-    },
-  },
   args: {
     isFullWidth: true,
     placeholder: "Full width",

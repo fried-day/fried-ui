@@ -66,38 +66,9 @@ const meta = {
 
 type Story = StoryObj<typeof meta>;
 
-const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Description } from "@fried-ui/react";
-
-const Basic = () => {
-  return <Description>Description</Description>;
-};`,
-      },
-    },
-  },
-};
+const Default: Story = {};
 
 const Sizes: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Description } from "@fried-ui/react";
-
-const Sizes = () => {
-  return (
-    <div className="flex items-center gap-8">
-      <Description size="sm">Small Description</Description>
-      <Description size="md">Medium Description</Description>
-      <Description size="lg">Large Description</Description>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex items-center gap-8">
       <Description {...args} size="sm">
@@ -116,17 +87,6 @@ const Sizes = () => {
 };
 
 const Invalid: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Description } from "@fried-ui/react";
-
-const Invalid = () => {
-  return <Description isInvalid>Invalid Description</Description>;
-};`,
-      },
-    },
-  },
   args: {
     children: "Invalid Description",
     isInvalid: true,
@@ -134,17 +94,6 @@ const Invalid = () => {
 };
 
 const Disabled: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Description } from "@fried-ui/react";
-
-const Disabled = () => {
-  return <Description isDisabled>Disabled Description</Description>;
-};`,
-      },
-    },
-  },
   args: {
     children: "Disabled Description",
     isDisabled: true,

@@ -3,23 +3,12 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Avatar, AvatarFallback, AvatarImage } from "../avatar";
 import { AvatarGroup } from "./AvatarGroup";
 
-const SRC_1 =
-  "https://images.unsplash.com/photo-1729017256081-0271b3fcc08e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTQ4fHxwcm9maWxlfGVufDB8fDB8fHww";
-
-const SRC_2 =
-  "https://images.unsplash.com/photo-1569913486515-b74bf7751574?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fHByb2ZpbGUlMjBhdmF0YXJ8ZW58MHx8MHx8fDA%3D";
-
-const SRC_3 =
-  "https://images.unsplash.com/photo-1576348076752-6085814e5a51?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fGF2YXRhciUyMGN1dGUlMjBnaXJsfGVufDB8fDB8fHww";
-
-const SRC_4 =
-  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZhY2V8ZW58MHx8MHx8fDA%3D";
-
-const SRC_5 =
-  "https://images.unsplash.com/photo-1724690336308-02af024b76ab?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHdvbWVuJTIwY3V0ZXxlbnwwfHwwfHx8MA%3D%3D";
-
-const SRC_6 =
-  "https://images.unsplash.com/photo-1596554002543-83af3d801c6f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODd8fHdvbWVuJTIwY3V0ZXxlbnwwfHwwfHx8MA%3D%3D";
+const SRC_1 = "https://images.unsplash.com/photo-1729017256081-0271b3fcc08e?w=500&auto=format&fit=crop&q=60";
+const SRC_2 = "https://images.unsplash.com/photo-1569913486515-b74bf7751574?w=500&auto=format&fit=crop&q=60";
+const SRC_3 = "https://images.unsplash.com/photo-1576348076752-6085814e5a51?w=500&auto=format&fit=crop&q=60";
+const SRC_4 = "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=500&auto=format&fit=crop&q=60";
+const SRC_5 = "https://images.unsplash.com/photo-1724690336308-02af024b76ab?w=500&auto=format&fit=crop&q=60";
+const SRC_6 = "https://images.unsplash.com/photo-1596554002543-83af3d801c6f?w=500&auto=format&fit=crop&q=60";
 
 const meta = {
   title: "Components/AvatarGroup",
@@ -114,98 +103,25 @@ const meta = {
 type Story = StoryObj<typeof meta>;
 
 const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Avatar, AvatarGroup } from "@fried-ui/react";
-
-const Basic = () => {
-  return (
-    <AvatarGroup>
-      <Avatar>
-        <AvatarImage alt="Avatar 1" src="${SRC_1}" />
-        <AvatarFallback>A1</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarImage alt="Avatar 2" src="${SRC_2}" />
-        <AvatarFallback>A2</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarImage alt="Avatar 3" src="${SRC_3}" />
-        <AvatarFallback>A3</AvatarFallback>
-      </Avatar>
-    </AvatarGroup>
-  );
-};`,
-      },
-    },
-  },
-  render: (args): React.JSX.Element => (
-    <AvatarGroup {...args}>
-      <Avatar>
+  args: {
+    children: [
+      <Avatar key="a1">
         <AvatarImage alt="Avatar 1" src={SRC_1} />
         <AvatarFallback>A1</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
+      </Avatar>,
+      <Avatar key="a2">
         <AvatarImage alt="Avatar 2" src={SRC_2} />
         <AvatarFallback>A2</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
+      </Avatar>,
+      <Avatar key="a3">
         <AvatarImage alt="Avatar 3" src={SRC_3} />
         <AvatarFallback>A3</AvatarFallback>
-      </Avatar>
-    </AvatarGroup>
-  ),
+      </Avatar>,
+    ],
+  },
 };
 
 const WithMax: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Avatar, AvatarGroup } from "@fried-ui/react";
-
-const WithMax = () => {
-  return (
-    <AvatarGroup max={3}>
-      <Avatar>
-        <AvatarImage alt="Avatar 1" src="${SRC_1}" />
-        <AvatarFallback>A1</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarImage alt="Avatar 2" src="${SRC_2}" />
-        <AvatarFallback>A2</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarImage alt="Avatar 3" src="${SRC_3}" />
-        <AvatarFallback>A3</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarImage alt="Avatar 4" src="${SRC_4}" />
-        <AvatarFallback>A4</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarImage alt="Avatar 5" src="${SRC_5}" />
-        <AvatarFallback>A5</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarImage alt="Avatar 6" src="${SRC_6}" />
-        <AvatarFallback>A6</AvatarFallback>
-      </Avatar>
-    </AvatarGroup>
-  );
-};`,
-      },
-    },
-  },
   args: {
     max: 3,
   },
@@ -245,34 +161,6 @@ const WithMax = () => {
 };
 
 const WithTotal: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Avatar, AvatarGroup } from "@fried-ui/react";
-
-const WithTotal = () => {
-  return (
-    <AvatarGroup max={3} total={42}>
-      <Avatar>
-        <AvatarImage alt="Avatar 1" src="${SRC_1}" />
-        <AvatarFallback>A1</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarImage alt="Avatar 2" src="${SRC_2}" />
-        <AvatarFallback>A2</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarImage alt="Avatar 3" src="${SRC_3}" />
-        <AvatarFallback>A3</AvatarFallback>
-      </Avatar>
-    </AvatarGroup>
-  );
-};`,
-      },
-    },
-  },
   args: {
     max: 3,
     total: 42,
@@ -298,104 +186,6 @@ const WithTotal = () => {
 };
 
 const Spacing: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Avatar, AvatarGroup } from "@fried-ui/react";
-
-const Spacing = () => {
-  return (
-    <div className="flex flex-wrap items-center gap-6">
-      <AvatarGroup spacing="wider">
-        <Avatar>
-          <AvatarImage alt="Avatar 1" src="${SRC_1}" />
-          <AvatarFallback>A1</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 2" src="${SRC_2}" />
-          <AvatarFallback>A2</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 3" src="${SRC_3}" />
-          <AvatarFallback>A3</AvatarFallback>
-        </Avatar>
-      </AvatarGroup>
-
-      <AvatarGroup spacing="wide">
-        <Avatar>
-          <AvatarImage alt="Avatar 1" src="${SRC_1}" />
-          <AvatarFallback>A1</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 2" src="${SRC_2}" />
-          <AvatarFallback>A2</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 3" src="${SRC_3}" />
-          <AvatarFallback>A3</AvatarFallback>
-        </Avatar>
-      </AvatarGroup>
-
-      <AvatarGroup spacing="default">
-        <Avatar>
-          <AvatarImage alt="Avatar 1" src="${SRC_1}" />
-          <AvatarFallback>A1</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 2" src="${SRC_2}" />
-          <AvatarFallback>A2</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 3" src="${SRC_3}" />
-          <AvatarFallback>A3</AvatarFallback>
-        </Avatar>
-      </AvatarGroup>
-
-      <AvatarGroup spacing="tight">
-        <Avatar>
-          <AvatarImage alt="Avatar 1" src="${SRC_1}" />
-          <AvatarFallback>A1</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 2" src="${SRC_2}" />
-          <AvatarFallback>A2</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 3" src="${SRC_3}" />
-          <AvatarFallback>A3</AvatarFallback>
-        </Avatar>
-      </AvatarGroup>
-
-      <AvatarGroup spacing="tighter">
-        <Avatar>
-          <AvatarImage alt="Avatar 1" src="${SRC_1}" />
-          <AvatarFallback>A1</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 2" src="${SRC_2}" />
-          <AvatarFallback>A2</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 3" src="${SRC_3}" />
-          <AvatarFallback>A3</AvatarFallback>
-        </Avatar>
-      </AvatarGroup>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-center gap-6">
       <AvatarGroup {...args} spacing="wider">
@@ -487,121 +277,6 @@ const Spacing = () => {
 };
 
 const Sizes: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Avatar, AvatarGroup } from "@fried-ui/react";
-
-const Sizes = () => {
-  return (
-    <div className="flex flex-wrap items-center gap-6">
-      <AvatarGroup size="xs">
-        <Avatar>
-          <AvatarImage alt="Avatar 1" src="${SRC_1}" />
-          <AvatarFallback>A1</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 2" src="${SRC_2}" />
-          <AvatarFallback>A2</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 3" src="${SRC_3}" />
-          <AvatarFallback>A3</AvatarFallback>
-        </Avatar>
-      </AvatarGroup>
-
-      <AvatarGroup size="sm">
-        <Avatar>
-          <AvatarImage alt="Avatar 1" src="${SRC_1}" />
-          <AvatarFallback>A1</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 2" src="${SRC_2}" />
-          <AvatarFallback>A2</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 3" src="${SRC_3}" />
-          <AvatarFallback>A3</AvatarFallback>
-        </Avatar>
-      </AvatarGroup>
-
-      <AvatarGroup size="md">
-        <Avatar>
-          <AvatarImage alt="Avatar 1" src="${SRC_1}" />
-          <AvatarFallback>A1</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 2" src="${SRC_2}" />
-          <AvatarFallback>A2</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 3" src="${SRC_3}" />
-          <AvatarFallback>A3</AvatarFallback>
-        </Avatar>
-      </AvatarGroup>
-
-      <AvatarGroup size="lg">
-        <Avatar>
-          <AvatarImage alt="Avatar 1" src="${SRC_1}" />
-          <AvatarFallback>A1</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 2" src="${SRC_2}" />
-          <AvatarFallback>A2</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 3" src="${SRC_3}" />
-          <AvatarFallback>A3</AvatarFallback>
-        </Avatar>
-      </AvatarGroup>
-
-      <AvatarGroup size="xl">
-        <Avatar>
-          <AvatarImage alt="Avatar 1" src="${SRC_1}" />
-          <AvatarFallback>A1</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 2" src="${SRC_2}" />
-          <AvatarFallback>A2</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 3" src="${SRC_3}" />
-          <AvatarFallback>A3</AvatarFallback>
-        </Avatar>
-      </AvatarGroup>
-
-      <AvatarGroup size="2xl">
-        <Avatar>
-          <AvatarImage alt="Avatar 1" src="${SRC_1}" />
-          <AvatarFallback>A1</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 2" src="${SRC_2}" />
-          <AvatarFallback>A2</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 3" src="${SRC_3}" />
-          <AvatarFallback>A3</AvatarFallback>
-        </Avatar>
-      </AvatarGroup>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-center gap-6">
       <AvatarGroup {...args} size="xs">
@@ -710,43 +385,6 @@ const Sizes = () => {
 };
 
 const WithFallback: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Avatar, AvatarGroup } from "@fried-ui/react";
-
-const WithFallback = () => {
-  return (
-    <AvatarGroup max={4}>
-      <Avatar>
-        <AvatarFallback>A1</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarFallback>A2</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarFallback>A3</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarFallback>A4</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarFallback>A5</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarFallback>A6</AvatarFallback>
-      </Avatar>
-    </AvatarGroup>
-  );
-};`,
-      },
-    },
-  },
   args: {
     max: 4,
   },
@@ -780,39 +418,6 @@ const WithFallback = () => {
 };
 
 const Hoverable: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Avatar, AvatarGroup } from "@fried-ui/react";
-
-const Hoverable = () => {
-  return (
-    <AvatarGroup isHoverable>
-      <Avatar>
-        <AvatarImage alt="Avatar 1" src="${SRC_1}" />
-        <AvatarFallback>A1</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarImage alt="Avatar 2" src="${SRC_2}" />
-        <AvatarFallback>A2</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarImage alt="Avatar 3" src="${SRC_3}" />
-        <AvatarFallback>A3</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarImage alt="Avatar 4" src="${SRC_4}" />
-        <AvatarFallback>A4</AvatarFallback>
-      </Avatar>
-    </AvatarGroup>
-  );
-};`,
-      },
-    },
-  },
   args: {
     isHoverable: true,
   },
@@ -842,49 +447,6 @@ const Hoverable = () => {
 };
 
 const WithTextCounter: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Avatar, AvatarFallback, AvatarImage, AvatarGroup } from "@fried-ui/react";
-
-const WithTextCounter = () => {
-  return (
-    <AvatarGroup max={7} total={10000} counterVariant="text">
-      <Avatar>
-        <AvatarImage alt="Avatar 1" src="${SRC_1}" />
-        <AvatarFallback>A1</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarImage alt="Avatar 2" src="${SRC_2}" />
-        <AvatarFallback>A2</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarImage alt="Avatar 3" src="${SRC_3}" />
-        <AvatarFallback>A3</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarImage alt="Avatar 4" src="${SRC_4}" />
-        <AvatarFallback>A4</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarImage alt="Avatar 5" src="${SRC_5}" />
-        <AvatarFallback>A5</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarImage alt="Avatar 6" src="${SRC_6}" />
-        <AvatarFallback>A6</AvatarFallback>
-      </Avatar>
-    </AvatarGroup>
-  );
-};`,
-      },
-    },
-  },
   args: {
     max: 7,
     total: 10000,

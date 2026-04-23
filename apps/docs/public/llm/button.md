@@ -185,7 +185,7 @@ See [React Aria Button API](https://react-spectrum.adobe.com/react-aria/Button.h
 Default button with medium size and medium radius.
 
 ```tsx
-<Button>Click me</Button>
+<Button>Button</Button>
 ```
 
 ### Sizes

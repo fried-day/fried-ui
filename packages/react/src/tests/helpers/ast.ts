@@ -109,36 +109,6 @@ function getStoryNames({ storiesFile }: Readonly<StoryFileParams>): string[] {
   return names;
 }
 
-function countStorySourceCodeBlocks({ storiesFile }: Readonly<StoryFileParams>): number {
-  const source = loadSource({ file: storiesFile });
-
-  if (!source) return 0;
-
-  let count = 0;
-
-  source.forEachDescendant((node) => {
-    if (!Node.isPropertyAssignment(node)) return;
-    if (node.getName() !== "code") return;
-
-    const parentObject = node.getParent();
-    const sourceProp = parentObject?.getParent();
-    const docsProp = sourceProp?.getParent()?.getParent();
-    const parametersProp = docsProp?.getParent()?.getParent();
-
-    const isWrappedCorrectly =
-      Node.isPropertyAssignment(sourceProp) &&
-      sourceProp.getName() === "source" &&
-      Node.isPropertyAssignment(docsProp) &&
-      docsProp.getName() === "docs" &&
-      Node.isPropertyAssignment(parametersProp) &&
-      parametersProp.getName() === "parameters";
-
-    if (isWrappedCorrectly) count += 1;
-  });
-
-  return count;
-}
-
 function findMetaObject(source: SourceFile): Node | undefined {
   const meta = source.getVariableDeclaration("meta");
   const satisfiesInit = meta?.getInitializerIfKind(SyntaxKind.SatisfiesExpression);
@@ -290,7 +260,6 @@ function isComponentDisplayNameAssignment({ pascal, statement }: Readonly<Displa
 }
 
 export {
-  countStorySourceCodeBlocks,
   findEnclosingStoryName,
   findMetaObject,
   getAllStringLiterals,

@@ -74,24 +74,6 @@ const meta = {
 type Story = StoryObj<typeof meta>;
 
 const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { InputGroup, InputGroupAddon, InputGroupInput, InformationCircleIcon } from "@fried-ui/react";
-
-const Basic = () => {
-  return (
-    <InputGroup>
-      <InputGroupAddon>
-        <InformationCircleIcon />
-      </InputGroupAddon>
-      <InputGroupInput placeholder="Search..." />
-    </InputGroup>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <InputGroup {...args}>
       <InputGroupAddon>
@@ -104,22 +86,6 @@ const Basic = () => {
 };
 
 const WithTrailingText: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { InputGroup, InputGroupAddon, InputGroupInput } from "@fried-ui/react";
-
-const WithTrailingText = () => {
-  return (
-    <InputGroup>
-      <InputGroupInput placeholder="Search..." />
-      <InputGroupAddon align="inline-end">12 results</InputGroupAddon>
-    </InputGroup>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <InputGroup {...args}>
       <InputGroupInput placeholder="Search..." />
@@ -129,24 +95,6 @@ const WithTrailingText = () => {
 };
 
 const WithButton: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Button, InputGroup, InputGroupAddon, InputGroupInput } from "@fried-ui/react";
-
-const WithButton = () => {
-  return (
-    <InputGroup>
-      <InputGroupInput placeholder="Search..." />
-      <InputGroupAddon align="inline-end">
-        <Button size="sm" variant="outline">Search</Button>
-      </InputGroupAddon>
-    </InputGroup>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <InputGroup {...args}>
       <InputGroupInput placeholder="Search..." />
@@ -161,28 +109,6 @@ const WithButton = () => {
 };
 
 const WithPrefixSuffix: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { InputGroup, InputGroupAddon, InputGroupInput } from "@fried-ui/react";
-
-const WithPrefixSuffix = () => {
-  return (
-    <div className="flex flex-wrap items-center gap-4">
-      <InputGroup>
-        <InputGroupAddon>$</InputGroupAddon>
-        <InputGroupInput placeholder="0.00" />
-      </InputGroup>
-      <InputGroup>
-        <InputGroupInput placeholder="example" />
-        <InputGroupAddon align="inline-end">.com</InputGroupAddon>
-      </InputGroup>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-center gap-4">
       <InputGroup {...args}>
@@ -199,24 +125,6 @@ const WithPrefixSuffix = () => {
 };
 
 const WithPending: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { InputGroup, InputGroupAddon, InputGroupInput, Spinner } from "@fried-ui/react";
-
-const WithPending = () => {
-  return (
-    <InputGroup>
-      <InputGroupInput defaultValue="Validating" readOnly />
-      <InputGroupAddon align="inline-end">
-        <Spinner />
-      </InputGroupAddon>
-    </InputGroup>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <InputGroup {...args}>
       <InputGroupInput defaultValue="Validating" readOnly />
@@ -229,26 +137,6 @@ const WithPending = () => {
 };
 
 const Variants: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { InputGroup, InputGroupInput } from "@fried-ui/react";
-
-const Variants = () => {
-  return (
-    <div className="flex flex-wrap items-center gap-4">
-      <InputGroup variant="primary">
-        <InputGroupInput placeholder="Primary" />
-      </InputGroup>
-      <InputGroup variant="secondary">
-        <InputGroupInput placeholder="Secondary" />
-      </InputGroup>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-center gap-4">
       <InputGroup {...args} variant="primary">
@@ -263,29 +151,6 @@ const Variants = () => {
 };
 
 const Sizes: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { InputGroup, InputGroupInput } from "@fried-ui/react";
-
-const Sizes = () => {
-  return (
-    <div className="flex flex-wrap items-center gap-4">
-      <InputGroup size="sm">
-        <InputGroupInput placeholder="Small" />
-      </InputGroup>
-      <InputGroup size="md">
-        <InputGroupInput placeholder="Medium" />
-      </InputGroup>
-      <InputGroup size="lg">
-        <InputGroupInput placeholder="Large" />
-      </InputGroup>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-center gap-4">
       <InputGroup {...args} size="sm">
@@ -304,29 +169,6 @@ const Sizes = () => {
 };
 
 const Radius: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { InputGroup, InputGroupInput } from "@fried-ui/react";
-
-const Radius = () => {
-  return (
-    <div className="flex flex-wrap items-center gap-4">
-      <InputGroup radius="none">
-        <InputGroupInput placeholder="None" />
-      </InputGroup>
-      <InputGroup radius="md">
-        <InputGroupInput placeholder="Medium" />
-      </InputGroup>
-      <InputGroup radius="full">
-        <InputGroupInput placeholder="Full" />
-      </InputGroup>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-center gap-4">
       <InputGroup {...args} radius="none">
@@ -345,24 +187,6 @@ const Radius = () => {
 };
 
 const WithTextarea: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Button, InputGroup, InputGroupAddon, InputGroupTextarea } from "@fried-ui/react";
-
-const WithTextarea = () => {
-  return (
-    <InputGroup className="w-80">
-      <InputGroupTextarea placeholder="Write a message..." rows={4} />
-      <InputGroupAddon align="block-end">
-        <Button size="sm" variant="primary">Send</Button>
-      </InputGroupAddon>
-    </InputGroup>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <InputGroup {...args} className="w-80">
       <InputGroupTextarea placeholder="Write a message..." rows={4} />
@@ -377,27 +201,6 @@ const WithTextarea = () => {
 };
 
 const WithIconAndButton: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { Button, InformationCircleIcon, InputGroup, InputGroupAddon, InputGroupInput } from "@fried-ui/react";
-
-const WithIconAndButton = () => {
-  return (
-    <InputGroup>
-      <InputGroupAddon>
-        <InformationCircleIcon />
-      </InputGroupAddon>
-      <InputGroupInput placeholder="Search..." />
-      <InputGroupAddon align="inline-end">
-        <Button size="sm" variant="ghost">Clear</Button>
-      </InputGroupAddon>
-    </InputGroup>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <InputGroup {...args}>
       <InputGroupAddon>
@@ -416,24 +219,6 @@ const WithIconAndButton = () => {
 };
 
 const Invalid: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { InputGroup, InputGroupAddon, InputGroupInput, CheckCircleIcon } from "@fried-ui/react";
-
-const Invalid = () => {
-  return (
-    <InputGroup>
-      <InputGroupInput aria-invalid="true" placeholder="Invalid value" />
-      <InputGroupAddon align="inline-end">
-        <CheckCircleIcon />
-      </InputGroupAddon>
-    </InputGroup>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <InputGroup {...args}>
       <InputGroupInput placeholder="Invalid value" aria-invalid="true" />
@@ -446,21 +231,6 @@ const Invalid = () => {
 };
 
 const Disabled: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { InputGroup, InputGroupInput } from "@fried-ui/react";
-
-const Disabled = () => {
-  return (
-    <InputGroup>
-      <InputGroupInput disabled placeholder="Disabled" />
-    </InputGroup>
-  );
-};`,
-      },
-    },
-  },
   render: (args): React.JSX.Element => (
     <InputGroup {...args}>
       <InputGroupInput placeholder="Disabled" disabled />
@@ -469,23 +239,6 @@ const Disabled = () => {
 };
 
 const FullWidth: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: `import { InputGroup, InputGroupInput } from "@fried-ui/react";
-
-const FullWidth = () => {
-  return (
-    <div className="w-96">
-      <InputGroup isFullWidth>
-        <InputGroupInput placeholder="Full width" />
-      </InputGroup>
-    </div>
-  );
-};`,
-      },
-    },
-  },
   args: { isFullWidth: true },
   render: (args): React.JSX.Element => (
     <div className="w-96">
