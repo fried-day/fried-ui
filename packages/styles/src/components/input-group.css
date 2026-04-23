@@ -68,6 +68,15 @@
     --input-group-fg: var(--color-field-secondary-foreground);
   }
 
+  .input-group-overlay {
+    --input-group-bg: var(--color-on-overlay);
+    --input-group-bg-hover: var(--color-on-overlay-hover);
+    --input-group-border: var(--color-on-overlay-border);
+    --input-group-border-hover: var(--color-on-overlay-border);
+    --input-group-border-focus: var(--color-on-overlay-foreground);
+    --input-group-fg: var(--color-on-overlay-foreground);
+  }
+
   .input-group-size-sm {
     @apply min-h-8 text-xs;
   }

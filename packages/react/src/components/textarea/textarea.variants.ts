@@ -8,5 +8,5 @@ export interface TextareaVariantsProps {
   /** Size scale. @default 'md' */
   size?: "sm" | "md" | "lg";
   /** Visual style. @default 'primary' */
-  variant?: "primary" | "secondary" | "plain";
+  variant?: "primary" | "secondary" | "overlay";
 }

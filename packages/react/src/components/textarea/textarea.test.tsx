@@ -23,7 +23,7 @@ describe("Textarea", () => {
   });
 
   it("applies all variant classes", () => {
-    const variants = ["primary", "secondary", "plain"] as const;
+    const variants = ["primary", "secondary", "overlay"] as const;
 
     variants.forEach((variant) => {
       const { unmount } = render(<Textarea variant={variant} placeholder={variant} />);

@@ -77,14 +77,14 @@
     --input-placeholder: var(--color-field-secondary-placeholder);
   }
 
-  .input-plain {
-    --input-bg: var(--color-field-plain);
-    --input-bg-hover: var(--color-field-plain-hover);
-    --input-border: var(--color-field-plain-border);
-    --input-border-hover: var(--color-field-plain-border-hover);
-    --input-border-focus: var(--color-field-plain-border-focus);
-    --input-fg: var(--color-field-plain-foreground);
-    --input-placeholder: var(--color-field-plain-placeholder);
+  .input-overlay {
+    --input-bg: var(--color-on-overlay);
+    --input-bg-hover: var(--color-on-overlay-hover);
+    --input-border: var(--color-on-overlay-border);
+    --input-border-hover: var(--color-on-overlay-border);
+    --input-border-focus: var(--color-on-overlay-foreground);
+    --input-fg: var(--color-on-overlay-foreground);
+    --input-placeholder: var(--color-muted-foreground);
   }
 
   .input-size-sm {

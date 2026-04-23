@@ -75,13 +75,6 @@
   --color-field-secondary-border-focus: oklch(0% 0 0);
   --color-field-secondary-foreground: oklch(0% 0 0);
   --color-field-secondary-placeholder: var(--color-fri-neutral-500);
-  --color-field-plain: transparent;
-  --color-field-plain-hover: var(--color-fri-neutral-50);
-  --color-field-plain-border: transparent;
-  --color-field-plain-border-hover: transparent;
-  --color-field-plain-border-focus: oklch(0% 0 0);
-  --color-field-plain-foreground: oklch(0% 0 0);
-  --color-field-plain-placeholder: var(--color-fri-neutral-500);
   --color-field-slot: transparent;
   --color-field-slot-border: transparent;
 

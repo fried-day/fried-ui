@@ -5,7 +5,7 @@ import { InformationCircleIcon, CheckCircleIcon, Spinner } from "../icons";
 import { InputGroup, InputGroupAddon, InputGroupInput, InputGroupTextarea } from "./InputGroup";
 
 const meta = {
-  title: "Components/InputGroup",
+  title: "Components/Implementation/InputGroup",
   component: InputGroup,
   tags: ["autodocs"],
   parameters: {
@@ -20,11 +20,11 @@ const meta = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["primary", "secondary"],
+      options: ["primary", "secondary", "overlay"],
       description:
-        "Visual style of the group wrapper. **primary** (default) — bordered white field matching `Input` primary. **secondary** — filled muted background. Use primary for main forms and search bars, secondary for nested groups inside cards.",
+        "Visual style of the group wrapper. **primary** (default) — bordered white field matching `Input` primary. **secondary** — filled muted background. **overlay** — light field on dark media/scrim, for groups over images or dark backgrounds. Use primary for main forms and search bars, secondary for nested groups inside cards, overlay on dark contexts.",
       table: {
-        type: { summary: '"primary" | "secondary"' },
+        type: { summary: '"primary" | "secondary" | "overlay"' },
         defaultValue: { summary: "primary" },
         category: "Style Variants",
       },
@@ -150,6 +150,16 @@ const Variants: Story = {
   ),
 };
 
+const OverlayVariant: Story = {
+  render: (args): React.JSX.Element => (
+    <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
+      <InputGroup {...args} variant="overlay">
+        <InputGroupInput placeholder="Overlay" />
+      </InputGroup>
+    </div>
+  ),
+};
+
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
     <>
@@ -256,6 +266,7 @@ export {
   WithIconAndButton,
   WithTextarea,
   Variants,
+  OverlayVariant,
   Sizes,
   Radius,
   Invalid,

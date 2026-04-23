@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Input } from "./Input";
 
 const meta = {
-  title: "Components/Input",
+  title: "Components/Implementation/Input",
   component: Input,
   tags: ["autodocs"],
   parameters: {
@@ -23,11 +23,11 @@ const meta = {
     },
     variant: {
       control: "select",
-      options: ["primary", "secondary", "plain"],
+      options: ["primary", "secondary", "overlay"],
       description:
-        "Visual style. **primary** (default) — bordered white field for standard forms. **secondary** — filled muted background, no border, works well inside cards. **plain** — transparent, no chrome, designed for composition inside Surface/Card (search bars, inline edit). Use primary for main forms, secondary for nested inputs, plain inside Surface containers.",
+        "Visual style. **primary** (default) — bordered white field for standard forms. **secondary** — filled muted background, no border, works well inside cards. **overlay** — light field on dark media/scrim, for inputs over images or dark backgrounds. Use primary for main forms, secondary for nested inputs, overlay on dark contexts.",
       table: {
-        type: { summary: '"primary" | "secondary" | "plain"' },
+        type: { summary: '"primary" | "secondary" | "overlay"' },
         defaultValue: { summary: "primary" },
         category: "Style Variants",
       },
@@ -123,8 +123,15 @@ const Variants: Story = {
     <>
       <Input {...args} variant="primary" placeholder="Primary" />
       <Input {...args} variant="secondary" placeholder="Secondary" />
-      <Input {...args} variant="plain" placeholder="Plain" />
     </>
+  ),
+};
+
+const OverlayVariant: Story = {
+  render: (args): React.JSX.Element => (
+    <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
+      <Input {...args} variant="overlay" placeholder="Overlay" />
+    </div>
   ),
 };
 
@@ -185,6 +192,6 @@ const FullWidth: Story = {
   },
 };
 
-export { Default, Variants, Sizes, Radius, Invalid, Disabled, ReadOnly, Required, FullWidth };
+export { Default, Variants, OverlayVariant, Sizes, Radius, Invalid, Disabled, ReadOnly, Required, FullWidth };
 
 export default meta;

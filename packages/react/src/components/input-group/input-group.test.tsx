@@ -26,7 +26,7 @@ describe("InputGroup", () => {
   });
 
   it("applies all variant classes", () => {
-    const variants = ["primary", "secondary"] as const;
+    const variants = ["primary", "secondary", "overlay"] as const;
 
     variants.forEach((variant) => {
       const { unmount } = render(<InputGroup variant={variant} data-testid={variant} />);

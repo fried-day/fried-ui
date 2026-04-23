@@ -109,29 +109,6 @@
     @apply status-disabled;
   }
 
-  .field-error {
-    @apply block;
-    @apply text-sm text-danger;
-  }
-
-  .field-error-size-sm {
-    @apply text-xs;
-  }
-
-  .field-error-size-md {
-    @apply text-sm;
-  }
-
-  .field-error-size-lg {
-    @apply text-base;
-  }
-
-  .field-error-disabled,
-  .field-error[aria-disabled="true"],
-  .field-error[data-disabled] {
-    @apply status-disabled;
-  }
-
   .field-set {
     @apply flex flex-col gap-2;
     @apply m-0 border-0 p-0;

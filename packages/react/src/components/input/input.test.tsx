@@ -22,7 +22,7 @@ describe("Input", () => {
   });
 
   it("applies all variant classes", () => {
-    const variants = ["primary", "secondary", "plain"] as const;
+    const variants = ["primary", "secondary", "overlay"] as const;
 
     variants.forEach((variant) => {
       const { unmount } = render(<Input variant={variant} placeholder={variant} />);

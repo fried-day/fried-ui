@@ -6,7 +6,7 @@ export interface InputGroupVariantsProps {
   /** Size scale. @default 'md' */
   size?: "sm" | "md" | "lg";
   /** Visual style. @default 'primary' */
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "overlay";
 }
 
 export interface InputGroupAddonVariantsProps {

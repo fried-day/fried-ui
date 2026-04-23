@@ -78,14 +78,14 @@
     --textarea-placeholder: var(--color-field-secondary-placeholder);
   }
 
-  .textarea-plain {
-    --textarea-bg: var(--color-field-plain);
-    --textarea-bg-hover: var(--color-field-plain-hover);
-    --textarea-border: var(--color-field-plain-border);
-    --textarea-border-hover: var(--color-field-plain-border-hover);
-    --textarea-border-focus: var(--color-field-plain-border-focus);
-    --textarea-fg: var(--color-field-plain-foreground);
-    --textarea-placeholder: var(--color-field-plain-placeholder);
+  .textarea-overlay {
+    --textarea-bg: var(--color-on-overlay);
+    --textarea-bg-hover: var(--color-on-overlay-hover);
+    --textarea-border: var(--color-on-overlay-border);
+    --textarea-border-hover: var(--color-on-overlay-border);
+    --textarea-border-focus: var(--color-on-overlay-foreground);
+    --textarea-fg: var(--color-on-overlay-foreground);
+    --textarea-placeholder: var(--color-muted-foreground);
   }
 
   .textarea-size-sm {
