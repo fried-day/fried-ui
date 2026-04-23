@@ -72,7 +72,7 @@ const Default: Story = {};
 
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex items-center gap-8">
+    <>
       <Description {...args} size="sm">
         Small Description
       </Description>
@@ -84,7 +84,7 @@ const Sizes: Story = {
       <Description {...args} size="lg">
         Large Description
       </Description>
-    </div>
+    </>
   ),
 };
 

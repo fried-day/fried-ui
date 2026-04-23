@@ -96,7 +96,7 @@ const Default: Story = {
 
 const WithFallback: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex items-end gap-4">
+    <>
       <Avatar {...args}>
         <AvatarFallback>YK</AvatarFallback>
       </Avatar>
@@ -110,13 +110,13 @@ const WithFallback: Story = {
           <UserIcon className="size-5" />
         </AvatarFallback>
       </Avatar>
-    </div>
+    </>
   ),
 };
 
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex items-end gap-4">
+    <>
       <Avatar {...args} size="xs">
         <AvatarImage alt="Avatar 1" src={SAMPLE_SRC_1} />
         <AvatarFallback>A1</AvatarFallback>
@@ -146,13 +146,13 @@ const Sizes: Story = {
         <AvatarImage alt="Avatar 6" src={SAMPLE_SRC_6} />
         <AvatarFallback>A6</AvatarFallback>
       </Avatar>
-    </div>
+    </>
   ),
 };
 
 const Radius: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex items-end gap-4">
+    <>
       <Avatar {...args} radius="none">
         <AvatarImage alt="Avatar" src={RADIUS_SRC} />
         <AvatarFallback>A</AvatarFallback>
@@ -177,13 +177,13 @@ const Radius: Story = {
         <AvatarImage alt="Avatar" src={RADIUS_SRC} />
         <AvatarFallback>A</AvatarFallback>
       </Avatar>
-    </div>
+    </>
   ),
 };
 
 const Ring: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex items-end gap-6">
+    <>
       <Avatar {...args} ring="primary">
         <AvatarImage alt="Colm Tuite" src={SAMPLE_SRC_1} />
         <AvatarFallback>CT</AvatarFallback>
@@ -218,7 +218,7 @@ const Ring: Story = {
         <AvatarImage alt="Aria Park" src={SAMPLE_SRC_7} />
         <AvatarFallback>AP</AvatarFallback>
       </Avatar>
-    </div>
+    </>
   ),
 };
 

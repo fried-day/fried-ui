@@ -214,7 +214,7 @@ const Default: Story = {
 
 const Variants: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-end gap-4">
+    <>
       <Button {...args} variant="primary">
         Primary
       </Button>
@@ -242,13 +242,13 @@ const Variants: Story = {
       <Button {...args} variant="info">
         Info
       </Button>
-    </div>
+    </>
   ),
 };
 
 const SoftVariants: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-end gap-4">
+    <>
       <Button {...args} variant="primary-soft">
         Primary
       </Button>
@@ -276,13 +276,13 @@ const SoftVariants: Story = {
       <Button {...args} variant="info-soft">
         Info
       </Button>
-    </div>
+    </>
   ),
 };
 
 const FlatVariants: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-end gap-4">
+    <>
       <Button {...args} variant="primary-flat">
         Primary
       </Button>
@@ -310,13 +310,13 @@ const FlatVariants: Story = {
       <Button {...args} variant="info-flat">
         Info
       </Button>
-    </div>
+    </>
   ),
 };
 
 const OutlineVariants: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-end gap-4">
+    <>
       <Button {...args} variant="primary-outline">
         Primary
       </Button>
@@ -344,13 +344,13 @@ const OutlineVariants: Story = {
       <Button {...args} variant="info-outline">
         Info
       </Button>
-    </div>
+    </>
   ),
 };
 
 const GhostVariants: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-end gap-4">
+    <>
       <Button {...args} variant="primary-ghost">
         Primary
       </Button>
@@ -378,13 +378,13 @@ const GhostVariants: Story = {
       <Button {...args} variant="info-ghost">
         Info
       </Button>
-    </div>
+    </>
   ),
 };
 
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex items-end gap-4">
+    <>
       <Button {...args} size="sm">
         Small
       </Button>
@@ -400,13 +400,13 @@ const Sizes: Story = {
       <Button {...args} size="xl">
         Extra Large
       </Button>
-    </div>
+    </>
   ),
 };
 
 const Radius: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex items-end gap-4">
+    <>
       <Button {...args} radius="none">
         None
       </Button>
@@ -426,13 +426,13 @@ const Radius: Story = {
       <Button {...args} radius="full">
         Full
       </Button>
-    </div>
+    </>
   ),
 };
 
 const WithIcon: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex items-end gap-4">
+    <>
       <Button {...args} variant="primary">
         <PlusIcon slot="icon-start" />
         Create
@@ -457,13 +457,13 @@ const WithIcon: Story = {
         Delete
         <XCircleIcon slot="icon-end" />
       </Button>
-    </div>
+    </>
   ),
 };
 
 const IconOnly: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex items-end gap-4">
+    <>
       <Button {...args} aria-label="Settings" isIconOnly>
         <SettingsIcon className="size-match-font" />
       </Button>
@@ -479,17 +479,17 @@ const IconOnly: Story = {
       <Button {...args} variant="ghost" aria-label="Share" isIconOnly>
         <ShareIcon className="size-match-font" />
       </Button>
-    </div>
+    </>
   ),
 };
 
 const FullWidth: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex w-80 flex-col gap-4">
+    <>
       <Button {...args} isFullWidth>
         Full Width
       </Button>
-    </div>
+    </>
   ),
 };
 
@@ -516,7 +516,7 @@ const RenderProps: Story = {
 const GlassVariants: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
-      <div className="flex flex-wrap items-end gap-4">
+      <div className="flex flex-wrap items-end justify-center gap-4">
         <Button {...args} variant="glass">
           <PlusIcon slot="icon-start" />
           Create
@@ -539,7 +539,7 @@ const GlassVariants: Story = {
 const FrostVariants: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-emerald-400 via-cyan-500 via-sky-500 via-teal-500 to-purple-600 p-16">
-      <div className="flex flex-wrap items-end gap-4">
+      <div className="flex flex-wrap items-end justify-center gap-4">
         <Button {...args} variant="frost">
           <HeartIcon slot="icon-start" />
           Like
@@ -562,7 +562,7 @@ const FrostVariants: Story = {
 const OverlayVariants: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-orange-400 via-fuchsia-500 via-purple-500 via-rose-500 to-purple-600 p-16">
-      <div className="flex flex-wrap items-end gap-4">
+      <div className="flex flex-wrap items-end justify-center gap-4">
         <Button {...args} variant="overlay">
           <PlayIcon slot="icon-start" />
           Play

@@ -128,7 +128,7 @@ const Optional: Story = {
 
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex items-center gap-8">
+    <>
       <Label {...args} size="sm">
         Small Label
       </Label>
@@ -140,13 +140,13 @@ const Sizes: Story = {
       <Label {...args} size="lg">
         Large Label
       </Label>
-    </div>
+    </>
   ),
 };
 
 const Weights: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex gap-8">
+    <>
       <Label {...args} weight="normal">
         Normal (400)
       </Label>
@@ -158,7 +158,7 @@ const Weights: Story = {
       <Label {...args} weight="semibold">
         Semibold (600)
       </Label>
-    </div>
+    </>
   ),
 };
 

@@ -120,33 +120,33 @@ const Default: Story = {};
 
 const Variants: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex items-center gap-4">
+    <>
       <Input {...args} variant="primary" placeholder="Primary" />
       <Input {...args} variant="secondary" placeholder="Secondary" />
       <Input {...args} variant="plain" placeholder="Plain" />
-    </div>
+    </>
   ),
 };
 
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex items-center gap-4">
+    <>
       <Input {...args} size="sm" placeholder="Small" />
       <Input {...args} size="md" placeholder="Medium" />
       <Input {...args} size="lg" placeholder="Large" />
-    </div>
+    </>
   ),
 };
 
 const Radius: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex items-center gap-4">
+    <>
       <Input {...args} radius="none" placeholder="None" />
       <Input {...args} radius="sm" placeholder="Small" />
       <Input {...args} radius="md" placeholder="Medium" />
       <Input {...args} radius="lg" placeholder="Large" />
       <Input {...args} radius="full" placeholder="Full" />
-    </div>
+    </>
   ),
 };
 
@@ -184,9 +184,9 @@ const FullWidth: Story = {
     placeholder: "Full width",
   },
   render: (args): React.JSX.Element => (
-    <div className="w-80">
+    <>
       <Input {...args} />
-    </div>
+    </>
   ),
 };
 

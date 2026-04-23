@@ -128,43 +128,43 @@ const Default: Story = {};
 
 const Variants: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex items-start gap-4">
+    <>
       <Textarea {...args} variant="primary" placeholder="Primary" />
       <Textarea {...args} variant="secondary" placeholder="Secondary" />
       <Textarea {...args} variant="plain" placeholder="Plain" />
-    </div>
+    </>
   ),
 };
 
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex items-start gap-4">
+    <>
       <Textarea {...args} size="sm" placeholder="Small" />
       <Textarea {...args} size="md" placeholder="Medium" />
       <Textarea {...args} size="lg" placeholder="Large" />
-    </div>
+    </>
   ),
 };
 
 const Radius: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex items-start gap-4">
+    <>
       <Textarea {...args} radius="none" placeholder="None" />
       <Textarea {...args} radius="sm" placeholder="Small" />
       <Textarea {...args} radius="md" placeholder="Medium" />
       <Textarea {...args} radius="lg" placeholder="Large" />
-    </div>
+    </>
   ),
 };
 
 const Resize: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex items-start gap-4">
+    <>
       <Textarea {...args} resize="none" placeholder="No resize" />
       <Textarea {...args} resize="vertical" placeholder="Vertical" />
       <Textarea {...args} resize="horizontal" placeholder="Horizontal" />
       <Textarea {...args} resize="both" placeholder="Both" />
-    </div>
+    </>
   ),
 };
 
@@ -202,9 +202,9 @@ const FullWidth: Story = {
     placeholder: "Full width",
   },
   render: (args): React.JSX.Element => (
-    <div className="w-80">
+    <>
       <Textarea {...args} />
-    </div>
+    </>
   ),
 };
 

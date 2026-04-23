@@ -110,7 +110,7 @@ const WithButton: Story = {
 
 const WithPrefixSuffix: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-center gap-4">
+    <>
       <InputGroup {...args}>
         <InputGroupAddon>$</InputGroupAddon>
         <InputGroupInput placeholder="0.00" />
@@ -120,7 +120,7 @@ const WithPrefixSuffix: Story = {
         <InputGroupInput placeholder="example" />
         <InputGroupAddon align="inline-end">.com</InputGroupAddon>
       </InputGroup>
-    </div>
+    </>
   ),
 };
 
@@ -138,7 +138,7 @@ const WithPending: Story = {
 
 const Variants: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-center gap-4">
+    <>
       <InputGroup {...args} variant="primary">
         <InputGroupInput placeholder="Primary" />
       </InputGroup>
@@ -146,13 +146,13 @@ const Variants: Story = {
       <InputGroup {...args} variant="secondary">
         <InputGroupInput placeholder="Secondary" />
       </InputGroup>
-    </div>
+    </>
   ),
 };
 
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-center gap-4">
+    <>
       <InputGroup {...args} size="sm">
         <InputGroupInput placeholder="Small" />
       </InputGroup>
@@ -164,13 +164,13 @@ const Sizes: Story = {
       <InputGroup {...args} size="lg">
         <InputGroupInput placeholder="Large" />
       </InputGroup>
-    </div>
+    </>
   ),
 };
 
 const Radius: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-center gap-4">
+    <>
       <InputGroup {...args} radius="none">
         <InputGroupInput placeholder="None" />
       </InputGroup>
@@ -182,7 +182,7 @@ const Radius: Story = {
       <InputGroup {...args} radius="full">
         <InputGroupInput placeholder="Full" />
       </InputGroup>
-    </div>
+    </>
   ),
 };
 
@@ -241,11 +241,11 @@ const Disabled: Story = {
 const FullWidth: Story = {
   args: { isFullWidth: true },
   render: (args): React.JSX.Element => (
-    <div className="w-96">
+    <>
       <InputGroup {...args}>
         <InputGroupInput placeholder="Full width" />
       </InputGroup>
-    </div>
+    </>
   ),
 };
 

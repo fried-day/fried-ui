@@ -161,7 +161,7 @@ const Disabled: Story = {
 
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-start gap-4">
+    <>
       <Field {...args} size="sm">
         <FieldLabel size="sm">Small</FieldLabel>
         <Input size="sm" placeholder="Type here" />
@@ -176,19 +176,19 @@ const Sizes: Story = {
         <FieldLabel size="lg">Large</FieldLabel>
         <Input size="lg" placeholder="Type here" />
       </Field>
-    </div>
+    </>
   ),
 };
 
 const FullWidth: Story = {
   args: { isFullWidth: true },
   render: (args): React.JSX.Element => (
-    <div className="w-96">
+    <>
       <Field {...args}>
         <FieldLabel>Field label</FieldLabel>
         <Input placeholder="Full width" />
       </Field>
-    </div>
+    </>
   ),
 };
 

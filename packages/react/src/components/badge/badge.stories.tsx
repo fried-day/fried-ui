@@ -151,7 +151,7 @@ const Default: Story = {
 
 const Variants: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-end gap-4">
+    <>
       <Badge {...args} variant="primary">
         Primary
       </Badge>
@@ -179,13 +179,13 @@ const Variants: Story = {
       <Badge {...args} variant="info">
         Info
       </Badge>
-    </div>
+    </>
   ),
 };
 
 const SoftVariants: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-end gap-4">
+    <>
       <Badge {...args} variant="primary-soft">
         Primary
       </Badge>
@@ -213,13 +213,13 @@ const SoftVariants: Story = {
       <Badge {...args} variant="info-soft">
         Info
       </Badge>
-    </div>
+    </>
   ),
 };
 
 const FlatVariants: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-end gap-4">
+    <>
       <Badge {...args} variant="primary-flat">
         Primary
       </Badge>
@@ -247,13 +247,13 @@ const FlatVariants: Story = {
       <Badge {...args} variant="info-flat">
         Info
       </Badge>
-    </div>
+    </>
   ),
 };
 
 const OutlineVariants: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-end gap-4">
+    <>
       <Badge {...args} variant="primary-outline">
         Primary
       </Badge>
@@ -281,14 +281,14 @@ const OutlineVariants: Story = {
       <Badge {...args} variant="info-outline">
         Info
       </Badge>
-    </div>
+    </>
   ),
 };
 
 const GlassVariants: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
-      <div className="flex flex-wrap items-end gap-4">
+      <div className="flex flex-wrap items-end justify-center gap-4">
         <Badge {...args} variant="glass">
           <StarIcon slot="icon-start" />
           Featured
@@ -311,7 +311,7 @@ const GlassVariants: Story = {
 const FrostVariants: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-emerald-400 via-cyan-500 via-sky-500 via-teal-500 to-purple-600 p-16">
-      <div className="flex flex-wrap items-end gap-4">
+      <div className="flex flex-wrap items-end justify-center gap-4">
         <Badge {...args} variant="frost">
           <CheckCircleIcon slot="icon-start" />
           Verified
@@ -334,7 +334,7 @@ const FrostVariants: Story = {
 const OverlayVariants: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-orange-400 via-fuchsia-500 via-purple-500 via-rose-500 to-purple-600 p-16">
-      <div className="flex flex-wrap items-end gap-4">
+      <div className="flex flex-wrap items-end justify-center gap-4">
         <Badge {...args} variant="overlay">
           <BellIcon slot="icon-start" />
           Live
@@ -356,7 +356,7 @@ const OverlayVariants: Story = {
 
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex items-end gap-4">
+    <>
       <Badge {...args} size="sm">
         Small
       </Badge>
@@ -368,13 +368,13 @@ const Sizes: Story = {
       <Badge {...args} size="lg">
         Large
       </Badge>
-    </div>
+    </>
   ),
 };
 
 const Radius: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-end gap-4">
+    <>
       <Badge {...args} radius="none">
         None
       </Badge>
@@ -394,13 +394,13 @@ const Radius: Story = {
       <Badge {...args} radius="full">
         Full
       </Badge>
-    </div>
+    </>
   ),
 };
 
 const WithIcon: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex items-end gap-4">
+    <>
       <Badge {...args} variant="primary">
         <StarIcon slot="icon-start" />
         Featured
@@ -425,13 +425,13 @@ const WithIcon: Story = {
         Danger
         <XCircleIcon slot="icon-end" />
       </Badge>
-    </div>
+    </>
   ),
 };
 
 const IconOnly: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex items-end gap-4">
+    <>
       <Badge {...args} aria-label="Featured" isIconOnly>
         <StarIcon slot="icon" />
       </Badge>
@@ -447,7 +447,7 @@ const IconOnly: Story = {
       <Badge {...args} variant="ghost" aria-label="Private" isIconOnly>
         <LockIcon slot="icon" />
       </Badge>
-    </div>
+    </>
   ),
 };
 

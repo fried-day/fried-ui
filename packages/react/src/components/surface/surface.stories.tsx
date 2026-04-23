@@ -117,7 +117,7 @@ const Default: Story = {
 
 const Variants: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-start gap-4">
+    <>
       <Surface {...args} variant="default" className="p-6">
         <p className="font-bold">Default</p>
         <p className="mt-2 text-sm">Content</p>
@@ -127,13 +127,13 @@ const Variants: Story = {
         <p className="font-bold">Default Bordered</p>
         <p className="mt-2 text-sm">Content</p>
       </Surface>
-    </div>
+    </>
   ),
 };
 
 const StatusVariants: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-start gap-4">
+    <>
       <Surface {...args} variant="success" className="p-4">
         <p className="font-bold">Success</p>
         <p className="mt-1 text-sm">Content</p>
@@ -153,18 +153,18 @@ const StatusVariants: Story = {
         <p className="font-bold">Info</p>
         <p className="mt-1 text-sm">Content</p>
       </Surface>
-    </div>
+    </>
   ),
 };
 
 const PlainVariants: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex h-80 w-160 items-center justify-center bg-background-secondary p-16">
+    <>
       <Surface {...args} variant="plain" radius="lg" className="p-6">
         <p className="font-bold">Plain</p>
         <p className="mt-2 text-sm">Content</p>
       </Surface>
-    </div>
+    </>
   ),
 };
 
@@ -203,7 +203,7 @@ const OverlayVariants: Story = {
 
 const Radius: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-start gap-4">
+    <>
       <Surface {...args} radius="none" className="p-6">
         <p className="font-bold">None</p>
         <p className="mt-2 text-sm">Content</p>
@@ -228,13 +228,13 @@ const Radius: Story = {
         <p className="font-bold">Extra Large</p>
         <p className="mt-2 text-sm">Content</p>
       </Surface>
-    </div>
+    </>
   ),
 };
 
 const Shadow: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-start gap-8">
+    <>
       <Surface {...args} shadow="none" className="p-6">
         <p className="font-bold">None</p>
         <p className="mt-2 text-sm">Content</p>
@@ -259,7 +259,7 @@ const Shadow: Story = {
         <p className="font-bold">Extra Large</p>
         <p className="mt-2 text-sm">Content</p>
       </Surface>
-    </div>
+    </>
   ),
 };
 
@@ -268,7 +268,7 @@ const Bordered: Story = {
     isBordered: true,
   },
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-start gap-4">
+    <>
       <Surface {...args} variant="default" className="p-6">
         <p className="font-bold">Default</p>
         <p className="mt-2 text-sm">Content</p>
@@ -293,7 +293,7 @@ const Bordered: Story = {
         <p className="font-bold">Info</p>
         <p className="mt-2 text-sm">Content</p>
       </Surface>
-    </div>
+    </>
   ),
 };
 
