@@ -5,8 +5,9 @@ import { describe, expect, it } from "vitest";
 
 import { Avatar } from "../../components/avatar";
 import { AvatarGroup } from "../../components/avatar-group";
-import { Chip } from "../../components/chip";
+import { Badge } from "../../components/badge";
 import { Button } from "../../components/button";
+import { Chip } from "../../components/chip";
 import { Description } from "../../components/description";
 import {
   Field,
@@ -30,6 +31,12 @@ describe("1:1 plain HTML parity — default props emit only base class", () => {
     const { container } = render(<Button>X</Button>);
     const el = container.querySelector("button");
     expect(el?.className).toBe("button");
+  });
+
+  it("Badge: <Badge>X</Badge> renders class='badge'", () => {
+    const { container } = render(<Badge>X</Badge>);
+    const el = container.querySelector('[data-slot="badge"]');
+    expect(el?.className).toBe("badge");
   });
 
   it("Chip: <Chip>X</Chip> renders class='chip'", () => {

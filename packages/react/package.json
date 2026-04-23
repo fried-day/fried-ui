@@ -35,13 +35,17 @@
       "types": "./dist/components/avatar-group/index.d.ts",
       "import": "./dist/components/avatar-group/index.mjs"
     },
-    "./chip": {
-      "types": "./dist/components/chip/index.d.ts",
-      "import": "./dist/components/chip/index.mjs"
+    "./badge": {
+      "types": "./dist/components/badge/index.d.ts",
+      "import": "./dist/components/badge/index.mjs"
     },
     "./button": {
       "types": "./dist/components/button/index.d.ts",
       "import": "./dist/components/button/index.mjs"
+    },
+    "./chip": {
+      "types": "./dist/components/chip/index.d.ts",
+      "import": "./dist/components/chip/index.mjs"
     },
     "./field": {
       "types": "./dist/components/field/index.d.ts",

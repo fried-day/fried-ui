@@ -1,0 +1,113 @@
+@layer components {
+  .badge {
+    @apply absolute top-0 right-0 z-(--z-popover);
+    @apply inline-flex items-center justify-center;
+    @apply leading-none font-medium whitespace-nowrap select-none;
+    @apply translate-x-1/2 -translate-y-1/2;
+    @apply transition duration-(--duration-hover) ease-out motion-reduce:transition-none;
+
+    --badge-bg: var(--color-danger);
+    --badge-border: var(--color-danger-border);
+    --badge-fg: var(--color-danger-foreground);
+
+    @apply bg-(--badge-bg) text-(--badge-fg);
+    @apply border border-(--badge-border);
+    @apply h-6 min-w-6 rounded-full px-1.5 text-xs;
+  }
+
+  .badge-primary {
+    --badge-bg: var(--color-primary);
+    --badge-border: var(--color-primary-border);
+    --badge-fg: var(--color-primary-foreground);
+  }
+
+  .badge-secondary {
+    --badge-bg: var(--color-secondary);
+    --badge-border: var(--color-secondary-border);
+    --badge-fg: var(--color-secondary-foreground);
+  }
+
+  .badge-accent {
+    --badge-bg: var(--color-accent);
+    --badge-border: var(--color-accent-border);
+    --badge-fg: var(--color-accent-foreground);
+  }
+
+  .badge-success {
+    --badge-bg: var(--color-success);
+    --badge-border: var(--color-success-border);
+    --badge-fg: var(--color-success-foreground);
+  }
+
+  .badge-warning {
+    --badge-bg: var(--color-warning);
+    --badge-border: var(--color-warning-border);
+    --badge-fg: var(--color-warning-foreground);
+  }
+
+  .badge-danger {
+    --badge-bg: var(--color-danger);
+    --badge-border: var(--color-danger-border);
+    --badge-fg: var(--color-danger-foreground);
+  }
+
+  .badge-info {
+    --badge-bg: var(--color-info);
+    --badge-border: var(--color-info-border);
+    --badge-fg: var(--color-info-foreground);
+  }
+
+  .badge-overlay {
+    --badge-bg: var(--color-on-overlay);
+    --badge-border: var(--color-on-overlay-border);
+    --badge-fg: var(--color-on-overlay-foreground);
+  }
+
+  .badge-size-xs {
+    @apply h-4 min-w-4 px-1;
+  }
+
+  .badge-size-sm {
+    @apply h-5 min-w-5 px-1;
+  }
+
+  .badge-size-md {
+    @apply h-6 min-w-6 px-1.5;
+  }
+
+  .badge-placement-top-right {
+    @apply top-0 right-0 bottom-auto left-auto;
+    @apply translate-x-1/2 -translate-y-1/2;
+  }
+
+  .badge-placement-top-left {
+    @apply top-0 right-auto bottom-auto left-0;
+    @apply -translate-x-1/2 -translate-y-1/2;
+  }
+
+  .badge-placement-bottom-right {
+    @apply top-auto right-0 bottom-0 left-auto;
+    @apply translate-x-1/2 translate-y-1/2;
+  }
+
+  .badge-placement-bottom-left {
+    @apply top-auto right-auto bottom-0 left-0;
+    @apply -translate-x-1/2 translate-y-1/2;
+  }
+
+  .badge-is-dot {
+    @apply size-2 min-w-0 overflow-hidden p-0;
+  }
+
+  .badge-is-dot.badge-size-sm {
+    @apply size-1.5;
+  }
+
+  .badge-is-dot.badge-size-xs {
+    @apply size-1;
+  }
+
+  .badge-is-standalone {
+    @apply static translate-x-0 translate-y-0;
+  }
+}

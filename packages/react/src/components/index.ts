@@ -4,9 +4,11 @@ export * from "./avatar";
 
 export * from "./avatar-group";
 
-export * from "./chip";
+export * from "./badge";
 
 export * from "./button";
+
+export * from "./chip";
 
 export * from "./field";
 
