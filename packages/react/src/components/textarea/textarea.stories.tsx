@@ -201,11 +201,6 @@ const FullWidth: Story = {
     isFullWidth: true,
     placeholder: "Full width",
   },
-  render: (args): React.JSX.Element => (
-    <>
-      <Textarea {...args} />
-    </>
-  ),
 };
 
 export { Default, Variants, Sizes, Radius, Resize, Invalid, Disabled, ReadOnly, Required, FullWidth };

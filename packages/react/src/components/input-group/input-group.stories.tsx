@@ -241,11 +241,9 @@ const Disabled: Story = {
 const FullWidth: Story = {
   args: { isFullWidth: true },
   render: (args): React.JSX.Element => (
-    <>
-      <InputGroup {...args}>
-        <InputGroupInput placeholder="Full width" />
-      </InputGroup>
-    </>
+    <InputGroup {...args}>
+      <InputGroupInput placeholder="Full width" />
+    </InputGroup>
   ),
 };
 

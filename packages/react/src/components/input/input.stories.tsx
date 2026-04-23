@@ -183,11 +183,6 @@ const FullWidth: Story = {
     isFullWidth: true,
     placeholder: "Full width",
   },
-  render: (args): React.JSX.Element => (
-    <>
-      <Input {...args} />
-    </>
-  ),
 };
 
 export { Default, Variants, Sizes, Radius, Invalid, Disabled, ReadOnly, Required, FullWidth };

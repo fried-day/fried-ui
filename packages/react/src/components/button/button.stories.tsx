@@ -475,13 +475,10 @@ const IconOnly: Story = {
 };
 
 const FullWidth: Story = {
-  render: (args): React.JSX.Element => (
-    <>
-      <Button {...args} isFullWidth>
-        Full Width
-      </Button>
-    </>
-  ),
+  args: {
+    isFullWidth: true,
+    children: "Full Width",
+  },
 };
 
 const Disabled: Story = {

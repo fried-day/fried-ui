@@ -159,12 +159,10 @@ const StatusVariants: Story = {
 
 const PlainVariants: Story = {
   render: (args): React.JSX.Element => (
-    <>
-      <Surface {...args} variant="plain" radius="lg" className="p-6">
-        <p className="font-bold">Plain</p>
-        <p className="mt-2 text-sm">Content</p>
-      </Surface>
-    </>
+    <Surface {...args} variant="plain" radius="lg" className="p-6">
+      <p className="font-bold">Plain</p>
+      <p className="mt-2 text-sm">Content</p>
+    </Surface>
   ),
 };
 

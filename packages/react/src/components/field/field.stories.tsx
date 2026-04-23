@@ -197,12 +197,10 @@ const FullWidth: Story = {
     children: null,
   },
   render: (args): React.JSX.Element => (
-    <>
-      <Field {...args}>
-        <FieldLabel>Field label</FieldLabel>
-        <Input placeholder="Full width" />
-      </Field>
-    </>
+    <Field {...args}>
+      <FieldLabel>Field label</FieldLabel>
+      <Input placeholder="Full width" />
+    </Field>
   ),
 };
 
