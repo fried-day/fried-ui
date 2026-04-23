@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import {
   CheckCircleIcon,
-  ExclamationTriangleIcon,
   InformationCircleIcon,
   MoreIcon,
   PlusIcon,
@@ -21,6 +20,10 @@ const meta = {
   },
   args: {
     children: "Button",
+    isIconOnly: false,
+    isFullWidth: false,
+    isDisabled: false,
+    isPending: false,
   },
   argTypes: {
     children: {
@@ -40,51 +43,12 @@ const meta = {
     },
     variant: {
       control: "select",
-      options: [
-        "primary",
-        "secondary",
-        "accent",
-        "ghost",
-        "outline",
-        "success",
-        "warning",
-        "danger",
-        "info",
-        "primary-soft",
-        "secondary-soft",
-        "accent-soft",
-        "success-soft",
-        "warning-soft",
-        "danger-soft",
-        "info-soft",
-        "primary-flat",
-        "secondary-flat",
-        "accent-flat",
-        "success-flat",
-        "warning-flat",
-        "danger-flat",
-        "info-flat",
-        "primary-outline",
-        "secondary-outline",
-        "accent-outline",
-        "success-outline",
-        "warning-outline",
-        "danger-outline",
-        "info-outline",
-        "primary-ghost",
-        "secondary-ghost",
-        "accent-ghost",
-        "success-ghost",
-        "warning-ghost",
-        "danger-ghost",
-        "info-ghost",
-      ],
+      options: ["primary", "secondary", "outline", "ghost", "destructive", "overlay", "accent"],
       description:
-        "Visual style. **Base colors:** primary (main CTA), secondary (neutral action), accent (brand highlight), ghost (dismissive), outline (neutral outlined), success/warning/danger/info (status). **Modifiers:** -soft (pale + border), -flat (pale no border), -outline (transparent + colored border), -ghost (transparent, hover reveal). Use primary for primary CTA, accent for brand CTA, danger for destructive, ghost for cancel/dismiss.",
+        "Visual style following Mobbin hierarchy. **Hierarchy:** primary (main CTA — dominant), secondary (paired alt — neutral filled), outline (tertiary — border only), ghost (quaternary — transparent). **Special:** destructive (red — safety-critical like delete), overlay (gray on dark bg — for dark surfaces/media), accent (brand highlight — marketing/promo CTA). Use primary for main action, secondary for cancel pair, outline/ghost for subdued actions, destructive for delete, overlay for dark contexts, accent for promo.",
       table: {
         type: {
-          summary:
-            '"primary" | "secondary" | "accent" | "ghost" | "outline" | "success" | "warning" | "danger" | "info" | "primary-soft" | "secondary-soft" | "accent-soft" | "success-soft" | "warning-soft" | "danger-soft" | "info-soft" | "primary-flat" | "secondary-flat" | "accent-flat" | "success-flat" | "warning-flat" | "danger-flat" | "info-flat" | "primary-outline" | "secondary-outline" | "accent-outline" | "success-outline" | "warning-outline" | "danger-outline" | "info-outline" | "primary-ghost" | "secondary-ghost" | "accent-ghost" | "success-ghost" | "warning-ghost" | "danger-ghost" | "info-ghost"',
+          summary: '"primary" | "secondary" | "outline" | "ghost" | "destructive" | "overlay" | "accent"',
         },
         defaultValue: {
           summary: "primary",
@@ -124,12 +88,8 @@ const meta = {
       control: "boolean",
       description: "Whether the button is icon-only (square)",
       table: {
-        type: {
-          summary: "boolean",
-        },
-        defaultValue: {
-          summary: "false",
-        },
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
         category: "Style Variants",
       },
     },
@@ -137,12 +97,8 @@ const meta = {
       control: "boolean",
       description: "Whether the button takes full width of its container",
       table: {
-        type: {
-          summary: "boolean",
-        },
-        defaultValue: {
-          summary: "false",
-        },
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
         category: "Style Variants",
       },
     },
@@ -150,12 +106,8 @@ const meta = {
       control: "boolean",
       description: "Whether the button is disabled",
       table: {
-        type: {
-          summary: "boolean",
-        },
-        defaultValue: {
-          summary: "false",
-        },
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
         category: "State",
       },
     },
@@ -163,12 +115,8 @@ const meta = {
       control: "boolean",
       description: "Whether the button shows a loading spinner",
       table: {
-        type: {
-          summary: "boolean",
-        },
-        defaultValue: {
-          summary: "false",
-        },
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
         category: "State",
       },
     },
@@ -176,9 +124,7 @@ const meta = {
       control: false,
       description: "Handler called when the button is pressed",
       table: {
-        type: {
-          summary: "(e: PressEvent) => void",
-        },
+        type: { summary: "(e: PressEvent) => void" },
         category: "Events",
       },
     },
@@ -186,9 +132,7 @@ const meta = {
       control: "text",
       description: "Additional CSS classes",
       table: {
-        type: {
-          summary: "string",
-        },
+        type: { summary: "string" },
         category: "Styling",
       },
     },
@@ -214,162 +158,32 @@ const Variants: Story = {
         Secondary
       </Button>
 
+      <Button {...args} variant="outline">
+        Outline
+      </Button>
+
+      <Button {...args} variant="ghost">
+        Ghost
+      </Button>
+
+      <Button {...args} variant="destructive">
+        Destructive
+      </Button>
+
       <Button {...args} variant="accent">
         Accent
       </Button>
-
-      <Button {...args} variant="success">
-        Success
-      </Button>
-
-      <Button {...args} variant="warning">
-        Warning
-      </Button>
-
-      <Button {...args} variant="danger">
-        Danger
-      </Button>
-
-      <Button {...args} variant="info">
-        Info
-      </Button>
     </>
   ),
 };
 
-const SoftVariants: Story = {
+const OverlayVariant: Story = {
   render: (args): React.JSX.Element => (
-    <>
-      <Button {...args} variant="primary-soft">
-        Primary
+    <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
+      <Button {...args} variant="overlay">
+        Overlay
       </Button>
-
-      <Button {...args} variant="secondary-soft">
-        Secondary
-      </Button>
-
-      <Button {...args} variant="accent-soft">
-        Accent
-      </Button>
-
-      <Button {...args} variant="success-soft">
-        Success
-      </Button>
-
-      <Button {...args} variant="warning-soft">
-        Warning
-      </Button>
-
-      <Button {...args} variant="danger-soft">
-        Danger
-      </Button>
-
-      <Button {...args} variant="info-soft">
-        Info
-      </Button>
-    </>
-  ),
-};
-
-const FlatVariants: Story = {
-  render: (args): React.JSX.Element => (
-    <>
-      <Button {...args} variant="primary-flat">
-        Primary
-      </Button>
-
-      <Button {...args} variant="secondary-flat">
-        Secondary
-      </Button>
-
-      <Button {...args} variant="accent-flat">
-        Accent
-      </Button>
-
-      <Button {...args} variant="success-flat">
-        Success
-      </Button>
-
-      <Button {...args} variant="warning-flat">
-        Warning
-      </Button>
-
-      <Button {...args} variant="danger-flat">
-        Danger
-      </Button>
-
-      <Button {...args} variant="info-flat">
-        Info
-      </Button>
-    </>
-  ),
-};
-
-const OutlineVariants: Story = {
-  render: (args): React.JSX.Element => (
-    <>
-      <Button {...args} variant="primary-outline">
-        Primary
-      </Button>
-
-      <Button {...args} variant="secondary-outline">
-        Secondary
-      </Button>
-
-      <Button {...args} variant="accent-outline">
-        Accent
-      </Button>
-
-      <Button {...args} variant="success-outline">
-        Success
-      </Button>
-
-      <Button {...args} variant="warning-outline">
-        Warning
-      </Button>
-
-      <Button {...args} variant="danger-outline">
-        Danger
-      </Button>
-
-      <Button {...args} variant="info-outline">
-        Info
-      </Button>
-    </>
-  ),
-};
-
-const GhostVariants: Story = {
-  render: (args): React.JSX.Element => (
-    <>
-      <Button {...args} variant="primary-ghost">
-        Primary
-      </Button>
-
-      <Button {...args} variant="secondary-ghost">
-        Secondary
-      </Button>
-
-      <Button {...args} variant="accent-ghost">
-        Accent
-      </Button>
-
-      <Button {...args} variant="success-ghost">
-        Success
-      </Button>
-
-      <Button {...args} variant="warning-ghost">
-        Warning
-      </Button>
-
-      <Button {...args} variant="danger-ghost">
-        Danger
-      </Button>
-
-      <Button {...args} variant="info-ghost">
-        Info
-      </Button>
-    </>
+    </div>
   ),
 };
 
@@ -429,24 +243,19 @@ const WithIcon: Story = {
         Create
       </Button>
 
-      <Button {...args} variant="info">
+      <Button {...args} variant="secondary">
         <InformationCircleIcon slot="icon-start" />
         Info
       </Button>
 
-      <Button {...args} variant="success">
+      <Button {...args} variant="outline">
+        <CheckCircleIcon slot="icon-start" />
         Complete
-        <CheckCircleIcon slot="icon-end" />
       </Button>
 
-      <Button {...args} variant="warning">
-        <ExclamationTriangleIcon slot="icon-start" />
-        Warning
-      </Button>
-
-      <Button {...args} variant="danger">
+      <Button {...args} variant="destructive">
+        <XCircleIcon slot="icon-start" />
         Delete
-        <XCircleIcon slot="icon-end" />
       </Button>
     </>
   ),
@@ -455,7 +264,7 @@ const WithIcon: Story = {
 const IconOnly: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Button {...args} aria-label="Settings" isIconOnly>
+      <Button {...args} variant="primary" aria-label="Settings" isIconOnly>
         <SettingsIcon className="size-match-font" />
       </Button>
 
@@ -497,17 +306,14 @@ const Pending: Story = {
 
 const RenderProps: Story = {
   render: (args): React.JSX.Element => (
-    <Button {...args}>{({ isHovered }): string => (isHovered ? "Hovering" : "Hover")}</Button>
+    <Button {...args}>{({ isHovered }): string => (isHovered ? "Hovered!" : "Hover")}</Button>
   ),
 };
 
 export {
   Default,
   Variants,
-  SoftVariants,
-  FlatVariants,
-  OutlineVariants,
-  GhostVariants,
+  OverlayVariant,
   Sizes,
   Radius,
   WithIcon,

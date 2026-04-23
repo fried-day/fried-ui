@@ -59,12 +59,12 @@
     --button-fg: var(--color-secondary-foreground);
   }
 
-  .button-accent {
-    --button-bg: var(--color-accent);
-    --button-bg-hover: var(--color-accent-hover);
-    --button-bg-pressed: var(--color-accent-active);
-    --button-border: var(--color-accent-border);
-    --button-fg: var(--color-accent-foreground);
+  .button-outline {
+    --button-bg: transparent;
+    --button-bg-hover: var(--color-muted);
+    --button-bg-pressed: var(--color-muted-hover);
+    --button-border: var(--color-border);
+    --button-fg: var(--color-foreground);
   }
 
   .button-ghost {
@@ -75,268 +75,28 @@
     --button-fg: var(--color-foreground);
   }
 
-  .button-outline {
-    --button-bg: transparent;
-    --button-bg-hover: var(--color-muted);
-    --button-bg-pressed: var(--color-muted-hover);
-    --button-border: var(--color-border);
-    --button-fg: var(--color-foreground);
+  .button-destructive {
+    --button-bg: var(--color-destructive);
+    --button-bg-hover: var(--color-destructive-hover);
+    --button-bg-pressed: var(--color-destructive-active);
+    --button-border: var(--color-destructive-border);
+    --button-fg: var(--color-destructive-foreground);
   }
 
-  .button-success {
-    --button-bg: var(--color-success);
-    --button-bg-hover: var(--color-success-hover);
-    --button-bg-pressed: var(--color-success-active);
-    --button-border: var(--color-success-border);
-    --button-fg: var(--color-success-foreground);
+  .button-overlay {
+    --button-bg: var(--color-on-overlay);
+    --button-bg-hover: var(--color-on-overlay-hover);
+    --button-bg-pressed: var(--color-on-overlay-active);
+    --button-border: var(--color-on-overlay-border);
+    --button-fg: var(--color-on-overlay-foreground);
   }
 
-  .button-warning {
-    --button-bg: var(--color-warning);
-    --button-bg-hover: var(--color-warning-hover);
-    --button-bg-pressed: var(--color-warning-active);
-    --button-border: var(--color-warning-border);
-    --button-fg: var(--color-warning-foreground);
-  }
-
-  .button-danger {
-    --button-bg: var(--color-danger);
-    --button-bg-hover: var(--color-danger-hover);
-    --button-bg-pressed: var(--color-danger-active);
-    --button-border: var(--color-danger-border);
-    --button-fg: var(--color-danger-foreground);
-  }
-
-  .button-info {
-    --button-bg: var(--color-info);
-    --button-bg-hover: var(--color-info-hover);
-    --button-bg-pressed: var(--color-info-active);
-    --button-border: var(--color-info-border);
-    --button-fg: var(--color-info-foreground);
-  }
-
-  .button-primary-soft {
-    --button-bg: var(--color-primary-soft);
-    --button-bg-hover: var(--color-primary-soft-hover);
-    --button-bg-pressed: var(--color-primary-soft-active);
-    --button-border: var(--color-primary-soft-border);
-    --button-fg: var(--color-primary-soft-foreground);
-  }
-
-  .button-secondary-soft {
-    --button-bg: var(--color-secondary-soft);
-    --button-bg-hover: var(--color-secondary-soft-hover);
-    --button-bg-pressed: var(--color-secondary-soft-active);
-    --button-border: var(--color-secondary-soft-border);
-    --button-fg: var(--color-secondary-soft-foreground);
-  }
-
-  .button-accent-soft {
-    --button-bg: var(--color-accent-soft);
-    --button-bg-hover: var(--color-accent-soft-hover);
-    --button-bg-pressed: var(--color-accent-soft-active);
-    --button-border: var(--color-accent-soft-border);
-    --button-fg: var(--color-accent-soft-foreground);
-  }
-
-  .button-success-soft {
-    --button-bg: var(--color-success-soft);
-    --button-bg-hover: var(--color-success-soft-hover);
-    --button-bg-pressed: var(--color-success-soft-active);
-    --button-border: var(--color-success-soft-border);
-    --button-fg: var(--color-success-soft-foreground);
-  }
-
-  .button-warning-soft {
-    --button-bg: var(--color-warning-soft);
-    --button-bg-hover: var(--color-warning-soft-hover);
-    --button-bg-pressed: var(--color-warning-soft-active);
-    --button-border: var(--color-warning-soft-border);
-    --button-fg: var(--color-warning-soft-foreground);
-  }
-
-  .button-danger-soft {
-    --button-bg: var(--color-danger-soft);
-    --button-bg-hover: var(--color-danger-soft-hover);
-    --button-bg-pressed: var(--color-danger-soft-active);
-    --button-border: var(--color-danger-soft-border);
-    --button-fg: var(--color-danger-soft-foreground);
-  }
-
-  .button-info-soft {
-    --button-bg: var(--color-info-soft);
-    --button-bg-hover: var(--color-info-soft-hover);
-    --button-bg-pressed: var(--color-info-soft-active);
-    --button-border: var(--color-info-soft-border);
-    --button-fg: var(--color-info-soft-foreground);
-  }
-
-  .button-primary-flat {
-    --button-bg: var(--color-primary-flat);
-    --button-bg-hover: var(--color-primary-flat-hover);
-    --button-bg-pressed: var(--color-primary-flat-active);
-    --button-border: var(--color-primary-flat-border);
-    --button-fg: var(--color-primary-flat-foreground);
-  }
-
-  .button-secondary-flat {
-    --button-bg: var(--color-secondary-flat);
-    --button-bg-hover: var(--color-secondary-flat-hover);
-    --button-bg-pressed: var(--color-secondary-flat-active);
-    --button-border: var(--color-secondary-flat-border);
-    --button-fg: var(--color-secondary-flat-foreground);
-  }
-
-  .button-accent-flat {
-    --button-bg: var(--color-accent-flat);
-    --button-bg-hover: var(--color-accent-flat-hover);
-    --button-bg-pressed: var(--color-accent-flat-active);
-    --button-border: var(--color-accent-flat-border);
-    --button-fg: var(--color-accent-flat-foreground);
-  }
-
-  .button-success-flat {
-    --button-bg: var(--color-success-flat);
-    --button-bg-hover: var(--color-success-flat-hover);
-    --button-bg-pressed: var(--color-success-flat-active);
-    --button-border: var(--color-success-flat-border);
-    --button-fg: var(--color-success-flat-foreground);
-  }
-
-  .button-warning-flat {
-    --button-bg: var(--color-warning-flat);
-    --button-bg-hover: var(--color-warning-flat-hover);
-    --button-bg-pressed: var(--color-warning-flat-active);
-    --button-border: var(--color-warning-flat-border);
-    --button-fg: var(--color-warning-flat-foreground);
-  }
-
-  .button-danger-flat {
-    --button-bg: var(--color-danger-flat);
-    --button-bg-hover: var(--color-danger-flat-hover);
-    --button-bg-pressed: var(--color-danger-flat-active);
-    --button-border: var(--color-danger-flat-border);
-    --button-fg: var(--color-danger-flat-foreground);
-  }
-
-  .button-info-flat {
-    --button-bg: var(--color-info-flat);
-    --button-bg-hover: var(--color-info-flat-hover);
-    --button-bg-pressed: var(--color-info-flat-active);
-    --button-border: var(--color-info-flat-border);
-    --button-fg: var(--color-info-flat-foreground);
-  }
-
-  .button-primary-outline {
-    --button-bg: var(--color-primary-outline);
-    --button-bg-hover: var(--color-primary-outline-hover);
-    --button-bg-pressed: var(--color-primary-outline-active);
-    --button-border: var(--color-primary-outline-border);
-    --button-fg: var(--color-primary-outline-foreground);
-  }
-
-  .button-secondary-outline {
-    --button-bg: var(--color-secondary-outline);
-    --button-bg-hover: var(--color-secondary-outline-hover);
-    --button-bg-pressed: var(--color-secondary-outline-active);
-    --button-border: var(--color-secondary-outline-border);
-    --button-fg: var(--color-secondary-outline-foreground);
-  }
-
-  .button-accent-outline {
-    --button-bg: var(--color-accent-outline);
-    --button-bg-hover: var(--color-accent-outline-hover);
-    --button-bg-pressed: var(--color-accent-outline-active);
-    --button-border: var(--color-accent-outline-border);
-    --button-fg: var(--color-accent-outline-foreground);
-  }
-
-  .button-success-outline {
-    --button-bg: var(--color-success-outline);
-    --button-bg-hover: var(--color-success-outline-hover);
-    --button-bg-pressed: var(--color-success-outline-active);
-    --button-border: var(--color-success-outline-border);
-    --button-fg: var(--color-success-outline-foreground);
-  }
-
-  .button-warning-outline {
-    --button-bg: var(--color-warning-outline);
-    --button-bg-hover: var(--color-warning-outline-hover);
-    --button-bg-pressed: var(--color-warning-outline-active);
-    --button-border: var(--color-warning-outline-border);
-    --button-fg: var(--color-warning-outline-foreground);
-  }
-
-  .button-danger-outline {
-    --button-bg: var(--color-danger-outline);
-    --button-bg-hover: var(--color-danger-outline-hover);
-    --button-bg-pressed: var(--color-danger-outline-active);
-    --button-border: var(--color-danger-outline-border);
-    --button-fg: var(--color-danger-outline-foreground);
-  }
-
-  .button-info-outline {
-    --button-bg: var(--color-info-outline);
-    --button-bg-hover: var(--color-info-outline-hover);
-    --button-bg-pressed: var(--color-info-outline-active);
-    --button-border: var(--color-info-outline-border);
-    --button-fg: var(--color-info-outline-foreground);
-  }
-
-  .button-primary-ghost {
-    --button-bg: var(--color-primary-ghost);
-    --button-bg-hover: var(--color-primary-ghost-hover);
-    --button-bg-pressed: var(--color-primary-ghost-active);
-    --button-border: var(--color-primary-ghost-border);
-    --button-fg: var(--color-primary-ghost-foreground);
-  }
-
-  .button-secondary-ghost {
-    --button-bg: var(--color-secondary-ghost);
-    --button-bg-hover: var(--color-secondary-ghost-hover);
-    --button-bg-pressed: var(--color-secondary-ghost-active);
-    --button-border: var(--color-secondary-ghost-border);
-    --button-fg: var(--color-secondary-ghost-foreground);
-  }
-
-  .button-accent-ghost {
-    --button-bg: var(--color-accent-ghost);
-    --button-bg-hover: var(--color-accent-ghost-hover);
-    --button-bg-pressed: var(--color-accent-ghost-active);
-    --button-border: var(--color-accent-ghost-border);
-    --button-fg: var(--color-accent-ghost-foreground);
-  }
-
-  .button-success-ghost {
-    --button-bg: var(--color-success-ghost);
-    --button-bg-hover: var(--color-success-ghost-hover);
-    --button-bg-pressed: var(--color-success-ghost-active);
-    --button-border: var(--color-success-ghost-border);
-    --button-fg: var(--color-success-ghost-foreground);
-  }
-
-  .button-warning-ghost {
-    --button-bg: var(--color-warning-ghost);
-    --button-bg-hover: var(--color-warning-ghost-hover);
-    --button-bg-pressed: var(--color-warning-ghost-active);
-    --button-border: var(--color-warning-ghost-border);
-    --button-fg: var(--color-warning-ghost-foreground);
-  }
-
-  .button-danger-ghost {
-    --button-bg: var(--color-danger-ghost);
-    --button-bg-hover: var(--color-danger-ghost-hover);
-    --button-bg-pressed: var(--color-danger-ghost-active);
-    --button-border: var(--color-danger-ghost-border);
-    --button-fg: var(--color-danger-ghost-foreground);
-  }
-
-  .button-info-ghost {
-    --button-bg: var(--color-info-ghost);
-    --button-bg-hover: var(--color-info-ghost-hover);
-    --button-bg-pressed: var(--color-info-ghost-active);
-    --button-border: var(--color-info-ghost-border);
-    --button-fg: var(--color-info-ghost-foreground);
+  .button-accent {
+    --button-bg: var(--color-accent);
+    --button-bg-hover: var(--color-accent-hover);
+    --button-bg-pressed: var(--color-accent-active);
+    --button-border: var(--color-accent-border);
+    --button-fg: var(--color-accent-foreground);
   }
 
   .button-size-sm {
@@ -396,7 +156,7 @@
   }
 
   .button-pending {
-    --button-fg: transparent;
+    @apply text-transparent;
   }
 
   .button [slot="icon"],

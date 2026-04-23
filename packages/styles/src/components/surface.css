@@ -14,11 +14,6 @@
     --surface-fg: var(--color-surface-foreground);
   }
 
-  .surface-plain {
-    --surface-bg: var(--color-surface-plain);
-    --surface-fg: var(--color-surface-plain-foreground);
-  }
-
   .surface-success {
     --surface-bg: var(--color-success-soft);
     --surface-fg: var(--color-success-soft-foreground);
@@ -41,10 +36,6 @@
 
   .surface-bordered.surface-default {
     --surface-border: var(--color-surface-border);
-  }
-
-  .surface-bordered.surface-plain {
-    --surface-border: var(--color-surface-plain-border);
   }
 
   .surface-bordered.surface-success {

@@ -5,8 +5,6 @@ export interface SurfaceVariantsProps {
   radius?: "none" | "sm" | "md" | "lg" | "xl";
   /** Elevation depth (orthogonal to variant — combine freely). @default 'none' */
   shadow?: "none" | "sm" | "md" | "lg" | "xl";
-  /**
-   * Visual style. Base colors (default/plain) plus status (success/warning/danger/info). @default 'default'
-   */
-  variant?: "default" | "plain" | "success" | "warning" | "danger" | "info";
+  /** Visual style. Base (default neutral) plus status (success/warning/danger/info). @default 'default' */
+  variant?: "default" | "success" | "warning" | "danger" | "info";
 }

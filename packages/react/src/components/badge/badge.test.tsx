@@ -27,37 +27,7 @@ describe("Badge", () => {
   });
 
   it("applies all variant classes", () => {
-    const variants = [
-      "primary",
-      "secondary",
-      "accent",
-      "outline",
-      "success",
-      "warning",
-      "danger",
-      "info",
-      "primary-soft",
-      "secondary-soft",
-      "accent-soft",
-      "success-soft",
-      "warning-soft",
-      "danger-soft",
-      "info-soft",
-      "primary-flat",
-      "secondary-flat",
-      "accent-flat",
-      "success-flat",
-      "warning-flat",
-      "danger-flat",
-      "info-flat",
-      "primary-outline",
-      "secondary-outline",
-      "accent-outline",
-      "success-outline",
-      "warning-outline",
-      "danger-outline",
-      "info-outline",
-    ] as const;
+    const variants = ["primary", "secondary", "accent", "success", "warning", "danger", "info"] as const;
 
     variants.forEach((variant) => {
       const { unmount } = render(<Badge variant={variant}>{variant}</Badge>);

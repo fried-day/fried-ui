@@ -63,30 +63,30 @@
   }
 
   .avatar-ring-primary {
-    @apply ring-2 ring-primary-outline-border ring-offset-2 ring-offset-background;
+    @apply ring-2 ring-primary ring-offset-2 ring-offset-background;
   }
 
   .avatar-ring-secondary {
-    @apply ring-2 ring-secondary-outline-border ring-offset-2 ring-offset-background;
+    @apply ring-2 ring-secondary ring-offset-2 ring-offset-background;
   }
 
   .avatar-ring-accent {
-    @apply ring-2 ring-accent-outline-border ring-offset-2 ring-offset-background;
+    @apply ring-2 ring-accent ring-offset-2 ring-offset-background;
   }
 
   .avatar-ring-success {
-    @apply ring-2 ring-success-outline-border ring-offset-2 ring-offset-background;
+    @apply ring-2 ring-success ring-offset-2 ring-offset-background;
   }
 
   .avatar-ring-warning {
-    @apply ring-2 ring-warning-outline-border ring-offset-2 ring-offset-background;
+    @apply ring-2 ring-warning ring-offset-2 ring-offset-background;
   }
 
   .avatar-ring-danger {
-    @apply ring-2 ring-danger-outline-border ring-offset-2 ring-offset-background;
+    @apply ring-2 ring-danger ring-offset-2 ring-offset-background;
   }
 
   .avatar-ring-info {
-    @apply ring-2 ring-info-outline-border ring-offset-2 ring-offset-background;
+    @apply ring-2 ring-info ring-offset-2 ring-offset-background;
   }
 }

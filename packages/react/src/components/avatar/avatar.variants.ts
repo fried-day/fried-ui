@@ -3,7 +3,7 @@ export interface AvatarVariantsProps {
   isDisabled?: boolean;
   /** Border radius scale. @default 'full' */
   radius?: "none" | "sm" | "md" | "lg" | "full";
-  /** Colored ring around the avatar (status indicator). @default undefined */
+  /** Colored ring around the avatar. @default undefined */
   ring?: "primary" | "secondary" | "accent" | "success" | "warning" | "danger" | "info";
   /** Size scale. @default 'md' */
   size?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl";

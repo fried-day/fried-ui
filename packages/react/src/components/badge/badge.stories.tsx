@@ -20,6 +20,7 @@ const meta = {
   },
   args: {
     children: "Badge",
+    isIconOnly: false,
   },
   argTypes: {
     children: {
@@ -31,51 +32,18 @@ const meta = {
         required: true,
       },
       table: {
-        type: {
-          summary: "ReactNode",
-        },
+        type: { summary: "ReactNode" },
         category: "Children",
       },
     },
     variant: {
       control: "select",
-      options: [
-        "primary",
-        "secondary",
-        "accent",
-        "outline",
-        "success",
-        "warning",
-        "danger",
-        "info",
-        "primary-soft",
-        "secondary-soft",
-        "accent-soft",
-        "success-soft",
-        "warning-soft",
-        "danger-soft",
-        "info-soft",
-        "primary-flat",
-        "secondary-flat",
-        "accent-flat",
-        "success-flat",
-        "warning-flat",
-        "danger-flat",
-        "info-flat",
-        "primary-outline",
-        "secondary-outline",
-        "accent-outline",
-        "success-outline",
-        "warning-outline",
-        "danger-outline",
-        "info-outline",
-      ],
+      options: ["primary", "secondary", "accent", "success", "warning", "danger", "info"],
       description:
-        "Visual style. **Base colors:** primary (default), secondary (neutral), accent (brand), success/warning/danger/info (status). **Style modifiers:** -soft (pale bg + border), -flat (pale bg no border), -outline (transparent + colored border). Use primary for main labels, success/danger for status, -soft for subtle tags.",
+        "Visual style — status tag colors. **Brand:** primary (default filled), secondary (neutral), accent (brand highlight). **Status:** success (positive/active), warning (caution/pending), danger (negative/error), info (neutral/notice). Use primary for main labels, success for active state, danger for expired/error, info for notices.",
       table: {
         type: {
-          summary:
-            '"primary" | "secondary" | "accent" | "outline" | "success" | "warning" | "danger" | "info" | "primary-soft" | "secondary-soft" | "accent-soft" | "success-soft" | "warning-soft" | "danger-soft" | "info-soft" | "primary-flat" | "secondary-flat" | "accent-flat" | "success-flat" | "warning-flat" | "danger-flat" | "info-flat" | "primary-outline" | "secondary-outline" | "accent-outline" | "success-outline" | "warning-outline" | "danger-outline" | "info-outline"',
+          summary: '"primary" | "secondary" | "accent" | "success" | "warning" | "danger" | "info"',
         },
         defaultValue: {
           summary: "primary",
@@ -88,12 +56,8 @@ const meta = {
       options: ["sm", "md", "lg"],
       description: "The size of the badge",
       table: {
-        type: {
-          summary: '"sm" | "md" | "lg"',
-        },
-        defaultValue: {
-          summary: "md",
-        },
+        type: { summary: '"sm" | "md" | "lg"' },
+        defaultValue: { summary: "md" },
         category: "Style Variants",
       },
     },
@@ -102,12 +66,8 @@ const meta = {
       options: ["none", "sm", "md", "lg", "full"],
       description: "The border radius of the badge",
       table: {
-        type: {
-          summary: '"none" | "sm" | "md" | "lg" | "full"',
-        },
-        defaultValue: {
-          summary: "full",
-        },
+        type: { summary: '"none" | "sm" | "md" | "lg" | "full"' },
+        defaultValue: { summary: "full" },
         category: "Style Variants",
       },
     },
@@ -115,12 +75,8 @@ const meta = {
       control: "boolean",
       description: "Whether the badge is icon-only (square)",
       table: {
-        type: {
-          summary: "boolean",
-        },
-        defaultValue: {
-          summary: "false",
-        },
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
         category: "Style Variants",
       },
     },
@@ -128,9 +84,7 @@ const meta = {
       control: "text",
       description: "Additional CSS classes",
       table: {
-        type: {
-          summary: "string",
-        },
+        type: { summary: "string" },
         category: "Styling",
       },
     },
@@ -173,108 +127,6 @@ const Variants: Story = {
       </Badge>
 
       <Badge {...args} variant="info">
-        Info
-      </Badge>
-    </>
-  ),
-};
-
-const SoftVariants: Story = {
-  render: (args): React.JSX.Element => (
-    <>
-      <Badge {...args} variant="primary-soft">
-        Primary
-      </Badge>
-
-      <Badge {...args} variant="secondary-soft">
-        Secondary
-      </Badge>
-
-      <Badge {...args} variant="accent-soft">
-        Accent
-      </Badge>
-
-      <Badge {...args} variant="success-soft">
-        Success
-      </Badge>
-
-      <Badge {...args} variant="warning-soft">
-        Warning
-      </Badge>
-
-      <Badge {...args} variant="danger-soft">
-        Danger
-      </Badge>
-
-      <Badge {...args} variant="info-soft">
-        Info
-      </Badge>
-    </>
-  ),
-};
-
-const FlatVariants: Story = {
-  render: (args): React.JSX.Element => (
-    <>
-      <Badge {...args} variant="primary-flat">
-        Primary
-      </Badge>
-
-      <Badge {...args} variant="secondary-flat">
-        Secondary
-      </Badge>
-
-      <Badge {...args} variant="accent-flat">
-        Accent
-      </Badge>
-
-      <Badge {...args} variant="success-flat">
-        Success
-      </Badge>
-
-      <Badge {...args} variant="warning-flat">
-        Warning
-      </Badge>
-
-      <Badge {...args} variant="danger-flat">
-        Danger
-      </Badge>
-
-      <Badge {...args} variant="info-flat">
-        Info
-      </Badge>
-    </>
-  ),
-};
-
-const OutlineVariants: Story = {
-  render: (args): React.JSX.Element => (
-    <>
-      <Badge {...args} variant="primary-outline">
-        Primary
-      </Badge>
-
-      <Badge {...args} variant="secondary-outline">
-        Secondary
-      </Badge>
-
-      <Badge {...args} variant="accent-outline">
-        Accent
-      </Badge>
-
-      <Badge {...args} variant="success-outline">
-        Success
-      </Badge>
-
-      <Badge {...args} variant="warning-outline">
-        Warning
-      </Badge>
-
-      <Badge {...args} variant="danger-outline">
-        Danger
-      </Badge>
-
-      <Badge {...args} variant="info-outline">
         Info
       </Badge>
     </>
@@ -333,24 +185,24 @@ const WithIcon: Story = {
         Featured
       </Badge>
 
-      <Badge {...args} variant="info">
-        <InformationCircleIcon slot="icon-start" />
-        Info
-      </Badge>
-
       <Badge {...args} variant="success">
-        Success
-        <CheckCircleIcon slot="icon-end" />
+        <CheckCircleIcon slot="icon-start" />
+        Verified
       </Badge>
 
       <Badge {...args} variant="warning">
         <ExclamationTriangleIcon slot="icon-start" />
-        Warning
+        Pending
       </Badge>
 
       <Badge {...args} variant="danger">
-        Danger
-        <XCircleIcon slot="icon-end" />
+        <XCircleIcon slot="icon-start" />
+        Expired
+      </Badge>
+
+      <Badge {...args} variant="info">
+        <InformationCircleIcon slot="icon-start" />
+        Beta
       </Badge>
     </>
   ),
@@ -363,17 +215,17 @@ const IconOnly: Story = {
         <StarIcon slot="icon" />
       </Badge>
 
-      <Badge {...args} variant="secondary" aria-label="Notification" isIconOnly>
+      <Badge {...args} variant="accent" aria-label="Notification" isIconOnly>
         <BellIcon slot="icon" />
       </Badge>
 
-      <Badge {...args} variant="outline" aria-label="Favorite" isIconOnly>
+      <Badge {...args} variant="success" aria-label="Favorite" isIconOnly>
         <HeartIcon slot="icon" />
       </Badge>
     </>
   ),
 };
 
-export { Default, Variants, SoftVariants, FlatVariants, OutlineVariants, Sizes, Radius, WithIcon, IconOnly };
+export { Default, Variants, Sizes, Radius, WithIcon, IconOnly };
 
 export default meta;

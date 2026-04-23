@@ -24,10 +24,10 @@ const meta = {
     },
     variant: {
       control: "select",
-      options: ["primary", "secondary", "ghost", "outline", "success", "warning", "danger", "info"],
-      description: "Visual style. **Base:** TODO. **Status:** TODO. Use primary for TODO, success/danger for TODO.",
+      options: ["primary", "secondary", "accent", "success", "warning", "danger", "info"],
+      description: "Visual style. **Brand:** primary (default), secondary (neutral), accent (brand highlight). **Status:** success (positive/active), warning (caution/pending), danger (negative/error), info (neutral/notice). Use primary for main labels, success for active state, danger for error, info for notices.",
       table: {
-        type: { summary: '"primary" | "secondary" | "ghost" | "outline" | "success" | "warning" | "danger" | "info"' },
+        type: { summary: '"primary" | "secondary" | "accent" | "success" | "warning" | "danger" | "info"' },
         defaultValue: { summary: "primary" },
         category: "Style Variants",
       },
@@ -62,8 +62,7 @@ const Variants: Story = {
     <>
       <{{pascalCase name}} {...args} variant="primary">Primary</{{pascalCase name}}>
       <{{pascalCase name}} {...args} variant="secondary">Secondary</{{pascalCase name}}>
-      <{{pascalCase name}} {...args} variant="ghost">Ghost</{{pascalCase name}}>
-      <{{pascalCase name}} {...args} variant="outline">Outline</{{pascalCase name}}>
+      <{{pascalCase name}} {...args} variant="accent">Accent</{{pascalCase name}}>
       <{{pascalCase name}} {...args} variant="success">Success</{{pascalCase name}}>
       <{{pascalCase name}} {...args} variant="warning">Warning</{{pascalCase name}}>
       <{{pascalCase name}} {...args} variant="danger">Danger</{{pascalCase name}}>

@@ -62,14 +62,6 @@
     --{{dashCase name}}-fg: var(--color-secondary-foreground);
   }
 
-  .{{dashCase name}}-ghost {
-    --{{dashCase name}}-bg: transparent;
-    --{{dashCase name}}-bg-hover: var(--color-muted);
-    --{{dashCase name}}-bg-pressed: var(--color-muted-hover);
-    --{{dashCase name}}-border: transparent;
-    --{{dashCase name}}-fg: var(--color-foreground);
-  }
-
   .{{dashCase name}}-outline {
     --{{dashCase name}}-bg: transparent;
     --{{dashCase name}}-bg-hover: var(--color-muted);
@@ -78,36 +70,36 @@
     --{{dashCase name}}-fg: var(--color-foreground);
   }
 
-  .{{dashCase name}}-success {
-    --{{dashCase name}}-bg: var(--color-success);
-    --{{dashCase name}}-bg-hover: var(--color-success-hover);
-    --{{dashCase name}}-bg-pressed: var(--color-success-active);
-    --{{dashCase name}}-border: var(--color-success-border);
-    --{{dashCase name}}-fg: var(--color-success-foreground);
+  .{{dashCase name}}-ghost {
+    --{{dashCase name}}-bg: transparent;
+    --{{dashCase name}}-bg-hover: var(--color-muted);
+    --{{dashCase name}}-bg-pressed: var(--color-muted-hover);
+    --{{dashCase name}}-border: transparent;
+    --{{dashCase name}}-fg: var(--color-foreground);
   }
 
-  .{{dashCase name}}-warning {
-    --{{dashCase name}}-bg: var(--color-warning);
-    --{{dashCase name}}-bg-hover: var(--color-warning-hover);
-    --{{dashCase name}}-bg-pressed: var(--color-warning-active);
-    --{{dashCase name}}-border: var(--color-warning-border);
-    --{{dashCase name}}-fg: var(--color-warning-foreground);
+  .{{dashCase name}}-destructive {
+    --{{dashCase name}}-bg: var(--color-destructive);
+    --{{dashCase name}}-bg-hover: var(--color-destructive-hover);
+    --{{dashCase name}}-bg-pressed: var(--color-destructive-active);
+    --{{dashCase name}}-border: var(--color-destructive-border);
+    --{{dashCase name}}-fg: var(--color-destructive-foreground);
   }
 
-  .{{dashCase name}}-danger {
-    --{{dashCase name}}-bg: var(--color-danger);
-    --{{dashCase name}}-bg-hover: var(--color-danger-hover);
-    --{{dashCase name}}-bg-pressed: var(--color-danger-active);
-    --{{dashCase name}}-border: var(--color-danger-border);
-    --{{dashCase name}}-fg: var(--color-danger-foreground);
+  .{{dashCase name}}-overlay {
+    --{{dashCase name}}-bg: var(--color-on-overlay);
+    --{{dashCase name}}-bg-hover: var(--color-on-overlay-hover);
+    --{{dashCase name}}-bg-pressed: var(--color-on-overlay-active);
+    --{{dashCase name}}-border: var(--color-on-overlay-border);
+    --{{dashCase name}}-fg: var(--color-on-overlay-foreground);
   }
 
-  .{{dashCase name}}-info {
-    --{{dashCase name}}-bg: var(--color-info);
-    --{{dashCase name}}-bg-hover: var(--color-info-hover);
-    --{{dashCase name}}-bg-pressed: var(--color-info-active);
-    --{{dashCase name}}-border: var(--color-info-border);
-    --{{dashCase name}}-fg: var(--color-info-foreground);
+  .{{dashCase name}}-accent {
+    --{{dashCase name}}-bg: var(--color-accent);
+    --{{dashCase name}}-bg-hover: var(--color-accent-hover);
+    --{{dashCase name}}-bg-pressed: var(--color-accent-active);
+    --{{dashCase name}}-border: var(--color-accent-border);
+    --{{dashCase name}}-fg: var(--color-accent-foreground);
   }
 
   .{{dashCase name}} [slot="icon"],

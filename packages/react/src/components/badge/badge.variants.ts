@@ -6,36 +6,7 @@ export interface BadgeVariantsProps {
   /** Size scale. @default 'md' */
   size?: "sm" | "md" | "lg";
   /**
-   * Visual style. Base colors paired with style modifiers (-soft, -flat, -outline). @default 'primary'
+   * Visual style — status tag colors. @default 'primary'
    */
-  variant?:
-    | "primary"
-    | "secondary"
-    | "accent"
-    | "outline"
-    | "success"
-    | "warning"
-    | "danger"
-    | "info"
-    | "primary-soft"
-    | "secondary-soft"
-    | "accent-soft"
-    | "success-soft"
-    | "warning-soft"
-    | "danger-soft"
-    | "info-soft"
-    | "primary-flat"
-    | "secondary-flat"
-    | "accent-flat"
-    | "success-flat"
-    | "warning-flat"
-    | "danger-flat"
-    | "info-flat"
-    | "primary-outline"
-    | "secondary-outline"
-    | "accent-outline"
-    | "success-outline"
-    | "warning-outline"
-    | "danger-outline"
-    | "info-outline";
+  variant?: "primary" | "secondary" | "accent" | "success" | "warning" | "danger" | "info";
 }

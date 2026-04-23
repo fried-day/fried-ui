@@ -26,7 +26,7 @@ describe("{{pascalCase name}}", () => {
   });
 
   it("applies all variant classes", () => {
-    const variants = ["primary", "secondary", "ghost", "outline", "success", "warning", "danger", "info"] as const;
+    const variants = ["primary", "secondary", "outline", "ghost", "destructive", "overlay", "accent"] as const;
 
     variants.forEach((variant) => {
       const { unmount } = render(<{{pascalCase name}} variant={variant}>{variant}</{{pascalCase name}}>);
