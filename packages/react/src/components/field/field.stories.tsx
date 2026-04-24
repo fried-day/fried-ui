@@ -156,7 +156,7 @@ const Required: Story = {
   ),
 };
 
-const WithError: Story = {
+const Invalid: Story = {
   args: {
     isInvalid: true,
     children: null,
@@ -282,6 +282,6 @@ const WithTitle: Story = {
   ),
 };
 
-export { Default, Required, WithError, Disabled, Sizes, FullWidth, WithFieldSet, WithSeparator, WithTitle };
+export { Default, Sizes, Required, Invalid, Disabled, FullWidth, WithFieldSet, WithSeparator, WithTitle };
 
 export default meta;

@@ -215,6 +215,6 @@ const Shadow: Story = {
   ),
 };
 
-export { Default, Variants, OverlayVariant, Bordered, Radius, Shadow };
+export { Default, Variants, OverlayVariant, Radius, Shadow, Bordered };
 
 export default meta;

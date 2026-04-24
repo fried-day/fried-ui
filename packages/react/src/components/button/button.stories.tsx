@@ -318,11 +318,11 @@ export {
   OverlayVariant,
   Sizes,
   Radius,
-  WithIcon,
-  IconOnly,
-  FullWidth,
   Disabled,
   Pending,
+  FullWidth,
+  WithIcon,
+  IconOnly,
   RenderProps,
 };
 

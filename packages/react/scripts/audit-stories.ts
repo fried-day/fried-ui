@@ -17,6 +17,7 @@ import { Node, Project, SyntaxKind } from "ts-morph";
 import type { ObjectLiteralExpression, SourceFile } from "ts-morph";
 
 import { componentRoles } from "./_role-manifest";
+import { inferTier, tierLabels } from "./_story-tiers";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 const COMPONENTS_DIR = path.join(ROOT, "src", "components");
@@ -33,6 +34,7 @@ const WAVE_2_RULES = [
   "container-alignment",
   "enum-description",
   "required-children",
+  "story-tier-order",
 ];
 
 const ALL_RULES = [...WAVE_1_RULES, ...WAVE_2_RULES];
@@ -593,6 +595,49 @@ function auditRequiredChildren({ entry, source }: { entry: ComponentEntry; sourc
   }
 }
 
+// Rule 12 — Story tier order (monotone non-decreasing)
+function getNamedExportSequence(source: SourceFile): { line: number; name: string }[] {
+  const sequence: { line: number; name: string }[] = [];
+
+  for (const stmt of source.getStatements()) {
+    if (!Node.isExportDeclaration(stmt)) continue;
+
+    for (const named of stmt.getNamedExports()) {
+      sequence.push({ line: named.getStartLineNumber(), name: named.getName() });
+    }
+  }
+
+  return sequence;
+}
+
+function auditStoryTierOrder({ entry, source }: { entry: ComponentEntry; source: SourceFile }): void {
+  const sequence = getNamedExportSequence(source);
+  if (sequence.length === 0) return;
+
+  let previousTier = 0;
+  let previousName = "";
+
+  for (const { line, name } of sequence) {
+    const tier = inferTier(name);
+
+    if (tier >= previousTier) {
+      previousTier = tier;
+      previousName = name;
+      continue;
+    }
+
+    violations.push({
+      detail: `"${name}" (tier ${tier} — ${tierLabels[tier]}) appears after "${previousName}" (tier ${previousTier} — ${tierLabels[previousTier]}) — tier order must be non-decreasing`,
+      file: entry.kebab,
+      line,
+      rule: "story-tier-order",
+    });
+
+    previousTier = tier;
+    previousName = name;
+  }
+}
+
 function main(): void {
   const project = new Project({ skipAddingFilesFromTsConfig: true });
   const stories = listStoryFiles();
@@ -613,6 +658,7 @@ function main(): void {
     auditContainerAlignment({ entry, source });
     auditEnumDescription({ entry, source });
     auditRequiredChildren({ entry, source });
+    auditStoryTierOrder({ entry, source });
   }
 
   if (process.argv.includes("--json")) {

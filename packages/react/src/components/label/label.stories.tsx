@@ -176,6 +176,6 @@ const Disabled: Story = {
   },
 };
 
-export { Default, Required, Optional, Invalid, Disabled, Sizes, Weights };
+export { Default, Sizes, Weights, Required, Optional, Invalid, Disabled };
 
 export default meta;

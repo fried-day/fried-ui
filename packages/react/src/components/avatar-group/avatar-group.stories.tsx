@@ -483,6 +483,6 @@ const WithTextCounter: Story = {
   ),
 };
 
-export { Default, WithMax, WithTotal, WithTextCounter, Spacing, Sizes, Hoverable, WithFallback };
+export { Default, Sizes, Spacing, Hoverable, WithMax, WithTotal, WithTextCounter, WithFallback };
 
 export default meta;

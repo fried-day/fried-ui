@@ -218,14 +218,14 @@ const OverlayVariant: Story = {
 
 export {
   Default,
+  Variants,
+  OverlayVariant,
+  Sizes,
   IndicatorOnAvatar,
   NumericOverflow,
   OnButton,
-  OverlayVariant,
-  Sizes,
   StatusOnAvatar,
   TextLabel,
-  Variants,
 };
 
 export default meta;

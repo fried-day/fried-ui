@@ -272,12 +272,6 @@ const FullWidth: Story = {
 
 export {
   Default,
-  WithTrailingText,
-  WithButton,
-  WithPrefixSuffix,
-  WithPending,
-  WithIconAndButton,
-  WithTextarea,
   Variants,
   OverlayVariant,
   Sizes,
@@ -285,6 +279,12 @@ export {
   Invalid,
   Disabled,
   FullWidth,
+  WithTrailingText,
+  WithButton,
+  WithPrefixSuffix,
+  WithPending,
+  WithIconAndButton,
+  WithTextarea,
 };
 
 export default meta;

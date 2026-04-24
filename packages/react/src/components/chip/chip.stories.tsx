@@ -433,14 +433,14 @@ export {
   OverlayVariant,
   Sizes,
   Radius,
+  Selected,
+  Disabled,
+  Clickable,
   WithIcon,
   WithAvatar,
   IconOnly,
-  Selected,
-  Clickable,
   Dismissible,
   FilterChip,
-  Disabled,
 };
 
 export default meta;
