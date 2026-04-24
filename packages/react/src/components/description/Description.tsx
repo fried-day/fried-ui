@@ -6,11 +6,12 @@ import { Text as AriaText } from "react-aria-components";
 
 import { classes } from "../../utils/classes";
 
-import type { DescriptionVariantsProps } from "./description.variants";
-
-export type DescriptionProps = DescriptionVariantsProps & {
-  className?: string;
-} & Omit<ComponentPropsWithRef<typeof AriaText>, "className" | "slot">;
+export interface DescriptionProps extends Omit<ComponentPropsWithRef<typeof AriaText>, "slot"> {
+  /** Whether the description is disabled (dims and removes pointer events). @default false */
+  isDisabled?: boolean;
+  /** Size scale. @default 'md' */
+  size?: "sm" | "md" | "lg";
+}
 
 /**
  * Helper text describing a form field, paired with a Label and input.

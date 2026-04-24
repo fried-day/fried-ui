@@ -1,29 +1,37 @@
 import { describe, expect, it } from "vitest";
 
-import { getVariantsInterfaceProps } from "../helpers/ast";
+import { getComponentPropsInterfaces } from "../helpers/ast";
 import { components } from "../helpers/components";
 
-describe("Audit — variants.ts JSDoc conventions", () => {
-  it.each(components)("$kebab: every prop has a JSDoc comment", ({ kebab, variantsFile }) => {
-    const props = getVariantsInterfaceProps({ variantsFile });
-    const missing = props.filter((prop) => prop.jsDoc === undefined).map((prop) => prop.name);
+const genericPropNames = new Set(["children", "className", "ref", "as"]);
 
-    expect(missing, `${kebab}.variants.ts: props missing JSDoc: ${missing.join(", ")}`).toEqual([]);
-  });
-
-  it.each(components)("$kebab: every prop has @default annotation", ({ kebab, variantsFile }) => {
-    const props = getVariantsInterfaceProps({ variantsFile });
+describe("Audit — Props JSDoc conventions (inline in Component.tsx)", () => {
+  it.each(components)("$kebab: every modifier prop has a JSDoc comment", ({ kebab, componentFile }) => {
+    const props = getComponentPropsInterfaces({ componentFile });
 
     const missing = props
+      .filter((prop) => !genericPropNames.has(prop.name))
+      .filter((prop) => prop.jsDoc === undefined)
+      .map((prop) => prop.name);
+
+    expect(missing, `${kebab}: props missing JSDoc: ${missing.join(", ")}`).toEqual([]);
+  });
+
+  it.each(components)("$kebab: every documented modifier prop has @default annotation", ({ kebab, componentFile }) => {
+    const props = getComponentPropsInterfaces({ componentFile });
+
+    const missing = props
+      .filter((prop) => !genericPropNames.has(prop.name))
+      .filter((prop) => !prop.name.startsWith("on"))
       .filter((prop) => prop.jsDoc !== undefined)
       .filter((prop) => !prop.jsDoc!.getTags().some((tag) => tag.getTagName() === "default"))
       .map((prop) => prop.name);
 
-    expect(missing, `${kebab}.variants.ts: props missing @default: ${missing.join(", ")}`).toEqual([]);
+    expect(missing, `${kebab}: props missing @default: ${missing.join(", ")}`).toEqual([]);
   });
 
-  it.each(components)("$kebab: boolean props start with 'Whether the'", ({ kebab, variantsFile }) => {
-    const props = getVariantsInterfaceProps({ variantsFile });
+  it.each(components)("$kebab: boolean props start with 'Whether the'", ({ kebab, componentFile }) => {
+    const props = getComponentPropsInterfaces({ componentFile });
 
     const offenders = props
       .filter((prop) => prop.isBoolean && prop.jsDoc !== undefined)
@@ -32,21 +40,24 @@ describe("Audit — variants.ts JSDoc conventions", () => {
 
     expect(
       offenders,
-      `${kebab}.variants.ts: boolean props must start with "Whether the..." per architecture.md:\n${offenders.join("\n")}`,
+      `${kebab}: boolean props must start with "Whether the..." per rules/architecture.md:\n${offenders.join("\n")}`,
     ).toEqual([]);
   });
 
-  it.each(components)("$kebab: no @example in variants.ts (belongs in Storybook)", ({ kebab, variantsFile }) => {
-    const props = getVariantsInterfaceProps({ variantsFile });
+  it.each(components)(
+    "$kebab: no @example in Component.tsx Props (belongs in Storybook)",
+    ({ kebab, componentFile }) => {
+      const props = getComponentPropsInterfaces({ componentFile });
 
-    const offenders = props
-      .filter((prop) => prop.jsDoc !== undefined)
-      .filter((prop) => prop.jsDoc!.getTags().some((tag) => tag.getTagName() === "example"))
-      .map((prop) => prop.name);
+      const offenders = props
+        .filter((prop) => prop.jsDoc !== undefined)
+        .filter((prop) => prop.jsDoc!.getTags().some((tag) => tag.getTagName() === "example"))
+        .map((prop) => prop.name);
 
-    expect(
-      offenders,
-      `${kebab}.variants.ts: props have @example — examples belong in Storybook: ${offenders.join(", ")}`,
-    ).toEqual([]);
-  });
+      expect(
+        offenders,
+        `${kebab}: props have @example — examples belong in Storybook: ${offenders.join(", ")}`,
+      ).toEqual([]);
+    },
+  );
 });

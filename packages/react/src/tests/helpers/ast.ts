@@ -12,8 +12,8 @@ interface LoadSourceParams {
   file: string;
 }
 
-interface VariantsFileParams {
-  variantsFile: string;
+interface ComponentFileParams {
+  componentFile: string;
 }
 
 interface FindComponentParams {
@@ -59,14 +59,16 @@ function loadSource({ file }: Readonly<LoadSourceParams>): SourceFile | undefine
   return project.addSourceFileAtPath(file);
 }
 
-function getVariantsInterfaceProps({ variantsFile }: Readonly<VariantsFileParams>): VariantPropInfo[] {
-  const source = loadSource({ file: variantsFile });
+function getComponentPropsInterfaces({ componentFile }: Readonly<ComponentFileParams>): VariantPropInfo[] {
+  const source = loadSource({ file: componentFile });
 
   if (!source) return [];
 
   const props: VariantPropInfo[] = [];
 
   for (const interfaceDecl of source.getInterfaces()) {
+    if (!interfaceDecl.getName().endsWith("Props")) continue;
+
     for (const propNode of interfaceDecl.getProperties()) {
       const typeNode = propNode.getTypeNode();
       const typeText = typeNode?.getText() ?? "";
@@ -264,10 +266,10 @@ export {
   findMetaObject,
   getAllStringLiterals,
   getClassNameStringLiterals,
+  getComponentPropsInterfaces,
   getComponentVariableDeclaration,
   getMetaArgTypeDescriptions,
   getStoryNames,
-  getVariantsInterfaceProps,
   isComponentDisplayNameAssignment,
   loadSource,
   metaHasPath,

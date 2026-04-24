@@ -1,0 +1,64 @@
+import { createRef } from "react";
+
+import { render } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
+
+import { {{pascalCase name}}, {{pascalCase name}}Item } from "./{{pascalCase name}}";
+
+describe("{{pascalCase name}} (wrapper)", () => {
+  it("emits only the base class with no modifier props", () => {
+    const { container } = render(<{{pascalCase name}}>anchor</{{pascalCase name}}>);
+    const el = container.querySelector("[data-slot='{{dashCase name}}']");
+    expect(el?.className).toBe("{{dashCase name}}");
+  });
+
+  it("merges custom className", () => {
+    const { container } = render(<{{pascalCase name}} className="extra">anchor</{{pascalCase name}}>);
+    const el = container.querySelector("[data-slot='{{dashCase name}}']");
+    expect(el?.className).toContain("extra");
+  });
+
+  it("forwards ref", () => {
+    const ref = createRef<HTMLDivElement>();
+    render(<{{pascalCase name}} ref={ref}>anchor</{{pascalCase name}}>);
+    expect(ref.current).toBeInstanceOf(HTMLDivElement);
+  });
+
+  it("sets displayName", () => {
+    expect({{pascalCase name}}.displayName).toBe("{{pascalCase name}}");
+  });
+});
+
+describe("{{pascalCase name}}Item", () => {
+  it("emits only the base class with no modifier props", () => {
+    const { container } = render(<{{pascalCase name}}Item>x</{{pascalCase name}}Item>);
+    const el = container.querySelector("[data-slot='{{dashCase name}}-item']");
+    expect(el?.className).toBe("{{dashCase name}}-item");
+  });
+
+  it("applies variant classes directly on the subpart", () => {
+    const variants = ["primary", "secondary", "accent", "success", "warning", "danger", "info"] as const;
+
+    variants.forEach((variant) => {
+      const { container, unmount } = render(<{{pascalCase name}}Item variant={variant}>x</{{pascalCase name}}Item>);
+      const el = container.querySelector("[data-slot='{{dashCase name}}-item']");
+      expect(el?.className).toContain(`{{dashCase name}}-item-${variant}`);
+      unmount();
+    });
+  });
+
+  it("applies size classes directly on the subpart", () => {
+    const sizes = ["sm", "md", "lg"] as const;
+
+    sizes.forEach((size) => {
+      const { container, unmount } = render(<{{pascalCase name}}Item size={size}>x</{{pascalCase name}}Item>);
+      const el = container.querySelector("[data-slot='{{dashCase name}}-item']");
+      expect(el?.className).toContain(`{{dashCase name}}-item-size-${size}`);
+      unmount();
+    });
+  });
+
+  it("sets displayName", () => {
+    expect({{pascalCase name}}Item.displayName).toBe("{{pascalCase name}}Item");
+  });
+});

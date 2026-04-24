@@ -1,0 +1,64 @@
+"use client";
+
+import type { ComponentPropsWithRef } from "react";
+
+import { classes } from "../../utils/classes";
+
+export type {{pascalCase name}}Props = ComponentPropsWithRef<"div">;
+
+/**
+ * TODO: One-line description of what {{pascalCase name}} does. It acts as a positioning or
+ * composition wrapper for its named subparts (e.g. {{pascalCase name}}Item). Compose with subparts
+ * via flat named imports — never dot notation.
+ */
+const {{pascalCase name}} = (props: Readonly<{{pascalCase name}}Props>) => {
+  const { children, className, ref, ...rest } = props;
+
+  const wrapperClassName = classes({
+    block: "{{dashCase name}}",
+    modifiers: {},
+    className,
+  });
+
+  return (
+    <div data-slot="{{dashCase name}}" className={wrapperClassName} ref={ref} {...rest}>
+      {children}
+    </div>
+  );
+};
+
+{{pascalCase name}}.displayName = "{{pascalCase name}}";
+
+export interface {{pascalCase name}}ItemProps extends ComponentPropsWithRef<"div"> {
+  /** Size scale. @default 'md' */
+  size?: "sm" | "md" | "lg";
+  /** Visual style. @default 'primary' */
+  variant?: "primary" | "secondary" | "accent" | "success" | "warning" | "danger" | "info";
+}
+
+/**
+ * TODO: One-line description of what {{pascalCase name}}Item does. Rendered inside `{{pascalCase name}}`
+ * and carries its own modifier props (variant, size) — modifiers live on the subpart that renders them.
+ */
+const {{pascalCase name}}Item = (props: Readonly<{{pascalCase name}}ItemProps>) => {
+  const { children, className, ref, size, variant, ...rest } = props;
+
+  const itemClassName = classes({
+    block: "{{dashCase name}}-item",
+    modifiers: {
+      variant,
+      size,
+    },
+    className,
+  });
+
+  return (
+    <div data-slot="{{dashCase name}}-item" className={itemClassName} ref={ref} {...rest}>
+      {children}
+    </div>
+  );
+};
+
+{{pascalCase name}}Item.displayName = "{{pascalCase name}}Item";
+
+export { {{pascalCase name}}, {{pascalCase name}}Item };

@@ -6,13 +6,19 @@ import { TextArea as AriaTextArea } from "react-aria-components";
 
 import { classes } from "../../utils/classes";
 
-import type { TextareaVariantsProps } from "./textarea.variants";
-
-type AriaTextAreaProps = Omit<ComponentPropsWithRef<typeof AriaTextArea>, "className" | "children" | "size">;
-
-export type TextareaProps = TextareaVariantsProps & {
+export interface TextareaProps extends Omit<ComponentPropsWithRef<typeof AriaTextArea>, "className" | "size"> {
   className?: string;
-} & AriaTextAreaProps;
+  /** Whether the textarea stretches to fill its container width. @default false */
+  isFullWidth?: boolean;
+  /** Border radius scale. @default 'md' */
+  radius?: "none" | "sm" | "md" | "lg" | "full";
+  /** Resize behavior. @default 'vertical' */
+  resize?: "none" | "vertical" | "horizontal" | "both";
+  /** Size scale. @default 'md' */
+  size?: "sm" | "md" | "lg";
+  /** Visual style. @default 'primary' */
+  variant?: "primary" | "secondary" | "overlay";
+}
 
 /**
  * A styled multiline text input primitive. Use native HTML attrs (`disabled`, `readOnly`, `required`, `aria-invalid`) for state.

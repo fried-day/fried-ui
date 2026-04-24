@@ -1,30 +1,21 @@
 "use client";
 
-import type { ComponentPropsWithRef, ReactNode } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { Input as AriaInput, TextArea as AriaTextArea } from "react-aria-components";
 
 import { classes } from "../../utils/classes";
 
-import type { InputGroupAddonVariantsProps, InputGroupVariantsProps } from "./input-group.variants";
-
-export type InputGroupProps = InputGroupVariantsProps & {
-  children?: ReactNode;
-  className?: string;
-} & Omit<ComponentPropsWithRef<"div">, "className" | "children">;
-
-export type InputGroupAddonProps = InputGroupAddonVariantsProps & {
-  children?: ReactNode;
-  className?: string;
-} & Omit<ComponentPropsWithRef<"span">, "className" | "children">;
-
-export type InputGroupInputProps = Omit<ComponentPropsWithRef<typeof AriaInput>, "className" | "children"> & {
-  className?: string;
-};
-
-export type InputGroupTextareaProps = Omit<ComponentPropsWithRef<typeof AriaTextArea>, "className" | "children"> & {
-  className?: string;
-};
+export interface InputGroupProps extends ComponentPropsWithRef<"div"> {
+  /** Whether the group stretches to fill its container width. @default false */
+  isFullWidth?: boolean;
+  /** Border radius scale. @default 'md' */
+  radius?: "none" | "sm" | "md" | "lg" | "full";
+  /** Size scale. @default 'md' */
+  size?: "sm" | "md" | "lg";
+  /** Visual style. @default 'primary' */
+  variant?: "primary" | "secondary" | "overlay";
+}
 
 /**
  * A wrapper that combines an input with addons (icons, buttons, text) in a single bordered row.
@@ -53,6 +44,11 @@ const InputGroup = (props: Readonly<InputGroupProps>) => {
 
 InputGroup.displayName = "InputGroup";
 
+export interface InputGroupAddonProps extends ComponentPropsWithRef<"span"> {
+  /** Position of the addon relative to the input. @default 'inline-start' */
+  align?: "inline-start" | "inline-end" | "block-start" | "block-end";
+}
+
 /**
  * An addon slot inside InputGroup for icons, text, or action buttons.
  * Position via the `align` prop. Children render directly — put `<SearchIcon />`, `"12 results"`, or `<Button size="sm" variant="ghost">Go</Button>` inside.
@@ -77,6 +73,10 @@ const InputGroupAddon = (props: Readonly<InputGroupAddonProps>) => {
 
 InputGroupAddon.displayName = "InputGroupAddon";
 
+export interface InputGroupInputProps extends Omit<ComponentPropsWithRef<typeof AriaInput>, "className"> {
+  className?: string;
+}
+
 /**
  * A plain `<input>` styled for use inside InputGroup.
  * Ships without its own border, background, or ring so the InputGroup wrapper owns the visual chrome. Use `Input` standalone for bare inputs outside a group.
@@ -94,6 +94,10 @@ const InputGroupInput = (props: Readonly<InputGroupInputProps>) => {
 };
 
 InputGroupInput.displayName = "InputGroupInput";
+
+export interface InputGroupTextareaProps extends Omit<ComponentPropsWithRef<typeof AriaTextArea>, "className"> {
+  className?: string;
+}
 
 /**
  * A plain `<textarea>` styled for use inside InputGroup.

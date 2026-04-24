@@ -14,24 +14,16 @@ import { classes } from "../../utils/classes";
 import { FieldContext } from "./field-context";
 import { useFieldState } from "./use-field-state";
 
-import type {
-  FieldDescriptionVariantsProps,
-  FieldErrorVariantsProps,
-  FieldGroupVariantsProps,
-  FieldLabelVariantsProps,
-  FieldLegendVariantsProps,
-  FieldSeparatorVariantsProps,
-  FieldSetVariantsProps,
-  FieldTitleVariantsProps,
-  FieldVariantsProps,
-} from "./field.variants";
-
-type AriaTextFieldProps = Omit<ComponentPropsWithRef<typeof AriaTextField>, "className" | "children">;
-
-export type FieldProps = FieldVariantsProps & {
+export interface FieldProps extends Omit<ComponentPropsWithRef<typeof AriaTextField>, "className" | "children"> {
   children: ReactNode;
   className?: string;
-} & AriaTextFieldProps;
+  /** Whether the field stretches to fill its container width. @default false */
+  isFullWidth?: boolean;
+  /** Layout orientation of children. 'responsive' renders vertical on mobile, horizontal on md+. @default 'vertical' */
+  orientation?: "vertical" | "horizontal" | "responsive";
+  /** Wrapper gap scale between stacked slots. @default 'md' */
+  size?: "sm" | "md" | "lg";
+}
 
 /**
  * A container for a single labeled form field. Wraps a React Aria TextField so child `FieldLabel`, `FieldDescription`, and `FieldError` slots pick up `isDisabled`/`isInvalid`/`isReadOnly`/`isRequired` via context.
@@ -69,9 +61,20 @@ Field.displayName = "Field";
 
 /* FieldLabel */
 
-export type FieldLabelProps = FieldLabelVariantsProps & {
-  className?: string;
-} & Omit<ComponentPropsWithRef<typeof AriaLabel>, "className">;
+export interface FieldLabelProps extends ComponentPropsWithRef<typeof AriaLabel> {
+  /** Whether the label is disabled (dims and removes pointer events). @default false */
+  isDisabled?: boolean;
+  /** Whether the label is in error state (text in danger color). @default false */
+  isInvalid?: boolean;
+  /** Whether the field is required (shows red asterisk). @default false */
+  isRequired?: boolean;
+  /** Text shown in muted gray when field is NOT required (e.g. '(Optional)'). Ignored when isRequired is true. @default undefined */
+  optionalMessage?: string;
+  /** Size scale. @default 'md' */
+  size?: "sm" | "md" | "lg";
+  /** Font weight. @default 'medium' */
+  weight?: "normal" | "medium" | "semibold";
+}
 
 /**
  * A label identifying a form field, paired with `htmlFor` or auto-linked via `Field` slot context.
@@ -111,9 +114,12 @@ FieldLabel.displayName = "FieldLabel";
 
 /* FieldDescription */
 
-export type FieldDescriptionProps = FieldDescriptionVariantsProps & {
-  className?: string;
-} & Omit<ComponentPropsWithRef<typeof AriaText>, "className" | "slot">;
+export interface FieldDescriptionProps extends Omit<ComponentPropsWithRef<typeof AriaText>, "slot"> {
+  /** Whether the description is disabled (dims and removes pointer events). @default false */
+  isDisabled?: boolean;
+  /** Size scale. @default 'md' */
+  size?: "sm" | "md" | "lg";
+}
 
 /**
  * Helper text describing a form field, paired with a FieldLabel and input.
@@ -142,9 +148,13 @@ FieldDescription.displayName = "FieldDescription";
 
 /* FieldError */
 
-export type FieldErrorProps = FieldErrorVariantsProps & {
+export interface FieldErrorProps extends Omit<ComponentPropsWithRef<typeof AriaFieldError>, "className"> {
   className?: string;
-} & Omit<ComponentPropsWithRef<typeof AriaFieldError>, "className">;
+  /** Whether the field error is disabled. @default false */
+  isDisabled?: boolean;
+  /** Size scale. @default 'md' */
+  size?: "sm" | "md" | "lg";
+}
 
 /**
  * An error message for a form field. Renders inside Field and auto-shows when the field is invalid.
@@ -173,10 +183,10 @@ FieldError.displayName = "FieldError";
 
 /* FieldSet */
 
-export type FieldSetProps = FieldSetVariantsProps & {
-  children?: ReactNode;
-  className?: string;
-} & Omit<ComponentPropsWithRef<"fieldset">, "className" | "children">;
+export interface FieldSetProps extends ComponentPropsWithRef<"fieldset"> {
+  /** Visual style. @default 'default' */
+  variant?: "default" | "bordered";
+}
 
 /**
  * A semantic grouping of related fields using the HTML `<fieldset>` element.
@@ -204,10 +214,10 @@ FieldSet.displayName = "FieldSet";
 
 /* FieldLegend */
 
-export type FieldLegendProps = FieldLegendVariantsProps & {
-  children?: ReactNode;
-  className?: string;
-} & Omit<ComponentPropsWithRef<"legend">, "className" | "children">;
+export interface FieldLegendProps extends ComponentPropsWithRef<"legend"> {
+  /** Size scale. @default 'md' */
+  size?: "sm" | "md" | "lg";
+}
 
 /**
  * The accessible title for a `FieldSet`. Wraps the HTML `<legend>` element.
@@ -234,10 +244,12 @@ FieldLegend.displayName = "FieldLegend";
 
 /* FieldGroup */
 
-export type FieldGroupProps = FieldGroupVariantsProps & {
-  children?: ReactNode;
-  className?: string;
-} & Omit<ComponentPropsWithRef<"div">, "className" | "children">;
+export interface FieldGroupProps extends ComponentPropsWithRef<"div"> {
+  /** Layout orientation. 'responsive' renders vertical on mobile, horizontal on md+. @default 'vertical' */
+  orientation?: "vertical" | "horizontal" | "responsive";
+  /** Size scale (gap). @default 'md' */
+  size?: "sm" | "md" | "lg";
+}
 
 /**
  * A layout wrapper for stacking multiple `Field` children.
@@ -266,10 +278,12 @@ FieldGroup.displayName = "FieldGroup";
 
 /* FieldTitle */
 
-export type FieldTitleProps = FieldTitleVariantsProps & {
-  children?: ReactNode;
-  className?: string;
-} & Omit<ComponentPropsWithRef<"h3">, "className" | "children">;
+export interface FieldTitleProps extends ComponentPropsWithRef<"h3"> {
+  /** HTML heading level. @default 'h3' */
+  as?: "h2" | "h3" | "h4";
+  /** Size scale. @default 'md' */
+  size?: "sm" | "md" | "lg";
+}
 
 /**
  * A section heading for form groups. Wraps a configurable heading element (`h2`/`h3`/`h4`) for non-fieldset contexts where `FieldLegend` isn't appropriate.
@@ -298,9 +312,10 @@ FieldTitle.displayName = "FieldTitle";
 
 /* FieldSeparator */
 
-export type FieldSeparatorProps = FieldSeparatorVariantsProps & {
-  className?: string;
-} & Omit<ComponentPropsWithRef<"hr">, "className" | "children">;
+export interface FieldSeparatorProps extends ComponentPropsWithRef<"hr"> {
+  /** Line style. @default 'solid' */
+  variant?: "solid" | "dashed" | "dotted";
+}
 
 /**
  * A visual divider between form groups. Wraps a semantic `<hr>` element.

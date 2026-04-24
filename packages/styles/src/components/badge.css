@@ -1,5 +1,9 @@
 @layer components {
   .badge {
+    @apply relative inline-flex;
+  }
+
+  .badge-indicator {
     @apply absolute top-0 right-0 z-(--z-popover);
     @apply inline-flex items-center justify-center;
     @apply leading-none font-medium whitespace-nowrap select-none;
@@ -9,105 +13,217 @@
     --badge-bg: var(--color-danger);
     --badge-border: var(--color-danger-border);
     --badge-fg: var(--color-danger-foreground);
+    --badge-inset-offset: 14.6%;
 
     @apply bg-(--badge-bg) text-(--badge-fg);
     @apply border border-(--badge-border);
-    @apply h-6 min-w-6 rounded-full px-1.5 text-xs;
+    @apply h-5 min-w-5 rounded-full px-1.5 text-xs;
   }
 
-  .badge-primary {
+  .badge-indicator-primary {
     --badge-bg: var(--color-primary);
     --badge-border: var(--color-primary-border);
     --badge-fg: var(--color-primary-foreground);
   }
 
-  .badge-secondary {
+  .badge-indicator-secondary {
     --badge-bg: var(--color-secondary);
     --badge-border: var(--color-secondary-border);
     --badge-fg: var(--color-secondary-foreground);
   }
 
-  .badge-accent {
+  .badge-indicator-accent {
     --badge-bg: var(--color-accent);
     --badge-border: var(--color-accent-border);
     --badge-fg: var(--color-accent-foreground);
   }
 
-  .badge-success {
+  .badge-indicator-success {
     --badge-bg: var(--color-success);
     --badge-border: var(--color-success-border);
     --badge-fg: var(--color-success-foreground);
   }
 
-  .badge-warning {
+  .badge-indicator-warning {
     --badge-bg: var(--color-warning);
     --badge-border: var(--color-warning-border);
     --badge-fg: var(--color-warning-foreground);
   }
 
-  .badge-danger {
+  .badge-indicator-danger {
     --badge-bg: var(--color-danger);
     --badge-border: var(--color-danger-border);
     --badge-fg: var(--color-danger-foreground);
   }
 
-  .badge-info {
+  .badge-indicator-info {
     --badge-bg: var(--color-info);
     --badge-border: var(--color-info-border);
     --badge-fg: var(--color-info-foreground);
   }
 
-  .badge-overlay {
+  .badge-indicator-overlay {
     --badge-bg: var(--color-on-overlay);
     --badge-border: var(--color-on-overlay-border);
     --badge-fg: var(--color-on-overlay-foreground);
   }
 
-  .badge-size-xs {
-    @apply h-4 min-w-4 px-1;
+  .badge-indicator-size-xs {
+    @apply h-3.5 min-w-3.5 px-1 text-2xs;
   }
 
-  .badge-size-sm {
-    @apply h-5 min-w-5 px-1;
+  .badge-indicator-size-sm {
+    @apply h-4 min-w-4 px-1 text-2xs;
   }
 
-  .badge-size-md {
-    @apply h-6 min-w-6 px-1.5;
+  .badge-indicator-size-md {
+    @apply h-5 min-w-5 px-1.5 text-xs;
   }
 
-  .badge-placement-top-right {
+  .badge-indicator-placement-top-right {
     @apply top-0 right-0 bottom-auto left-auto;
     @apply translate-x-1/2 -translate-y-1/2;
   }
 
-  .badge-placement-top-left {
+  .badge-indicator-placement-top-left {
     @apply top-0 right-auto bottom-auto left-0;
     @apply -translate-x-1/2 -translate-y-1/2;
   }
 
-  .badge-placement-bottom-right {
+  .badge-indicator-placement-bottom-right {
     @apply top-auto right-0 bottom-0 left-auto;
     @apply translate-x-1/2 translate-y-1/2;
   }
 
-  .badge-placement-bottom-left {
+  .badge-indicator-placement-bottom-left {
     @apply top-auto right-auto bottom-0 left-0;
     @apply -translate-x-1/2 translate-y-1/2;
   }
 
-  .badge-is-dot {
-    @apply size-2 min-w-0 overflow-hidden p-0;
+  .badge-indicator-is-inset.badge-indicator-placement-top-right {
+    @apply top-(--badge-inset-offset) right-(--badge-inset-offset) bottom-auto left-auto;
   }
 
-  .badge-is-dot.badge-size-sm {
-    @apply size-1.5;
+  .badge-indicator-is-inset.badge-indicator-placement-top-left {
+    @apply top-(--badge-inset-offset) right-auto bottom-auto left-(--badge-inset-offset);
   }
 
-  .badge-is-dot.badge-size-xs {
+  .badge-indicator-is-inset.badge-indicator-placement-bottom-right {
+    @apply top-auto right-(--badge-inset-offset) bottom-(--badge-inset-offset) left-auto;
+  }
+
+  .badge-indicator-is-inset.badge-indicator-placement-bottom-left {
+    @apply top-auto right-auto bottom-(--badge-inset-offset) left-(--badge-inset-offset);
+  }
+
+  .badge-indicator-is-inset {
+    @apply top-(--badge-inset-offset) right-(--badge-inset-offset) bottom-auto left-auto;
+  }
+
+  .badge-status {
+    @apply absolute right-0 bottom-0 z-(--z-popover);
+    @apply block rounded-full;
+    @apply translate-x-1/2 translate-y-1/2;
+    @apply transition duration-(--duration-hover) ease-out motion-reduce:transition-none;
+
+    --badge-bg: var(--color-success);
+    --badge-border: var(--color-success-border);
+    --badge-inset-offset: 14.6%;
+
+    @apply bg-(--badge-bg);
+    @apply border border-(--badge-border);
+    @apply size-2;
+  }
+
+  .badge-status-primary {
+    --badge-bg: var(--color-primary);
+    --badge-border: var(--color-primary-border);
+  }
+
+  .badge-status-secondary {
+    --badge-bg: var(--color-secondary);
+    --badge-border: var(--color-secondary-border);
+  }
+
+  .badge-status-accent {
+    --badge-bg: var(--color-accent);
+    --badge-border: var(--color-accent-border);
+  }
+
+  .badge-status-success {
+    --badge-bg: var(--color-success);
+    --badge-border: var(--color-success-border);
+  }
+
+  .badge-status-warning {
+    --badge-bg: var(--color-warning);
+    --badge-border: var(--color-warning-border);
+  }
+
+  .badge-status-danger {
+    --badge-bg: var(--color-danger);
+    --badge-border: var(--color-danger-border);
+  }
+
+  .badge-status-info {
+    --badge-bg: var(--color-info);
+    --badge-border: var(--color-info-border);
+  }
+
+  .badge-status-overlay {
+    --badge-bg: var(--color-on-overlay);
+    --badge-border: var(--color-on-overlay-border);
+  }
+
+  .badge-status-size-xs {
     @apply size-1;
   }
 
-  .badge-is-standalone {
-    @apply static translate-x-0 translate-y-0;
+  .badge-status-size-sm {
+    @apply size-1.5;
+  }
+
+  .badge-status-size-md {
+    @apply size-2;
+  }
+
+  .badge-status-placement-top-right {
+    @apply top-0 right-0 bottom-auto left-auto;
+    @apply translate-x-1/2 -translate-y-1/2;
+  }
+
+  .badge-status-placement-top-left {
+    @apply top-0 right-auto bottom-auto left-0;
+    @apply -translate-x-1/2 -translate-y-1/2;
+  }
+
+  .badge-status-placement-bottom-right {
+    @apply top-auto right-0 bottom-0 left-auto;
+    @apply translate-x-1/2 translate-y-1/2;
+  }
+
+  .badge-status-placement-bottom-left {
+    @apply top-auto right-auto bottom-0 left-0;
+    @apply -translate-x-1/2 translate-y-1/2;
+  }
+
+  .badge-status-is-inset.badge-status-placement-top-right {
+    @apply top-(--badge-inset-offset) right-(--badge-inset-offset) bottom-auto left-auto;
+  }
+
+  .badge-status-is-inset.badge-status-placement-top-left {
+    @apply top-(--badge-inset-offset) right-auto bottom-auto left-(--badge-inset-offset);
+  }
+
+  .badge-status-is-inset.badge-status-placement-bottom-right {
+    @apply top-auto right-(--badge-inset-offset) bottom-(--badge-inset-offset) left-auto;
+  }
+
+  .badge-status-is-inset.badge-status-placement-bottom-left {
+    @apply top-auto right-auto bottom-(--badge-inset-offset) left-(--badge-inset-offset);
+  }
+
+  .badge-status-is-inset {
+    @apply top-auto right-(--badge-inset-offset) bottom-(--badge-inset-offset) left-auto;
   }
 }

@@ -21,7 +21,7 @@ describe("CSS audit — index.css imports", () => {
 
     expect(
       missing,
-      `Component CSS files exist but are NOT @imported in packages/styles/src/components/index.css. Consumers loading the barrel will miss these styles — size/variant/radius modifier classes will render without Tailwind-compiled rules and tests pass while visual styles silently break.\n\nMissing imports:\n${missing.map((f) => `  @import "./${f}";`).join("\n")}`,
+      `Component CSS files exist but are NOT @imported in packages/styles/src/components/index.css. Consumers loading the barrel will miss these styles — size/variant/radius modifier classes will render without Tailwind-compiled rules and tests pass while visual styles silently break.\n\nMissing imports:\n${missing.map((file) => `  @import "./${file}";`).join("\n")}`,
     ).toEqual([]);
   });
 });

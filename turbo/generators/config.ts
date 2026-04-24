@@ -8,11 +8,6 @@ const TEMPLATE_FILES = [
     file: "Component.tsx.hbs",
   },
   {
-    ext: "variants",
-    path: "packages/react/src/components/{{dashCase name}}/{{dashCase name}}.variants.ts",
-    file: "component.variants.ts.hbs",
-  },
-  {
     ext: "test",
     path: "packages/react/src/components/{{dashCase name}}/{{dashCase name}}.test.tsx",
     file: "component.test.tsx.hbs",
@@ -49,7 +44,7 @@ function createActions(templateDir: string): PlopTypes.ActionType[] {
 
 function generator(plop: PlopTypes.NodePlopAPI): void {
   plop.setGenerator("display-component", {
-    description: "Display-only component (native HTML element)",
+    description: "Display-only component with inline `export interface {Name}Props` (single component)",
     prompts: [
       {
         type: "input",
@@ -61,7 +56,7 @@ function generator(plop: PlopTypes.NodePlopAPI): void {
   });
 
   plop.setGenerator("interactive-component", {
-    description: "Interactive component (wraps React Aria)",
+    description: "Interactive component wrapping React Aria with inline `export interface {Name}Props`",
     prompts: [
       {
         type: "input",
@@ -70,6 +65,30 @@ function generator(plop: PlopTypes.NodePlopAPI): void {
       },
     ],
     actions: createActions("interactive-component"),
+  });
+
+  plop.setGenerator("display-compound-component", {
+    description: "Display compound with wrapper + named subpart (Badge + BadgeIndicator, Field + FieldLabel patterns)",
+    prompts: [
+      {
+        type: "input",
+        name: "name",
+        message: "Parent component name (PascalCase, e.g. Badge — subpart emits as {Name}Item):",
+      },
+    ],
+    actions: createActions("display-compound-component"),
+  });
+
+  plop.setGenerator("interactive-compound-component", {
+    description: "Interactive compound with wrapper + named subpart wrapping React Aria",
+    prompts: [
+      {
+        type: "input",
+        name: "name",
+        message: "Parent component name (PascalCase, e.g. Menu — subpart emits as {Name}Item):",
+      },
+    ],
+    actions: createActions("interactive-compound-component"),
   });
 }
 

@@ -6,11 +6,13 @@ import { FieldError as AriaFieldError } from "react-aria-components";
 
 import { classes } from "../../utils/classes";
 
-import type { FieldErrorVariantsProps } from "./field-error.variants";
-
-export type FieldErrorProps = FieldErrorVariantsProps & {
+export interface FieldErrorProps extends Omit<ComponentPropsWithRef<typeof AriaFieldError>, "className"> {
   className?: string;
-} & Omit<ComponentPropsWithRef<typeof AriaFieldError>, "className">;
+  /** Whether the field error is disabled. @default false */
+  isDisabled?: boolean;
+  /** Size scale. @default 'md' */
+  size?: "sm" | "md" | "lg";
+}
 
 /**
  * An error message for a form field. Renders inside TextField (or similar) and auto-shows when the field is invalid.

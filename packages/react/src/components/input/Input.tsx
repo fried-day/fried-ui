@@ -6,13 +6,17 @@ import { Input as AriaInput } from "react-aria-components";
 
 import { classes } from "../../utils/classes";
 
-import type { InputVariantsProps } from "./input.variants";
-
-type AriaInputProps = Omit<ComponentPropsWithRef<typeof AriaInput>, "className" | "children" | "size">;
-
-export type InputProps = InputVariantsProps & {
+export interface InputProps extends Omit<ComponentPropsWithRef<typeof AriaInput>, "className" | "size"> {
   className?: string;
-} & AriaInputProps;
+  /** Whether the input stretches to fill its container width. @default false */
+  isFullWidth?: boolean;
+  /** Border radius scale. @default 'md' */
+  radius?: "none" | "sm" | "md" | "lg" | "full";
+  /** Size scale. @default 'md' */
+  size?: "sm" | "md" | "lg";
+  /** Visual style. @default 'primary' */
+  variant?: "primary" | "secondary" | "overlay";
+}
 
 /**
  * A styled text input primitive. Use native HTML attrs (`disabled`, `readOnly`, `required`, `aria-invalid`) for state.

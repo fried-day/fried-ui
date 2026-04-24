@@ -1,0 +1,69 @@
+import type { Meta, StoryObj } from "@storybook/react";
+
+import { {{pascalCase name}}, {{pascalCase name}}Item } from "./{{pascalCase name}}";
+
+const meta: Meta<typeof {{pascalCase name}}> = {
+  title: "Components/{{pascalCase name}}",
+  component: {{pascalCase name}},
+  tags: ["autodocs"],
+  parameters: {
+    layout: "centered",
+  },
+  argTypes: {
+    children: {
+      control: false,
+      description: "{{pascalCase name}}Item subparts and any anchor content the wrapper positions.",
+      type: { name: "other", value: "ReactNode", required: true },
+      table: {
+        type: { summary: "ReactNode" },
+        category: "Children",
+      },
+    },
+    className: {
+      control: "text",
+      description: "Additional CSS classes on the {{pascalCase name}} wrapper",
+      table: {
+        type: { summary: "string" },
+        category: "Styling",
+      },
+    },
+  },
+} satisfies Meta<typeof {{pascalCase name}}>;
+
+type Story = StoryObj<typeof meta>;
+
+const Default: Story = {
+  render: (): React.JSX.Element => (
+    <{{pascalCase name}}>
+      <{{pascalCase name}}Item>Item</{{pascalCase name}}Item>
+    </{{pascalCase name}}>
+  ),
+};
+
+const Variants: Story = {
+  render: (): React.JSX.Element => (
+    <{{pascalCase name}}>
+      <{{pascalCase name}}Item variant="primary">Primary</{{pascalCase name}}Item>
+      <{{pascalCase name}}Item variant="secondary">Secondary</{{pascalCase name}}Item>
+      <{{pascalCase name}}Item variant="accent">Accent</{{pascalCase name}}Item>
+      <{{pascalCase name}}Item variant="success">Success</{{pascalCase name}}Item>
+      <{{pascalCase name}}Item variant="warning">Warning</{{pascalCase name}}Item>
+      <{{pascalCase name}}Item variant="danger">Danger</{{pascalCase name}}Item>
+      <{{pascalCase name}}Item variant="info">Info</{{pascalCase name}}Item>
+    </{{pascalCase name}}>
+  ),
+};
+
+const Sizes: Story = {
+  render: (): React.JSX.Element => (
+    <{{pascalCase name}}>
+      <{{pascalCase name}}Item size="sm">Small</{{pascalCase name}}Item>
+      <{{pascalCase name}}Item size="md">Medium</{{pascalCase name}}Item>
+      <{{pascalCase name}}Item size="lg">Large</{{pascalCase name}}Item>
+    </{{pascalCase name}}>
+  ),
+};
+
+export { Default, Sizes, Variants };
+
+export default meta;

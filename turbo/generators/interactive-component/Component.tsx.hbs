@@ -1,16 +1,5 @@
 "use client";
 
-/*
- * SCAFFOLD — single interactive component (Button-style by default). Customize the Aria primitive import
- * (e.g., `Checkbox`, `Switch`, `Link`) for your use case. If your component needs subparts (e.g., Menu +
- * MenuItem + MenuTrigger), use **named exports with the parent's prefix** (not dot notation). Example:
- *
- *   export { Menu, MenuItem, MenuTrigger };  // OK — shadcn pattern
- *   Menu.Item = MenuItem;                     // BAD — dot notation banned
- *
- * See .claude/rules/architecture.md "Component Composition — Named Imports with Prefix".
- */
-
 import type { ComponentPropsWithRef, ReactNode } from "react";
 
 import { Button as AriaComponent, composeRenderProps } from "react-aria-components";
@@ -20,12 +9,15 @@ import { clsx } from "clsx";
 
 import { classes } from "../../utils/classes";
 
-import type { {{pascalCase name}}VariantsProps } from "./{{dashCase name}}.variants";
-
-export type {{pascalCase name}}Props = {{pascalCase name}}VariantsProps & {
+export interface {{pascalCase name}}Props
+  extends Omit<ComponentPropsWithRef<typeof AriaComponent>, "className" | "children"> {
   children?: ReactNode | ((renderProps: ButtonRenderProps) => ReactNode);
   className?: string | ((renderProps: ButtonRenderProps) => string);
-} & Omit<ComponentPropsWithRef<typeof AriaComponent>, "className" | "children">;
+  /** Size scale. @default 'md' */
+  size?: "sm" | "md" | "lg";
+  /** Visual style. @default 'primary' */
+  variant?: "primary" | "secondary" | "outline" | "ghost" | "destructive" | "overlay" | "accent";
+}
 
 /**
  * TODO: Replace with one-line description of what {{pascalCase name}} does and when to use it.
@@ -43,7 +35,9 @@ const {{pascalCase name}} = (props: Readonly<{{pascalCase name}}Props>) => {
     },
   });
 
-  const componentClassName = composeRenderProps(className, (consumerClassName) => clsx(baseClassName, consumerClassName));
+  const componentClassName = composeRenderProps(className, (consumerClassName) =>
+    clsx(baseClassName, consumerClassName),
+  );
 
   return (
     <AriaComponent data-slot="{{dashCase name}}" className={componentClassName} ref={ref} {...rest}>

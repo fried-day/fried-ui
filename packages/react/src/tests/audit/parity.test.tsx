@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 
 import { Avatar } from "../../components/avatar";
 import { AvatarGroup } from "../../components/avatar-group";
-import { Badge } from "../../components/badge";
+import { Badge, BadgeIndicator, BadgeStatus } from "../../components/badge";
 import { Button } from "../../components/button";
 import { Chip } from "../../components/chip";
 import { Description } from "../../components/description";
@@ -37,6 +37,18 @@ describe("1:1 plain HTML parity — default props emit only base class", () => {
     const { container } = render(<Badge>X</Badge>);
     const el = container.querySelector('[data-slot="badge"]');
     expect(el?.className).toBe("badge");
+  });
+
+  it("BadgeIndicator: <BadgeIndicator>X</BadgeIndicator> renders class='badge-indicator'", () => {
+    const { container } = render(<BadgeIndicator>X</BadgeIndicator>);
+    const el = container.querySelector('[data-slot="badge-indicator"]');
+    expect(el?.className).toBe("badge-indicator");
+  });
+
+  it("BadgeStatus: <BadgeStatus /> renders class='badge-status'", () => {
+    const { container } = render(<BadgeStatus />);
+    const el = container.querySelector('[data-slot="badge-status"]');
+    expect(el?.className).toBe("badge-status");
   });
 
   it("Chip: <Chip>X</Chip> renders class='chip'", () => {

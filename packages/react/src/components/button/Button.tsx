@@ -10,12 +10,20 @@ import { clsx } from "clsx";
 import { Spinner } from "../icons";
 import { classes } from "../../utils/classes";
 
-import type { ButtonVariantsProps } from "./button.variants";
-
-export type ButtonProps = ButtonVariantsProps & {
+export interface ButtonProps extends Omit<ComponentPropsWithRef<typeof AriaButton>, "className" | "children"> {
   children?: ReactNode | ((renderProps: ButtonRenderProps) => ReactNode);
   className?: string | ((renderProps: ButtonRenderProps) => string);
-} & Omit<ComponentPropsWithRef<typeof AriaButton>, "className" | "children">;
+  /** Whether the button stretches to fill its container width. @default false */
+  isFullWidth?: boolean;
+  /** Whether the button renders as a square icon-only button. @default false */
+  isIconOnly?: boolean;
+  /** Border radius scale. @default 'md' */
+  radius?: "none" | "sm" | "md" | "lg" | "full";
+  /** Size scale. @default 'md' */
+  size?: "sm" | "md" | "lg" | "xl";
+  /** Visual style following Mobbin hierarchy (primary/secondary/outline/ghost + destructive + overlay + accent). @default 'primary' */
+  variant?: "primary" | "secondary" | "outline" | "ghost" | "destructive" | "overlay" | "accent";
+}
 
 /**
  * A button allows a user to perform an action, with mouse, touch, and keyboard interactions.

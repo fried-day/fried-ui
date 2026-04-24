@@ -12,7 +12,6 @@ export interface ComponentDir {
   kebab: string;
   pascal: string;
   storiesFile: string;
-  variantsFile: string;
 }
 
 function kebabToPascal(kebab: string): string {
@@ -27,10 +26,9 @@ function buildComponent(name: string): ComponentDir {
   const pascal = kebabToPascal(kebab);
   const dir = path.join(componentsDir, kebab);
   const componentFile = path.join(dir, `${pascal}.tsx`);
-  const variantsFile = path.join(dir, `${kebab}.variants.ts`);
   const storiesFile = path.join(dir, `${kebab}.stories.tsx`);
 
-  return { componentFile, dir, kebab, pascal, storiesFile, variantsFile };
+  return { componentFile, dir, kebab, pascal, storiesFile };
 }
 
 function listComponents(): ComponentDir[] {

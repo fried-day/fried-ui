@@ -1,26 +1,32 @@
 "use client";
 
-import type { ComponentPropsWithRef, ReactNode, Ref } from "react";
+import type { ComponentPropsWithRef, Ref } from "react";
 
 import { Button as AriaButton, type ButtonProps as AriaButtonProps, type PressEvent } from "react-aria-components";
 
 import { XIcon } from "../icons";
 import { classes } from "../../utils/classes";
 
-import type { ChipVariantsProps } from "./chip.variants";
-
-export type ChipProps = ChipVariantsProps & {
-  children?: ReactNode;
-  className?: string;
+export interface ChipProps extends Omit<ComponentPropsWithRef<"span">, "onClick"> {
   /** Accessible label for the dismiss button. @default 'Dismiss' */
   dismissLabel?: string;
   /** Whether the chip is disabled (dims and removes interactions). @default false */
   isDisabled?: boolean;
+  /** Whether the chip renders as a square icon-only chip. @default false */
+  isIconOnly?: boolean;
+  /** Whether the chip is in selected state (filter/input chip toggle). @default false */
+  isSelected?: boolean;
   /** Callback fired when the dismiss (×) button is clicked. Renders a dismiss button when provided. */
   onDismiss?: () => void;
   /** Click handler for the whole chip (assist/suggestion chip pattern). When provided, chip renders as a button. */
   onPress?: (event: PressEvent) => void;
-} & Omit<ComponentPropsWithRef<"span">, "className" | "children" | "onClick">;
+  /** Border radius scale. @default 'full' */
+  radius?: "none" | "sm" | "md" | "lg" | "full";
+  /** Size scale. @default 'md' */
+  size?: "sm" | "md" | "lg";
+  /** Visual style — category colors. @default 'primary' */
+  variant?: "primary" | "secondary" | "ghost" | "overlay" | "accent" | "success" | "warning" | "danger" | "info";
+}
 
 /**
  * A chip displays a compact data status, category, or tag. Non-interactive by default.
