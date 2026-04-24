@@ -28,11 +28,24 @@ const meta = {
     isFullWidth: false,
   },
   argTypes: {
+    children: {
+      control: false,
+      description: "Field slots — `FieldLabel`, `Input`, `FieldDescription`, `FieldError` (or any combination).",
+      type: {
+        name: "other",
+        value: "ReactNode",
+        required: true,
+      },
+      table: {
+        type: { summary: "ReactNode" },
+        category: "Children",
+      },
+    },
     size: {
       control: "select",
       options: ["sm", "md", "lg"],
       description:
-        "Wrapper gap scale between stacked slots (FieldLabel, Input, FieldDescription, FieldError). **sm** (dense) — table cells, compact filters. **md** (default) — standard forms. **lg** (generous) — hero flows. Child slots keep their own typography via their individual `size` prop.",
+        "Wrapper gap scale between stacked slots — FieldLabel, Input, FieldDescription, and FieldError. **sm** (dense, gap-1) — table cells, inline filters, compact admin forms. **md** (default, gap-2) — standard product forms. **lg** (generous, gap-3) — hero onboarding flows and marketing forms. Child slots keep their own typography via their individual `size` prop, so Field's size only controls the vertical rhythm between slots, not the size of the inputs themselves.",
       table: {
         type: { summary: '"sm" | "md" | "lg"' },
         defaultValue: { summary: "md" },
@@ -43,7 +56,7 @@ const meta = {
       control: "select",
       options: ["vertical", "horizontal", "responsive"],
       description:
-        "Layout direction of children. **vertical** (default) stacks top-to-bottom. **horizontal** lays out inline (checkbox + label). **responsive** stacks on mobile, inline on md+.",
+        "Layout direction of children. **vertical** (default) stacks slots top-to-bottom — the canonical form layout. **horizontal** lays out inline — designed for checkbox or radio rows where the label sits beside the control. **responsive** stacks on mobile (below md) and switches to inline on md and above — useful for settings rows that compact gracefully on phones. Use vertical for most forms, horizontal for boolean rows, responsive for settings pages where each row is one logical field but should adapt to viewport.",
       table: {
         type: { summary: '"vertical" | "horizontal" | "responsive"' },
         defaultValue: { summary: "vertical" },
@@ -53,11 +66,12 @@ const meta = {
     type: {
       control: "select",
       options: ["text", "email", "password", "tel", "url", "search", "number"],
-      description: "HTML input type attribute forwarded to the underlying Input element.",
+      description:
+        "HTML input type attribute forwarded to the underlying `Input` element. **Text:** text (default, free-form), email (mobile email keyboard with `@` validation), password (masked, autofill grouping), tel (phone keypad on mobile), url (URL keyboard with `.com` shortcut), search (rendered with native clear icon). **Numeric:** number (numeric keypad and validation hints). The type drives the on-screen keyboard, autofill grouping, and browser validation. Use email, tel, or number for mobile-friendly forms; search for command palettes; password for credentials.",
       table: {
         type: { summary: '"text" | "email" | "password" | "tel" | "url" | "search" | "number"' },
         defaultValue: { summary: "text" },
-        category: "Content",
+        category: "Children",
       },
     },
     isInvalid: {
@@ -206,18 +220,18 @@ const FullWidth: Story = {
 
 const WithFieldSet: Story = {
   args: { children: null },
-  render: (): React.JSX.Element => (
+  render: (args): React.JSX.Element => (
     <FieldSet variant="bordered">
       <FieldLegend>Profile</FieldLegend>
       <FieldDescription>Basic information that appears on your profile.</FieldDescription>
 
       <FieldGroup>
-        <Field>
+        <Field {...args}>
           <FieldLabel>First name</FieldLabel>
           <Input placeholder="Evil" />
         </Field>
 
-        <Field>
+        <Field {...args}>
           <FieldLabel>Last name</FieldLabel>
           <Input placeholder="Rabbit" />
         </Field>
@@ -228,12 +242,12 @@ const WithFieldSet: Story = {
 
 const WithSeparator: Story = {
   args: { children: null },
-  render: (): React.JSX.Element => (
+  render: (args): React.JSX.Element => (
     <FieldGroup>
       <FieldSet>
         <FieldLegend>Payment</FieldLegend>
 
-        <Field>
+        <Field {...args}>
           <FieldLabel>Card number</FieldLabel>
           <Input placeholder="1234 5678 9012 3456" />
         </Field>
@@ -244,7 +258,7 @@ const WithSeparator: Story = {
       <FieldSet>
         <FieldLegend>Billing</FieldLegend>
 
-        <Field>
+        <Field {...args}>
           <FieldLabel>Address</FieldLabel>
           <Input placeholder="123 Main St" />
         </Field>
@@ -255,12 +269,12 @@ const WithSeparator: Story = {
 
 const WithTitle: Story = {
   args: { children: null },
-  render: (): React.JSX.Element => (
+  render: (args): React.JSX.Element => (
     <FieldGroup>
       <FieldTitle as="h3">Account</FieldTitle>
       <FieldDescription>Manage your account settings.</FieldDescription>
 
-      <Field>
+      <Field {...args}>
         <FieldLabel>Username</FieldLabel>
         <Input placeholder="evilrabbit" />
       </Field>

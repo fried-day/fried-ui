@@ -58,7 +58,8 @@ const meta = {
     size: {
       control: "select",
       options: ["sm", "md", "lg"],
-      description: "The size of the chip",
+      description:
+        "Size scale for the chip — display role starts smaller than interactive role. **sm** (h-6, text-xs) — dense tag clouds, filter rows, table cell labels. **md** (h-8, text-sm, default) — standard tags and filter chips. **lg** (h-10, text-base) — emphasized status pills or hero filters. Use sm in dense list contexts, md for the typical tag UI, lg when chips need to read at a distance such as status banners or large filter rails.",
       table: {
         type: { summary: '"sm" | "md" | "lg"' },
         defaultValue: { summary: "md" },
@@ -68,7 +69,8 @@ const meta = {
     radius: {
       control: "select",
       options: ["none", "sm", "md", "lg", "full"],
-      description: "The border radius of the chip",
+      description:
+        "Border radius scale shaping the chip from a tab to a pill. **none** — sharp tab look (admin dashboards). **sm** — subtle softening. **md** — standard rounded tag. **lg** — emphasized soft corners. **full** (default) — pill, the canonical chip shape across Material, Apple, and Mobbin. Use full for the typical tag UI, md for square-ish status chips, none in admin or data UIs where chips align with table edges.",
       table: {
         type: { summary: '"none" | "sm" | "md" | "lg" | "full"' },
         defaultValue: { summary: "full" },

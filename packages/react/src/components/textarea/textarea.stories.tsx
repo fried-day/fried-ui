@@ -18,14 +18,14 @@ const meta = {
       description: "Placeholder text shown when textarea is empty",
       table: {
         type: { summary: "string" },
-        category: "Content",
+        category: "Children",
       },
     },
     variant: {
       control: "select",
       options: ["primary", "secondary", "overlay"],
       description:
-        "Visual style. **primary** (default) — bordered white field for standard forms. **secondary** — filled muted background, no border, works well inside cards. **overlay** — light field on dark media/scrim, for areas over images or dark backgrounds. Use primary for main forms, secondary for nested fields, overlay on dark contexts.",
+        "Visual style of the textarea field. **primary** (default) — bordered white field for standard forms. **secondary** — filled muted background with no border, works well inside cards or grouped panels. **overlay** — light field on dark media or scrim, for textareas placed over images or dark backgrounds. Use primary for main forms, secondary for nested fields inside cards, overlay on dark or media contexts.",
       table: {
         type: { summary: '"primary" | "secondary" | "overlay"' },
         defaultValue: { summary: "primary" },
@@ -36,7 +36,7 @@ const meta = {
       control: "select",
       options: ["sm", "md", "lg"],
       description:
-        "Size scale. **sm** (text-xs, dense) — inline comments, table cells. **md** (text-sm, default) — standard form fields. **lg** (text-base, emphasized) — hero composition areas.",
+        "Size scale tied to form-field density. **sm** (text-xs, dense) — inline comments, table cells, compact admin forms. **md** (text-sm, default) — standard composition fields, post bodies, comment boxes. **lg** (text-base, emphasized) — hero composition areas like message editors and long-form drafts. Use sm for dense comment threads, md for standard product textareas, lg for editor-class composition where the textarea is the primary surface.",
       table: {
         type: { summary: '"sm" | "md" | "lg"' },
         defaultValue: { summary: "md" },
@@ -47,7 +47,7 @@ const meta = {
       control: "select",
       options: ["none", "sm", "md", "lg", "full"],
       description:
-        "Border radius scale. **none** — sharp corners. **sm** — subtle rounding. **md** (default) — standard. **lg** — emphasized. **full** — pill (rare for textarea).",
+        "Border radius scale of the textarea. **none** — sharp corners for data tables and admin UIs. **sm** — subtle rounding for tight nested forms. **md** (default) — standard textarea. **lg** — emphasized soft corners for hero composition areas. **full** — pill shape, rare for textarea since most textareas are multi-line. Use md as the default, lg for editor-style composition, none inside data dashboards or admin UIs.",
       table: {
         type: { summary: '"none" | "sm" | "md" | "lg" | "full"' },
         defaultValue: { summary: "md" },
@@ -58,7 +58,7 @@ const meta = {
       control: "select",
       options: ["none", "vertical", "horizontal", "both"],
       description:
-        "Resize behavior via native CSS `resize`. **none** — fixed size (common for chat boxes). **vertical** (default) — user drags bottom-right to grow height. **horizontal** — width only (rare). **both** — both axes (drafting). Use vertical for most forms, none for fixed-height controls.",
+        "Resize behavior via native CSS `resize`. **none** — fixed size, common for chat input boxes and command bars. **vertical** (default) — user drags the bottom-right corner to grow height, the canonical product textarea. **horizontal** — width only, rare and usually unhelpful. **both** — both axes, useful for drafting tools and design surfaces. Use vertical for most forms, none for fixed-height controls like chat composers.",
       table: {
         type: { summary: '"none" | "vertical" | "horizontal" | "both"' },
         defaultValue: { summary: "vertical" },

@@ -59,7 +59,8 @@ const meta = {
     size: {
       control: "select",
       options: ["sm", "md", "lg", "xl"],
-      description: "The size of the button",
+      description:
+        "Size scale matching interactive hierarchy. **sm** (h-8, text-sm) — toolbars, dense tables, secondary CTAs in cards. **md** (h-10, text-base, default) — standard call-to-action across most surfaces. **lg** (h-12, text-xl) — landing pages, marketing CTAs, hero blocks. **xl** (h-14, text-2xl) — display CTAs, pricing tiers, splash screens. Use sm for inline actions and toolbars, md for forms and cards, lg and xl for marketing surfaces where the button must read across a wide viewport.",
       table: {
         type: {
           summary: '"sm" | "md" | "lg" | "xl"',
@@ -73,7 +74,8 @@ const meta = {
     radius: {
       control: "select",
       options: ["none", "sm", "md", "lg", "full"],
-      description: "The border radius of the button",
+      description:
+        "Border radius scale shaping the button from a tab to a pill. **none** — architectural sharp edge (data tables, fixed bars). **sm** — subtle softening for tight UIs. **md** (default) — standard CTA roundness, the canonical product button. **lg** — emphasized soft corners for hero buttons. **full** — fully rounded pill, matches search bars and chip-paired actions. Use md for most buttons, full for chip-paired actions, none inside dense data UIs.",
       table: {
         type: {
           summary: '"none" | "sm" | "md" | "lg" | "full"',

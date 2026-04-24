@@ -86,6 +86,33 @@ describe("Avatar", () => {
     expect(root?.className).toContain("avatar-disabled");
   });
 
+  it("applies bordered modifier", () => {
+    const { container } = render(
+      <Avatar isBordered>
+        <AvatarFallback>A</AvatarFallback>
+      </Avatar>,
+    );
+
+    const root = container.querySelector("[data-slot='avatar']");
+    expect(root?.className).toContain("avatar-bordered");
+  });
+
+  it("applies all fallback variant classes", () => {
+    const variants = ["primary", "secondary", "accent", "success", "warning", "danger", "info"] as const;
+
+    variants.forEach((variant) => {
+      const { container, unmount } = render(
+        <Avatar>
+          <AvatarFallback variant={variant}>A</AvatarFallback>
+        </Avatar>,
+      );
+
+      const fallback = container.querySelector("[data-slot='avatar-fallback']");
+      expect(fallback?.className).toContain(`avatar-fallback-${variant}`);
+      unmount();
+    });
+  });
+
   it("renders fallback content", () => {
     render(
       <Avatar>

@@ -18,6 +18,19 @@ const meta = {
     isFullWidth: false,
   },
   argTypes: {
+    children: {
+      control: false,
+      description: "Composition slots — `InputGroupAddon`, `InputGroupInput`, `InputGroupTextarea`, or `Button`.",
+      type: {
+        name: "other",
+        value: "ReactNode",
+        required: true,
+      },
+      table: {
+        type: { summary: "ReactNode" },
+        category: "Children",
+      },
+    },
     variant: {
       control: "select",
       options: ["primary", "secondary", "overlay"],
@@ -33,7 +46,7 @@ const meta = {
       control: "select",
       options: ["sm", "md", "lg"],
       description:
-        "Size scale. **sm** (text-xs) — compact filters. **md** (text-sm, default) — standard. **lg** (text-base) — hero search. Children (InputGroupInput / Button / addons) inherit via font-size.",
+        "Size scale of the wrapper. **sm** (text-xs) — compact filters, command-palette-style inline actions, dense admin UIs. **md** (text-sm, default) — standard search bars and combined input flows. **lg** (text-base) — hero search bars and primary-action input groups. Children — InputGroupInput, Button, addons — inherit size via font-size and the wrapper's `min-h-*`, so addon icons and prefix text scale together with the input.",
       table: {
         type: { summary: '"sm" | "md" | "lg"' },
         defaultValue: { summary: "md" },
@@ -44,7 +57,7 @@ const meta = {
       control: "select",
       options: ["none", "sm", "md", "lg", "full"],
       description:
-        "Border radius scale. **none** — sharp. **sm** — subtle. **md** (default) — standard. **lg** — emphasized. **full** — pill (common for search bars).",
+        "Border radius scale of the group wrapper. **none** — sharp corners for admin or data UIs. **sm** — subtle rounding inside tight cards. **md** (default) — standard rounded group. **lg** — emphasized soft corners for hero search bars. **full** — pill shape, the canonical search-bar look across commercial sites, command palettes, and mobile search. Use md for most form groups, full for product search bars and command palettes.",
       table: {
         type: { summary: '"none" | "sm" | "md" | "lg" | "full"' },
         defaultValue: { summary: "md" },

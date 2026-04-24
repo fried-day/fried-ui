@@ -41,8 +41,8 @@ const meta: Meta<typeof Badge> = {
 type Story = StoryObj<typeof meta>;
 
 const Default: Story = {
-  render: (): React.JSX.Element => (
-    <Badge>
+  render: (args): React.JSX.Element => (
+    <Badge {...args}>
       <BellIcon className="size-6" />
       <BadgeIndicator>3</BadgeIndicator>
     </Badge>
@@ -50,39 +50,39 @@ const Default: Story = {
 };
 
 const Variants: Story = {
-  render: (): React.JSX.Element => (
+  render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-center gap-8">
-      <Badge>
+      <Badge {...args}>
         <BellIcon className="size-6" />
         <BadgeIndicator variant="primary">3</BadgeIndicator>
       </Badge>
 
-      <Badge>
+      <Badge {...args}>
         <BellIcon className="size-6" />
         <BadgeIndicator variant="secondary">3</BadgeIndicator>
       </Badge>
 
-      <Badge>
+      <Badge {...args}>
         <BellIcon className="size-6" />
         <BadgeIndicator variant="accent">3</BadgeIndicator>
       </Badge>
 
-      <Badge>
+      <Badge {...args}>
         <BellIcon className="size-6" />
         <BadgeIndicator variant="success">3</BadgeIndicator>
       </Badge>
 
-      <Badge>
+      <Badge {...args}>
         <BellIcon className="size-6" />
         <BadgeIndicator variant="warning">3</BadgeIndicator>
       </Badge>
 
-      <Badge>
+      <Badge {...args}>
         <BellIcon className="size-6" />
         <BadgeIndicator variant="danger">3</BadgeIndicator>
       </Badge>
 
-      <Badge>
+      <Badge {...args}>
         <BellIcon className="size-6" />
         <BadgeIndicator variant="info">3</BadgeIndicator>
       </Badge>
@@ -91,19 +91,19 @@ const Variants: Story = {
 };
 
 const Sizes: Story = {
-  render: (): React.JSX.Element => (
+  render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-center gap-8">
-      <Badge>
+      <Badge {...args}>
         <BellIcon className="size-6" />
         <BadgeIndicator size="xs">3</BadgeIndicator>
       </Badge>
 
-      <Badge>
+      <Badge {...args}>
         <BellIcon className="size-6" />
         <BadgeIndicator size="sm">3</BadgeIndicator>
       </Badge>
 
-      <Badge>
+      <Badge {...args}>
         <BellIcon className="size-6" />
         <BadgeIndicator size="md">3</BadgeIndicator>
       </Badge>
@@ -112,8 +112,8 @@ const Sizes: Story = {
 };
 
 const NumericOverflow: Story = {
-  render: (): React.JSX.Element => (
-    <Badge>
+  render: (args): React.JSX.Element => (
+    <Badge {...args}>
       <BellIcon className="size-6" />
       <BadgeIndicator max={99}>{150}</BadgeIndicator>
     </Badge>
@@ -121,8 +121,8 @@ const NumericOverflow: Story = {
 };
 
 const TextLabel: Story = {
-  render: (): React.JSX.Element => (
-    <Badge>
+  render: (args): React.JSX.Element => (
+    <Badge {...args}>
       <Button>Inbox</Button>
       <BadgeIndicator variant="success">NEW</BadgeIndicator>
     </Badge>
@@ -130,9 +130,9 @@ const TextLabel: Story = {
 };
 
 const StatusOnAvatar: Story = {
-  render: (): React.JSX.Element => (
+  render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-center gap-8">
-      <Badge>
+      <Badge {...args}>
         <Avatar>
           <AvatarFallback>CT</AvatarFallback>
         </Avatar>
@@ -140,15 +140,15 @@ const StatusOnAvatar: Story = {
         <BadgeStatus variant="success" placement="bottom-right" isInset />
       </Badge>
 
-      <Badge>
+      <Badge {...args}>
         <Avatar>
-          <AvatarFallback>RT</AvatarFallback>
+          <AvatarFallback>MO</AvatarFallback>
         </Avatar>
 
         <BadgeStatus variant="warning" placement="bottom-right" isInset />
       </Badge>
 
-      <Badge>
+      <Badge {...args}>
         <Avatar>
           <AvatarFallback>MK</AvatarFallback>
         </Avatar>
@@ -156,7 +156,7 @@ const StatusOnAvatar: Story = {
         <BadgeStatus variant="danger" placement="bottom-right" isInset />
       </Badge>
 
-      <Badge>
+      <Badge {...args}>
         <Avatar>
           <AvatarFallback>JP</AvatarFallback>
         </Avatar>
@@ -168,9 +168,9 @@ const StatusOnAvatar: Story = {
 };
 
 const IndicatorOnAvatar: Story = {
-  render: (): React.JSX.Element => (
+  render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-center gap-8">
-      <Badge>
+      <Badge {...args}>
         <Avatar>
           <AvatarFallback>CT</AvatarFallback>
         </Avatar>
@@ -180,9 +180,9 @@ const IndicatorOnAvatar: Story = {
         </BadgeIndicator>
       </Badge>
 
-      <Badge>
+      <Badge {...args}>
         <Avatar>
-          <AvatarFallback>RT</AvatarFallback>
+          <AvatarFallback>MO</AvatarFallback>
         </Avatar>
 
         <BadgeIndicator variant="success" placement="top-right" isInset>
@@ -194,8 +194,8 @@ const IndicatorOnAvatar: Story = {
 };
 
 const OnButton: Story = {
-  render: (): React.JSX.Element => (
-    <Badge>
+  render: (args): React.JSX.Element => (
+    <Badge {...args}>
       <Button variant="secondary">Inbox</Button>
       <BadgeIndicator>12</BadgeIndicator>
     </Badge>
@@ -203,9 +203,9 @@ const OnButton: Story = {
 };
 
 const OverlayVariant: Story = {
-  render: (): React.JSX.Element => (
+  render: (args): React.JSX.Element => (
     <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 to-blue-600 p-16">
-      <Badge>
+      <Badge {...args}>
         <div className="inline-flex size-12 items-center justify-center rounded-md bg-background">
           <BellIcon className="size-6" />
         </div>

@@ -35,7 +35,7 @@ const meta = {
       control: "select",
       options: ["sm", "md", "lg"],
       description:
-        "Text size of the label. **sm** (text-xs) — dense forms or secondary labels. **md** (text-sm, default) — standard form fields. **lg** (text-base) — emphasized or large form sections.",
+        "Text size of the label. **sm** (text-xs) — dense forms, secondary labels below subtle inputs, table cell headers. **md** (text-sm, default) — standard form fields and most product UIs. **lg** (text-base) — emphasized labels above hero forms, settings sections, or primary onboarding inputs. Use md as the default product form label, sm in dense table or filter UIs, lg when the label sits above a single hero input.",
       table: {
         type: { summary: '"sm" | "md" | "lg"' },
         defaultValue: { summary: "md" },
@@ -46,7 +46,7 @@ const meta = {
       control: "select",
       options: ["normal", "medium", "semibold"],
       description:
-        "Font weight. **normal** (400) — subtle labels. **medium** (500, default) — standard emphasis. **semibold** (600) — strong emphasis for section headings.",
+        "Font weight controlling label emphasis. **normal** (400) — subtle labels for secondary forms or dense table headers. **medium** (500, default) — standard form-field emphasis, the canonical product label. **semibold** (600) — strong emphasis for section headings or grouped legend titles inside FieldSet. Use medium for most labels, normal in dense data UIs where the label is informational, semibold when the label doubles as a section heading.",
       table: {
         type: { summary: '"normal" | "medium" | "semibold"' },
         defaultValue: { summary: "medium" },
@@ -85,7 +85,7 @@ const meta = {
       description: "ID of the form field this label is associated with",
       table: {
         type: { summary: "string" },
-        category: "Content",
+        category: "Children",
       },
     },
     optionalMessage: {

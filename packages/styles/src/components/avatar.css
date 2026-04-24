@@ -62,6 +62,38 @@
     @apply status-disabled;
   }
 
+  .avatar-bordered {
+    @apply ring-2 ring-background;
+  }
+
+  .avatar-fallback-primary {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  .avatar-fallback-secondary {
+    @apply bg-secondary text-secondary-foreground;
+  }
+
+  .avatar-fallback-accent {
+    @apply bg-accent text-accent-foreground;
+  }
+
+  .avatar-fallback-success {
+    @apply bg-success text-success-foreground;
+  }
+
+  .avatar-fallback-warning {
+    @apply bg-warning text-warning-foreground;
+  }
+
+  .avatar-fallback-danger {
+    @apply bg-danger text-danger-foreground;
+  }
+
+  .avatar-fallback-info {
+    @apply bg-info text-info-foreground;
+  }
+
   .avatar-ring-primary {
     @apply ring-2 ring-primary ring-offset-2 ring-offset-background;
   }

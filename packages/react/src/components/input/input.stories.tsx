@@ -18,14 +18,14 @@ const meta = {
       description: "Placeholder text shown when input is empty",
       table: {
         type: { summary: "string" },
-        category: "Content",
+        category: "Children",
       },
     },
     variant: {
       control: "select",
       options: ["primary", "secondary", "overlay"],
       description:
-        "Visual style. **primary** (default) — bordered white field for standard forms. **secondary** — filled muted background, no border, works well inside cards. **overlay** — light field on dark media/scrim, for inputs over images or dark backgrounds. Use primary for main forms, secondary for nested inputs, overlay on dark contexts.",
+        "Visual style of the input field. **primary** (default) — bordered white field for standard forms. **secondary** — filled muted background with no border, works well inside cards or grouped panels. **overlay** — light field on dark media or scrim, for inputs placed over images or dark backgrounds. Use primary for main forms, secondary for nested inputs inside cards, overlay on dark or media contexts.",
       table: {
         type: { summary: '"primary" | "secondary" | "overlay"' },
         defaultValue: { summary: "primary" },
@@ -36,7 +36,7 @@ const meta = {
       control: "select",
       options: ["sm", "md", "lg"],
       description:
-        "Size scale. **sm** (text-xs, dense) — inline filters, table cells, compact forms. **md** (text-sm, default) — standard form fields. **lg** (text-base, emphasized) — hero search, primary forms. Use sm for dense UI, md for most forms, lg for emphasized single-input pages.",
+        "Size scale tied to form-field density. **sm** (h-8, text-xs) — inline filters, table cells, compact admin forms. **md** (h-10, text-sm, default) — standard form fields. **lg** (h-12, text-base) — hero search, single-input pages. Use sm for dense UI, md for most forms, lg for emphasized single-input pages where the input is the primary action and must read at a distance.",
       table: {
         type: { summary: '"sm" | "md" | "lg"' },
         defaultValue: { summary: "md" },
@@ -47,7 +47,7 @@ const meta = {
       control: "select",
       options: ["none", "sm", "md", "lg", "full"],
       description:
-        "Border radius scale. **none** — sharp corners (data tables). **sm** — subtle rounding. **md** (default) — standard. **lg** — emphasized. **full** — pill shape (search bars).",
+        "Border radius scale of the input. **none** — sharp corners for data tables and admin forms. **sm** — subtle rounding for tight UIs. **md** (default) — standard form input. **lg** — emphasized soft corners for hero forms and primary single-input pages. **full** — pill shape, the canonical search-bar look. Use md as the default form input, full for search-bar contexts, none when inputs sit flush inside table rows.",
       table: {
         type: { summary: '"none" | "sm" | "md" | "lg" | "full"' },
         defaultValue: { summary: "md" },

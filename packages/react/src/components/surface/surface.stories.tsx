@@ -52,7 +52,7 @@ const meta = {
       control: "select",
       options: ["none", "sm", "md", "lg", "xl"],
       description:
-        "Border radius scale. **none** (sharp corners). **sm** (subtle). **md** (default, standard cards). **lg** (emphasized). **xl** (hero cards).",
+        "Border radius scale of the surface container. **none** — sharp architectural corners, common in admin or data dashboards. **sm** — subtle rounding for tight nested cards. **md** (default) — standard product card. **lg** — emphasized soft corners for hero or feature cards. **xl** — large hero cards and marketing splashes. Use md for typical content blocks, lg and xl for hero cards where the surface needs to feel softer, none inside data dashboards.",
       table: {
         type: { summary: '"none" | "sm" | "md" | "lg" | "xl"' },
         defaultValue: { summary: "md" },
@@ -63,7 +63,7 @@ const meta = {
       control: "select",
       options: ["none", "sm", "md", "lg", "xl"],
       description:
-        "Elevation depth. **none** (default, flat). **sm** (subtle lift). **md** (cards). **lg** (popovers). **xl** (modals).",
+        "Elevation depth via box-shadow tokens. **none** (default) — flat surface that sits on the page background. **sm** — subtle lift, useful for inset cards or hover states. **md** — standard card elevation, the typical product card. **lg** — popovers, dropdowns, and floating panels. **xl** — modals, dialogs, and large floating sheets. Use none for inline content, md for cards, lg for popover-tier elements, xl for modal-tier dialogs.",
       table: {
         type: { summary: '"none" | "sm" | "md" | "lg" | "xl"' },
         defaultValue: { summary: "none" },

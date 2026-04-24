@@ -7,6 +7,8 @@ import * as RadixAvatar from "@radix-ui/react-avatar";
 import { classes } from "../../utils/classes";
 
 export interface AvatarProps extends ComponentPropsWithRef<typeof RadixAvatar.Root> {
+  /** Whether the avatar shows a 2px ring matching the background — separates the avatar visually when placed over a photo or colored background. @default false */
+  isBordered?: boolean;
   /** Whether the avatar is disabled (dims and removes pointer events). @default false */
   isDisabled?: boolean;
   /** Border radius scale. @default 'full' */
@@ -22,7 +24,7 @@ export interface AvatarProps extends ComponentPropsWithRef<typeof RadixAvatar.Ro
  * Compose with standalone `AvatarImage` and `AvatarFallback` for image + fallback handling.
  */
 const Avatar = (props: Readonly<AvatarProps>) => {
-  const { children, className, isDisabled, radius, ref, ring, size, ...rest } = props;
+  const { children, className, isBordered, isDisabled, radius, ref, ring, size, ...rest } = props;
 
   const avatarClassName = classes({
     block: "avatar",
@@ -30,6 +32,7 @@ const Avatar = (props: Readonly<AvatarProps>) => {
       size,
       radius,
       ring,
+      bordered: isBordered,
       disabled: isDisabled,
     },
     className,
@@ -59,15 +62,23 @@ const AvatarImage = (props: Readonly<AvatarImageProps>) => {
 
 AvatarImage.displayName = "AvatarImage";
 
-export type AvatarFallbackProps = ComponentPropsWithRef<typeof RadixAvatar.Fallback>;
+export interface AvatarFallbackProps extends ComponentPropsWithRef<typeof RadixAvatar.Fallback> {
+  /** Background color for the fallback initials or icon — useful for differentiating users in chat or member lists. @default undefined */
+  variant?: "primary" | "secondary" | "accent" | "success" | "warning" | "danger" | "info";
+}
 
 /**
  * Content rendered when AvatarImage fails to load or is not provided.
  * Typically initials or a placeholder icon.
  */
 const AvatarFallback = (props: Readonly<AvatarFallbackProps>) => {
-  const { children, className, ref, ...rest } = props;
-  const fallbackClassName = classes({ block: "avatar-fallback", modifiers: {}, className });
+  const { children, className, ref, variant, ...rest } = props;
+
+  const fallbackClassName = classes({
+    block: "avatar-fallback",
+    modifiers: { variant },
+    className,
+  });
 
   return (
     <RadixAvatar.Fallback data-slot="avatar-fallback" className={fallbackClassName} ref={ref} {...rest}>
