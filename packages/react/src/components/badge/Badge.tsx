@@ -4,7 +4,12 @@ import type { ComponentPropsWithRef, ReactNode } from "react";
 
 import { classes } from "../../utils/classes";
 
-export type BadgeProps = ComponentPropsWithRef<"span">;
+export interface BadgeProps extends Omit<ComponentPropsWithRef<"span">, "children" | "className"> {
+  /** Anchor element plus a `BadgeIndicator` or `BadgeStatus` subpart. Badge provides the positioning container. */
+  children?: ReactNode;
+  /** Additional CSS classes appended after the base class. */
+  className?: string;
+}
 
 /**
  * A badge wraps an anchor element (Button, Avatar, Icon) and provides a positioning
@@ -29,7 +34,11 @@ const Badge = (props: Readonly<BadgeProps>) => {
 
 Badge.displayName = "Badge";
 
-export interface BadgeIndicatorProps extends ComponentPropsWithRef<"span"> {
+export interface BadgeIndicatorProps extends Omit<ComponentPropsWithRef<"span">, "children" | "className"> {
+  /** Indicator content — count, short label, or any ReactNode rendered at the anchor's corner. */
+  children?: ReactNode;
+  /** Additional CSS classes appended after the base class. */
+  className?: string;
   /** Whether the indicator sits on the anchor's perimeter — use with round anchors such as Avatar so the indicator lands on the edge at 45 degrees. @default false */
   isInset?: boolean;
   /** Cap numeric content — render as `${max}+` when exceeded. @default 99 */
@@ -79,7 +88,9 @@ const BadgeIndicator = (props: Readonly<BadgeIndicatorProps>) => {
 
 BadgeIndicator.displayName = "BadgeIndicator";
 
-export interface BadgeStatusProps extends ComponentPropsWithRef<"span"> {
+export interface BadgeStatusProps extends Omit<ComponentPropsWithRef<"span">, "className"> {
+  /** Additional CSS classes appended after the base class. */
+  className?: string;
   /** Whether the status dot sits on the anchor's perimeter — use with round anchors such as Avatar. @default false */
   isInset?: boolean;
   /** Placement corner relative to the wrapped anchor. @default 'bottom-right' */

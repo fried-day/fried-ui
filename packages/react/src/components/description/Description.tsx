@@ -1,12 +1,19 @@
 "use client";
 
-import type { ComponentPropsWithRef } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 
 import { Text as AriaText } from "react-aria-components";
 
 import { classes } from "../../utils/classes";
 
-export interface DescriptionProps extends Omit<ComponentPropsWithRef<typeof AriaText>, "slot"> {
+export interface DescriptionProps extends Omit<
+  ComponentPropsWithRef<typeof AriaText>,
+  "children" | "className" | "slot"
+> {
+  /** Helper text content describing the paired form field. */
+  children?: ReactNode;
+  /** Additional CSS classes appended after the base class. */
+  className?: string;
   /** Whether the description is disabled (dims and removes pointer events). @default false */
   isDisabled?: boolean;
   /** Size scale. @default 'md' */

@@ -7,6 +7,7 @@ import { TextArea as AriaTextArea } from "react-aria-components";
 import { classes } from "../../utils/classes";
 
 export interface TextareaProps extends Omit<ComponentPropsWithRef<typeof AriaTextArea>, "className" | "size"> {
+  /** Additional CSS classes appended after the base class. */
   className?: string;
   /** Whether the textarea stretches to fill its container width. @default false */
   isFullWidth?: boolean;

@@ -12,6 +12,7 @@ const meta = {
     layout: "centered",
   },
   args: {
+    children: null,
     variant: "primary",
     size: "md",
     radius: "md",

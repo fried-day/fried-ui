@@ -7,6 +7,7 @@ import { Input as AriaInput } from "react-aria-components";
 import { classes } from "../../utils/classes";
 
 export interface InputProps extends Omit<ComponentPropsWithRef<typeof AriaInput>, "className" | "size"> {
+  /** Additional CSS classes appended after the base class. */
   className?: string;
   /** Whether the input stretches to fill its container width. @default false */
   isFullWidth?: boolean;

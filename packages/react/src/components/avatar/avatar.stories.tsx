@@ -12,11 +12,18 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  args: {},
+  args: {
+    children: null,
+  },
   argTypes: {
     children: {
       control: false,
       description: "Compound children — `<AvatarImage />` and `<AvatarFallback />`",
+      type: {
+        name: "other",
+        value: "ReactNode",
+        required: true,
+      },
       table: {
         type: { summary: "ReactNode" },
         category: "Children",

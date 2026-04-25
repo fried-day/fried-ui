@@ -16,7 +16,9 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  args: {},
+  args: {
+    children: null,
+  },
   argTypes: {
     children: {
       control: false,
@@ -438,11 +440,11 @@ const WithFallback: Story = {
   render: (args): React.JSX.Element => (
     <AvatarGroup {...args}>
       <Avatar>
-        <AvatarFallback>A1</AvatarFallback>
+        <AvatarFallback>FR</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <AvatarFallback>A2</AvatarFallback>
+        <AvatarFallback>NA</AvatarFallback>
       </Avatar>
 
       <Avatar>

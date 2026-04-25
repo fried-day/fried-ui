@@ -1,10 +1,14 @@
 "use client";
 
-import type { ComponentPropsWithRef } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 
 import { classes } from "../../utils/classes";
 
-export interface SurfaceProps extends ComponentPropsWithRef<"div"> {
+export interface SurfaceProps extends Omit<ComponentPropsWithRef<"div">, "children" | "className"> {
+  /** Surface content — anything rendered inside the styled container. */
+  children?: ReactNode;
+  /** Additional CSS classes appended after the base class. */
+  className?: string;
   /** Whether the surface has an emphasis border. @default false */
   isBordered?: boolean;
   /** Border radius scale. @default 'md' */

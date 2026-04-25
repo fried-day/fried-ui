@@ -1,12 +1,16 @@
 "use client";
 
-import type { ComponentPropsWithRef } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 
 import { Label as AriaLabel } from "react-aria-components";
 
 import { classes } from "../../utils/classes";
 
-export interface LabelProps extends ComponentPropsWithRef<typeof AriaLabel> {
+export interface LabelProps extends Omit<ComponentPropsWithRef<typeof AriaLabel>, "children" | "className"> {
+  /** Label text content identifying the paired form field. */
+  children?: ReactNode;
+  /** Additional CSS classes appended after the base class. */
+  className?: string;
   /** Whether the label is disabled (dims and removes pointer events). @default false */
   isDisabled?: boolean;
   /** Whether the label is in error state (text in danger color). @default false */

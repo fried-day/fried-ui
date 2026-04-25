@@ -1,12 +1,16 @@
 "use client";
 
-import type { ComponentPropsWithRef } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 
 import * as RadixAvatar from "@radix-ui/react-avatar";
 
 import { classes } from "../../utils/classes";
 
-export interface AvatarProps extends ComponentPropsWithRef<typeof RadixAvatar.Root> {
+export interface AvatarProps extends Omit<ComponentPropsWithRef<typeof RadixAvatar.Root>, "children" | "className"> {
+  /** Avatar content — compose with `<AvatarImage />` and `<AvatarFallback />`. */
+  children?: ReactNode;
+  /** Additional CSS classes appended after the base class. */
+  className?: string;
   /** Whether the avatar shows a 2px ring matching the background — separates the avatar visually when placed over a photo or colored background. @default false */
   isBordered?: boolean;
   /** Whether the avatar is disabled (dims and removes pointer events). @default false */
@@ -47,7 +51,10 @@ const Avatar = (props: Readonly<AvatarProps>) => {
 
 Avatar.displayName = "Avatar";
 
-export type AvatarImageProps = ComponentPropsWithRef<typeof RadixAvatar.Image>;
+export interface AvatarImageProps extends Omit<ComponentPropsWithRef<typeof RadixAvatar.Image>, "className"> {
+  /** Additional CSS classes appended after the base class. */
+  className?: string;
+}
 
 /**
  * Image element rendered inside an Avatar. Hidden until the image loads
@@ -62,7 +69,14 @@ const AvatarImage = (props: Readonly<AvatarImageProps>) => {
 
 AvatarImage.displayName = "AvatarImage";
 
-export interface AvatarFallbackProps extends ComponentPropsWithRef<typeof RadixAvatar.Fallback> {
+export interface AvatarFallbackProps extends Omit<
+  ComponentPropsWithRef<typeof RadixAvatar.Fallback>,
+  "children" | "className"
+> {
+  /** Fallback content — initials, icon, or any ReactNode shown when the image fails or is absent. */
+  children?: ReactNode;
+  /** Additional CSS classes appended after the base class. */
+  className?: string;
   /** Background color for the fallback initials or icon — useful for differentiating users in chat or member lists. @default 'primary' */
   variant?: "primary" | "secondary" | "accent" | "success" | "warning" | "danger" | "info";
 }

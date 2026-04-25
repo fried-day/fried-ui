@@ -21,6 +21,7 @@ const meta = {
     layout: "centered",
   },
   args: {
+    children: null,
     isInvalid: false,
     isDisabled: false,
     isReadOnly: false,

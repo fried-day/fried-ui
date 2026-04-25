@@ -1,12 +1,16 @@
 "use client";
 
-import type { ComponentPropsWithRef } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 
 import { Input as AriaInput, TextArea as AriaTextArea } from "react-aria-components";
 
 import { classes } from "../../utils/classes";
 
-export interface InputGroupProps extends ComponentPropsWithRef<"div"> {
+export interface InputGroupProps extends Omit<ComponentPropsWithRef<"div">, "children" | "className"> {
+  /** Composition slots — `InputGroupAddon`, `InputGroupInput`, `InputGroupTextarea`, or `Button`. */
+  children?: ReactNode;
+  /** Additional CSS classes appended after the base class. */
+  className?: string;
   /** Whether the group stretches to fill its container width. @default false */
   isFullWidth?: boolean;
   /** Border radius scale. @default 'md' */
@@ -44,9 +48,13 @@ const InputGroup = (props: Readonly<InputGroupProps>) => {
 
 InputGroup.displayName = "InputGroup";
 
-export interface InputGroupAddonProps extends ComponentPropsWithRef<"span"> {
-  /** Position of the addon relative to the input. @default 'inline-start' */
+export interface InputGroupAddonProps extends Omit<ComponentPropsWithRef<"span">, "children" | "className"> {
+  /** Addon content — icon, text, or an action `Button`. */
   align?: "inline-start" | "inline-end" | "block-start" | "block-end";
+  /** Additional CSS classes appended after the base class. */
+  children?: ReactNode;
+  /** Position of the addon relative to the input. @default 'inline-start' */
+  className?: string;
 }
 
 /**
@@ -74,6 +82,7 @@ const InputGroupAddon = (props: Readonly<InputGroupAddonProps>) => {
 InputGroupAddon.displayName = "InputGroupAddon";
 
 export interface InputGroupInputProps extends Omit<ComponentPropsWithRef<typeof AriaInput>, "className"> {
+  /** Additional CSS classes appended after the base class. */
   className?: string;
 }
 
@@ -96,6 +105,7 @@ const InputGroupInput = (props: Readonly<InputGroupInputProps>) => {
 InputGroupInput.displayName = "InputGroupInput";
 
 export interface InputGroupTextareaProps extends Omit<ComponentPropsWithRef<typeof AriaTextArea>, "className"> {
+  /** Additional CSS classes appended after the base class. */
   className?: string;
 }
 

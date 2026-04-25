@@ -15,7 +15,9 @@ import { FieldContext } from "./field-context";
 import { useFieldState } from "./use-field-state";
 
 export interface FieldProps extends Omit<ComponentPropsWithRef<typeof AriaTextField>, "className" | "children"> {
-  children: ReactNode;
+  /** Field slots — `FieldLabel`, `Input` (or `Textarea`), `FieldDescription`, `FieldError` (or any combination). */
+  children?: ReactNode;
+  /** Additional CSS classes appended after the base class. */
   className?: string;
   /** Whether the field stretches to fill its container width. @default false */
   isFullWidth?: boolean;
@@ -61,7 +63,11 @@ Field.displayName = "Field";
 
 /* FieldLabel */
 
-export interface FieldLabelProps extends ComponentPropsWithRef<typeof AriaLabel> {
+export interface FieldLabelProps extends Omit<ComponentPropsWithRef<typeof AriaLabel>, "children" | "className"> {
+  /** Label text content identifying the paired form field. */
+  children?: ReactNode;
+  /** Additional CSS classes appended after the base class. */
+  className?: string;
   /** Whether the label is disabled (dims and removes pointer events). @default false */
   isDisabled?: boolean;
   /** Whether the label is in error state (text in danger color). @default false */
@@ -114,7 +120,14 @@ FieldLabel.displayName = "FieldLabel";
 
 /* FieldDescription */
 
-export interface FieldDescriptionProps extends Omit<ComponentPropsWithRef<typeof AriaText>, "slot"> {
+export interface FieldDescriptionProps extends Omit<
+  ComponentPropsWithRef<typeof AriaText>,
+  "children" | "className" | "slot"
+> {
+  /** Helper text content describing the paired form field. */
+  children?: ReactNode;
+  /** Additional CSS classes appended after the base class. */
+  className?: string;
   /** Whether the description is disabled (dims and removes pointer events). @default false */
   isDisabled?: boolean;
   /** Size scale. @default 'md' */
@@ -148,7 +161,10 @@ FieldDescription.displayName = "FieldDescription";
 
 /* FieldError */
 
-export interface FieldErrorProps extends Omit<ComponentPropsWithRef<typeof AriaFieldError>, "className"> {
+export interface FieldErrorProps extends Omit<ComponentPropsWithRef<typeof AriaFieldError>, "children" | "className"> {
+  /** Error message content shown when the paired field is invalid. */
+  children?: ReactNode;
+  /** Additional CSS classes appended after the base class. */
   className?: string;
   /** Whether the field error is disabled. @default false */
   isDisabled?: boolean;
@@ -183,7 +199,11 @@ FieldError.displayName = "FieldError";
 
 /* FieldSet */
 
-export interface FieldSetProps extends ComponentPropsWithRef<"fieldset"> {
+export interface FieldSetProps extends Omit<ComponentPropsWithRef<"fieldset">, "children" | "className"> {
+  /** Field-set content — typically a `FieldLegend` followed by `Field` or `FieldGroup` children. */
+  children?: ReactNode;
+  /** Additional CSS classes appended after the base class. */
+  className?: string;
   /** Visual style. @default 'default' */
   variant?: "default" | "bordered";
 }
@@ -214,7 +234,11 @@ FieldSet.displayName = "FieldSet";
 
 /* FieldLegend */
 
-export interface FieldLegendProps extends ComponentPropsWithRef<"legend"> {
+export interface FieldLegendProps extends Omit<ComponentPropsWithRef<"legend">, "children" | "className"> {
+  /** Legend text content announcing the field-set group to assistive technology. */
+  children?: ReactNode;
+  /** Additional CSS classes appended after the base class. */
+  className?: string;
   /** Size scale. @default 'md' */
   size?: "sm" | "md" | "lg";
 }
@@ -244,7 +268,11 @@ FieldLegend.displayName = "FieldLegend";
 
 /* FieldGroup */
 
-export interface FieldGroupProps extends ComponentPropsWithRef<"div"> {
+export interface FieldGroupProps extends Omit<ComponentPropsWithRef<"div">, "children" | "className"> {
+  /** Group content — typically multiple `Field` children laid out together. */
+  children?: ReactNode;
+  /** Additional CSS classes appended after the base class. */
+  className?: string;
   /** Layout orientation. 'responsive' renders vertical on mobile, horizontal on md+. @default 'vertical' */
   orientation?: "vertical" | "horizontal" | "responsive";
   /** Size scale (gap). @default 'md' */
@@ -278,9 +306,13 @@ FieldGroup.displayName = "FieldGroup";
 
 /* FieldTitle */
 
-export interface FieldTitleProps extends ComponentPropsWithRef<"h3"> {
-  /** HTML heading level. @default 'h3' */
+export interface FieldTitleProps extends Omit<ComponentPropsWithRef<"h3">, "children" | "className"> {
+  /** Title text content for the form section. */
   as?: "h2" | "h3" | "h4";
+  /** Additional CSS classes appended after the base class. */
+  children?: ReactNode;
+  /** HTML heading level. @default 'h3' */
+  className?: string;
   /** Size scale. @default 'md' */
   size?: "sm" | "md" | "lg";
 }
@@ -312,7 +344,9 @@ FieldTitle.displayName = "FieldTitle";
 
 /* FieldSeparator */
 
-export interface FieldSeparatorProps extends ComponentPropsWithRef<"hr"> {
+export interface FieldSeparatorProps extends Omit<ComponentPropsWithRef<"hr">, "className"> {
+  /** Additional CSS classes appended after the base class. */
+  className?: string;
   /** Line style. @default 'solid' */
   variant?: "solid" | "dashed" | "dotted";
 }
