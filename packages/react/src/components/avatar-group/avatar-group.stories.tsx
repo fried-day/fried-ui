@@ -69,13 +69,13 @@ const meta = {
         category: "State",
       },
     },
-    isBordered: {
+    isBorderless: {
       control: "boolean",
       description:
-        "Whether each avatar shows a 2px outline matching the background — separates overlapping avatars visually. Pass `false` to drop the outline for a solid stack.",
+        "Whether the group hides the 2px outline around each avatar — produces a solid stack with no background-colored separator. The default keeps the outline for visual clarity on overlapping avatars.",
       table: {
         type: { summary: "boolean" },
-        defaultValue: { summary: "true" },
+        defaultValue: { summary: "false" },
         category: "Style Variants",
       },
     },
@@ -321,7 +321,7 @@ const Spacing: Story = {
 
 const Borderless: Story = {
   args: {
-    isBordered: false,
+    isBorderless: true,
   },
   render: (args): React.JSX.Element => (
     <AvatarGroup {...args}>

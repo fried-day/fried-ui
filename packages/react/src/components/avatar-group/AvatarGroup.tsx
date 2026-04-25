@@ -7,8 +7,8 @@ import { Avatar, AvatarFallback, type AvatarProps } from "../avatar";
 import { classes } from "../../utils/classes";
 
 export interface AvatarGroupProps extends ComponentPropsWithRef<"div"> {
-  /** Whether the group draws a 2px outline around each avatar matching the background — separates overlapping avatars visually. Pass `false` to drop the outline for a solid stack. @default true */
-  isBordered?: boolean;
+  /** Whether the group hides the 2px outline around each avatar — produces a solid stack with no background-colored separator. The default keeps the outline for visual clarity on overlapping avatars. @default false */
+  isBorderless?: boolean;
   /** Whether the avatars lift on hover. @default false */
   isHoverable?: boolean;
   /** Maximum number of avatars to show before collapsing to a +N counter. @default undefined */
@@ -26,7 +26,7 @@ export interface AvatarGroupProps extends ComponentPropsWithRef<"div"> {
  * When the number of children exceeds `max`, remaining avatars collapse into a `+N` counter.
  */
 const AvatarGroup = (props: Readonly<AvatarGroupProps>) => {
-  const { children, className, isBordered, isHoverable, max, ref, size, spacing, total, ...rest } = props;
+  const { children, className, isBorderless, isHoverable, max, ref, size, spacing, total, ...rest } = props;
 
   const avatars = Children.toArray(children).filter(isValidElement) as ReactElement<AvatarProps>[];
   const visible = typeof max === "number" ? avatars.slice(0, max) : avatars;
@@ -40,7 +40,7 @@ const AvatarGroup = (props: Readonly<AvatarGroupProps>) => {
       size,
       spacing,
       hoverable: isHoverable,
-      borderless: isBordered === false,
+      borderless: isBorderless,
     },
     className,
   });
