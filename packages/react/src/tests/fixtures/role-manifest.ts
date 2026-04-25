@@ -1,29 +1,12 @@
-/**
- * Role manifest — component → role + audit expectations.
- *
- * Drives Wave 2 audits:
- *   - required stories per role
- *   - pass-through props per role
- *   - container alignment per role
- *   - whether `children` argType must be marked required
- */
-
-export type ComponentRoleKind = "interactive" | "form-field" | "display" | "composition";
-
 export interface ComponentRole {
-  /** Top-level showcase container alignment for variant-comparison stories. */
-  alignment?: "items-start" | "items-center" | "items-end";
-  /** ArgType keys that must exist (non-modifier pass-through props per role). */
-  passthroughProps?: string[];
-  /** Story names that must be exported. */
   requiredStories: string[];
-  /** Whether the children argType must declare `type.required: true`. */
+  role: "interactive" | "form-field" | "display" | "composition";
+  alignment?: "items-start" | "items-center" | "items-end";
+  passthroughProps?: string[];
   requiresChildren?: boolean;
-  /** Role kind. */
-  role: ComponentRoleKind;
 }
 
-export const componentRoles: Record<string, ComponentRole> = {
+export const COMPONENT_ROLES: Record<string, ComponentRole> = {
   avatar: {
     alignment: "items-center",
     requiredStories: ["Default", "Sizes"],
