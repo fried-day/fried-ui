@@ -18,7 +18,7 @@ const TIER_RULES: TierRule[] = [
     pattern: /^(Selected|Unselected|Checked|Unchecked|Active|Pressed|Open|Closed|Expanded|Collapsed)$/,
     tier: 3,
   },
-  { pattern: /^(Bordered|Outlined|Filled|Ghost|Soft|Solid|Flat)$/, tier: 3 },
+  { pattern: /^(Bordered|Borderless|Outlined|Filled|Ghost|Soft|Solid|Flat)$/, tier: 3 },
   { pattern: /^(FullWidth|FitContent|Stretch|Inline|Block)$/, tier: 3 },
   { pattern: /^(Hoverable|Focusable|Clickable)$/, tier: 3 },
   { pattern: /^(BrokenImage|EmptyState|NoData|NoResults|StressTest)$/, tier: 5 },

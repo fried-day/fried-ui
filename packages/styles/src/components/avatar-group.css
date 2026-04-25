@@ -4,7 +4,11 @@
   }
 
   .avatar-group [data-slot="avatar"] {
-    @apply relative ring-2 ring-background transition-transform duration-150 ease-out;
+    @apply relative outline-2 outline-background transition-transform duration-150 ease-out;
+  }
+
+  .avatar-group-borderless [data-slot="avatar"] {
+    @apply outline-0;
   }
 
   .avatar-group [data-slot="avatar"]:not(:first-child) {
