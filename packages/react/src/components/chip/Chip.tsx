@@ -9,7 +9,7 @@ import { classes } from "../../utils/classes";
 
 export interface ChipProps extends Omit<ComponentPropsWithRef<"span">, "children" | "className" | "onClick"> {
   /** Chip content — label text plus optional icons via `slot="icon-start" | "icon-end" | "icon"` or an avatar via `slot="avatar"`. */
-  children: ReactNode;
+  children?: ReactNode;
   /** Additional CSS classes appended after the base class. */
   className?: string;
   /** Accessible label for the dismiss button. @default 'Dismiss' */

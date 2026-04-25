@@ -8,7 +8,7 @@ import { classes } from "../../utils/classes";
 
 export interface AvatarGroupProps extends Omit<ComponentPropsWithRef<"div">, "children" | "className"> {
   /** A collection of `<Avatar />` elements to render in the stack. */
-  children: ReactNode;
+  children?: ReactNode;
   /** Additional CSS classes appended after the base class. */
   className?: string;
   /** Whether the group hides the 2px outline around each avatar — produces a solid stack with no background-colored separator. The default keeps the outline for visual clarity on overlapping avatars. @default false */

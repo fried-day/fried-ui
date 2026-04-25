@@ -12,7 +12,7 @@ import { classes } from "../../utils/classes";
 
 export interface ButtonProps extends Omit<ComponentPropsWithRef<typeof AriaButton>, "className" | "children"> {
   /** Button content — text, icons via `slot="icon-start" | "icon-end" | "icon"`, or a render-prop function receiving the current state. */
-  children: ReactNode | ((renderProps: ButtonRenderProps) => ReactNode);
+  children?: ReactNode | ((renderProps: ButtonRenderProps) => ReactNode);
   /** Additional CSS classes appended after the base class. Accepts a render-prop function for state-aware styling. */
   className?: string | ((renderProps: ButtonRenderProps) => string);
   /** Whether the button stretches to fill its container width. @default false */

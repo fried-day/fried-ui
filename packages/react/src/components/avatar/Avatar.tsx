@@ -8,7 +8,7 @@ import { classes } from "../../utils/classes";
 
 export interface AvatarProps extends Omit<ComponentPropsWithRef<typeof RadixAvatar.Root>, "children" | "className"> {
   /** Avatar content — compose with `<AvatarImage />` and `<AvatarFallback />`. */
-  children: ReactNode;
+  children?: ReactNode;
   /** Additional CSS classes appended after the base class. */
   className?: string;
   /** Whether the avatar shows a 2px ring matching the background — separates the avatar visually when placed over a photo or colored background. @default false */
@@ -74,7 +74,7 @@ export interface AvatarFallbackProps extends Omit<
   "children" | "className"
 > {
   /** Fallback content — initials, icon, or any ReactNode shown when the image fails or is absent. */
-  children: ReactNode;
+  children?: ReactNode;
   /** Additional CSS classes appended after the base class. */
   className?: string;
   /** Background color for the fallback initials or icon — useful for differentiating users in chat or member lists. @default 'primary' */

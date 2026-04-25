@@ -11,7 +11,7 @@ export interface DescriptionProps extends Omit<
   "children" | "className" | "slot"
 > {
   /** Helper text content describing the paired form field. */
-  children: ReactNode;
+  children?: ReactNode;
   /** Additional CSS classes appended after the base class. */
   className?: string;
   /** Whether the description is disabled (dims and removes pointer events). @default false */

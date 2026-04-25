@@ -13,9 +13,6 @@ const meta: Meta<typeof Badge> = {
   parameters: {
     layout: "centered",
   },
-  args: {
-    children: null,
-  },
   argTypes: {
     children: {
       control: false,

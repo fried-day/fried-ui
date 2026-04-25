@@ -16,9 +16,6 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  args: {
-    children: null,
-  },
   argTypes: {
     children: {
       control: false,
