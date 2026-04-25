@@ -47,9 +47,17 @@
       "types": "./dist/components/chip/index.d.ts",
       "import": "./dist/components/chip/index.mjs"
     },
+    "./description": {
+      "types": "./dist/components/description/index.d.ts",
+      "import": "./dist/components/description/index.mjs"
+    },
     "./field": {
       "types": "./dist/components/field/index.d.ts",
       "import": "./dist/components/field/index.mjs"
+    },
+    "./field-error": {
+      "types": "./dist/components/field-error/index.d.ts",
+      "import": "./dist/components/field-error/index.mjs"
     },
     "./icons": {
       "types": "./dist/components/icons/index.d.ts",
@@ -62,6 +70,10 @@
     "./input-group": {
       "types": "./dist/components/input-group/index.d.ts",
       "import": "./dist/components/input-group/index.mjs"
+    },
+    "./label": {
+      "types": "./dist/components/label/index.d.ts",
+      "import": "./dist/components/label/index.mjs"
     },
     "./surface": {
       "types": "./dist/components/surface/index.d.ts",
