@@ -13,11 +13,11 @@
   --color-secondary-border: var(--color-secondary);
   --color-secondary-foreground: oklch(0% 0 0);
 
-  --color-accent: var(--color-fri-purple-500);
-  --color-accent-hover: var(--color-fri-purple-600);
-  --color-accent-active: var(--color-fri-purple-700);
+  --color-accent: var(--color-fri-lime-500);
+  --color-accent-hover: var(--color-fri-lime-600);
+  --color-accent-active: var(--color-fri-lime-700);
   --color-accent-border: var(--color-accent);
-  --color-accent-foreground: oklch(100% 0 0);
+  --color-accent-foreground: var(--color-fri-lime-950);
 
   --color-success: var(--color-fri-green-500);
   --color-success-hover: var(--color-fri-green-600);
@@ -29,7 +29,7 @@
   --color-warning-hover: var(--color-fri-yellow-600);
   --color-warning-active: var(--color-fri-yellow-700);
   --color-warning-border: var(--color-warning);
-  --color-warning-foreground: oklch(100% 0 0);
+  --color-warning-foreground: var(--color-fri-yellow-950);
 
   --color-danger: var(--color-fri-red-500);
   --color-danger-hover: var(--color-fri-red-600);
