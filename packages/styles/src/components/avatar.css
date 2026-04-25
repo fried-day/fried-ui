@@ -3,7 +3,7 @@
     @apply relative flex shrink-0 items-center justify-center overflow-hidden select-none;
     @apply leading-none font-medium;
     @apply size-10 rounded-full text-sm;
-    @apply bg-avatar text-avatar-foreground;
+    @apply bg-primary text-primary-foreground;
   }
 
   .avatar-image {

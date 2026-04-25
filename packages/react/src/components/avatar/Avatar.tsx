@@ -63,7 +63,7 @@ const AvatarImage = (props: Readonly<AvatarImageProps>) => {
 AvatarImage.displayName = "AvatarImage";
 
 export interface AvatarFallbackProps extends ComponentPropsWithRef<typeof RadixAvatar.Fallback> {
-  /** Background color for the fallback initials or icon — useful for differentiating users in chat or member lists. @default undefined */
+  /** Background color for the fallback initials or icon — useful for differentiating users in chat or member lists. @default 'primary' */
   variant?: "primary" | "secondary" | "accent" | "success" | "warning" | "danger" | "info";
 }
 
