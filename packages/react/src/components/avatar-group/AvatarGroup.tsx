@@ -7,8 +7,6 @@ import { Avatar, AvatarFallback, type AvatarProps } from "../avatar";
 import { classes } from "../../utils/classes";
 
 export interface AvatarGroupProps extends ComponentPropsWithRef<"div"> {
-  /** Counter display style when more avatars are hidden than shown. `avatar` renders an Avatar-sized +N circle (default). `text` renders plain inline text beside the stack with compact number notation (e.g. `+10K`). @default 'avatar' */
-  counterVariant?: "avatar" | "text";
   /** Whether the avatars lift on hover. @default false */
   isHoverable?: boolean;
   /** Maximum number of avatars to show before collapsing to a +N counter. @default undefined */
@@ -21,23 +19,18 @@ export interface AvatarGroupProps extends ComponentPropsWithRef<"div"> {
   total?: number;
 }
 
-const compactFormatter = new Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 1 });
-
 /**
  * A stack of overlapping avatars representing a group of users or entities.
  * When the number of children exceeds `max`, remaining avatars collapse into a `+N` counter.
- * Use `counterVariant="text"` to render the counter as inline text with compact notation (e.g. `+10K`) beside the stack.
  */
 const AvatarGroup = (props: Readonly<AvatarGroupProps>) => {
-  const { children, className, counterVariant, isHoverable, max, ref, size, spacing, total, ...rest } = props;
+  const { children, className, isHoverable, max, ref, size, spacing, total, ...rest } = props;
 
   const avatars = Children.toArray(children).filter(isValidElement) as ReactElement<AvatarProps>[];
   const visible = typeof max === "number" ? avatars.slice(0, max) : avatars;
   const totalCount = typeof total === "number" ? total : avatars.length;
   const hiddenCount = Math.max(0, totalCount - visible.length);
   const counterLabel = `${hiddenCount} more`;
-  const isTextCounter = counterVariant === "text";
-  const counterText = isTextCounter ? `+${compactFormatter.format(hiddenCount)}` : `+${hiddenCount}`;
 
   const groupClassName = classes({
     block: "avatar-group",
@@ -58,16 +51,11 @@ const AvatarGroup = (props: Readonly<AvatarGroupProps>) => {
         }),
       )}
 
-      {hiddenCount > 0 &&
-        (isTextCounter ? (
-          <span className="avatar-group-counter-text" data-slot="avatar-group-counter-text" aria-label={counterLabel}>
-            {counterText}
-          </span>
-        ) : (
-          <Avatar className="avatar-group-counter" aria-label={counterLabel} size={size}>
-            <AvatarFallback>{counterText}</AvatarFallback>
-          </Avatar>
-        ))}
+      {hiddenCount > 0 && (
+        <Avatar className="avatar-group-counter" aria-label={counterLabel} size={size}>
+          <AvatarFallback>{`+${hiddenCount}`}</AvatarFallback>
+        </Avatar>
+      )}
     </div>
   );
 };

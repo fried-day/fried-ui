@@ -275,44 +275,4 @@ describe("AvatarGroup", () => {
 
     expect(screen.getByTestId("custom")).toHaveAttribute("id", "my-group");
   });
-
-  it("renders counter as plain text span when counterVariant='text'", () => {
-    const { container } = render(
-      <AvatarGroup counterVariant="text" max={2} total={100}>
-        <Avatar>
-          <AvatarFallback>A</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarFallback>B</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarFallback>C</AvatarFallback>
-        </Avatar>
-      </AvatarGroup>,
-    );
-
-    const textCounter = container.querySelector("[data-slot='avatar-group-counter-text']");
-    expect(textCounter).toBeInTheDocument();
-    expect(textCounter?.className).toContain("avatar-group-counter-text");
-    expect(container.querySelector(".avatar-group-counter")).toBeNull();
-  });
-
-  it("formats large counts using compact notation in text counter", () => {
-    const { container } = render(
-      <AvatarGroup counterVariant="text" max={2} total={10000}>
-        <Avatar>
-          <AvatarFallback>A</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarFallback>B</AvatarFallback>
-        </Avatar>
-      </AvatarGroup>,
-    );
-
-    const textCounter = container.querySelector("[data-slot='avatar-group-counter-text']");
-    expect(textCounter?.textContent).toBe("+10K");
-  });
 });

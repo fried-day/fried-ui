@@ -19,35 +19,6 @@
     @apply bg-avatar text-avatar-foreground;
   }
 
-  .avatar-group-counter-text {
-    @apply ms-2 inline-flex items-center self-center text-sm font-medium;
-    @apply text-muted-foreground;
-  }
-
-  .avatar-group-size-xs .avatar-group-counter-text {
-    @apply text-xs;
-  }
-
-  .avatar-group-size-sm .avatar-group-counter-text {
-    @apply text-xs;
-  }
-
-  .avatar-group-size-md .avatar-group-counter-text {
-    @apply text-sm;
-  }
-
-  .avatar-group-size-lg .avatar-group-counter-text {
-    @apply text-base;
-  }
-
-  .avatar-group-size-xl .avatar-group-counter-text {
-    @apply text-lg;
-  }
-
-  .avatar-group-size-2xl .avatar-group-counter-text {
-    @apply text-xl;
-  }
-
   .avatar-group-size-xs [data-slot="avatar"]:not(:first-child) {
     @apply -ms-1;
   }

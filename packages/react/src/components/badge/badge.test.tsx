@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 
 import { Badge, BadgeIndicator, BadgeStatus } from "./Badge";
 
-describe("Badge (wrapper)", () => {
+describe("Badge", () => {
   it("renders anchor children", () => {
     render(
       <Badge>
