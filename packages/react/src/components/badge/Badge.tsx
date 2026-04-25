@@ -6,7 +6,7 @@ import { classes } from "../../utils/classes";
 
 export interface BadgeProps extends Omit<ComponentPropsWithRef<"span">, "children" | "className"> {
   /** Anchor element plus a `BadgeIndicator` or `BadgeStatus` subpart. Badge provides the positioning container. */
-  children?: ReactNode;
+  children: ReactNode;
   /** Additional CSS classes appended after the base class. */
   className?: string;
 }
@@ -36,7 +36,7 @@ Badge.displayName = "Badge";
 
 export interface BadgeIndicatorProps extends Omit<ComponentPropsWithRef<"span">, "children" | "className"> {
   /** Indicator content — count, short label, or any ReactNode rendered at the anchor's corner. */
-  children?: ReactNode;
+  children: ReactNode;
   /** Additional CSS classes appended after the base class. */
   className?: string;
   /** Whether the indicator sits on the anchor's perimeter — use with round anchors such as Avatar so the indicator lands on the edge at 45 degrees. @default false */

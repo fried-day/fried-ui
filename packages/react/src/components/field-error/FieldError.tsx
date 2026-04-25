@@ -8,7 +8,7 @@ import { classes } from "../../utils/classes";
 
 export interface FieldErrorProps extends Omit<ComponentPropsWithRef<typeof AriaFieldError>, "children" | "className"> {
   /** Error message content shown when the paired form field is invalid. */
-  children?: ReactNode;
+  children: ReactNode;
   /** Additional CSS classes appended after the base class. */
   className?: string;
   /** Whether the field error is disabled. @default false */

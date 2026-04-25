@@ -17,7 +17,7 @@ describe("InputGroup", () => {
   });
 
   it("renders only base class without explicit variant/size/radius props", () => {
-    render(<InputGroup data-testid="group" />);
+    render(<InputGroup data-testid="group">{null}</InputGroup>);
     const group = screen.getByTestId("group");
     expect(group.className).toContain("input-group");
     expect(group.className).not.toContain("input-group-primary");
@@ -29,7 +29,11 @@ describe("InputGroup", () => {
     const variants = ["primary", "secondary", "overlay"] as const;
 
     variants.forEach((variant) => {
-      const { unmount } = render(<InputGroup variant={variant} data-testid={variant} />);
+      const { unmount } = render(
+        <InputGroup variant={variant} data-testid={variant}>
+          {null}
+        </InputGroup>,
+      );
       const group = screen.getByTestId(variant);
       expect(group.className).toContain(`input-group-${variant}`);
       unmount();
@@ -40,7 +44,11 @@ describe("InputGroup", () => {
     const sizes = ["sm", "md", "lg"] as const;
 
     sizes.forEach((size) => {
-      const { unmount } = render(<InputGroup size={size} data-testid={size} />);
+      const { unmount } = render(
+        <InputGroup size={size} data-testid={size}>
+          {null}
+        </InputGroup>,
+      );
       const group = screen.getByTestId(size);
       expect(group.className).toContain(`input-group-size-${size}`);
       unmount();
@@ -51,7 +59,11 @@ describe("InputGroup", () => {
     const radiusValues = ["none", "sm", "md", "lg", "full"] as const;
 
     radiusValues.forEach((radius) => {
-      const { unmount } = render(<InputGroup radius={radius} data-testid={radius} />);
+      const { unmount } = render(
+        <InputGroup radius={radius} data-testid={radius}>
+          {null}
+        </InputGroup>,
+      );
       const group = screen.getByTestId(radius);
       expect(group.className).toContain(`input-group-radius-${radius}`);
       unmount();
@@ -59,19 +71,27 @@ describe("InputGroup", () => {
   });
 
   it("applies full-width modifier class when isFullWidth is true", () => {
-    render(<InputGroup data-testid="group" isFullWidth />);
+    render(
+      <InputGroup data-testid="group" isFullWidth>
+        {null}
+      </InputGroup>,
+    );
     const group = screen.getByTestId("group");
     expect(group.className).toContain("input-group-full-width");
   });
 
   it("sets data-slot='input-group' on wrapper", () => {
-    render(<InputGroup data-testid="group" />);
+    render(<InputGroup data-testid="group">{null}</InputGroup>);
     const group = screen.getByTestId("group");
     expect(group).toHaveAttribute("data-slot", "input-group");
   });
 
   it("merges custom className", () => {
-    render(<InputGroup className="mt-4" data-testid="group" />);
+    render(
+      <InputGroup className="mt-4" data-testid="group">
+        {null}
+      </InputGroup>,
+    );
     const group = screen.getByTestId("group");
     expect(group.className).toContain("input-group");
     expect(group.className).toContain("mt-4");
@@ -79,7 +99,7 @@ describe("InputGroup", () => {
 
   it("forwards ref to the wrapper element", () => {
     const ref = createRef<HTMLDivElement>();
-    render(<InputGroup ref={ref} />);
+    render(<InputGroup ref={ref}>{null}</InputGroup>);
     expect(ref.current).toBeInstanceOf(HTMLDivElement);
   });
 
@@ -103,7 +123,11 @@ describe("InputGroupAddon", () => {
     const aligns = ["inline-start", "inline-end", "block-start", "block-end"] as const;
 
     aligns.forEach((align) => {
-      const { unmount } = render(<InputGroupAddon align={align} data-testid={align} />);
+      const { unmount } = render(
+        <InputGroupAddon align={align} data-testid={align}>
+          {null}
+        </InputGroupAddon>,
+      );
       const addon = screen.getByTestId(align);
       expect(addon.className).toContain(`input-group-addon-align-${align}`);
       unmount();
@@ -111,21 +135,21 @@ describe("InputGroupAddon", () => {
   });
 
   it("renders only base class without explicit align prop", () => {
-    render(<InputGroupAddon data-testid="addon" />);
+    render(<InputGroupAddon data-testid="addon">{null}</InputGroupAddon>);
     const addon = screen.getByTestId("addon");
     expect(addon.className).toContain("input-group-addon");
     expect(addon.className).not.toContain("input-group-addon-align-inline-start");
   });
 
   it("sets data-slot='input-group-addon'", () => {
-    render(<InputGroupAddon data-testid="addon" />);
+    render(<InputGroupAddon data-testid="addon">{null}</InputGroupAddon>);
     const addon = screen.getByTestId("addon");
     expect(addon).toHaveAttribute("data-slot", "input-group-addon");
   });
 
   it("forwards ref", () => {
     const ref = createRef<HTMLSpanElement>();
-    render(<InputGroupAddon ref={ref} />);
+    render(<InputGroupAddon ref={ref}>{null}</InputGroupAddon>);
     expect(ref.current).toBeInstanceOf(HTMLSpanElement);
   });
 

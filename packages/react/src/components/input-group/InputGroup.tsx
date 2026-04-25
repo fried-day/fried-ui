@@ -8,7 +8,7 @@ import { classes } from "../../utils/classes";
 
 export interface InputGroupProps extends Omit<ComponentPropsWithRef<"div">, "children" | "className"> {
   /** Composition slots — `InputGroupAddon`, `InputGroupInput`, `InputGroupTextarea`, or `Button`. */
-  children?: ReactNode;
+  children: ReactNode;
   /** Additional CSS classes appended after the base class. */
   className?: string;
   /** Whether the group stretches to fill its container width. @default false */
@@ -49,10 +49,10 @@ const InputGroup = (props: Readonly<InputGroupProps>) => {
 InputGroup.displayName = "InputGroup";
 
 export interface InputGroupAddonProps extends Omit<ComponentPropsWithRef<"span">, "children" | "className"> {
+  /** Addon content — icon, text, or an action `Button`. */
+  children: ReactNode;
   /** Position of the addon relative to the input. @default 'inline-start' */
   align?: "inline-start" | "inline-end" | "block-start" | "block-end";
-  /** Addon content — icon, text, or an action `Button`. */
-  children?: ReactNode;
   /** Additional CSS classes appended after the base class. */
   className?: string;
 }

@@ -63,14 +63,14 @@ describe("1:1 plain HTML parity — default props emit only base class", () => {
     expect(el?.className).toBe("surface");
   });
 
-  it("Avatar: <Avatar /> renders class='avatar'", () => {
-    const { container } = render(<Avatar />);
+  it("Avatar: <Avatar>{null}</Avatar> renders class='avatar'", () => {
+    const { container } = render(<Avatar>{null}</Avatar>);
     const el = container.querySelector('[data-slot="avatar"]');
     expect(el?.className).toBe("avatar");
   });
 
-  it("AvatarGroup: <AvatarGroup /> renders class='avatar-group'", () => {
-    const { container } = render(<AvatarGroup />);
+  it("AvatarGroup: <AvatarGroup>{null}</AvatarGroup> renders class='avatar-group'", () => {
+    const { container } = render(<AvatarGroup>{null}</AvatarGroup>);
     const el = container.querySelector('[data-slot="avatar-group"]');
     expect(el?.className).toBe("avatar-group");
   });
@@ -81,8 +81,8 @@ describe("1:1 plain HTML parity — default props emit only base class", () => {
     expect(el?.className).toBe("input");
   });
 
-  it("InputGroup: <InputGroup /> renders class='input-group'", () => {
-    const { container } = render(<InputGroup />);
+  it("InputGroup: <InputGroup>{null}</InputGroup> renders class='input-group'", () => {
+    const { container } = render(<InputGroup>{null}</InputGroup>);
     const el = container.querySelector('[data-slot="input-group"]');
     expect(el?.className).toBe("input-group");
   });

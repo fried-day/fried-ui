@@ -6,7 +6,7 @@ import { classes } from "../../utils/classes";
 
 export interface SurfaceProps extends Omit<ComponentPropsWithRef<"div">, "children" | "className"> {
   /** Surface content — anything rendered inside the styled container. */
-  children?: ReactNode;
+  children: ReactNode;
   /** Additional CSS classes appended after the base class. */
   className?: string;
   /** Whether the surface has an emphasis border. @default false */
