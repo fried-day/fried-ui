@@ -8,7 +8,7 @@ export interface ComponentRole {
 
 export const COMPONENT_ROLES: Record<string, ComponentRole> = {
   avatar: {
-    alignment: "items-center",
+    alignment: "items-end",
     requiredStories: ["Default", "Sizes"],
     requiresChildren: false,
     role: "display",

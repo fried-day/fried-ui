@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import SAMPLE_AVATAR_1 from "@fried-ui/assets/story/avatar-01.png";
+import AVATAR_GIRL from "@fried-ui/assets/story/avatar-girl.jpg";
 
 import { UserIcon } from "../icons";
 import { Avatar, AvatarFallback, AvatarImage } from "./Avatar";
@@ -91,7 +91,7 @@ type Story = StoryObj<typeof meta>;
 const Default: Story = {
   args: {
     children: [
-      <AvatarImage key="img" alt="Avatar 1" src={SAMPLE_AVATAR_1} />,
+      <AvatarImage key="img" alt="Avatar 1" src={AVATAR_GIRL} />,
       <AvatarFallback key="fb">CT</AvatarFallback>,
     ],
   },
@@ -99,34 +99,34 @@ const Default: Story = {
 
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-center gap-4">
+    <div className="flex flex-wrap items-end gap-4">
       <Avatar {...args} size="xs">
-        <AvatarImage alt="Avatar 1" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Avatar 1" src={AVATAR_GIRL} />
         <AvatarFallback>CT</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} size="sm">
-        <AvatarImage alt="Yuna Kim" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Yuna Kim" src={AVATAR_GIRL} />
         <AvatarFallback>YK</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} size="md">
-        <AvatarImage alt="Rio Tanaka" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Rio Tanaka" src={AVATAR_GIRL} />
         <AvatarFallback>RT</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} size="lg">
-        <AvatarImage alt="Sofia Marchetti" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Sofia Marchetti" src={AVATAR_GIRL} />
         <AvatarFallback>SM</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} size="xl">
-        <AvatarImage alt="Aria Park" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Aria Park" src={AVATAR_GIRL} />
         <AvatarFallback>AP</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} size="2xl">
-        <AvatarImage alt="Diego Silva" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Diego Silva" src={AVATAR_GIRL} />
         <AvatarFallback>DS</AvatarFallback>
       </Avatar>
     </div>
@@ -135,29 +135,29 @@ const Sizes: Story = {
 
 const Radius: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-center gap-4">
+    <div className="flex flex-wrap items-end gap-4">
       <Avatar {...args} radius="none">
-        <AvatarImage alt="Avatar 1" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Avatar 1" src={AVATAR_GIRL} />
         <AvatarFallback>CT</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} radius="sm">
-        <AvatarImage alt="Yuna Kim" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Yuna Kim" src={AVATAR_GIRL} />
         <AvatarFallback>YK</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} radius="md">
-        <AvatarImage alt="Rio Tanaka" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Rio Tanaka" src={AVATAR_GIRL} />
         <AvatarFallback>RT</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} radius="lg">
-        <AvatarImage alt="Sofia Marchetti" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Sofia Marchetti" src={AVATAR_GIRL} />
         <AvatarFallback>SM</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} radius="full">
-        <AvatarImage alt="Aria Park" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Aria Park" src={AVATAR_GIRL} />
         <AvatarFallback>AP</AvatarFallback>
       </Avatar>
     </div>
@@ -166,39 +166,39 @@ const Radius: Story = {
 
 const Rings: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-center gap-4">
+    <div className="flex flex-wrap items-end gap-4">
       <Avatar {...args} ring="primary">
-        <AvatarImage alt="Avatar 1" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Avatar 1" src={AVATAR_GIRL} />
         <AvatarFallback>CT</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} ring="secondary">
-        <AvatarImage alt="Yuna Kim" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Yuna Kim" src={AVATAR_GIRL} />
         <AvatarFallback>YK</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} ring="accent">
-        <AvatarImage alt="Rio Tanaka" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Rio Tanaka" src={AVATAR_GIRL} />
         <AvatarFallback>RT</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} ring="success">
-        <AvatarImage alt="Sofia Marchetti" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Sofia Marchetti" src={AVATAR_GIRL} />
         <AvatarFallback>SM</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} ring="warning">
-        <AvatarImage alt="Aria Park" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Aria Park" src={AVATAR_GIRL} />
         <AvatarFallback>AP</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} ring="danger">
-        <AvatarImage alt="Diego Silva" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Diego Silva" src={AVATAR_GIRL} />
         <AvatarFallback>DS</AvatarFallback>
       </Avatar>
 
       <Avatar {...args} ring="info">
-        <AvatarImage alt="Maya Chen" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Maya Chen" src={AVATAR_GIRL} />
         <AvatarFallback>MC</AvatarFallback>
       </Avatar>
     </div>
@@ -207,7 +207,7 @@ const Rings: Story = {
 
 const FallbackVariants: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-center gap-4">
+    <div className="flex flex-wrap items-end gap-4">
       <Avatar {...args}>
         <AvatarFallback variant="primary">CT</AvatarFallback>
       </Avatar>
@@ -243,7 +243,7 @@ const Disabled: Story = {
   args: {
     isDisabled: true,
     children: [
-      <AvatarImage key="img" alt="Sofia Marchetti" src={SAMPLE_AVATAR_1} />,
+      <AvatarImage key="img" alt="Sofia Marchetti" src={AVATAR_GIRL} />,
       <AvatarFallback key="fb">SM</AvatarFallback>,
     ],
   },
@@ -251,62 +251,28 @@ const Disabled: Story = {
 
 const Bordered: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-center gap-4 bg-linear-to-br from-fuchsia-500 to-blue-600 p-8">
+    <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
       <Avatar {...args} isBordered>
-        <AvatarImage alt="Avatar 1" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Avatar 1" src={AVATAR_GIRL} />
         <AvatarFallback>CT</AvatarFallback>
-      </Avatar>
-
-      <Avatar {...args} isBordered>
-        <AvatarFallback variant="primary">YK</AvatarFallback>
-      </Avatar>
-
-      <Avatar {...args} isBordered>
-        <AvatarFallback variant="success">RT</AvatarFallback>
-      </Avatar>
-
-      <Avatar {...args} isBordered>
-        <AvatarFallback variant="danger">SM</AvatarFallback>
       </Avatar>
     </div>
   ),
 };
 
-const FallbackOnly: Story = {
+const Fallback: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-center gap-4">
+    <div className="flex flex-wrap items-end gap-4">
       <Avatar {...args}>
-        <AvatarFallback>CT</AvatarFallback>
+        <AvatarFallback variant="primary">FR</AvatarFallback>
       </Avatar>
 
       <Avatar {...args}>
-        <AvatarFallback variant="primary">YK</AvatarFallback>
+        <AvatarFallback>NA</AvatarFallback>
       </Avatar>
 
-      <Avatar {...args}>
-        <AvatarFallback variant="accent">SM</AvatarFallback>
-      </Avatar>
-    </div>
-  ),
-};
-
-const FallbackWithIcon: Story = {
-  render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-center gap-4">
       <Avatar {...args}>
         <AvatarFallback>
-          <UserIcon className="size-5" />
-        </AvatarFallback>
-      </Avatar>
-
-      <Avatar {...args}>
-        <AvatarFallback variant="primary">
-          <UserIcon className="size-5" />
-        </AvatarFallback>
-      </Avatar>
-
-      <Avatar {...args}>
-        <AvatarFallback variant="success">
           <UserIcon className="size-5" />
         </AvatarFallback>
       </Avatar>
@@ -318,65 +284,11 @@ const BrokenImage: Story = {
   args: {
     children: [
       <AvatarImage key="img" alt="Diego Silva" src="https://broken.url/avatar.png" />,
-      <AvatarFallback key="fb">DS</AvatarFallback>,
+      <AvatarFallback key="fb">FR</AvatarFallback>,
     ],
   },
 };
 
-const LongFallback: Story = {
-  render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-center gap-4">
-      <Avatar {...args} size="md">
-        <AvatarFallback>CMW</AvatarFallback>
-      </Avatar>
-
-      <Avatar {...args} size="lg">
-        <AvatarFallback variant="primary">XLNT</AvatarFallback>
-      </Avatar>
-
-      <Avatar {...args} size="xl">
-        <AvatarFallback variant="accent">2024</AvatarFallback>
-      </Avatar>
-    </div>
-  ),
-};
-
-const ConstrainedContainer: Story = {
-  render: (args): React.JSX.Element => (
-    <div className="flex w-32 flex-wrap items-center gap-2 rounded-md border border-border p-2">
-      <Avatar {...args} size="sm">
-        <AvatarImage alt="Avatar 1" src={SAMPLE_AVATAR_1} />
-        <AvatarFallback>CT</AvatarFallback>
-      </Avatar>
-
-      <Avatar {...args} size="sm">
-        <AvatarFallback variant="primary">YK</AvatarFallback>
-      </Avatar>
-
-      <Avatar {...args} size="sm">
-        <AvatarFallback variant="success">RT</AvatarFallback>
-      </Avatar>
-
-      <Avatar {...args} size="sm">
-        <AvatarFallback variant="danger">SM</AvatarFallback>
-      </Avatar>
-    </div>
-  ),
-};
-
-export {
-  Default,
-  Sizes,
-  Radius,
-  Rings,
-  FallbackVariants,
-  Disabled,
-  Bordered,
-  FallbackOnly,
-  FallbackWithIcon,
-  BrokenImage,
-  LongFallback,
-  ConstrainedContainer,
-};
+export { Default, Sizes, Radius, Rings, FallbackVariants, Disabled, Bordered, Fallback, BrokenImage };
 
 export default meta;

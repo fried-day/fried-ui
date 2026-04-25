@@ -190,7 +190,7 @@ const Variants: Story = {
 
 const OverlayVariant: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex h-56 w-[640px] items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
+    <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
       <Chip {...args} variant="overlay">
         Overlay
       </Chip>

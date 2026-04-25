@@ -1,14 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import SAMPLE_AVATAR_1 from "@fried-ui/assets/story/avatar-01.png";
-import SAMPLE_AVATAR_2 from "@fried-ui/assets/story/avatar-02.png";
-import SAMPLE_AVATAR_3 from "@fried-ui/assets/story/avatar-03.png";
-import SAMPLE_AVATAR_4 from "@fried-ui/assets/story/avatar-04.png";
-import SAMPLE_AVATAR_5 from "@fried-ui/assets/story/avatar-05.png";
-import SAMPLE_AVATAR_6 from "@fried-ui/assets/story/avatar-06.png";
+import AVATAR_GIRL from "@fried-ui/assets/story/avatar-girl.jpg";
+import AVATAR_RED from "@fried-ui/assets/story/avatar-red.png";
+import AVATAR_GREEN from "@fried-ui/assets/story/avatar-green.png";
 
 import { Avatar, AvatarFallback, AvatarImage } from "../avatar";
 import { AvatarGroup } from "./AvatarGroup";
+
+import { UserIcon } from "../icons";
 
 const meta = {
   title: "Components/AvatarGroup",
@@ -96,15 +95,15 @@ const Default: Story = {
   args: {
     children: [
       <Avatar key="a1">
-        <AvatarImage alt="Avatar 1" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Avatar 1" src={AVATAR_GIRL} />
         <AvatarFallback>A1</AvatarFallback>
       </Avatar>,
       <Avatar key="a2">
-        <AvatarImage alt="Avatar 2" src={SAMPLE_AVATAR_2} />
+        <AvatarImage alt="Avatar 2" src={AVATAR_RED} />
         <AvatarFallback>A2</AvatarFallback>
       </Avatar>,
       <Avatar key="a3">
-        <AvatarImage alt="Avatar 3" src={SAMPLE_AVATAR_3} />
+        <AvatarImage alt="Avatar 3" src={AVATAR_GREEN} />
         <AvatarFallback>A3</AvatarFallback>
       </Avatar>,
     ],
@@ -118,32 +117,32 @@ const WithMax: Story = {
   render: (args): React.JSX.Element => (
     <AvatarGroup {...args}>
       <Avatar>
-        <AvatarImage alt="Avatar 1" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Avatar 1" src={AVATAR_GIRL} />
         <AvatarFallback>A1</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <AvatarImage alt="Avatar 2" src={SAMPLE_AVATAR_2} />
+        <AvatarImage alt="Avatar 2" src={AVATAR_RED} />
         <AvatarFallback>A2</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <AvatarImage alt="Avatar 3" src={SAMPLE_AVATAR_3} />
+        <AvatarImage alt="Avatar 3" src={AVATAR_GREEN} />
         <AvatarFallback>A3</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <AvatarImage alt="Avatar 4" src={SAMPLE_AVATAR_4} />
+        <AvatarImage alt="Avatar 1" src={AVATAR_GIRL} />
         <AvatarFallback>A4</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <AvatarImage alt="Avatar 5" src={SAMPLE_AVATAR_5} />
+        <AvatarImage alt="Avatar 2" src={AVATAR_RED} />
         <AvatarFallback>A5</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <AvatarImage alt="Avatar 6" src={SAMPLE_AVATAR_6} />
+        <AvatarImage alt="Avatar 3" src={AVATAR_GREEN} />
         <AvatarFallback>A6</AvatarFallback>
       </Avatar>
     </AvatarGroup>
@@ -158,17 +157,17 @@ const WithTotal: Story = {
   render: (args): React.JSX.Element => (
     <AvatarGroup {...args}>
       <Avatar>
-        <AvatarImage alt="Avatar 1" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Avatar 1" src={AVATAR_GIRL} />
         <AvatarFallback>A1</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <AvatarImage alt="Avatar 2" src={SAMPLE_AVATAR_2} />
+        <AvatarImage alt="Avatar 2" src={AVATAR_RED} />
         <AvatarFallback>A2</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <AvatarImage alt="Avatar 3" src={SAMPLE_AVATAR_3} />
+        <AvatarImage alt="Avatar 3" src={AVATAR_GREEN} />
         <AvatarFallback>A3</AvatarFallback>
       </Avatar>
     </AvatarGroup>
@@ -180,85 +179,85 @@ const Spacing: Story = {
     <>
       <AvatarGroup {...args} spacing="wider">
         <Avatar>
-          <AvatarImage alt="Avatar 1" src={SAMPLE_AVATAR_1} />
+          <AvatarImage alt="Avatar 1" src={AVATAR_GIRL} />
           <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <AvatarImage alt="Avatar 2" src={SAMPLE_AVATAR_2} />
+          <AvatarImage alt="Avatar 2" src={AVATAR_RED} />
           <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <AvatarImage alt="Avatar 3" src={SAMPLE_AVATAR_3} />
+          <AvatarImage alt="Avatar 3" src={AVATAR_GREEN} />
           <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
 
       <AvatarGroup {...args} spacing="wide">
         <Avatar>
-          <AvatarImage alt="Avatar 1" src={SAMPLE_AVATAR_1} />
+          <AvatarImage alt="Avatar 1" src={AVATAR_GIRL} />
           <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <AvatarImage alt="Avatar 2" src={SAMPLE_AVATAR_2} />
+          <AvatarImage alt="Avatar 2" src={AVATAR_RED} />
           <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <AvatarImage alt="Avatar 3" src={SAMPLE_AVATAR_3} />
+          <AvatarImage alt="Avatar 3" src={AVATAR_GREEN} />
           <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
 
       <AvatarGroup {...args} spacing="default">
         <Avatar>
-          <AvatarImage alt="Avatar 1" src={SAMPLE_AVATAR_1} />
+          <AvatarImage alt="Avatar 1" src={AVATAR_GIRL} />
           <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <AvatarImage alt="Avatar 2" src={SAMPLE_AVATAR_2} />
+          <AvatarImage alt="Avatar 2" src={AVATAR_RED} />
           <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <AvatarImage alt="Avatar 3" src={SAMPLE_AVATAR_3} />
+          <AvatarImage alt="Avatar 3" src={AVATAR_GREEN} />
           <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
 
       <AvatarGroup {...args} spacing="tight">
         <Avatar>
-          <AvatarImage alt="Avatar 1" src={SAMPLE_AVATAR_1} />
+          <AvatarImage alt="Avatar 1" src={AVATAR_GIRL} />
           <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <AvatarImage alt="Avatar 2" src={SAMPLE_AVATAR_2} />
+          <AvatarImage alt="Avatar 2" src={AVATAR_RED} />
           <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <AvatarImage alt="Avatar 3" src={SAMPLE_AVATAR_3} />
+          <AvatarImage alt="Avatar 3" src={AVATAR_GREEN} />
           <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
 
       <AvatarGroup {...args} spacing="tighter">
         <Avatar>
-          <AvatarImage alt="Avatar 1" src={SAMPLE_AVATAR_1} />
+          <AvatarImage alt="Avatar 1" src={AVATAR_GIRL} />
           <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <AvatarImage alt="Avatar 2" src={SAMPLE_AVATAR_2} />
+          <AvatarImage alt="Avatar 2" src={AVATAR_RED} />
           <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <AvatarImage alt="Avatar 3" src={SAMPLE_AVATAR_3} />
+          <AvatarImage alt="Avatar 3" src={AVATAR_GREEN} />
           <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
@@ -271,102 +270,102 @@ const Sizes: Story = {
     <>
       <AvatarGroup {...args} size="xs">
         <Avatar>
-          <AvatarImage alt="Avatar 1" src={SAMPLE_AVATAR_1} />
+          <AvatarImage alt="Avatar 1" src={AVATAR_GIRL} />
           <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <AvatarImage alt="Avatar 2" src={SAMPLE_AVATAR_2} />
+          <AvatarImage alt="Avatar 2" src={AVATAR_RED} />
           <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <AvatarImage alt="Avatar 3" src={SAMPLE_AVATAR_3} />
+          <AvatarImage alt="Avatar 3" src={AVATAR_GREEN} />
           <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
 
       <AvatarGroup {...args} size="sm">
         <Avatar>
-          <AvatarImage alt="Avatar 1" src={SAMPLE_AVATAR_1} />
+          <AvatarImage alt="Avatar 1" src={AVATAR_GIRL} />
           <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <AvatarImage alt="Avatar 2" src={SAMPLE_AVATAR_2} />
+          <AvatarImage alt="Avatar 2" src={AVATAR_RED} />
           <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <AvatarImage alt="Avatar 3" src={SAMPLE_AVATAR_3} />
+          <AvatarImage alt="Avatar 3" src={AVATAR_GREEN} />
           <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
 
       <AvatarGroup {...args} size="md">
         <Avatar>
-          <AvatarImage alt="Avatar 1" src={SAMPLE_AVATAR_1} />
+          <AvatarImage alt="Avatar 1" src={AVATAR_GIRL} />
           <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <AvatarImage alt="Avatar 2" src={SAMPLE_AVATAR_2} />
+          <AvatarImage alt="Avatar 2" src={AVATAR_RED} />
           <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <AvatarImage alt="Avatar 3" src={SAMPLE_AVATAR_3} />
+          <AvatarImage alt="Avatar 3" src={AVATAR_GREEN} />
           <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
 
       <AvatarGroup {...args} size="lg">
         <Avatar>
-          <AvatarImage alt="Avatar 1" src={SAMPLE_AVATAR_1} />
+          <AvatarImage alt="Avatar 1" src={AVATAR_GIRL} />
           <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <AvatarImage alt="Avatar 2" src={SAMPLE_AVATAR_2} />
+          <AvatarImage alt="Avatar 2" src={AVATAR_RED} />
           <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <AvatarImage alt="Avatar 3" src={SAMPLE_AVATAR_3} />
+          <AvatarImage alt="Avatar 3" src={AVATAR_GREEN} />
           <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
 
       <AvatarGroup {...args} size="xl">
         <Avatar>
-          <AvatarImage alt="Avatar 1" src={SAMPLE_AVATAR_1} />
+          <AvatarImage alt="Avatar 1" src={AVATAR_GIRL} />
           <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <AvatarImage alt="Avatar 2" src={SAMPLE_AVATAR_2} />
+          <AvatarImage alt="Avatar 2" src={AVATAR_RED} />
           <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <AvatarImage alt="Avatar 3" src={SAMPLE_AVATAR_3} />
+          <AvatarImage alt="Avatar 3" src={AVATAR_GREEN} />
           <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
 
       <AvatarGroup {...args} size="2xl">
         <Avatar>
-          <AvatarImage alt="Avatar 1" src={SAMPLE_AVATAR_1} />
+          <AvatarImage alt="Avatar 1" src={AVATAR_GIRL} />
           <AvatarFallback>A1</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <AvatarImage alt="Avatar 2" src={SAMPLE_AVATAR_2} />
+          <AvatarImage alt="Avatar 2" src={AVATAR_RED} />
           <AvatarFallback>A2</AvatarFallback>
         </Avatar>
 
         <Avatar>
-          <AvatarImage alt="Avatar 3" src={SAMPLE_AVATAR_3} />
+          <AvatarImage alt="Avatar 3" src={AVATAR_GREEN} />
           <AvatarFallback>A3</AvatarFallback>
         </Avatar>
       </AvatarGroup>
@@ -389,19 +388,9 @@ const WithFallback: Story = {
       </Avatar>
 
       <Avatar>
-        <AvatarFallback>A3</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarFallback>A4</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarFallback>A5</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarFallback>A6</AvatarFallback>
+        <AvatarFallback>
+          <UserIcon className="size-5" />
+        </AvatarFallback>
       </Avatar>
     </AvatarGroup>
   ),
@@ -414,23 +403,18 @@ const Hoverable: Story = {
   render: (args): React.JSX.Element => (
     <AvatarGroup {...args}>
       <Avatar>
-        <AvatarImage alt="Avatar 1" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Avatar 1" src={AVATAR_GIRL} />
         <AvatarFallback>A1</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <AvatarImage alt="Avatar 2" src={SAMPLE_AVATAR_2} />
+        <AvatarImage alt="Avatar 2" src={AVATAR_RED} />
         <AvatarFallback>A2</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <AvatarImage alt="Avatar 3" src={SAMPLE_AVATAR_3} />
+        <AvatarImage alt="Avatar 3" src={AVATAR_GREEN} />
         <AvatarFallback>A3</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarImage alt="Avatar 4" src={SAMPLE_AVATAR_4} />
-        <AvatarFallback>A4</AvatarFallback>
       </Avatar>
     </AvatarGroup>
   ),
