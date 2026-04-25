@@ -68,6 +68,17 @@ const meta = {
         category: "State",
       },
     },
+    counterVariant: {
+      control: "select",
+      options: ["fallback", "text"],
+      description:
+        "Counter render mode for the hidden-avatar count. **fallback** (default) — renders the +N as another circular Avatar inside the stack, ideal for dense rosters and contributor strips where every slot reads as a face-shaped tile. **text** — renders compact-notation text (`+10K`, `+1.2M`) beside the stack, ideal for hero banners and social-proof rows where the count itself is the message. Pair `text` with a high `total` (e.g. attendee count, view count) and a small `max` so the stack stays balanced beside the figure.",
+      table: {
+        type: { summary: '"fallback" | "text"' },
+        defaultValue: { summary: "fallback" },
+        category: "Style Variants",
+      },
+    },
     isBorderless: {
       control: "boolean",
       description:
@@ -441,11 +452,11 @@ const WithFallback: Story = {
       </Avatar>
 
       <Avatar>
-        <AvatarFallback>NA</AvatarFallback>
+        <AvatarFallback variant="danger">NA</AvatarFallback>
       </Avatar>
 
       <Avatar>
-        <AvatarFallback>
+        <AvatarFallback variant="accent">
           <UserIcon className="size-5" />
         </AvatarFallback>
       </Avatar>
@@ -453,6 +464,53 @@ const WithFallback: Story = {
   ),
 };
 
-export { Default, Sizes, Spacing, Borderless, Hoverable, WithMax, WithTotal, WithFallback };
+const WithTextCounter: Story = {
+  args: {
+    max: 7,
+    total: 10234,
+    counterVariant: "text",
+    size: "lg",
+  },
+  render: (args): React.JSX.Element => (
+    <AvatarGroup {...args}>
+      <Avatar>
+        <AvatarImage alt="Avatar 1" src={AVATAR_1} />
+        <AvatarFallback>A1</AvatarFallback>
+      </Avatar>
+
+      <Avatar>
+        <AvatarImage alt="Avatar 2" src={AVATAR_2} />
+        <AvatarFallback>A2</AvatarFallback>
+      </Avatar>
+
+      <Avatar>
+        <AvatarImage alt="Avatar 3" src={AVATAR_3} />
+        <AvatarFallback>A3</AvatarFallback>
+      </Avatar>
+
+      <Avatar>
+        <AvatarImage alt="Avatar 1" src={AVATAR_1} />
+        <AvatarFallback>A4</AvatarFallback>
+      </Avatar>
+
+      <Avatar>
+        <AvatarImage alt="Avatar 2" src={AVATAR_2} />
+        <AvatarFallback>A5</AvatarFallback>
+      </Avatar>
+
+      <Avatar>
+        <AvatarImage alt="Avatar 3" src={AVATAR_3} />
+        <AvatarFallback>A6</AvatarFallback>
+      </Avatar>
+
+      <Avatar>
+        <AvatarImage alt="Avatar 1" src={AVATAR_1} />
+        <AvatarFallback>A7</AvatarFallback>
+      </Avatar>
+    </AvatarGroup>
+  ),
+};
+
+export { Default, Sizes, Spacing, Borderless, Hoverable, WithMax, WithTotal, WithFallback, WithTextCounter };
 
 export default meta;

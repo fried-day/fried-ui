@@ -207,6 +207,65 @@ describe("AvatarGroup", () => {
     expect(counter?.className).toContain("avatar-size-xl");
   });
 
+  it("renders fallback Avatar counter by default", () => {
+    const { container } = render(
+      <AvatarGroup max={1} total={5}>
+        <Avatar>
+          <AvatarFallback>A</AvatarFallback>
+        </Avatar>
+      </AvatarGroup>,
+    );
+
+    expect(container.querySelector(".avatar-group-counter")).toBeInTheDocument();
+    expect(container.querySelector(".avatar-group-counter-text")).toBeNull();
+  });
+
+  it("renders text counter with compact notation when counterVariant='text'", () => {
+    render(
+      <AvatarGroup counterVariant="text" max={2} total={10234}>
+        <Avatar>
+          <AvatarFallback>A</AvatarFallback>
+        </Avatar>
+
+        <Avatar>
+          <AvatarFallback>B</AvatarFallback>
+        </Avatar>
+      </AvatarGroup>,
+    );
+
+    expect(screen.getByText("+10.2K")).toBeInTheDocument();
+  });
+
+  it("formats text counter under 1000 without compact suffix", () => {
+    render(
+      <AvatarGroup counterVariant="text" max={2} total={42}>
+        <Avatar>
+          <AvatarFallback>A</AvatarFallback>
+        </Avatar>
+
+        <Avatar>
+          <AvatarFallback>B</AvatarFallback>
+        </Avatar>
+      </AvatarGroup>,
+    );
+
+    expect(screen.getByText("+40")).toBeInTheDocument();
+  });
+
+  it("sets data-slot='avatar-group-counter-text' on the text counter", () => {
+    const { container } = render(
+      <AvatarGroup counterVariant="text" max={1} total={1500}>
+        <Avatar>
+          <AvatarFallback>A</AvatarFallback>
+        </Avatar>
+      </AvatarGroup>,
+    );
+
+    const counter = container.querySelector("[data-slot='avatar-group-counter-text']");
+    expect(counter).toBeInTheDocument();
+    expect(counter?.textContent).toBe("+1.5K");
+  });
+
   it("applies hoverable modifier class when isHoverable is true", () => {
     const { container } = render(
       <AvatarGroup isHoverable>

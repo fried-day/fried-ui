@@ -11,6 +11,24 @@
     @apply outline-0;
   }
 
+  .avatar-group-counter-text {
+    @apply ms-2 text-sm leading-none font-medium text-foreground-muted;
+  }
+
+  .avatar-group-size-xs .avatar-group-counter-text,
+  .avatar-group-size-sm .avatar-group-counter-text {
+    @apply text-xs;
+  }
+
+  .avatar-group-size-lg .avatar-group-counter-text,
+  .avatar-group-size-xl .avatar-group-counter-text {
+    @apply text-base;
+  }
+
+  .avatar-group-size-2xl .avatar-group-counter-text {
+    @apply text-lg;
+  }
+
   .avatar-group [data-slot="avatar"]:not(:first-child) {
     @apply -ms-2;
   }
