@@ -91,7 +91,7 @@ type Story = StoryObj<typeof meta>;
 const Default: Story = {
   args: {
     children: [
-      <AvatarImage key="img" alt="Colm Tuite" src={SAMPLE_AVATAR_1} />,
+      <AvatarImage key="img" alt="Avatar 1" src={SAMPLE_AVATAR_1} />,
       <AvatarFallback key="fb">CT</AvatarFallback>,
     ],
   },
@@ -101,7 +101,7 @@ const Sizes: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-center gap-4">
       <Avatar {...args} size="xs">
-        <AvatarImage alt="Colm Tuite" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Avatar 1" src={SAMPLE_AVATAR_1} />
         <AvatarFallback>CT</AvatarFallback>
       </Avatar>
 
@@ -137,7 +137,7 @@ const Radius: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-center gap-4">
       <Avatar {...args} radius="none">
-        <AvatarImage alt="Colm Tuite" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Avatar 1" src={SAMPLE_AVATAR_1} />
         <AvatarFallback>CT</AvatarFallback>
       </Avatar>
 
@@ -168,7 +168,7 @@ const Rings: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-center gap-4">
       <Avatar {...args} ring="primary">
-        <AvatarImage alt="Colm Tuite" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Avatar 1" src={SAMPLE_AVATAR_1} />
         <AvatarFallback>CT</AvatarFallback>
       </Avatar>
 
@@ -253,7 +253,7 @@ const Bordered: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-center gap-4 bg-linear-to-br from-fuchsia-500 to-blue-600 p-8">
       <Avatar {...args} isBordered>
-        <AvatarImage alt="Colm Tuite" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Avatar 1" src={SAMPLE_AVATAR_1} />
         <AvatarFallback>CT</AvatarFallback>
       </Avatar>
 
@@ -345,7 +345,7 @@ const ConstrainedContainer: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex w-32 flex-wrap items-center gap-2 rounded-md border border-border p-2">
       <Avatar {...args} size="sm">
-        <AvatarImage alt="Colm Tuite" src={SAMPLE_AVATAR_1} />
+        <AvatarImage alt="Avatar 1" src={SAMPLE_AVATAR_1} />
         <AvatarFallback>CT</AvatarFallback>
       </Avatar>
 
