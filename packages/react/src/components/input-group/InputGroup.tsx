@@ -49,11 +49,11 @@ const InputGroup = (props: Readonly<InputGroupProps>) => {
 InputGroup.displayName = "InputGroup";
 
 export interface InputGroupAddonProps extends Omit<ComponentPropsWithRef<"span">, "children" | "className"> {
-  /** Addon content — icon, text, or an action `Button`. */
-  align?: "inline-start" | "inline-end" | "block-start" | "block-end";
-  /** Additional CSS classes appended after the base class. */
-  children?: ReactNode;
   /** Position of the addon relative to the input. @default 'inline-start' */
+  align?: "inline-start" | "inline-end" | "block-start" | "block-end";
+  /** Addon content — icon, text, or an action `Button`. */
+  children?: ReactNode;
+  /** Additional CSS classes appended after the base class. */
   className?: string;
 }
 

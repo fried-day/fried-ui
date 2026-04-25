@@ -307,11 +307,11 @@ FieldGroup.displayName = "FieldGroup";
 /* FieldTitle */
 
 export interface FieldTitleProps extends Omit<ComponentPropsWithRef<"h3">, "children" | "className"> {
-  /** Title text content for the form section. */
-  as?: "h2" | "h3" | "h4";
-  /** Additional CSS classes appended after the base class. */
-  children?: ReactNode;
   /** HTML heading level. @default 'h3' */
+  as?: "h2" | "h3" | "h4";
+  /** Title text content for the form section. */
+  children?: ReactNode;
+  /** Additional CSS classes appended after the base class. */
   className?: string;
   /** Size scale. @default 'md' */
   size?: "sm" | "md" | "lg";
