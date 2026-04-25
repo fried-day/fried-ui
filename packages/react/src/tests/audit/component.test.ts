@@ -62,6 +62,80 @@ describe("Audit — Component.tsx conventions", () => {
 
     expect(hasDisplayName, `${pascal}.tsx missing ${pascal}.displayName = "${pascal}"`).toBe(true);
   });
+
+  it.each(components)(
+    "$kebab: every {Name}Props interface declares className with JSDoc",
+    ({ componentFile, kebab }) => {
+      const source = loadSource({ file: componentFile });
+      if (!source) return;
+
+      const offenders: string[] = [];
+
+      for (const interfaceDecl of source.getInterfaces()) {
+        const interfaceName = interfaceDecl.getName();
+        if (!interfaceName.endsWith("Props")) continue;
+
+        const classNameProp = interfaceDecl.getProperty("className");
+
+        if (!classNameProp) {
+          offenders.push(`${interfaceName}: missing inline \`className\` declaration`);
+          continue;
+        }
+
+        const jsDocs = classNameProp.getJsDocs();
+
+        if (jsDocs.length === 0) {
+          offenders.push(`${interfaceName}.className: missing JSDoc`);
+        }
+      }
+
+      expect(
+        offenders,
+        `${kebab}: every {Name}Props must redeclare \`className\` inline with a JSDoc comment so IDE hover and autodocs see the same prose for every component:\n${offenders.join("\n")}`,
+      ).toEqual([]);
+    },
+  );
+
+  it.each(components)(
+    "$kebab: interfaces that ship children declare it inline with JSDoc",
+    ({ componentFile, kebab }) => {
+      const source = loadSource({ file: componentFile });
+      if (!source) return;
+
+      const offenders: string[] = [];
+
+      for (const interfaceDecl of source.getInterfaces()) {
+        const interfaceName = interfaceDecl.getName();
+        if (!interfaceName.endsWith("Props")) continue;
+
+        const subpartName = interfaceName.replace(/Props$/, "");
+        const subpartDecl = source.getVariableDeclaration(subpartName);
+        const arrow = subpartDecl?.getInitializerIfKind(SyntaxKind.ArrowFunction);
+        if (!arrow) continue;
+
+        const rendersChildren = arrow.getBodyText().includes("{children}");
+        if (!rendersChildren) continue;
+
+        const childrenProp = interfaceDecl.getProperty("children");
+
+        if (!childrenProp) {
+          offenders.push(`${interfaceName}: renders children but missing inline \`children\` declaration`);
+          continue;
+        }
+
+        const jsDocs = childrenProp.getJsDocs();
+
+        if (jsDocs.length === 0) {
+          offenders.push(`${interfaceName}.children: missing JSDoc`);
+        }
+      }
+
+      expect(
+        offenders,
+        `${kebab}: every interface whose component renders \`{children}\` must declare \`children\` inline with a JSDoc comment so the contract is visible on hover:\n${offenders.join("\n")}`,
+      ).toEqual([]);
+    },
+  );
 });
 
 describe("Audit — drift guardrails (AST)", () => {
