@@ -37,7 +37,7 @@ describe("InputGroup", () => {
   });
 
   it("applies all size classes with key-value format", () => {
-    const sizes = ["sm", "md", "lg"] as const;
+    const sizes = ["xs", "sm", "md", "lg"] as const;
 
     sizes.forEach((size) => {
       const { unmount } = render(<InputGroup size={size} data-testid={size} />);

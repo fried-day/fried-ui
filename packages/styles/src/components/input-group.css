@@ -77,6 +77,10 @@
     --input-group-fg: var(--color-on-overlay-foreground);
   }
 
+  .input-group-size-xs {
+    @apply min-h-7 text-2xs;
+  }
+
   .input-group-size-sm {
     @apply min-h-8 text-xs;
   }

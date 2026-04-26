@@ -34,11 +34,11 @@ const meta = {
     },
     size: {
       control: "select",
-      options: ["sm", "md", "lg"],
+      options: ["xs", "sm", "md", "lg"],
       description:
-        "Size scale tied to form-field density with a consistent +4px step (32 / 36 / 40). **sm** (h-8, text-xs) — inline filters, table cells, compact admin forms. **md** (h-9, text-sm, default) — standard form fields, paired with Button md and InputGroup md. **lg** (h-10, text-base) — hero search, single-input pages. Use sm for dense UI, md for most forms, lg for emphasized single-input pages where the input is the primary action and must read at a distance.",
+        "Size scale tied to form-field density with a consistent +4px step (28 / 32 / 36 / 40). **xs** (h-7, text-2xs) — pro-tool dense UI, embedded grid editors, cell-inline filters in data-heavy admin or analytics surfaces. **sm** (h-8, text-xs) — inline filters, table cells, compact admin forms. **md** (h-9, text-sm, default) — standard form fields, paired with Button md and InputGroup md. **lg** (h-10, text-base) — hero search, single-input pages. Use xs on desktop dense UIs (below WCAG mobile target — confirm hit-area extension), sm for dense UI, md for most forms, lg for emphasized single-input pages where the input is the primary action and must read at a distance.",
       table: {
-        type: { summary: '"sm" | "md" | "lg"' },
+        type: { summary: '"xs" | "sm" | "md" | "lg"' },
         defaultValue: { summary: "md" },
         category: "Style Variants",
       },
@@ -138,6 +138,7 @@ const OverlayVariant: Story = {
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
     <>
+      <Input {...args} size="xs" placeholder="Extra Small" />
       <Input {...args} size="sm" placeholder="Small" />
       <Input {...args} size="md" placeholder="Medium" />
       <Input {...args} size="lg" placeholder="Large" />

@@ -58,12 +58,12 @@ const meta = {
     },
     size: {
       control: "select",
-      options: ["sm", "md", "lg", "xl"],
+      options: ["xs", "sm", "md", "lg", "xl"],
       description:
-        "Size scale matching interactive hierarchy with a consistent +4px step. **sm** (h-8, text-xs) — toolbars, dense tables, secondary CTAs in cards. **md** (h-9, text-sm, default) — standard call-to-action across most surfaces, form-aligned with Input md. **lg** (h-10, text-base) — landing pages, marketing CTAs, hero blocks. **xl** (h-11, text-lg) — display CTAs, pricing tiers, splash screens. Use sm for inline actions and toolbars, md for forms and cards, lg and xl for marketing surfaces where the button must read across a wide viewport.",
+        "Size scale matching interactive hierarchy with a consistent +4px step. **xs** (h-7, text-2xs) — inline data-table row actions, dense admin tools, cell-inline buttons in spreadsheet-style UIs. **sm** (h-8, text-xs) — toolbars, dense tables, secondary CTAs in cards. **md** (h-9, text-sm, default) — standard call-to-action across most surfaces, form-aligned with Input md. **lg** (h-10, text-base) — landing pages, marketing CTAs, hero blocks. **xl** (h-11, text-lg) — display CTAs, pricing tiers, splash screens. Use xs only on dense desktop UIs (below WCAG mobile touch target — pair with `::after` hit-area extension for mobile), sm for inline actions and toolbars, md for forms and cards, lg and xl for marketing surfaces where the button must read across a wide viewport.",
       table: {
         type: {
-          summary: '"sm" | "md" | "lg" | "xl"',
+          summary: '"xs" | "sm" | "md" | "lg" | "xl"',
         },
         defaultValue: {
           summary: "md",
@@ -192,6 +192,10 @@ const OverlayVariant: Story = {
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
     <>
+      <Button {...args} size="xs">
+        Extra Small
+      </Button>
+
       <Button {...args} size="sm">
         Small
       </Button>

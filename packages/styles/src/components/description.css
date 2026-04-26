@@ -4,6 +4,10 @@
     @apply text-sm text-muted-foreground;
   }
 
+  .description-size-xs {
+    @apply text-2xs;
+  }
+
   .description-size-sm {
     @apply text-xs;
   }

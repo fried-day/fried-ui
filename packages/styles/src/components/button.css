@@ -99,6 +99,10 @@
     --button-fg: var(--color-accent-foreground);
   }
 
+  .button-size-xs {
+    @apply h-7 gap-1 px-2.5 text-2xs;
+  }
+
   .button-size-sm {
     @apply h-8 gap-1 px-3 text-xs;
   }
@@ -121,6 +125,10 @@
 
   .button-icon-only {
     @apply size-9 justify-center gap-0 p-0;
+  }
+
+  .button-icon-only.button-size-xs {
+    @apply size-7;
   }
 
   .button-icon-only.button-size-sm {
@@ -171,6 +179,14 @@
 
   .button:has([slot="icon-end"]) {
     @apply pr-2;
+  }
+
+  .button-size-xs:has([slot="icon-start"]) {
+    @apply pl-1;
+  }
+
+  .button-size-xs:has([slot="icon-end"]) {
+    @apply pr-1;
   }
 
   .button-size-sm:has([slot="icon-start"]) {

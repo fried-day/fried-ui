@@ -12,7 +12,7 @@
 
     @apply bg-(--chip-bg) text-(--chip-fg);
     @apply border border-(--chip-border);
-    @apply h-8 gap-1.5 px-3 text-sm;
+    @apply h-8 gap-1 px-3 text-xs;
     @apply rounded-full;
   }
 
@@ -120,15 +120,15 @@
   }
 
   .chip-size-sm {
-    @apply h-6 gap-1 px-2 text-xs;
+    @apply h-7 gap-1 px-2.5 text-2xs;
   }
 
   .chip-size-md {
-    @apply h-8 gap-1.5 px-3 text-sm;
+    @apply h-8 gap-1 px-3 text-xs;
   }
 
   .chip-size-lg {
-    @apply h-10 gap-2 px-4 text-base;
+    @apply h-9 gap-1.5 px-3.5 text-sm;
   }
 
   .chip-radius-none {
@@ -196,11 +196,11 @@
   }
 
   .chip-icon-only.chip-size-sm {
-    @apply size-6;
+    @apply size-7;
   }
 
   .chip-icon-only.chip-size-lg {
-    @apply size-10;
+    @apply size-9;
   }
 
   .chip-dismiss {

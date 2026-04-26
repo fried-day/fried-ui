@@ -4,6 +4,10 @@
     @apply gap-1.5;
   }
 
+  .field-size-xs {
+    @apply gap-1;
+  }
+
   .field-size-sm {
     @apply gap-1.5;
   }
@@ -52,6 +56,10 @@
     @apply font-normal text-muted-foreground;
   }
 
+  .field-label-size-xs {
+    @apply text-2xs;
+  }
+
   .field-label-size-sm {
     @apply text-xs;
   }
@@ -91,6 +99,10 @@
     @apply text-sm text-muted-foreground;
   }
 
+  .field-description-size-xs {
+    @apply text-2xs;
+  }
+
   .field-description-size-sm {
     @apply text-xs;
   }
@@ -128,6 +140,10 @@
     @apply mb-2;
   }
 
+  .field-legend-size-xs {
+    @apply text-xs;
+  }
+
   .field-legend-size-sm {
     @apply text-sm;
   }
@@ -156,6 +172,10 @@
     @apply flex-col md:flex-row md:items-start;
   }
 
+  .field-group-size-xs {
+    @apply gap-1;
+  }
+
   .field-group-size-sm {
     @apply gap-1.5;
   }
@@ -170,6 +190,10 @@
 
   .field-title {
     @apply text-base font-semibold text-foreground;
+  }
+
+  .field-title-size-xs {
+    @apply text-xs;
   }
 
   .field-title-size-sm {

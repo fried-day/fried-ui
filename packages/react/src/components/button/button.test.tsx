@@ -63,7 +63,7 @@ describe("Button", () => {
   });
 
   it("applies size class with key-value format", () => {
-    const sizes = ["sm", "md", "lg", "xl"] as const;
+    const sizes = ["xs", "sm", "md", "lg", "xl"] as const;
 
     sizes.forEach((size) => {
       const { unmount } = render(<Button size={size}>{size}</Button>);

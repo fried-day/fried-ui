@@ -2,15 +2,3 @@
 @import "@fried-ui/styles";
 
 @source "../../../packages/react/src";
-
-.docs-story .sb-story > div {
-  @apply flex flex-wrap items-end justify-center gap-4;
-}
-
-.sbdocs-preview:has([data-full-bleed]) .docs-story > div {
-  padding: 0;
-}
-
-.sbdocs-preview:has([data-full-bleed]) .css-w4emi0 {
-  padding: 0;
-}

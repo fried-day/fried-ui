@@ -42,7 +42,7 @@ describe("Field", () => {
   });
 
   it("applies all size classes with key-value format", () => {
-    const sizes = ["sm", "md", "lg"] as const;
+    const sizes = ["xs", "sm", "md", "lg"] as const;
 
     sizes.forEach((size) => {
       const { container, unmount } = render(
@@ -431,7 +431,7 @@ describe("FieldLegend", () => {
   });
 
   it("applies size classes", () => {
-    const sizes = ["sm", "md", "lg"] as const;
+    const sizes = ["xs", "sm", "md", "lg"] as const;
 
     sizes.forEach((size) => {
       const { container, unmount } = render(<FieldLegend size={size}>{size}</FieldLegend>);
@@ -459,7 +459,7 @@ describe("FieldGroup", () => {
   });
 
   it("applies size classes", () => {
-    const sizes = ["sm", "md", "lg"] as const;
+    const sizes = ["xs", "sm", "md", "lg"] as const;
 
     sizes.forEach((size) => {
       const { container, unmount } = render(<FieldGroup size={size}>group</FieldGroup>);

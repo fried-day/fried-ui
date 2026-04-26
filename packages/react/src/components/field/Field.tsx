@@ -24,7 +24,7 @@ export interface FieldProps extends Omit<ComponentPropsWithRef<typeof AriaTextFi
   /** Layout orientation of children. 'responsive' renders vertical on mobile, horizontal on md+. @default 'vertical' */
   orientation?: "vertical" | "horizontal" | "responsive";
   /** Wrapper gap scale between stacked slots. @default 'md' */
-  size?: "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "md" | "lg";
 }
 
 /**
@@ -77,7 +77,7 @@ export interface FieldLabelProps extends Omit<ComponentPropsWithRef<typeof AriaL
   /** Text shown in muted gray when field is NOT required (e.g. '(Optional)'). Ignored when isRequired is true. @default undefined */
   optionalMessage?: string;
   /** Size scale. @default 'md' */
-  size?: "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "md" | "lg";
   /** Font weight. @default 'medium' */
   weight?: "normal" | "medium" | "semibold";
 }
@@ -131,7 +131,7 @@ export interface FieldDescriptionProps extends Omit<
   /** Whether the description is disabled (dims and removes pointer events). @default false */
   isDisabled?: boolean;
   /** Size scale. @default 'md' */
-  size?: "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "md" | "lg";
 }
 
 /**
@@ -169,7 +169,7 @@ export interface FieldErrorProps extends Omit<ComponentPropsWithRef<typeof AriaF
   /** Whether the field error is disabled. @default false */
   isDisabled?: boolean;
   /** Size scale. @default 'md' */
-  size?: "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "md" | "lg";
 }
 
 /**
@@ -240,7 +240,7 @@ export interface FieldLegendProps extends Omit<ComponentPropsWithRef<"legend">, 
   /** Additional CSS classes appended after the base class. */
   className?: string;
   /** Size scale. @default 'md' */
-  size?: "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "md" | "lg";
 }
 
 /**
@@ -276,7 +276,7 @@ export interface FieldGroupProps extends Omit<ComponentPropsWithRef<"div">, "chi
   /** Layout orientation. 'responsive' renders vertical on mobile, horizontal on md+. @default 'vertical' */
   orientation?: "vertical" | "horizontal" | "responsive";
   /** Size scale (gap). @default 'md' */
-  size?: "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "md" | "lg";
 }
 
 /**
@@ -314,7 +314,7 @@ export interface FieldTitleProps extends Omit<ComponentPropsWithRef<"h3">, "chil
   /** Additional CSS classes appended after the base class. */
   className?: string;
   /** Size scale. @default 'md' */
-  size?: "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "md" | "lg";
 }
 
 /**

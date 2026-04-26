@@ -13,6 +13,10 @@
     @apply font-normal text-muted-foreground;
   }
 
+  .label-size-xs {
+    @apply text-2xs;
+  }
+
   .label-size-sm {
     @apply text-xs;
   }

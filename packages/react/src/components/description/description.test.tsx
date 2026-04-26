@@ -18,7 +18,7 @@ describe("Description", () => {
   });
 
   it("applies all size classes", () => {
-    const sizes = ["sm", "md", "lg"] as const;
+    const sizes = ["xs", "sm", "md", "lg"] as const;
 
     sizes.forEach((size) => {
       const { unmount } = render(<Description size={size}>{size}</Description>);

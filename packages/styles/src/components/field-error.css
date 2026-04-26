@@ -4,6 +4,10 @@
     @apply text-sm text-danger;
   }
 
+  .field-error-size-xs {
+    @apply text-2xs;
+  }
+
   .field-error-size-sm {
     @apply text-xs;
   }

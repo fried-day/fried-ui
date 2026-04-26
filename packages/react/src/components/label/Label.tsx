@@ -20,7 +20,7 @@ export interface LabelProps extends Omit<ComponentPropsWithRef<typeof AriaLabel>
   /** Text shown in muted gray when field is NOT required (e.g. '(Optional)'). Ignored when isRequired is true. @default undefined */
   optionalMessage?: string;
   /** Size scale. @default 'md' */
-  size?: "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "md" | "lg";
   /** Font weight. @default 'medium' */
   weight?: "normal" | "medium" | "semibold";
 }

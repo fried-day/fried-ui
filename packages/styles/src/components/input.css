@@ -87,6 +87,10 @@
     --input-placeholder: var(--color-muted-foreground);
   }
 
+  .input-size-xs {
+    @apply h-7 px-2.5 text-2xs;
+  }
+
   .input-size-sm {
     @apply h-8 px-3 text-xs;
   }
