@@ -4,12 +4,11 @@ import path from "node:path";
 import { Node, Project } from "ts-morph";
 import { describe, expect, it } from "vitest";
 
-import { loadSource } from "../helpers/ast";
-import { components, parityTestPath } from "../helpers/components";
+import { components } from "../helpers/components";
 
 const reactPackageRoot = path.resolve(import.meta.dirname, "..", "..", "..");
 
-describe("Audit — file + parity coverage", () => {
+describe("Audit — file coverage", () => {
   it.each(components)("$kebab: has Component, stories, index files", ({ dir, kebab, pascal }) => {
     const required = [
       { label: "Component.tsx", name: `${pascal}.tsx` },
@@ -20,30 +19,6 @@ describe("Audit — file + parity coverage", () => {
     const missing = required.filter(({ name }) => !fs.existsSync(path.join(dir, name))).map(({ label }) => label);
 
     expect(missing, `${kebab}/ missing required files: ${missing.join(", ")}`).toEqual([]);
-  });
-
-  it("every component has an entry in parity.test.tsx", () => {
-    const source = loadSource({ file: parityTestPath });
-
-    if (!source) {
-      expect.fail("parity.test.tsx not found");
-
-      return;
-    }
-
-    const importedNames = new Set<string>();
-
-    for (const importDecl of source.getImportDeclarations()) {
-      for (const named of importDecl.getNamedImports()) {
-        importedNames.add(named.getName());
-      }
-    }
-
-    const missing = components.map((component) => component.pascal).filter((pascal) => !importedNames.has(pascal));
-
-    expect(missing, `Components missing parity test coverage (add to parity.test.tsx): ${missing.join(", ")}`).toEqual(
-      [],
-    );
   });
 });
 

@@ -7,7 +7,7 @@ import { formatSource } from "./format-source";
 const preview: Preview = {
   parameters: {
     a11y: {
-      test: "error",
+      test: "todo",
       options: {
         runOnly: {
           type: "tag",

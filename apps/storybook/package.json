@@ -6,7 +6,8 @@
     "build": "storybook build -o dist",
     "check-types": "tsc --noEmit",
     "dev": "storybook dev -p 6006",
-    "lint": "eslint . --max-warnings 0"
+    "lint": "eslint . --max-warnings 0",
+    "test": "vitest run"
   },
   "dependencies": {
     "@fried-ui/react": "workspace:*",
@@ -15,6 +16,7 @@
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^5.1.2",
     "@repo/quality": "workspace:*",
     "@storybook/addon-a11y": "^10.3.5",
     "@storybook/addon-docs": "^10.3.3",

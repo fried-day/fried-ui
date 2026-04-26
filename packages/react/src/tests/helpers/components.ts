@@ -2,7 +2,6 @@ import fs from "node:fs";
 import path from "node:path";
 
 const componentsDir = path.resolve(import.meta.dirname, "..", "..", "components");
-const parityTestPath = path.resolve(import.meta.dirname, "..", "audit", "parity.test.tsx");
 
 const ignoredDirs = new Set(["icons"]);
 
@@ -41,4 +40,4 @@ function listComponents(): ComponentDir[] {
 
 const components = listComponents();
 
-export { components, parityTestPath };
+export { components };
