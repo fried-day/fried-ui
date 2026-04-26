@@ -181,6 +181,16 @@
     @apply pr-1;
   }
 
+  .chip-size-md:has([slot="icon-start"]),
+  .chip-size-md:has([slot="avatar"]) {
+    @apply pl-1.5;
+  }
+
+  .chip-size-md:has([slot="icon-end"]),
+  .chip-size-md:has(.chip-dismiss) {
+    @apply pr-1.5;
+  }
+
   .chip-size-lg:has([slot="icon-start"]),
   .chip-size-lg:has([slot="avatar"]) {
     @apply pl-2;
@@ -197,6 +207,10 @@
 
   .chip-icon-only.chip-size-sm {
     @apply size-7;
+  }
+
+  .chip-icon-only.chip-size-md {
+    @apply size-8;
   }
 
   .chip-icon-only.chip-size-lg {

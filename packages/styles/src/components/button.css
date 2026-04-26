@@ -135,6 +135,10 @@
     @apply size-8;
   }
 
+  .button-icon-only.button-size-md {
+    @apply size-9;
+  }
+
   .button-icon-only.button-size-lg {
     @apply size-10;
   }
