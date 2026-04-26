@@ -75,6 +75,10 @@
       "types": "./dist/components/label/index.d.ts",
       "import": "./dist/components/label/index.mjs"
     },
+    "./signal-dot": {
+      "types": "./dist/components/signal-dot/index.d.ts",
+      "import": "./dist/components/signal-dot/index.mjs"
+    },
     "./surface": {
       "types": "./dist/components/surface/index.d.ts",
       "import": "./dist/components/surface/index.mjs"

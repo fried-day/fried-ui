@@ -1,17 +1,19 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import AVATAR_1 from "@fried-ui/assets/story/avatar-1.jpg";
+import AVATAR_3 from "@fried-ui/assets/story/avatar-3.jpg";
 
-import { Avatar, AvatarImage, AvatarFallback } from "../avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "../avatar";
 import { Button } from "../button";
-import { Badge, BadgeIndicator, BadgeStatus } from "./Badge";
+import { BellIcon } from "../icons";
+import { Badge, BadgeIcon, BadgeIndicator } from "./Badge";
 
 const meta: Meta<typeof Badge> = {
   title: "Components/Badge",
   component: Badge,
   subcomponents: {
     BadgeIndicator,
-    BadgeStatus,
+    BadgeIcon,
   },
   tags: ["autodocs"],
   parameters: {
@@ -21,7 +23,7 @@ const meta: Meta<typeof Badge> = {
     children: {
       control: false,
       description:
-        "Anchor element plus `BadgeIndicator` or `BadgeStatus` subpart. Badge provides the positioning container.",
+        "Anchor element (Avatar, Button, Icon) plus a `BadgeIndicator` (text/number) or `BadgeIcon` (icon) subpart. Badge provides the positioning container. For binary presence (online/offline), use the standalone `SignalDot` instead.",
       type: {
         name: "other",
         value: "ReactNode",
@@ -34,63 +36,10 @@ const meta: Meta<typeof Badge> = {
     },
     className: {
       control: "text",
-      description: "Additional CSS classes on the Badge wrapper",
+      description: "Additional CSS classes on the Badge wrapper.",
       table: {
         type: { summary: "string" },
         category: "Styling",
-      },
-    },
-    variant: {
-      control: "select",
-      options: ["primary", "secondary", "accent", "success", "warning", "danger", "info", "overlay"],
-      description:
-        "Visual style for `BadgeIndicator` (count/label, default `danger`) and `BadgeStatus` (presence dot, default `success`). **Brand:** primary (main brand color), secondary (neutral gray), accent (purple highlight for promo). **Status:** success (online/active), warning (away/pending), danger (busy/unread/error), info (notification or notice). **Dark contexts:** overlay (light dot or pill on dark scrim or media surfaces). Use danger for unread counts, success for online presence, warning for away, accent for promo or featured user, overlay on dark hero blocks.",
-      table: {
-        type: { summary: '"primary" | "secondary" | "accent" | "success" | "warning" | "danger" | "info" | "overlay"' },
-        defaultValue: { summary: "danger (Indicator), success (Status)" },
-        category: "Style Variants",
-      },
-    },
-    size: {
-      control: "select",
-      options: ["xs", "sm", "md"],
-      description:
-        "Size scale shared by `BadgeIndicator` (count pill) and `BadgeStatus` (dot). **xs** — minimum-legible 14px pill / 4px dot for very dense rows. **sm** — 16px pill / 6px dot for compact lists. **md** (default) — 20px pill / 8px dot for standard rows. Pair with the anchor's size — xs/sm beside Avatar size-6, md beside Avatar size-8 and above.",
-      table: {
-        type: { summary: '"xs" | "sm" | "md"' },
-        defaultValue: { summary: "md" },
-        category: "Style Variants",
-      },
-    },
-    placement: {
-      control: "select",
-      options: ["top-right", "top-left", "bottom-right", "bottom-left"],
-      description:
-        "Corner of the wrapped anchor where the indicator or status dot sits. **top-right** (default for `BadgeIndicator`) — count badges on Avatars/Buttons. **bottom-right** (default for `BadgeStatus`) — presence dot on Avatars. **top-left / bottom-left** — when locale or layout reverses reading direction. Pick the corner that matches reading flow and keeps the dot away from anchor content.",
-      table: {
-        type: { summary: '"top-right" | "top-left" | "bottom-right" | "bottom-left"' },
-        defaultValue: { summary: "top-right (Indicator), bottom-right (Status)" },
-        category: "Style Variants",
-      },
-    },
-    isInset: {
-      control: "boolean",
-      description:
-        "Whether the indicator/status sits inside the anchor's perimeter (true) or hangs over the corner edge (false). Use `true` with round anchors such as Avatar so the badge lands on the circle's 45-degree edge — looks cleaner than the floating-corner default.",
-      table: {
-        type: { summary: "boolean" },
-        defaultValue: { summary: "false" },
-        category: "Style Variants",
-      },
-    },
-    max: {
-      control: "number",
-      description:
-        "BadgeIndicator only — caps numeric children. Renders as `${max}+` when the child number exceeds `max` (e.g., `<BadgeIndicator max={99}>{150}</BadgeIndicator>` shows `99+`).",
-      table: {
-        type: { summary: "number" },
-        defaultValue: { summary: "99" },
-        category: "State",
       },
     },
   },
@@ -99,14 +48,17 @@ const meta: Meta<typeof Badge> = {
 type Story = StoryObj<typeof meta>;
 
 const Default: Story = {
+  args: {
+    children: "NEW",
+  },
   render: (args): React.JSX.Element => (
-    <Badge {...args}>
+    <Badge>
       <Avatar>
-        <AvatarImage alt="Avatar" src={AVATAR_1} />
+        <AvatarImage alt="User" src={AVATAR_1} />
         <AvatarFallback>CT</AvatarFallback>
       </Avatar>
 
-      <BadgeIndicator isInset>3</BadgeIndicator>
+      <BadgeIndicator {...args} />
     </Badge>
   ),
 };
@@ -114,67 +66,36 @@ const Default: Story = {
 const Variants: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-center gap-8">
-      <Badge {...args}>
-        <Avatar>
-          <AvatarImage alt="Avatar" src="https://example.com/avatar.jpg" />
-          <AvatarFallback>CT</AvatarFallback>
-        </Avatar>
+      {(["primary", "secondary", "accent", "success", "warning", "danger", "info"] as const).map((variant) => (
+        <Badge key={variant}>
+          <Avatar>
+            <AvatarImage alt={variant} src={AVATAR_1} />
+            <AvatarFallback>CT</AvatarFallback>
+          </Avatar>
 
-        <BadgeIndicator variant="primary">3</BadgeIndicator>
-      </Badge>
+          <BadgeIndicator {...args} variant={variant}>
+            NEW
+          </BadgeIndicator>
+        </Badge>
+      ))}
+    </div>
+  ),
+};
 
-      <Badge {...args}>
-        <Avatar>
-          <AvatarImage alt="Avatar" src="https://example.com/avatar.jpg" />
-          <AvatarFallback>CT</AvatarFallback>
-        </Avatar>
+const OverlayVariant: Story = {
+  render: (args): React.JSX.Element => (
+    <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 to-blue-600 p-16">
+      <Badge>
+        <div className="inline-flex size-12 items-center justify-center rounded-md bg-background">
+          <Avatar>
+            <AvatarImage alt="On overlay" src={AVATAR_1} />
+            <AvatarFallback>CT</AvatarFallback>
+          </Avatar>
+        </div>
 
-        <BadgeIndicator variant="secondary">3</BadgeIndicator>
-      </Badge>
-
-      <Badge {...args}>
-        <Avatar>
-          <AvatarImage alt="Avatar" src="https://example.com/avatar.jpg" />
-          <AvatarFallback>CT</AvatarFallback>
-        </Avatar>
-
-        <BadgeIndicator variant="accent">3</BadgeIndicator>
-      </Badge>
-
-      <Badge {...args}>
-        <Avatar>
-          <AvatarImage alt="Avatar" src="https://example.com/avatar.jpg" />
-          <AvatarFallback>CT</AvatarFallback>
-        </Avatar>
-
-        <BadgeIndicator variant="success">3</BadgeIndicator>
-      </Badge>
-
-      <Badge {...args}>
-        <Avatar>
-          <AvatarImage alt="Avatar" src="https://example.com/avatar.jpg" />
-          <AvatarFallback>CT</AvatarFallback>
-        </Avatar>
-
-        <BadgeIndicator variant="warning">3</BadgeIndicator>
-      </Badge>
-
-      <Badge {...args}>
-        <Avatar>
-          <AvatarImage alt="Avatar" src="https://example.com/avatar.jpg" />
-          <AvatarFallback>CT</AvatarFallback>
-        </Avatar>
-
-        <BadgeIndicator variant="danger">3</BadgeIndicator>
-      </Badge>
-
-      <Badge {...args}>
-        <Avatar>
-          <AvatarImage alt="Avatar" src="https://example.com/avatar.jpg" />
-          <AvatarFallback>CT</AvatarFallback>
-        </Avatar>
-
-        <BadgeIndicator variant="info">3</BadgeIndicator>
+        <BadgeIndicator {...args} variant="overlay">
+          NEW
+        </BadgeIndicator>
       </Badge>
     </div>
   ),
@@ -183,33 +104,51 @@ const Variants: Story = {
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-center gap-8">
-      <Badge {...args}>
-        <Avatar>
-          <AvatarImage alt="Avatar" src="https://example.com/avatar.jpg" />
-          <AvatarFallback>CT</AvatarFallback>
-        </Avatar>
+      {(["sm", "md", "lg"] as const).map((size) => (
+        <Badge key={size}>
+          <Avatar size={size}>
+            <AvatarImage alt={size} src={AVATAR_1} />
+            <AvatarFallback>CT</AvatarFallback>
+          </Avatar>
 
-        <BadgeIndicator size="xs">3</BadgeIndicator>
-      </Badge>
-
-      <Badge {...args}>
-        <Avatar>
-          <AvatarImage alt="Avatar" src="https://example.com/avatar.jpg" />
-          <AvatarFallback>CT</AvatarFallback>
-        </Avatar>
-
-        <BadgeIndicator size="sm">3</BadgeIndicator>
-      </Badge>
-
-      <Badge {...args}>
-        <Avatar>
-          <AvatarImage alt="Avatar" src="https://example.com/avatar.jpg" />
-          <AvatarFallback>CT</AvatarFallback>
-        </Avatar>
-
-        <BadgeIndicator size="md">3</BadgeIndicator>
-      </Badge>
+          <BadgeIndicator {...args} size={size}>
+            NEW
+          </BadgeIndicator>
+        </Badge>
+      ))}
     </div>
+  ),
+};
+
+const Placements: Story = {
+  render: (args): React.JSX.Element => (
+    <div className="flex flex-wrap items-center gap-8">
+      {(["top-right", "top-left", "bottom-right", "bottom-left"] as const).map((placement) => (
+        <Badge key={placement}>
+          <Avatar>
+            <AvatarImage alt={placement} src={AVATAR_1} />
+            <AvatarFallback>CT</AvatarFallback>
+          </Avatar>
+
+          <BadgeIndicator {...args} placement={placement}>
+            NEW
+          </BadgeIndicator>
+        </Badge>
+      ))}
+    </div>
+  ),
+};
+
+const Borderless: Story = {
+  render: (args): React.JSX.Element => (
+    <Badge {...args}>
+      <Avatar>
+        <AvatarImage alt="Borderless" src={AVATAR_1} />
+        <AvatarFallback>CT</AvatarFallback>
+      </Avatar>
+
+      <BadgeIndicator isBorderless>NEW</BadgeIndicator>
+    </Badge>
   ),
 };
 
@@ -217,7 +156,7 @@ const NumericOverflow: Story = {
   render: (args): React.JSX.Element => (
     <Badge {...args}>
       <Avatar>
-        <AvatarImage alt="Avatar" src="https://example.com/avatar.jpg" />
+        <AvatarImage alt="Many notifications" src={AVATAR_3} />
         <AvatarFallback>CT</AvatarFallback>
       </Avatar>
 
@@ -226,101 +165,65 @@ const NumericOverflow: Story = {
   ),
 };
 
-const TextLabel: Story = {
-  render: (args): React.JSX.Element => (
-    <Badge {...args}>
-      <Button>Inbox</Button>
-      <BadgeIndicator variant="success">NEW</BadgeIndicator>
-    </Badge>
-  ),
-};
-
-const StatusOnAvatar: Story = {
-  render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-center gap-8">
-      <Badge {...args}>
-        <Avatar>
-          <AvatarFallback>CT</AvatarFallback>
-        </Avatar>
-
-        <BadgeStatus variant="success" placement="bottom-right" isInset />
-      </Badge>
-
-      <Badge {...args}>
-        <Avatar>
-          <AvatarFallback>MO</AvatarFallback>
-        </Avatar>
-
-        <BadgeStatus variant="warning" placement="bottom-right" isInset />
-      </Badge>
-
-      <Badge {...args}>
-        <Avatar>
-          <AvatarFallback>MK</AvatarFallback>
-        </Avatar>
-
-        <BadgeStatus variant="danger" placement="bottom-right" isInset />
-      </Badge>
-
-      <Badge {...args}>
-        <Avatar>
-          <AvatarFallback>JP</AvatarFallback>
-        </Avatar>
-
-        <BadgeStatus variant="secondary" placement="bottom-right" isInset />
-      </Badge>
-    </div>
-  ),
-};
-
-const IndicatorOnAvatar: Story = {
-  render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-center gap-8">
-      <Badge {...args}>
-        <Avatar>
-          <AvatarFallback>CT</AvatarFallback>
-        </Avatar>
-
-        <BadgeIndicator placement="top-right" isInset>
-          3
-        </BadgeIndicator>
-      </Badge>
-
-      <Badge {...args}>
-        <Avatar>
-          <AvatarFallback>MO</AvatarFallback>
-        </Avatar>
-
-        <BadgeIndicator variant="success" placement="top-right" isInset>
-          NEW
-        </BadgeIndicator>
-      </Badge>
-    </div>
-  ),
-};
-
 const OnButton: Story = {
+  args: {
+    children: "12",
+  },
   render: (args): React.JSX.Element => (
-    <Badge {...args}>
+    <Badge>
       <Button variant="secondary">Inbox</Button>
-      <BadgeIndicator>12</BadgeIndicator>
+      <BadgeIndicator {...args} />
     </Badge>
   ),
 };
 
-const OverlayVariant: Story = {
+const IconWithIcon: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 to-blue-600 p-16">
-      <Badge {...args}>
-        <div className="inline-flex size-12 items-center justify-center rounded-md bg-background">
-          <Avatar>
-            <AvatarImage alt="Avatar" src="https://example.com/avatar.jpg" />
+    <Badge {...args}>
+      <Avatar>
+        <AvatarImage alt="Bell" src={AVATAR_1} />
+        <AvatarFallback>CT</AvatarFallback>
+      </Avatar>
+
+      <BadgeIcon variant="accent">
+        <BellIcon className="size-3" />
+      </BadgeIcon>
+    </Badge>
+  ),
+};
+
+const IconSingleChar: Story = {
+  render: (args): React.JSX.Element => (
+    <Badge {...args}>
+      <Avatar>
+        <AvatarImage alt="Single char" src={AVATAR_1} />
+        <AvatarFallback>CT</AvatarFallback>
+      </Avatar>
+
+      <BadgeIcon variant="danger">5</BadgeIcon>
+    </Badge>
+  ),
+};
+
+const ICON_SIZES = [
+  { size: "sm", alt: "Icon avatar sm" },
+  { size: "md", alt: "Icon avatar md" },
+  { size: "lg", alt: "Icon avatar lg" },
+] as const;
+
+const IconSizes: Story = {
+  render: (args): React.JSX.Element => (
+    <div className="flex flex-wrap items-center gap-8">
+      {ICON_SIZES.map((item) => (
+        <Badge {...args} key={item.size}>
+          <Avatar size={item.size}>
+            <AvatarImage alt={item.alt} src={AVATAR_1} />
             <AvatarFallback>CT</AvatarFallback>
           </Avatar>
-        </div>
 
-        <BadgeIndicator variant="overlay">3</BadgeIndicator>
-      </Badge>
+          <BadgeIcon placement="bottom-right" variant="success" size={item.size} />
+        </Badge>
+      ))}
     </div>
   ),
 };
@@ -330,11 +233,13 @@ export {
   Variants,
   OverlayVariant,
   Sizes,
-  IndicatorOnAvatar,
+  Borderless,
+  Placements,
   NumericOverflow,
   OnButton,
-  StatusOnAvatar,
-  TextLabel,
+  IconWithIcon,
+  IconSingleChar,
+  IconSizes,
 };
 
 export default meta;

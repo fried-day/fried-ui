@@ -18,6 +18,8 @@ export * from "./input";
 
 export * from "./input-group";
 
+export * from "./signal-dot";
+
 export * from "./surface";
 
 export * from "./textarea";

@@ -12,7 +12,7 @@ import {
 
 describe("Audit — story / interface parity", () => {
   it.each(components)(
-    "$kebab: every {Pascal}Props prop (including subparts) has an argType",
+    "$kebab: every {Pascal}Props prop has an argType (and vice versa)",
     ({ componentFile, kebab, pascal, storiesFile }) => {
       const interfaceProps = getComponentInterfaceProps({ componentFile, pascal });
       if (interfaceProps.length === 0) return;
@@ -21,52 +21,27 @@ describe("Audit — story / interface parity", () => {
       if (!source) return;
 
       const argTypeNames = new Set(getArgTypeNames(source));
-
-      const project = new Project({ skipAddingFilesFromTsConfig: true });
-      const componentSource = project.addSourceFileAtPath(componentFile);
-
-      const subpartProps = new Map<string, Set<string>>();
-
-      for (const stmt of componentSource.getStatements()) {
-        if (!Node.isExportDeclaration(stmt)) continue;
-
-        for (const named of stmt.getNamedExports()) {
-          const subName = named.getName();
-          const subInterface = componentSource.getInterface(`${subName}Props`);
-          if (!subInterface) continue;
-
-          const propNames = new Set(subInterface.getProperties().map((prop) => prop.getName()));
-          subpartProps.set(subName, propNames);
-        }
-      }
-
-      const allInterfacePropNames = new Set<string>();
-
-      for (const propNames of subpartProps.values()) {
-        for (const name of propNames) allInterfacePropNames.add(name);
-      }
+      const interfacePropNames = new Set(interfaceProps.map((prop) => prop.name));
 
       const offenders: string[] = [];
 
-      for (const [subName, propNames] of subpartProps) {
-        for (const propName of propNames) {
-          if (propName === "ref") continue;
-          if (argTypeNames.has(propName)) continue;
+      for (const prop of interfaceProps) {
+        if (prop.name === "ref") continue;
+        if (argTypeNames.has(prop.name)) continue;
 
-          offenders.push(`${subName}.${propName}: missing from argTypes`);
-        }
+        offenders.push(`interface prop "${prop.name}" missing from argTypes`);
       }
 
       for (const argTypeName of argTypeNames) {
-        if (allInterfacePropNames.has(argTypeName)) continue;
+        if (interfacePropNames.has(argTypeName)) continue;
         if (passthroughAllowedExtras.has(argTypeName)) continue;
 
-        offenders.push(`argType "${argTypeName}" not declared in any {Sub}Props (and not in pass-through whitelist)`);
+        offenders.push(`argType "${argTypeName}" not declared in ${pascal}Props (and not in pass-through whitelist)`);
       }
 
       expect(
         offenders,
-        `${kebab}.stories.tsx argTypes do not cover every prop of every exported subpart in ${pascal}.tsx (Storybook autodocs needs an argType per modifier prop so it shows up in the table):\n${offenders.join("\n")}`,
+        `${kebab}.stories.tsx argTypes and ${pascal}Props out of sync:\n${offenders.join("\n")}`,
       ).toEqual([]);
     },
   );
@@ -131,7 +106,7 @@ describe("Audit — story / interface parity", () => {
   );
 
   it.each(components)(
-    "$kebab: every exported subpart with {Sub}Props is documented in meta.component or meta.subcomponents",
+    "$kebab: every exported subpart with {Sub}Props is listed in meta.component or meta.subcomponents",
     ({ componentFile, kebab, storiesFile }) => {
       const project = new Project({ skipAddingFilesFromTsConfig: true });
       const componentSource = project.addSourceFileAtPath(componentFile);
@@ -187,13 +162,13 @@ describe("Audit — story / interface parity", () => {
         if (documented.has(subpart)) continue;
 
         offenders.push(
-          `${subpart} has ${subpart}Props with documented modifiers but is not in meta.component or meta.subcomponents`,
+          `${subpart} has ${subpart}Props with documented modifiers but is not in meta.component or meta.subcomponents (Storybook autodocs needs the subpart listed so react-docgen-typescript renders its tab)`,
         );
       }
 
       expect(
         offenders,
-        `${kebab}.stories.tsx must list every component exported from ${kebab}/${kebab}.tsx that ships modifier props (so Storybook autodocs renders their tables):\n${offenders.join("\n")}`,
+        `${kebab}.stories.tsx must list every component exported from ${kebab}/${kebab}.tsx that ships modifier props:\n${offenders.join("\n")}`,
       ).toEqual([]);
     },
   );

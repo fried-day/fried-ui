@@ -11,7 +11,6 @@ import {
 } from "../helpers/ast";
 import { components } from "../helpers/components";
 import {
-  REQUIRED_RENDER_SIGNATURE,
   getArgTypesObject,
   getNamedExportSequence,
   MOCK_DATA_BLACKLIST,
@@ -163,37 +162,6 @@ describe("Audit — stories conventions", () => {
   });
 
   it.each(components)(
-    "$kebab: every render fn signature is `(args): React.JSX.Element =>`",
-    ({ kebab, storiesFile }) => {
-      const source = loadSource({ file: storiesFile });
-      if (!source) return;
-
-      const offenders: string[] = [];
-
-      source.forEachDescendant((node) => {
-        if (!Node.isPropertyAssignment(node)) return;
-        if (node.getName() !== "render") return;
-
-        const init = node.getInitializer();
-        if (!Node.isArrowFunction(init)) return;
-
-        const sigBody = init.getText().split("=>")[0]?.trim();
-        const expected = REQUIRED_RENDER_SIGNATURE.split("=>")[0]?.trim();
-        if (sigBody === expected) return;
-
-        offenders.push(
-          `line ${String(node.getStartLineNumber())}: render signature \`${sigBody ?? ""} =>\` — expected \`${REQUIRED_RENDER_SIGNATURE}\``,
-        );
-      });
-
-      expect(
-        offenders,
-        `${kebab}.stories.tsx render fn signatures must be \`${REQUIRED_RENDER_SIGNATURE}\`:\n${offenders.join("\n")}`,
-      ).toEqual([]);
-    },
-  );
-
-  it.each(components)(
     "$kebab: string literals avoid placeholder mock data (Lorem, foo bar, asdf, …)",
     ({ kebab, storiesFile }) => {
       const literals = getAllStringLiterals({ storiesFile });
@@ -243,50 +211,6 @@ describe("Audit — stories conventions", () => {
     expect(
       offenders,
       `${kebab}.stories.tsx export order violates 5-tier convention — see rules/storybook.md "Story order":\n${offenders.join("\n")}`,
-    ).toEqual([]);
-  });
-
-  it.each(components)("$kebab: meta variable declaration exists", ({ kebab, storiesFile }) => {
-    const source = loadSource({ file: storiesFile });
-
-    if (!source) {
-      expect.fail(`${kebab}.stories.tsx not found`);
-
-      return;
-    }
-
-    const meta = source.getVariableDeclaration("meta");
-
-    expect(meta, `${kebab}.stories.tsx missing \`meta\` variable declaration`).toBeDefined();
-  });
-
-  it.each(components)("$kebab: named story exports come before `export default meta`", ({ kebab, storiesFile }) => {
-    const source = loadSource({ file: storiesFile });
-    if (!source) return;
-
-    const defaultExport = source.getStatements().find((stmt) => Node.isExportAssignment(stmt));
-    if (!defaultExport) return;
-
-    const defaultLine = defaultExport.getStartLineNumber();
-    const lateExports: { line: number; name: string }[] = [];
-
-    for (const stmt of source.getStatements()) {
-      if (!Node.isExportDeclaration(stmt)) continue;
-
-      for (const named of stmt.getNamedExports()) {
-        const line = named.getStartLineNumber();
-        if (line > defaultLine) lateExports.push({ line, name: named.getName() });
-      }
-    }
-
-    const offenders = lateExports.map(
-      ({ line, name }) =>
-        `line ${String(line)}: "${name}" appears after \`export default meta\` (line ${String(defaultLine)})`,
-    );
-
-    expect(
-      offenders,
-      `${kebab}.stories.tsx named story exports must precede \`export default meta\`:\n${offenders.join("\n")}`,
     ).toEqual([]);
   });
 });

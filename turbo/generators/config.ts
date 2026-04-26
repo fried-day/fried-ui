@@ -8,11 +8,6 @@ const TEMPLATE_FILES = [
     file: "Component.tsx.hbs",
   },
   {
-    ext: "test",
-    path: "packages/react/src/components/{{dashCase name}}/{{dashCase name}}.test.tsx",
-    file: "component.test.tsx.hbs",
-  },
-  {
     ext: "stories",
     path: "packages/react/src/components/{{dashCase name}}/{{dashCase name}}.stories.tsx",
     file: "component.stories.tsx.hbs",

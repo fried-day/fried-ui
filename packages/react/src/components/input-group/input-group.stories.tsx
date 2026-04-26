@@ -86,17 +86,6 @@ const meta = {
         category: "Styling",
       },
     },
-    align: {
-      control: "select",
-      options: ["inline-start", "inline-end", "block-start", "block-end"],
-      description:
-        "InputGroupAddon only — placement relative to the input. **inline-start** (default) — leading icon, currency prefix, search icon. **inline-end** — trailing button, character counter, dropdown trigger. **block-start** — addon stacks above (multi-line composition with InputGroupTextarea). **block-end** — addon stacks below (Send button under a Textarea). Use inline-* for typical search bars and prefix/suffix, block-* when pairing with InputGroupTextarea for chat-style composition.",
-      table: {
-        type: { summary: '"inline-start" | "inline-end" | "block-start" | "block-end"' },
-        defaultValue: { summary: "inline-start" },
-        category: "Style Variants",
-      },
-    },
   },
 } satisfies Meta<typeof InputGroup>;
 

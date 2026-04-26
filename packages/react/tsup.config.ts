@@ -15,6 +15,7 @@ export default defineConfig({
     "components/input/index": "src/components/input/index.ts",
     "components/input-group/index": "src/components/input-group/index.ts",
     "components/label/index": "src/components/label/index.ts",
+    "components/signal-dot/index": "src/components/signal-dot/index.ts",
     "components/surface/index": "src/components/surface/index.ts",
     "components/textarea/index": "src/components/textarea/index.ts",
   },

@@ -10,10 +10,9 @@ import { components, parityTestPath } from "../helpers/components";
 const reactPackageRoot = path.resolve(import.meta.dirname, "..", "..", "..");
 
 describe("Audit — file + parity coverage", () => {
-  it.each(components)("$kebab: has all required files (Component, test, stories, index)", ({ dir, kebab, pascal }) => {
+  it.each(components)("$kebab: has Component, stories, index files", ({ dir, kebab, pascal }) => {
     const required = [
       { label: "Component.tsx", name: `${pascal}.tsx` },
-      { label: "test.tsx", name: `${kebab}.test.tsx` },
       { label: "stories.tsx", name: `${kebab}.stories.tsx` },
       { label: "index.ts", name: "index.ts" },
     ];

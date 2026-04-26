@@ -9,6 +9,6 @@
     "skipLibCheck": true,
     "noEmit": true
   },
-  "include": ["eslint.config.ts", "prettier.config.mjs", "lint-staged.config.mjs"],
+  "include": ["eslint.config.ts", "prettier.config.mjs", "lint-staged.config.mjs", "turbo/generators/config.ts"],
   "exclude": ["node_modules", "apps", "packages"]
 }

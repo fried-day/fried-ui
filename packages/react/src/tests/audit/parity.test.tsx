@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 
 import { Avatar } from "../../components/avatar";
 import { AvatarGroup } from "../../components/avatar-group";
-import { Badge, BadgeIndicator, BadgeStatus } from "../../components/badge";
+import { Badge, BadgeIcon, BadgeIndicator } from "../../components/badge";
 import { Button } from "../../components/button";
 import { Chip } from "../../components/chip";
 import { Description } from "../../components/description";
@@ -23,6 +23,7 @@ import { FieldError } from "../../components/field-error";
 import { Input } from "../../components/input";
 import { InputGroup } from "../../components/input-group";
 import { Label } from "../../components/label";
+import { SignalDot } from "../../components/signal-dot";
 import { Surface } from "../../components/surface";
 import { Textarea } from "../../components/textarea";
 
@@ -45,16 +46,22 @@ describe("1:1 plain HTML parity — default props emit only base class", () => {
     expect(el?.className).toBe("badge-indicator");
   });
 
-  it("BadgeStatus: <BadgeStatus /> renders class='badge-status'", () => {
-    const { container } = render(<BadgeStatus />);
-    const el = container.querySelector('[data-slot="badge-status"]');
-    expect(el?.className).toBe("badge-status");
+  it("BadgeIcon: <BadgeIcon>X</BadgeIcon> renders class='badge-icon'", () => {
+    const { container } = render(<BadgeIcon>X</BadgeIcon>);
+    const el = container.querySelector('[data-slot="badge-icon"]');
+    expect(el?.className).toBe("badge-icon");
   });
 
   it("Chip: <Chip>X</Chip> renders class='chip'", () => {
     const { container } = render(<Chip>X</Chip>);
     const el = container.querySelector("span");
     expect(el?.className).toBe("chip");
+  });
+
+  it("SignalDot: <SignalDot /> renders class='signal-dot'", () => {
+    const { container } = render(<SignalDot />);
+    const el = container.querySelector('[data-slot="signal-dot"]');
+    expect(el?.className).toBe("signal-dot");
   });
 
   it("Surface: <Surface>X</Surface> renders class='surface'", () => {

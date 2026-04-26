@@ -137,49 +137,6 @@ const meta = {
         category: "Styling",
       },
     },
-    optionalMessage: {
-      control: "text",
-      description:
-        "FieldLabel only — text shown in muted gray when the field is NOT required (e.g. `(Optional)`). Ignored when `isRequired` is true (the asterisk wins). Use to soften optional fields without leaving them visually identical to required ones.",
-      table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "undefined" },
-        category: "State",
-      },
-    },
-    weight: {
-      control: "select",
-      options: ["normal", "medium", "semibold"],
-      description:
-        "FieldLabel only — font weight of the label text. **normal** (400) — secondary or de-emphasized labels paired with subtle inputs. **medium** (500, default) — standard product form labels for the typical form field. **semibold** (600) — emphasized labels above hero forms, settings sections, or onboarding inputs. Use medium for most labels, semibold when the label doubles as a section heading.",
-      table: {
-        type: { summary: '"normal" | "medium" | "semibold"' },
-        defaultValue: { summary: "medium" },
-        category: "Style Variants",
-      },
-    },
-    variant: {
-      control: "select",
-      options: ["default", "bordered", "solid", "dashed", "dotted"],
-      description:
-        "Subpart-shared variant key with disjoint enums per subpart. **FieldSet:** `default` (no chrome, default) for inline grouping, or `bordered` (rounded border with padding) when the group needs a visible card boundary. **FieldSeparator:** `solid` (default) for the standard horizontal rule, `dashed` for a dotted divider that reads as softer separation, or `dotted` for an even subtler boundary between dense field groups. Pick the value that matches the subpart you are configuring — the wrong subpart will silently ignore the value.",
-      table: {
-        type: { summary: '"default" | "bordered" | "solid" | "dashed" | "dotted"' },
-        defaultValue: { summary: "default (FieldSet), solid (FieldSeparator)" },
-        category: "Style Variants",
-      },
-    },
-    as: {
-      control: "select",
-      options: ["h2", "h3", "h4"],
-      description:
-        "FieldTitle only — HTML heading element rendered for the section. **h2** — page-level form section title (e.g., 'Account Settings' on a settings page). **h3** (default) — sub-section inside a page or panel (e.g., 'Profile' inside Account Settings). **h4** — fine-grained group inside a sub-section. Pick the level that fits the page's heading outline so screen readers and SEO render the document hierarchy correctly.",
-      table: {
-        type: { summary: '"h2" | "h3" | "h4"' },
-        defaultValue: { summary: "h3" },
-        category: "Style Variants",
-      },
-    },
   },
 } satisfies Meta<typeof Field>;
 

@@ -5,16 +5,16 @@ import type { ComponentPropsWithRef, ReactNode } from "react";
 import { classes } from "../../utils/classes";
 
 export interface BadgeProps extends Omit<ComponentPropsWithRef<"span">, "children" | "className"> {
-  /** Anchor element plus a `BadgeIndicator` or `BadgeStatus` subpart. Badge provides the positioning container. */
+  /** Anchor element (Avatar, Button, Icon) followed by a `BadgeIndicator` (text/number) or `BadgeIcon` (icon) subpart positioned at one of its corners. */
   children?: ReactNode;
   /** Additional CSS classes appended after the base class. */
   className?: string;
 }
 
 /**
- * A badge wraps an anchor element (Button, Avatar, Icon) and provides a positioning
- * container for overlay subparts. Compose with `BadgeIndicator` for counts or labels,
- * or with `BadgeStatus` for a presence dot.
+ * A positioning wrapper that anchors a `BadgeIndicator` (text/number pill) or
+ * `BadgeIcon` (icon square) to one of an element's corners. For binary presence
+ * (online/offline, unread/read) use the standalone `SignalDot` instead.
  */
 const Badge = (props: Readonly<BadgeProps>) => {
   const { children, className, ref, ...rest } = props;
@@ -35,28 +35,29 @@ const Badge = (props: Readonly<BadgeProps>) => {
 Badge.displayName = "Badge";
 
 export interface BadgeIndicatorProps extends Omit<ComponentPropsWithRef<"span">, "children" | "className"> {
-  /** Indicator content — count, short label, or any ReactNode rendered at the anchor's corner. */
+  /** Indicator content — text or number such as `"NEW"`, `"99+"`, or `12`. The pill expands width to fit content. For icons use `BadgeIcon`; for binary presence use the standalone `SignalDot`. */
   children?: ReactNode;
   /** Additional CSS classes appended after the base class. */
   className?: string;
-  /** Whether the indicator sits on the anchor's perimeter — use with round anchors such as Avatar so the indicator lands on the edge at 45 degrees. @default false */
-  isInset?: boolean;
+  /** Whether the halo border (page-background colored, separates badge from anchor) is hidden — set to `true` for flat badges that sit on a matching surface. @default false */
+  isBorderless?: boolean;
   /** Cap numeric content — render as `${max}+` when exceeded. @default 99 */
   max?: number;
   /** Placement corner relative to the wrapped anchor. @default 'top-right' */
   placement?: "top-right" | "top-left" | "bottom-right" | "bottom-left";
   /** Size scale. @default 'md' */
-  size?: "xs" | "sm" | "md";
-  /** Visual style. @default 'danger' */
+  size?: "sm" | "md" | "lg";
+  /** Visual style. @default 'primary' */
   variant?: "primary" | "secondary" | "accent" | "success" | "warning" | "danger" | "info" | "overlay";
 }
+
 /**
- * An overlay indicator rendered inside a Badge. Shows a count, a short label, or any
- * ReactNode at a corner of the wrapped anchor. Announces via `role="status"` so
- * screen readers pick up count changes.
+ * A pill-shaped indicator for multi-character text or number content (e.g. `"NEW"`, `"99+"`, `12`).
+ * Width expands with content; padding scales with size. For icon content use `BadgeIcon` (1:1 square);
+ * for binary presence use the standalone `SignalDot`.
  */
 const BadgeIndicator = (props: Readonly<BadgeIndicatorProps>) => {
-  const { children, className, isInset, max, placement, ref, size, variant, ...rest } = props;
+  const { children, className, isBorderless, max, placement, ref, size, variant, ...rest } = props;
 
   const indicatorClassName = classes({
     block: "badge-indicator",
@@ -64,20 +65,13 @@ const BadgeIndicator = (props: Readonly<BadgeIndicatorProps>) => {
       variant,
       size,
       placement,
-      "is-inset": isInset,
+      borderless: isBorderless,
     },
     className,
   });
 
-  const resolveContent = (): ReactNode => {
-    if (typeof children === "number" && max !== undefined && children > max) {
-      return `${max}+`;
-    }
-
-    return children;
-  };
-
-  const content = resolveContent();
+  const isOverflow = typeof children === "number" && max !== undefined && children > max;
+  const content = isOverflow ? `${String(max)}+` : children;
 
   return (
     <span role="status" data-slot="badge-indicator" className={indicatorClassName} ref={ref} {...rest}>
@@ -88,40 +82,47 @@ const BadgeIndicator = (props: Readonly<BadgeIndicatorProps>) => {
 
 BadgeIndicator.displayName = "BadgeIndicator";
 
-export interface BadgeStatusProps extends Omit<ComponentPropsWithRef<"span">, "className"> {
+export interface BadgeIconProps extends Omit<ComponentPropsWithRef<"span">, "children" | "className"> {
+  /** Icon content rendered in a 1:1 square container. For text or number content, use `BadgeIndicator`; for binary presence use the standalone `SignalDot`. */
+  children?: ReactNode;
   /** Additional CSS classes appended after the base class. */
   className?: string;
-  /** Whether the status dot sits on the anchor's perimeter — use with round anchors such as Avatar. @default false */
-  isInset?: boolean;
-  /** Placement corner relative to the wrapped anchor. @default 'bottom-right' */
+  /** Whether the halo border (page-background colored, separates badge from anchor) is hidden — set to `true` for flat badges that sit on a matching surface. @default false */
+  isBorderless?: boolean;
+  /** Placement corner relative to the wrapped anchor. @default 'top-right' */
   placement?: "top-right" | "top-left" | "bottom-right" | "bottom-left";
   /** Size scale. @default 'md' */
-  size?: "xs" | "sm" | "md";
-  /** Visual style. @default 'success' */
+  size?: "sm" | "md" | "lg";
+  /** Visual style. @default 'primary' */
   variant?: "primary" | "secondary" | "accent" | "success" | "warning" | "danger" | "info" | "overlay";
 }
 
 /**
- * A presence dot rendered inside a Badge. Decorative by default (`aria-hidden`);
- * pair the anchor with an `aria-label` when the dot carries meaning.
+ * A square (1:1 aspect ratio) badge anchored at the corner of a parent element. Holds an
+ * icon or single character. For multi-character text or numbers use `BadgeIndicator` (pill);
+ * for binary presence use the standalone `SignalDot`.
  */
-const BadgeStatus = (props: Readonly<BadgeStatusProps>) => {
-  const { className, isInset, placement, ref, size, variant, ...rest } = props;
+const BadgeIcon = (props: Readonly<BadgeIconProps>) => {
+  const { children, className, isBorderless, placement, ref, size, variant, ...rest } = props;
 
-  const statusClassName = classes({
-    block: "badge-status",
+  const iconClassName = classes({
+    block: "badge-icon",
     modifiers: {
       variant,
       size,
       placement,
-      "is-inset": isInset,
+      borderless: isBorderless,
     },
     className,
   });
 
-  return <span data-slot="badge-status" className={statusClassName} ref={ref} aria-hidden {...rest} />;
+  return (
+    <span role="status" data-slot="badge-icon" className={iconClassName} ref={ref} {...rest}>
+      {children}
+    </span>
+  );
 };
 
-BadgeStatus.displayName = "BadgeStatus";
+BadgeIcon.displayName = "BadgeIcon";
 
-export { Badge, BadgeIndicator, BadgeStatus };
+export { Badge, BadgeIcon, BadgeIndicator };
