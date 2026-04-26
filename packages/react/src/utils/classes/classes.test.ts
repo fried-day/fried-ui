@@ -63,7 +63,7 @@ describe("classes()", () => {
     expect(classes({ block: "button", modifiers: {}, className: "" })).toBe("button");
   });
 
-  it("supports daisyUI-style single-dash naming without prefix", () => {
+  it("supports single-dash naming without key prefix when value is boolean true", () => {
     expect(
       classes({
         block: "text-field",

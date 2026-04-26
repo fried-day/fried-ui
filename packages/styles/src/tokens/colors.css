@@ -78,9 +78,6 @@
   --color-field-slot: transparent;
   --color-field-slot-border: transparent;
 
-  --color-avatar-background: var(--color-fri-neutral-100);
-  --color-avatar-foreground: var(--color-fri-neutral-600);
-
   --color-popover: oklch(100% 0 0);
   --color-popover-foreground: oklch(0% 0 0);
 

@@ -15,7 +15,7 @@ interface Modifiers {
 
 /**
  * Compose a component's class list from `block`, typed `modifiers`, and optional `className`.
- * Emits daisyUI-style single-dash names (e.g. `button button-primary button-size-md`) and folds the user-supplied `className` at the end so it wins on cascade.
+ * Emits single-dash class names (e.g. `button button-primary button-size-md`) and folds the user-supplied `className` at the end so it wins on cascade.
  *
  * @example
  * classes({ block: "button", modifiers: { variant: "primary", size: "md", disabled: true }, className: "mt-4" })

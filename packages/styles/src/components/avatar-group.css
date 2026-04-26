@@ -4,47 +4,59 @@
   }
 
   .avatar-group [data-slot="avatar"] {
-    @apply relative outline-2 outline-background transition-transform duration-150 ease-out;
+    @apply relative outline-2 outline-background;
+    @apply transition-transform duration-(--duration-hover) ease-(--ease-out) motion-reduce:transition-none;
   }
 
   .avatar-group-borderless [data-slot="avatar"] {
     @apply outline-0;
   }
 
+  .avatar-group-counter,
+  .avatar-group-counter-fallback {
+    @apply relative z-10 inline-flex items-center justify-center;
+    @apply size-9 shrink-0 overflow-hidden rounded-full;
+    @apply bg-muted;
+    @apply text-sm leading-none font-medium text-muted-foreground;
+  }
+
   .avatar-group-counter-text {
-    @apply ms-2 leading-none font-medium text-foreground-muted;
+    @apply text-sm leading-none font-medium text-muted-foreground;
   }
 
-  .avatar-group-size-xs .avatar-group-counter-text {
-    @apply text-2xs;
+  .avatar-group-size-xs .avatar-group-counter {
+    @apply size-6 text-2xs;
   }
 
-  .avatar-group-size-sm .avatar-group-counter-text {
-    @apply text-xs;
+  .avatar-group-size-sm .avatar-group-counter {
+    @apply size-8 text-xs;
   }
 
-  .avatar-group-size-md .avatar-group-counter-text {
-    @apply text-sm;
+  .avatar-group-size-md .avatar-group-counter {
+    @apply size-9 text-sm;
   }
 
-  .avatar-group-size-lg .avatar-group-counter-text {
-    @apply text-base;
+  .avatar-group-size-lg .avatar-group-counter {
+    @apply size-10 text-base;
   }
 
-  .avatar-group-size-xl .avatar-group-counter-text {
-    @apply text-lg;
+  .avatar-group-size-xl .avatar-group-counter {
+    @apply size-12 text-lg;
   }
 
-  .avatar-group-size-2xl .avatar-group-counter-text {
-    @apply text-xl;
+  .avatar-group-size-2xl .avatar-group-counter {
+    @apply size-14 text-xl;
   }
 
   .avatar-group [data-slot="avatar"]:not(:first-child) {
     @apply -ms-2;
   }
 
-  .avatar-group-hoverable [data-slot="avatar"]:hover {
-    @apply z-10 scale-110;
+  @media (hover: hover) {
+    .avatar-group-hoverable [data-slot="avatar"]:hover,
+    .avatar-group-hoverable [data-slot="avatar"][data-hovered] {
+      @apply z-10 scale-110;
+    }
   }
 
   .avatar-group-size-xs [data-slot="avatar"]:not(:first-child) {
@@ -209,5 +221,181 @@
 
   .avatar-group-size-2xl.avatar-group-spacing-tighter [data-slot="avatar"]:not(:first-child) {
     @apply -ms-6;
+  }
+
+  .avatar-group .avatar-group-counter {
+    @apply -ms-2;
+  }
+
+  .avatar-group-size-xs .avatar-group-counter {
+    @apply -ms-1;
+  }
+
+  .avatar-group-size-sm .avatar-group-counter {
+    @apply -ms-1.5;
+  }
+
+  .avatar-group-size-md .avatar-group-counter {
+    @apply -ms-2;
+  }
+
+  .avatar-group-size-lg .avatar-group-counter {
+    @apply -ms-2;
+  }
+
+  .avatar-group-size-xl .avatar-group-counter {
+    @apply -ms-2.5;
+  }
+
+  .avatar-group-size-2xl .avatar-group-counter {
+    @apply -ms-3;
+  }
+
+  .avatar-group-spacing-wider .avatar-group-counter {
+    @apply -ms-0.5;
+  }
+
+  .avatar-group-spacing-wide .avatar-group-counter {
+    @apply -ms-1;
+  }
+
+  .avatar-group-spacing-default .avatar-group-counter {
+    @apply -ms-2;
+  }
+
+  .avatar-group-spacing-tight .avatar-group-counter {
+    @apply -ms-3;
+  }
+
+  .avatar-group-spacing-tighter .avatar-group-counter {
+    @apply -ms-3.5;
+  }
+
+  .avatar-group-size-xs.avatar-group-spacing-wider .avatar-group-counter {
+    @apply -ms-px;
+  }
+
+  .avatar-group-size-xs.avatar-group-spacing-wide .avatar-group-counter {
+    @apply -ms-0.5;
+  }
+
+  .avatar-group-size-xs.avatar-group-spacing-default .avatar-group-counter {
+    @apply -ms-1;
+  }
+
+  .avatar-group-size-xs.avatar-group-spacing-tight .avatar-group-counter {
+    @apply -ms-2;
+  }
+
+  .avatar-group-size-xs.avatar-group-spacing-tighter .avatar-group-counter {
+    @apply -ms-2.5;
+  }
+
+  .avatar-group-size-sm.avatar-group-spacing-wider .avatar-group-counter {
+    @apply -ms-0.5;
+  }
+
+  .avatar-group-size-sm.avatar-group-spacing-wide .avatar-group-counter {
+    @apply -ms-1;
+  }
+
+  .avatar-group-size-sm.avatar-group-spacing-default .avatar-group-counter {
+    @apply -ms-1.5;
+  }
+
+  .avatar-group-size-sm.avatar-group-spacing-tight .avatar-group-counter {
+    @apply -ms-2.5;
+  }
+
+  .avatar-group-size-sm.avatar-group-spacing-tighter .avatar-group-counter {
+    @apply -ms-3;
+  }
+
+  .avatar-group-size-md.avatar-group-spacing-wider .avatar-group-counter {
+    @apply -ms-0.5;
+  }
+
+  .avatar-group-size-md.avatar-group-spacing-wide .avatar-group-counter {
+    @apply -ms-1;
+  }
+
+  .avatar-group-size-md.avatar-group-spacing-default .avatar-group-counter {
+    @apply -ms-2;
+  }
+
+  .avatar-group-size-md.avatar-group-spacing-tight .avatar-group-counter {
+    @apply -ms-3;
+  }
+
+  .avatar-group-size-md.avatar-group-spacing-tighter .avatar-group-counter {
+    @apply -ms-3.5;
+  }
+
+  .avatar-group-size-lg.avatar-group-spacing-wider .avatar-group-counter {
+    @apply -ms-0.5;
+  }
+
+  .avatar-group-size-lg.avatar-group-spacing-wide .avatar-group-counter {
+    @apply -ms-1;
+  }
+
+  .avatar-group-size-lg.avatar-group-spacing-default .avatar-group-counter {
+    @apply -ms-2.5;
+  }
+
+  .avatar-group-size-lg.avatar-group-spacing-tight .avatar-group-counter {
+    @apply -ms-3.5;
+  }
+
+  .avatar-group-size-lg.avatar-group-spacing-tighter .avatar-group-counter {
+    @apply -ms-4;
+  }
+
+  .avatar-group-size-xl.avatar-group-spacing-wider .avatar-group-counter {
+    @apply -ms-1;
+  }
+
+  .avatar-group-size-xl.avatar-group-spacing-wide .avatar-group-counter {
+    @apply -ms-1.5;
+  }
+
+  .avatar-group-size-xl.avatar-group-spacing-default .avatar-group-counter {
+    @apply -ms-3;
+  }
+
+  .avatar-group-size-xl.avatar-group-spacing-tight .avatar-group-counter {
+    @apply -ms-4;
+  }
+
+  .avatar-group-size-xl.avatar-group-spacing-tighter .avatar-group-counter {
+    @apply -ms-5;
+  }
+
+  .avatar-group-size-2xl.avatar-group-spacing-wider .avatar-group-counter {
+    @apply -ms-1;
+  }
+
+  .avatar-group-size-2xl.avatar-group-spacing-wide .avatar-group-counter {
+    @apply -ms-1.5;
+  }
+
+  .avatar-group-size-2xl.avatar-group-spacing-default .avatar-group-counter {
+    @apply -ms-3;
+  }
+
+  .avatar-group-size-2xl.avatar-group-spacing-tight .avatar-group-counter {
+    @apply -ms-5;
+  }
+
+  .avatar-group-size-2xl.avatar-group-spacing-tighter .avatar-group-counter {
+    @apply -ms-6;
+  }
+
+  .avatar-group-counter.avatar-group-counter-text {
+    @apply size-auto overflow-visible rounded-none bg-transparent;
+  }
+
+  .avatar-group .avatar-group-counter.avatar-group-counter-text {
+    @apply ms-2;
   }
 }

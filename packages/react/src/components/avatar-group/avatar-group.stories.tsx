@@ -5,13 +5,15 @@ import AVATAR_2 from "@fried-ui/assets/story/avatar-2.jpg";
 import AVATAR_3 from "@fried-ui/assets/story/avatar-3.jpg";
 
 import { Avatar, AvatarFallback, AvatarImage } from "../avatar";
-import { AvatarGroup } from "./AvatarGroup";
-
 import { UserIcon } from "../icons";
+import { AvatarGroup, AvatarGroupCounter } from "./AvatarGroup";
 
 const meta = {
   title: "Components/AvatarGroup",
   component: AvatarGroup,
+  subcomponents: {
+    AvatarGroupCounter,
+  },
   tags: ["autodocs"],
   parameters: {
     layout: "centered",
@@ -19,7 +21,8 @@ const meta = {
   argTypes: {
     children: {
       control: false,
-      description: "A collection of `<Avatar />` elements to render in the stack",
+      description:
+        "A sequence of `<Avatar />` siblings, optionally followed by an `<AvatarGroupCounter />` for the overflow indicator.",
       type: {
         name: "other",
         value: "ReactNode",
@@ -52,33 +55,6 @@ const meta = {
         category: "Style Variants",
       },
     },
-    max: {
-      control: "number",
-      description: "Maximum number of avatars before collapsing the rest into a +N counter",
-      table: {
-        type: { summary: "number" },
-        category: "State",
-      },
-    },
-    total: {
-      control: "number",
-      description: "Override for the +N counter (defaults to the number of children)",
-      table: {
-        type: { summary: "number" },
-        category: "State",
-      },
-    },
-    counterVariant: {
-      control: "select",
-      options: ["fallback", "text"],
-      description:
-        "Counter render mode for the hidden-avatar count. **fallback** (default) — renders the +N as another circular Avatar inside the stack, ideal for dense rosters and contributor strips where every slot reads as a face-shaped tile. **text** — renders compact-notation text (`+10K`, `+1.2M`) beside the stack, ideal for hero banners and social-proof rows where the count itself is the message. Pair `text` with a high `total` (e.g. attendee count, view count) and a small `max` so the stack stays balanced beside the figure.",
-      table: {
-        type: { summary: '"fallback" | "text"' },
-        defaultValue: { summary: "fallback" },
-        category: "Style Variants",
-      },
-    },
     isBorderless: {
       control: "boolean",
       description:
@@ -91,7 +67,8 @@ const meta = {
     },
     isHoverable: {
       control: "boolean",
-      description: "Whether avatars lift on hover",
+      description:
+        "Whether avatars lift on hover — adds a subtle upward scale and z-index boost when the cursor enters an avatar. The default keeps avatars static, ideal for read-only rosters or dense activity logs where pointer hover is incidental.",
       table: {
         type: { summary: "boolean" },
         defaultValue: { summary: "false" },
@@ -112,128 +89,47 @@ const meta = {
 type Story = StoryObj<typeof meta>;
 
 const Default: Story = {
-  args: {
-    children: [
-      <Avatar key="a1">
+  render: (args): React.JSX.Element => (
+    <AvatarGroup {...args}>
+      <Avatar>
         <AvatarImage alt="Avatar 1" src={AVATAR_1} />
         <AvatarFallback>A1</AvatarFallback>
-      </Avatar>,
-      <Avatar key="a2">
+      </Avatar>
+
+      <Avatar>
         <AvatarImage alt="Avatar 2" src={AVATAR_2} />
         <AvatarFallback>A2</AvatarFallback>
-      </Avatar>,
-      <Avatar key="a3">
+      </Avatar>
+
+      <Avatar>
         <AvatarImage alt="Avatar 3" src={AVATAR_3} />
         <AvatarFallback>A3</AvatarFallback>
-      </Avatar>,
-    ],
-  },
+      </Avatar>
+    </AvatarGroup>
+  ),
 };
 
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-end gap-4">
-      <AvatarGroup {...args} size="xs">
-        <Avatar>
-          <AvatarImage alt="Avatar 1" src={AVATAR_1} />
-          <AvatarFallback>A1</AvatarFallback>
-        </Avatar>
+      {(["xs", "sm", "md", "lg", "xl", "2xl"] as const).map((size) => (
+        <AvatarGroup {...args} key={size} size={size}>
+          <Avatar>
+            <AvatarImage alt={`Avatar 1 ${size}`} src={AVATAR_1} />
+            <AvatarFallback>A1</AvatarFallback>
+          </Avatar>
 
-        <Avatar>
-          <AvatarImage alt="Avatar 2" src={AVATAR_2} />
-          <AvatarFallback>A2</AvatarFallback>
-        </Avatar>
+          <Avatar>
+            <AvatarImage alt={`Avatar 2 ${size}`} src={AVATAR_2} />
+            <AvatarFallback>A2</AvatarFallback>
+          </Avatar>
 
-        <Avatar>
-          <AvatarImage alt="Avatar 3" src={AVATAR_3} />
-          <AvatarFallback>A3</AvatarFallback>
-        </Avatar>
-      </AvatarGroup>
-
-      <AvatarGroup {...args} size="sm">
-        <Avatar>
-          <AvatarImage alt="Avatar 1" src={AVATAR_1} />
-          <AvatarFallback>A1</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 2" src={AVATAR_2} />
-          <AvatarFallback>A2</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 3" src={AVATAR_3} />
-          <AvatarFallback>A3</AvatarFallback>
-        </Avatar>
-      </AvatarGroup>
-
-      <AvatarGroup {...args} size="md">
-        <Avatar>
-          <AvatarImage alt="Avatar 1" src={AVATAR_1} />
-          <AvatarFallback>A1</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 2" src={AVATAR_2} />
-          <AvatarFallback>A2</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 3" src={AVATAR_3} />
-          <AvatarFallback>A3</AvatarFallback>
-        </Avatar>
-      </AvatarGroup>
-
-      <AvatarGroup {...args} size="lg">
-        <Avatar>
-          <AvatarImage alt="Avatar 1" src={AVATAR_1} />
-          <AvatarFallback>A1</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 2" src={AVATAR_2} />
-          <AvatarFallback>A2</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 3" src={AVATAR_3} />
-          <AvatarFallback>A3</AvatarFallback>
-        </Avatar>
-      </AvatarGroup>
-
-      <AvatarGroup {...args} size="xl">
-        <Avatar>
-          <AvatarImage alt="Avatar 1" src={AVATAR_1} />
-          <AvatarFallback>A1</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 2" src={AVATAR_2} />
-          <AvatarFallback>A2</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 3" src={AVATAR_3} />
-          <AvatarFallback>A3</AvatarFallback>
-        </Avatar>
-      </AvatarGroup>
-
-      <AvatarGroup {...args} size="2xl">
-        <Avatar>
-          <AvatarImage alt="Avatar 1" src={AVATAR_1} />
-          <AvatarFallback>A1</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 2" src={AVATAR_2} />
-          <AvatarFallback>A2</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 3" src={AVATAR_3} />
-          <AvatarFallback>A3</AvatarFallback>
-        </Avatar>
-      </AvatarGroup>
+          <Avatar>
+            <AvatarImage alt={`Avatar 3 ${size}`} src={AVATAR_3} />
+            <AvatarFallback>A3</AvatarFallback>
+          </Avatar>
+        </AvatarGroup>
+      ))}
     </div>
   ),
 };
@@ -241,90 +137,24 @@ const Sizes: Story = {
 const Spacing: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-end gap-4">
-      <AvatarGroup {...args} spacing="wider">
-        <Avatar>
-          <AvatarImage alt="Avatar 1" src={AVATAR_1} />
-          <AvatarFallback>A1</AvatarFallback>
-        </Avatar>
+      {(["wider", "wide", "default", "tight", "tighter"] as const).map((spacing) => (
+        <AvatarGroup {...args} key={spacing} spacing={spacing}>
+          <Avatar>
+            <AvatarImage alt={`Avatar 1 ${spacing}`} src={AVATAR_1} />
+            <AvatarFallback>A1</AvatarFallback>
+          </Avatar>
 
-        <Avatar>
-          <AvatarImage alt="Avatar 2" src={AVATAR_2} />
-          <AvatarFallback>A2</AvatarFallback>
-        </Avatar>
+          <Avatar>
+            <AvatarImage alt={`Avatar 2 ${spacing}`} src={AVATAR_2} />
+            <AvatarFallback>A2</AvatarFallback>
+          </Avatar>
 
-        <Avatar>
-          <AvatarImage alt="Avatar 3" src={AVATAR_3} />
-          <AvatarFallback>A3</AvatarFallback>
-        </Avatar>
-      </AvatarGroup>
-
-      <AvatarGroup {...args} spacing="wide">
-        <Avatar>
-          <AvatarImage alt="Avatar 1" src={AVATAR_1} />
-          <AvatarFallback>A1</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 2" src={AVATAR_2} />
-          <AvatarFallback>A2</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 3" src={AVATAR_3} />
-          <AvatarFallback>A3</AvatarFallback>
-        </Avatar>
-      </AvatarGroup>
-
-      <AvatarGroup {...args} spacing="default">
-        <Avatar>
-          <AvatarImage alt="Avatar 1" src={AVATAR_1} />
-          <AvatarFallback>A1</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 2" src={AVATAR_2} />
-          <AvatarFallback>A2</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 3" src={AVATAR_3} />
-          <AvatarFallback>A3</AvatarFallback>
-        </Avatar>
-      </AvatarGroup>
-
-      <AvatarGroup {...args} spacing="tight">
-        <Avatar>
-          <AvatarImage alt="Avatar 1" src={AVATAR_1} />
-          <AvatarFallback>A1</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 2" src={AVATAR_2} />
-          <AvatarFallback>A2</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 3" src={AVATAR_3} />
-          <AvatarFallback>A3</AvatarFallback>
-        </Avatar>
-      </AvatarGroup>
-
-      <AvatarGroup {...args} spacing="tighter">
-        <Avatar>
-          <AvatarImage alt="Avatar 1" src={AVATAR_1} />
-          <AvatarFallback>A1</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 2" src={AVATAR_2} />
-          <AvatarFallback>A2</AvatarFallback>
-        </Avatar>
-
-        <Avatar>
-          <AvatarImage alt="Avatar 3" src={AVATAR_3} />
-          <AvatarFallback>A3</AvatarFallback>
-        </Avatar>
-      </AvatarGroup>
+          <Avatar>
+            <AvatarImage alt={`Avatar 3 ${spacing}`} src={AVATAR_3} />
+            <AvatarFallback>A3</AvatarFallback>
+          </Avatar>
+        </AvatarGroup>
+      ))}
     </div>
   ),
 };
@@ -377,10 +207,7 @@ const Hoverable: Story = {
   ),
 };
 
-const WithMax: Story = {
-  args: {
-    max: 3,
-  },
+const WithCounter: Story = {
   render: (args): React.JSX.Element => (
     <AvatarGroup {...args}>
       <Avatar>
@@ -398,29 +225,12 @@ const WithMax: Story = {
         <AvatarFallback>A3</AvatarFallback>
       </Avatar>
 
-      <Avatar>
-        <AvatarImage alt="Avatar 1" src={AVATAR_1} />
-        <AvatarFallback>A4</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarImage alt="Avatar 2" src={AVATAR_2} />
-        <AvatarFallback>A5</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarImage alt="Avatar 3" src={AVATAR_3} />
-        <AvatarFallback>A6</AvatarFallback>
-      </Avatar>
+      <AvatarGroupCounter aria-label="42 more">+42</AvatarGroupCounter>
     </AvatarGroup>
   ),
 };
 
-const WithTotal: Story = {
-  args: {
-    max: 3,
-    total: 42,
-  },
+const WithTextCounter: Story = {
   render: (args): React.JSX.Element => (
     <AvatarGroup {...args}>
       <Avatar>
@@ -437,14 +247,15 @@ const WithTotal: Story = {
         <AvatarImage alt="Avatar 3" src={AVATAR_3} />
         <AvatarFallback>A3</AvatarFallback>
       </Avatar>
+
+      <AvatarGroupCounter variant="text" aria-label="10234 more">
+        +10.2K
+      </AvatarGroupCounter>
     </AvatarGroup>
   ),
 };
 
 const WithFallback: Story = {
-  args: {
-    max: 4,
-  },
   render: (args): React.JSX.Element => (
     <AvatarGroup {...args}>
       <Avatar>
@@ -464,53 +275,28 @@ const WithFallback: Story = {
   ),
 };
 
-const WithTextCounter: Story = {
-  args: {
-    max: 7,
-    total: 10234,
-    counterVariant: "text",
-    size: "lg",
-  },
-  render: (args): React.JSX.Element => (
-    <AvatarGroup {...args}>
-      <Avatar>
-        <AvatarImage alt="Avatar 1" src={AVATAR_1} />
-        <AvatarFallback>A1</AvatarFallback>
-      </Avatar>
+const StandaloneCounter: Story = {
+  render: (): React.JSX.Element => (
+    <div className="flex items-center gap-4">
+      <AvatarGroupCounter aria-label="42 more">+42</AvatarGroupCounter>
 
-      <Avatar>
-        <AvatarImage alt="Avatar 2" src={AVATAR_2} />
-        <AvatarFallback>A2</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarImage alt="Avatar 3" src={AVATAR_3} />
-        <AvatarFallback>A3</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarImage alt="Avatar 1" src={AVATAR_1} />
-        <AvatarFallback>A4</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarImage alt="Avatar 2" src={AVATAR_2} />
-        <AvatarFallback>A5</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarImage alt="Avatar 3" src={AVATAR_3} />
-        <AvatarFallback>A6</AvatarFallback>
-      </Avatar>
-
-      <Avatar>
-        <AvatarImage alt="Avatar 1" src={AVATAR_1} />
-        <AvatarFallback>A7</AvatarFallback>
-      </Avatar>
-    </AvatarGroup>
+      <AvatarGroupCounter variant="text" aria-label="10234 more">
+        +10.2K
+      </AvatarGroupCounter>
+    </div>
   ),
 };
 
-export { Default, Sizes, Spacing, Borderless, Hoverable, WithMax, WithTotal, WithFallback, WithTextCounter };
+export {
+  Default,
+  Sizes,
+  Spacing,
+  Borderless,
+  Hoverable,
+  WithCounter,
+  WithTextCounter,
+  WithFallback,
+  StandaloneCounter,
+};
 
 export default meta;
