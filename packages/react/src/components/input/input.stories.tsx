@@ -36,7 +36,7 @@ const meta = {
       control: "select",
       options: ["sm", "md", "lg"],
       description:
-        "Size scale tied to form-field density. **sm** (h-8, text-xs) — inline filters, table cells, compact admin forms. **md** (h-10, text-sm, default) — standard form fields. **lg** (h-12, text-base) — hero search, single-input pages. Use sm for dense UI, md for most forms, lg for emphasized single-input pages where the input is the primary action and must read at a distance.",
+        "Size scale tied to form-field density with a consistent +4px step (32 / 36 / 40). **sm** (h-8, text-xs) — inline filters, table cells, compact admin forms. **md** (h-9, text-sm, default) — standard form fields, paired with Button md and InputGroup md. **lg** (h-10, text-base) — hero search, single-input pages. Use sm for dense UI, md for most forms, lg for emphasized single-input pages where the input is the primary action and must read at a distance.",
       table: {
         type: { summary: '"sm" | "md" | "lg"' },
         defaultValue: { summary: "md" },

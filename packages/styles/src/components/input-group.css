@@ -13,7 +13,7 @@
     @apply bg-(--input-group-bg) text-(--input-group-fg);
     @apply border border-(--input-group-border);
     @apply rounded-md;
-    @apply min-h-10 text-sm;
+    @apply min-h-9 text-sm;
 
     &:hover:not(:focus-within):not(:has(:read-only)):not(:has(:disabled)),
     &:has([data-hovered]):not(:has([data-focused])):not(:has([data-readonly])):not(:has([data-disabled])) {
@@ -82,11 +82,11 @@
   }
 
   .input-group-size-md {
-    @apply min-h-10 text-sm;
+    @apply min-h-9 text-sm;
   }
 
   .input-group-size-lg {
-    @apply min-h-12 text-base;
+    @apply min-h-10 text-base;
   }
 
   .input-group-full-width {

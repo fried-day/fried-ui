@@ -13,7 +13,7 @@
 
     @apply bg-(--input-bg) text-(--input-fg);
     @apply border border-(--input-border);
-    @apply h-10 px-3.5 text-sm;
+    @apply h-9 px-3.5 text-sm;
     @apply rounded-md;
     @apply placeholder:text-(--input-placeholder);
 
@@ -92,11 +92,11 @@
   }
 
   .input-size-md {
-    @apply h-10 px-3.5 text-sm;
+    @apply h-9 px-3.5 text-sm;
   }
 
   .input-size-lg {
-    @apply h-12 px-4 text-base;
+    @apply h-10 px-4 text-base;
   }
 
   .input-full-width {

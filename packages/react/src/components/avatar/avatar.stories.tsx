@@ -30,7 +30,7 @@ const meta = {
       control: "select",
       options: ["xs", "sm", "md", "lg", "xl", "2xl"],
       description:
-        "Size scale of the avatar circle. **xs** (size-6) — dense list rows or chat avatars beside a username. **sm** (size-8) — compact tables, comment threads. **md** (size-10, default) — standard cards and member lists. **lg** (size-12) — profile headers. **xl** (size-14) — hero blocks. **2xl** (size-16) — settings pages or large profile views. Use md as the default; reach for xs and sm in dense lists, lg and above for emphasized profile contexts.",
+        "Size scale of the avatar circle. **xs** (size-6, 24px) — dense list rows or chat avatars beside a username. **sm** (size-8, 32px) — compact tables, comment threads, form-aligned with Input/Button sm. **md** (size-9, 36px, default) — standard cards and member lists, form-aligned with Input/Button md. **lg** (size-10, 40px) — profile headers, form-aligned with Input/Button lg. **xl** (size-12, 48px) — hero blocks. **2xl** (size-14, 56px) — settings pages or large profile views. Use md as the default; reach for xs and sm in dense lists, lg and above for emphasized profile contexts.",
       table: {
         type: { summary: '"xs" | "sm" | "md" | "lg" | "xl" | "2xl"' },
         defaultValue: { summary: "md" },

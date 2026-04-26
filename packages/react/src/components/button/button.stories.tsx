@@ -60,7 +60,7 @@ const meta = {
       control: "select",
       options: ["sm", "md", "lg", "xl"],
       description:
-        "Size scale matching interactive hierarchy. **sm** (h-8, text-sm) — toolbars, dense tables, secondary CTAs in cards. **md** (h-10, text-base, default) — standard call-to-action across most surfaces. **lg** (h-12, text-xl) — landing pages, marketing CTAs, hero blocks. **xl** (h-14, text-2xl) — display CTAs, pricing tiers, splash screens. Use sm for inline actions and toolbars, md for forms and cards, lg and xl for marketing surfaces where the button must read across a wide viewport.",
+        "Size scale matching interactive hierarchy with a consistent +4px step. **sm** (h-8, text-xs) — toolbars, dense tables, secondary CTAs in cards. **md** (h-9, text-sm, default) — standard call-to-action across most surfaces, form-aligned with Input md. **lg** (h-10, text-base) — landing pages, marketing CTAs, hero blocks. **xl** (h-11, text-lg) — display CTAs, pricing tiers, splash screens. Use sm for inline actions and toolbars, md for forms and cards, lg and xl for marketing surfaces where the button must read across a wide viewport.",
       table: {
         type: {
           summary: '"sm" | "md" | "lg" | "xl"',

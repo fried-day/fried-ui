@@ -50,11 +50,11 @@
   }
 
   .avatar-group-size-lg [data-slot="avatar"]:not(:first-child) {
-    @apply -ms-2.5;
+    @apply -ms-2;
   }
 
   .avatar-group-size-xl [data-slot="avatar"]:not(:first-child) {
-    @apply -ms-3;
+    @apply -ms-2.5;
   }
 
   .avatar-group-size-2xl [data-slot="avatar"]:not(:first-child) {

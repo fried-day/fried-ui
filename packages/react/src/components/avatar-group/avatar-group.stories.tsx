@@ -34,7 +34,7 @@ const meta = {
       control: "select",
       options: ["xs", "sm", "md", "lg", "xl", "2xl"],
       description:
-        "Size scale applied to every avatar in the group. **xs** (size-6, 24px) — inline hints, comment metadata, dense tables. **sm** (size-8, 32px) — dense toolbars, compact lists. **md** (size-10, 40px, default) — standard team/member rosters. **lg** (size-12, 48px) — emphasized cards, profile headers. **xl** (size-14, 56px) — hero sections, featured contributors. **2xl** (size-16, 64px) — showcase blocks, marketing pages. Use xs/sm when count matters more than identity, md as default, lg/xl/2xl when individual face recognition is important.",
+        "Size scale applied to every avatar in the group. **xs** (size-6, 24px) — inline hints, comment metadata, dense tables. **sm** (size-8, 32px) — dense toolbars, compact lists. **md** (size-9, 36px, default) — standard team/member rosters, form-aligned with Input/Button md. **lg** (size-10, 40px) — emphasized cards, profile headers. **xl** (size-12, 48px) — hero sections, featured contributors. **2xl** (size-14, 56px) — showcase blocks, marketing pages. Use xs/sm when count matters more than identity, md as default, lg/xl/2xl when individual face recognition is important.",
       table: {
         type: { summary: '"xs" | "sm" | "md" | "lg" | "xl" | "2xl"' },
         defaultValue: { summary: "md" },
