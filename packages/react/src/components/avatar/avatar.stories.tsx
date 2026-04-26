@@ -8,6 +8,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "./Avatar";
 const meta = {
   title: "Components/Avatar",
   component: Avatar,
+  subcomponents: {
+    AvatarImage,
+    AvatarFallback,
+  },
   tags: ["autodocs"],
   parameters: {
     layout: "centered",
@@ -85,6 +89,17 @@ const meta = {
       table: {
         type: { summary: "string" },
         category: "Styling",
+      },
+    },
+    variant: {
+      control: "select",
+      options: ["primary", "secondary", "accent", "success", "warning", "danger", "info"],
+      description:
+        "AvatarFallback only — background color when the image fails or no image is provided. **Brand:** primary (default, deep neutral), secondary (light neutral), accent (purple highlight). **Status:** success (online team), warning (away), danger (busy), info (notification color). Use primary for default initials, secondary for muted lists, accent for featured/pro users, status colors when fallback should encode presence.",
+      table: {
+        type: { summary: '"primary" | "secondary" | "accent" | "success" | "warning" | "danger" | "info"' },
+        defaultValue: { summary: "primary" },
+        category: "Style Variants",
       },
     },
   },

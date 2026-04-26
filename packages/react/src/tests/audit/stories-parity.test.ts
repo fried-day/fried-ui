@@ -1,7 +1,7 @@
-import { Node } from "ts-morph";
+import { Node, Project } from "ts-morph";
 import { describe, expect, it } from "vitest";
 
-import { loadSource } from "../helpers/ast";
+import { findMetaObject, loadSource } from "../helpers/ast";
 import { components } from "../helpers/components";
 import {
   getArgTypeNames,
@@ -12,7 +12,7 @@ import {
 
 describe("Audit — story / interface parity", () => {
   it.each(components)(
-    "$kebab: every {Pascal}Props prop has an argType (and vice versa)",
+    "$kebab: every {Pascal}Props prop (including subparts) has an argType",
     ({ componentFile, kebab, pascal, storiesFile }) => {
       const interfaceProps = getComponentInterfaceProps({ componentFile, pascal });
       if (interfaceProps.length === 0) return;
@@ -21,27 +21,52 @@ describe("Audit — story / interface parity", () => {
       if (!source) return;
 
       const argTypeNames = new Set(getArgTypeNames(source));
-      const interfacePropNames = new Set(interfaceProps.map((prop) => prop.name));
+
+      const project = new Project({ skipAddingFilesFromTsConfig: true });
+      const componentSource = project.addSourceFileAtPath(componentFile);
+
+      const subpartProps = new Map<string, Set<string>>();
+
+      for (const stmt of componentSource.getStatements()) {
+        if (!Node.isExportDeclaration(stmt)) continue;
+
+        for (const named of stmt.getNamedExports()) {
+          const subName = named.getName();
+          const subInterface = componentSource.getInterface(`${subName}Props`);
+          if (!subInterface) continue;
+
+          const propNames = new Set(subInterface.getProperties().map((prop) => prop.getName()));
+          subpartProps.set(subName, propNames);
+        }
+      }
+
+      const allInterfacePropNames = new Set<string>();
+
+      for (const propNames of subpartProps.values()) {
+        for (const name of propNames) allInterfacePropNames.add(name);
+      }
 
       const offenders: string[] = [];
 
-      for (const prop of interfaceProps) {
-        if (prop.name === "ref") continue;
-        if (argTypeNames.has(prop.name)) continue;
+      for (const [subName, propNames] of subpartProps) {
+        for (const propName of propNames) {
+          if (propName === "ref") continue;
+          if (argTypeNames.has(propName)) continue;
 
-        offenders.push(`interface prop "${prop.name}" missing from argTypes`);
+          offenders.push(`${subName}.${propName}: missing from argTypes`);
+        }
       }
 
       for (const argTypeName of argTypeNames) {
-        if (interfacePropNames.has(argTypeName)) continue;
+        if (allInterfacePropNames.has(argTypeName)) continue;
         if (passthroughAllowedExtras.has(argTypeName)) continue;
 
-        offenders.push(`argType "${argTypeName}" not declared in ${pascal}Props (and not in pass-through whitelist)`);
+        offenders.push(`argType "${argTypeName}" not declared in any {Sub}Props (and not in pass-through whitelist)`);
       }
 
       expect(
         offenders,
-        `${kebab}.stories.tsx argTypes and ${pascal}Props out of sync:\n${offenders.join("\n")}`,
+        `${kebab}.stories.tsx argTypes do not cover every prop of every exported subpart in ${pascal}.tsx (Storybook autodocs needs an argType per modifier prop so it shows up in the table):\n${offenders.join("\n")}`,
       ).toEqual([]);
     },
   );
@@ -101,6 +126,74 @@ describe("Audit — story / interface parity", () => {
       expect(
         offenders,
         `${kebab}.stories.tsx enum descriptions violate 4-part template:\n${offenders.join("\n")}`,
+      ).toEqual([]);
+    },
+  );
+
+  it.each(components)(
+    "$kebab: every exported subpart with {Sub}Props is documented in meta.component or meta.subcomponents",
+    ({ componentFile, kebab, storiesFile }) => {
+      const project = new Project({ skipAddingFilesFromTsConfig: true });
+      const componentSource = project.addSourceFileAtPath(componentFile);
+
+      const exportedComponents = new Set<string>();
+
+      for (const stmt of componentSource.getStatements()) {
+        if (!Node.isExportDeclaration(stmt)) continue;
+
+        for (const named of stmt.getNamedExports()) {
+          const name = named.getName();
+          if (componentSource.getInterface(`${name}Props`)) exportedComponents.add(name);
+        }
+      }
+
+      if (exportedComponents.size === 0) return;
+
+      const storiesSource = loadSource({ file: storiesFile });
+      if (!storiesSource) return;
+
+      const meta = findMetaObject(storiesSource);
+      if (!Node.isObjectLiteralExpression(meta)) return;
+
+      const documented = new Set<string>();
+
+      const componentProp = meta.getProperty("component");
+
+      if (Node.isPropertyAssignment(componentProp)) {
+        const init = componentProp.getInitializer();
+        if (init) documented.add(init.getText());
+      }
+
+      const subcomponentsProp = meta.getProperty("subcomponents");
+
+      if (Node.isPropertyAssignment(subcomponentsProp)) {
+        const init = subcomponentsProp.getInitializer();
+
+        if (Node.isObjectLiteralExpression(init)) {
+          for (const subProp of init.getProperties()) {
+            if (Node.isShorthandPropertyAssignment(subProp)) {
+              documented.add(subProp.getName());
+            } else if (Node.isPropertyAssignment(subProp)) {
+              const subInit = subProp.getInitializer();
+              if (subInit) documented.add(subInit.getText());
+            }
+          }
+        }
+      }
+
+      const offenders: string[] = [];
+
+      for (const subpart of exportedComponents) {
+        if (documented.has(subpart)) continue;
+
+        offenders.push(
+          `${subpart} has ${subpart}Props with documented modifiers but is not in meta.component or meta.subcomponents`,
+        );
+      }
+
+      expect(
+        offenders,
+        `${kebab}.stories.tsx must list every component exported from ${kebab}/${kebab}.tsx that ships modifier props (so Storybook autodocs renders their tables):\n${offenders.join("\n")}`,
       ).toEqual([]);
     },
   );

@@ -9,6 +9,10 @@ import { Badge, BadgeIndicator, BadgeStatus } from "./Badge";
 const meta: Meta<typeof Badge> = {
   title: "Components/Badge",
   component: Badge,
+  subcomponents: {
+    BadgeIndicator,
+    BadgeStatus,
+  },
   tags: ["autodocs"],
   parameters: {
     layout: "centered",
@@ -34,6 +38,59 @@ const meta: Meta<typeof Badge> = {
       table: {
         type: { summary: "string" },
         category: "Styling",
+      },
+    },
+    variant: {
+      control: "select",
+      options: ["primary", "secondary", "accent", "success", "warning", "danger", "info", "overlay"],
+      description:
+        "Visual style for `BadgeIndicator` (count/label, default `danger`) and `BadgeStatus` (presence dot, default `success`). **Brand:** primary (main brand color), secondary (neutral gray), accent (purple highlight for promo). **Status:** success (online/active), warning (away/pending), danger (busy/unread/error), info (notification or notice). **Dark contexts:** overlay (light dot or pill on dark scrim or media surfaces). Use danger for unread counts, success for online presence, warning for away, accent for promo or featured user, overlay on dark hero blocks.",
+      table: {
+        type: { summary: '"primary" | "secondary" | "accent" | "success" | "warning" | "danger" | "info" | "overlay"' },
+        defaultValue: { summary: "danger (Indicator), success (Status)" },
+        category: "Style Variants",
+      },
+    },
+    size: {
+      control: "select",
+      options: ["xs", "sm", "md"],
+      description:
+        "Size scale shared by `BadgeIndicator` (count pill) and `BadgeStatus` (dot). **xs** — minimum-legible 14px pill / 4px dot for very dense rows. **sm** — 16px pill / 6px dot for compact lists. **md** (default) — 20px pill / 8px dot for standard rows. Pair with the anchor's size — xs/sm beside Avatar size-6, md beside Avatar size-8 and above.",
+      table: {
+        type: { summary: '"xs" | "sm" | "md"' },
+        defaultValue: { summary: "md" },
+        category: "Style Variants",
+      },
+    },
+    placement: {
+      control: "select",
+      options: ["top-right", "top-left", "bottom-right", "bottom-left"],
+      description:
+        "Corner of the wrapped anchor where the indicator or status dot sits. **top-right** (default for `BadgeIndicator`) — count badges on Avatars/Buttons. **bottom-right** (default for `BadgeStatus`) — presence dot on Avatars. **top-left / bottom-left** — when locale or layout reverses reading direction. Pick the corner that matches reading flow and keeps the dot away from anchor content.",
+      table: {
+        type: { summary: '"top-right" | "top-left" | "bottom-right" | "bottom-left"' },
+        defaultValue: { summary: "top-right (Indicator), bottom-right (Status)" },
+        category: "Style Variants",
+      },
+    },
+    isInset: {
+      control: "boolean",
+      description:
+        "Whether the indicator/status sits inside the anchor's perimeter (true) or hangs over the corner edge (false). Use `true` with round anchors such as Avatar so the badge lands on the circle's 45-degree edge — looks cleaner than the floating-corner default.",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+        category: "Style Variants",
+      },
+    },
+    max: {
+      control: "number",
+      description:
+        "BadgeIndicator only — caps numeric children. Renders as `${max}+` when the child number exceeds `max` (e.g., `<BadgeIndicator max={99}>{150}</BadgeIndicator>` shows `99+`).",
+      table: {
+        type: { summary: "number" },
+        defaultValue: { summary: "99" },
+        category: "State",
       },
     },
   },

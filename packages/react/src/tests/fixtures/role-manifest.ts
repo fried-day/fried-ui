@@ -14,7 +14,7 @@ export const COMPONENT_ROLES: Record<string, ComponentRole> = {
     role: "display",
   },
   "avatar-group": {
-    alignment: "items-center",
+    alignment: "items-end",
     requiredStories: ["Default"],
     requiresChildren: true,
     role: "composition",
