@@ -5,8 +5,12 @@
   "type": "module",
   "scripts": {
     "build": "next build",
+    "clean": "rm -rf .next .turbo .source",
     "dev": "next dev --port 3001",
     "lint": "eslint --max-warnings 0",
+    "lint:fix": "eslint --fix --max-warnings 0",
+    "sort": "sort-package-json --check",
+    "sort:fix": "sort-package-json",
     "start": "next start",
     "typecheck": "next typegen && tsc --noEmit"
   },
@@ -29,6 +33,7 @@
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
     "eslint": "^9.39.1",
+    "sort-package-json": "^3.6.1",
     "tailwindcss": "^4.2.2",
     "typescript": "5.9.2"
   }

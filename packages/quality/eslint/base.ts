@@ -1,10 +1,11 @@
+import type { Linter } from "eslint";
 import js from "@eslint/js";
 import eslintConfigPrettier from "eslint-config-prettier";
 import turboPlugin from "eslint-plugin-turbo";
 import tseslint from "typescript-eslint";
 import nextfriday from "eslint-plugin-nextfriday";
 
-export function createConfig(tsconfigRootDir: string) {
+function createConfig(tsconfigRootDir: string): Linter.Config[] {
   return [
     js.configs.recommended,
     eslintConfigPrettier,
@@ -30,5 +31,7 @@ export function createConfig(tsconfigRootDir: string) {
     {
       ignores: ["dist/**", "sample/**", "coverage/**", "**/coverage/**"],
     },
-  ];
+  ] as Linter.Config[];
 }
+
+export { createConfig };

@@ -1,3 +1,4 @@
+import type { Linter } from "eslint";
 import js from "@eslint/js";
 import { globalIgnores } from "eslint/config";
 import eslintConfigPrettier from "eslint-config-prettier";
@@ -12,7 +13,7 @@ import { createConfig } from "./base";
 /**
  * A custom ESLint configuration for libraries that use Next.js.
  */
-export function createNextJsConfig(tsconfigRootDir: string) {
+function createNextJsConfig(tsconfigRootDir: string): Linter.Config[] {
   return [
     ...createConfig(tsconfigRootDir),
     js.configs.recommended,
@@ -67,5 +68,7 @@ export function createNextJsConfig(tsconfigRootDir: string) {
         "nextfriday/enforce-constant-case": "off",
       },
     },
-  ];
+  ] as Linter.Config[];
 }
+
+export { createNextJsConfig };

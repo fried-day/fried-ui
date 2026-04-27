@@ -1,3 +1,4 @@
+import type { Linter } from "eslint";
 import js from "@eslint/js";
 import eslintConfigPrettier from "eslint-config-prettier";
 import tseslint from "typescript-eslint";
@@ -10,7 +11,7 @@ import { createConfig } from "./base";
 /**
  * A custom ESLint configuration for libraries that use React.
  */
-export function createReactConfig(tsconfigRootDir: string) {
+function createReactConfig(tsconfigRootDir: string): Linter.Config[] {
   return [
     ...createConfig(tsconfigRootDir),
     js.configs.recommended,
@@ -37,5 +38,7 @@ export function createReactConfig(tsconfigRootDir: string) {
         "react/react-in-jsx-scope": "off",
       },
     },
-  ];
+  ] as Linter.Config[];
 }
+
+export { createReactConfig };

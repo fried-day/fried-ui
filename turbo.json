@@ -31,6 +31,19 @@
     },
     "clean": {
       "cache": false
+    },
+    "sort": {
+      "cache": false
+    },
+    "sort:fix": {
+      "cache": false
+    },
+    "lint:fix": {
+      "cache": false
+    },
+    "canary:publish": {
+      "dependsOn": ["^canary:publish"],
+      "cache": false
     }
   }
 }
