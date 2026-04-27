@@ -1,26 +1,26 @@
-name: Pull Request Title Validation
+name: PR Validate
 
 on:
   pull_request:
     types: [opened, edited, reopened, synchronize]
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
-  main:
+  title:
     name: Validate Pull Request Title
     runs-on: ubuntu-latest
     if: ${{ github.event.pull_request.draft == false }}
-    permissions:
-      contents: read
-      pull-requests: write
     env:
       IS_TRUSTED_BOT: ${{ github.actor == 'github-actions[bot]' || github.actor == 'changeset-bot' || github.event.pull_request.user.type == 'Bot' }}
-
     steps:
       - name: Fast-pass for trusted bots
         if: ${{ env.IS_TRUSTED_BOT == 'true' }}
         run: echo "Trusted bot PR detected, skip PR title validation but report success."
 
-      - uses: amannn/action-semantic-pull-request@e32d7e603df1aa1ba07e981f2a23455dee596825 # v5
+      - uses: amannn/action-semantic-pull-request@v5
         if: ${{ env.IS_TRUSTED_BOT != 'true' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -35,6 +35,7 @@ jobs:
             perf
             refactor
             revert
+            setup
             style
             test
           requireScope: true
@@ -54,3 +55,11 @@ jobs:
           headerPatternCorrespondence: type, scope, subject
           validateSingleCommit: true
           validateSingleCommitMatchesPrTitle: true
+
+  label:
+    name: Auto-label PR
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/labeler@v5
+        with:
+          configuration-path: .github/labeler.yml
