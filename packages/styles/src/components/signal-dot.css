@@ -3,7 +3,7 @@
     @apply relative inline-flex shrink-0;
   }
 
-  .signal-dot__indicator {
+  .signal-dot-indicator {
     @apply absolute top-0 right-0 z-(--z-popover);
     @apply translate-x-1/4 -translate-y-1/4;
     @apply transition duration-(--duration-hover) ease-out motion-reduce:transition-none;
@@ -16,70 +16,70 @@
     @apply border border-(--signal-dot-border);
   }
 
-  .signal-dot-borderless .signal-dot__indicator {
+  .signal-dot-borderless .signal-dot-indicator {
     @apply border-0;
   }
 
-  .signal-dot-primary .signal-dot__indicator {
+  .signal-dot-primary .signal-dot-indicator {
     --signal-dot-bg: var(--color-primary);
   }
 
-  .signal-dot-secondary .signal-dot__indicator {
+  .signal-dot-secondary .signal-dot-indicator {
     --signal-dot-bg: var(--color-secondary);
   }
 
-  .signal-dot-accent .signal-dot__indicator {
+  .signal-dot-accent .signal-dot-indicator {
     --signal-dot-bg: var(--color-accent);
   }
 
-  .signal-dot-success .signal-dot__indicator {
+  .signal-dot-success .signal-dot-indicator {
     --signal-dot-bg: var(--color-success);
   }
 
-  .signal-dot-warning .signal-dot__indicator {
+  .signal-dot-warning .signal-dot-indicator {
     --signal-dot-bg: var(--color-warning);
   }
 
-  .signal-dot-danger .signal-dot__indicator {
+  .signal-dot-danger .signal-dot-indicator {
     --signal-dot-bg: var(--color-danger);
   }
 
-  .signal-dot-info .signal-dot__indicator {
+  .signal-dot-info .signal-dot-indicator {
     --signal-dot-bg: var(--color-info);
   }
 
-  .signal-dot-overlay .signal-dot__indicator {
+  .signal-dot-overlay .signal-dot-indicator {
     --signal-dot-bg: var(--color-on-overlay);
   }
 
-  .signal-dot-size-sm .signal-dot__indicator {
+  .signal-dot-size-sm .signal-dot-indicator {
     @apply size-1;
   }
 
-  .signal-dot-size-md .signal-dot__indicator {
+  .signal-dot-size-md .signal-dot-indicator {
     @apply size-1.5;
   }
 
-  .signal-dot-size-lg .signal-dot__indicator {
+  .signal-dot-size-lg .signal-dot-indicator {
     @apply size-2;
   }
 
-  .signal-dot-placement-top-right .signal-dot__indicator {
+  .signal-dot-placement-top-right .signal-dot-indicator {
     @apply top-0 right-0 bottom-auto left-auto;
     @apply translate-x-1/4 -translate-y-1/4;
   }
 
-  .signal-dot-placement-top-left .signal-dot__indicator {
+  .signal-dot-placement-top-left .signal-dot-indicator {
     @apply top-0 right-auto bottom-auto left-0;
     @apply -translate-x-1/4 -translate-y-1/4;
   }
 
-  .signal-dot-placement-bottom-right .signal-dot__indicator {
+  .signal-dot-placement-bottom-right .signal-dot-indicator {
     @apply top-auto right-0 bottom-0 left-auto;
     @apply translate-x-1/4 translate-y-1/4;
   }
 
-  .signal-dot-placement-bottom-left .signal-dot__indicator {
+  .signal-dot-placement-bottom-left .signal-dot-indicator {
     @apply top-auto right-auto bottom-0 left-0;
     @apply -translate-x-1/4 translate-y-1/4;
   }

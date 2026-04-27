@@ -41,7 +41,7 @@ const SignalDot = (props: Readonly<SignalDotProps>) => {
   return (
     <span data-slot="signal-dot" className={wrapperClassName} ref={ref} {...rest}>
       {children}
-      <span className="signal-dot__indicator" data-slot="signal-dot-indicator" aria-hidden />
+      <span className="signal-dot-indicator" data-slot="signal-dot-indicator" aria-hidden />
     </span>
   );
 };
