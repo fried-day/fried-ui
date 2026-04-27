@@ -1,6 +1,7 @@
 import "./styles.css";
 
 import type { Preview } from "@storybook/react";
+import { INITIAL_VIEWPORTS } from "storybook/viewport";
 
 import { formatSource } from "./format-source";
 
@@ -40,6 +41,9 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/i,
       },
+    },
+    viewport: {
+      options: INITIAL_VIEWPORTS,
     },
   },
   decorators: [
