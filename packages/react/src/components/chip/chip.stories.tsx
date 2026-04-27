@@ -273,7 +273,7 @@ const WithAvatar: Story = {
     <>
       <Chip {...args} variant="secondary">
         <img slot="avatar" alt="" src={AVATAR_SRC} />
-        Colm Tuite
+        {"Colm Tuite"}
       </Chip>
 
       <Chip {...args} variant="secondary">
@@ -369,7 +369,7 @@ const Dismissible: Story = {
 
       <Chip {...args} variant="secondary">
         <img slot="avatar" alt="" src={AVATAR_SRC} />
-        Colm Tuite
+        {"Colm Tuite"}
       </Chip>
 
       <Chip {...args} variant="primary">

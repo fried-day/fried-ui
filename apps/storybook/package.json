@@ -8,6 +8,7 @@
     "lint": "eslint . --max-warnings 0",
     "playwright:install": "playwright install chromium --with-deps",
     "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

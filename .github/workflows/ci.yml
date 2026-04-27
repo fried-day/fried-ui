@@ -65,7 +65,9 @@ jobs:
         with:
           fetch-depth: 0
       - uses: ./.github/actions/setup
-      - run: pnpm --filter @fried-ui/react test:coverage
+      - name: Install Playwright Chromium
+        run: pnpm --filter=storybook playwright:install
+      - run: pnpm test:coverage
       - uses: SonarSource/sonarqube-scan-action@299e4b793aaa83bf2aba7c9c14bedbb485688ec4
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

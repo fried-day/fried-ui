@@ -29,8 +29,9 @@ implementation notes only when non-obvious. Do not restate the diff.
 <!--
 Bullet list of verification artefacts. Cite the command, story, or
 manual repro for each claim:
-- Static audit: `cd packages/react && npx vitest run src/tests/audit`
+- Sonar Cloud Quality Gate: confirm green on the PR check
 - Runtime stories: `pnpm dev:storybook` plus the story export name
+- Per-component test: `cd packages/react && npx vitest run src/components/{name}`
 - Manual repro: numbered steps a reviewer can replay
 - Browser matrix: when the change is browser-specific
 -->
@@ -73,7 +74,7 @@ zero runtime change.
 <!--
 New props need an argType plus at least one story per enum value.
 New states need Disabled / Invalid / Pending stories where applicable.
-The audit `tests/audit/stories-parity.test.ts` enforces parity.
+Sonar gate enforces coverage; storybook addon-vitest tests run every story.
 -->
 - [ ] Storybook a11y panel shows zero violations on new and changed stories
 <!--

@@ -16,6 +16,17 @@ export default defineConfig({
       headless: true,
       instances: [{ browser: "chromium" }],
     },
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "lcov"],
+      reportsDirectory: "coverage",
+      include: ["../../packages/react/src/**/*.{ts,tsx}"],
+      exclude: [
+        "../../packages/react/src/**/*.stories.tsx",
+        "../../packages/react/src/**/*.test.{ts,tsx}",
+        "**/*.d.ts",
+      ],
+    },
   },
   plugins: [
     storybookTest({

@@ -50,7 +50,7 @@ const AvatarGroup = (props: Readonly<AvatarGroupProps>) => {
   };
 
   return (
-    <div role="group" data-slot="avatar-group" className={groupClassName} ref={ref} {...rest}>
+    <div data-slot="avatar-group" className={groupClassName} ref={ref} {...rest}>
       {childArray.map((child) => renderChild(child))}
     </div>
   );
