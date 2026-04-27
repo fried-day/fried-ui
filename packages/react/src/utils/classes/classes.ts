@@ -25,7 +25,7 @@ function classes(params: Readonly<ClassesParams>): string {
   const { block, className, modifiers } = params;
 
   const list = Object.entries(modifiers).map(([key, value]) => {
-    if (!value) return undefined;
+    if (!value) return;
     if (typeof value === "boolean") return `${block}-${key}`;
     if (key === "variant") return `${block}-${value}`;
 

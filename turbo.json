@@ -1,6 +1,7 @@
 {
-  "$schema": "https://v2-9-6.turborepo.dev/schema.json",
+  "$schema": "https://turborepo.dev/schema.json",
   "ui": "tui",
+  "globalEnv": ["CANARY_SUFFIX", "NPM_TOKEN", "NODE_AUTH_TOKEN", "SONAR_TOKEN"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
@@ -10,11 +11,15 @@
     "test": {
       "dependsOn": ["^build"]
     },
+    "test:coverage": {
+      "dependsOn": ["^build"],
+      "outputs": ["coverage/**"]
+    },
     "lint": {
       "dependsOn": ["^lint"]
     },
-    "check-types": {
-      "dependsOn": ["^build", "^check-types"]
+    "typecheck": {
+      "dependsOn": ["^build", "^typecheck"]
     },
     "dev": {
       "cache": false,

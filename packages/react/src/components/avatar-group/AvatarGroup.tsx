@@ -39,7 +39,7 @@ const AvatarGroup = (props: Readonly<AvatarGroupProps>) => {
     className,
   });
 
-  const childArray = Children.toArray(children).filter(isValidElement) as ReactElement<AvatarProps>[];
+  const childArray = Children.toArray(children).filter((child) => isValidElement(child)) as ReactElement<AvatarProps>[];
 
   const renderChild = (child: ReactElement<AvatarProps>): ReactElement => {
     const childSize = (child.props as AvatarProps | undefined)?.size;
@@ -51,7 +51,7 @@ const AvatarGroup = (props: Readonly<AvatarGroupProps>) => {
 
   return (
     <div role="group" data-slot="avatar-group" className={groupClassName} ref={ref} {...rest}>
-      {childArray.map(renderChild)}
+      {childArray.map((child) => renderChild(child))}
     </div>
   );
 };

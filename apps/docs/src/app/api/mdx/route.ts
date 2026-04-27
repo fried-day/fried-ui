@@ -1,5 +1,5 @@
 import { readFile } from "node:fs/promises";
-import { join } from "node:path";
+import path from "node:path";
 
 import { type NextRequest, NextResponse } from "next/server";
 
@@ -10,18 +10,18 @@ async function GET(request: NextRequest): Promise<NextResponse> {
     return NextResponse.json({ error: "slug required" }, { status: 400 });
   }
 
-  const lastSegment = slug.split("/").filter(Boolean).pop();
+  const lastSegment = slug.split("/").findLast(Boolean);
 
   if (!lastSegment) {
     return NextResponse.json({ error: "invalid slug" }, { status: 400 });
   }
 
-  const filePath = join(process.cwd(), "public", "llm", `${lastSegment}.md`);
+  const filePath = path.join(process.cwd(), "public", "llm", `${lastSegment}.md`);
 
   let text: string;
 
   try {
-    text = await readFile(filePath, "utf-8");
+    text = await readFile(filePath, "utf8");
   } catch {
     return NextResponse.json({ error: "not found" }, { status: 404 });
   }

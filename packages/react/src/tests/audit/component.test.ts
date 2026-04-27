@@ -139,14 +139,15 @@ describe("Audit — Component.tsx conventions", () => {
 });
 
 describe("Audit — drift guardrails (AST)", () => {
-  const fieldSubcomponents = new Set(["field"]);
-  const renderPropComponents = new Set(["button"]);
-
   it.each(components)("$kebab: no outer clsx(classes(...), className) wrap", ({ componentFile, kebab }) => {
-    if (renderPropComponents.has(kebab)) return;
-
     const source = loadSource({ file: componentFile });
     if (!source) return;
+
+    const usesRenderProps = source
+      .getImportDeclarations()
+      .some((decl) => decl.getNamedImports().some((named) => named.getName() === "composeRenderProps"));
+
+    if (usesRenderProps) return;
 
     const offenders: string[] = [];
 
@@ -170,26 +171,4 @@ describe("Audit — drift guardrails (AST)", () => {
       `${kebab}: outer clsx(classes(...), className) wrap is an anti-pattern — fold className into classes({ block, modifiers, className }) as the 3rd param:\n${offenders.join("\n")}`,
     ).toEqual([]);
   });
-
-  it.each(components)(
-    "$kebab: field subcomponents use useFieldState (not direct useContext)",
-    ({ componentFile, kebab }) => {
-      if (!fieldSubcomponents.has(kebab)) return;
-
-      const source = loadSource({ file: componentFile });
-      if (!source) return;
-
-      const importsUseFieldState = source.getImportDeclarations().some((decl) => {
-        const moduleSpecifier = decl.getModuleSpecifierValue();
-        if (!moduleSpecifier.includes("use-field-state")) return false;
-
-        return decl.getNamedImports().some((named) => named.getName() === "useFieldState");
-      });
-
-      expect(
-        importsUseFieldState,
-        `${kebab}: Field subcomponents (FieldLabel/FieldDescription/FieldError) must use useFieldState hook from "./use-field-state" to consume FieldContext with prop-override fallback.`,
-      ).toBe(true);
-    },
-  );
 });

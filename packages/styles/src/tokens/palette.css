@@ -10,7 +10,6 @@
   --color-fri-red-800: oklch(0.314 0.089 23.79);
   --color-fri-red-900: oklch(0.209 0.05 22.41);
   --color-fri-red-950: oklch(0.146 0.027 20.87);
-
   --color-fri-yellow-50: oklch(0.98 0.026 90.07);
   --color-fri-yellow-100: oklch(0.965 0.046 90.85);
   --color-fri-yellow-200: oklch(0.93 0.089 89.91);
@@ -22,7 +21,6 @@
   --color-fri-yellow-800: oklch(0.458 0.094 84.05);
   --color-fri-yellow-900: oklch(0.29 0.059 87.21);
   --color-fri-yellow-950: oklch(0.19 0.039 92.2);
-
   --color-fri-blue-50: oklch(91.42% 0.035 264);
   --color-fri-blue-100: oklch(85.52% 0.063 263);
   --color-fri-blue-200: oklch(79.56% 0.096 264);
@@ -34,7 +32,6 @@
   --color-fri-blue-800: oklch(34.82% 0.165 264);
   --color-fri-blue-900: oklch(25.53% 0.102 264);
   --color-fri-blue-950: oklch(13.78% 0.048 264);
-
   --color-fri-green-50: oklch(0.96 0.043 144.14);
   --color-fri-green-100: oklch(0.923 0.086 143.35);
   --color-fri-green-200: oklch(0.855 0.167 143.14);
@@ -46,7 +43,6 @@
   --color-fri-green-800: oklch(0.289 0.085 142.39);
   --color-fri-green-900: oklch(0.193 0.052 142.21);
   --color-fri-green-950: oklch(0.143 0.035 140.69);
-
   --color-fri-neutral-50: #f9f9f9;
   --color-fri-neutral-100: #ededed;
   --color-fri-neutral-200: #d1d1d1;
@@ -58,7 +54,6 @@
   --color-fri-neutral-800: #363636;
   --color-fri-neutral-900: #1a1a1a;
   --color-fri-neutral-950: #0d0d0d;
-
   --color-fri-lime-50: oklch(0.986 0.013 126.23);
   --color-fri-lime-100: oklch(0.966 0.03 125.12);
   --color-fri-lime-200: oklch(0.936 0.062 125.3);

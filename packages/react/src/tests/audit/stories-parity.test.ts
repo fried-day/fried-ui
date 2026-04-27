@@ -1,3 +1,4 @@
+import type { ObjectLiteralExpression, PropertyAssignment, SourceFile } from "ts-morph";
 import { Node, Project } from "ts-morph";
 import { describe, expect, it } from "vitest";
 
@@ -9,6 +10,108 @@ import {
   getComponentInterfaceProps,
   passthroughAllowedExtras,
 } from "../helpers/stories-ast";
+
+function getEnumDescriptionLiteral(config: ObjectLiteralExpression): { text: string; line: number } | undefined {
+  const optionsProp = config.getProperty("options");
+  if (!Node.isPropertyAssignment(optionsProp)) return undefined;
+
+  const optionsInit = optionsProp.getInitializer();
+  if (!Node.isArrayLiteralExpression(optionsInit)) return undefined;
+
+  if (optionsInit.getElements().length <= 2) return undefined;
+
+  const descriptionProp = config.getProperty("description");
+
+  if (!Node.isPropertyAssignment(descriptionProp)) {
+    const text = "";
+    const line = 0;
+
+    return { text, line };
+  }
+
+  const descInit = descriptionProp.getInitializer();
+  if (!Node.isStringLiteral(descInit) && !Node.isNoSubstitutionTemplateLiteral(descInit)) return undefined;
+
+  const text = descInit.getLiteralText();
+  const line = descInit.getStartLineNumber();
+
+  return { text, line };
+}
+
+function checkEnumDescription(argTypeProp: PropertyAssignment): string | undefined {
+  const propName = argTypeProp.getName();
+  const config = argTypeProp.getInitializer();
+  if (!Node.isObjectLiteralExpression(config)) return undefined;
+
+  const literal = getEnumDescriptionLiteral(config);
+  if (!literal) return undefined;
+  if (literal.line === 0) return `argTypes.${propName} has options but no description`;
+
+  const wordCount = literal.text.split(/\s+/).filter(Boolean).length;
+  const hasBoldGroup = /\*\*[^*]+\*\*/.test(literal.text);
+
+  const reasons: string[] = [];
+  if (!hasBoldGroup) reasons.push("missing **bold** option groups");
+  if (wordCount < 50) reasons.push(`only ${String(wordCount)} words (min 50)`);
+  if (wordCount > 120) reasons.push(`${String(wordCount)} words (max 120)`);
+
+  if (reasons.length === 0) return undefined;
+
+  return `line ${String(literal.line)}: argTypes.${propName}.description: ${reasons.join("; ")}`;
+}
+
+function collectExportedSubparts(componentSource: SourceFile): Set<string> {
+  const exported = new Set<string>();
+
+  for (const stmt of componentSource.getStatements()) {
+    if (!Node.isExportDeclaration(stmt)) continue;
+
+    for (const named of stmt.getNamedExports()) {
+      const name = named.getName();
+      if (componentSource.getInterface(`${name}Props`)) exported.add(name);
+    }
+  }
+
+  return exported;
+}
+
+function collectSubcomponentEntries(init: ObjectLiteralExpression): string[] {
+  const entries: string[] = [];
+
+  for (const subProp of init.getProperties()) {
+    if (Node.isShorthandPropertyAssignment(subProp)) {
+      entries.push(subProp.getName());
+    } else if (Node.isPropertyAssignment(subProp)) {
+      const subInit = subProp.getInitializer();
+      if (subInit) entries.push(subInit.getText());
+    }
+  }
+
+  return entries;
+}
+
+function collectDocumentedFromMeta(meta: ObjectLiteralExpression): Set<string> {
+  const documented = new Set<string>();
+
+  const componentProp = meta.getProperty("component");
+
+  if (Node.isPropertyAssignment(componentProp)) {
+    const init = componentProp.getInitializer();
+    if (init) documented.add(init.getText());
+  }
+
+  const subcomponentsProp = meta.getProperty("subcomponents");
+
+  if (Node.isPropertyAssignment(subcomponentsProp)) {
+    const init = subcomponentsProp.getInitializer();
+
+    if (Node.isObjectLiteralExpression(init)) {
+      for (const entry of collectSubcomponentEntries(init)) documented.add(entry);
+    }
+  }
+
+  return documented;
+}
 
 describe("Audit — story / interface parity", () => {
   it.each(components)(
@@ -59,43 +162,8 @@ describe("Audit — story / interface parity", () => {
 
       for (const argTypeProp of argTypes.getProperties()) {
         if (!Node.isPropertyAssignment(argTypeProp)) continue;
-
-        const propName = argTypeProp.getName();
-        const config = argTypeProp.getInitializer();
-        if (!Node.isObjectLiteralExpression(config)) continue;
-
-        const optionsProp = config.getProperty("options");
-        if (!Node.isPropertyAssignment(optionsProp)) continue;
-
-        const optionsInit = optionsProp.getInitializer();
-        if (!Node.isArrayLiteralExpression(optionsInit)) continue;
-
-        if (optionsInit.getElements().length <= 2) continue;
-
-        const descriptionProp = config.getProperty("description");
-
-        if (!Node.isPropertyAssignment(descriptionProp)) {
-          offenders.push(`argTypes.${propName} has options but no description`);
-          continue;
-        }
-
-        const descInit = descriptionProp.getInitializer();
-        if (!Node.isStringLiteral(descInit) && !Node.isNoSubstitutionTemplateLiteral(descInit)) continue;
-
-        const text = descInit.getLiteralText();
-        const wordCount = text.split(/\s+/).filter(Boolean).length;
-        const hasBoldGroup = /\*\*[^*]+\*\*/.test(text);
-
-        const reasons: string[] = [];
-        if (!hasBoldGroup) reasons.push("missing **bold** option groups");
-        if (wordCount < 50) reasons.push(`only ${String(wordCount)} words (min 50)`);
-        if (wordCount > 120) reasons.push(`${String(wordCount)} words (max 120)`);
-
-        if (reasons.length === 0) continue;
-
-        offenders.push(
-          `line ${String(descInit.getStartLineNumber())}: argTypes.${propName}.description: ${reasons.join("; ")}`,
-        );
+        const offender = checkEnumDescription(argTypeProp);
+        if (offender) offenders.push(offender);
       }
 
       expect(
@@ -111,17 +179,7 @@ describe("Audit — story / interface parity", () => {
       const project = new Project({ skipAddingFilesFromTsConfig: true });
       const componentSource = project.addSourceFileAtPath(componentFile);
 
-      const exportedComponents = new Set<string>();
-
-      for (const stmt of componentSource.getStatements()) {
-        if (!Node.isExportDeclaration(stmt)) continue;
-
-        for (const named of stmt.getNamedExports()) {
-          const name = named.getName();
-          if (componentSource.getInterface(`${name}Props`)) exportedComponents.add(name);
-        }
-      }
-
+      const exportedComponents = collectExportedSubparts(componentSource);
       if (exportedComponents.size === 0) return;
 
       const storiesSource = loadSource({ file: storiesFile });
@@ -130,31 +188,7 @@ describe("Audit — story / interface parity", () => {
       const meta = findMetaObject(storiesSource);
       if (!Node.isObjectLiteralExpression(meta)) return;
 
-      const documented = new Set<string>();
-
-      const componentProp = meta.getProperty("component");
-
-      if (Node.isPropertyAssignment(componentProp)) {
-        const init = componentProp.getInitializer();
-        if (init) documented.add(init.getText());
-      }
-
-      const subcomponentsProp = meta.getProperty("subcomponents");
-
-      if (Node.isPropertyAssignment(subcomponentsProp)) {
-        const init = subcomponentsProp.getInitializer();
-
-        if (Node.isObjectLiteralExpression(init)) {
-          for (const subProp of init.getProperties()) {
-            if (Node.isShorthandPropertyAssignment(subProp)) {
-              documented.add(subProp.getName());
-            } else if (Node.isPropertyAssignment(subProp)) {
-              const subInit = subProp.getInitializer();
-              if (subInit) documented.add(subInit.getText());
-            }
-          }
-        }
-      }
+      const documented = collectDocumentedFromMeta(meta);
 
       const offenders: string[] = [];
 

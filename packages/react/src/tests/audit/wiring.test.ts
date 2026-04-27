@@ -1,14 +1,14 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import { Node, Project } from "ts-morph";
+import { Project } from "ts-morph";
 import { describe, expect, it } from "vitest";
 
 import { components } from "../helpers/components";
 
 const reactPackageRoot = path.resolve(import.meta.dirname, "..", "..", "..");
 
-describe("Audit — file coverage", () => {
+describe("Audit — file presence", () => {
   it.each(components)("$kebab: has Component, stories, index files", ({ dir, kebab, pascal }) => {
     const required = [
       { label: "Component.tsx", name: `${pascal}.tsx` },
@@ -24,9 +24,9 @@ describe("Audit — file coverage", () => {
 
 describe("Audit — build wiring parity", () => {
   it("every component has a tsup.config.ts entry and a package.json exports entry", () => {
-    const tsupContent = fs.readFileSync(path.join(reactPackageRoot, "tsup.config.ts"), "utf-8");
+    const tsupContent = fs.readFileSync(path.join(reactPackageRoot, "tsup.config.ts"), "utf8");
 
-    const packageJson = JSON.parse(fs.readFileSync(path.join(reactPackageRoot, "package.json"), "utf-8")) as {
+    const packageJson = JSON.parse(fs.readFileSync(path.join(reactPackageRoot, "package.json"), "utf8")) as {
       exports?: Record<string, unknown>;
     };
 
@@ -67,14 +67,6 @@ describe("Audit — build wiring parity", () => {
 
     for (const exportDecl of source.getExportDeclarations()) {
       for (const named of exportDecl.getNamedExports()) {
-        exportNames.add(named.getName());
-      }
-    }
-
-    for (const stmt of source.getStatements()) {
-      if (!Node.isExportDeclaration(stmt)) continue;
-
-      for (const named of stmt.getNamedExports()) {
         exportNames.add(named.getName());
       }
     }

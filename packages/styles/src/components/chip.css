@@ -108,7 +108,7 @@
   }
 
   @media (hover: hover) {
-    .chip-interactive:hover:not(:disabled):not(:active),
+    .chip-interactive:hover:not(:disabled, :active),
     .chip-interactive[data-hovered] {
       @apply bg-(--chip-bg-hover);
     }

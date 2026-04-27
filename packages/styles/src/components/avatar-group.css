@@ -5,7 +5,7 @@
 
   .avatar-group [data-slot="avatar"] {
     @apply relative outline-2 outline-background;
-    @apply transition-transform duration-(--duration-hover) ease-(--ease-out) motion-reduce:transition-none;
+    @apply transition-transform duration-(--duration-hover) ease-out motion-reduce:transition-none;
   }
 
   .avatar-group-borderless [data-slot="avatar"] {

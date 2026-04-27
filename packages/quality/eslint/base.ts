@@ -4,9 +4,6 @@ import turboPlugin from "eslint-plugin-turbo";
 import tseslint from "typescript-eslint";
 import nextfriday from "eslint-plugin-nextfriday";
 
-/**
- * A shared ESLint configuration for the repository.
- */
 export function createConfig(tsconfigRootDir: string) {
   return [
     js.configs.recommended,
@@ -20,6 +17,8 @@ export function createConfig(tsconfigRootDir: string) {
       },
     },
     nextfriday.configs["base/recommended"],
+    ...nextfriday.configs.sonarjs,
+    ...nextfriday.configs.unicorn,
     {
       plugins: {
         turbo: turboPlugin,
@@ -29,7 +28,7 @@ export function createConfig(tsconfigRootDir: string) {
       },
     },
     {
-      ignores: ["dist/**", "sample/**"],
+      ignores: ["dist/**", "sample/**", "coverage/**", "**/coverage/**"],
     },
   ];
 }

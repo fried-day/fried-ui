@@ -249,7 +249,7 @@ const Disabled: Story = {
 
 const Bordered: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
+    <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-600 to-blue-600 p-16">
       <Avatar {...args} isBordered>
         <AvatarImage alt="Avatar 1" src={AVATAR_1} />
         <AvatarFallback>A1</AvatarFallback>

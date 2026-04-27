@@ -3,8 +3,6 @@ import path from "node:path";
 
 const componentsDir = path.resolve(import.meta.dirname, "..", "..", "components");
 
-const ignoredDirs = new Set(["icons"]);
-
 export interface ComponentDir {
   componentFile: string;
   dir: string;
@@ -30,11 +28,17 @@ function buildComponent(name: string): ComponentDir {
   return { componentFile, dir, kebab, pascal, storiesFile };
 }
 
+function isComponentDir(name: string): boolean {
+  const pascal = kebabToPascal(name);
+
+  return fs.existsSync(path.join(componentsDir, name, `${pascal}.tsx`));
+}
+
 function listComponents(): ComponentDir[] {
   return fs
     .readdirSync(componentsDir, { withFileTypes: true })
     .filter((entry) => entry.isDirectory())
-    .filter((entry) => !ignoredDirs.has(entry.name))
+    .filter((entry) => isComponentDir(entry.name))
     .map((entry) => buildComponent(entry.name));
 }
 

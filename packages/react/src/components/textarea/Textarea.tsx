@@ -23,7 +23,6 @@ export interface TextareaProps extends Omit<ComponentPropsWithRef<typeof AriaTex
 
 /**
  * A styled multiline text input primitive. Use native HTML attrs (`disabled`, `readOnly`, `required`, `aria-invalid`) for state.
- * For leading/trailing icons, buttons, or block-aligned send buttons, wrap in `InputGroup` with `InputGroupAddon`.
  */
 const Textarea = (props: Readonly<TextareaProps>) => {
   const { className, isFullWidth, radius, ref, resize, size, variant, ...rest } = props;

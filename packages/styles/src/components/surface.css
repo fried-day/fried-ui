@@ -30,7 +30,7 @@
   }
 
   .surface-bordered.surface-default,
-  .surface-bordered:not(.surface-subtle):not(.surface-plain):not(.surface-overlay) {
+  .surface-bordered:not(.surface-subtle, .surface-plain, .surface-overlay) {
     --surface-border: var(--color-surface-border);
   }
 

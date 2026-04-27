@@ -48,7 +48,7 @@ const meta = {
       control: "select",
       options: ["normal", "medium", "semibold"],
       description:
-        "Font weight controlling label emphasis. **normal** (400) — subtle labels for secondary forms or dense table headers. **medium** (500, default) — standard form-field emphasis, the canonical product label. **semibold** (600) — strong emphasis for section headings or grouped legend titles inside FieldSet. Use medium for most labels, normal in dense data UIs where the label is informational, semibold when the label doubles as a section heading.",
+        "Font weight controlling label emphasis. **normal** (400) — subtle labels for secondary forms or dense table headers. **medium** (500, default) — standard form-field emphasis, the canonical product label. **semibold** (600) — strong emphasis for section headings or grouped legend titles inside a fieldset. Use medium for most labels, normal in dense data UIs where the label is informational, semibold when the label doubles as a section heading.",
       table: {
         type: { summary: '"normal" | "medium" | "semibold"' },
         defaultValue: { summary: "medium" },

@@ -7,18 +7,10 @@ import { describe, expect, it } from "vitest";
 
 import { components } from "../helpers/components";
 import { extractRules, listCssFiles, readCss } from "../helpers/css";
+import { camelToKebab, escapeRegex } from "../helpers/strings";
 
 const stylesComponentsDir = path.resolve(import.meta.dirname, "..", "..", "..", "..", "styles", "src", "components");
 
-function escapeRegex(value: string): string {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
-function camelToKebab(value: string): string {
-  return value.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`).replace(/^-/, "");
-}
-
-// Props that don't emit a CSS modifier class — polymorphic / structural / content props.
 const nonModifierProps = new Set([
   "as",
   "type",
@@ -43,7 +35,7 @@ function addModifierToken({ keys, token }: Readonly<{ keys: Set<string>; token: 
   const colonIndex = trimmed.indexOf(":");
 
   if (colonIndex === -1) {
-    const name = trimmed.replace(/^["']|["']$/g, "");
+    const name = trimmed.replaceAll(/^["']|["']$/g, "");
     if (IDENTIFIER_KEY.test(name)) keys.add(name);
 
     return;
@@ -57,7 +49,7 @@ function addModifierToken({ keys, token }: Readonly<{ keys: Set<string>; token: 
 }
 
 function stripQuotes(value: string): string {
-  return value.replace(/^["']|["']$/g, "");
+  return value.replaceAll(/^["']|["']$/g, "");
 }
 
 function collectClassesModifierProps(source: SourceFile): Set<string> {
@@ -71,6 +63,95 @@ function collectClassesModifierProps(source: SourceFile): Set<string> {
   }
 
   return keys;
+}
+
+function extractUnionValues(typeText: string): string[] | undefined {
+  if (!typeText.includes("|")) return undefined;
+
+  const parts = typeText.split("|").map((part) => part.trim().replaceAll(/^"|"$/g, ""));
+  const isUnion = parts.every((part) => /^[A-Za-z0-9-]*$/.test(part) || part === "");
+  if (!isUnion) return undefined;
+
+  const values = parts.filter((part) => part !== "");
+  if (values.length === 0) return undefined;
+
+  return values;
+}
+
+function findMissingValuesForProp({
+  values,
+  propName,
+  propKey,
+  interfaceName,
+  kebab,
+  cssContent,
+}: Readonly<{
+  values: string[];
+  propName: string;
+  propKey: string;
+  interfaceName: string;
+  kebab: string;
+  cssContent: string;
+}>): string[] {
+  const missing: string[] = [];
+
+  for (const value of values) {
+    if (value === "default") continue;
+
+    const escaped = escapeRegex(value);
+    const valueOnlyPattern = new RegExp(String.raw`\.[a-z][a-z0-9-]*-${escaped}\b`);
+    const keyValuePattern = new RegExp(String.raw`\.[a-z][a-z0-9-]*-${propKey}-${escaped}\b`);
+
+    if (!valueOnlyPattern.test(cssContent) && !keyValuePattern.test(cssContent)) {
+      missing.push(
+        `${interfaceName}.${propName}="${value}" — no matching CSS class in ${kebab}.css (looked for .{block}-${value} and .{block}-${propKey}-${value})`,
+      );
+    }
+  }
+
+  return missing;
+}
+
+function collectMissingForInterface({
+  source,
+  classesModifierProps,
+  kebab,
+  cssContent,
+}: Readonly<{
+  source: SourceFile;
+  classesModifierProps: Set<string>;
+  kebab: string;
+  cssContent: string;
+}>): string[] {
+  const missing: string[] = [];
+
+  for (const interfaceDecl of source.getInterfaces()) {
+    const interfaceName = interfaceDecl.getName();
+    if (!interfaceName.endsWith("Props")) continue;
+
+    for (const prop of interfaceDecl.getProperties()) {
+      const propName = prop.getName();
+      if (nonModifierProps.has(propName)) continue;
+      if (!classesModifierProps.has(propName)) continue;
+
+      const typeText = prop.getTypeNode()?.getText() ?? "";
+      const values = extractUnionValues(typeText);
+      if (!values) continue;
+
+      missing.push(
+        ...findMissingValuesForProp({
+          values,
+          propName,
+          propKey: camelToKebab(propName),
+          interfaceName,
+          kebab,
+          cssContent,
+        }),
+      );
+    }
+  }
+
+  return missing;
 }
 
 describe("CSS audit — variant border token usage", () => {
@@ -145,25 +226,21 @@ describe("CSS audit — drift guardrails", () => {
       /(?:&\s*:required|&\s*\[data-required\]|:has\(\s*:required\s*\)|:has\(\s*\[data-required\]\s*\))/;
 
     for (const file of listCssFiles()) {
-      if (file === "field.css") continue;
-
       const content = readCss({ file });
       const lines = content.split("\n");
 
-      for (let index = 0; index < lines.length; index += 1) {
-        const line = lines[index] ?? "";
+      for (const [index, line_] of lines.entries()) {
+        const line = line_ ?? "";
 
         if (requiredSelector.test(line)) {
-          errors.push(
-            `${file}:${index + 1}: ${line.trim()} — :required / [data-required] visual rule forbidden outside FieldLabel`,
-          );
+          errors.push(`${file}:${index + 1}: ${line.trim()} — :required / [data-required] visual rule forbidden`);
         }
       }
     }
 
     expect(
       errors,
-      `Required state is semantic-only — signal via FieldLabel asterisk (.field-label-required span). Do NOT change input border/ring/color based on :required or [data-required]. See memory feedback_required_semantic_only.md.\n${errors.join("\n")}`,
+      `Required state is semantic-only — signal via the paired Label asterisk. Do NOT change input border/ring/color based on :required or [data-required]. See memory feedback_required_semantic_only.md.\n${errors.join("\n")}`,
     ).toEqual([]);
   });
 
@@ -177,8 +254,8 @@ describe("CSS audit — drift guardrails", () => {
       const content = readCss({ file });
       const lines = content.split("\n");
 
-      for (let index = 0; index < lines.length; index += 1) {
-        const line = lines[index] ?? "";
+      for (const [index, line_] of lines.entries()) {
+        const line = line_ ?? "";
 
         if (rawDisabledPattern.test(line) && !line.includes("status-disabled")) {
           errors.push(`${file}:${index + 1}: ${line.trim()}`);
@@ -200,8 +277,8 @@ describe("CSS audit — drift guardrails", () => {
       const content = readCss({ file });
       const lines = content.split("\n");
 
-      for (let index = 0; index < lines.length; index += 1) {
-        const line = lines[index] ?? "";
+      for (const [index, line_] of lines.entries()) {
+        const line = line_ ?? "";
 
         if (invalidPseudoPattern.test(line)) {
           errors.push(`${file}:${index + 1}: ${line.trim()}`);
@@ -221,56 +298,13 @@ describe("CSS audit — modifier coverage", () => {
     if (!fs.existsSync(componentFile)) return;
 
     const cssFile = path.join(stylesComponentsDir, `${kebab}.css`);
-    const cssContent = fs.existsSync(cssFile) ? fs.readFileSync(cssFile, "utf-8") : "";
+    const cssContent = fs.existsSync(cssFile) ? fs.readFileSync(cssFile, "utf8") : "";
 
     const project = new Project({ skipAddingFilesFromTsConfig: true });
     const source = project.addSourceFileAtPath(componentFile);
 
     const classesModifierProps = collectClassesModifierProps(source);
-    const missing: string[] = [];
-
-    for (const interfaceDecl of source.getInterfaces()) {
-      const interfaceName = interfaceDecl.getName();
-      if (!interfaceName.endsWith("Props")) continue;
-
-      for (const prop of interfaceDecl.getProperties()) {
-        const propName = prop.getName();
-        if (nonModifierProps.has(propName)) continue;
-        // Skip props never passed to `classes({ modifiers })` — wired via JSX
-        // branching instead (for example AvatarGroup.counterVariant).
-        if (!classesModifierProps.has(propName)) continue;
-
-        const typeNode = prop.getTypeNode();
-        const typeText = typeNode?.getText() ?? "";
-        if (!typeText.includes("|")) continue;
-
-        const parts = typeText.split("|").map((part) => part.trim().replace(/^"|"$/g, ""));
-        const isUnion = parts.every((part) => /^[A-Za-z0-9-]*$/.test(part) || part === "");
-        if (!isUnion) continue;
-
-        const values = parts.filter((part) => part !== "");
-        if (values.length === 0) continue;
-
-        const propKey = camelToKebab(propName);
-
-        for (const value of values) {
-          // "default" value is rendered by the base class (Base = Default Modifier rule).
-          if (value === "default") continue;
-
-          const escaped = escapeRegex(value);
-          const valueOnlyPattern = new RegExp(`\\.[a-z][a-z0-9-]*-${escaped}\\b`);
-          const keyValuePattern = new RegExp(`\\.[a-z][a-z0-9-]*-${propKey}-${escaped}\\b`);
-
-          // Match either pattern — value-only handles `classes({ variant: anyEnumProp })`,
-          // key-value handles `classes({ size, radius, … })` non-variant emissions.
-          if (!valueOnlyPattern.test(cssContent) && !keyValuePattern.test(cssContent)) {
-            missing.push(
-              `${interfaceName}.${propName}="${value}" — no matching CSS class in ${kebab}.css (looked for .{block}-${value} and .{block}-${propKey}-${value})`,
-            );
-          }
-        }
-      }
-    }
+    const missing = collectMissingForInterface({ source, classesModifierProps, kebab, cssContent });
 
     expect(
       missing,

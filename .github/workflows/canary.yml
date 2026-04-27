@@ -30,24 +30,12 @@ jobs:
         run: pnpm build
 
       - name: Set canary version
-        run: |
-          COMMIT_SHA=$(git rev-parse --short HEAD)
-          TIMESTAMP=$(date +%Y%m%d%H%M%S)
-          node -e "
-            const fs = require('fs');
-            for (const pkg of ['packages/react', 'packages/styles']) {
-              const path = pkg + '/package.json';
-              const json = JSON.parse(fs.readFileSync(path, 'utf8'));
-              json.version = json.version.replace(/^(\d+\.\d+\.\d+).*/, '\$1-canary.${TIMESTAMP}.${COMMIT_SHA}');
-              fs.writeFileSync(path, JSON.stringify(json, null, 2) + '\n');
-              console.log(json.name + '@' + json.version);
-            }
-          "
+        env:
+          CANARY_SUFFIX: canary.${{ github.run_id }}.${{ github.sha }}
+        run: pnpm canary:version
 
       - name: Publish canary
-        run: |
-          cd packages/styles && pnpm publish --tag canary --no-git-checks --access public
-          cd ../react && pnpm publish --tag canary --no-git-checks --access public
+        run: pnpm canary:publish
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -16,7 +16,29 @@ import {
   MOCK_DATA_BLACKLIST,
   validCategories,
 } from "../helpers/stories-ast";
+import { escapeRegex } from "../helpers/strings";
 import { inferTier, TIER_LABELS } from "../fixtures/story-tiers";
+
+import type { PropertyAssignment } from "ts-morph";
+
+function extractCategoryLiteral(argTypeProp: PropertyAssignment): string | undefined {
+  const config = argTypeProp.getInitializer();
+  if (!Node.isObjectLiteralExpression(config)) return undefined;
+
+  const tableProp = config.getProperty("table");
+  if (!Node.isPropertyAssignment(tableProp)) return undefined;
+
+  const tableObj = tableProp.getInitializer();
+  if (!Node.isObjectLiteralExpression(tableObj)) return undefined;
+
+  const categoryProp = tableObj.getProperty("category");
+  if (!Node.isPropertyAssignment(categoryProp)) return undefined;
+
+  const categoryInit = categoryProp.getInitializer();
+  if (!Node.isStringLiteral(categoryInit) && !Node.isNoSubstitutionTemplateLiteral(categoryInit)) return undefined;
+
+  return categoryInit.getLiteralText();
+}
 
 const DOMAIN_WORDS = [
   "Email",
@@ -133,28 +155,12 @@ describe("Audit — stories conventions", () => {
 
     for (const argTypeProp of argTypes.getProperties()) {
       if (!Node.isPropertyAssignment(argTypeProp)) continue;
-
-      const propName = argTypeProp.getName();
-      const config = argTypeProp.getInitializer();
-      if (!Node.isObjectLiteralExpression(config)) continue;
-
-      const tableProp = config.getProperty("table");
-      if (!Node.isPropertyAssignment(tableProp)) continue;
-
-      const tableObj = tableProp.getInitializer();
-      if (!Node.isObjectLiteralExpression(tableObj)) continue;
-
-      const categoryProp = tableObj.getProperty("category");
-      if (!Node.isPropertyAssignment(categoryProp)) continue;
-
-      const categoryInit = categoryProp.getInitializer();
-      if (!Node.isStringLiteral(categoryInit) && !Node.isNoSubstitutionTemplateLiteral(categoryInit)) continue;
-
-      const value = categoryInit.getLiteralText();
+      const value = extractCategoryLiteral(argTypeProp);
+      if (value === undefined) continue;
       if (validCategories.has(value)) continue;
 
       offenders.push(
-        `argTypes.${propName}.table.category="${value}" — must be one of: ${[...validCategories].join(", ")}`,
+        `argTypes.${argTypeProp.getName()}.table.category="${value}" — must be one of: ${[...validCategories].join(", ")}`,
       );
     }
 
@@ -169,8 +175,7 @@ describe("Audit — stories conventions", () => {
 
       for (const literal of literals) {
         for (const banned of MOCK_DATA_BLACKLIST) {
-          const escaped = banned.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-          const re = new RegExp(`\\b${escaped}\\b`, "i");
+          const re = new RegExp(String.raw`\b${escapeRegex(banned)}\b`, "i");
           if (!re.test(literal)) continue;
 
           offenders.push(`"${literal}" contains placeholder "${banned}" — use realistic mock data`);

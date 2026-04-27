@@ -1,11 +1,11 @@
-import { dirname, join } from "node:path";
+import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { storybookTest } from "@storybook/addon-vitest/vitest-plugin";
 import { playwright } from "@vitest/browser-playwright";
 import { defineConfig } from "vitest/config";
 
-const here = dirname(fileURLToPath(import.meta.url));
+const here = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   test: {
@@ -19,7 +19,7 @@ export default defineConfig({
   },
   plugins: [
     storybookTest({
-      configDir: join(here, ".storybook"),
+      configDir: path.join(here, ".storybook"),
       storybookScript: "pnpm dev",
       tags: {
         include: ["autodocs", "test"],

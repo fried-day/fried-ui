@@ -17,8 +17,8 @@
     @apply rounded-md;
     @apply placeholder:text-(--input-placeholder);
 
-    &:hover:not(:focus):not(:read-only):not(:disabled),
-    &[data-hovered]:not([data-focused]):not([data-readonly]):not([data-disabled]) {
+    &:hover:not(:focus, :read-only, :disabled),
+    &[data-hovered]:not([data-focused], [data-readonly], [data-disabled]) {
       @apply border-(--input-border-hover) bg-(--input-bg-hover);
     }
 

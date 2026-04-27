@@ -1,29 +1,73 @@
-interface TierRule {
-  pattern: RegExp;
-  tier: number;
-}
+const tier2ExactNames = new Set([
+  "Variant",
+  "Variants",
+  "Size",
+  "Sizes",
+  "Radius",
+  "Radii",
+  "Shadow",
+  "Shadows",
+  "Elevation",
+  "Rings",
+  "Weights",
+  "Resize",
+  "Spacing",
+  "Density",
+  "Orientation",
+  "Tone",
+  "Tones",
+  "Color",
+  "Colors",
+  "Level",
+  "Levels",
+]);
 
-const TIER_RULES: TierRule[] = [
-  { pattern: /^Default$/, tier: 1 },
-  {
-    pattern:
-      /^(Variants?|Sizes?|Radius|Radii|Shadow|Shadows|Elevation|Rings|Weights|Resize|Spacing|Density|Orientation|Tones?|Colors?|Levels?)$/,
-    tier: 2,
-  },
-  { pattern: /Variants?$/, tier: 2 },
-  { pattern: /^(Disabled|Pending|Loading|Busy)$/, tier: 3 },
-  { pattern: /^(ReadOnly|Required|Optional)$/, tier: 3 },
-  { pattern: /^(Invalid|Valid|Error|Success|Warning)$/, tier: 3 },
-  {
-    pattern: /^(Selected|Unselected|Checked|Unchecked|Active|Pressed|Open|Closed|Expanded|Collapsed)$/,
-    tier: 3,
-  },
-  { pattern: /^(Bordered|Borderless|Outlined|Filled|Ghost|Soft|Solid|Flat)$/, tier: 3 },
-  { pattern: /^(FullWidth|FitContent|Stretch|Inline|Block)$/, tier: 3 },
-  { pattern: /^(Hoverable|Focusable|Clickable)$/, tier: 3 },
-  { pattern: /^(BrokenImage|EmptyState|NoData|NoResults|StressTest)$/, tier: 5 },
-  { pattern: /^(Long[A-Z]\w+|Truncated[A-Z]\w*|Constrained[A-Z]\w*|Cramped[A-Z]\w*)$/, tier: 5 },
-];
+const tier3ExactNames = new Set([
+  "Disabled",
+  "Pending",
+  "Loading",
+  "Busy",
+  "ReadOnly",
+  "Required",
+  "Optional",
+  "Invalid",
+  "Valid",
+  "Error",
+  "Success",
+  "Warning",
+  "Selected",
+  "Unselected",
+  "Checked",
+  "Unchecked",
+  "Active",
+  "Pressed",
+  "Open",
+  "Closed",
+  "Expanded",
+  "Collapsed",
+  "Bordered",
+  "Borderless",
+  "Outlined",
+  "Filled",
+  "Ghost",
+  "Soft",
+  "Solid",
+  "Flat",
+  "FullWidth",
+  "FitContent",
+  "Stretch",
+  "Inline",
+  "Block",
+  "Hoverable",
+  "Focusable",
+  "Clickable",
+]);
+
+const tier5ExactNames = new Set(["BrokenImage", "EmptyState", "NoData", "NoResults", "StressTest"]);
+
+const TIER_5_PREFIX_PATTERN = /^(?:Long|Truncated|Constrained|Cramped)[A-Z]\w*$/;
+
+const TIER_2_VARIANT_SUFFIX_PATTERN = /Variants?$/;
 
 const TIER_LABELS: Record<number, string> = {
   1: "Default",
@@ -34,9 +78,12 @@ const TIER_LABELS: Record<number, string> = {
 };
 
 function inferTier(name: string): number {
-  for (const rule of TIER_RULES) {
-    if (rule.pattern.test(name)) return rule.tier;
-  }
+  if (name === "Default") return 1;
+  if (tier2ExactNames.has(name)) return 2;
+  if (TIER_2_VARIANT_SUFFIX_PATTERN.test(name)) return 2;
+  if (tier3ExactNames.has(name)) return 3;
+  if (tier5ExactNames.has(name)) return 5;
+  if (TIER_5_PREFIX_PATTERN.test(name)) return 5;
 
   return 4;
 }

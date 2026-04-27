@@ -10,13 +10,9 @@ export * from "./button";
 
 export * from "./chip";
 
-export * from "./field";
-
 export * from "./icons";
 
 export * from "./input";
-
-export * from "./input-group";
 
 export * from "./signal-dot";
 

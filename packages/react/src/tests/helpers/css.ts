@@ -17,7 +17,7 @@ function listCssFiles(): string[] {
 }
 
 function readCss({ file }: Readonly<ReadCssParams>): string {
-  return fs.readFileSync(path.join(stylesComponentsDir, file), "utf-8");
+  return fs.readFileSync(path.join(stylesComponentsDir, file), "utf8");
 }
 
 function extractRules({ classPattern, content }: Readonly<ExtractRulesParams>): string[] {

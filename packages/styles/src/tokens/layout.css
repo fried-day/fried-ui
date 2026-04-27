@@ -1,12 +1,10 @@
 @theme {
   --radius: 0.5rem;
   --field-radius: calc(var(--radius) * 1.5);
-
   --disabled-opacity: 0.5;
   --outline-offset-focus: 2px;
   --cursor-interactive: pointer;
   --cursor-disabled: not-allowed;
-
   --z-popover: 10;
   --z-navigation: 20;
   --z-overlay: 30;

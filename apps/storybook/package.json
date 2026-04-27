@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "build": "storybook build -o dist",
-    "check-types": "tsc --noEmit",
     "dev": "storybook dev -p 6006",
     "lint": "eslint . --max-warnings 0",
-    "test": "vitest run"
+    "playwright:install": "playwright install chromium --with-deps",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@fried-ui/react": "workspace:*",

@@ -1,0 +1,6 @@
+{
+  "*.{ts,tsx,js,jsx,mjs}": ["prettier --write", "eslint --fix --max-warnings 0 --no-warn-ignored"],
+  "*.css": ["prettier --write", "stylelint --fix --max-warnings 0"],
+  "*.{md,mdx,json,jsonc,yml,yaml}": ["prettier --write"],
+  "package.json": ["sort-package-json", "prettier --write"]
+}

@@ -21,7 +21,6 @@ export interface InputProps extends Omit<ComponentPropsWithRef<typeof AriaInput>
 
 /**
  * A styled text input primitive. Use native HTML attrs (`disabled`, `readOnly`, `required`, `aria-invalid`) for state.
- * For leading/trailing icons, text affixes, buttons, or pending state, wrap in `InputGroup` with `InputGroupAddon`.
  */
 const Input = (props: Readonly<InputProps>) => {
   const { className, isFullWidth, radius, ref, size, variant, ...rest } = props;

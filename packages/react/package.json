@@ -51,10 +51,6 @@
       "types": "./dist/components/description/index.d.ts",
       "import": "./dist/components/description/index.mjs"
     },
-    "./field": {
-      "types": "./dist/components/field/index.d.ts",
-      "import": "./dist/components/field/index.mjs"
-    },
     "./field-error": {
       "types": "./dist/components/field-error/index.d.ts",
       "import": "./dist/components/field-error/index.mjs"
@@ -66,10 +62,6 @@
     "./input": {
       "types": "./dist/components/input/index.d.ts",
       "import": "./dist/components/input/index.mjs"
-    },
-    "./input-group": {
-      "types": "./dist/components/input-group/index.d.ts",
-      "import": "./dist/components/input-group/index.mjs"
     },
     "./label": {
       "types": "./dist/components/label/index.d.ts",
@@ -96,13 +88,15 @@
   ],
   "scripts": {
     "build": "tsup",
-    "check-types": "tsc --noEmit",
+    "canary:publish": "pnpm publish --tag canary --no-git-checks --access public",
     "clean": "rm -rf dist .turbo",
     "dev": "tsup --watch",
     "generate:component": "turbo gen react-component",
     "lint": "eslint . --max-warnings 0",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@fried-ui/assets": "workspace:*",
@@ -119,6 +113,7 @@
     "@types/node": "^22.15.3",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
+    "@vitest/coverage-v8": "^4.1.5",
     "eslint": "^9.39.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

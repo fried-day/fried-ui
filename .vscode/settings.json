@@ -19,6 +19,10 @@
       "url": "https://turborepo.dev/schema.json"
     }
   ],
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-action.json": [".github/actions/*/action.yml"],
+    "https://json.schemastore.org/github-workflow.json": [".github/workflows/*.yml"]
+  },
   "sonarlint.connectedMode.project": {
     "connectionId": "fried-day",
     "projectKey": "fried_day_fried-ui"

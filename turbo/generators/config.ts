@@ -63,7 +63,7 @@ function generator(plop: PlopTypes.NodePlopAPI): void {
   });
 
   plop.setGenerator("display-compound-component", {
-    description: "Display compound with wrapper + named subpart (Badge + BadgeIndicator, Field + FieldLabel patterns)",
+    description: "Display compound with wrapper + named subpart",
     prompts: [
       {
         type: "input",

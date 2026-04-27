@@ -52,7 +52,7 @@ const preview: Preview = {
       const isDark = bg?.includes("dark") || bg?.includes("000");
       const theme = isDark ? "dark" : "light";
 
-      document.documentElement.setAttribute("data-theme", theme);
+      document.documentElement.dataset.theme = theme;
 
       return Story();
     },

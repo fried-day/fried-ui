@@ -95,22 +95,6 @@ function getComponentVariableDeclaration({
   return source.getVariableDeclaration(pascal);
 }
 
-function getStoryNames({ storiesFile }: Readonly<StoryFileParams>): string[] {
-  const source = loadSource({ file: storiesFile });
-
-  if (!source) return [];
-
-  const names: string[] = [];
-
-  for (const variable of source.getVariableDeclarations()) {
-    const typeNode = variable.getTypeNode();
-
-    if (typeNode?.getText() === "Story") names.push(variable.getName());
-  }
-
-  return names;
-}
-
 function findMetaObject(source: SourceFile): Node | undefined {
   const meta = source.getVariableDeclaration("meta");
   const satisfiesInit = meta?.getInitializerIfKind(SyntaxKind.SatisfiesExpression);
@@ -177,7 +161,7 @@ function getClassNameStringLiterals({ storiesFile }: Readonly<StoryFileParams>):
     if (Node.isStringLiteral(initializer)) {
       stringLiterals.push(initializer);
     } else if (Node.isJsxExpression(initializer)) {
-      initializer.getDescendantsOfKind(SyntaxKind.StringLiteral).forEach((literal) => stringLiterals.push(literal));
+      for (const literal of initializer.getDescendantsOfKind(SyntaxKind.StringLiteral)) stringLiterals.push(literal);
     }
 
     const storyName = findEnclosingStoryName(node);
@@ -262,14 +246,12 @@ function isComponentDisplayNameAssignment({ pascal, statement }: Readonly<Displa
 }
 
 export {
-  findEnclosingStoryName,
   findMetaObject,
   getAllStringLiterals,
   getClassNameStringLiterals,
   getComponentPropsInterfaces,
   getComponentVariableDeclaration,
   getMetaArgTypeDescriptions,
-  getStoryNames,
   isComponentDisplayNameAssignment,
   loadSource,
   metaHasPath,

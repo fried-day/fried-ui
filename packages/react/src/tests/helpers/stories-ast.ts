@@ -1,7 +1,7 @@
-import { Node, Project, SyntaxKind } from "ts-morph";
+import { Node, Project } from "ts-morph";
 import type { ObjectLiteralExpression, SourceFile } from "ts-morph";
 
-import { findMetaObject } from "../helpers/ast";
+import { findMetaObject } from "./ast";
 
 export interface InterfaceProp {
   hasJsDocDefault: boolean;
@@ -35,28 +35,11 @@ function getArgTypeNames(source: SourceFile): string[] {
   for (const argTypeProp of argTypes.getProperties()) {
     if (!Node.isPropertyAssignment(argTypeProp)) continue;
 
-    const name = argTypeProp.getName().replace(/^["']|["']$/g, "");
+    const name = argTypeProp.getName().replaceAll(/^["']|["']$/g, "");
     names.push(name);
   }
 
   return names;
-}
-
-function getStoryExportNames(source: SourceFile): string[] {
-  const names = new Set<string>();
-
-  for (const stmt of source.getStatements()) {
-    if (!Node.isExportDeclaration(stmt)) continue;
-
-    for (const named of stmt.getNamedExports()) names.add(named.getName());
-  }
-
-  for (const variable of source.getVariableDeclarations()) {
-    const typeNode = variable.getTypeNode();
-    if (typeNode?.getText() === "Story") names.add(variable.getName());
-  }
-
-  return [...names];
 }
 
 function getNamedExportSequence(source: SourceFile): { line: number; name: string }[] {
@@ -96,7 +79,7 @@ function getComponentInterfaceProps({
     const jsDoc = prop.getJsDocs()[0];
     const jsDocText = jsDoc?.getInnerText() ?? "";
 
-    const unionParts = typeText.split("|").map((part) => part.trim().replace(/^"|"$/g, ""));
+    const unionParts = typeText.split("|").map((part) => part.trim().replaceAll(/^"|"$/g, ""));
     const isUnion = typeText.includes("|") && unionParts.every((part) => /^[A-Za-z0-9-]*$/.test(part) || part === "");
 
     props.push({
@@ -112,8 +95,6 @@ function getComponentInterfaceProps({
 
   return props;
 }
-
-const ALIGNMENT_PATTERN = /\bitems-(start|center|end|stretch|baseline)\b/;
 
 const validCategories = new Set(["Children", "Style Variants", "State", "Events", "Styling"]);
 
@@ -161,22 +142,11 @@ const passthroughAllowedExtras = new Set([
   "onDismiss",
 ]);
 
-const REQUIRED_RENDER_SIGNATURE = "(args): React.JSX.Element =>";
-
-function escapeRegex(value: string): string {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
 export {
-  ALIGNMENT_PATTERN,
-  REQUIRED_RENDER_SIGNATURE,
-  SyntaxKind,
-  escapeRegex,
   getArgTypeNames,
   getArgTypesObject,
   getComponentInterfaceProps,
   getNamedExportSequence,
-  getStoryExportNames,
   MOCK_DATA_BLACKLIST,
   passthroughAllowedExtras,
   validCategories,
