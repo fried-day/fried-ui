@@ -41,19 +41,17 @@ const AvatarGroup = (props: Readonly<AvatarGroupProps>) => {
 
   const childArray = Children.toArray(children).filter(isValidElement) as ReactElement<AvatarProps>[];
 
+  const renderChild = (child: ReactElement<AvatarProps>): ReactElement => {
+    const childSize = (child.props as AvatarProps | undefined)?.size;
+
+    if (childSize !== undefined) return child;
+
+    return cloneElement(child, { size });
+  };
+
   return (
     <div role="group" data-slot="avatar-group" className={groupClassName} ref={ref} {...rest}>
-      {childArray.map((child, index) => {
-        const childProps = (child.props ?? {}) as AvatarProps;
-        const childSize = childProps.size;
-
-        if (childSize !== undefined) return cloneElement(child, { key: child.key ?? index });
-
-        return cloneElement(child, {
-          key: child.key ?? index,
-          size,
-        });
-      })}
+      {childArray.map(renderChild)}
     </div>
   );
 };

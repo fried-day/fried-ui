@@ -115,17 +115,17 @@ const Sizes: Story = {
       {(["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
         <AvatarGroup {...args} key={size} size={size}>
           <Avatar>
-            <AvatarImage alt={`Avatar 1 ${size}`} src={AVATAR_1} />
+            <AvatarImage alt="Avatar 1" src={AVATAR_1} />
             <AvatarFallback>A1</AvatarFallback>
           </Avatar>
 
           <Avatar>
-            <AvatarImage alt={`Avatar 2 ${size}`} src={AVATAR_2} />
+            <AvatarImage alt="Avatar 2" src={AVATAR_2} />
             <AvatarFallback>A2</AvatarFallback>
           </Avatar>
 
           <Avatar>
-            <AvatarImage alt={`Avatar 3 ${size}`} src={AVATAR_3} />
+            <AvatarImage alt="Avatar 3" src={AVATAR_3} />
             <AvatarFallback>A3</AvatarFallback>
           </Avatar>
         </AvatarGroup>
@@ -140,17 +140,17 @@ const Spacing: Story = {
       {(["wider", "wide", "default", "tight", "tighter"] as const).map((spacing) => (
         <AvatarGroup {...args} key={spacing} spacing={spacing}>
           <Avatar>
-            <AvatarImage alt={`Avatar 1 ${spacing}`} src={AVATAR_1} />
+            <AvatarImage alt="Avatar 1" src={AVATAR_1} />
             <AvatarFallback>A1</AvatarFallback>
           </Avatar>
 
           <Avatar>
-            <AvatarImage alt={`Avatar 2 ${spacing}`} src={AVATAR_2} />
+            <AvatarImage alt="Avatar 2" src={AVATAR_2} />
             <AvatarFallback>A2</AvatarFallback>
           </Avatar>
 
           <Avatar>
-            <AvatarImage alt={`Avatar 3 ${spacing}`} src={AVATAR_3} />
+            <AvatarImage alt="Avatar 3" src={AVATAR_3} />
             <AvatarFallback>A3</AvatarFallback>
           </Avatar>
         </AvatarGroup>
