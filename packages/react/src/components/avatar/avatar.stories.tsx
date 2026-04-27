@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import AVATAR_1 from "@fried-ui/assets/story/avatar-1.jpg";
 
+import { CLASS_NAME_ARG_TYPE } from "../../storybook/argtypes";
+
 import { UserIcon } from "../icons";
 import { Avatar, AvatarFallback, AvatarImage } from "./Avatar";
 
@@ -83,14 +85,7 @@ const meta = {
         category: "State",
       },
     },
-    className: {
-      control: "text",
-      description: "Additional CSS classes",
-      table: {
-        type: { summary: "string" },
-        category: "Styling",
-      },
-    },
+    className: CLASS_NAME_ARG_TYPE,
   },
 } satisfies Meta<typeof Avatar>;
 

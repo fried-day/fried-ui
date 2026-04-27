@@ -1,8 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import AVATAR_1 from "@fried-ui/assets/story/avatar-1.jpg";
+
 import AVATAR_2 from "@fried-ui/assets/story/avatar-2.jpg";
 import AVATAR_3 from "@fried-ui/assets/story/avatar-3.jpg";
+import { CLASS_NAME_ARG_TYPE } from "../../storybook/argtypes";
 
 import { Avatar, AvatarFallback, AvatarImage } from "../avatar";
 import { UserIcon } from "../icons";
@@ -75,14 +77,7 @@ const meta = {
         category: "Style Variants",
       },
     },
-    className: {
-      control: "text",
-      description: "Additional CSS classes",
-      table: {
-        type: { summary: "string" },
-        category: "Styling",
-      },
-    },
+    className: CLASS_NAME_ARG_TYPE,
   },
 } satisfies Meta<typeof AvatarGroup>;
 

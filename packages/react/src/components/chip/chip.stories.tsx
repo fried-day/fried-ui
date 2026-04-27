@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { CLASS_NAME_ARG_TYPE } from "../../storybook/argtypes";
+
 import {
   BellIcon,
   CheckCircleIcon,
@@ -131,14 +133,7 @@ const meta = {
         category: "Style Variants",
       },
     },
-    className: {
-      control: "text",
-      description: "Additional CSS classes",
-      table: {
-        type: { summary: "string" },
-        category: "Styling",
-      },
-    },
+    className: CLASS_NAME_ARG_TYPE,
   },
 } satisfies Meta<typeof Chip>;
 

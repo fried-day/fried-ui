@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { CLASS_NAME_ARG_TYPE } from "../../storybook/argtypes";
+
 import {
   CheckCircleIcon,
   InformationCircleIcon,
@@ -130,14 +132,7 @@ const meta = {
         category: "Events",
       },
     },
-    className: {
-      control: "text",
-      description: "Additional CSS classes",
-      table: {
-        type: { summary: "string" },
-        category: "Styling",
-      },
-    },
+    className: CLASS_NAME_ARG_TYPE,
   },
 } satisfies Meta<typeof Button>;
 

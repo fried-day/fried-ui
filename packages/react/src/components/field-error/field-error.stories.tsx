@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { TextField } from "react-aria-components";
 
+import { CLASS_NAME_ARG_TYPE } from "../../storybook/argtypes";
+
 import { FieldError } from "./FieldError";
 
 const meta: Meta<typeof FieldError> = {
@@ -49,14 +51,7 @@ const meta: Meta<typeof FieldError> = {
         category: "Style Variants",
       },
     },
-    className: {
-      control: "text",
-      description: "Additional CSS classes",
-      table: {
-        type: { summary: "string" },
-        category: "Styling",
-      },
-    },
+    className: CLASS_NAME_ARG_TYPE,
   },
   decorators: [
     (Story): React.JSX.Element => (
