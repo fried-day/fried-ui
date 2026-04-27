@@ -4,12 +4,8 @@
     @apply gap-1.5;
   }
 
-  .field-size-xs {
-    @apply gap-1;
-  }
-
   .field-size-sm {
-    @apply gap-1.5;
+    @apply gap-1;
   }
 
   .field-size-md {
@@ -44,7 +40,7 @@
 
   .field-label {
     @apply inline-flex items-center gap-1 select-none;
-    @apply text-sm font-medium;
+    @apply text-base font-medium;
     @apply text-foreground;
   }
 
@@ -56,20 +52,16 @@
     @apply font-normal text-muted-foreground;
   }
 
-  .field-label-size-xs {
-    @apply text-2xs;
-  }
-
   .field-label-size-sm {
     @apply text-xs;
   }
 
   .field-label-size-md {
-    @apply text-sm;
+    @apply text-base;
   }
 
   .field-label-size-lg {
-    @apply text-base;
+    @apply text-xl;
   }
 
   .field-label-weight-normal {
@@ -96,11 +88,7 @@
 
   .field-description {
     @apply block;
-    @apply text-sm text-muted-foreground;
-  }
-
-  .field-description-size-xs {
-    @apply text-2xs;
+    @apply text-base text-muted-foreground;
   }
 
   .field-description-size-sm {
@@ -108,11 +96,11 @@
   }
 
   .field-description-size-md {
-    @apply text-sm;
+    @apply text-base;
   }
 
   .field-description-size-lg {
-    @apply text-base;
+    @apply text-xl;
   }
 
   .field-description-disabled,
@@ -136,24 +124,20 @@
   }
 
   .field-legend {
-    @apply text-base font-semibold text-foreground;
+    @apply text-xl font-semibold text-foreground;
     @apply mb-2;
   }
 
-  .field-legend-size-xs {
-    @apply text-xs;
-  }
-
   .field-legend-size-sm {
-    @apply text-sm;
-  }
-
-  .field-legend-size-md {
     @apply text-base;
   }
 
+  .field-legend-size-md {
+    @apply text-xl;
+  }
+
   .field-legend-size-lg {
-    @apply text-lg;
+    @apply text-2xl;
   }
 
   .field-group {
@@ -172,10 +156,6 @@
     @apply flex-col md:flex-row md:items-start;
   }
 
-  .field-group-size-xs {
-    @apply gap-1;
-  }
-
   .field-group-size-sm {
     @apply gap-1.5;
   }
@@ -189,23 +169,19 @@
   }
 
   .field-title {
-    @apply text-base font-semibold text-foreground;
-  }
-
-  .field-title-size-xs {
-    @apply text-xs;
+    @apply text-xl font-semibold text-foreground;
   }
 
   .field-title-size-sm {
-    @apply text-sm;
-  }
-
-  .field-title-size-md {
     @apply text-base;
   }
 
+  .field-title-size-md {
+    @apply text-xl;
+  }
+
   .field-title-size-lg {
-    @apply text-lg;
+    @apply text-2xl;
   }
 
   .field-separator {

@@ -11,16 +11,16 @@ export interface AvatarProps extends Omit<ComponentPropsWithRef<typeof RadixAvat
   children?: ReactNode;
   /** Additional CSS classes appended after the base class. */
   className?: string;
-  /** Whether the avatar shows a 2px ring matching the background — separates the avatar visually when placed over a photo or colored background. @default false */
+  /** Whether the avatar shows a 2px ring matching the background. @default false */
   isBordered?: boolean;
-  /** Whether the avatar is disabled (dims and removes pointer events). @default false */
+  /** Whether the avatar is disabled. @default false */
   isDisabled?: boolean;
   /** Border radius scale. @default 'full' */
   radius?: "none" | "sm" | "md" | "lg" | "full";
   /** Colored ring around the avatar. @default undefined */
   ring?: "primary" | "secondary" | "accent" | "success" | "warning" | "danger" | "info";
   /** Size scale. @default 'md' */
-  size?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
 }
 
 /**

@@ -1,11 +1,7 @@
 @layer components {
   .description {
     @apply block;
-    @apply text-sm text-muted-foreground;
-  }
-
-  .description-size-xs {
-    @apply text-2xs;
+    @apply text-base text-muted-foreground;
   }
 
   .description-size-sm {
@@ -13,11 +9,11 @@
   }
 
   .description-size-md {
-    @apply text-sm;
+    @apply text-base;
   }
 
   .description-size-lg {
-    @apply text-base;
+    @apply text-xl;
   }
 
   .description-invalid {

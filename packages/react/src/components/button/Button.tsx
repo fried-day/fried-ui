@@ -22,7 +22,7 @@ export interface ButtonProps extends Omit<ComponentPropsWithRef<typeof AriaButto
   /** Border radius scale. @default 'md' */
   radius?: "none" | "sm" | "md" | "lg" | "full";
   /** Size scale. @default 'md' */
-  size?: "xs" | "sm" | "md" | "lg" | "xl";
+  size?: "sm" | "md" | "lg" | "xl";
   /** Visual style following Mobbin hierarchy (primary/secondary/outline/ghost + destructive + overlay + accent). @default 'primary' */
   variant?: "primary" | "secondary" | "outline" | "ghost" | "destructive" | "overlay" | "accent";
 }

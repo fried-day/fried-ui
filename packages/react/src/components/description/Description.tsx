@@ -17,7 +17,7 @@ export interface DescriptionProps extends Omit<
   /** Whether the description is disabled (dims and removes pointer events). @default false */
   isDisabled?: boolean;
   /** Size scale. @default 'md' */
-  size?: "xs" | "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg";
 }
 
 /**

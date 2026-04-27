@@ -49,11 +49,11 @@ const meta = {
     },
     size: {
       control: "select",
-      options: ["xs", "sm", "md", "lg"],
+      options: ["sm", "md", "lg"],
       description:
-        "Size scale of the wrapper, +4px step (28 / 32 / 36 / 40). **xs** (text-2xs, min-h-7) — pro-tool inline command bars, dense filter rows in data-heavy admin. **sm** (text-xs, min-h-8) — compact filters, command-palette-style inline actions, dense admin UIs. **md** (text-sm, default, min-h-9) — standard search bars and combined input flows. **lg** (text-base, min-h-10) — hero search bars and primary-action input groups. Children — InputGroupInput, Button, addons — inherit size via font-size and the wrapper's `min-h-*`, so addon icons and prefix text scale together with the input.",
+        "Size scale of the wrapper on a `sqrt(phi) ≈ 1.272` ratio so adjacent sizes clear the perceptual JND threshold. **sm** (text-xs, min-h-8) — compact filters, command-palette-style inline actions, dense admin UIs. **md** (text-base, default, min-h-10) — standard search bars and combined input flows. **lg** (text-xl, min-h-13) — hero search bars and primary-action input groups. Children — InputGroupInput, Button, addons — inherit size via font-size and the wrapper's `min-h-*`, so addon icons and prefix text scale together with the input.",
       table: {
-        type: { summary: '"xs" | "sm" | "md" | "lg"' },
+        type: { summary: '"sm" | "md" | "lg"' },
         defaultValue: { summary: "md" },
         category: "Style Variants",
       },
@@ -181,10 +181,6 @@ const OverlayVariant: Story = {
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <InputGroup {...args} size="xs">
-        <InputGroupInput placeholder="Extra Small" />
-      </InputGroup>
-
       <InputGroup {...args} size="sm">
         <InputGroupInput placeholder="Small" />
       </InputGroup>

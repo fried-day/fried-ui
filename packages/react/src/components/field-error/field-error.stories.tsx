@@ -30,11 +30,11 @@ const meta: Meta<typeof FieldError> = {
     },
     size: {
       control: "select",
-      options: ["xs", "sm", "md", "lg"],
+      options: ["sm", "md", "lg"],
       description:
-        "Text size of the field error message. **Scale:** xs (text-2xs) for pro-tool dense rows and inline cell-level validation, sm (text-xs) for dense forms and secondary helpers, md (text-sm, default) for standard form fields, lg (text-base) for emphasized or large form sections. Size should match the paired Label and Description so the entire field reads at a consistent visual weight. Use md for the majority of forms, sm for compact inline validation, lg only when the form field itself uses a larger size, xs only on desktop data-heavy admin.",
+        "Text size of the field error message on a `sqrt(phi) ≈ 1.272` ratio so adjacent sizes clear the perceptual JND threshold. **Scale:** sm (text-xs) for dense forms and secondary helpers, md (text-base, default) for standard form fields, lg (text-xl) for emphasized or large form sections. Size should match the paired Label and Description so the entire field reads at a consistent visual weight. Use md for the majority of forms, sm for compact inline validation, lg only when the form field itself uses a larger size.",
       table: {
-        type: { summary: '"xs" | "sm" | "md" | "lg"' },
+        type: { summary: '"sm" | "md" | "lg"' },
         defaultValue: { summary: "md" },
         category: "Style Variants",
       },
@@ -74,12 +74,6 @@ const Default: Story = {};
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <TextField isInvalid>
-        <FieldError {...args} size="xs">
-          Extra Small FieldError
-        </FieldError>
-      </TextField>
-
       <TextField isInvalid>
         <FieldError {...args} size="sm">
           Small FieldError

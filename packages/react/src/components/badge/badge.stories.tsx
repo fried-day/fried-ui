@@ -48,17 +48,14 @@ const meta: Meta<typeof Badge> = {
 type Story = StoryObj<typeof meta>;
 
 const Default: Story = {
-  args: {
-    children: "NEW",
-  },
   render: (args): React.JSX.Element => (
-    <Badge>
+    <Badge {...args}>
       <Avatar>
         <AvatarImage alt="User" src={AVATAR_1} />
         <AvatarFallback>CT</AvatarFallback>
       </Avatar>
 
-      <BadgeIndicator {...args} />
+      <BadgeIndicator>NEW</BadgeIndicator>
     </Badge>
   ),
 };
@@ -67,15 +64,13 @@ const Variants: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-center gap-8">
       {(["primary", "secondary", "accent", "success", "warning", "danger", "info"] as const).map((variant) => (
-        <Badge key={variant}>
+        <Badge {...args} key={variant}>
           <Avatar>
             <AvatarImage alt={variant} src={AVATAR_1} />
             <AvatarFallback>CT</AvatarFallback>
           </Avatar>
 
-          <BadgeIndicator {...args} variant={variant}>
-            NEW
-          </BadgeIndicator>
+          <BadgeIndicator variant={variant}>NEW</BadgeIndicator>
         </Badge>
       ))}
     </div>
@@ -83,7 +78,7 @@ const Variants: Story = {
 };
 
 const OverlayVariant: Story = {
-  render: (args): React.JSX.Element => (
+  render: (): React.JSX.Element => (
     <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 to-blue-600 p-16">
       <Badge>
         <div className="inline-flex size-12 items-center justify-center rounded-md bg-background">
@@ -93,9 +88,7 @@ const OverlayVariant: Story = {
           </Avatar>
         </div>
 
-        <BadgeIndicator {...args} variant="overlay">
-          NEW
-        </BadgeIndicator>
+        <BadgeIndicator variant="overlay">NEW</BadgeIndicator>
       </Badge>
     </div>
   ),
@@ -105,103 +98,16 @@ const Sizes: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-center gap-8">
       {(["sm", "md", "lg"] as const).map((size) => (
-        <Badge key={size}>
+        <Badge {...args} key={size}>
           <Avatar size={size}>
             <AvatarImage alt={size} src={AVATAR_1} />
             <AvatarFallback>CT</AvatarFallback>
           </Avatar>
 
-          <BadgeIndicator {...args} size={size}>
-            NEW
-          </BadgeIndicator>
+          <BadgeIndicator size={size}>NEW</BadgeIndicator>
         </Badge>
       ))}
     </div>
-  ),
-};
-
-const Placements: Story = {
-  render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-center gap-8">
-      {(["top-right", "top-left", "bottom-right", "bottom-left"] as const).map((placement) => (
-        <Badge key={placement}>
-          <Avatar>
-            <AvatarImage alt={placement} src={AVATAR_1} />
-            <AvatarFallback>CT</AvatarFallback>
-          </Avatar>
-
-          <BadgeIndicator {...args} placement={placement}>
-            NEW
-          </BadgeIndicator>
-        </Badge>
-      ))}
-    </div>
-  ),
-};
-
-const Borderless: Story = {
-  render: (args): React.JSX.Element => (
-    <Badge {...args}>
-      <Avatar>
-        <AvatarImage alt="Borderless" src={AVATAR_1} />
-        <AvatarFallback>CT</AvatarFallback>
-      </Avatar>
-
-      <BadgeIndicator isBorderless>NEW</BadgeIndicator>
-    </Badge>
-  ),
-};
-
-const NumericOverflow: Story = {
-  render: (args): React.JSX.Element => (
-    <Badge {...args}>
-      <Avatar>
-        <AvatarImage alt="Many notifications" src={AVATAR_3} />
-        <AvatarFallback>CT</AvatarFallback>
-      </Avatar>
-
-      <BadgeIndicator max={99}>{150}</BadgeIndicator>
-    </Badge>
-  ),
-};
-
-const OnButton: Story = {
-  args: {
-    children: "12",
-  },
-  render: (args): React.JSX.Element => (
-    <Badge>
-      <Button variant="secondary">Inbox</Button>
-      <BadgeIndicator {...args} />
-    </Badge>
-  ),
-};
-
-const IconWithIcon: Story = {
-  render: (args): React.JSX.Element => (
-    <Badge {...args}>
-      <Avatar>
-        <AvatarImage alt="Bell" src={AVATAR_1} />
-        <AvatarFallback>CT</AvatarFallback>
-      </Avatar>
-
-      <BadgeIcon variant="accent">
-        <BellIcon className="size-3" />
-      </BadgeIcon>
-    </Badge>
-  ),
-};
-
-const IconSingleChar: Story = {
-  render: (args): React.JSX.Element => (
-    <Badge {...args}>
-      <Avatar>
-        <AvatarImage alt="Single char" src={AVATAR_1} />
-        <AvatarFallback>CT</AvatarFallback>
-      </Avatar>
-
-      <BadgeIcon variant="danger">5</BadgeIcon>
-    </Badge>
   ),
 };
 
@@ -228,18 +134,95 @@ const IconSizes: Story = {
   ),
 };
 
+const Borderless: Story = {
+  render: (args): React.JSX.Element => (
+    <Badge {...args}>
+      <Avatar>
+        <AvatarImage alt="Borderless" src={AVATAR_1} />
+        <AvatarFallback>CT</AvatarFallback>
+      </Avatar>
+
+      <BadgeIndicator isBorderless>NEW</BadgeIndicator>
+    </Badge>
+  ),
+};
+
+const Placements: Story = {
+  render: (args): React.JSX.Element => (
+    <div className="flex flex-wrap items-center gap-8">
+      {(["top-right", "top-left", "bottom-right", "bottom-left"] as const).map((placement) => (
+        <Badge {...args} key={placement}>
+          <Avatar>
+            <AvatarImage alt={placement} src={AVATAR_1} />
+            <AvatarFallback>CT</AvatarFallback>
+          </Avatar>
+
+          <BadgeIndicator placement={placement}>NEW</BadgeIndicator>
+        </Badge>
+      ))}
+    </div>
+  ),
+};
+
+const NumericOverflow: Story = {
+  render: (args): React.JSX.Element => (
+    <Badge {...args}>
+      <Avatar>
+        <AvatarImage alt="Many notifications" src={AVATAR_3} />
+        <AvatarFallback>CT</AvatarFallback>
+      </Avatar>
+
+      <BadgeIndicator max={99}>{150}</BadgeIndicator>
+    </Badge>
+  ),
+};
+
+const OnButton: Story = {
+  render: (args): React.JSX.Element => (
+    <Badge {...args}>
+      <Button variant="secondary">Inbox</Button>
+      <BadgeIndicator>12</BadgeIndicator>
+    </Badge>
+  ),
+};
+
+const IconContent: Story = {
+  render: (args): React.JSX.Element => (
+    <div className="flex flex-wrap items-center gap-8">
+      <Badge {...args}>
+        <Avatar>
+          <AvatarImage alt="Bell icon" src={AVATAR_1} />
+          <AvatarFallback>CT</AvatarFallback>
+        </Avatar>
+
+        <BadgeIcon variant="accent">
+          <BellIcon className="size-3" />
+        </BadgeIcon>
+      </Badge>
+
+      <Badge {...args}>
+        <Avatar>
+          <AvatarImage alt="Single char" src={AVATAR_1} />
+          <AvatarFallback>CT</AvatarFallback>
+        </Avatar>
+
+        <BadgeIcon variant="danger">5</BadgeIcon>
+      </Badge>
+    </div>
+  ),
+};
+
 export {
   Default,
   Variants,
   OverlayVariant,
   Sizes,
+  IconSizes,
   Borderless,
   Placements,
   NumericOverflow,
   OnButton,
-  IconWithIcon,
-  IconSingleChar,
-  IconSizes,
+  IconContent,
 };
 
 export default meta;

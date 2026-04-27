@@ -82,7 +82,7 @@
   }
 
   .badge-indicator-size-sm {
-    @apply min-h-4 px-1 text-2xs;
+    @apply min-h-4 px-1 text-xs;
   }
 
   .badge-indicator-size-md {
@@ -90,11 +90,11 @@
   }
 
   .badge-indicator-size-lg {
-    @apply min-h-6 px-2 text-sm;
+    @apply min-h-6 px-2 text-base;
   }
 
   .badge-icon-size-sm {
-    @apply size-4 text-2xs;
+    @apply size-4 text-xs;
   }
 
   .badge-icon-size-md {
@@ -102,7 +102,7 @@
   }
 
   .badge-icon-size-lg {
-    @apply size-6 text-sm;
+    @apply size-6 text-base;
   }
 
   .badge-indicator-placement-top-right,

@@ -32,11 +32,11 @@ const meta = {
     },
     size: {
       control: "select",
-      options: ["xs", "sm", "md", "lg", "xl", "2xl"],
+      options: ["xs", "sm", "md", "lg", "xl"],
       description:
-        "Size scale of the avatar circle. **xs** (size-6, 24px) — dense list rows or chat avatars beside a username. **sm** (size-8, 32px) — compact tables, comment threads, form-aligned with Input/Button sm. **md** (size-9, 36px, default) — standard cards and member lists, form-aligned with Input/Button md. **lg** (size-10, 40px) — profile headers, form-aligned with Input/Button lg. **xl** (size-12, 48px) — hero blocks. **2xl** (size-14, 56px) — settings pages or large profile views. Use md as the default; reach for xs and sm in dense lists, lg and above for emphasized profile contexts.",
+        "Size scale of the avatar circle on a `sqrt(phi)` ratio so adjacent sizes clear the perceptual JND threshold. **Compact:** xs (24px) — inline beside body text, mention pills, dense table cells; sm (32px) — comment threads, message previews, list rows. **Standard:** md (40px, default) — header user menus, list items, conversation cards. **Emphasis:** lg (52px) — feature cards, profile previews; xl (64px) — hero blocks, settings pages. Use md as default; reach for xs only when paired inline with body text, xl for standalone profile contexts where the face is the focal point.",
       table: {
-        type: { summary: '"xs" | "sm" | "md" | "lg" | "xl" | "2xl"' },
+        type: { summary: '"xs" | "sm" | "md" | "lg" | "xl"' },
         defaultValue: { summary: "md" },
         category: "Style Variants",
       },
@@ -97,12 +97,12 @@ const meta = {
 type Story = StoryObj<typeof meta>;
 
 const Default: Story = {
-  args: {
-    children: [
-      <AvatarImage key="image" alt="Avatar 1" src={AVATAR_1} />,
-      <AvatarFallback key="fallback">A1</AvatarFallback>,
-    ],
-  },
+  render: (args): React.JSX.Element => (
+    <Avatar {...args}>
+      <AvatarImage alt="Avatar 1" src={AVATAR_1} />
+      <AvatarFallback>A1</AvatarFallback>
+    </Avatar>
+  ),
 };
 
 const Sizes: Story = {
@@ -131,11 +131,6 @@ const Sizes: Story = {
       <Avatar {...args} size="xl">
         <AvatarImage alt="Aria Park" src={AVATAR_1} />
         <AvatarFallback>A5</AvatarFallback>
-      </Avatar>
-
-      <Avatar {...args} size="2xl">
-        <AvatarImage alt="Diego Silva" src={AVATAR_1} />
-        <AvatarFallback>A6</AvatarFallback>
       </Avatar>
     </div>
   ),
@@ -291,7 +286,7 @@ const Fallback: Story = {
 const BrokenImage: Story = {
   args: {
     children: [
-      <AvatarImage key="img" alt="Diego Silva" src="https://broken.url/avatar.png" />,
+      <AvatarImage key="img" alt="Diego Silva" src="/intentionally-broken.png" />,
       <AvatarFallback key="fb">FR</AvatarFallback>,
     ],
   },

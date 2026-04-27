@@ -16,7 +16,7 @@ export interface AvatarGroupProps extends Omit<ComponentPropsWithRef<"div">, "ch
   /** Whether the avatars lift on hover. @default false */
   isHoverable?: boolean;
   /** Size scale. @default 'md' */
-  size?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
   /** Overlap amount between adjacent avatars. `tighter` squeezes the stack tightest (35% overlap), `tight` packs them closer (30%), `default` is the balanced baseline (20%), `wide` spreads them for face recognition (10%), `wider` is airy for hero layouts (5%). @default 'default' */
   spacing?: "tighter" | "tight" | "default" | "wide" | "wider";
 }

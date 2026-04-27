@@ -53,11 +53,11 @@ const meta = {
     },
     size: {
       control: "select",
-      options: ["xs", "sm", "md", "lg"],
+      options: ["sm", "md", "lg"],
       description:
-        "Wrapper gap scale between stacked slots — FieldLabel, Input, FieldDescription, and FieldError. **xs** (ultra-dense, gap-1) — pro-tool grid cells where label and input must hug. **sm** (dense, gap-1.5) — table cells, inline filters, compact admin forms. **md** (default, gap-1.5) — standard product forms. **lg** (generous, gap-2) — hero onboarding flows and marketing forms. Child slots keep their own typography via their individual `size` prop, so Field's size only controls the vertical rhythm between slots, not the size of the inputs themselves.",
+        "Wrapper gap scale between stacked slots — FieldLabel, Input, FieldDescription, and FieldError. **sm** (dense, gap-1) — table cells, inline filters, compact admin forms. **md** (default, gap-1.5) — standard product forms. **lg** (generous, gap-2) — hero onboarding flows and marketing forms. Child slots keep their own typography via their individual `size` prop, so Field's size only controls the vertical rhythm between slots, not the size of the inputs themselves.",
       table: {
-        type: { summary: '"xs" | "sm" | "md" | "lg"' },
+        type: { summary: '"sm" | "md" | "lg"' },
         defaultValue: { summary: "md" },
         category: "Style Variants",
       },
@@ -192,11 +192,6 @@ const Disabled: Story = {
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Field {...args} size="xs">
-        <FieldLabel size="xs">Extra Small</FieldLabel>
-        <Input size="xs" placeholder="Type here" />
-      </Field>
-
       <Field {...args} size="sm">
         <FieldLabel size="sm">Small</FieldLabel>
         <Input size="sm" placeholder="Type here" />

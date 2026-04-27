@@ -59,7 +59,7 @@ const meta = {
       control: "select",
       options: ["sm", "md", "lg"],
       description:
-        "Size scale for the chip — display role mirrors Button's tier shifted down by one so Chip stays smaller than Button at every tier (Chip sm = Button xs, Chip md = Button sm, Chip lg = Button md). **sm** (h-7, text-2xs) — dense tag clouds, filter rows, table cell labels. **md** (h-8, text-xs, default) — standard tags and filter chips, smaller than Input md so Chip reads as supporting metadata. **lg** (h-9, text-sm) — emphasized status pills or hero filters, paired with Input md/Button md inline. Use sm in dense list contexts, md for the typical tag UI, lg when chips need to read at a distance such as status banners or large filter rails.",
+        "Size scale on a `sqrt(phi) ≈ 1.272` ratio so adjacent sizes clear the perceptual JND threshold. Chip uses the display family scale (smaller than form-aligned Input/Button at the same tier) so chips read as supporting metadata. **sm** (h-6, text-xs) — dense tag clouds, filter rows, table cell labels. **md** (h-8, text-base, default) — standard tags and filter chips paired with Input md inline. **lg** (h-10, text-xl) — emphasized status pills or hero filters paired with Input lg. Use sm in dense list contexts, md for the typical tag UI, lg when chips need to read at a distance such as status banners or large filter rails.",
       table: {
         type: { summary: '"sm" | "md" | "lg"' },
         defaultValue: { summary: "md" },

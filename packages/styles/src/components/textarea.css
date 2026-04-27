@@ -13,7 +13,7 @@
 
     @apply bg-(--textarea-bg) text-(--textarea-fg);
     @apply border border-(--textarea-border);
-    @apply px-3.5 py-1.5 text-sm;
+    @apply px-4 py-2 text-base;
     @apply rounded-md;
     @apply placeholder:text-(--textarea-placeholder);
     @apply resize-y;
@@ -93,11 +93,11 @@
   }
 
   .textarea-size-md {
-    @apply px-3.5 py-1.5 text-sm;
+    @apply px-4 py-2 text-base;
   }
 
   .textarea-size-lg {
-    @apply px-4 py-2 text-base;
+    @apply px-5 py-2.5 text-xl;
   }
 
   .textarea-resize-none {

@@ -13,7 +13,7 @@
 
     @apply bg-(--input-bg) text-(--input-fg);
     @apply border border-(--input-border);
-    @apply h-9 px-3.5 text-sm;
+    @apply h-10 px-4 text-base;
     @apply rounded-md;
     @apply placeholder:text-(--input-placeholder);
 
@@ -87,20 +87,16 @@
     --input-placeholder: var(--color-muted-foreground);
   }
 
-  .input-size-xs {
-    @apply h-7 px-2.5 text-2xs;
-  }
-
   .input-size-sm {
     @apply h-8 px-3 text-xs;
   }
 
   .input-size-md {
-    @apply h-9 px-3.5 text-sm;
+    @apply h-10 px-4 text-base;
   }
 
   .input-size-lg {
-    @apply h-10 px-4 text-base;
+    @apply h-13 px-5 text-xl;
   }
 
   .input-full-width {

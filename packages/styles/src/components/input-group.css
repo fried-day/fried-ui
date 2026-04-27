@@ -13,7 +13,7 @@
     @apply bg-(--input-group-bg) text-(--input-group-fg);
     @apply border border-(--input-group-border);
     @apply rounded-md;
-    @apply min-h-9 text-sm;
+    @apply min-h-10 text-base;
 
     &:hover:not(:focus-within):not(:has(:read-only)):not(:has(:disabled)),
     &:has([data-hovered]):not(:has([data-focused])):not(:has([data-readonly])):not(:has([data-disabled])) {
@@ -77,20 +77,16 @@
     --input-group-fg: var(--color-on-overlay-foreground);
   }
 
-  .input-group-size-xs {
-    @apply min-h-7 text-2xs;
-  }
-
   .input-group-size-sm {
     @apply min-h-8 text-xs;
   }
 
   .input-group-size-md {
-    @apply min-h-9 text-sm;
+    @apply min-h-10 text-base;
   }
 
   .input-group-size-lg {
-    @apply min-h-10 text-base;
+    @apply min-h-13 text-xl;
   }
 
   .input-group-full-width {

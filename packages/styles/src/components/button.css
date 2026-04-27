@@ -13,7 +13,7 @@
 
     @apply bg-(--button-bg) text-(--button-fg);
     @apply border border-(--button-border);
-    @apply h-9 gap-1.5 px-3.5 text-sm;
+    @apply h-10 gap-2 px-4 text-base;
     @apply rounded-md;
 
     &:focus-visible,
@@ -99,24 +99,20 @@
     --button-fg: var(--color-accent-foreground);
   }
 
-  .button-size-xs {
-    @apply h-7 gap-1 px-2.5 text-2xs;
-  }
-
   .button-size-sm {
     @apply h-8 gap-1 px-3 text-xs;
   }
 
   .button-size-md {
-    @apply h-9 gap-1.5 px-3.5 text-sm;
-  }
-
-  .button-size-lg {
     @apply h-10 gap-2 px-4 text-base;
   }
 
+  .button-size-lg {
+    @apply h-13 gap-2.5 px-5 text-xl;
+  }
+
   .button-size-xl {
-    @apply h-11 gap-2.5 px-5 text-lg;
+    @apply h-16 gap-3 px-6 text-2xl;
   }
 
   .button-full-width {
@@ -124,11 +120,7 @@
   }
 
   .button-icon-only {
-    @apply size-9 justify-center gap-0 p-0;
-  }
-
-  .button-icon-only.button-size-xs {
-    @apply size-7;
+    @apply size-10 justify-center gap-0 p-0;
   }
 
   .button-icon-only.button-size-sm {
@@ -136,15 +128,15 @@
   }
 
   .button-icon-only.button-size-md {
-    @apply size-9;
-  }
-
-  .button-icon-only.button-size-lg {
     @apply size-10;
   }
 
+  .button-icon-only.button-size-lg {
+    @apply size-13;
+  }
+
   .button-icon-only.button-size-xl {
-    @apply size-11;
+    @apply size-16;
   }
 
   .button-radius-none {
@@ -185,14 +177,6 @@
     @apply pr-2;
   }
 
-  .button-size-xs:has([slot="icon-start"]) {
-    @apply pl-1;
-  }
-
-  .button-size-xs:has([slot="icon-end"]) {
-    @apply pr-1;
-  }
-
   .button-size-sm:has([slot="icon-start"]) {
     @apply pl-1.5;
   }
@@ -202,19 +186,19 @@
   }
 
   .button-size-lg:has([slot="icon-start"]) {
-    @apply pl-2;
-  }
-
-  .button-size-lg:has([slot="icon-end"]) {
-    @apply pr-2;
-  }
-
-  .button-size-xl:has([slot="icon-start"]) {
     @apply pl-2.5;
   }
 
-  .button-size-xl:has([slot="icon-end"]) {
+  .button-size-lg:has([slot="icon-end"]) {
     @apply pr-2.5;
+  }
+
+  .button-size-xl:has([slot="icon-start"]) {
+    @apply pl-3;
+  }
+
+  .button-size-xl:has([slot="icon-end"]) {
+    @apply pr-3;
   }
 
   .button-spinner {

@@ -35,11 +35,11 @@ const meta = {
     },
     size: {
       control: "select",
-      options: ["xs", "sm", "md", "lg", "xl", "2xl"],
+      options: ["xs", "sm", "md", "lg", "xl"],
       description:
-        "Size scale applied to every avatar in the group. **xs** (size-6, 24px) — inline hints, comment metadata, dense tables. **sm** (size-8, 32px) — dense toolbars, compact lists. **md** (size-9, 36px, default) — standard team/member rosters, form-aligned with Input/Button md. **lg** (size-10, 40px) — emphasized cards, profile headers. **xl** (size-12, 48px) — hero sections, featured contributors. **2xl** (size-14, 56px) — showcase blocks, marketing pages. Use xs/sm when count matters more than identity, md as default, lg/xl/2xl when individual face recognition is important.",
+        "Size scale applied to every avatar in the group on a `sqrt(phi)` ratio so adjacent sizes are visibly distinguishable. **Compact:** xs (24px) — inline metadata, count-first activity indicators; sm (32px) — dense rosters, compact toolbars. **Standard:** md (40px, default) — team and member rosters, attendee lists. **Emphasis:** lg (52px) — featured contributors, emphasized cards; xl (64px) — hero showcases, marketing spotlights. Use xs/sm when count matters more than identity, md as default, lg/xl when individual face recognition is essential.",
       table: {
-        type: { summary: '"xs" | "sm" | "md" | "lg" | "xl" | "2xl"' },
+        type: { summary: '"xs" | "sm" | "md" | "lg" | "xl"' },
         defaultValue: { summary: "md" },
         category: "Style Variants",
       },
@@ -112,7 +112,7 @@ const Default: Story = {
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-end gap-4">
-      {(["xs", "sm", "md", "lg", "xl", "2xl"] as const).map((size) => (
+      {(["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
         <AvatarGroup {...args} key={size} size={size}>
           <Avatar>
             <AvatarImage alt={`Avatar 1 ${size}`} src={AVATAR_1} />

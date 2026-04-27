@@ -41,7 +41,7 @@ export interface BadgeIndicatorProps extends Omit<ComponentPropsWithRef<"span">,
   className?: string;
   /** Whether the halo border (page-background colored, separates badge from anchor) is hidden — set to `true` for flat badges that sit on a matching surface. @default false */
   isBorderless?: boolean;
-  /** Cap numeric content — render as `${max}+` when exceeded. @default 99 */
+  /** Cap numeric content; renders as `99+` when the value exceeds this number. @default 99 */
   max?: number;
   /** Placement corner relative to the wrapped anchor. @default 'top-right' */
   placement?: "top-right" | "top-left" | "bottom-right" | "bottom-left";
@@ -74,7 +74,7 @@ const BadgeIndicator = (props: Readonly<BadgeIndicatorProps>) => {
   const content = isOverflow ? `${String(max)}+` : children;
 
   return (
-    <span role="status" data-slot="badge-indicator" className={indicatorClassName} ref={ref} {...rest}>
+    <span data-slot="badge-indicator" className={indicatorClassName} ref={ref} {...rest}>
       {content}
     </span>
   );
@@ -117,7 +117,7 @@ const BadgeIcon = (props: Readonly<BadgeIconProps>) => {
   });
 
   return (
-    <span role="status" data-slot="badge-icon" className={iconClassName} ref={ref} {...rest}>
+    <span data-slot="badge-icon" className={iconClassName} ref={ref} {...rest}>
       {children}
     </span>
   );

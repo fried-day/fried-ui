@@ -1,7 +1,7 @@
 @layer components {
   .label {
     @apply inline-flex items-center gap-1 select-none;
-    @apply text-sm font-medium;
+    @apply text-base font-medium;
     @apply text-foreground;
   }
 
@@ -13,20 +13,16 @@
     @apply font-normal text-muted-foreground;
   }
 
-  .label-size-xs {
-    @apply text-2xs;
-  }
-
   .label-size-sm {
     @apply text-xs;
   }
 
   .label-size-md {
-    @apply text-sm;
+    @apply text-base;
   }
 
   .label-size-lg {
-    @apply text-base;
+    @apply text-xl;
   }
 
   .label-weight-normal {

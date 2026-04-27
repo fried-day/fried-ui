@@ -1,11 +1,7 @@
 @layer components {
   .field-error {
     @apply block;
-    @apply text-sm text-danger;
-  }
-
-  .field-error-size-xs {
-    @apply text-2xs;
+    @apply text-base text-danger;
   }
 
   .field-error-size-sm {
@@ -13,11 +9,11 @@
   }
 
   .field-error-size-md {
-    @apply text-sm;
+    @apply text-base;
   }
 
   .field-error-size-lg {
-    @apply text-base;
+    @apply text-xl;
   }
 
   .field-error-disabled,
