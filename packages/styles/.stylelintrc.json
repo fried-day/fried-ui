@@ -1,23 +1,6 @@
 {
   "extends": ["stylelint-config-standard", "stylelint-config-tailwindcss"],
   "rules": {
-    "at-rule-no-unknown": null,
-    "at-rule-no-deprecated": null,
-    "no-descending-specificity": null,
-    "selector-class-pattern": null,
-    "custom-property-pattern": null,
-    "lightness-notation": null,
-    "hue-degree-notation": null,
-    "alpha-value-notation": null,
-    "color-function-notation": null,
-    "color-function-alias-notation": null,
-    "media-feature-range-notation": null,
-    "value-keyword-case": null,
-    "function-no-unknown": null,
-    "import-notation": null,
-    "shorthand-property-no-redundant-values": null,
-    "no-duplicate-selectors": null,
-    "block-no-empty": null,
     "declaration-block-no-duplicate-properties": [true, { "ignore": ["consecutive-duplicates-with-different-values"] }]
   },
   "ignoreFiles": ["dist/**", "node_modules/**"]
