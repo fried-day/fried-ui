@@ -20,12 +20,13 @@ export default defineConfig({
       provider: "v8",
       reporter: ["text", "lcov"],
       reportsDirectory: "coverage",
-      include: ["../../packages/react/src/**/*.{ts,tsx}"],
+      include: [path.resolve(here, "../../packages/react/src/**/*.{ts,tsx}")],
       exclude: [
-        "../../packages/react/src/**/*.stories.tsx",
-        "../../packages/react/src/**/*.test.{ts,tsx}",
+        path.resolve(here, "../../packages/react/src/**/*.stories.tsx"),
+        path.resolve(here, "../../packages/react/src/**/*.test.{ts,tsx}"),
         "**/*.d.ts",
       ],
+      allowExternal: true,
     },
   },
   plugins: [
