@@ -41,17 +41,21 @@ function getEnumModifiers(componentFile: string): EnumModifier[] {
 
     for (const prop of interfaceDecl.getProperties()) {
       const propName = prop.getName();
+
       if (seen.has(propName)) continue;
 
       const typeNode = prop.getTypeNode();
       const typeText = typeNode?.getText() ?? "";
+
       if (!typeText.includes("|")) continue;
 
       const parts = typeText.split("|").map((part) => part.trim().replace(/^"|"$/g, ""));
       const isUnion = parts.every((part) => /^[A-Za-z0-9-]*$/.test(part) || part === "");
+
       if (!isUnion) continue;
 
       const values = parts.filter((part) => part !== "" && part !== "default");
+
       if (values.length === 0) continue;
 
       seen.add(propName);
@@ -89,6 +93,7 @@ function parseSelector({
         if (enumMod.values.includes(rest)) {
           modifiers.push({ propName: enumMod.propName, value: rest });
           isMatchedAsModifier = true;
+
           break;
         }
 
@@ -101,6 +106,7 @@ function parseSelector({
         if (enumMod.values.includes(value)) {
           modifiers.push({ propName: enumMod.propName, value });
           isMatchedAsModifier = true;
+
           break;
         }
       }
@@ -131,6 +137,7 @@ function extractSelectors(cssContent: string): string[] {
       if (selectorBlock !== "" && !selectorBlock.startsWith("@")) {
         for (const selector of selectorBlock.split(",")) {
           const trimmed = selector.trim();
+
           if (trimmed !== "") selectors.push(trimmed);
         }
       }
@@ -147,9 +154,11 @@ describe("CSS audit — modifier completeness per internal element", () => {
     "$kebab: every internal element styled by a modifier value covers ALL values of that modifier",
     ({ componentFile, kebab }) => {
       const cssFile = path.join(stylesComponentsDir, `${kebab}.css`);
+
       if (!fs.existsSync(cssFile)) return;
 
       const enums = getEnumModifiers(componentFile);
+
       if (enums.length === 0) return;
 
       const cssContent = fs.readFileSync(cssFile, "utf-8");
@@ -159,11 +168,13 @@ describe("CSS audit — modifier completeness per internal element", () => {
 
       for (const selector of selectors) {
         const parsed = parseSelector({ selector, block: kebab, enums });
+
         if (parsed.modifiers.length === 0) continue;
         if (parsed.internalClasses.length === 0) continue;
 
         for (const internalClass of parsed.internalClasses) {
           if (!coverage.has(internalClass)) coverage.set(internalClass, new Map());
+
           const internalMap = coverage.get(internalClass)!;
 
           for (const modifier of parsed.modifiers) {
