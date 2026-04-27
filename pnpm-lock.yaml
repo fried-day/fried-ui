@@ -53,6 +53,15 @@ importers:
       sort-package-json:
         specifier: ^3.6.1
         version: 3.6.1
+      stylelint:
+        specifier: ^17.9.0
+        version: 17.9.0(typescript@5.9.2)
+      stylelint-config-standard:
+        specifier: ^40.0.0
+        version: 40.0.0(stylelint@17.9.0(typescript@5.9.2))
+      stylelint-config-tailwindcss:
+        specifier: ^1.0.1
+        version: 1.0.1(stylelint@17.9.0(typescript@5.9.2))(tailwindcss@4.2.2)
       turbo:
         specifier: ^2.9.6
         version: 2.9.6
