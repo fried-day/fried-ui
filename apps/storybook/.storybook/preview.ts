@@ -1,7 +1,7 @@
 import "./styles.css";
 
 import type { Preview } from "@storybook/react";
-import { INITIAL_VIEWPORTS } from "storybook/viewport";
+import { MINIMAL_VIEWPORTS } from "storybook/viewport";
 
 import { formatSource } from "./format-source";
 
@@ -43,7 +43,7 @@ const preview: Preview = {
       },
     },
     viewport: {
-      options: INITIAL_VIEWPORTS,
+      options: MINIMAL_VIEWPORTS,
     },
   },
   decorators: [
