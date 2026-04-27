@@ -24,28 +24,32 @@
     @apply text-base leading-none font-medium text-muted-foreground;
   }
 
+  .avatar-group [data-slot="avatar"]:not(:first-child) {
+    @apply -ms-2;
+  }
+
+  .avatar-group .avatar-group-counter {
+    @apply -ms-2;
+  }
+
   .avatar-group-size-xs .avatar-group-counter {
-    @apply size-6 text-xs;
+    @apply -ms-1 size-6 text-xs;
   }
 
   .avatar-group-size-sm .avatar-group-counter {
-    @apply size-8 text-xs;
+    @apply -ms-1.5 size-8 text-xs;
   }
 
   .avatar-group-size-md .avatar-group-counter {
-    @apply size-10 text-base;
+    @apply -ms-2 size-10 text-base;
   }
 
   .avatar-group-size-lg .avatar-group-counter {
-    @apply size-13 text-xl;
+    @apply -ms-2.5 size-13 text-xl;
   }
 
   .avatar-group-size-xl .avatar-group-counter {
-    @apply size-16 text-2xl;
-  }
-
-  .avatar-group [data-slot="avatar"]:not(:first-child) {
-    @apply -ms-2;
+    @apply -ms-3 size-16 text-2xl;
   }
 
   @media (hover: hover) {
@@ -193,30 +197,6 @@
 
   .avatar-group-size-xl.avatar-group-spacing-tighter [data-slot="avatar"]:not(:first-child) {
     @apply -ms-6;
-  }
-
-  .avatar-group .avatar-group-counter {
-    @apply -ms-2;
-  }
-
-  .avatar-group-size-xs .avatar-group-counter {
-    @apply -ms-1;
-  }
-
-  .avatar-group-size-sm .avatar-group-counter {
-    @apply -ms-1.5;
-  }
-
-  .avatar-group-size-md .avatar-group-counter {
-    @apply -ms-2;
-  }
-
-  .avatar-group-size-lg .avatar-group-counter {
-    @apply -ms-2.5;
-  }
-
-  .avatar-group-size-xl .avatar-group-counter {
-    @apply -ms-3;
   }
 
   .avatar-group-spacing-wider .avatar-group-counter {

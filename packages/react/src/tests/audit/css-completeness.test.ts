@@ -114,18 +114,29 @@ function parseSelector({
 
 function extractSelectors(cssContent: string): string[] {
   const selectors: string[] = [];
+  let cursor = 0;
 
-  const ruleStartPattern = /([^{}]+)\{/g;
-  let match;
+  while (cursor < cssContent.length) {
+    const start = cursor;
 
-  while ((match = ruleStartPattern.exec(cssContent)) !== null) {
-    const selectorBlock = match[1]?.trim() ?? "";
-    if (selectorBlock === "" || selectorBlock.startsWith("@")) continue;
-
-    for (const selector of selectorBlock.split(",")) {
-      const trimmed = selector.trim();
-      if (trimmed !== "") selectors.push(trimmed);
+    while (cursor < cssContent.length && cssContent[cursor] !== "{" && cssContent[cursor] !== "}") {
+      cursor += 1;
     }
+
+    if (cursor >= cssContent.length) break;
+
+    if (cssContent[cursor] === "{") {
+      const selectorBlock = cssContent.slice(start, cursor).trim();
+
+      if (selectorBlock !== "" && !selectorBlock.startsWith("@")) {
+        for (const selector of selectorBlock.split(",")) {
+          const trimmed = selector.trim();
+          if (trimmed !== "") selectors.push(trimmed);
+        }
+      }
+    }
+
+    cursor += 1;
   }
 
   return selectors;
@@ -157,6 +168,7 @@ describe("CSS audit — modifier completeness per internal element", () => {
 
           for (const modifier of parsed.modifiers) {
             if (!internalMap.has(modifier.propName)) internalMap.set(modifier.propName, new Set());
+
             internalMap.get(modifier.propName)!.add(modifier.value);
           }
         }
@@ -167,9 +179,11 @@ describe("CSS audit — modifier completeness per internal element", () => {
       for (const [internalClass, modMap] of coverage) {
         for (const [propName, values] of modMap) {
           const enumMod = enums.find((entry) => entry.propName === propName);
+
           if (!enumMod) continue;
 
           const missingValues = enumMod.values.filter((value) => !values.has(value));
+
           if (missingValues.length === 0) continue;
           if (missingValues.length === enumMod.values.length) continue;
 
