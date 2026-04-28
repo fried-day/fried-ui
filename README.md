@@ -1,6 +1,18 @@
+<div align="center">
+
 # Fried UI
 
-Beautiful, accessible React components with zero runtime styling.
+**Beautiful, accessible React components with zero runtime styling.**
+
+Multi-framework CSS, React Aria primitives, WCAG AAA focus — one API.
+
+[![Checks](https://img.shields.io/github/checks-status/fried-day/fried-ui/main?label=checks)](https://github.com/fried-day/fried-ui/actions)
+[![License](https://img.shields.io/github/license/fried-day/fried-ui)](LICENSE)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/quality_gate?project=fried-day_fried-ui)](https://sonarcloud.io/summary/new_code?id=fried-day_fried-ui)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=fried-day_fried-ui&metric=bugs)](https://sonarcloud.io/summary/new_code?id=fried-day_fried-ui)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=fried-day_fried-ui&metric=coverage)](https://sonarcloud.io/summary/new_code?id=fried-day_fried-ui)
+
+</div>
 
 ## Features
 
