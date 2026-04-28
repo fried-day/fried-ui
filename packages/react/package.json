@@ -97,7 +97,7 @@
     "sort": "sort-package-json --check",
     "sort:fix": "sort-package-json",
     "test": "vitest run",
-    "test:coverage": "vitest run --coverage",
+    "test:coverage": "vitest run --coverage && node ../../scripts/normalize-lcov.mjs coverage/lcov.info",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit"
   },
