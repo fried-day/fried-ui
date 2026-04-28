@@ -192,13 +192,11 @@ pnpm turbo gen display-component      # For Chip, Surface, Divider, etc.
 pnpm turbo gen interactive-component  # For Button, Link, Switch, etc.
 ```
 
-2. Customize the 6 generated files:
+2. Customize the 4 generated files:
 
 ```txt
 packages/styles/src/components/{name}.css
 packages/react/src/components/{name}/{Name}.tsx
-packages/react/src/components/{name}/{name}.variants.ts
-packages/react/src/components/{name}/{name}.test.tsx
 packages/react/src/components/{name}/{name}.stories.tsx
 packages/react/src/components/{name}/index.ts
 ```
