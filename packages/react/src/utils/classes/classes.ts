@@ -3,14 +3,10 @@ import { clsx } from "clsx";
 interface ClassesParams {
   /** Component base class name (e.g. `"button"`, `"input"`). */
   block: string;
-  /** Map of modifier keys to values. Emission rules: boolean becomes `{block}-{key}`, `variant` key becomes `{block}-{value}`, others become `{block}-{key}-{value}`. Falsy values skip emission. */
-  modifiers: Modifiers;
+  /** Object of modifier keys and values. Boolean values emit `block-key` (e.g. `button-disabled`), string values emit `block-key-value` (e.g. `button-size-md`). The special key `variant` emits `block-value` (e.g. `button-primary`). */
+  modifiers: Record<string, boolean | string | undefined>;
   /** User-supplied class string appended last — wins on cascade. @default undefined */
   className?: string;
-}
-
-interface Modifiers {
-  [key: string]: boolean | string | undefined;
 }
 
 /**
