@@ -3,8 +3,6 @@ name: CI
 on:
   pull_request:
     branches: [main]
-  push:
-    branches: [main]
   workflow_call:
 
 concurrency:
@@ -19,7 +17,7 @@ jobs:
     name: Audit
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
       - uses: ./.github/actions/setup
       - run: pnpm audit:deps
 
@@ -27,7 +25,7 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
       - uses: ./.github/actions/setup
       - run: pnpm lint
 
@@ -35,7 +33,7 @@ jobs:
     name: Sort
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
       - uses: ./.github/actions/setup
       - run: pnpm sort
 
@@ -43,7 +41,7 @@ jobs:
     name: Typecheck
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
       - uses: ./.github/actions/setup
       - run: pnpm typecheck
 
@@ -51,7 +49,7 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
       - uses: ./.github/actions/setup
       - name: Install Playwright Chromium
         run: pnpm --filter=storybook playwright:install
@@ -61,7 +59,7 @@ jobs:
     name: Format
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
       - uses: ./.github/actions/setup
       - run: pnpm format
 
@@ -69,7 +67,7 @@ jobs:
     name: Sonar
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
         with:
           fetch-depth: 0
       - uses: ./.github/actions/setup
@@ -88,7 +86,7 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
       - uses: ./.github/actions/setup
       - uses: preactjs/compressed-size-action@8518045ed95e94e971b83333085e1cb99aa18aa8
         with:
@@ -102,7 +100,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [audit, lint, typecheck, test, format]
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
       - uses: ./.github/actions/setup
       - run: pnpm build
 
@@ -115,7 +113,7 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
         with:
           fetch-depth: 0
       - uses: ./.github/actions/setup
