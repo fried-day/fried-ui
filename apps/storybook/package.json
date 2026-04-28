@@ -5,14 +5,16 @@
   "scripts": {
     "build": "storybook build -o dist",
     "clean": "rm -rf dist .turbo",
+    "coverage:normalize": "node ../../scripts/normalize-lcov.mjs coverage/lcov.info",
     "dev": "storybook dev -p 6006",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --fix --max-warnings 0",
     "playwright:install": "playwright install chromium --with-deps",
     "sort": "sort-package-json --check",
     "sort:fix": "sort-package-json",
-    "test": "vitest run",
-    "test:coverage": "vitest run --coverage && node ../../scripts/normalize-lcov.mjs coverage/lcov.info",
+    "test": "vitest run --project storybook",
+    "test:coverage": "pnpm test:coverage-run && pnpm coverage:normalize",
+    "test:coverage-run": "vitest run --project storybook --coverage",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

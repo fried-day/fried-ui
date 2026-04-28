@@ -6,8 +6,8 @@
 
 Compound primitives, dual selectors, dark mode, and zero runtime.
 
-[![Checks](https://img.shields.io/github/checks-status/fried-day/fried-ui/main?label=checks)](https://github.com/fried-day/fried-ui/actions)
 [![License](https://img.shields.io/github/license/fried-day/fried-ui)](LICENSE)
+[![Checks](https://img.shields.io/github/checks-status/fried-day/fried-ui/main?label=checks)](https://github.com/fried-day/fried-ui/actions)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/quality_gate?project=fried-day_fried-ui)](https://sonarcloud.io/summary/new_code?id=fried-day_fried-ui)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=fried-day_fried-ui&metric=bugs)](https://sonarcloud.io/summary/new_code?id=fried-day_fried-ui)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=fried-day_fried-ui&metric=coverage)](https://sonarcloud.io/summary/new_code?id=fried-day_fried-ui)

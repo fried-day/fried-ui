@@ -12,7 +12,9 @@
     "sort": "sort-package-json --check",
     "sort:fix": "sort-package-json",
     "start": "next start",
-    "typecheck": "next typegen && tsc --noEmit"
+    "typecheck": "pnpm typecheck:gen && pnpm typecheck:check",
+    "typecheck:check": "tsc --noEmit",
+    "typecheck:gen": "next typegen"
   },
   "dependencies": {
     "@fried-ui/react": "workspace:*",

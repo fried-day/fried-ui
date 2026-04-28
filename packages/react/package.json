@@ -90,6 +90,7 @@
     "build": "tsup",
     "canary:publish": "pnpm publish --tag canary --no-git-checks --access public",
     "clean": "rm -rf dist .turbo",
+    "coverage:normalize": "node ../../scripts/normalize-lcov.mjs coverage/lcov.info",
     "dev": "tsup --watch",
     "generate:component": "turbo gen react-component",
     "lint": "eslint . --max-warnings 0",
@@ -97,7 +98,8 @@
     "sort": "sort-package-json --check",
     "sort:fix": "sort-package-json",
     "test": "vitest run",
-    "test:coverage": "vitest run --coverage && node ../../scripts/normalize-lcov.mjs coverage/lcov.info",
+    "test:coverage": "pnpm test:coverage-run && pnpm coverage:normalize",
+    "test:coverage-run": "vitest run --coverage",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit"
   },
