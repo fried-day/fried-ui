@@ -1,8 +1,8 @@
 # @fried-ui/styles
 
-Pure CSS design tokens and component styles for Fried UI. Built on [Tailwind CSS v4](https://tailwindcss.com/).
+**Pure CSS for Fried UI — same class in HTML, no React needed.**
 
-Zero JavaScript dependency — works with React, Vue, Svelte, or plain HTML.
+Design tokens, component classes, dual selectors, dark mode.
 
 ## Installation
 

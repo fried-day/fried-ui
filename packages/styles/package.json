@@ -1,7 +1,7 @@
 {
   "name": "@fried-ui/styles",
   "version": "0.1.0",
-  "description": "Theme engine, design tokens, and component presets for fried-ui",
+  "description": "Pure CSS for Fried UI — same class in HTML, no React needed. Design tokens, component classes, dual selectors, dark mode.",
   "keywords": [
     "tailwindcss",
     "styles",

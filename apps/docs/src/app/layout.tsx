@@ -21,11 +21,13 @@ export const metadata: Metadata = {
     default: "fried-ui",
     template: "%s — fried-ui",
   },
-  description: "Beautiful, accessible React components built on React Aria + Tailwind CSS v4.",
+  description:
+    "Same component in React. Same class in HTML. One source of truth. Compound primitives, dual selectors, dark mode, and zero runtime.",
   metadataBase: new URL("https://fried-ui.vercel.app"),
   openGraph: {
     title: "fried-ui",
-    description: "Beautiful, accessible React components built on React Aria + Tailwind CSS v4.",
+    description:
+      "Same component in React. Same class in HTML. One source of truth. Compound primitives, dual selectors, dark mode, and zero runtime.",
     siteName: "fried-ui",
     type: "website",
   },

@@ -2,9 +2,9 @@
 
 # Fried UI
 
-**Beautiful, accessible React components with zero runtime styling.**
+**Same component in React. Same class in HTML. One source of truth.**
 
-Multi-framework CSS, React Aria primitives, WCAG AAA focus — one API.
+Compound primitives, dual selectors, dark mode, and zero runtime.
 
 [![Checks](https://img.shields.io/github/checks-status/fried-day/fried-ui/main?label=checks)](https://github.com/fried-day/fried-ui/actions)
 [![License](https://img.shields.io/github/license/fried-day/fried-ui)](LICENSE)

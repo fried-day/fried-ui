@@ -1,6 +1,8 @@
 # @fried-ui/react
 
-Beautiful, accessible React components for building modern web apps at scale.
+**Same component in React. Same class in HTML. One source of truth.**
+
+Compound primitives, dual selectors, dark mode, and zero runtime.
 
 ## Installation
 

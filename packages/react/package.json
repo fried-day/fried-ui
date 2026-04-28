@@ -1,7 +1,7 @@
 {
   "name": "@fried-ui/react",
   "version": "0.1.0",
-  "description": "Beautiful, accessible React components for building modern web apps at scale",
+  "description": "Same component in React. Same class in HTML. One source of truth. Compound primitives, dual selectors, dark mode, and zero runtime.",
   "keywords": [
     "react",
     "components",

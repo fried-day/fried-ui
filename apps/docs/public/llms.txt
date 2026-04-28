@@ -1,6 +1,8 @@
 # Fried UI
 
-> Beautiful, accessible React components with zero runtime styling.
+> **Same component in React. Same class in HTML. One source of truth.**
+
+Compound primitives, dual selectors, dark mode, and zero runtime.
 
 ## Docs
 
