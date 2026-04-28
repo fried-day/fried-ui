@@ -33,6 +33,7 @@ tsup.config.bundled_*
 
 # Debug
 pnpm-debug.log*
+build-storybook.log
 
 # AI
 .agents/
