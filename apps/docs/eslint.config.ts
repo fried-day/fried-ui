@@ -1,4 +1,4 @@
-import { createNextJsConfig } from "@repo/quality/eslint/next-js";
+import { createNextJsConfig } from "@repo/eslint-config/next-js";
 
 export default [
   ...createNextJsConfig(import.meta.dirname),

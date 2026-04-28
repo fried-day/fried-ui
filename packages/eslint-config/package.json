@@ -1,18 +1,12 @@
 {
-  "name": "@repo/quality",
+  "name": "@repo/eslint-config",
   "version": "0.0.0",
   "private": true,
   "type": "module",
   "exports": {
-    "./eslint/base": "./eslint/base.ts",
-    "./eslint/next-js": "./eslint/next.ts",
-    "./eslint/react-internal": "./eslint/react-internal.ts",
-    "./tsconfig/base": "./tsconfig/base.json",
-    "./tsconfig/base.json": "./tsconfig/base.json",
-    "./tsconfig/nextjs": "./tsconfig/nextjs.json",
-    "./tsconfig/nextjs.json": "./tsconfig/nextjs.json",
-    "./tsconfig/react-library": "./tsconfig/react-library.json",
-    "./tsconfig/react-library.json": "./tsconfig/react-library.json"
+    "./base": "./base.ts",
+    "./next-js": "./next.ts",
+    "./react-internal": "./react-internal.ts"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
@@ -24,6 +18,7 @@
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@next/eslint-plugin-next": "^16.2.1",
+    "@repo/tsconfig": "workspace:*",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-nextfriday": "^1.23.0",

@@ -111,7 +111,8 @@
     "react-aria-components": "^1.16.0"
   },
   "devDependencies": {
-    "@repo/quality": "workspace:*",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/tsconfig": "workspace:*",
     "@storybook/react": "^10.3.3",
     "@types/node": "^22.15.3",
     "@types/react": "19.2.2",

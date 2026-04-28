@@ -6,9 +6,13 @@ packages/styles:
   - changed-files:
       - any-glob-to-any-file: "packages/styles/**"
 
-packages/quality:
+packages/eslint-config:
   - changed-files:
-      - any-glob-to-any-file: "packages/quality/**"
+      - any-glob-to-any-file: "packages/eslint-config/**"
+
+packages/tsconfig:
+  - changed-files:
+      - any-glob-to-any-file: "packages/tsconfig/**"
 
 packages/vitest:
   - changed-files:

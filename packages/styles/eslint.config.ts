@@ -1,3 +1,3 @@
-import { createConfig } from "@repo/quality/eslint/base";
+import { createConfig } from "@repo/eslint-config/base";
 
 export default createConfig(import.meta.dirname);
