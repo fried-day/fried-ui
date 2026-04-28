@@ -39,7 +39,7 @@ const Textarea = (props: Readonly<TextareaProps>) => {
     className,
   });
 
-  return <AriaTextArea {...rest} data-slot="textarea" className={textareaClassName} ref={ref} />;
+  return <AriaTextArea data-slot="textarea" className={textareaClassName} ref={ref} {...rest} />;
 };
 
 Textarea.displayName = "Textarea";

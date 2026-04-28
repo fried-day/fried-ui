@@ -124,15 +124,15 @@ const Optional: Story = {
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Label {...args} size="sm">
+      <Label size="sm" {...args}>
         Small Label
       </Label>
 
-      <Label {...args} size="md">
+      <Label size="md" {...args}>
         Medium Label
       </Label>
 
-      <Label {...args} size="lg">
+      <Label size="lg" {...args}>
         Large Label
       </Label>
     </>
@@ -142,15 +142,15 @@ const Sizes: Story = {
 const Weights: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Label {...args} weight="normal">
+      <Label weight="normal" {...args}>
         Normal (400)
       </Label>
 
-      <Label {...args} weight="medium">
+      <Label weight="medium" {...args}>
         Medium (500)
       </Label>
 
-      <Label {...args} weight="semibold">
+      <Label weight="semibold" {...args}>
         Semibold (600)
       </Label>
     </>

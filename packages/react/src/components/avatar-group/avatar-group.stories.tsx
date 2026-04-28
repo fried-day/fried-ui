@@ -108,7 +108,7 @@ const Sizes: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-end gap-4">
       {(["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
-        <AvatarGroup {...args} key={size} size={size}>
+        <AvatarGroup key={size} size={size} {...args}>
           <Avatar>
             <AvatarImage alt="Avatar 1" src={AVATAR_1} />
             <AvatarFallback>A1</AvatarFallback>
@@ -133,7 +133,7 @@ const Spacing: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-end gap-4">
       {(["wider", "wide", "default", "tight", "tighter"] as const).map((spacing) => (
-        <AvatarGroup {...args} key={spacing} spacing={spacing}>
+        <AvatarGroup key={spacing} spacing={spacing} {...args}>
           <Avatar>
             <AvatarImage alt="Avatar 1" src={AVATAR_1} />
             <AvatarFallback>A1</AvatarFallback>

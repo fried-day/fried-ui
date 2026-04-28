@@ -101,13 +101,13 @@ const Chip = (props: Readonly<ChipProps>) => {
 
     return (
       <AriaButton
-        {...buttonRest}
         data-slot="chip"
         aria-pressed={ariaPressed}
         className={chipClassName}
         isDisabled={isDisabled}
         onPress={onPress}
         ref={buttonRef}
+        {...buttonRest}
       >
         {content}
       </AriaButton>
@@ -117,7 +117,7 @@ const Chip = (props: Readonly<ChipProps>) => {
   const role = isIconOnly ? "img" : undefined;
 
   return (
-    <span {...rest} data-slot="chip" aria-disabled={ariaDisabled} className={chipClassName} ref={ref} role={role}>
+    <span data-slot="chip" aria-disabled={ariaDisabled} className={chipClassName} ref={ref} role={role} {...rest}>
       {content}
     </span>
   );

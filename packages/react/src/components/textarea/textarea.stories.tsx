@@ -124,8 +124,8 @@ const Default: Story = {};
 const Variants: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Textarea {...args} variant="primary" placeholder="Primary" />
-      <Textarea {...args} variant="secondary" placeholder="Secondary" />
+      <Textarea variant="primary" placeholder="Primary" {...args} />
+      <Textarea variant="secondary" placeholder="Secondary" {...args} />
     </>
   ),
 };
@@ -133,7 +133,7 @@ const Variants: Story = {
 const OverlayVariant: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-600 to-blue-600 p-16">
-      <Textarea {...args} variant="overlay" placeholder="Overlay" />
+      <Textarea variant="overlay" placeholder="Overlay" {...args} />
     </div>
   ),
 };
@@ -141,9 +141,9 @@ const OverlayVariant: Story = {
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Textarea {...args} size="sm" placeholder="Small" />
-      <Textarea {...args} size="md" placeholder="Medium" />
-      <Textarea {...args} size="lg" placeholder="Large" />
+      <Textarea size="sm" placeholder="Small" {...args} />
+      <Textarea size="md" placeholder="Medium" {...args} />
+      <Textarea size="lg" placeholder="Large" {...args} />
     </>
   ),
 };
@@ -151,10 +151,10 @@ const Sizes: Story = {
 const Radius: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Textarea {...args} radius="none" placeholder="None" />
-      <Textarea {...args} radius="sm" placeholder="Small" />
-      <Textarea {...args} radius="md" placeholder="Medium" />
-      <Textarea {...args} radius="lg" placeholder="Large" />
+      <Textarea radius="none" placeholder="None" {...args} />
+      <Textarea radius="sm" placeholder="Small" {...args} />
+      <Textarea radius="md" placeholder="Medium" {...args} />
+      <Textarea radius="lg" placeholder="Large" {...args} />
     </>
   ),
 };
@@ -162,10 +162,10 @@ const Radius: Story = {
 const Resize: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Textarea {...args} resize="none" placeholder="No resize" />
-      <Textarea {...args} resize="vertical" placeholder="Vertical" />
-      <Textarea {...args} resize="horizontal" placeholder="Horizontal" />
-      <Textarea {...args} resize="both" placeholder="Both" />
+      <Textarea resize="none" placeholder="No resize" {...args} />
+      <Textarea resize="vertical" placeholder="Vertical" {...args} />
+      <Textarea resize="horizontal" placeholder="Horizontal" {...args} />
+      <Textarea resize="both" placeholder="Both" {...args} />
     </>
   ),
 };

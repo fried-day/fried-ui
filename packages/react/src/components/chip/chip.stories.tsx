@@ -148,35 +148,35 @@ const Default: Story = {
 const Variants: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Chip {...args} variant="primary">
+      <Chip variant="primary" {...args}>
         Primary
       </Chip>
 
-      <Chip {...args} variant="secondary">
+      <Chip variant="secondary" {...args}>
         Secondary
       </Chip>
 
-      <Chip {...args} variant="ghost">
+      <Chip variant="ghost" {...args}>
         Ghost
       </Chip>
 
-      <Chip {...args} variant="accent">
+      <Chip variant="accent" {...args}>
         Accent
       </Chip>
 
-      <Chip {...args} variant="success">
+      <Chip variant="success" {...args}>
         Success
       </Chip>
 
-      <Chip {...args} variant="warning">
+      <Chip variant="warning" {...args}>
         Warning
       </Chip>
 
-      <Chip {...args} variant="danger">
+      <Chip variant="danger" {...args}>
         Danger
       </Chip>
 
-      <Chip {...args} variant="info">
+      <Chip variant="info" {...args}>
         Info
       </Chip>
     </>
@@ -185,8 +185,8 @@ const Variants: Story = {
 
 const OverlayVariant: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
-      <Chip {...args} variant="overlay">
+    <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 to-blue-600 p-16">
+      <Chip variant="overlay" {...args}>
         Overlay
       </Chip>
     </div>
@@ -196,15 +196,15 @@ const OverlayVariant: Story = {
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Chip {...args} size="sm">
+      <Chip size="sm" {...args}>
         Small
       </Chip>
 
-      <Chip {...args} size="md">
+      <Chip size="md" {...args}>
         Medium
       </Chip>
 
-      <Chip {...args} size="lg">
+      <Chip size="lg" {...args}>
         Large
       </Chip>
     </>
@@ -214,23 +214,23 @@ const Sizes: Story = {
 const Radius: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Chip {...args} radius="none">
+      <Chip radius="none" {...args}>
         None
       </Chip>
 
-      <Chip {...args} radius="sm">
+      <Chip radius="sm" {...args}>
         Small
       </Chip>
 
-      <Chip {...args} radius="md">
+      <Chip radius="md" {...args}>
         Medium
       </Chip>
 
-      <Chip {...args} radius="lg">
+      <Chip radius="lg" {...args}>
         Large
       </Chip>
 
-      <Chip {...args} radius="full">
+      <Chip radius="full" {...args}>
         Full
       </Chip>
     </>
@@ -240,27 +240,27 @@ const Radius: Story = {
 const WithIcon: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Chip {...args} variant="primary">
+      <Chip variant="primary" {...args}>
         <StarIcon slot="icon-start" />
         Featured
       </Chip>
 
-      <Chip {...args} variant="success">
+      <Chip variant="success" {...args}>
         <CheckCircleIcon slot="icon-start" />
         Verified
       </Chip>
 
-      <Chip {...args} variant="warning">
+      <Chip variant="warning" {...args}>
         <ExclamationTriangleIcon slot="icon-start" />
         Pending
       </Chip>
 
-      <Chip {...args} variant="danger">
+      <Chip variant="danger" {...args}>
         <XCircleIcon slot="icon-start" />
         Expired
       </Chip>
 
-      <Chip {...args} variant="info">
+      <Chip variant="info" {...args}>
         <InformationCircleIcon slot="icon-start" />
         Beta
       </Chip>
@@ -271,12 +271,12 @@ const WithIcon: Story = {
 const WithAvatar: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Chip {...args} variant="secondary">
+      <Chip variant="secondary" {...args}>
         <img slot="avatar" alt="" src={AVATAR_SRC} />
         {"Colm Tuite"}
       </Chip>
 
-      <Chip {...args} variant="secondary">
+      <Chip variant="secondary" {...args}>
         <UserIcon slot="avatar" />
         Guest User
       </Chip>
@@ -287,15 +287,15 @@ const WithAvatar: Story = {
 const IconOnly: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Chip {...args} aria-label="Featured" isIconOnly>
+      <Chip aria-label="Featured" isIconOnly {...args}>
         <StarIcon slot="icon" />
       </Chip>
 
-      <Chip {...args} variant="accent" aria-label="Notification" isIconOnly>
+      <Chip variant="accent" aria-label="Notification" isIconOnly {...args}>
         <BellIcon slot="icon" />
       </Chip>
 
-      <Chip {...args} variant="success" aria-label="Favorite" isIconOnly>
+      <Chip variant="success" aria-label="Favorite" isIconOnly {...args}>
         <HeartIcon slot="icon" />
       </Chip>
     </>
@@ -308,23 +308,23 @@ const Selected: Story = {
   },
   render: (args): React.JSX.Element => (
     <>
-      <Chip {...args} variant="primary">
+      <Chip variant="primary" {...args}>
         Primary
       </Chip>
 
-      <Chip {...args} variant="secondary">
+      <Chip variant="secondary" {...args}>
         Secondary
       </Chip>
 
-      <Chip {...args} variant="ghost">
+      <Chip variant="ghost" {...args}>
         Ghost
       </Chip>
 
-      <Chip {...args} variant="success">
+      <Chip variant="success" {...args}>
         Success
       </Chip>
 
-      <Chip {...args} variant="info">
+      <Chip variant="info" {...args}>
         Info
       </Chip>
     </>
@@ -337,16 +337,16 @@ const Clickable: Story = {
   },
   render: (args): React.JSX.Element => (
     <>
-      <Chip {...args} variant="primary">
+      <Chip variant="primary" {...args}>
         Assist
       </Chip>
 
-      <Chip {...args} variant="secondary">
+      <Chip variant="secondary" {...args}>
         <StarIcon slot="icon-start" />
         Suggestion
       </Chip>
 
-      <Chip {...args} variant="ghost">
+      <Chip variant="ghost" {...args}>
         Filter
       </Chip>
     </>
@@ -359,20 +359,20 @@ const Dismissible: Story = {
   },
   render: (args): React.JSX.Element => (
     <>
-      <Chip {...args} variant="secondary">
+      <Chip variant="secondary" {...args}>
         React
       </Chip>
 
-      <Chip {...args} variant="secondary">
+      <Chip variant="secondary" {...args}>
         TypeScript
       </Chip>
 
-      <Chip {...args} variant="secondary">
+      <Chip variant="secondary" {...args}>
         <img slot="avatar" alt="" src={AVATAR_SRC} />
         {"Colm Tuite"}
       </Chip>
 
-      <Chip {...args} variant="primary">
+      <Chip variant="primary" {...args}>
         Tailwind
       </Chip>
     </>
@@ -382,19 +382,19 @@ const Dismissible: Story = {
 const FilterChip: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Chip {...args} variant="ghost" onPress={(): void => {}}>
+      <Chip variant="ghost" onPress={(): void => {}} {...args}>
         All
       </Chip>
 
-      <Chip {...args} variant="ghost" onPress={(): void => {}} isSelected>
+      <Chip variant="ghost" onPress={(): void => {}} isSelected {...args}>
         Design
       </Chip>
 
-      <Chip {...args} variant="ghost" onPress={(): void => {}} onDismiss={(): void => {}} isSelected>
+      <Chip variant="ghost" onPress={(): void => {}} onDismiss={(): void => {}} isSelected {...args}>
         Engineering
       </Chip>
 
-      <Chip {...args} variant="ghost" onPress={(): void => {}}>
+      <Chip variant="ghost" onPress={(): void => {}} {...args}>
         Marketing
       </Chip>
     </>
@@ -407,15 +407,15 @@ const Disabled: Story = {
   },
   render: (args): React.JSX.Element => (
     <>
-      <Chip {...args} variant="primary">
+      <Chip variant="primary" {...args}>
         Primary
       </Chip>
 
-      <Chip {...args} variant="secondary" onDismiss={(): void => {}}>
+      <Chip variant="secondary" onDismiss={(): void => {}} {...args}>
         Dismissible
       </Chip>
 
-      <Chip {...args} variant="ghost" onPress={(): void => {}}>
+      <Chip variant="ghost" onPress={(): void => {}} {...args}>
         Clickable
       </Chip>
     </>

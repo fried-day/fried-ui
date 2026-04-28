@@ -59,15 +59,15 @@ const Default: Story = {};
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Description {...args} size="sm">
+      <Description size="sm" {...args}>
         Small Description
       </Description>
 
-      <Description {...args} size="md">
+      <Description size="md" {...args}>
         Medium Description
       </Description>
 
-      <Description {...args} size="lg">
+      <Description size="lg" {...args}>
         Large Description
       </Description>
     </>

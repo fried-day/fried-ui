@@ -4,6 +4,7 @@ import type { ComponentPropsWithRef, ReactNode } from "react";
 
 import * as RadixAvatar from "@radix-ui/react-avatar";
 
+import { useAvatarGroupContext } from "../avatar-group/avatar-group-context";
 import { classes } from "../../utils/classes";
 
 export interface AvatarProps extends Omit<ComponentPropsWithRef<typeof RadixAvatar.Root>, "children" | "className"> {
@@ -29,11 +30,13 @@ export interface AvatarProps extends Omit<ComponentPropsWithRef<typeof RadixAvat
  */
 const Avatar = (props: Readonly<AvatarProps>) => {
   const { children, className, isBordered, isDisabled, radius, ref, ring, size, ...rest } = props;
+  const inheritedSize = useAvatarGroupContext()?.size;
+  const resolvedSize = size ?? inheritedSize;
 
   const avatarClassName = classes({
     block: "avatar",
     modifiers: {
-      size,
+      size: resolvedSize,
       radius,
       ring,
       bordered: isBordered,

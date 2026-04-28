@@ -1,9 +1,10 @@
 "use client";
 
-import type { ComponentPropsWithRef, ReactElement, ReactNode } from "react";
-import { Children, cloneElement, isValidElement } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
+import { useMemo } from "react";
 
-import type { AvatarProps } from "../avatar";
+import { AvatarGroupContext } from "./avatar-group-context";
+import type { AvatarGroupContextProps } from "./avatar-group-context";
 import { classes } from "../../utils/classes";
 
 export interface AvatarGroupProps extends Omit<ComponentPropsWithRef<"div">, "children" | "className"> {
@@ -39,20 +40,14 @@ const AvatarGroup = (props: Readonly<AvatarGroupProps>) => {
     className,
   });
 
-  const childArray = Children.toArray(children).filter((child) => isValidElement(child)) as ReactElement<AvatarProps>[];
-
-  const renderChild = (child: ReactElement<AvatarProps>): ReactElement => {
-    const childSize = (child.props as AvatarProps | undefined)?.size;
-
-    if (childSize !== undefined) return child;
-
-    return cloneElement(child, { size });
-  };
+  const contextValue = useMemo<AvatarGroupContextProps>(() => ({ size }), [size]);
 
   return (
-    <div data-slot="avatar-group" className={groupClassName} ref={ref} {...rest}>
-      {childArray.map((child) => renderChild(child))}
-    </div>
+    <AvatarGroupContext value={contextValue}>
+      <div data-slot="avatar-group" className={groupClassName} ref={ref} {...rest}>
+        {children}
+      </div>
+    </AvatarGroupContext>
   );
 };
 

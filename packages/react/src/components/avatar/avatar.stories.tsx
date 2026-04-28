@@ -103,27 +103,27 @@ const Default: Story = {
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-end gap-4">
-      <Avatar {...args} size="xs">
+      <Avatar size="xs" {...args}>
         <AvatarImage alt="Avatar 1" src={AVATAR_1} />
         <AvatarFallback>A1</AvatarFallback>
       </Avatar>
 
-      <Avatar {...args} size="sm">
+      <Avatar size="sm" {...args}>
         <AvatarImage alt="Yuna Kim" src={AVATAR_1} />
         <AvatarFallback>A2</AvatarFallback>
       </Avatar>
 
-      <Avatar {...args} size="md">
+      <Avatar size="md" {...args}>
         <AvatarImage alt="Rio Tanaka" src={AVATAR_1} />
         <AvatarFallback>A3</AvatarFallback>
       </Avatar>
 
-      <Avatar {...args} size="lg">
+      <Avatar size="lg" {...args}>
         <AvatarImage alt="Sofia Marchetti" src={AVATAR_1} />
         <AvatarFallback>A4</AvatarFallback>
       </Avatar>
 
-      <Avatar {...args} size="xl">
+      <Avatar size="xl" {...args}>
         <AvatarImage alt="Aria Park" src={AVATAR_1} />
         <AvatarFallback>A5</AvatarFallback>
       </Avatar>
@@ -134,27 +134,27 @@ const Sizes: Story = {
 const Radius: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-end gap-4">
-      <Avatar {...args} radius="none">
+      <Avatar radius="none" {...args}>
         <AvatarImage alt="Avatar 1" src={AVATAR_1} />
         <AvatarFallback>A1</AvatarFallback>
       </Avatar>
 
-      <Avatar {...args} radius="sm">
+      <Avatar radius="sm" {...args}>
         <AvatarImage alt="Yuna Kim" src={AVATAR_1} />
         <AvatarFallback>A2</AvatarFallback>
       </Avatar>
 
-      <Avatar {...args} radius="md">
+      <Avatar radius="md" {...args}>
         <AvatarImage alt="Rio Tanaka" src={AVATAR_1} />
         <AvatarFallback>A3</AvatarFallback>
       </Avatar>
 
-      <Avatar {...args} radius="lg">
+      <Avatar radius="lg" {...args}>
         <AvatarImage alt="Sofia Marchetti" src={AVATAR_1} />
         <AvatarFallback>A4</AvatarFallback>
       </Avatar>
 
-      <Avatar {...args} radius="full">
+      <Avatar radius="full" {...args}>
         <AvatarImage alt="Aria Park" src={AVATAR_1} />
         <AvatarFallback>A5</AvatarFallback>
       </Avatar>
@@ -165,37 +165,37 @@ const Radius: Story = {
 const Rings: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-end gap-4">
-      <Avatar {...args} ring="primary">
+      <Avatar ring="primary" {...args}>
         <AvatarImage alt="Avatar 1" src={AVATAR_1} />
         <AvatarFallback>A1</AvatarFallback>
       </Avatar>
 
-      <Avatar {...args} ring="secondary">
+      <Avatar ring="secondary" {...args}>
         <AvatarImage alt="Yuna Kim" src={AVATAR_1} />
         <AvatarFallback>A2</AvatarFallback>
       </Avatar>
 
-      <Avatar {...args} ring="accent">
+      <Avatar ring="accent" {...args}>
         <AvatarImage alt="Rio Tanaka" src={AVATAR_1} />
         <AvatarFallback>A3</AvatarFallback>
       </Avatar>
 
-      <Avatar {...args} ring="success">
+      <Avatar ring="success" {...args}>
         <AvatarImage alt="Sofia Marchetti" src={AVATAR_1} />
         <AvatarFallback>A4</AvatarFallback>
       </Avatar>
 
-      <Avatar {...args} ring="warning">
+      <Avatar ring="warning" {...args}>
         <AvatarImage alt="Aria Park" src={AVATAR_1} />
         <AvatarFallback>A5</AvatarFallback>
       </Avatar>
 
-      <Avatar {...args} ring="danger">
+      <Avatar ring="danger" {...args}>
         <AvatarImage alt="Diego Silva" src={AVATAR_1} />
         <AvatarFallback>A6</AvatarFallback>
       </Avatar>
 
-      <Avatar {...args} ring="info">
+      <Avatar ring="info" {...args}>
         <AvatarImage alt="Maya Chen" src={AVATAR_1} />
         <AvatarFallback>A7</AvatarFallback>
       </Avatar>
@@ -250,7 +250,7 @@ const Disabled: Story = {
 const Bordered: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-600 to-blue-600 p-16">
-      <Avatar {...args} isBordered>
+      <Avatar isBordered {...args}>
         <AvatarImage alt="Avatar 1" src={AVATAR_1} />
         <AvatarFallback>A1</AvatarFallback>
       </Avatar>

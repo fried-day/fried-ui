@@ -50,7 +50,7 @@ const Button = (props: Readonly<ButtonProps>) => {
   const buttonClassName = composeRenderProps(className, (consumerClassName) => clsx(baseClassName, consumerClassName));
 
   return (
-    <AriaButton {...rest} data-slot="button" className={buttonClassName} ref={ref}>
+    <AriaButton data-slot="button" className={buttonClassName} ref={ref} {...rest}>
       {composeRenderProps(children, (child, { isPending }) => (
         <>
           {child}

@@ -4,7 +4,7 @@ import { globalIgnores } from "eslint/config";
 import eslintConfigPrettier from "eslint-config-prettier";
 import tseslint from "typescript-eslint";
 import pluginReactHooks from "eslint-plugin-react-hooks";
-import pluginReact from "eslint-plugin-react";
+import eslintReact from "@eslint-react/eslint-plugin";
 import globals from "globals";
 import pluginNext from "@next/eslint-plugin-next";
 import nextfriday from "eslint-plugin-nextfriday";
@@ -21,10 +21,9 @@ function createNextJsConfig(tsconfigRootDir: string): Linter.Config[] {
     ...tseslint.configs.recommended,
     nextfriday.configs["nextjs/recommended"],
     globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts"]),
+    eslintReact.configs["recommended-typescript"],
     {
-      ...pluginReact.configs.flat?.recommended,
       languageOptions: {
-        ...pluginReact.configs.flat?.recommended?.languageOptions,
         globals: {
           ...globals.serviceworker,
         },
@@ -43,10 +42,8 @@ function createNextJsConfig(tsconfigRootDir: string): Linter.Config[] {
       plugins: {
         "react-hooks": pluginReactHooks,
       },
-      settings: { react: { version: "detect" } },
       rules: {
         ...pluginReactHooks.configs.recommended.rules,
-        "react/react-in-jsx-scope": "off",
       },
     },
     {

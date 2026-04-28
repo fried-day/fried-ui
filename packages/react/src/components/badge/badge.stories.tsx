@@ -64,7 +64,7 @@ const Variants: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-center gap-8">
       {(["primary", "secondary", "accent", "success", "warning", "danger", "info"] as const).map((variant) => (
-        <Badge {...args} key={variant}>
+        <Badge key={variant} {...args}>
           <Avatar>
             <AvatarImage alt={variant} src={AVATAR_1} />
             <AvatarFallback>CT</AvatarFallback>
@@ -98,7 +98,7 @@ const Sizes: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-center gap-8">
       {(["sm", "md", "lg"] as const).map((size) => (
-        <Badge {...args} key={size}>
+        <Badge key={size} {...args}>
           <Avatar size={size}>
             <AvatarImage alt={size} src={AVATAR_1} />
             <AvatarFallback>CT</AvatarFallback>
@@ -121,7 +121,7 @@ const IconSizes: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-center gap-8">
       {ICON_SIZES.map((item) => (
-        <Badge {...args} key={item.size}>
+        <Badge key={item.size} {...args}>
           <Avatar size={item.size}>
             <AvatarImage alt={item.alt} src={AVATAR_1} />
             <AvatarFallback>CT</AvatarFallback>
@@ -151,7 +151,7 @@ const Placements: Story = {
   render: (args): React.JSX.Element => (
     <div className="flex flex-wrap items-center gap-8">
       {(["top-right", "top-left", "bottom-right", "bottom-left"] as const).map((placement) => (
-        <Badge {...args} key={placement}>
+        <Badge key={placement} {...args}>
           <Avatar>
             <AvatarImage alt={placement} src={AVATAR_1} />
             <AvatarFallback>CT</AvatarFallback>

@@ -70,19 +70,19 @@ const Sizes: Story = {
   render: (args): React.JSX.Element => (
     <>
       <TextField isInvalid>
-        <FieldError {...args} size="sm">
+        <FieldError size="sm" {...args}>
           Small FieldError
         </FieldError>
       </TextField>
 
       <TextField isInvalid>
-        <FieldError {...args} size="md">
+        <FieldError size="md" {...args}>
           Medium FieldError
         </FieldError>
       </TextField>
 
       <TextField isInvalid>
-        <FieldError {...args} size="lg">
+        <FieldError size="lg" {...args}>
           Large FieldError
         </FieldError>
       </TextField>

@@ -36,7 +36,7 @@ const Input = (props: Readonly<InputProps>) => {
     className,
   });
 
-  return <AriaInput {...rest} data-slot="input" className={inputClassName} ref={ref} />;
+  return <AriaInput data-slot="input" className={inputClassName} ref={ref} {...rest} />;
 };
 
 Input.displayName = "Input";

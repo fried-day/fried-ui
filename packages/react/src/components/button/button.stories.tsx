@@ -147,27 +147,27 @@ const Default: Story = {
 const Variants: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Button {...args} variant="primary">
+      <Button variant="primary" {...args}>
         Primary
       </Button>
 
-      <Button {...args} variant="secondary">
+      <Button variant="secondary" {...args}>
         Secondary
       </Button>
 
-      <Button {...args} variant="outline">
+      <Button variant="outline" {...args}>
         Outline
       </Button>
 
-      <Button {...args} variant="ghost">
+      <Button variant="ghost" {...args}>
         Ghost
       </Button>
 
-      <Button {...args} variant="destructive">
+      <Button variant="destructive" {...args}>
         Destructive
       </Button>
 
-      <Button {...args} variant="accent">
+      <Button variant="accent" {...args}>
         Accent
       </Button>
     </>
@@ -176,8 +176,8 @@ const Variants: Story = {
 
 const OverlayVariant: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
-      <Button {...args} variant="overlay">
+    <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 to-blue-600 p-16">
+      <Button variant="overlay" {...args}>
         Overlay
       </Button>
     </div>
@@ -187,19 +187,19 @@ const OverlayVariant: Story = {
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Button {...args} size="sm">
+      <Button size="sm" {...args}>
         Small
       </Button>
 
-      <Button {...args} size="md">
+      <Button size="md" {...args}>
         Medium
       </Button>
 
-      <Button {...args} size="lg">
+      <Button size="lg" {...args}>
         Large
       </Button>
 
-      <Button {...args} size="xl">
+      <Button size="xl" {...args}>
         Extra Large
       </Button>
     </>
@@ -209,23 +209,23 @@ const Sizes: Story = {
 const Radius: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Button {...args} radius="none">
+      <Button radius="none" {...args}>
         None
       </Button>
 
-      <Button {...args} radius="sm">
+      <Button radius="sm" {...args}>
         Small
       </Button>
 
-      <Button {...args} radius="md">
+      <Button radius="md" {...args}>
         Medium
       </Button>
 
-      <Button {...args} radius="lg">
+      <Button radius="lg" {...args}>
         Large
       </Button>
 
-      <Button {...args} radius="full">
+      <Button radius="full" {...args}>
         Full
       </Button>
     </>
@@ -235,22 +235,22 @@ const Radius: Story = {
 const WithIcon: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Button {...args} variant="primary">
+      <Button variant="primary" {...args}>
         <PlusIcon slot="icon-start" />
         Create
       </Button>
 
-      <Button {...args} variant="secondary">
+      <Button variant="secondary" {...args}>
         <InformationCircleIcon slot="icon-start" />
         Info
       </Button>
 
-      <Button {...args} variant="outline">
+      <Button variant="outline" {...args}>
         <CheckCircleIcon slot="icon-start" />
         Complete
       </Button>
 
-      <Button {...args} variant="destructive">
+      <Button variant="destructive" {...args}>
         <XCircleIcon slot="icon-start" />
         Delete
       </Button>
@@ -261,19 +261,19 @@ const WithIcon: Story = {
 const IconOnly: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Button {...args} variant="primary" aria-label="Settings" isIconOnly>
+      <Button variant="primary" aria-label="Settings" isIconOnly {...args}>
         <SettingsIcon className="size-match-font" />
       </Button>
 
-      <Button {...args} variant="secondary" aria-label="More" isIconOnly>
+      <Button variant="secondary" aria-label="More" isIconOnly {...args}>
         <MoreIcon className="size-match-font" />
       </Button>
 
-      <Button {...args} variant="outline" aria-label="Add" isIconOnly>
+      <Button variant="outline" aria-label="Add" isIconOnly {...args}>
         <PlusIcon className="size-match-font" />
       </Button>
 
-      <Button {...args} variant="ghost" aria-label="Share" isIconOnly>
+      <Button variant="ghost" aria-label="Share" isIconOnly {...args}>
         <ShareIcon className="size-match-font" />
       </Button>
     </>

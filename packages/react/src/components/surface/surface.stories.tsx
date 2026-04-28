@@ -95,17 +95,17 @@ const Default: Story = {
 const Variants: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Surface {...args} variant="default" className="p-6">
+      <Surface variant="default" className="p-6" {...args}>
         <p className="font-bold">Default</p>
         <p className="mt-2 text-sm">Standard card (neutral-50)</p>
       </Surface>
 
-      <Surface {...args} variant="subtle" className="p-6">
+      <Surface variant="subtle" className="p-6" {...args}>
         <p className="font-bold">Subtle</p>
         <p className="mt-2 text-sm">Nested deeper (neutral-100)</p>
       </Surface>
 
-      <Surface {...args} variant="plain" className="p-6">
+      <Surface variant="plain" className="p-6" {...args}>
         <p className="font-bold">Plain</p>
         <p className="mt-2 text-sm">Pure white (layer-0)</p>
       </Surface>
@@ -119,17 +119,17 @@ const Bordered: Story = {
   },
   render: (args): React.JSX.Element => (
     <>
-      <Surface {...args} variant="default" className="p-6">
+      <Surface variant="default" className="p-6" {...args}>
         <p className="font-bold">Default</p>
         <p className="mt-2 text-sm">Standard card (neutral-50)</p>
       </Surface>
 
-      <Surface {...args} variant="subtle" className="p-6">
+      <Surface variant="subtle" className="p-6" {...args}>
         <p className="font-bold">Subtle</p>
         <p className="mt-2 text-sm">Nested deeper (neutral-100)</p>
       </Surface>
 
-      <Surface {...args} variant="plain" className="p-6">
+      <Surface variant="plain" className="p-6" {...args}>
         <p className="font-bold">Plain</p>
         <p className="mt-2 text-sm">Pure white (layer-0)</p>
       </Surface>
@@ -139,8 +139,8 @@ const Bordered: Story = {
 
 const OverlayVariant: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
-      <Surface {...args} variant="overlay" className="p-6">
+    <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 to-blue-600 p-16">
+      <Surface variant="overlay" className="p-6" {...args}>
         <p className="font-bold">Overlay</p>
         <p className="mt-2 text-sm">On scrim (popover/modal)</p>
       </Surface>
@@ -151,27 +151,27 @@ const OverlayVariant: Story = {
 const Radius: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Surface {...args} radius="none" className="p-6">
+      <Surface radius="none" className="p-6" {...args}>
         <p className="font-bold">None</p>
         <p className="mt-2 text-sm">Content</p>
       </Surface>
 
-      <Surface {...args} radius="sm" className="p-6">
+      <Surface radius="sm" className="p-6" {...args}>
         <p className="font-bold">Small</p>
         <p className="mt-2 text-sm">Content</p>
       </Surface>
 
-      <Surface {...args} radius="md" className="p-6">
+      <Surface radius="md" className="p-6" {...args}>
         <p className="font-bold">Medium</p>
         <p className="mt-2 text-sm">Content</p>
       </Surface>
 
-      <Surface {...args} radius="lg" className="p-6">
+      <Surface radius="lg" className="p-6" {...args}>
         <p className="font-bold">Large</p>
         <p className="mt-2 text-sm">Content</p>
       </Surface>
 
-      <Surface {...args} radius="xl" className="p-6">
+      <Surface radius="xl" className="p-6" {...args}>
         <p className="font-bold">Extra Large</p>
         <p className="mt-2 text-sm">Content</p>
       </Surface>
@@ -182,27 +182,27 @@ const Radius: Story = {
 const Shadow: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Surface {...args} shadow="none" className="p-6">
+      <Surface shadow="none" className="p-6" {...args}>
         <p className="font-bold">None</p>
         <p className="mt-2 text-sm">Content</p>
       </Surface>
 
-      <Surface {...args} shadow="sm" className="p-6">
+      <Surface shadow="sm" className="p-6" {...args}>
         <p className="font-bold">Small</p>
         <p className="mt-2 text-sm">Content</p>
       </Surface>
 
-      <Surface {...args} shadow="md" className="p-6">
+      <Surface shadow="md" className="p-6" {...args}>
         <p className="font-bold">Medium</p>
         <p className="mt-2 text-sm">Content</p>
       </Surface>
 
-      <Surface {...args} shadow="lg" className="p-6">
+      <Surface shadow="lg" className="p-6" {...args}>
         <p className="font-bold">Large</p>
         <p className="mt-2 text-sm">Content</p>
       </Surface>
 
-      <Surface {...args} shadow="xl" className="p-6">
+      <Surface shadow="xl" className="p-6" {...args}>
         <p className="font-bold">Extra Large</p>
         <p className="mt-2 text-sm">Content</p>
       </Surface>

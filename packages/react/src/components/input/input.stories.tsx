@@ -116,16 +116,16 @@ const Default: Story = {};
 const Variants: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Input {...args} variant="primary" placeholder="Primary" />
-      <Input {...args} variant="secondary" placeholder="Secondary" />
+      <Input variant="primary" placeholder="Primary" {...args} />
+      <Input variant="secondary" placeholder="Secondary" {...args} />
     </>
   ),
 };
 
 const OverlayVariant: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 via-purple-600 to-blue-600 p-16">
-      <Input {...args} variant="overlay" placeholder="Overlay" />
+    <div className="flex h-56 w-160 items-center justify-center bg-linear-to-br from-fuchsia-500 via-purple-500 to-blue-600 p-16">
+      <Input variant="overlay" placeholder="Overlay" {...args} />
     </div>
   ),
 };
@@ -133,9 +133,9 @@ const OverlayVariant: Story = {
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Input {...args} size="sm" placeholder="Small" />
-      <Input {...args} size="md" placeholder="Medium" />
-      <Input {...args} size="lg" placeholder="Large" />
+      <Input size="sm" placeholder="Small" {...args} />
+      <Input size="md" placeholder="Medium" {...args} />
+      <Input size="lg" placeholder="Large" {...args} />
     </>
   ),
 };
@@ -143,11 +143,11 @@ const Sizes: Story = {
 const Radius: Story = {
   render: (args): React.JSX.Element => (
     <>
-      <Input {...args} radius="none" placeholder="None" />
-      <Input {...args} radius="sm" placeholder="Small" />
-      <Input {...args} radius="md" placeholder="Medium" />
-      <Input {...args} radius="lg" placeholder="Large" />
-      <Input {...args} radius="full" placeholder="Full" />
+      <Input radius="none" placeholder="None" {...args} />
+      <Input radius="sm" placeholder="Small" {...args} />
+      <Input radius="md" placeholder="Medium" {...args} />
+      <Input radius="lg" placeholder="Large" {...args} />
+      <Input radius="full" placeholder="Full" {...args} />
     </>
   ),
 };
