@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { expect, fn, userEvent, within } from "storybook/test";
 
 import { CLASS_NAME_ARG_TYPE } from "../../storybook/argtypes";
 
@@ -291,6 +292,15 @@ const Disabled: Story = {
   args: {
     children: "Disabled",
     isDisabled: true,
+    onPress: fn(),
+  },
+  play: async ({ args, canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole("button", { name: /disabled/i });
+
+    await expect(button).toBeDisabled();
+    await userEvent.click(button, { pointerEventsCheck: 0 });
+    await expect(args.onPress).not.toHaveBeenCalled();
   },
 };
 
