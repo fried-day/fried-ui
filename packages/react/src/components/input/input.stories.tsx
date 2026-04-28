@@ -38,7 +38,7 @@ const meta = {
       control: "select",
       options: ["sm", "md", "lg"],
       description:
-        "Size scale on a `sqrt(phi) ≈ 1.272` ratio so adjacent sizes clear the perceptual JND threshold. **sm** (h-8, text-xs) — inline filters, table cells, compact admin forms. **md** (h-10, text-base, default) — standard form fields, paired with Button md. **lg** (h-13, text-xl) — hero search, single-input pages where the input is the primary action and must read at a distance. Use sm for dense UI, md for most forms, lg for emphasized single-input pages.",
+        "Size scale anchored at the form-aligned 40px row. **sm** (h-8, text-xs) — inline filters, table cells, compact admin forms. **md** (h-10, text-base, default) — standard form fields, paired with Button md. **lg** (h-13, text-xl) — hero search, single-input pages where the input is the primary action and must read at a distance. Use sm for dense UI, md for most forms, lg for emphasized single-input pages.",
       table: {
         type: { summary: '"sm" | "md" | "lg"' },
         defaultValue: { summary: "md" },

@@ -36,7 +36,7 @@ const meta = {
       control: "select",
       options: ["xs", "sm", "md", "lg", "xl"],
       description:
-        "Size scale of the avatar circle on a `sqrt(phi)` ratio so adjacent sizes clear the perceptual JND threshold. **Compact:** xs (24px) — inline beside body text, mention pills, dense table cells; sm (32px) — comment threads, message previews, list rows. **Standard:** md (40px, default) — header user menus, list items, conversation cards. **Emphasis:** lg (52px) — feature cards, profile previews; xl (64px) — hero blocks, settings pages. Use md as default; reach for xs only when paired inline with body text, xl for standalone profile contexts where the face is the focal point.",
+        "Size scale of the avatar circle on the identification-role rhythm — 5 tiers anchored at 40px. **Compact:** xs (24px) — inline beside body text, mention pills, dense table cells; sm (32px) — comment threads, message previews, list rows. **Standard:** md (40px, default) — header user menus, list items, conversation cards. **Emphasis:** lg (52px) — feature cards, profile previews; xl (64px) — hero blocks, settings pages. Use md as default; reach for xs only when paired inline with body text, xl for standalone profile contexts where the face is the focal point.",
       table: {
         type: { summary: '"xs" | "sm" | "md" | "lg" | "xl"' },
         defaultValue: { summary: "md" },

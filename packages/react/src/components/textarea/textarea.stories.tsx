@@ -38,7 +38,7 @@ const meta = {
       control: "select",
       options: ["sm", "md", "lg"],
       description:
-        "Size scale on a `sqrt(phi) ≈ 1.272` ratio so adjacent sizes clear the perceptual JND threshold. **sm** (text-xs, dense) — inline comments, table cells, compact admin forms. **md** (text-base, default) — standard composition fields, post bodies, comment boxes. **lg** (text-xl, emphasized) — hero composition areas like message editors and long-form drafts. Use sm for dense comment threads, md for standard product textareas, lg for editor-class composition where the textarea is the primary surface.",
+        "Size scale anchored at the form-aligned 40px row. **sm** (text-xs, dense) — inline comments, table cells, compact admin forms. **md** (text-base, default) — standard composition fields, post bodies, comment boxes. **lg** (text-xl, emphasized) — hero composition areas like message editors and long-form drafts. Use sm for dense comment threads, md for standard product textareas, lg for editor-class composition where the textarea is the primary surface.",
       table: {
         type: { summary: '"sm" | "md" | "lg"' },
         defaultValue: { summary: "md" },

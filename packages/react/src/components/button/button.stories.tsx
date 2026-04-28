@@ -63,7 +63,7 @@ const meta = {
       control: "select",
       options: ["sm", "md", "lg", "xl"],
       description:
-        "Size scale on a `sqrt(phi) ≈ 1.272` ratio so adjacent sizes clear the perceptual JND threshold. **sm** (h-8, text-xs) — toolbars, dense tables, secondary CTAs in cards. **md** (h-10, text-base, default) — standard call-to-action across most surfaces, form-aligned with Input md. **lg** (h-13, text-xl) — landing pages, marketing CTAs, hero blocks. **xl** (h-16, text-2xl) — display CTAs, pricing tiers, splash screens. Use sm for inline actions and toolbars, md for forms and cards, lg and xl for marketing surfaces where the button must read across a wide viewport.",
+        "Size scale anchored at the form-aligned 40px row. **sm** (h-8, text-xs) — toolbars, dense tables, secondary CTAs in cards. **md** (h-10, text-base, default) — standard call-to-action across most surfaces, form-aligned with Input md. **lg** (h-13, text-xl) — landing pages, marketing CTAs, hero blocks. **xl** (h-16, text-2xl) — display CTAs, pricing tiers, splash screens. Use sm for inline actions and toolbars, md for forms and cards, lg and xl for marketing surfaces where the button must read across a wide viewport.",
       table: {
         type: {
           summary: '"sm" | "md" | "lg" | "xl"',

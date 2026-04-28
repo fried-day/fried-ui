@@ -34,7 +34,7 @@ const meta: Meta<typeof FieldError> = {
       control: "select",
       options: ["sm", "md", "lg"],
       description:
-        "Text size of the field error message on a `sqrt(phi) ≈ 1.272` ratio so adjacent sizes clear the perceptual JND threshold. **Scale:** sm (text-xs) for dense forms and secondary helpers, md (text-base, default) for standard form fields, lg (text-xl) for emphasized or large form sections. Size should match the paired Label and Description so the entire field reads at a consistent visual weight. Use md for the majority of forms, sm for compact inline validation, lg only when the form field itself uses a larger size.",
+        "Text size of the field error message, sized to match the paired Label and Description so the entire field reads at a consistent visual weight. **Scale:** sm (text-xs) for dense forms and secondary helpers, md (text-base, default) for standard form fields, lg (text-xl) for emphasized or large form sections. Use md for the majority of forms, sm for compact inline validation, lg only when the form field itself uses a larger size.",
       table: {
         type: { summary: '"sm" | "md" | "lg"' },
         defaultValue: { summary: "md" },

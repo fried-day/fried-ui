@@ -2,7 +2,7 @@
   .avatar {
     @apply relative flex shrink-0 items-center justify-center overflow-hidden select-none;
     @apply leading-none font-medium;
-    @apply size-10 rounded-full text-base;
+    @apply size-10 rounded-full text-sm;
     @apply bg-primary text-primary-foreground;
     @apply transition duration-(--duration-hover) ease-out motion-reduce:transition-none;
   }
@@ -24,15 +24,15 @@
   }
 
   .avatar-size-md {
-    @apply size-10 text-base;
+    @apply size-10 text-sm;
   }
 
   .avatar-size-lg {
-    @apply size-13 text-xl;
+    @apply size-13 text-lg;
   }
 
   .avatar-size-xl {
-    @apply size-16 text-2xl;
+    @apply size-16 text-xl;
   }
 
   .avatar-radius-none {

@@ -14,15 +14,6 @@ Compound primitives, dual selectors, dark mode, and zero runtime.
 
 </div>
 
-## Features
-
-- **Zero runtime styling** — Pure CSS with class-naming; the React layer ships only `clsx` for class composition
-- **Accessible** — React Aria components, WCAG AAA two-color focus ring
-- **Single prop API** — `variant="success-soft"` — one decision, not two
-- **JND-aligned scale** — every size enum, font tier, and container dimension steps on `sqrt(phi) ≈ 1.272` so adjacent sizes clear the perceptual just-noticeable-difference threshold
-- **Multi-framework CSS** — `@fried-ui/styles` works with React, Vue, Svelte, plain HTML
-- **Dark mode** — All tokens switch automatically
-
 ## Documentation
 
 - [Documentation](https://fried-ui.vercel.app)
@@ -34,4 +25,4 @@ This project uses [conventional commits](https://www.conventionalcommits.org/) a
 
 ## License
 
-[MIT](LICENSE)
+Licensed under the MIT License, Copyright © 2026-present fried-ui contributors. See [LICENSE](LICENSE) for details.

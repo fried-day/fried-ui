@@ -39,7 +39,7 @@ const meta = {
       control: "select",
       options: ["xs", "sm", "md", "lg", "xl"],
       description:
-        "Size scale applied to every avatar in the group on a `sqrt(phi)` ratio so adjacent sizes are visibly distinguishable. **Compact:** xs (24px) — inline metadata, count-first activity indicators; sm (32px) — dense rosters, compact toolbars. **Standard:** md (40px, default) — team and member rosters, attendee lists. **Emphasis:** lg (52px) — featured contributors, emphasized cards; xl (64px) — hero showcases, marketing spotlights. Use xs/sm when count matters more than identity, md as default, lg/xl when individual face recognition is essential.",
+        "Size scale applied to every avatar in the group on the identification-role rhythm — 5 tiers anchored at 40px. **Compact:** xs (24px) — inline metadata, count-first activity indicators; sm (32px) — dense rosters, compact toolbars. **Standard:** md (40px, default) — team and member rosters, attendee lists. **Emphasis:** lg (52px) — featured contributors, emphasized cards; xl (64px) — hero showcases, marketing spotlights. Use xs/sm when count matters more than identity, md as default, lg/xl when individual face recognition is essential.",
       table: {
         type: { summary: '"xs" | "sm" | "md" | "lg" | "xl"' },
         defaultValue: { summary: "md" },
