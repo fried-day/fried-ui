@@ -17,11 +17,11 @@
     @apply relative z-10 inline-flex items-center justify-center;
     @apply size-10 shrink-0 overflow-hidden rounded-full;
     @apply bg-muted;
-    @apply text-base leading-none font-medium text-muted-foreground;
+    @apply text-sm leading-none font-medium text-muted-foreground;
   }
 
   .avatar-group-counter-text {
-    @apply text-base leading-none font-medium text-muted-foreground;
+    @apply text-sm leading-none font-medium text-muted-foreground;
   }
 
   .avatar-group [data-slot="avatar"]:not(:first-child) {
@@ -41,15 +41,15 @@
   }
 
   .avatar-group-size-md .avatar-group-counter {
-    @apply -ms-2 size-10 text-base;
+    @apply -ms-2 size-10 text-sm;
   }
 
   .avatar-group-size-lg .avatar-group-counter {
-    @apply -ms-2.5 size-13 text-xl;
+    @apply -ms-2.5 size-13 text-lg;
   }
 
   .avatar-group-size-xl .avatar-group-counter {
-    @apply -ms-3 size-16 text-2xl;
+    @apply -ms-3 size-16 text-xl;
   }
 
   @media (hover: hover) {
