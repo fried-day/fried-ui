@@ -1,12 +1,12 @@
-import type { Linter } from "eslint";
-import js from "@eslint/js";
 import eslintConfigPrettier from "eslint-config-prettier";
-import tseslint from "typescript-eslint";
-import pluginReactHooks from "eslint-plugin-react-hooks";
 import eslintReact from "@eslint-react/eslint-plugin";
 import globals from "globals";
+import js from "@eslint/js";
 import nextfriday from "eslint-plugin-nextfriday";
+import pluginReactHooks from "eslint-plugin-react-hooks";
+import tseslint from "typescript-eslint";
 import { createConfig } from "./base";
+import type { Linter } from "eslint";
 
 /**
  * A custom ESLint configuration for libraries that use React.

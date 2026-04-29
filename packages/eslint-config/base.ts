@@ -1,9 +1,9 @@
-import type { Linter } from "eslint";
-import js from "@eslint/js";
 import eslintConfigPrettier from "eslint-config-prettier";
-import turboPlugin from "eslint-plugin-turbo";
-import tseslint from "typescript-eslint";
+import js from "@eslint/js";
 import nextfriday from "eslint-plugin-nextfriday";
+import tseslint from "typescript-eslint";
+import turboPlugin from "eslint-plugin-turbo";
+import type { Linter } from "eslint";
 
 function createConfig(tsconfigRootDir: string): Linter.Config[] {
   return [

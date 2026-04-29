@@ -1,14 +1,14 @@
-import type { Linter } from "eslint";
-import js from "@eslint/js";
-import { globalIgnores } from "eslint/config";
 import eslintConfigPrettier from "eslint-config-prettier";
-import tseslint from "typescript-eslint";
-import pluginReactHooks from "eslint-plugin-react-hooks";
 import eslintReact from "@eslint-react/eslint-plugin";
 import globals from "globals";
-import pluginNext from "@next/eslint-plugin-next";
+import js from "@eslint/js";
 import nextfriday from "eslint-plugin-nextfriday";
+import pluginNext from "@next/eslint-plugin-next";
+import pluginReactHooks from "eslint-plugin-react-hooks";
+import tseslint from "typescript-eslint";
+import { globalIgnores } from "eslint/config";
 import { createConfig } from "./base";
+import type { Linter } from "eslint";
 
 /**
  * A custom ESLint configuration for libraries that use Next.js.

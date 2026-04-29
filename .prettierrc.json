@@ -1,5 +1,5 @@
 {
-  "$schema": "https://json.schemastore.org/prettierrc",
+  "$schema": "https://www.schemastore.org/prettierrc.json",
   "printWidth": 120,
   "tabWidth": 2,
   "useTabs": false,
@@ -11,6 +11,6 @@
   "endOfLine": "lf",
   "plugins": ["prettier-plugin-tailwindcss"],
   "tailwindStylesheet": "packages/styles/tailwind.css",
-  "tailwindAttributes": ["className", "classNames"],
+  "tailwindAttributes": ["className"],
   "tailwindFunctions": ["clsx", "classes"]
 }
