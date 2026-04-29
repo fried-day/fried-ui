@@ -1,0 +1,21 @@
+@theme {
+  /*
+   * Golden-ratio constants — drive the Group 1 (Typography-Driven) component
+   * geometry. Component CSS references these so the math is named, not magic.
+   */
+  --gold-lh: 1.272; /* sqrt(phi) — line-height multiplier */
+  --gold-gap: 0.618; /* 1 / phi — gap factor (multiply by 1em) */
+  --gold-py: 0.486; /* sqrt(phi) / phi^2 — vertical padding factor (multiply by 1em) */
+
+  /*
+   * Snapped Group 1 height tokens — em-derived heights rounded to whole pixels
+   * so every tier renders crisp on the device pixel grid. Anchored at md = 36px
+   * (text-base 16px × 2.244 ≈ 35.9, snapped to 36).
+   */
+  --spacing-gold-xs: 1.75rem; /* 28px (text-xs 12 × 2.244 ≈ 26.9, snapped to 28) */
+  --spacing-gold-sm: 2rem; /* 32px (text-sm 14 × 2.244 ≈ 31.4, snapped to 32) */
+  --spacing-gold-md: 2.25rem; /* 36px (text-base 16 × 2.244 ≈ 35.9, snapped to 36) — anchor */
+  --spacing-gold-lg: 2.5rem; /* 40px (text-lg 18 × 2.244 ≈ 40.4, snapped to 40) */
+  --spacing-gold-xl: 2.8125rem; /* 45px (text-xl 20 × 2.244 ≈ 44.9, snapped to 45) */
+  --spacing-gold-2xl: 3.375rem; /* 54px (text-2xl 24 × 2.244 ≈ 53.9, snapped to 54) */
+}

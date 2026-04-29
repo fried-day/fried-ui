@@ -12,9 +12,9 @@ export interface InputProps extends Omit<ComponentPropsWithRef<typeof AriaInput>
   /** Whether the input stretches to fill its container width. @default false */
   isFullWidth?: boolean;
   /** Border radius scale. @default 'md' */
-  radius?: "none" | "sm" | "md" | "lg" | "full";
+  radius?: "none" | "xs" | "sm" | "md" | "lg" | "full";
   /** Size scale. @default 'md' */
-  size?: "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
   /** Visual style. @default 'primary' */
   variant?: "primary" | "secondary" | "overlay";
 }

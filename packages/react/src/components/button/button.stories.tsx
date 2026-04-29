@@ -61,12 +61,12 @@ const meta = {
     },
     size: {
       control: "select",
-      options: ["sm", "md", "lg", "xl"],
+      options: ["xs", "sm", "md", "lg", "xl", "2xl"],
       description:
-        "Size scale anchored at the form-aligned 40px row. **sm** (h-8, text-xs) — toolbars, dense tables, secondary CTAs in cards. **md** (h-10, text-base, default) — standard call-to-action across most surfaces, form-aligned with Input md. **lg** (h-13, text-xl) — landing pages, marketing CTAs, hero blocks. **xl** (h-16, text-2xl) — display CTAs, pricing tiers, splash screens. Use sm for inline actions and toolbars, md for forms and cards, lg and xl for marketing surfaces where the button must read across a wide viewport.",
+        "Size scale anchored at md (text-base = formula root x = 1em = 1rem). Heights snap to the gold token grid (28 / 32 / 36 / 40 / 45 / 54 px) so every tier sits crisp on the device pixel grid. **xs** (28px, text-xs) — micro chrome bar, dense table actions. **sm** (32px, text-sm) — toolbars, dense tables, secondary CTAs in cards. **md** (36px, text-base, default) — standard call-to-action across most surfaces, form-aligned with Input md. **lg** (40px, text-lg) — landing pages, marketing CTAs, hero blocks. **xl** (45px, text-xl) — display CTAs, pricing tiers. **2xl** (54px, text-2xl) — splash screens, hero marketing surfaces. Use sm for inline actions and toolbars, md for forms and cards, lg through 2xl for marketing surfaces where the button must read across a wide viewport.",
       table: {
         type: {
-          summary: '"sm" | "md" | "lg" | "xl"',
+          summary: '"xs" | "sm" | "md" | "lg" | "xl" | "2xl"',
         },
         defaultValue: {
           summary: "md",
@@ -76,12 +76,12 @@ const meta = {
     },
     radius: {
       control: "select",
-      options: ["none", "sm", "md", "lg", "full"],
+      options: ["none", "xs", "sm", "md", "lg", "full"],
       description:
-        "Border radius scale shaping the button from a tab to a pill. **none** — architectural sharp edge (data tables, fixed bars). **sm** — subtle softening for tight UIs. **md** (default) — standard CTA roundness, the canonical product button. **lg** — emphasized soft corners for hero buttons. **full** — fully rounded pill, matches search bars and chip-paired actions. Use md for most buttons, full for chip-paired actions, none inside dense data UIs.",
+        "Border radius scale shaping the button from a tab to a pill. Fixed-px tokens independent of font-size so buttons align with peer surfaces (Card, Input) by absolute radius across size tiers. **none** — architectural sharp edge (data tables, fixed bars). **xs** (2px) — micro softening for tight admin chrome. **sm** (4px) — subtle softening for tight UIs. **md** (6px, default) — standard CTA roundness, the canonical product button. **lg** (8px) — emphasized soft corners for hero buttons. **full** — fully rounded pill, matches search bars and chip-paired actions. Use md for most buttons, full for chip-paired actions, none inside dense data UIs.",
       table: {
         type: {
-          summary: '"none" | "sm" | "md" | "lg" | "full"',
+          summary: '"none" | "xs" | "sm" | "md" | "lg" | "full"',
         },
         defaultValue: {
           summary: "md",
@@ -203,6 +203,10 @@ const Sizes: Story = {
       <Button size="xl" {...args}>
         Extra Large
       </Button>
+
+      <Button size="2xl" {...args}>
+        Display
+      </Button>
     </>
   ),
 };
@@ -212,6 +216,10 @@ const Radius: Story = {
     <>
       <Button radius="none" {...args}>
         None
+      </Button>
+
+      <Button radius="xs" {...args}>
+        Extra Small
       </Button>
 
       <Button radius="sm" {...args}>

@@ -12,13 +12,13 @@ export interface AvatarGroupProps extends Omit<ComponentPropsWithRef<"div">, "ch
   children?: ReactNode;
   /** Additional CSS classes appended after the base class. */
   className?: string;
-  /** Whether the group hides the 2px outline around each avatar — produces a solid stack with no background-colored separator. @default false */
+  /** Whether the group hides the 2px outline around each avatar. @default false */
   isBorderless?: boolean;
   /** Whether the avatars lift on hover. @default false */
   isHoverable?: boolean;
   /** Size scale. @default 'md' */
   size?: "xs" | "sm" | "md" | "lg" | "xl";
-  /** Overlap amount between adjacent avatars. `tighter` squeezes the stack tightest (35% overlap), `tight` packs them closer (30%), `default` is the balanced baseline (20%), `wide` spreads them for face recognition (10%), `wider` is airy for hero layouts (5%). @default 'default' */
+  /** Overlap amount between adjacent avatars. @default 'default' */
   spacing?: "tighter" | "tight" | "default" | "wide" | "wider";
 }
 
@@ -58,7 +58,7 @@ export interface AvatarGroupCounterProps extends Omit<ComponentPropsWithRef<"spa
   children?: ReactNode;
   /** Additional CSS classes appended after the base class. */
   className?: string;
-  /** Visual style. `fallback` renders the counter as a circular avatar-shaped indicator inside the stack; `text` renders flat text beside the stack for hero or social-proof layouts. @default 'fallback' */
+  /** Visual style. @default 'fallback' */
   variant?: "fallback" | "text";
 }
 

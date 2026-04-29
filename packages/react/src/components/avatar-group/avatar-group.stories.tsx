@@ -39,7 +39,7 @@ const meta = {
       control: "select",
       options: ["xs", "sm", "md", "lg", "xl"],
       description:
-        "Size scale applied to every avatar in the group on the identification-role rhythm — 5 tiers anchored at 40px. **Compact:** xs (24px) — inline metadata, count-first activity indicators; sm (32px) — dense rosters, compact toolbars. **Standard:** md (40px, default) — team and member rosters, attendee lists. **Emphasis:** lg (52px) — featured contributors, emphasized cards; xl (64px) — hero showcases, marketing spotlights. Use xs/sm when count matters more than identity, md as default, lg/xl when individual face recognition is essential.",
+        "Size scale applied to every avatar in the group on the identification-role rhythm — fixed-px sizes locked to the matching Button height per tier. **Compact:** xs (24px) — inline metadata, count-first activity indicators; sm (32px) — dense rosters, compact toolbars. **Standard:** md (36px, default) — team and member rosters, attendee lists. **Emphasis:** lg (40px) — featured contributors, emphasized cards; xl (44px) — hero showcases, marketing spotlights. Use xs/sm when count matters more than identity, md as default, lg/xl when individual face recognition is essential.",
       table: {
         type: { summary: '"xs" | "sm" | "md" | "lg" | "xl"' },
         defaultValue: { summary: "md" },
@@ -50,7 +50,7 @@ const meta = {
       control: "select",
       options: ["tighter", "tight", "default", "wide", "wider"],
       description:
-        "Overlap amount between adjacent avatars (mirrors Tailwind `tracking-*` letter-spacing semantics applied horizontally to avatar stacking). **tighter** — 35% overlap, densest pack for long activity logs, contributor counts, or dense tables. **tight** — 30% overlap, compact stack for rosters where count matters more than identity. **default** — 20% overlap, balanced social-proof look for team/attendee groups. **wide** — 10% overlap, airy layout that preserves face recognition for profile highlights. **wider** — 5% overlap, nearly separated tiles for hero sections or showcase marketing blocks where each face is the focal point.",
+        "Overlap amount between adjacent avatars. **tighter** — 35% overlap, densest pack for long activity logs, contributor counts, or dense tables. **tight** — 30% overlap, compact stack for rosters where count matters more than identity. **default** — 20% overlap, balanced social-proof look for team/attendee groups. **wide** — 10% overlap, airy layout that preserves face recognition for profile highlights. **wider** — 5% overlap, nearly separated tiles for hero sections or showcase marketing blocks where each face is the focal point.",
       table: {
         type: { summary: '"tighter" | "tight" | "default" | "wide" | "wider"' },
         defaultValue: { summary: "default" },

@@ -1,7 +1,7 @@
 @layer components {
   .button {
     @apply relative inline-flex items-center justify-center;
-    @apply leading-none font-medium whitespace-nowrap;
+    @apply font-medium whitespace-nowrap;
     @apply cursor-pointer select-none no-highlight;
     @apply transition-colors duration-(--duration-hover) ease-out motion-reduce:transition-none;
 
@@ -13,8 +13,11 @@
 
     @apply bg-(--button-bg) text-(--button-fg);
     @apply border border-(--button-border);
-    @apply h-10 gap-2 px-4 text-base;
-    @apply rounded-md;
+    @apply h-gold-md rounded-md text-base;
+
+    line-height: var(--gold-lh);
+    gap: calc(var(--gold-gap) * 1em);
+    padding-inline: 1em;
 
     &:focus-visible,
     &[data-focus-visible] {
@@ -99,20 +102,28 @@
     --button-fg: var(--color-accent-foreground);
   }
 
+  .button-size-xs {
+    @apply h-gold-xs text-xs;
+  }
+
   .button-size-sm {
-    @apply h-8 gap-1 px-3 text-xs;
+    @apply h-gold-sm text-sm;
   }
 
   .button-size-md {
-    @apply h-10 gap-2 px-4 text-base;
+    @apply h-gold-md text-base;
   }
 
   .button-size-lg {
-    @apply h-13 gap-2.5 px-5 text-xl;
+    @apply h-gold-lg text-lg;
   }
 
   .button-size-xl {
-    @apply h-16 gap-3 px-6 text-2xl;
+    @apply h-gold-xl text-xl;
+  }
+
+  .button-size-2xl {
+    @apply h-gold-2xl text-2xl;
   }
 
   .button-full-width {
@@ -120,27 +131,18 @@
   }
 
   .button-icon-only {
-    @apply size-10 justify-center gap-0 p-0;
-  }
+    @apply justify-center gap-0 p-0;
 
-  .button-icon-only.button-size-sm {
-    @apply size-8;
-  }
-
-  .button-icon-only.button-size-md {
-    @apply size-10;
-  }
-
-  .button-icon-only.button-size-lg {
-    @apply size-13;
-  }
-
-  .button-icon-only.button-size-xl {
-    @apply size-16;
+    aspect-ratio: 1 / 1;
+    width: auto;
   }
 
   .button-radius-none {
     @apply rounded-none;
+  }
+
+  .button-radius-xs {
+    @apply rounded-xs;
   }
 
   .button-radius-sm {
@@ -170,35 +172,11 @@
   }
 
   .button:has([slot="icon-start"]) {
-    @apply pl-2;
+    padding-inline-start: 0.5em;
   }
 
   .button:has([slot="icon-end"]) {
-    @apply pr-2;
-  }
-
-  .button-size-sm:has([slot="icon-start"]) {
-    @apply pl-1.5;
-  }
-
-  .button-size-sm:has([slot="icon-end"]) {
-    @apply pr-1.5;
-  }
-
-  .button-size-lg:has([slot="icon-start"]) {
-    @apply pl-2.5;
-  }
-
-  .button-size-lg:has([slot="icon-end"]) {
-    @apply pr-2.5;
-  }
-
-  .button-size-xl:has([slot="icon-start"]) {
-    @apply pl-3;
-  }
-
-  .button-size-xl:has([slot="icon-end"]) {
-    @apply pr-3;
+    padding-inline-end: 0.5em;
   }
 
   .button-spinner {

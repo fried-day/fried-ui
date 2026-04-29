@@ -1,6 +1,6 @@
 @layer components {
   .input {
-    @apply block w-auto leading-none font-normal outline-none;
+    @apply block w-auto font-normal outline-none;
     @apply transition duration-(--duration-hover) ease-out motion-reduce:transition-none;
 
     --input-bg: var(--color-field);
@@ -13,8 +13,11 @@
 
     @apply bg-(--input-bg) text-(--input-fg);
     @apply border border-(--input-border);
-    @apply h-10 px-4 text-base;
-    @apply rounded-md;
+    @apply h-gold-md rounded-md text-base;
+
+    line-height: var(--gold-lh);
+    padding-inline: 1em;
+
     @apply placeholder:text-(--input-placeholder);
 
     &:hover:not(:focus, :read-only, :disabled),
@@ -87,16 +90,24 @@
     --input-placeholder: var(--color-muted-foreground);
   }
 
+  .input-size-xs {
+    @apply h-gold-xs text-xs;
+  }
+
   .input-size-sm {
-    @apply h-8 px-3 text-xs;
+    @apply h-gold-sm text-sm;
   }
 
   .input-size-md {
-    @apply h-10 px-4 text-base;
+    @apply h-gold-md text-base;
   }
 
   .input-size-lg {
-    @apply h-13 px-5 text-xl;
+    @apply h-gold-lg text-lg;
+  }
+
+  .input-size-xl {
+    @apply h-gold-xl text-xl;
   }
 
   .input-full-width {
@@ -105,6 +116,10 @@
 
   .input-radius-none {
     @apply rounded-none;
+  }
+
+  .input-radius-xs {
+    @apply rounded-xs;
   }
 
   .input-radius-sm {

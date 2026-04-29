@@ -12,7 +12,7 @@ export interface TextareaProps extends Omit<ComponentPropsWithRef<typeof AriaTex
   /** Whether the textarea stretches to fill its container width. @default false */
   isFullWidth?: boolean;
   /** Border radius scale. @default 'md' */
-  radius?: "none" | "sm" | "md" | "lg" | "full";
+  radius?: "none" | "xs" | "sm" | "md" | "lg" | "full";
   /** Resize behavior. @default 'vertical' */
   resize?: "none" | "vertical" | "horizontal" | "both";
   /** Size scale. @default 'md' */

@@ -32,7 +32,7 @@ const meta = {
       control: "select",
       options: ["sm", "md", "lg"],
       description:
-        "Text size of the description, sized to match the paired form-field tier. **sm** (text-xs) — dense forms, helper text below compact inputs, tooltip-like supporting copy. **md** (text-base, default) — standard form fields and most product UIs. **lg** (text-xl) — emphasized supporting text below hero forms or long-form sections. Use sm in dense table or filter UIs, md for nearly all forms, lg when the description needs to read at body-text scale such as onboarding, marketing, or settings pages.",
+        "Size tier of the description, paired with the matching Input/Textarea tier so the entire form-field reads at a consistent visual weight. Font shifts on the Tailwind text-X scale per tier. **sm** (text-sm) — dense forms, helper text below compact inputs, tooltip-like supporting copy. **md** (text-base, default) — standard form fields and most product UIs. **lg** (text-lg) — emphasized supporting text below hero forms or long-form sections. Use sm in dense table or filter UIs, md for nearly all forms, lg when the description sits below a hero or onboarding input.",
       table: {
         type: { summary: '"sm" | "md" | "lg"' },
         defaultValue: { summary: "md" },

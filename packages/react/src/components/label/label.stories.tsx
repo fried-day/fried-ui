@@ -37,7 +37,7 @@ const meta = {
       control: "select",
       options: ["sm", "md", "lg"],
       description:
-        "Text size of the label, sized to match the paired form-field tier. **sm** (text-xs) — dense forms, secondary labels below subtle inputs, table cell headers. **md** (text-base, default) — standard form fields paired with Input md and most product UIs. **lg** (text-xl) — emphasized labels above hero forms, settings sections, or primary onboarding inputs. Use md as the default product form label, sm in dense table or filter UIs, lg when the label sits above a single hero input.",
+        "Size tier of the label, paired with the matching Input/Textarea tier so the entire form-field reads at a consistent visual weight. Font shifts on the Tailwind text-X scale per tier. **sm** (text-sm) — dense forms, secondary labels below subtle inputs, table cell headers. **md** (text-base, default) — standard form fields paired with Input md and most product UIs. **lg** (text-lg) — emphasized labels above hero forms, settings sections, or primary onboarding inputs. Use md as the default product form label, sm in dense table or filter UIs, lg when the label sits above a single hero input.",
       table: {
         type: { summary: '"sm" | "md" | "lg"' },
         defaultValue: { summary: "md" },

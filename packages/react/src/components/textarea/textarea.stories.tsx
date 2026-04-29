@@ -38,7 +38,7 @@ const meta = {
       control: "select",
       options: ["sm", "md", "lg"],
       description:
-        "Size scale anchored at the form-aligned 40px row. **sm** (text-xs, dense) — inline comments, table cells, compact admin forms. **md** (text-base, default) — standard composition fields, post bodies, comment boxes. **lg** (text-xl, emphasized) — hero composition areas like message editors and long-form drafts. Use sm for dense comment threads, md for standard product textareas, lg for editor-class composition where the textarea is the primary surface.",
+        "Size scale anchored at the form-aligned tier (md = text-base, the formula's `x = 1em` root). Geometry scales via em formulas — padding recomputes proportionally per tier; only font-size shifts across tiers. **sm** (text-sm) — inline comments, table cells, compact admin forms. **md** (text-base, default) — standard composition fields, post bodies, comment boxes. **lg** (text-lg) — hero composition areas like message editors and long-form drafts. Use sm for dense comment threads, md for standard product textareas, lg for editor-class composition where the textarea is the primary surface.",
       table: {
         type: { summary: '"sm" | "md" | "lg"' },
         defaultValue: { summary: "md" },
@@ -47,11 +47,11 @@ const meta = {
     },
     radius: {
       control: "select",
-      options: ["none", "sm", "md", "lg", "full"],
+      options: ["none", "xs", "sm", "md", "lg", "full"],
       description:
-        "Border radius scale of the textarea. **none** — sharp corners for data tables and admin UIs. **sm** — subtle rounding for tight nested forms. **md** (default) — standard textarea. **lg** — emphasized soft corners for hero composition areas. **full** — pill shape, rare for textarea since most textareas are multi-line. Use md as the default, lg for editor-style composition, none inside data dashboards or admin UIs.",
+        "Border radius scale of the textarea. Fixed-px tokens independent of font-size. **none** — sharp corners for data tables and admin UIs. **xs** (2px) — micro softening for tight admin chrome. **sm** (4px) — subtle rounding for tight nested forms. **md** (6px, default) — standard textarea. **lg** (8px) — emphasized soft corners for hero composition areas. **full** — pill shape, rare for textarea since most textareas are multi-line. Use md as the default, lg for editor-style composition, none inside data dashboards or admin UIs.",
       table: {
-        type: { summary: '"none" | "sm" | "md" | "lg" | "full"' },
+        type: { summary: '"none" | "xs" | "sm" | "md" | "lg" | "full"' },
         defaultValue: { summary: "md" },
         category: "Style Variants",
       },
@@ -152,6 +152,7 @@ const Radius: Story = {
   render: (args): React.JSX.Element => (
     <>
       <Textarea radius="none" placeholder="None" {...args} />
+      <Textarea radius="xs" placeholder="Extra Small" {...args} />
       <Textarea radius="sm" placeholder="Small" {...args} />
       <Textarea radius="md" placeholder="Medium" {...args} />
       <Textarea radius="lg" placeholder="Large" {...args} />

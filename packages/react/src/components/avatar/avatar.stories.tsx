@@ -36,7 +36,7 @@ const meta = {
       control: "select",
       options: ["xs", "sm", "md", "lg", "xl"],
       description:
-        "Size scale of the avatar circle on the identification-role rhythm — 5 tiers anchored at 40px. **Compact:** xs (24px) — inline beside body text, mention pills, dense table cells; sm (32px) — comment threads, message previews, list rows. **Standard:** md (40px, default) — header user menus, list items, conversation cards. **Emphasis:** lg (52px) — feature cards, profile previews; xl (64px) — hero blocks, settings pages. Use md as default; reach for xs only when paired inline with body text, xl for standalone profile contexts where the face is the focal point.",
+        "Size scale of the avatar circle on the identification-role rhythm — fixed-px sizes locked to the matching Button height per tier so avatars and buttons share the same baseline when stacked in a row. **Compact:** xs (24px) — inline beside body text, mention pills, dense table cells; sm (32px) — comment threads, message previews, list rows. **Standard:** md (36px, default) — header user menus, list items, conversation cards. **Emphasis:** lg (40px) — feature cards, profile previews; xl (44px) — hero blocks, settings pages. Use md as default; reach for xs only when paired inline with body text, xl for standalone profile contexts where the face is the focal point.",
       table: {
         type: { summary: '"xs" | "sm" | "md" | "lg" | "xl"' },
         defaultValue: { summary: "md" },
@@ -45,11 +45,11 @@ const meta = {
     },
     radius: {
       control: "select",
-      options: ["none", "sm", "md", "lg", "full"],
+      options: ["none", "xs", "sm", "md", "lg", "full"],
       description:
-        "Border radius scale shaping the avatar from a square to a pill. **none** — sharp square (logos, brand glyphs). **sm** — subtle softening, fits app icons. **md** — standard rounded square (workspace icons, brand avatars). **lg** — emphasized soft corners, common in modern social UIs. **full** (default) — circle, the canonical shape for human avatars. Use full for people, md and lg for organizations or workspaces, sm and none for product or brand glyphs.",
+        "Border radius scale shaping the avatar from a square to a pill. Fixed-px tokens shared with Button / Input so peer surfaces align by absolute radius. **none** — sharp square (logos, brand glyphs). **xs** (2px) — micro softening for tight metadata grids. **sm** (4px) — subtle softening, fits app icons. **md** (6px) — standard rounded square (workspace icons, brand avatars). **lg** (8px) — emphasized soft corners, common in modern social UIs. **full** (default) — circle, the canonical shape for human avatars. Use full for people, md and lg for organizations or workspaces, sm and none for product or brand glyphs.",
       table: {
-        type: { summary: '"none" | "sm" | "md" | "lg" | "full"' },
+        type: { summary: '"none" | "xs" | "sm" | "md" | "lg" | "full"' },
         defaultValue: { summary: "full" },
         category: "Style Variants",
       },
@@ -139,24 +139,29 @@ const Radius: Story = {
         <AvatarFallback>A1</AvatarFallback>
       </Avatar>
 
-      <Avatar radius="sm" {...args}>
+      <Avatar radius="xs" {...args}>
         <AvatarImage alt="Yuna Kim" src={AVATAR_1} />
         <AvatarFallback>A2</AvatarFallback>
       </Avatar>
 
-      <Avatar radius="md" {...args}>
+      <Avatar radius="sm" {...args}>
         <AvatarImage alt="Rio Tanaka" src={AVATAR_1} />
         <AvatarFallback>A3</AvatarFallback>
       </Avatar>
 
-      <Avatar radius="lg" {...args}>
+      <Avatar radius="md" {...args}>
         <AvatarImage alt="Sofia Marchetti" src={AVATAR_1} />
         <AvatarFallback>A4</AvatarFallback>
       </Avatar>
 
-      <Avatar radius="full" {...args}>
+      <Avatar radius="lg" {...args}>
         <AvatarImage alt="Aria Park" src={AVATAR_1} />
         <AvatarFallback>A5</AvatarFallback>
+      </Avatar>
+
+      <Avatar radius="full" {...args}>
+        <AvatarImage alt="Hana Lee" src={AVATAR_1} />
+        <AvatarFallback>A6</AvatarFallback>
       </Avatar>
     </div>
   ),

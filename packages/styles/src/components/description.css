@@ -5,7 +5,7 @@
   }
 
   .description-size-sm {
-    @apply text-xs;
+    @apply text-sm;
   }
 
   .description-size-md {
@@ -13,7 +13,7 @@
   }
 
   .description-size-lg {
-    @apply text-xl;
+    @apply text-lg;
   }
 
   .description-invalid {

@@ -7,7 +7,10 @@
   .badge-icon {
     @apply absolute top-0 right-0 z-(--z-popover);
     @apply inline-flex shrink-0 items-center justify-center;
-    @apply leading-none font-medium whitespace-nowrap select-none;
+    @apply font-medium whitespace-nowrap select-none;
+
+    line-height: var(--gold-lh);
+
     @apply translate-x-1/4 -translate-y-1/4;
     @apply transition duration-(--duration-hover) ease-out motion-reduce:transition-none;
 
@@ -90,7 +93,7 @@
   }
 
   .badge-indicator-size-lg {
-    @apply min-h-6 px-2 text-base;
+    @apply min-h-6 px-2 text-xs;
   }
 
   .badge-icon-size-sm {
@@ -102,7 +105,7 @@
   }
 
   .badge-icon-size-lg {
-    @apply size-6 text-base;
+    @apply size-6 text-xs;
   }
 
   .badge-indicator-placement-top-right,

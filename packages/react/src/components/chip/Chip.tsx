@@ -25,9 +25,9 @@ export interface ChipProps extends Omit<ComponentPropsWithRef<"span">, "children
   /** Click handler for the whole chip (assist/suggestion chip pattern). When provided, chip renders as a button. */
   onPress?: (event: PressEvent) => void;
   /** Border radius scale. @default 'full' */
-  radius?: "none" | "sm" | "md" | "lg" | "full";
+  radius?: "none" | "xs" | "sm" | "md" | "lg" | "full";
   /** Size scale. @default 'md' */
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "xl";
   /** Visual style — category colors. @default 'primary' */
   variant?: "primary" | "secondary" | "ghost" | "overlay" | "accent" | "success" | "warning" | "danger" | "info";
 }

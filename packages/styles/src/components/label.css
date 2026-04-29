@@ -14,7 +14,7 @@
   }
 
   .label-size-sm {
-    @apply text-xs;
+    @apply text-sm;
   }
 
   .label-size-md {
@@ -22,7 +22,7 @@
   }
 
   .label-size-lg {
-    @apply text-xl;
+    @apply text-lg;
   }
 
   .label-weight-normal {

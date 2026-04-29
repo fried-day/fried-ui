@@ -36,22 +36,22 @@ const meta = {
     },
     size: {
       control: "select",
-      options: ["sm", "md", "lg"],
+      options: ["xs", "sm", "md", "lg", "xl"],
       description:
-        "Size scale anchored at the form-aligned 40px row. **sm** (h-8, text-xs) — inline filters, table cells, compact admin forms. **md** (h-10, text-base, default) — standard form fields, paired with Button md. **lg** (h-13, text-xl) — hero search, single-input pages where the input is the primary action and must read at a distance. Use sm for dense UI, md for most forms, lg for emphasized single-input pages.",
+        "Size scale anchored at md (text-base = formula root x = 1em = 1rem). Heights snap to the gold token grid (28 / 32 / 36 / 40 / 45 px). **xs** (28px, text-xs) — micro filter chips inside dense data tables. **sm** (32px, text-sm) — inline filters, table cells, compact admin forms. **md** (36px, text-base, default) — standard form fields, paired with Button md. **lg** (40px, text-lg) — hero search, single-input pages where the input is the primary action and must read at a distance. **xl** (45px, text-xl) — display search bars on marketing landing pages. Use sm for dense UI, md for most forms, lg/xl for emphasized single-input pages.",
       table: {
-        type: { summary: '"sm" | "md" | "lg"' },
+        type: { summary: '"xs" | "sm" | "md" | "lg" | "xl"' },
         defaultValue: { summary: "md" },
         category: "Style Variants",
       },
     },
     radius: {
       control: "select",
-      options: ["none", "sm", "md", "lg", "full"],
+      options: ["none", "xs", "sm", "md", "lg", "full"],
       description:
-        "Border radius scale of the input. **none** — sharp corners for data tables and admin forms. **sm** — subtle rounding for tight UIs. **md** (default) — standard form input. **lg** — emphasized soft corners for hero forms and primary single-input pages. **full** — pill shape, the canonical search-bar look. Use md as the default form input, full for search-bar contexts, none when inputs sit flush inside table rows.",
+        "Border radius scale of the input. Fixed-px tokens independent of font-size so inputs align with peer surfaces (Button, Card) by absolute radius across size tiers. **none** — sharp corners for data tables and admin forms. **xs** (2px) — micro softening for tight admin chrome. **sm** (4px) — subtle rounding for tight UIs. **md** (6px, default) — standard form input. **lg** (8px) — emphasized soft corners for hero forms and primary single-input pages. **full** — pill shape, the canonical search-bar look. Use md as the default form input, full for search-bar contexts, none when inputs sit flush inside table rows.",
       table: {
-        type: { summary: '"none" | "sm" | "md" | "lg" | "full"' },
+        type: { summary: '"none" | "xs" | "sm" | "md" | "lg" | "full"' },
         defaultValue: { summary: "md" },
         category: "Style Variants",
       },
@@ -133,9 +133,11 @@ const OverlayVariant: Story = {
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
     <>
+      <Input size="xs" placeholder="Tiny" {...args} />
       <Input size="sm" placeholder="Small" {...args} />
       <Input size="md" placeholder="Medium" {...args} />
       <Input size="lg" placeholder="Large" {...args} />
+      <Input size="xl" placeholder="Extra Large" {...args} />
     </>
   ),
 };
@@ -144,6 +146,7 @@ const Radius: Story = {
   render: (args): React.JSX.Element => (
     <>
       <Input radius="none" placeholder="None" {...args} />
+      <Input radius="xs" placeholder="Extra Small" {...args} />
       <Input radius="sm" placeholder="Small" {...args} />
       <Input radius="md" placeholder="Medium" {...args} />
       <Input radius="lg" placeholder="Large" {...args} />

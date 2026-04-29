@@ -37,10 +37,12 @@ build-storybook.log
 
 # AI
 .agents/
-.claude/
 .mcp.json
-CLAUDE.md
 skills-lock.json
+
+# Claude
+.claude/
+CLAUDE.md
 
 # Misc
 .DS_Store

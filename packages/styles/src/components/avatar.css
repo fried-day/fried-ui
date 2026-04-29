@@ -2,7 +2,7 @@
   .avatar {
     @apply relative flex shrink-0 items-center justify-center overflow-hidden select-none;
     @apply leading-none font-medium;
-    @apply size-10 rounded-full text-sm;
+    @apply size-gold-md rounded-full text-base;
     @apply bg-primary text-primary-foreground;
     @apply transition duration-(--duration-hover) ease-out motion-reduce:transition-none;
   }
@@ -20,23 +20,27 @@
   }
 
   .avatar-size-sm {
-    @apply size-8 text-xs;
+    @apply size-gold-sm text-sm;
   }
 
   .avatar-size-md {
-    @apply size-10 text-sm;
+    @apply size-gold-md text-base;
   }
 
   .avatar-size-lg {
-    @apply size-13 text-lg;
+    @apply size-gold-lg text-lg;
   }
 
   .avatar-size-xl {
-    @apply size-16 text-xl;
+    @apply size-gold-xl text-xl;
   }
 
   .avatar-radius-none {
     @apply rounded-none;
+  }
+
+  .avatar-radius-xs {
+    @apply rounded-xs;
   }
 
   .avatar-radius-sm {

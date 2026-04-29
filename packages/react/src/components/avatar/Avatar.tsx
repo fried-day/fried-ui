@@ -17,7 +17,7 @@ export interface AvatarProps extends Omit<ComponentPropsWithRef<typeof RadixAvat
   /** Whether the avatar is disabled. @default false */
   isDisabled?: boolean;
   /** Border radius scale. @default 'full' */
-  radius?: "none" | "sm" | "md" | "lg" | "full";
+  radius?: "none" | "xs" | "sm" | "md" | "lg" | "full";
   /** Colored ring around the avatar. @default undefined */
   ring?: "primary" | "secondary" | "accent" | "success" | "warning" | "danger" | "info";
   /** Size scale. @default 'md' */

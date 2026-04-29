@@ -1,6 +1,6 @@
 @layer components {
   .textarea {
-    @apply block w-auto leading-relaxed font-normal outline-none;
+    @apply block w-auto font-normal outline-none;
     @apply transition duration-(--duration-hover) ease-out motion-reduce:transition-none;
 
     --textarea-bg: var(--color-field);
@@ -13,8 +13,12 @@
 
     @apply bg-(--textarea-bg) text-(--textarea-fg);
     @apply border border-(--textarea-border);
-    @apply px-4 py-2 text-base;
-    @apply rounded-md;
+    @apply rounded-md text-base;
+
+    line-height: var(--gold-lh);
+    padding-inline: 1em;
+    padding-block: calc(var(--gold-py) * 1em);
+
     @apply placeholder:text-(--textarea-placeholder);
     @apply resize-y;
 
@@ -89,15 +93,15 @@
   }
 
   .textarea-size-sm {
-    @apply px-3 py-1.5 text-xs;
+    @apply text-sm;
   }
 
   .textarea-size-md {
-    @apply px-4 py-2 text-base;
+    @apply text-base;
   }
 
   .textarea-size-lg {
-    @apply px-5 py-2.5 text-xl;
+    @apply text-lg;
   }
 
   .textarea-resize-none {
@@ -122,6 +126,10 @@
 
   .textarea-radius-none {
     @apply rounded-none;
+  }
+
+  .textarea-radius-xs {
+    @apply rounded-xs;
   }
 
   .textarea-radius-sm {

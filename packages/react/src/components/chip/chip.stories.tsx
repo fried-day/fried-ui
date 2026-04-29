@@ -59,22 +59,22 @@ const meta = {
     },
     size: {
       control: "select",
-      options: ["sm", "md", "lg"],
+      options: ["sm", "md", "lg", "xl"],
       description:
-        "Size scale on the display-role rhythm — smaller than form-aligned Input and Button at the same tier so chips read as supporting metadata. **sm** (h-6, text-xs) — dense tag clouds, filter rows, table cell labels. **md** (h-8, text-base, default) — standard tags and filter chips paired with Input md inline. **lg** (h-10, text-xl) — emphasized status pills or hero filters paired with Input lg. Use sm in dense list contexts, md for the typical tag UI, lg when chips need to read at a distance such as status banners or large filter rails.",
+        "Size scale on the display-role rhythm — anchored at text-sm (14px) so chips sit one Tailwind step below form-aligned Button and Input at the same tier name. Geometry scales via em formulas — height, padding, and gap recompute proportionally per tier; only font-size shifts across tiers. **sm** (text-xs) — dense tag clouds, filter rows, table cell labels. **md** (text-sm, default) — standard tags and filter chips paired with Input md inline. **lg** (text-base) — emphasized status pills or hero filters paired with Input lg. **xl** (text-lg) — large display chips for marketing surfaces or status banners. Use md for the typical tag UI, sm in dense list contexts, lg/xl for marketing emphasis.",
       table: {
-        type: { summary: '"sm" | "md" | "lg"' },
+        type: { summary: '"sm" | "md" | "lg" | "xl"' },
         defaultValue: { summary: "md" },
         category: "Style Variants",
       },
     },
     radius: {
       control: "select",
-      options: ["none", "sm", "md", "lg", "full"],
+      options: ["none", "xs", "sm", "md", "lg", "full"],
       description:
-        "Border radius scale shaping the chip from a tab to a pill. **none** — sharp tab look (admin dashboards). **sm** — subtle softening. **md** — standard rounded tag. **lg** — emphasized soft corners. **full** (default) — pill, the canonical chip shape across Material, Apple, and Mobbin. Use full for the typical tag UI, md for square-ish status chips, none in admin or data UIs where chips align with table edges.",
+        "Border radius scale shaping the chip from a tab to a pill. Fixed-px tokens independent of font-size so chips align with peer surfaces (Button, Card) by absolute radius. **none** — sharp tab look (admin dashboards). **xs** (2px) — micro softening for tight chip rows. **sm** (4px) — subtle softening. **md** (6px) — standard rounded tag. **lg** (8px) — emphasized soft corners. **full** (default) — pill, the canonical chip shape across Material, Apple, and Mobbin. Use full for the typical tag UI, md for square-ish status chips, none in admin or data UIs where chips align with table edges.",
       table: {
-        type: { summary: '"none" | "sm" | "md" | "lg" | "full"' },
+        type: { summary: '"none" | "xs" | "sm" | "md" | "lg" | "full"' },
         defaultValue: { summary: "full" },
         category: "Style Variants",
       },
@@ -207,6 +207,10 @@ const Sizes: Story = {
       <Chip size="lg" {...args}>
         Large
       </Chip>
+
+      <Chip size="xl" {...args}>
+        Extra Large
+      </Chip>
     </>
   ),
 };
@@ -216,6 +220,10 @@ const Radius: Story = {
     <>
       <Chip radius="none" {...args}>
         None
+      </Chip>
+
+      <Chip radius="xs" {...args}>
+        Extra Small
       </Chip>
 
       <Chip radius="sm" {...args}>

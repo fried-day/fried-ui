@@ -1,7 +1,7 @@
 @layer components {
   .chip {
     @apply relative inline-flex items-center justify-center;
-    @apply leading-none font-medium whitespace-nowrap select-none;
+    @apply font-medium whitespace-nowrap select-none;
     @apply transition duration-(--duration-hover) ease-out motion-reduce:transition-none;
 
     --chip-bg: var(--color-primary);
@@ -12,8 +12,11 @@
 
     @apply bg-(--chip-bg) text-(--chip-fg);
     @apply border border-(--chip-border);
-    @apply h-8 gap-1.5 px-3 text-base;
-    @apply rounded-full;
+    @apply h-gold-sm rounded-full text-sm;
+
+    line-height: var(--gold-lh);
+    gap: calc(var(--gold-gap) * 1em);
+    padding-inline: 1em;
   }
 
   .chip-primary {
@@ -120,19 +123,27 @@
   }
 
   .chip-size-sm {
-    @apply h-6 gap-1 px-2 text-xs;
+    @apply h-gold-xs text-xs;
   }
 
   .chip-size-md {
-    @apply h-8 gap-1.5 px-3 text-base;
+    @apply h-gold-sm text-sm;
   }
 
   .chip-size-lg {
-    @apply h-10 gap-2 px-4 text-xl;
+    @apply h-gold-md text-base;
+  }
+
+  .chip-size-xl {
+    @apply h-gold-lg text-lg;
   }
 
   .chip-radius-none {
     @apply rounded-none;
+  }
+
+  .chip-radius-xs {
+    @apply rounded-xs;
   }
 
   .chip-radius-sm {
@@ -164,58 +175,19 @@
 
   .chip:has([slot="icon-start"]),
   .chip:has([slot="avatar"]) {
-    @apply pl-1.5;
+    padding-inline-start: 0.5em;
   }
 
   .chip:has([slot="icon-end"]),
   .chip:has(.chip-dismiss) {
-    @apply pr-1.5;
-  }
-
-  .chip-size-sm:has([slot="icon-start"]),
-  .chip-size-sm:has([slot="avatar"]) {
-    @apply pl-1;
-  }
-
-  .chip-size-sm:has([slot="icon-end"]),
-  .chip-size-sm:has(.chip-dismiss) {
-    @apply pr-1;
-  }
-
-  .chip-size-md:has([slot="icon-start"]),
-  .chip-size-md:has([slot="avatar"]) {
-    @apply pl-1.5;
-  }
-
-  .chip-size-md:has([slot="icon-end"]),
-  .chip-size-md:has(.chip-dismiss) {
-    @apply pr-1.5;
-  }
-
-  .chip-size-lg:has([slot="icon-start"]),
-  .chip-size-lg:has([slot="avatar"]) {
-    @apply pl-2;
-  }
-
-  .chip-size-lg:has([slot="icon-end"]),
-  .chip-size-lg:has(.chip-dismiss) {
-    @apply pr-2;
+    padding-inline-end: 0.5em;
   }
 
   .chip-icon-only {
-    @apply size-8 justify-center gap-0 p-0;
-  }
+    @apply justify-center gap-0 p-0;
 
-  .chip-icon-only.chip-size-sm {
-    @apply size-6;
-  }
-
-  .chip-icon-only.chip-size-md {
-    @apply size-8;
-  }
-
-  .chip-icon-only.chip-size-lg {
-    @apply size-10;
+    aspect-ratio: 1 / 1;
+    width: auto;
   }
 
   .chip-dismiss {
