@@ -39,20 +39,18 @@ jobs:
             style
             test
           requireScope: true
-          disallowScopes: |
-            [A-Z]+
-          subjectPattern: ^(?![A-Z]).{1,50}$
+          headerPattern: '^([a-z]+)\(([^A-Z]+)\): (.*)'
+          headerPatternCorrespondence: type, scope, subject
+          subjectPattern: "^[^A-Z]{1,50}$"
           subjectPatternError: |
             The subject "{subject}" found in the pull request title "{title}"
             didn't match the configured pattern. Please ensure that the subject:
-            - doesn't start with an uppercase character
+            - is entirely lowercase
             - is not empty
             - is maximum 50 characters long
           ignoreLabels: |
             bot
             ignore-semantic-pull-request
-          headerPattern: '^(\w*)(?:\(([\w$.\-*/ ]*)\))?: (.*)'
-          headerPatternCorrespondence: type, scope, subject
           validateSingleCommit: true
           validateSingleCommitMatchesPrTitle: true
 
