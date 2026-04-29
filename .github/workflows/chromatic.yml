@@ -19,12 +19,12 @@ jobs:
     name: Chromatic
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           fetch-depth: 0
       - uses: ./.github/actions/setup
       - run: pnpm build:storybook
-      - uses: chromaui/action@cad40970f69e7a6a5bef4ddfe42c01309ba17cb1
+      - uses: chromaui/action@a01e849cbc1f51ec5743358b4d7f9a1eadadf44e
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           workingDir: apps/storybook

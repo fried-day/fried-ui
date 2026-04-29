@@ -43,6 +43,7 @@ skills-lock.json
 # Claude
 .claude/
 CLAUDE.md
+.claude/settings.local.json
 
 # Misc
 .DS_Store

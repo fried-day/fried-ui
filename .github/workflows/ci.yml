@@ -17,7 +17,7 @@ jobs:
     name: Audit
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
       - uses: ./.github/actions/setup
       - run: pnpm audit:deps
 
@@ -25,7 +25,7 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
       - uses: ./.github/actions/setup
       - run: pnpm lint
 
@@ -33,7 +33,7 @@ jobs:
     name: Sort
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
       - uses: ./.github/actions/setup
       - run: pnpm sort
 
@@ -41,7 +41,7 @@ jobs:
     name: Typecheck
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
       - uses: ./.github/actions/setup
       - run: pnpm typecheck
 
@@ -49,7 +49,7 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
       - uses: ./.github/actions/setup
       - name: Install Playwright Chromium
         run: pnpm --filter=storybook playwright:install
@@ -59,7 +59,7 @@ jobs:
     name: Format
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
       - uses: ./.github/actions/setup
       - run: pnpm format
 
@@ -67,14 +67,14 @@ jobs:
     name: Sonar
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           fetch-depth: 0
       - uses: ./.github/actions/setup
       - name: Install Playwright Chromium
         run: pnpm --filter=storybook playwright:install
       - run: pnpm test:coverage
-      - uses: SonarSource/sonarqube-scan-action@299e4b793aaa83bf2aba7c9c14bedbb485688ec4
+      - uses: SonarSource/sonarqube-scan-action@59db25f34e16620e48ab4bb9e4a5dce155cb5432
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
@@ -86,9 +86,9 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
       - uses: ./.github/actions/setup
-      - uses: preactjs/compressed-size-action@8518045ed95e94e971b83333085e1cb99aa18aa8
+      - uses: preactjs/compressed-size-action@66325aad6443cb7cf89c4bfcd414aea2367cda94
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           build-script: build:react
@@ -98,9 +98,9 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    needs: [audit, lint, typecheck, test, format]
+    needs: [audit, lint, sort, typecheck, test, format]
     steps:
-      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
       - uses: ./.github/actions/setup
       - run: pnpm build
 
@@ -113,7 +113,7 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           fetch-depth: 0
       - uses: ./.github/actions/setup

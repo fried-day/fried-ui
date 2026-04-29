@@ -14,9 +14,9 @@ packages/tsconfig:
   - changed-files:
       - any-glob-to-any-file: "packages/tsconfig/**"
 
-packages/vitest:
+packages/assets:
   - changed-files:
-      - any-glob-to-any-file: "packages/vitest/**"
+      - any-glob-to-any-file: "packages/assets/**"
 
 apps/docs:
   - changed-files:

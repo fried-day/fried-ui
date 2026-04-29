@@ -5,12 +5,12 @@ runs:
   using: composite
   steps:
     - name: Setup pnpm
-      uses: pnpm/action-setup@a8198c4bff370c8506180b035930dea56dbd5288
+      uses: pnpm/action-setup@b307475762933b98ed359c036b0e51f26b63b74b
       with:
         run_install: false
 
     - name: Setup Node.js
-      uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444
+      uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e
       with:
         node-version: 22
         cache: pnpm
