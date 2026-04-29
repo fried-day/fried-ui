@@ -90,10 +90,6 @@
     --input-placeholder: var(--color-muted-foreground);
   }
 
-  .input-size-xs {
-    @apply h-gold-xs text-xs;
-  }
-
   .input-size-sm {
     @apply h-gold-sm text-sm;
   }
@@ -104,10 +100,6 @@
 
   .input-size-lg {
     @apply h-gold-lg text-lg;
-  }
-
-  .input-size-xl {
-    @apply h-gold-xl text-xl;
   }
 
   .input-full-width {

@@ -98,7 +98,7 @@ const Default: Story = {
 
 const Variants: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-center gap-8">
+    <div className="flex flex-wrap items-end justify-center gap-8">
       {(["primary", "secondary", "accent", "success", "warning", "danger", "info"] as const).map((variant) => (
         <SignalDot key={variant} variant={variant} {...args}>
           <Avatar>
@@ -113,7 +113,7 @@ const Variants: Story = {
 
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-center gap-8">
+    <div className="flex flex-wrap items-end justify-center gap-8">
       {(["sm", "md", "lg"] as const).map((size) => (
         <SignalDot variant="success" key={size} size={size} {...args}>
           <Avatar size={size}>
@@ -139,7 +139,7 @@ const Borderless: Story = {
 
 const Placements: Story = {
   render: (args): React.JSX.Element => (
-    <div className="flex flex-wrap items-center gap-8">
+    <div className="flex flex-wrap items-end justify-center gap-8">
       {(["top-right", "top-left", "bottom-right", "bottom-left"] as const).map((placement) => (
         <SignalDot variant="success" key={placement} placement={placement} {...args}>
           <Avatar>

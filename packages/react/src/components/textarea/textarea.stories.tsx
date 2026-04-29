@@ -123,10 +123,10 @@ const Default: Story = {};
 
 const Variants: Story = {
   render: (args): React.JSX.Element => (
-    <>
+    <div className="flex flex-wrap items-end justify-center gap-8">
       <Textarea variant="primary" placeholder="Primary" {...args} />
       <Textarea variant="secondary" placeholder="Secondary" {...args} />
-    </>
+    </div>
   ),
 };
 
@@ -139,35 +139,35 @@ const OverlayVariant: Story = {
 };
 
 const Sizes: Story = {
-  render: (args): React.JSX.Element => (
-    <>
-      <Textarea size="sm" placeholder="Small" {...args} />
-      <Textarea size="md" placeholder="Medium" {...args} />
-      <Textarea size="lg" placeholder="Large" {...args} />
-    </>
+  render: (): React.JSX.Element => (
+    <div className="flex flex-wrap items-end justify-center gap-8">
+      <Textarea size="sm" placeholder="Small" />
+      <Textarea size="md" placeholder="Medium" />
+      <Textarea size="lg" placeholder="Large" />
+    </div>
   ),
 };
 
 const Radius: Story = {
-  render: (args): React.JSX.Element => (
-    <>
-      <Textarea radius="none" placeholder="None" {...args} />
-      <Textarea radius="xs" placeholder="Extra Small" {...args} />
-      <Textarea radius="sm" placeholder="Small" {...args} />
-      <Textarea radius="md" placeholder="Medium" {...args} />
-      <Textarea radius="lg" placeholder="Large" {...args} />
-    </>
+  render: (): React.JSX.Element => (
+    <div className="flex flex-wrap items-end justify-center gap-8">
+      <Textarea radius="none" placeholder="None" />
+      <Textarea radius="xs" placeholder="Extra Small" />
+      <Textarea radius="sm" placeholder="Small" />
+      <Textarea radius="md" placeholder="Medium" />
+      <Textarea radius="lg" placeholder="Large" />
+    </div>
   ),
 };
 
 const Resize: Story = {
-  render: (args): React.JSX.Element => (
-    <>
-      <Textarea resize="none" placeholder="No resize" {...args} />
-      <Textarea resize="vertical" placeholder="Vertical" {...args} />
-      <Textarea resize="horizontal" placeholder="Horizontal" {...args} />
-      <Textarea resize="both" placeholder="Both" {...args} />
-    </>
+  render: (): React.JSX.Element => (
+    <div className="flex flex-wrap items-end justify-center gap-8">
+      <Textarea resize="none" placeholder="No resize" />
+      <Textarea resize="vertical" placeholder="Vertical" />
+      <Textarea resize="horizontal" placeholder="Horizontal" />
+      <Textarea resize="both" placeholder="Both" />
+    </div>
   ),
 };
 

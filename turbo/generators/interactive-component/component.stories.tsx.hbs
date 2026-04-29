@@ -76,24 +76,24 @@ const Default: Story = {};
 
 const Variants: Story = {
   render: (args): React.JSX.Element => (
-    <>
+    <div className="flex flex-wrap items-end justify-center gap-8">
       <{{pascalCase name}} {...args} variant="primary">Primary</{{pascalCase name}}>
       <{{pascalCase name}} {...args} variant="secondary">Secondary</{{pascalCase name}}>
       <{{pascalCase name}} {...args} variant="outline">Outline</{{pascalCase name}}>
       <{{pascalCase name}} {...args} variant="ghost">Ghost</{{pascalCase name}}>
       <{{pascalCase name}} {...args} variant="destructive">Destructive</{{pascalCase name}}>
       <{{pascalCase name}} {...args} variant="accent">Accent</{{pascalCase name}}>
-    </>
+    </div>
   ),
 };
 
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
-    <>
+    <div className="flex flex-wrap items-end justify-center gap-8">
       <{{pascalCase name}} {...args} size="sm">Small {{pascalCase name}}</{{pascalCase name}}>
       <{{pascalCase name}} {...args} size="md">Medium {{pascalCase name}}</{{pascalCase name}}>
       <{{pascalCase name}} {...args} size="lg">Large {{pascalCase name}}</{{pascalCase name}}>
-    </>
+    </div>
   ),
 };
 

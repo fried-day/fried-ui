@@ -147,7 +147,7 @@ const Default: Story = {
 
 const Variants: Story = {
   render: (args): React.JSX.Element => (
-    <>
+    <div className="flex flex-wrap items-end justify-center gap-8">
       <Button variant="primary" {...args}>
         Primary
       </Button>
@@ -171,7 +171,7 @@ const Variants: Story = {
       <Button variant="accent" {...args}>
         Accent
       </Button>
-    </>
+    </div>
   ),
 };
 
@@ -187,7 +187,7 @@ const OverlayVariant: Story = {
 
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
-    <>
+    <div className="flex flex-wrap items-end justify-center gap-8">
       <Button size="sm" {...args}>
         Small
       </Button>
@@ -207,13 +207,13 @@ const Sizes: Story = {
       <Button size="2xl" {...args}>
         Display
       </Button>
-    </>
+    </div>
   ),
 };
 
 const Radius: Story = {
   render: (args): React.JSX.Element => (
-    <>
+    <div className="flex flex-wrap items-end justify-center gap-8">
       <Button radius="none" {...args}>
         None
       </Button>
@@ -237,13 +237,13 @@ const Radius: Story = {
       <Button radius="full" {...args}>
         Full
       </Button>
-    </>
+    </div>
   ),
 };
 
 const WithIcon: Story = {
   render: (args): React.JSX.Element => (
-    <>
+    <div className="flex flex-wrap items-end justify-center gap-8">
       <Button variant="primary" {...args}>
         <PlusIcon slot="icon-start" />
         Create
@@ -263,13 +263,13 @@ const WithIcon: Story = {
         <XCircleIcon slot="icon-start" />
         Delete
       </Button>
-    </>
+    </div>
   ),
 };
 
 const IconOnly: Story = {
   render: (args): React.JSX.Element => (
-    <>
+    <div className="flex flex-wrap items-end justify-center gap-8">
       <Button variant="primary" aria-label="Settings" isIconOnly {...args}>
         <SettingsIcon className="size-match-font" />
       </Button>
@@ -285,7 +285,7 @@ const IconOnly: Story = {
       <Button variant="ghost" aria-label="Share" isIconOnly {...args}>
         <ShareIcon className="size-match-font" />
       </Button>
-    </>
+    </div>
   ),
 };
 

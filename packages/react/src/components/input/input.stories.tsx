@@ -115,10 +115,10 @@ const Default: Story = {};
 
 const Variants: Story = {
   render: (args): React.JSX.Element => (
-    <>
+    <div className="flex flex-wrap items-end justify-center gap-8">
       <Input variant="primary" placeholder="Primary" {...args} />
       <Input variant="secondary" placeholder="Secondary" {...args} />
-    </>
+    </div>
   ),
 };
 
@@ -131,27 +131,25 @@ const OverlayVariant: Story = {
 };
 
 const Sizes: Story = {
-  render: (args): React.JSX.Element => (
-    <>
-      <Input size="xs" placeholder="Tiny" {...args} />
-      <Input size="sm" placeholder="Small" {...args} />
-      <Input size="md" placeholder="Medium" {...args} />
-      <Input size="lg" placeholder="Large" {...args} />
-      <Input size="xl" placeholder="Extra Large" {...args} />
-    </>
+  render: (): React.JSX.Element => (
+    <div className="flex flex-wrap items-end justify-center gap-8">
+      <Input size="sm" placeholder="Small" />
+      <Input size="md" placeholder="Medium" />
+      <Input size="lg" placeholder="Large" />
+    </div>
   ),
 };
 
 const Radius: Story = {
-  render: (args): React.JSX.Element => (
-    <>
-      <Input radius="none" placeholder="None" {...args} />
-      <Input radius="xs" placeholder="Extra Small" {...args} />
-      <Input radius="sm" placeholder="Small" {...args} />
-      <Input radius="md" placeholder="Medium" {...args} />
-      <Input radius="lg" placeholder="Large" {...args} />
-      <Input radius="full" placeholder="Full" {...args} />
-    </>
+  render: (): React.JSX.Element => (
+    <div className="flex flex-wrap items-end justify-center gap-8">
+      <Input radius="none" placeholder="None" />
+      <Input radius="xs" placeholder="Extra Small" />
+      <Input radius="sm" placeholder="Small" />
+      <Input radius="md" placeholder="Medium" />
+      <Input radius="lg" placeholder="Large" />
+      <Input radius="full" placeholder="Full" />
+    </div>
   ),
 };
 

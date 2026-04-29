@@ -147,7 +147,7 @@ const Default: Story = {
 
 const Variants: Story = {
   render: (args): React.JSX.Element => (
-    <>
+    <div className="flex flex-wrap items-end justify-center gap-8">
       <Chip variant="primary" {...args}>
         Primary
       </Chip>
@@ -179,7 +179,7 @@ const Variants: Story = {
       <Chip variant="info" {...args}>
         Info
       </Chip>
-    </>
+    </div>
   ),
 };
 
@@ -195,7 +195,7 @@ const OverlayVariant: Story = {
 
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
-    <>
+    <div className="flex flex-wrap items-end justify-center gap-8">
       <Chip size="sm" {...args}>
         Small
       </Chip>
@@ -211,13 +211,13 @@ const Sizes: Story = {
       <Chip size="xl" {...args}>
         Extra Large
       </Chip>
-    </>
+    </div>
   ),
 };
 
 const Radius: Story = {
   render: (args): React.JSX.Element => (
-    <>
+    <div className="flex flex-wrap items-end justify-center gap-8">
       <Chip radius="none" {...args}>
         None
       </Chip>
@@ -241,13 +241,13 @@ const Radius: Story = {
       <Chip radius="full" {...args}>
         Full
       </Chip>
-    </>
+    </div>
   ),
 };
 
 const WithIcon: Story = {
   render: (args): React.JSX.Element => (
-    <>
+    <div className="flex flex-wrap items-end justify-center gap-8">
       <Chip variant="primary" {...args}>
         <StarIcon slot="icon-start" />
         Featured
@@ -272,13 +272,13 @@ const WithIcon: Story = {
         <InformationCircleIcon slot="icon-start" />
         Beta
       </Chip>
-    </>
+    </div>
   ),
 };
 
 const WithAvatar: Story = {
   render: (args): React.JSX.Element => (
-    <>
+    <div className="flex flex-wrap items-end justify-center gap-8">
       <Chip variant="secondary" {...args}>
         <img slot="avatar" alt="" src={AVATAR_SRC} />
         {"Colm Tuite"}
@@ -288,13 +288,13 @@ const WithAvatar: Story = {
         <UserIcon slot="avatar" />
         Guest User
       </Chip>
-    </>
+    </div>
   ),
 };
 
 const IconOnly: Story = {
   render: (args): React.JSX.Element => (
-    <>
+    <div className="flex flex-wrap items-end justify-center gap-8">
       <Chip aria-label="Featured" isIconOnly {...args}>
         <StarIcon slot="icon" />
       </Chip>
@@ -306,7 +306,7 @@ const IconOnly: Story = {
       <Chip variant="success" aria-label="Favorite" isIconOnly {...args}>
         <HeartIcon slot="icon" />
       </Chip>
-    </>
+    </div>
   ),
 };
 
@@ -315,7 +315,7 @@ const Selected: Story = {
     isSelected: true,
   },
   render: (args): React.JSX.Element => (
-    <>
+    <div className="flex flex-wrap items-end justify-center gap-8">
       <Chip variant="primary" {...args}>
         Primary
       </Chip>
@@ -335,7 +335,7 @@ const Selected: Story = {
       <Chip variant="info" {...args}>
         Info
       </Chip>
-    </>
+    </div>
   ),
 };
 
@@ -344,7 +344,7 @@ const Clickable: Story = {
     onPress: (): void => {},
   },
   render: (args): React.JSX.Element => (
-    <>
+    <div className="flex flex-wrap items-end justify-center gap-8">
       <Chip variant="primary" {...args}>
         Assist
       </Chip>
@@ -357,7 +357,7 @@ const Clickable: Story = {
       <Chip variant="ghost" {...args}>
         Filter
       </Chip>
-    </>
+    </div>
   ),
 };
 
@@ -366,7 +366,7 @@ const Dismissible: Story = {
     onDismiss: (): void => {},
   },
   render: (args): React.JSX.Element => (
-    <>
+    <div className="flex flex-wrap items-end justify-center gap-8">
       <Chip variant="secondary" {...args}>
         React
       </Chip>
@@ -383,13 +383,13 @@ const Dismissible: Story = {
       <Chip variant="primary" {...args}>
         Tailwind
       </Chip>
-    </>
+    </div>
   ),
 };
 
 const FilterChip: Story = {
   render: (args): React.JSX.Element => (
-    <>
+    <div className="flex flex-wrap items-end justify-center gap-8">
       <Chip variant="ghost" onPress={(): void => {}} {...args}>
         All
       </Chip>
@@ -405,7 +405,7 @@ const FilterChip: Story = {
       <Chip variant="ghost" onPress={(): void => {}} {...args}>
         Marketing
       </Chip>
-    </>
+    </div>
   ),
 };
 
@@ -414,7 +414,7 @@ const Disabled: Story = {
     isDisabled: true,
   },
   render: (args): React.JSX.Element => (
-    <>
+    <div className="flex flex-wrap items-end justify-center gap-8">
       <Chip variant="primary" {...args}>
         Primary
       </Chip>
@@ -426,7 +426,7 @@ const Disabled: Story = {
       <Chip variant="ghost" onPress={(): void => {}} {...args}>
         Clickable
       </Chip>
-    </>
+    </div>
   ),
 };
 

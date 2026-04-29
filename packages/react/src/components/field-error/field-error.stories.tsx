@@ -68,7 +68,7 @@ const Default: Story = {};
 
 const Sizes: Story = {
   render: (args): React.JSX.Element => (
-    <>
+    <div className="flex flex-wrap items-end justify-center gap-8">
       <TextField isInvalid>
         <FieldError size="sm" {...args}>
           Small FieldError
@@ -86,7 +86,7 @@ const Sizes: Story = {
           Large FieldError
         </FieldError>
       </TextField>
-    </>
+    </div>
   ),
   decorators: [(Story): React.JSX.Element => <Story />],
 };

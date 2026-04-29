@@ -94,7 +94,7 @@ const Default: Story = {
 
 const Variants: Story = {
   render: (args): React.JSX.Element => (
-    <>
+    <div className="flex flex-wrap items-end justify-center gap-8">
       <Surface variant="default" className="p-6" {...args}>
         <p className="font-bold">Default</p>
         <p className="mt-2 text-sm">Standard card (neutral-50)</p>
@@ -109,7 +109,7 @@ const Variants: Story = {
         <p className="font-bold">Plain</p>
         <p className="mt-2 text-sm">Pure white (layer-0)</p>
       </Surface>
-    </>
+    </div>
   ),
 };
 
@@ -118,7 +118,7 @@ const Bordered: Story = {
     isBordered: true,
   },
   render: (args): React.JSX.Element => (
-    <>
+    <div className="flex flex-wrap items-end justify-center gap-8">
       <Surface variant="default" className="p-6" {...args}>
         <p className="font-bold">Default</p>
         <p className="mt-2 text-sm">Standard card (neutral-50)</p>
@@ -133,7 +133,7 @@ const Bordered: Story = {
         <p className="font-bold">Plain</p>
         <p className="mt-2 text-sm">Pure white (layer-0)</p>
       </Surface>
-    </>
+    </div>
   ),
 };
 
@@ -150,7 +150,7 @@ const OverlayVariant: Story = {
 
 const Radius: Story = {
   render: (args): React.JSX.Element => (
-    <>
+    <div className="flex flex-wrap items-end justify-center gap-8">
       <Surface radius="none" className="p-6" {...args}>
         <p className="font-bold">None</p>
         <p className="mt-2 text-sm">Content</p>
@@ -175,13 +175,13 @@ const Radius: Story = {
         <p className="font-bold">Extra Large</p>
         <p className="mt-2 text-sm">Content</p>
       </Surface>
-    </>
+    </div>
   ),
 };
 
 const Shadow: Story = {
   render: (args): React.JSX.Element => (
-    <>
+    <div className="flex flex-wrap items-end justify-center gap-8">
       <Surface shadow="none" className="p-6" {...args}>
         <p className="font-bold">None</p>
         <p className="mt-2 text-sm">Content</p>
@@ -206,7 +206,7 @@ const Shadow: Story = {
         <p className="font-bold">Extra Large</p>
         <p className="mt-2 text-sm">Content</p>
       </Surface>
-    </>
+    </div>
   ),
 };
 

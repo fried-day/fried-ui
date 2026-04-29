@@ -102,10 +102,6 @@
     --button-fg: var(--color-accent-foreground);
   }
 
-  .button-size-xs {
-    @apply h-gold-xs text-xs;
-  }
-
   .button-size-sm {
     @apply h-gold-sm text-sm;
   }

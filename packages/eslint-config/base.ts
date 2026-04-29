@@ -29,7 +29,7 @@ function createConfig(tsconfigRootDir: string): Linter.Config[] {
       },
     },
     {
-      ignores: ["dist/**", "sample/**", "coverage/**", "**/coverage/**"],
+      ignores: ["dist/**", "coverage/**", "**/coverage/**"],
     },
   ] as Linter.Config[];
 }
