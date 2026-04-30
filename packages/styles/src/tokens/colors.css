@@ -1,21 +1,62 @@
 @custom-variant dark (&:is(.dark, [data-theme="dark"]) *);
 
 @theme static {
+  /* --- Canvas ------------------------------------------------------------
+   * Page-level background and body text.
+   * Use for the root layout surface and default readable text.
+   * Do not use for component backgrounds — use Surface or Field instead.
+   * ----------------------------------------------------------------------- */
+  --color-background: oklch(100% 0 0deg);
+  --color-background-secondary: var(--color-fri-neutral-50);
+  --color-foreground: oklch(0% 0 0deg);
+  --color-foreground-secondary: var(--color-fri-neutral-700);
+  --color-foreground-muted: var(--color-fri-neutral-500);
+
+  /* --- Primary -----------------------------------------------------------
+   * The main action color. Use for the highest-priority button or CTA.
+   * Solid dark background with white foreground (light mode).
+   * -border aliases the base token — use it on border-color rules.
+   * ----------------------------------------------------------------------- */
   --color-primary: var(--color-fri-neutral-900);
   --color-primary-hover: var(--color-fri-neutral-700);
   --color-primary-active: var(--color-fri-neutral-950);
   --color-primary-border: var(--color-primary);
   --color-primary-foreground: oklch(100% 0 0deg);
+
+  /* --- Secondary ---------------------------------------------------------
+   * Low-emphasis action. Use for ghost-adjacent buttons, secondary CTAs,
+   * or any interactive element that should recede behind the primary action.
+   * Light background with dark foreground (light mode).
+   * ----------------------------------------------------------------------- */
   --color-secondary: var(--color-fri-neutral-100);
   --color-secondary-hover: var(--color-fri-neutral-200);
   --color-secondary-active: var(--color-fri-neutral-300);
   --color-secondary-border: var(--color-secondary);
   --color-secondary-foreground: oklch(0% 0 0deg);
+
+  /* --- Accent ------------------------------------------------------------
+   * Brand highlight color. Use sparingly — one accent element per view.
+   * Currently lime; foreground is dark so it meets contrast on the lime bg.
+   * ----------------------------------------------------------------------- */
   --color-accent: var(--color-fri-lime-500);
   --color-accent-hover: var(--color-fri-lime-600);
   --color-accent-active: var(--color-fri-lime-700);
   --color-accent-border: var(--color-accent);
   --color-accent-foreground: var(--color-fri-lime-950);
+
+  /* --- Status ------------------------------------------------------------
+   * Semantic feedback roles. Each role follows the same 5-token shape:
+   *   base / hover / active / border / foreground
+   *
+   * success     — positive outcome, completion (green)
+   * warning     — caution, needs attention (yellow; dark foreground for contrast)
+   * danger      — error, destructive action (red)
+   * info        — neutral information, tips (blue)
+   * destructive — alias of danger; use for permanently destructive actions
+   *               (delete, revoke) where "danger" reads too generic.
+   *
+   * Rule: pick ONE role per message or action. Do not mix danger + warning.
+   * ----------------------------------------------------------------------- */
   --color-success: var(--color-fri-green-500);
   --color-success-hover: var(--color-fri-green-600);
   --color-success-active: var(--color-fri-green-700);
@@ -41,16 +82,39 @@
   --color-destructive-active: var(--color-fri-red-700);
   --color-destructive-border: var(--color-destructive);
   --color-destructive-foreground: oklch(100% 0 0deg);
-  --color-background: oklch(100% 0 0deg);
-  --color-background-secondary: var(--color-fri-neutral-50);
-  --color-foreground: oklch(0% 0 0deg);
+
+  /* --- Surface -----------------------------------------------------------
+   * Container backgrounds that sit on top of Canvas.
+   * Three variants for different elevation / emphasis levels:
+   *
+   *   surface       slightly off-white card (default raised container)
+   *   surface-subtle  one step lighter — nested sub-sections inside a card
+   *   surface-plain   pure white — forms and editors that need a clean field feel
+   *
+   * -border tokens pair with each surface variant for consistent stroke weight.
+   * -foreground is the default text color rendered inside any surface container.
+   * Do not use Canvas foreground inside Surface — use surface-foreground instead.
+   * ----------------------------------------------------------------------- */
   --color-surface: var(--color-fri-neutral-50);
   --color-surface-border: var(--color-fri-neutral-200);
+  --color-surface-foreground: oklch(0% 0 0deg);
   --color-surface-subtle: var(--color-fri-neutral-100);
   --color-surface-subtle-border: var(--color-fri-neutral-200);
   --color-surface-plain: oklch(100% 0 0deg);
   --color-surface-plain-border: var(--color-fri-neutral-100);
-  --color-surface-foreground: oklch(0% 0 0deg);
+
+  /* --- Field -------------------------------------------------------------
+   * Form input colors. Two modes share the same semantic role:
+   *
+   *   default mode   white bg — standard outlined input on a Surface container
+   *   secondary mode neutral-50 bg — filled/ghost input that blends into the bg
+   *
+   * -border-focus tokens apply on keyboard focus (not mouse click).
+   * -placeholder is the hint text color inside an empty input.
+   *
+   * Rule: use Field tokens only on interactive form elements (Input, Textarea,
+   * Select). For static container backgrounds use Surface.
+   * ----------------------------------------------------------------------- */
   --color-field: oklch(100% 0 0deg);
   --color-field-hover: oklch(100% 0 0deg);
   --color-field-border: var(--color-fri-neutral-200);
@@ -65,33 +129,84 @@
   --color-field-secondary-border-focus: oklch(0% 0 0deg);
   --color-field-secondary-foreground: oklch(0% 0 0deg);
   --color-field-secondary-placeholder: var(--color-fri-neutral-500);
-  --color-field-slot: transparent;
-  --color-field-slot-border: transparent;
+
+  /* --- Popover -----------------------------------------------------------
+   * Floating layer background: dropdown menus, tooltips, date-pickers.
+   * Intentionally pure white so it stands apart from both Canvas and Surface.
+   * Pair with --color-border for the popover stroke and --z-popover for depth.
+   * ----------------------------------------------------------------------- */
   --color-popover: oklch(100% 0 0deg);
   --color-popover-foreground: oklch(0% 0 0deg);
+
+  /* --- Muted -------------------------------------------------------------
+   * Subtle interactive fill for low-priority actions (ghost, tertiary).
+   * Use for icon buttons, tab indicators, and hover states on plain text links.
+   * Not the same as disabled — muted elements are still interactive.
+   * ----------------------------------------------------------------------- */
   --color-muted: var(--color-fri-neutral-100);
   --color-muted-hover: var(--color-fri-neutral-200);
   --color-muted-active: var(--color-fri-neutral-300);
   --color-muted-foreground: var(--color-fri-neutral-500);
+
+  /* --- Disabled ----------------------------------------------------------
+   * Non-interactive state applied via @apply status-disabled.
+   * Do not apply these manually — always go through the status-disabled utility
+   * so cursor, opacity, and pointer-events stay in sync across every component.
+   * ----------------------------------------------------------------------- */
   --color-disabled: var(--color-fri-neutral-100);
   --color-disabled-foreground: var(--color-fri-neutral-400);
+
+  /* --- Typography: prose element colors (heading, code, mark, link) ------
+   * Static content colors for rich text and documentation surfaces.
+   * These are NOT for component labels or button text — use role foregrounds
+   * (primary-foreground, surface-foreground, etc.) for UI elements.
+   *
+   *   heading   large display text (h1–h3)
+   *   code      inline monospace snippet; code-background is its bg pill
+   *   mark      highlighted / search-result text (yellow wash)
+   *   link      anchor text; follows hover/active state math (+1/+2 steps)
+   * ----------------------------------------------------------------------- */
   --color-heading: oklch(0% 0 0deg);
-  --color-foreground-secondary: var(--color-fri-neutral-700);
-  --color-foreground-muted: var(--color-fri-neutral-500);
   --color-code: var(--color-fri-neutral-800);
   --color-code-background: var(--color-fri-neutral-100);
   --color-mark: var(--color-fri-yellow-200);
   --color-mark-foreground: oklch(0% 0 0deg);
+  --color-link: oklch(0% 0 0deg);
+  --color-link-hover: var(--color-fri-neutral-700);
+  --color-link-active: var(--color-fri-neutral-900);
+
+  /* --- Chrome ------------------------------------------------------------
+   * Structural UI lines and decorative states. Not tied to any semantic role.
+   *
+   *   border / border-hover   default 1px stroke for cards, dividers, inputs
+   *   separator               horizontal rule between sections (same value, explicit intent)
+   *   skeleton                loading placeholder fill
+   *   selection               text selection highlight bg and foreground
+   * ----------------------------------------------------------------------- */
   --color-border: var(--color-fri-neutral-200);
   --color-border-hover: var(--color-fri-neutral-300);
   --color-separator: var(--color-fri-neutral-200);
   --color-skeleton: var(--color-fri-neutral-200);
   --color-selection: var(--color-fri-neutral-200);
   --color-selection-foreground: oklch(0% 0 0deg);
-  --color-link: oklch(0% 0 0deg);
-  --color-link-hover: var(--color-fri-neutral-700);
+
+  /* --- Focus -------------------------------------------------------------
+   * Two-color keyboard focus ring (WCAG AAA).
+   * Applied only via @apply focus-ring — never reference these tokens directly
+   * in component CSS. The utility sets ring + outline together so both colors
+   * always appear as a pair.
+   *
+   *   focus-outer   outline (dark in light mode, light in dark mode)
+   *   focus-inner   ring offset (light in light mode, dark in dark mode)
+   * ----------------------------------------------------------------------- */
   --color-focus-outer: oklch(0% 0 0deg);
   --color-focus-inner: oklch(100% 0 0deg);
+
+  /* --- Overlay -----------------------------------------------------------
+   * Full-screen scrim behind modals and drawers.
+   * on-overlay tokens are for content rendered ON TOP of the scrim
+   * (close buttons, glass-effect actions inside the overlay layer).
+   * ----------------------------------------------------------------------- */
   --color-overlay: oklch(0% 0 0deg / 50%);
   --color-on-overlay: var(--color-fri-neutral-50);
   --color-on-overlay-hover: var(--color-fri-neutral-100);
