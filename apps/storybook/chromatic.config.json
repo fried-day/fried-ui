@@ -1,6 +1,5 @@
 {
   "buildScriptName": "build",
-  "onlyChanged": true,
   "projectId": "Project:69e6968ee69bc24a839f0d65",
   "storybookBaseDir": "apps/storybook",
   "zip": true
