@@ -1,0 +1,70 @@
+name: Changeset Version Validation
+
+on:
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: changeset-validation-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  validate-changeset:
+    name: Validate Changeset
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    if: >-
+      ${{
+        github.event.pull_request.draft == false
+        && !startsWith(github.event.pull_request.title, 'chore(release):')
+        && !startsWith(github.head_ref, 'changeset-release/')
+      }}
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          fetch-depth: 0
+
+      - name: Detect changes
+        id: changes
+        run: |
+          BASE_SHA=${{ github.event.pull_request.base.sha }}
+          HEAD_SHA=${{ github.event.pull_request.head.sha }}
+          CHANGED_FILES=$(git diff --name-only "$BASE_SHA".."$HEAD_SHA")
+          CODE_CHANGES=$(echo "$CHANGED_FILES" | grep -E '^packages/(react|styles)/src/' || true)
+          PKG_VERSION_CHANGED=$(echo "$CHANGED_FILES" | grep -E '^packages/(react|styles)/package\.json$' || true)
+          CHANGELOG_CHANGED=$(echo "$CHANGED_FILES" | grep -E '^packages/(react|styles)/CHANGELOG\.md$' || true)
+          CHANGESET_CHANGES=$(echo "$CHANGED_FILES" | grep -E '^\.changeset/.*\.md$' | grep -v '^\.changeset/README\.md$' || true)
+
+          VERSION_FIELD_CHANGED=false
+          if [ -n "$PKG_VERSION_CHANGED" ]; then
+            for f in $PKG_VERSION_CHANGED; do
+              if git diff "$BASE_SHA".."$HEAD_SHA" -- "$f" | grep -E '^[+-][[:space:]]*"version":' > /dev/null; then
+                VERSION_FIELD_CHANGED=true
+              fi
+            done
+          fi
+
+          if [ "$VERSION_FIELD_CHANGED" = "true" ] || [ -n "$CHANGELOG_CHANGED" ]; then
+            VERSION_CHANGES=true
+          else
+            VERSION_CHANGES=false
+          fi
+
+          echo "code=$([ -n "$CODE_CHANGES" ] && echo true || echo false)" >> $GITHUB_OUTPUT
+          echo "version=$VERSION_CHANGES" >> $GITHUB_OUTPUT
+          echo "changeset=$([ -n "$CHANGESET_CHANGES" ] && echo true || echo false)" >> $GITHUB_OUTPUT
+
+      - name: Block manual version changes
+        if: ${{ steps.changes.outputs.version == 'true' }}
+        run: |
+          echo "Manual version or CHANGELOG changes are not allowed. Run: pnpm changeset"
+          exit 1
+
+      - name: Require changeset for code changes
+        if: ${{ steps.changes.outputs.code == 'true' && steps.changes.outputs.changeset == 'false' }}
+        run: |
+          echo "Code changes in packages/react or packages/styles require a changeset. Run: pnpm changeset"
+          exit 1

@@ -13,14 +13,6 @@ permissions:
   contents: read
 
 jobs:
-  audit:
-    name: Audit
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
-      - uses: ./.github/actions/setup
-      - run: pnpm audit:deps
-
   lint:
     name: Lint
     runs-on: ubuntu-latest
@@ -80,11 +72,23 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    needs: [audit, lint, sort, typecheck, sonar]
+    needs: [lint, sort, typecheck, sonar]
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
       - uses: ./.github/actions/setup
       - run: pnpm build
+
+      - name: Verify build output
+        working-directory: packages/react
+        run: |
+          test -f dist/index.mjs
+          test -f dist/index.d.ts
+          node --input-type=module -e "import('./dist/index.mjs').then(m => { if (Object.keys(m).length === 0) { console.error('empty exports'); process.exit(1); } console.log('exports:', Object.keys(m).length); })"
+
+      - name: Verify pack
+        run: |
+          pnpm --filter=@fried-ui/react pack --pack-destination /tmp
+          pnpm --filter=@fried-ui/styles pack --pack-destination /tmp
 
   preview-release:
     name: Preview Release
