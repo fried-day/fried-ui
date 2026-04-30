@@ -7,10 +7,10 @@ updates:
       day: "monday"
     open-pull-requests-limit: 10
     groups:
-      production-deps:
-        dependency-type: "production"
-      dev-deps:
-        dependency-type: "development"
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
     labels:
       - "dependencies"
     commit-message:
@@ -22,6 +22,10 @@ updates:
     schedule:
       interval: "weekly"
       day: "monday"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
     labels:
       - "dependencies"
       - "github-actions"
