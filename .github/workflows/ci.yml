@@ -85,10 +85,13 @@ jobs:
           test -f dist/index.d.ts
           node --input-type=module -e "import('./dist/index.mjs').then(m => { if (Object.keys(m).length === 0) { console.error('empty exports'); process.exit(1); } console.log('exports:', Object.keys(m).length); })"
 
-      - name: Verify pack
-        run: |
-          pnpm --filter=@fried-ui/react pack --pack-destination /tmp
-          pnpm --filter=@fried-ui/styles pack --pack-destination /tmp
+      - name: Verify react pack
+        working-directory: packages/react
+        run: pnpm pack --pack-destination /tmp
+
+      - name: Verify styles pack
+        working-directory: packages/styles
+        run: pnpm pack --pack-destination /tmp
 
   preview-release:
     name: Preview Release
