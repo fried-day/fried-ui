@@ -29,6 +29,5 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           workingDir: apps/storybook
           storybookBuildDir: dist
-          onlyChanged: true
           exitOnceUploaded: true
           autoAcceptChanges: main
